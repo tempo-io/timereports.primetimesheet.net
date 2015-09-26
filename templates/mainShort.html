@@ -1,0 +1,21 @@
+<style type="text/css">
+    .aui-page-panel {
+        margin-top: 0;
+        border: 0;
+    }
+</style>
+
+<div class="aui-page-panel">
+    <div class="aui-page-panel-inner">
+        <div class="aui-page-panel-nav">
+            <ng-include src="templates.menu"/>
+        </div>
+
+        <section class="aui-page-panel-content">
+            <ng-include src="contentTemplate()"/>
+        </section>
+    </div>
+    <div class="footer">
+        <ng-include src="'/templates/footer.html'"/>
+    </div>
+</div>

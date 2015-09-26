@@ -1,0 +1,132 @@
+<div class="results-wrap">
+    <div class="section-header" ng-hide="isGadget">
+        <h5>{{'Timesheet' | i18n }}</h5>
+        <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
+                         remove-action="removeMenuOption(option.key, option.labelParam)"
+                         label="option.label"
+                         label-param="option.labelParam" />
+        </div>
+    </div>
+    <div ng-show="isGadget" class="summary">
+        <span ng-repeat="option in gadgetSummary">
+            <span ng-class="option.styleClass">{{option.text}}</span>
+        </span>
+    </div>
+
+    <aui-inline-dialog template="/templates/popups/addWorklog.html" popup-data="addWorklogPopup" container="'.addWorklogPopup'"></aui-inline-dialog>
+    <aui-inline-dialog template="/templates/popups/editWorklog.html" popup-data="editWorklogPopup" container="'.editWorklogPopup'"></aui-inline-dialog>
+
+    <div class="pagingtable">
+
+        <div class="aui-message aui-message-error" ng-show="restrictionError != null">
+            <p class="title">
+                <strong>{{'Denied' | i18n}}</strong>
+            </p>
+            <p>{{restrictionError.msgKey | i18n}}</p>
+        </div>
+
+        <table id="issuetable" width="100%" cellspacing="0" cellpadding="3" border="0" ng-show="restrictionError == null">
+            <thead>
+                <tr class="rowHeader">
+                    <th class="colHeaderLink" colspan="{{rowKeySize}}">
+                        <pivottable-slider />
+                    </th>
+                    <th ng-repeat="column in pivotTable.totals" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
+                    </th>
+                    <th>
+                        <br/>{{'Tot' | i18n }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-class-odd="compressed ? 'rowNormal' : ''" ng-class-even="compressed ? 'rowAlternate' : ''" ng-repeat-start="row in pivotTable.rows" class="first">
+                    <!-- issues block -->
+                    <td class="nav issuetype" width="1%" ng-if="row.rowKey.issue">
+                        <issue-type issue="row.rowKey.issue" />
+                    </td>
+                    <td class="nav issuekey" width="1%" ng-if="row.rowKey.issue" nowrap>
+                        <issue-key issue="row.rowKey.issue" />
+                    </td>
+                    <td class="nav summary" colspan="2" width="100%" ng-if="row.rowKey.issue">
+                        <issue-summary issue="row.rowKey.issue" />
+                    </td>
+                    <td class="nav priority" width="1%" ng-if="row.rowKey.issue">
+                        <issue-priority issue="row.rowKey.issue" />
+                    </td>
+                    <td class="nav" width="1%" ng-if="row.rowKey.field" nowrap>
+                        <issue-field field="row.rowKey.project" ng-if="row.rowKey.project" />
+                    </td>
+                    <td class="nav" colspan="4" width="100%" ng-if="row.rowKey.field" nowrap>
+                        <issue-field field="row.rowKey.field" />
+                    </td>
+                    <td ng-init="p_show=false" ng-mouseover="p_show=column.sum == 0 && canLogWork" ng-mouseleave="p_show=false"
+                        ng-click="canLogWork && addWorklogPopup.init(column.columnKey.keyValue, row.rowKey.issue.key); (canEditOwnWorklog || canDeleteOwnWorklog) &&editWorklogPopup.init(column.columnKey.keyValue, row.rowKey.issue.key, row.data);"
+                        class="nav border"
+                        ng-class="{toDay : column.columnKey.isToday, addWorklogPopup: column.sum == 0 && canLogWork, editWorklogPopup: column.sum != 0 && (canEditOwnWorklog || canDeleteOwnWorklog), disabled: (column.sum == 0 && !canLogWork) || (column.sum != 0 && !canEditOwnWorklog && !canDeleteOwnWorklog) }" ng-repeat="column in row.columns">
+                        {{column.sum | prettyHours}}
+                        <span ng-show="p_show" class="fa fa-plus"></span>
+                    </td>
+                    <td class="nav border total">
+                        {{row.sum | prettyHours}}
+                    </td>
+                </tr>
+                <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="compressed == false">
+                    <td class="nav">&nbsp;</td>
+                    <td class="nav issuetype" width="1%">
+                        <span ng-if="data.rowKey._issue">
+                            <issue-type issue="data.rowKey._issue" />
+                        </span>
+                    </td>
+                    <td class="nav issuekey">
+                        <span ng-if="data.rowKey._issue">
+                            <issue-key issue="data.rowKey._issue" show-title="true" />
+                        </span>
+                    </td>
+                    <td colspan="{{rowKeySize - 4}}" class="nav summary">
+                        <span ng-if="data.worklog._issue">
+                            <issue-key issue="data.worklog._issue" show-title="true" />
+                        </span>
+                        {{data.worklog.comment}} <!--if worklog is present-->
+                    </td>
+                    <td class="nav priority" width="1%">
+                        <span ng-if="data.rowKey._issue">
+                            <issue-priority issue="data.rowKey._issue" />
+                        </span>
+                    </td>
+                    <td class="nav border" ng-class="{toDay : column.columnKey.isToday}" ng-repeat="column in pivotTable.totals">
+                        <span ng-if="data.columnKey.keyValue == column.columnKey.keyValue">
+                            {{data.value | prettyHours}}
+                        </span>
+                    </td>
+                    <td class="nav border total">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr ng-repeat-end ng-hide="true" ng-class="{details: compressed == false}"></tr>
+                <!-- total block -->
+                <tr class="rowFooter" ng-hide="loading">
+                    <td colspan="{{rowKeySize}}" class="nav total">
+                        {{'Total' | i18n}}
+                    </td>
+                    <td class="nav border total" ng-repeat="column in pivotTable.totals">
+                        {{column.sum | prettyHours}}
+                    </td>
+                    <td class="nav border total">
+                        {{pivotTable.sum | prettyHours}}
+                    </td>
+                </tr>
+                <tr ng-show="loading">
+                    <td colspan="{{rowKeySize + 1}}">
+                        {{'Loading' | i18n}}&nbsp;<span class="aui-icon aui-icon-wait">Wait</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-if="canLogWork">
+        <button class="aui-button aui-button-link" ng-click="addWorklogDialog()">
+            <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
+            Log Work
+        </button>
+    </div>
+</div>

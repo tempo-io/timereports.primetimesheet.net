@@ -1,0 +1,28 @@
+<div class="results-wrap">
+    <div class="section-header" ng-hide="isGadget">
+        <h5>{{ pivotTableType | i18n }}</h5>
+        <div>{{'Options' | i18n}}:&nbsp;
+            <selected-option ng-repeat="option in selectedOptionLabels"
+                             remove-action="removeMenuOption(option.key, option.labelParam)"
+                             label="option.label"
+                             label-param="option.labelParam"/>
+        </div>
+    </div>
+    <div class="pagingtable">
+
+        <div class="aui-message aui-message-error" ng-show="restrictionError != null">
+            <p class="title">
+                <strong>{{'Denied' | i18n}}</strong>
+            </p>
+            <p>{{restrictionError.msgKey | i18n}}</p>
+        </div>
+
+        <div ng-show="isGadget" class="summary">
+            <span ng-repeat="option in gadgetSummary">
+                <span ng-class="option.styleClass">{{option.text}}</span>
+            </span>
+        </div>
+        <div id="placeholder" pie-chart ng-model="pivotTable" style="height: 300px; width: 600px"></div>
+
+    </div>
+</div>

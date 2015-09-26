@@ -1,0 +1,12 @@
+<div class="aui-page-header-inner">
+    <div class="aui-page-header-main intro-header">
+        <h1>{{'Time Reports' | i18n }}</h1>
+        <ul class="subtitle">
+            <li>{{'Advanced Time Tracking' | i18n }}</li>
+            <li ng-show="isAdmin == true">
+                <a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/configuration" target="_parent">{{'Configure' | i18n }}</a>
+            </li>
+            <li ng-if="!licenseManager.isActive" ng-bind-html="licenseManager.message"></li>
+        </ul>
+    </div>    
+</div>

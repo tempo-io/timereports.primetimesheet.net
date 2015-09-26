@@ -1,0 +1,61 @@
+
+<nav class="aui-navgroup aui-navgroup-vertical">
+    <form class="aui">
+      <div class="aui-navgroup-inner">
+        <div class="aui-nav-heading"><strong>{{ 'Report' | i18n }}</strong></div>
+        <ul class="aui-nav">
+            <select class="select"
+                    title="database select"
+                    ng-model="pivotTableTypeOptions.selected"
+                    ng-options="item.id as item.label for item in pivotTableTypeOptions.options"
+                    ng-change="pivotTableTypeChanged()"
+                    aui-select2>
+            </select>
+        </ul>
+        <div class="aui-nav-heading"><strong>{{ 'Filter or Project' | i18n }}</strong></div>
+        <input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"/>
+        <div class="aui-nav-heading"><strong>{{ 'Options' | i18n }}</strong></div>
+           <ul class="aui-nav options">
+               <li ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
+                   <label>{{'User' | i18n}}</label>
+                   <input ng-model="paramUserInfo.displayName" aui-user-picker ng-user-changed-func="userChange" type="text"/>
+               </li>
+               <li ng-if="pivotTableType != 'TimeTracking'">
+                   <label>{{'Groups' | i18n}}</label>
+                   <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>
+               </li>
+               <li ng-if="pivotTableType != 'TimeTracking' && !isGadget">
+                   <label for="start-date-picker">{{'Start Date' | i18n}}</label>
+                   <input ng-model="startDate" id="start-date-picker" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="select"/>
+               </li>
+               <li ng-if="pivotTableType != 'TimeTracking' && !isGadget">
+                   <label for="end-date-picker">{{'End Date' | i18n}}</label>
+                   <input ng-model="endDate" id="end-date-picker" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
+               </li>
+               <li>
+                   <label>{{'Group By Field' | i18n}}</label>
+                   <select class="select"
+                           title="database select"
+                           ng-model="groupByOptions.selected"
+                           ng-options="item.id as item.label for item in groupByOptions.options"
+                           ng-change="groupByChanged()"
+                           aui-select2>
+                   </select>
+               </li>
+               <li>
+                   <input class="checkbox" type="checkbox" ng-model="sumSubTasks" ng-change="sumSubTasksChange(sumSubTasks)" />
+                   <label>{{'Sum SubTasks' | i18n}}</label>
+               </li>
+           </ul>
+        <div class="aui-nav-heading"><strong>Actions</strong></div>
+        <ul class="aui-nav" ng-if="!isGadget">
+            <li><a ng-click="refresh()">Refresh</a></li>
+        </ul>
+          <div ng-if="isGadget">
+              <button class="aui-button aui-button-primary" ng-click="saveGadgetConfig()">Save</button>
+              <button class="aui-button aui-button-link" ng-click="cancelGadgetConfigSaving()">Cancel</button>
+          </div>
+      </div>
+    </form>
+</nav>
+

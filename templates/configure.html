@@ -1,0 +1,76 @@
+<div class="formTitle">
+    <h2>{{'Time Reports Config' | i18n}}</h2>
+</div>
+<div class="formTitleDescription">{{'Configure Timesheet Reports and Gadgets Add-On' | i18n}}</div>
+
+<style type="text/css">
+    .msg-overlay {
+        position: absolute;
+        top: -5px;
+        left: 410px;
+        z-index: 10;
+    }
+</style>
+
+<div class="aui-message aui-message-info">
+    {{'All changes will be saved automatically' | i18n}}
+</div>
+
+<form class="aui" style="width: 750px">
+    <div class="field-group">
+        <label for="select2-auditorGroups">{{'Auditors Groups' | i18n}}</label>
+        <select id="select2-auditorGroups"
+                class="multi-select"
+                title="{{'Auditors Groups' | i18n}}"
+                ng-model="auditorsGroups.val"
+                ng-change="saveAuditorsGroups()"
+                ng-options="item.id as item.label for item in allGroups"
+                multiple>
+        </select>
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="auditorsGroupsSaveSuccess">
+            <strong>{{'Auditors Groups' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description">{{'description.Auditors Groups' | i18n}}</span>
+    </div>
+    <div class="field-group">
+        <label for="select2-compositionIssueLink">{{'Composition Issue Link' | i18n}}</label>
+        <select id="select2-compositionIssueLink"
+                class="select"
+                title="{{'Composition Issue Link' | i18n}}"
+                ng-model="compositionIssueLink.val"
+                ng-change="saveCompositionIssueLink()"
+                ng-options="item.id as item.label for item in allCompositionIssueLinks">
+        </select>
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="compositionIssueLinkSaveSuccess">
+            <strong>{{'Composition Issue Link' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description">{{'description.Composition Issue Link' | i18n}}</span>
+    </div>
+    <div class="field-group" ng-show="allParentIssueFields">
+        <label for="select2-parentIssueField">{{'Parent Issue Field' | i18n}}</label>
+        <select id="select2-parentIssueField"
+                class="select"
+                title="{{'Parent Issue Field' | i18n}}"
+                ng-model="parentIssueField.val"
+                ng-change="saveParentIssueField()"
+                ng-options="item.id as item.label for item in allParentIssueFields">
+        </select>
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="parentIssueFieldSaveSuccess">
+            <strong>{{'Parent Issue Field' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group" ng-show="allParentIssueFields">
+        <span class="description">{{'description.Parent Issue Field' | i18n}}</span>
+    </div>
+</form>
+
+<br/>
+
+{{'Go to' | i18n}} <a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/timereports" target="_parent">{{'Time Reports' | i18n}}</a>

@@ -1,0 +1,13 @@
+<form class="aui" name="deleteWorkForm">
+    <form-invalid/>
+    <div class="aui-message info">
+        Are you sure you want to delete this worklog?
+    </div>
+
+    <ng-include src="'/templates/dialogs/remainingEstimate.html'" ng-init="increaseBy=true"></ng-include>
+
+    <div>
+        <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
+    </div>
+
+</form>

@@ -1,0 +1,45 @@
+<form class="aui" name="logWorkForm">
+    <form-invalid/>
+    <div class="aui form-body" style="max-height: 188px;">
+        <div class="field-group">
+            <label for="log-work-issue">
+                Issue Key <span class="aui-icon icon-required"></span><span class="content">required</span>
+            </label>
+            <input type="text" class="text medium-field" id="log-work-issue" ng-model="worklog.issueKey" aui-issue-picker ng-disabled="dialogType != 'add'" required>
+        </div>
+        <fieldset>
+            <legend>
+                <span>Time entry</span>
+            </legend>
+            <div class="field-group">
+                <label for="log-work-time-logged">
+                    Time Spent<span class="aui-icon icon-required"> required</span>
+                </label>
+                <input type="text" id="log-work-time-logged" name="timeSpent" class="text short-field" ng-model="worklog.timeSpent" autofocus required timespent/>
+                <span id="log-work-time-example" class="aui-form example">(eg. 4h 30m)</span>
+                <div class="description">An estimate of how much time you have spent working.</div>
+            </div>
+            <div class="field-group test-datepicker">
+                <label for="log-work-date-logged">Date Started<span class="aui-icon icon-required"> required</span></label>
+                <input type="date" id="log-work-date-logged" class="text medium-field" style="max-width: 100px; margin-right: 10px;"
+                       ng-model="worklogDatetime.date" aui-date-picker>
+                <time-picker time="worklogDatetime.time"></time-picker>
+            </div>
+
+            <ng-include src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0"></ng-include>
+
+            <div class="field-group">
+                <label for="comment">Work Description</label>
+                <div class="wiki-edit">
+                    <div class="wiki-edit-content" id="comment-wiki-edit">
+                        <textarea rows="5" id="comment" cols="60" class="textarea long-field" ng-model="worklog.comment"></textarea>
+                        <div class="content-inner"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="field-group">
+                <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
+            </div>
+        </fieldset>
+    </div>
+</form>

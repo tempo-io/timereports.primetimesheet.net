@@ -1,0 +1,46 @@
+<div id="config" ng-controller="GadgetController">
+    <form class="aui">
+		<div class="field-group">
+			<label>{{ 'Report' | i18n }}</label>
+				<select class="select"
+				        title="database select"
+				        ng-model="pivotTableTypeOptions.selected"
+				        ng-options="item.id as item.label for item in pivotTableTypeOptions.options"
+				        ng-change="pivotTableTypeChanged()"
+				        aui-select2>
+				</select>
+		</div>
+		<div class="field-group">
+			<label>{{ 'Filter or Project' | i18n }}</label>
+			<input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"></input>
+		</div>
+		<div class="field-group" ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
+			<label>{{'User' | i18n}}</label>
+			<input ng-model="paramUserInfo.displayName" aui-user-picker ng-user-changed-func="userChange" type="text"></input>
+		</div>
+		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
+			<label>{{'Groups' | i18n}}</label>
+			<input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"></input>
+		</div>
+		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
+            <label>{{'Group By Field' | i18n}}</label>
+			<select class="select"
+			        title="database select"
+			        ng-model="groupByOptions.selected"
+			        ng-options="item.id as item.label for item in groupByOptions.options"
+			        ng-change="groupByChanged()"
+			        aui-select2>
+			</select>
+		</div>
+		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
+               <label>{{'Sum SubTasks' | i18n}}</label>
+               <input class="checkbox" type="checkbox" ng-model="sumSubTasks" ng-change="sumSubTasksChange(sumSubTasks)" />
+		</div>
+           <div class="buttons-container">
+            <div class="buttons">
+				<button class="aui-button aui-button-primary" ng-click="saveGadgetConfig()">Save</button>
+				<button class="aui-button aui-button-link" ng-click="cancelGadgetConfigSaving()">Cancel</button>
+            </div>
+         </div>
+    </form>
+</div>

@@ -1,0 +1,119 @@
+{
+    "key": "timereports",
+    "name": "Time Reports for JIRA Cloud",
+    "description": "Provides miscellaneous views for JIRA time tracking data",
+    "enableLicensing": true,
+    "vendor": {
+        "name": "Andriy Zhdanov",
+        "url": "http://www.jiratimesheet.com"
+    },
+    "baseUrl": "https://timereports.github.io/",
+    "links": {
+        "self": "https://timereports.github.io/atlassian-connect.json",
+        "homepage": "https://timereports.github.io/atlassian-connect.json"
+    },
+    "authentication": {
+        "type": "none"
+    },
+    "modules": {
+        "generalPages": [{
+            "location": "find_link/timesheet-menu",
+            "name": {
+                "value": "Time Reports"
+            },
+            "url": "/timereports.html?project.key={project.key}",
+            "key": "timereports",
+            "conditions": [{
+                "condition": "user_is_logged_in"
+            }]
+        }],
+        "configurePage": {
+            "name": {
+                "value": "Time Reports Configuration"
+            },
+            "url": "/timereports.html?configuration=true",
+            "key": "configuration",
+            "conditions": [{
+                "condition": "user_is_logged_in"
+            }]
+        },
+        "jiraReports": [{
+            "url": "timereports.html?project.key={project.key}",
+            "weight": 100,
+            "description": {
+              "value": "Flexible view of issues time tracking data"
+            },
+            "reportCategory": "other",
+            "thumbnailUrl": "/images/timesheet-report-thumb.png",
+            "key": "timereports-report",
+            "name": {
+              "value": "Time Reports"
+            }
+         }],
+        "jiraDashboardItems": [{
+            "name" : {
+                "value" : "Time Reports"
+            },
+            "url" : "/timereports.html?project.key={project.key}&dashboard={dashboard.id}&dashboardItem={dashboardItem.id}",
+            "key" : "timereports-gadget",
+            "description" : {
+                "value" : "Flexible view of issues time tracking data."
+            },
+            "thumbnailUrl": "/images/timesheet-gadget-thumb.png",
+            "configurable" : true,
+            "conditions": [{
+                "condition": "user_is_logged_in"
+            }]
+        }],
+        "webItems" : [{
+            "name": {
+                "value": "Delete Worklog"
+            },
+            "key": "deleteworklog",
+            "url": "/timereports.html?dialog=deleteworklog",
+            "location": "none",
+            "context": "addon",
+            "target": {
+                "type": "dialog"
+            }
+        }, {
+            "name": {
+                "value": "Update Worklog"
+            },
+            "key": "updateworklog",
+            "url": "/timereports.html?dialog=updateworklog",
+            "location": "none",
+            "context": "addon",
+            "target": {
+                "type": "dialog"
+            }
+        }, {
+            "name": {
+                "value": "Create Worklog"
+            },
+            "key": "createworklog",
+            "url": "/timereports.html?dialog=createworklog",
+            "location": "none",
+            "context": "addon",
+            "target": {
+                "type": "dialog"
+            }
+        }, {
+            "name": {
+                "value": "Add Worklog"
+            },
+            "key": "addworklog",
+            "url": "/timereports.html?dialog=addworklog",
+            "location": "none",
+            "context": "addon",
+            "target": {
+                "type": "dialog"
+            }
+        }]
+    },
+    "scopes": [
+        "READ",
+        "WRITE",
+        "DELETE"
+    ]
+}

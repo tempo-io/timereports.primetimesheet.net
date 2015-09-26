@@ -1,0 +1,70 @@
+<div class="results-wrap">
+    <div class="section-header">
+        <h5>{{'Time Entry' | i18n }}</h5>
+        <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
+                         remove-action="removeMenuOption(option.key, option.labelParam)"
+                         label="option.label"
+                         label-param="option.labelParam" />
+        </div>
+    </div>
+
+    <div class="pagingtable">
+
+        <div class="aui-message aui-message-error" ng-show="restrictionError != null">
+            <p class="title">
+                <strong>{{'Denied' | i18n}}</strong>
+            </p>
+            <p>{{restrictionError.msgKey | i18n}}</p>
+        </div>
+
+        <div class="issuetable" ng-show="restrictionError == null">
+            <div class="rowHeader">
+                <div class="colHeaderLink">
+                    <pivottable-slider />
+                </div>
+                <div class="colHeaderLink" ng-repeat="column in pivotTable.totals" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
+                </div>
+                <div class="colHeaderLink">
+                    <br/>{{'Tot' | i18n }}
+                </div>
+            </div>
+            <div ng-class-odd="'rowNormal'" ng-class-even="'rowAlternate'" ng-repeat="row in pivotTable.rows">
+                <div class="nav">
+                    <div class="issuetype">
+                        <issue-type issue="row.rowKey.issue" />
+                    </div>
+                    <div class="issuekey">
+                        <issue-key issue="row.rowKey.issue" />
+                    </div>
+                    <div class="summary">
+                        <issue-summary issue="row.rowKey.issue" />
+                    </div>
+                    <div class="priority">
+                        <issue-priority issue="row.rowKey.issue" />
+                    </div>
+                </div>
+                <div class="nav border" ng-class="{toDay : column.columnKey.isToday}" ng-repeat="column in row.columns">
+                    {{column.sum | prettyHours}}
+                </div>
+                <div class="nav border total">
+                    {{row.sum | prettyHours}}
+                </div>
+            </div>
+            <div class="rowFooter" ng-hide="loading">
+                <div class="nav total">
+                    {{'Total' | i18n}}
+                </div>
+                <div class="nav border total" ng-repeat="column in pivotTable.totals">
+                    {{column.sum | prettyHours}}
+                </div>
+                <div class="nav border total">
+                    {{pivotTable.sum | prettyHours}}
+                </div>
+            </tr>
+            <div ng-show="loading">
+                {{'Loading' | i18n}}&nbsp;<span class="aui-icon aui-icon-wait">Wait</span>
+            </div>
+        </div>
+
+    </div>
+</div>

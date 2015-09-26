@@ -1,0 +1,120 @@
+<div class="results-wrap">
+    <div class="section-header" ng-hide="isGadget">
+        <h5>{{ pivotTableType | i18n }}</h5>
+        <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
+                         remove-action="removeMenuOption(option.key, option.labelParam)"
+                         label="option.label"
+                         label-param="option.labelParam" />
+        </div>
+    </div>
+    <div class="pagingtable">
+
+        <div class="aui-message aui-message-error" ng-show="restrictionError != null">
+            <p class="title">
+                <strong>{{'Denied' | i18n}}</strong>
+            </p>
+            <p>{{restrictionError.msgKey | i18n}}</p>
+        </div>
+
+        <div ng-show="isGadget" class="summary">
+            <span ng-repeat="option in gadgetSummary">
+                <span ng-class="option.styleClass">{{option.text}}</span>
+            </span>
+        </div>
+
+        <table id="issuetable" cellspacing="0" cellpadding="3" border="0" width="100%" ng-show="restrictionError == null">
+            <thead>
+                <tr class="rowHeader">
+                    <th class="colHeaderLink" colspan="{{rowKeySize}}">
+                        <pivottable-slider />
+                    </th>
+                    <th class="colHeaderLink" ng-repeat="column in pivotTable.totals" column-key="column.columnKey"> 
+                    </th>
+                    <th ng-if="!hideTotalColumn">
+                        {{'Tot' | i18n }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-class-odd="compressed ? 'rowNormal' : ''" ng-class-even="compressed ? 'rowAlternate' : ''" ng-repeat-start="row in pivotTable.rows">
+                    <!-- TODO: rework to directive rowKwy with AngularJS 1.3: https://github.com/angular/angular.js/issues/1459 -->
+                    <td class="nav first issuetype" width="1%" ng-if="row.rowKey.issue">
+                        <issue-type issue="row.rowKey.issue" />
+                    </td>
+                    <td class="nav first issuekey" width="1%" ng-if="row.rowKey.issue" nowrap>
+                        <issue-key issue="row.rowKey.issue" />
+                    </td>
+                    <td class="nav first summary" colspan="2" width="100%" ng-if="row.rowKey.issue">
+                        <issue-summary issue="row.rowKey.issue" />
+                    </td>
+                    <td class="nav first priority" width="1%" ng-if="row.rowKey.issue">
+                        <issue-priority issue="row.rowKey.issue" />
+                    </td>
+                    <td class="nav first" width="1%" ng-if="row.rowKey.field" nowrap>
+                        <issue-field field="row.rowKey.project" ng-if="row.rowKey.project" />
+                    </td>
+                    <td class="nav first" colspan="4" width="100%" ng-if="row.rowKey.field" nowrap>
+                        <issue-field field="row.rowKey.field" />
+                    </td>
+                    <td class="nav first border" ng-repeat="column in pivotTable.totals">
+                        <pivot-cell key="column.columnKey" columns="row.columns"/>
+                    </td>
+                    <td class="nav first border total" ng-if="!hideTotalColumn">
+                        {{row.sum | prettyHours}}
+                    </td>
+                </tr>
+                <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed">
+                    <td class="nav">&nbsp;</td>
+                    <td class="nav issuetype" width="1%">
+                        <span ng-if="data.rowKey._issue">
+                            <issue-type issue="data.rowKey._issue" />
+                        </span>
+                    </td>
+                    <td class="nav issuekey" width="1%">
+                        <span ng-if="data.rowKey._issue">
+                            <issue-key issue="data.rowKey._issue" show-title="data.worklog" />
+                        </span>
+                    </td>
+                    <td colspan="{{rowKeySize - 4}}" class="nav summary">
+                        <span ng-if="data.worklog._issue">
+                            <issue-key issue="data.worklog._issue" show-title="true" />
+                        </span>
+                        {{data.worklog.comment}} <!--if worklog is present-->
+                        <span ng-if="!data.worklog">
+                            <issue-summary issue="data.rowKey._issue"/>
+                        </span>
+                    </td>
+                    <td class="nav priority" width="1%">
+                        <span ng-if="data.rowKey._issue">
+                            <issue-priority issue="data.rowKey._issue" />
+                        </span>
+                    </td>
+                    <td class="nav border" ng-repeat="column in pivotTable.totals">
+                        <pivot-cell key="column.columnKey" columns="data.values"/>
+                    </td>
+                    <td class="nav border total" ng-if="!hideTotalColumn">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr ng-repeat-end ng-hide="true"></tr>
+                <!-- total block -->
+                <tr class="rowFooter">
+                    <td colspan="{{rowKeySize}}">
+                        Total:
+                    </td>
+                    <td class="border" ng-repeat="column in pivotTable.totals">
+                        <pivot-cell key="column.columnKey" columns="pivotTable.totals"/>
+                    </td>
+                    <td class="border total" ng-if="!hideTotalColumn">
+                        {{pivotTable.sum | prettyHours}}
+                    </td>
+                </tr>
+                <tr ng-show="loading">
+                    <td colspan="{{rowKeySize + 1}}">
+                        {{'Loading' | i18n}}&nbsp;<span class="aui-icon aui-icon-wait">Wait</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

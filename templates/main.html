@@ -1,0 +1,39 @@
+<header class="aui-page-header" ng-if="!isGadget">
+    <ng-include src="templates.header"></ng-include>
+</header>
+
+<style type="text/css" ng-if="isGadget">
+    .aui-page-panel {
+        border: 0;
+        margin: 0;
+    }
+    .aui-page-panel-content {
+        padding: 0;
+    }
+    #issuetable td.summary {
+        min-width: inherit;
+    }
+    .aui-page-panel-inner {
+        width: inherit !important;
+    }
+</style>
+
+<div class="aui-page-panel">
+    <div class="aui-page-panel-inner">
+        <div class="aui-page-panel-nav" style="padding-left: 20px;" ng-if="!isGadget">
+            <ng-include src="templates.menu"></ng-include>
+        </div>
+
+        <section class="aui-page-panel-content" ng-if="showGadgetConfiguration">
+            <ng-include src="'/templates/gadgetConfig.html'"></ng-include>
+        </section>
+
+        <section class="aui-page-panel-content" ng-if="!showGadgetConfiguration">
+            <ng-include src="contentTemplate()"></ng-include>
+        </section>
+    </div>
+	<div class="footer" ng-if="!isGadget">
+	    <ng-include src="'/templates/footer.html'"></ng-include>
+	</div>
+</div>
+
