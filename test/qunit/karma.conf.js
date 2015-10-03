@@ -19,11 +19,10 @@ module.exports = function(config){
 
     frameworks: ['qunit'],
 
-    browsers : ['Chrome'],
+    browsers : ['Firefox'],
 
     plugins : [
-            'karma-chrome-launcher',
-            //'karma-firefox-launcher',
+            'karma-firefox-launcher',
             'karma-qunit',
             'karma-junit-reporter'
             ],
