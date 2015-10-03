@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Jasmine Tests</title>
+    <link rel="stylesheet" href="../../js/bower_components/jasmine/lib/jasmine-core/jasmine.css">
+    <link rel="shortcut icon" type="image/png" href="../../js/bower_components/jasmine/images/jasmine_favicon.png">
+</head>
+<body>
+    <script src="/js/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/js/bower_components/angular/angular.js"></script>
+    <script src="/js/bower_components/angular-route/angular-route.js"></script>
+
+    <script src="/js/bower_components/jasmine/lib/jasmine-core/jasmine.js"></script>
+    <script src="/js/bower_components/jasmine/lib/jasmine-core/jasmine-html.js"></script>
+    <script src="/js/bower_components/jasmine/lib/jasmine-core/boot.js"></script>
+    <script src="/js/bower_components/jasmine-jquery/lib/jasmine-jquery.js"></script>
+    <script src="/js/bower_components/jasmine-ajax/lib/mock-ajax.js"></script>
+    <!-- keep in order: must go after jasmine for some reason, otherwise 'module is not defined' -->
+    <script src="/js/bower_components/angular-mocks/angular-mocks.js"></script>
+
+    <script src="jasmineMatchers.js"></script>
+    <!-- sources -->
+    <script data-main="main" src="/js/lib/require.js"></script>
+    <!-- tests -->
+    <script src="/timedata.js"></script>
+    <!-- see main.js -->
+</body>
+</html>
