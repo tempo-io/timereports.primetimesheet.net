@@ -109,6 +109,17 @@
             "target": {
                 "type": "dialog"
             }
+        }, {
+            "name": {
+                "value": "Report Problem"
+            },
+            "key": "bitbucket",
+            "url": "/timereports.html?dialog=bitbucket",
+            "location": "none",
+            "context": "addon",
+            "target": {
+                "type": "dialog"
+            }
         }]
     },
     "scopes": [
