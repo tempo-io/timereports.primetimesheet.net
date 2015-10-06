@@ -21,7 +21,7 @@
             "name": {
                 "value": "Time Reports"
             },
-            "url": "/timereports.html?project.key={project.key}",
+            "url": "/timereports.html?project.key={project.key}&v=2",
             "key": "timereports",
             "conditions": [{
                 "condition": "user_is_logged_in"
@@ -31,14 +31,14 @@
             "name": {
                 "value": "Time Reports Configuration"
             },
-            "url": "/timereports.html?configuration=true",
+            "url": "/timereports.html?configuration=true&v=2",
             "key": "configuration",
             "conditions": [{
                 "condition": "user_is_logged_in"
             }]
         },
         "jiraReports": [{
-            "url": "timereports.html?project.key={project.key}",
+            "url": "timereports.html?project.key={project.key}&v=2",
             "weight": 100,
             "description": {
               "value": "Flexible view of issues time tracking data"
@@ -54,7 +54,7 @@
             "name" : {
                 "value" : "Time Reports"
             },
-            "url" : "/timereports.html?project.key={project.key}&dashboard={dashboard.id}&dashboardItem={dashboardItem.id}",
+            "url" : "/timereports.html?project.key={project.key}&dashboard={dashboard.id}&dashboardItem={dashboardItem.id}&v=2",
             "key" : "timereports-gadget",
             "description" : {
                 "value" : "Flexible view of issues time tracking data."
@@ -70,7 +70,7 @@
                 "value": "Delete Worklog"
             },
             "key": "deleteworklog",
-            "url": "/timereports.html?dialog=deleteworklog",
+            "url": "/timereports.html?dialog=deleteworklog&v=2",
             "location": "none",
             "context": "addon",
             "target": {
@@ -81,7 +81,7 @@
                 "value": "Update Worklog"
             },
             "key": "updateworklog",
-            "url": "/timereports.html?dialog=updateworklog",
+            "url": "/timereports.html?dialog=updateworklog&v=2",
             "location": "none",
             "context": "addon",
             "target": {
@@ -92,7 +92,7 @@
                 "value": "Create Worklog"
             },
             "key": "createworklog",
-            "url": "/timereports.html?dialog=createworklog",
+            "url": "/timereports.html?dialog=createworklog&v=2",
             "location": "none",
             "context": "addon",
             "target": {
@@ -103,7 +103,7 @@
                 "value": "Add Worklog"
             },
             "key": "addworklog",
-            "url": "/timereports.html?dialog=addworklog",
+            "url": "/timereports.html?dialog=addworklog&v=2",
             "location": "none",
             "context": "addon",
             "target": {
@@ -114,7 +114,7 @@
                 "value": "Report Problem"
             },
             "key": "bitbucket",
-            "url": "/timereports.html?dialog=bitbucket",
+            "url": "/timereports.html?dialog=bitbucket&v=2",
             "location": "none",
             "context": "addon",
             "target": {
