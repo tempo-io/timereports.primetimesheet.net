@@ -9,6 +9,8 @@
               class="fa fa-step-backward"></span>
     </div>
     <div id="slider-today">
+        <span ng-click="weekSumChange()"
+              title="{{sumTitle | i18n}}" ng-class="sumClass"></span>
         <span ng-if="!hidePrevNext"
               title="{{'Switch to ' + (isMonthView ? 'Week View' : 'Month View') | i18n}}"
               class="fa {{isMonthView ? 'fa-calendar' : 'fa-calendar-o'}}" ng-click="toggleMonthView()"></span>

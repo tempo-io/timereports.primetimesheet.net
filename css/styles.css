@@ -206,3 +206,24 @@ form.aui .field-group .description {
 .summary .grey {
     color: #999999
 }
+#slider-today .month:before {
+    position: relative;
+    top: 2px;
+    left: 1px;
+    margin-right: 1px;
+    content: url('/images/month.png');
+}
+#slider-today .week:before {
+    position: relative;
+    top: 2px;
+    left: 1px;
+    margin-right: 1px;
+    content: url('/images/week.png');
+}
+#slider-today .day:before {
+    position: relative;
+    top: 2px;
+    left: 1px;
+    margin-right: 1px;
+    content: url('/images/day.png');
+}
