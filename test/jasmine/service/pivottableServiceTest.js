@@ -95,9 +95,9 @@ describe("pivottableServiceTest", function() {
         expect(pivotTable).toBeDefined();
         expect(pivotTable).toHaveRowsNumber(2);
         expect(Object.keys(pivotTable.rows)).toContainAll(["TIME-1", "TIME-5"]);
-        expect(pivotTable.rows['TIME-1'].sum).toEqual(532800);
+        expect(pivotTable.rows['TIME-1'].sum).toEqual(266400);
         expect(pivotTable.rows['TIME-5'].sum).toEqual(86400);
-        expect(pivotTable.sum).toEqual(619200);
+        expect(pivotTable.sum).toEqual(352800);
     }));
 
     // verify subsequent resolve does not make effect
