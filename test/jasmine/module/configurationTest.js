@@ -2,7 +2,7 @@ describe("configurationModule", function() {
 
     // wait for async loading required modules
     beforeAll(function(done) {
-        require(['app/configurationApp'], done);
+        require(['app/timesheetApp'], done);
     });
 
     beforeEach(function() {

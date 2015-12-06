@@ -18,7 +18,7 @@
   },
   "scripts": {
     "postinstall": "./node_modules/bower/bin/bower install --config.interactive=false",
-    "test": "karma start test/jasmine/karma.conf.js --single-run; karma start test/qunit/karma.conf.js --single-run",
+    "test": "karma start test/jasmine/karma.conf.js --single-run && karma start test/qunit/karma.conf.js --single-run",
     "test-jasmine": "karma start test/jasmine/karma.conf.js",
     "test-qunit": "karma start test/qunit/karma.conf.js"
   },
