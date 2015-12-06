@@ -10,8 +10,8 @@
             {{wkLog.comment}}
         </td>
         <td nowrap>
-            <span class="fa fa-pencil-square-o" ng-click="popupData.openEditWorklogDialog(wkLog.id);closePopup();" title="{{'Edit worklog' | i18n}}" ng-show="popupData.canEditOwnWorklog"></span>
-            <span class="fa fa-trash-o" style="color: red" ng-click="popupData.openDeleteWorklogDialog(wkLog.id);closePopup();" title="{{'Delete worklog' | i18n}}" ng-show="popupData.canDeleteOwnWorklog"></span>
+            <span class="fa fa-pencil-square-o" ng-click="popupData.openEditWorklogDialog(wkLog.id, wkLog._issue);closePopup();" title="{{'Edit worklog' | i18n}}" ng-show="popupData.canEditOwnWorklog"></span>
+            <span class="fa fa-trash-o" style="color: red" ng-click="popupData.openDeleteWorklogDialog(wkLog.id, wkLog._issue);closePopup();" title="{{'Delete worklog' | i18n}}" ng-show="popupData.canDeleteOwnWorklog"></span>
         </td>
     </tr>
     <tr ng-if="popupData.canLogWork">
