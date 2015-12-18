@@ -4,7 +4,8 @@
         <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
                          remove-action="removeMenuOption(option.key, option.labelParam)"
                          label="option.label"
-                         label-param="option.labelParam" />
+                         label-param="option.labelParam"></selected-option>
+          <i class="fa fa-file-excel-o" style="margin: 3px 0" ng-click="excelView()" title="Download worklog"></i>
         </div>
     </div>
     <div ng-show="isGadget" class="summary">
@@ -25,7 +26,7 @@
             <p>{{restrictionError.msgKey | i18n}}</p>
         </div>
 
-        <table id="issuetable" width="100%" cellspacing="0" cellpadding="3" border="0" ng-show="restrictionError == null">
+        <table id="issuetable" cellspacing="0" cellpadding="3" border="0" ng-show="restrictionError == null">
             <thead>
                 <tr class="rowHeader">
                     <th class="colHeaderLink" colspan="{{rowKeySize}}">
