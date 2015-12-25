@@ -16,29 +16,29 @@ AP = {
       var m;
       if (options.url.match(/search/)) {
         options.success(angular.copy(TimeData));
-      } else if (options.url.match(/user\/picker/)) {
+      } else if (options.url.match(/\/user\/picker/)) {
         options.success(userPickerData);
-      } else if (options.url.match(/user/)) {
+      } else if (options.url.match(/\/user/)) {
         options.success(UserAdminData);
-      } else if (options.url.match(/filter/)) {
+      } else if (options.url.match(/\/filter/)) {
         options.success(FiltersData);
-      } else if (options.url.match(/project/)) {
+      } else if (options.url.match(/\/project/)) {
         options.success(ProjectsData);
-      } else if (options.url.match(/field/)) {
+      } else if (options.url.match(/\/field/)) {
         options.success(FieldsData);
-      } else if (options.url.match(/groups\/picker/)) {
+      } else if (options.url.match(/\/groups\/picker/)) {
         options.success(groupsPickerDate);
-      } else if (options.url.match(/properties\/configuration/)) { // hosted configuraiton
+      } else if (options.url.match(/\/properties\/configuration/)) { // hosted configuraiton
         options.success({value: []});
-      } else if (options.url.match(/properties/)) { // hosted keys
+      } else if (options.url.match(/\/properties/)) { // hosted keys
         options.success({keys: [{key: 'configuration'}]});
-      } else if (m = options.url.match(/issue\/TIME-(\d+)$/)) {
+      } else if (m = options.url.match(/\/issue\/TIME-(\d+)\/worklog/)) {
+        var issueNumber = parseInt(m[1]);
+        var result = issueNumber < 5 ? WorklogData[4 - issueNumber] : WorklogData[issueNumber - 1];
+        options.success(angular.copy(result));
+      } else if (m = options.url.match(/\/issue\/TIME-(\d+)/)) {
           var issueNumber = parseInt(m[1]);
           var result = issueNumber < 5 ? TimeData.issues[4 - issueNumber] : TimeData.issues[issueNumber - 1];
-          options.success(angular.copy(result));
-      } else if (m = options.url.match(/issue\/TIME-(\d+)\/worklog/)) {
-          var issueNumber = parseInt(m[1]);
-          var result = issueNumber < 5 ? WorklogData[4 - issueNumber] : WorklogData[issueNumber - 1];
           options.success(angular.copy(result));
       }
     }, 0);
