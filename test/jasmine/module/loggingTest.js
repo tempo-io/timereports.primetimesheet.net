@@ -23,5 +23,6 @@ describe("loggingModule", function() {
         $window.loggerUrl = '/logger';
         applicationLoggingService.error('loggingTest');
         expect(jasmine.Ajax.requests.mostRecent().url).toBe('/logger');
+        delete $window.loggerUrl;
     }));
 });
