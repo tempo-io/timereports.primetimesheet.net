@@ -204,6 +204,56 @@ describe("pivottableServiceTest", function() {
         expect(result.fields.worklog.worklogs.length).toEqual(22);
     }));
 
+    // test filterWorklogs fills in worklogAuthors
+    it('filterWorklogs', inject(function($timeout, $q, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+
+        var issue = {
+            key: 'DEMO-1',
+            worklog: {
+                "maxResults" : 0,
+                "startAt" : 0,
+                "total" : 0,
+                "worklogs" : [
+                    {
+                        author: {
+                            name: 'admin'
+                        }
+                    },
+                    {
+                        author: {
+                            name: 'test'
+                        }
+                    }
+                ]
+            }
+        };
+
+        var getTestUserInfoByNameCalled = false;
+        AP.request = function(options) {
+            this.getTimeoutFunc()(function() {
+                if (options.url.match(/\/user\?expand=groups&username=test$/)) {
+                    getTestUserInfoByNameCalled = true;
+                    options.success({groups:{items: []}});
+                } else {
+                    AP.requestBak(options);
+                }
+            }, 500);
+        };
+
+        pivottableService.groups = ['jira-users'];
+        pivottableService.filterWorklogs(issue);
+
+        $timeout.flush();
+        $log.assertEmpty();
+        
+        expect(pivottableService.worklogAuthors).toContain('admin');
+        expect(pivottableService.worklogAuthors).not.toContain('test');
+        expect(getTestUserInfoByNameCalled).toBeTruthy();
+
+        expect($timeout.flush).toThrow();
+    }));
+
     it('onAllIssues [total > maxResults]', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
 
@@ -288,7 +338,7 @@ describe("pivottableServiceTest", function() {
     }));
 
     // match by issues set
-    it('checkIfMatches [filter query]', inject(function($timeout, pivottableService) {
+    it('checkIfMatches [filter query]', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
 
         var timeData = {
@@ -307,6 +357,8 @@ describe("pivottableServiceTest", function() {
             this.getTimeoutFunc() (function() {
                 if (options.url.match(/\/search\?fields=~&jql=filter%3D10000&startAt=0$/)) {
                     options.success(timeData);
+                } else {
+                    throw new Error('Unexpected call ' + options.url);
                 }
             }, 500);
         };
@@ -322,7 +374,9 @@ describe("pivottableServiceTest", function() {
         pivottableService.checkIfMatches({id: '10002'}, options).then(function(matches) {
             result3 = matches;
         });
+
         $timeout.flush();
+        $log.assertEmpty();
 
         expect(result1).toBeDefined();
         expect(result1).toBeTruthy();
@@ -332,6 +386,41 @@ describe("pivottableServiceTest", function() {
 
         expect(result3).toBeDefined();
         expect(result3).toBeFalsy();
+
+        expect($timeout.flush).toThrow();
+    }));
+
+    // test issue is added to queue only once
+    it('addOnceIfMatches', inject(function($timeout, $q, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+
+        var pivotTable = {matches: {}, queueToAdd: []}, deferred = $q.defer(), options = {};
+        var issue1 = {
+            key: 'DEMO-1',
+            worklog: {
+                "maxResults" : 0,
+                "startAt" : 0,
+                "total" : 0,
+                "worklogs" : []
+            }
+        }, issue2 = {
+            key: 'DEMO-2',
+            worklog: {
+                "maxResults" : 0,
+                "startAt" : 0,
+                "total" : 0,
+                "worklogs" : []
+            }
+        };
+
+        pivottableService.addOnceIfMatches(pivotTable, issue1, deferred, options);
+        pivottableService.addOnceIfMatches(pivotTable, issue1, deferred, options);
+        pivottableService.addOnceIfMatches(pivotTable, issue2, deferred, options);
+
+        $timeout.flush();
+        $log.assertEmpty();
+
+        expect(pivotTable.queueToAdd.length).toBe(2);
 
         expect($timeout.flush).toThrow();
     }));
