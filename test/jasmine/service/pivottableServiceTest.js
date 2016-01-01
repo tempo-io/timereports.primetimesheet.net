@@ -204,6 +204,138 @@ describe("pivottableServiceTest", function() {
         expect(result.fields.worklog.worklogs.length).toEqual(22);
     }));
 
+    it('onAllIssues [total > maxResults]', inject(function($timeout, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+
+        var timeData = {
+            "issues": [],
+            "maxResults" : 2,
+            "startAt" : 0,
+            "total" : 5,
+        };
+        for (var i = 0; i < 2; i++) {
+            timeData.issues.push({
+                "key" : "TEST-" + i
+            });
+        }
+
+        AP.request = function(options) {
+            this.getTimeoutFunc()(function() {
+                var m = options.url.match(/\/search\?startAt=(\d)$/);
+                if (m && [0, 2, 4].indexOf(parseInt(m[1])) >= 0) {
+                    options.success(timeData);
+                } else {
+                    throw new Error('Unexpected call ' + options.url);
+                }
+            }, 500);
+        };
+
+        var result = [];
+
+        pivottableService.onAllIssues('', function(data) {
+            Array.prototype.push.apply(result, data.issues);
+        });
+
+        $timeout.flush();
+        $log.assertEmpty();
+
+        expect(result).toBeDefined();
+        expect(result.length).toEqual(2);
+
+        $timeout.flush();
+        $log.assertEmpty();
+        expect(result.length).toEqual(6); // the same TimeData returned three times
+        expect($timeout.flush).toThrow();
+    }));
+
+    // any issue matches
+    it('checkIfMatches [empty query]', inject(function($timeout, pivottableService) {
+        expect(pivottableService).toBeDefined();
+
+        var result;
+
+        pivottableService.checkIfMatches({}, {}).then(function(matches) {
+            result = matches;
+        });
+        $timeout.flush();
+
+        expect(result).toBeDefined();
+        expect(result).toBeTruthy();
+        expect($timeout.flush).toThrow();
+    }));
+
+    // match by project key
+    it('checkIfMatches [projects only]', inject(function($timeout, pivottableService) {
+        expect(pivottableService).toBeDefined();
+
+        var result1, result2, options = {filterOrProjectId: 'project_DEMO'};
+
+        pivottableService.checkIfMatches({fields: {project: {key: 'DEMO'}}}, options).then(function(matches) {
+            result1 = matches;
+        });
+        pivottableService.checkIfMatches({fields: {project: {key: 'TEST'}}}, options).then(function(matches) {
+            result2 = matches;
+        });
+        $timeout.flush();
+
+        expect(result1).toBeDefined();
+        expect(result1).toBeTruthy();
+
+        expect(result2).toBeDefined();
+        expect(result2).toBeFalsy();
+
+        expect($timeout.flush).toThrow();
+    }));
+
+    // match by issues set
+    it('checkIfMatches [filter query]', inject(function($timeout, pivottableService) {
+        expect(pivottableService).toBeDefined();
+
+        var timeData = {
+            "issues": [],
+            "maxResults" : 2,
+            "startAt" : 0,
+            "total" : 2,
+        };
+        for (var i = 0; i < 2; i++) {
+            timeData.issues.push({
+                "id" : "" + (10000 + i)
+            });
+        }
+
+        AP.request = function(options) {
+            this.getTimeoutFunc() (function() {
+                if (options.url.match(/\/search\?fields=~&jql=filter%3D10000&startAt=0$/)) {
+                    options.success(timeData);
+                }
+            }, 500);
+        };
+
+        var result1, result2, result3, options = {filterOrProjectId: 'filter_10000'};
+
+        pivottableService.checkIfMatches({id: '10000'}, options).then(function(matches) {
+            result1 = matches;
+        });
+        pivottableService.checkIfMatches({id: '10001'}, options).then(function(matches) {
+            result2 = matches;
+        });
+        pivottableService.checkIfMatches({id: '10002'}, options).then(function(matches) {
+            result3 = matches;
+        });
+        $timeout.flush();
+
+        expect(result1).toBeDefined();
+        expect(result1).toBeTruthy();
+
+        expect(result2).toBeDefined();
+        expect(result2).toBeTruthy();
+
+        expect(result3).toBeDefined();
+        expect(result3).toBeFalsy();
+
+        expect($timeout.flush).toThrow();
+    }));
+
     it('Parent issue not in search result', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {};
