@@ -11,16 +11,20 @@
 				</select>
 		</div>
 		<div class="field-group">
+			<label>{{ 'Number of Weeks' | i18n}}</label>
+			<input ng-model="numOfWeeks" class="text" type="number" min="1" max="12" ng-change="numOfWeeksChange(numOfWeeks)" />
+		</div>
+		<div class="field-group">
 			<label>{{ 'Filter or Project' | i18n }}</label>
-			<input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"></input>
+			<input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"/>
 		</div>
 		<div class="field-group" ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
 			<label>{{'User' | i18n}}</label>
-			<input ng-model="paramUserInfo.displayName" aui-user-picker ng-user-changed-func="userChange" type="text"></input>
+			<input ng-model="paramUserInfo.displayName" aui-user-picker ng-user-changed-func="userChange" type="text"/>
 		</div>
 		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
 			<label>{{'Groups' | i18n}}</label>
-			<input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"></input>
+			<input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>
 		</div>
 		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
             <label>{{'Group By Field' | i18n}}</label>
