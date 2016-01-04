@@ -388,6 +388,21 @@ describe("pivottableServiceTest", function() {
         expect(result3).toBeFalsy();
 
         expect($timeout.flush).toThrow();
+
+        // test reset state
+        pivottableService.matches = null;
+        options = {filterOrProjectId: 'project_DEMO'};
+
+        pivottableService.checkIfMatches({fields: {project: {key: 'DEMO'}}}, options).then(function(matches) {
+            result3 = matches;
+        });
+
+        $timeout.flush();
+        $log.assertEmpty();
+
+        expect(result3).toBeTruthy();
+
+        expect($timeout.flush).toThrow();        
     }));
 
     // test issue is added to queue only once
