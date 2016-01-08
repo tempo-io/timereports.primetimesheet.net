@@ -42,6 +42,17 @@
                            aui-select2>
                    </select>
                </li>
+               <li ng-if="pivotTableType != 'PieChart'">
+                   <label>{{'Additional Fields' | i18n}}</label>
+                   <select class="select"
+                           title="database select"
+                           multiple="true"
+                           ng-model="moreFieldsOptions.selected"
+                           ng-options="item.id as item.label for item in moreFieldsOptions.options"
+                           ng-change="moreFieldsChanged()"
+                           aui-select2>
+                   </select>
+               </li>
                <li>
                    <input class="checkbox" type="checkbox" ng-model="sumSubTasks" ng-change="sumSubTasksChange(sumSubTasks)" />
                    <label>{{'Sum SubTasks' | i18n}}</label>

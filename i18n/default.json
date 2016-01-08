@@ -12,6 +12,7 @@
     "Saved Filter": "Saved Filter",
     "Options": "Options",
     "Group By Field" : "Group By Field:",
+    "Additional Fields" : "Additional Fields:",
     "Start Date": "Start Date:",
     "End Date": "End Date:",
     "User": "User:",
@@ -32,6 +33,7 @@
     "param.startDate" : "Start Date: %s",
     "param.endDate" : "End Date: %s",
     "param.groupByField" : "Group By Field: %s",
+    "param.moreFields" : "Additional Field: %s",
     "param.filterOrProjectId" : "Filter Or Project: %s",
     "param.filterOrProjectId.project" : "Project: %s",
     "param.filterOrProjectId.filter" : "Filter: %s",
@@ -58,6 +60,7 @@
 
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in auditors group.",
+    "error.restriction.licenseError": "License is not Active.",
 
     "Loading": "Loading...",
     "Configure": "Configure",

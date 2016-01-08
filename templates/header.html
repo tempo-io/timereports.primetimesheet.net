@@ -6,7 +6,7 @@
             <li ng-show="isAdmin == true">
                 <a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/configuration" target="_parent">{{'Configure' | i18n }}</a>
             </li>
-            <li ng-if="!licenseManager.isActive" ng-bind-html="licenseManager.message"></li>
+            <li ng-if="!licenseStatus.isActive" ng-bind-html="licenseStatus.message"></li>
         </ul>
     </div>    
 </div>
