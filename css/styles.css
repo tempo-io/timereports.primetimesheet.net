@@ -6,19 +6,34 @@ header {
   .is-not-gadget .aui-page-panel-inner {
     width: 900px;
   }
+  #placeholder {
+    height: 300px;
+    width: 6000px;
+  }
 }
 @media (min-width: 1200px) { 
   .is-not-gadget .aui-page-panel-inner {
     width: 1100px;
   }
+  #placeholder {
+    height: 300px;
+    width: 800px;
+  }
 }
 @media (min-width: 1400px) { 
   .is-not-gadget .aui-page-panel-inner {
-    width: 1200px;
+    width: 1300px;
+  }
+  #placeholder {
+    height: 300px;
+    width: 1000px;
   }
 }
 .aui-page-panel-inner {
   margin: 0 !important;
+}
+#issuetable {
+  width: 100%;
 }
 input.ng-dirty.ng-invalid {
   color: #d04437;

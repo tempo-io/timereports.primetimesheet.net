@@ -63,7 +63,7 @@
                     <td class="nav" colspan="4" width="100%" ng-if="row.rowKey.field" nowrap>
                         <issue-field field="row.rowKey.field" />
                     </td>
-                    <td class="nav" width="1%" ng-repeat="field in row.moreFields">
+                    <td class="nav" nowrap ng-repeat="field in row.moreFields">
                         <issue-field field="row.rowKey.issue.fields[field]" ng-if="row.rowKey.issue"/>
                     </td>
                     <td ng-init="p_show=false" ng-mouseover="p_show=column.sum == 0 && canLogWork" ng-mouseleave="p_show=false"
