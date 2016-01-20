@@ -47,7 +47,7 @@ describe("timesheetControllerTest", function() {
     var checkOptions = function(scope) {
         expect(scope.groupByOptions).not.toBeNull();
         expect(scope.groupByOptions).toBeInstanceOf(TimesheetSelectOptions);
-        expect(scope.groupByOptions.options.length).toBe(scope.pivotTableType == 'TimeTracking' ? 38 : 39);
+        expect(scope.groupByOptions.options.length).toBe(scope.pivotTableType == 'TimeTracking' ? 39 : 40);
         expect(scope.groupByOptions.options).toContainInProperty('Security Level', 'label');
         expect(scope.groupByOptions.options).toContainInProperty('resolution', 'id');
         expect(scope.filterByOptions).not.toBeNull();
@@ -353,7 +353,7 @@ describe("timesheetControllerTest", function() {
         expect(scope.pivotTable).toHaveColumnsNumber(7);
         var totalColumn = getFirstColumnKey(scope.pivotTable);
         expect(totalColumn.keyName).toEqual('dayOfTheWeek');
-        console.error('Expect \'' + totalColumn.keyValue + '\' to equal \'' + 1393192800000 + '\'');
+        console.error('Expect \'' + totalColumn.keyValue + '\' to equal \'' + 1393196400000 + '\'');
         //expect(totalColumn.keyValue).toEqual(1393192800000);
         expect(scope.pivotTable.sum).toBe(0);
         expect(scope.rowKeySize).toBe(1);

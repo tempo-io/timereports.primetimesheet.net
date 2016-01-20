@@ -279,7 +279,7 @@ var TimeData = { "expand" : "schema,names",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "components" : [  ],
-            "customfield_10005" : "TIME-2",
+            "customfield_10007" : "TIME-2",
             "created" : "2013-02-27T18:02:37.000+0100",
             "description" : null,
             "duedate" : null,
@@ -731,7 +731,7 @@ var TimeData = { "expand" : "schema,names",
                     "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                 },
                 "components" : [  ],
-                "customfield_10005" : "",
+                "customfield_10007" : "",
                 "customfield_10004" : 2.0,
                 "created" : "2013-02-27T18:02:37.000+0100",
                 "description" : null,
@@ -1059,7 +1059,7 @@ var TimeData = { "expand" : "schema,names",
   "maxResults" : 50,
   "startAt" : 0,
   "total" : 4,
-  "names":{"customfield_10005": "Epic Link"}
+  "names":{"customfield_10007": "Epic Link"}
 };
 var WorklogData = [
   // TIME-4
@@ -1917,6 +1917,23 @@ var FieldsData=[
        "customId": 10005
      }
    },
+   {
+     "id": "customfield_10008",
+     "name": "Epic Name",
+     "custom": true,
+     "orderable": true,
+     "navigable": true,
+     "searchable": true,
+     "clauseNames": [
+       "cf[10008]",
+       "Epic Name"
+     ],
+     "schema": {
+       "type": "string",
+       "custom": "com.pyxis.greenhopper.jira:gh-epic-label",
+       "customId": 10008
+     }
+   }
 ];
 // https://docs.atlassian.com/software/jira/docs/api/REST/6.2/#d2e3922
 // http://localhost:2990/jira/rest/api/2/userpicker?query=a
