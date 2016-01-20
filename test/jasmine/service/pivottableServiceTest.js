@@ -82,7 +82,7 @@ describe("pivottableServiceTest", function() {
     it('IssueWorkedTimeByUser_sumSubTasks', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {};
-        var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {parentIssueField: 'customfield_10005', compositionIssueLink: 'Duplicate'}, sumSubTasks: true};
+        var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {parentIssueField: 'customfield_10007', compositionIssueLink: 'Duplicate'}, sumSubTasks: true};
         var pivotTable;
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
             pivotTable = _pivotTable;
@@ -469,10 +469,10 @@ describe("pivottableServiceTest", function() {
         expect(spy.calls.count()).toBe(1);
     }));
 
-    it('PARAMETERS: groups', inject(function($timeout, pivottableService) {
+    it('PARAMETERS: groups', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {};
-        var options = {pivotTableType: 'IssueWorkedTimeByUser', groups: ["group1", "group2"]};
+        var options = {pivotTableType: 'IssueWorkedTimeByUser', groups: ["group1", "group2"], moreFields: ['customfield_10008']};
 
         var requestCalled = false;
 
@@ -488,9 +488,11 @@ describe("pivottableServiceTest", function() {
             }
         };
 
+        pivottableService.allFields = FieldsData;
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
 
         $timeout.flush();
+        $log.assertEmpty();
 
         expect(requestCalled).toBeTruthy();
         expect(pivottableService.allIssues.length).toBe(6);
