@@ -1,3 +1,4 @@
+jQuery = {};
 QUnit.config.autostart = false;
 QUnit.testStart(function() {
 });
@@ -254,4 +255,10 @@ test("Timesheet: group by workeduser", function() {
     ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[0])), new Date(2014, 1, 24)), "totalKey");
     ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[1])), new Date(2014, 1, 25)), "totalKey");
     equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
+});
+test("Excel Export", function() {
+    var excelView = new ExcelView(TimeData.issues);
+    equal(typeof excelView, 'object', 'excelView');
+    var excel = excelView.generate({moreFields: []});
+    equal(typeof excel, 'string', 'excelView');
 });

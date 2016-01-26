@@ -5,6 +5,7 @@ require.config({
     }
 });
 require([
+    "lib/jquery.base64",
     "bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020",
     "timesheetUtils",
     "app/pivottable/PivotKey",
@@ -13,7 +14,8 @@ require([
     "app/pivottable/PivotEntry",
     "app/pivottable/TimesheetStrategy",
     "app/pivottable/PivotStrategy",
-    "app/pivottable/PivotTable"
+    "app/pivottable/PivotTable",
+    "app/pivottable/ExcelView"
     ], function () {
         QUnit.start();
     }
