@@ -4,7 +4,7 @@
         <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
                          remove-action="removeMenuOption(option.key, option.labelParam)"
                          label="option.label"
-                         label-param="option.labelParam" />
+                         label-param="option.labelParam"></selected-option>
              <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading || pivotTableType == 'TimeTracking'"></i>
         </div>
     </div>
