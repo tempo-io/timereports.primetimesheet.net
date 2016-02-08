@@ -79,7 +79,7 @@ th {
     border-bottom: 1px solid #eee;
 }
 .details + .first > .nav{
-    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
 }
 .border {
     border-left: 1px solid #ddd;
