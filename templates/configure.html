@@ -19,14 +19,7 @@
 <form class="aui" style="width: 750px">
     <div class="field-group">
         <label for="select2-auditorGroups">{{'Auditors Groups' | i18n}}</label>
-        <select id="select2-auditorGroups"
-                class="multi-select"
-                title="{{'Auditors Groups' | i18n}}"
-                ng-model="auditorsGroups.val"
-                ng-change="saveAuditorsGroups()"
-                ng-options="item.id as item.label for item in allGroups"
-                multiple>
-        </select>
+        <input id="select2-auditorGroups" ng-model="auditorsGroups.val" aui-group-picker ng-group-changed-func="saveAuditorsGroups" type="text" title="{{'Auditors Groups' | i18n}}"/>
         <div class="aui-message aui-message-success msg-overlay"
              ng-show="auditorsGroupsSaveSuccess">
             <strong>{{'Auditors Groups' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}

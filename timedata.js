@@ -3,7 +3,7 @@ AJS = window.AJS || {$: window.$};
 AP = {
   getUser: function(callback) {
     setTimeout(function() {
-      callback({fullName: 'admin', id: 'admin'});
+      callback({fullName: 'admin', id: 'admin', key: 'admin'});
     });
   },
   getLocation: function(callback) {
@@ -18,8 +18,10 @@ AP = {
         options.success(angular.copy(TimeData));
       } else if (options.url.match(/\/user\/picker/)) {
         options.success(userPickerData);
-      } else if (options.url.match(/\/user/)) {
+      } else if (options.url.match(/\/user\?.*?=admin/)) {
         options.success(UserAdminData);
+      } else if (options.url.match(/\/user/)) {
+        options.success({name: 'noSuchUser'});
       } else if (options.url.match(/\/filter/)) {
         options.success(FiltersData);
       } else if (options.url.match(/\/project/)) {
