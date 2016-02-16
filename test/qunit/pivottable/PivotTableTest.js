@@ -1,15 +1,16 @@
 jQuery = {};
 QUnit.config.autostart = false;
 QUnit.testStart(function() {
+  moment.locale('uk_UA');
 });
 QUnit.testSkip = function() {
-   QUnit.test(arguments[0] + ' (SKIPPED)', function() {
-       QUnit.expect(0);//dont expect any tests
-       var li = document.getElementById(QUnit.config.current.id);
-       QUnit.done(function() {
-           li.style.background = '#EEE';
-       });
-   });
+  QUnit.test(arguments[0] + ' (SKIPPED)', function() {
+      QUnit.expect(0);//dont expect any tests
+      var li = document.getElementById(QUnit.config.current.id);
+      QUnit.done(function() {
+          li.style.background = '#EEE';
+      });
+  });
 };
 var xtest = QUnit.testSkip;
 test("IssueWorkedTimeByUser", function() {
