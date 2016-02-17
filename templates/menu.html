@@ -60,7 +60,7 @@
            </ul>
         <div class="aui-nav-heading"><strong>Actions</strong></div>
         <ul class="aui-nav" ng-if="!isGadget">
-            <li><a ng-click="refresh()">Refresh</a></li>
+            <li><a ng-click="loading || refresh()" ng-class="{disabled: loading}">Refresh</a></li>
         </ul>
           <div ng-if="isGadget">
               <button class="aui-button aui-button-primary" ng-click="saveGadgetConfig()">Save</button>

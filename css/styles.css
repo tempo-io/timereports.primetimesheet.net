@@ -170,6 +170,10 @@ th.holidayDayOfWeek {
 .total {
 	font-weight: bold;
 }
+a.disabled {
+    color: #707070 !important;
+    cursor: default;
+}
 [ng-click]:not(.disabled):not(.aui-button-primary),
 [data-ng-click]:not(.disabled),
 [x-ng-click]:not(.disabled) {
