@@ -15,6 +15,16 @@
 			<input ng-model="numOfWeeks" class="text" type="number" min="1" max="12" ng-change="numOfWeeksChange(numOfWeeks)" />
 		</div>
 		<div class="field-group">
+            <label for="end-date-picker">{{'Reporting Day' | i18n}}</label>
+            <select class="select"
+                    title="{{'Reporting Day' || i18n}}"
+                    ng-model="reportingDayOptions.selected"
+                    ng-options="item.id as item.label for item in reportingDayOptions.options"
+                    ng-change="reportingDayChanged()"
+                    aui-select2>
+            </select>
+			</div>
+		<div class="field-group">
 			<label>{{ 'Filter or Project' | i18n }}</label>
 			<input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"/>
 		</div>

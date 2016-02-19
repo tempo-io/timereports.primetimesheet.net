@@ -37,7 +37,7 @@ describe("pivottableServiceTest", function() {
     it('Timesheet', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {};
-        var options = {pivotTableType: 'Timesheet', startDate: '2014-02-24', configOptions: {}};
+        var options = {pivotTableType: 'Timesheet', startDate: '2014-02-24', configOptions: {}, reportingDay: 1};
         var pivotTable;
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
             pivotTable = _pivotTable;

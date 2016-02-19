@@ -128,7 +128,7 @@ test("TimeTrackingGroupedByStatus", function() {
 });
 // see also timeData.js#CookieUtils for locked time frame
 test("Timesheet", function() {
-  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', startDate: '2014-02-24'});
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1});
   for (var i in TimeData.issues) {
       var issue = TimeData.issues[i];
       var pivotEntries = pivotTable.add(issue);
@@ -194,17 +194,17 @@ test("TimesheetUtils", function() {
     ok(TimesheetUtils.sameDay(datesForWeek[0].date, new Date(2014, 1, 27)), '#getDatesForWeek() :: thursday');
     ok(TimesheetUtils.sameDay(datesForWeek[1].date, new Date(2014, 1, 28)), '#getDatesForWeek() :: friday');
     ok(TimesheetUtils.sameDay(datesForWeek[4].date, new Date(2014, 2, 3)), '#getDatesForWeek() :: monday');
-    var weeksForMonth = TimesheetUtils.getWeeksForMonth({startDate: new Date(2014, 1, 26), endDate: new Date(2014, 2, 5)}); // 26 February 2014 - 05 March 2014
+    var weeksForMonth = TimesheetUtils.getWeeksForMonth({startDate: new Date(2014, 1, 26), endDate: new Date(2014, 2, 5), reportingDay: 1}); // 26 February 2014 - 05 March 2014
     equal(weeksForMonth.length, 2, 'getWeeksForMonth length');
     ok(TimesheetUtils.sameDay(weeksForMonth[0].date, new Date(2014, 1, 24)), '#getWeeksForMonth() :: first week date');
     equal(weeksForMonth[0].week, 'Week 9', '#getWeeksForMonth() :: first week number');
     ok(TimesheetUtils.sameDay(weeksForMonth[1].date, new Date(2014, 2, 3)), '#getWeeksForMonth() :: last week date');
     equal(weeksForMonth[1].week, 'Week 10', '#getWeeksForMonth() :: last week number');
 
-    equal(TimesheetUtils.getPrevMonday(new Date(2014, 1, 27)).getDay(), 1, '#getPrevMonday() :: is monday 1');
-    equal(TimesheetUtils.getPrevMonday(new Date(2014, 1, 17)).getDay(), 1, '#getPrevMonday() :: is monday 2');
-    equal(TimesheetUtils.getPrevMonday(new Date(2014, 1, 27)).getDate(), 24, '#getPrevMonday() :: monday date 1');
-    equal(TimesheetUtils.getPrevMonday(new Date(2014, 1, 17)).getDate(), 17, '#getPrevMonday() :: monday date 2');
+    equal(TimesheetUtils.getPrevMonday(new Date(2014, 1, 27), 1).getDay(), 1, '#getPrevMonday() :: is monday 1');
+    equal(TimesheetUtils.getPrevMonday(new Date(2014, 1, 17), 1).getDay(), 1, '#getPrevMonday() :: is monday 2');
+    equal(TimesheetUtils.getPrevMonday(new Date(2014, 1, 27), 1).getDate(), 24, '#getPrevMonday() :: monday date 1');
+    equal(TimesheetUtils.getPrevMonday(new Date(2014, 1, 17), 1).getDate(), 17, '#getPrevMonday() :: monday date 2');
 
     ok(TimesheetUtils.sameDay(new Date(2014, 1, 20, 3, 12), new Date(2014, 1, 20, 12, 45)), '#sameDay() :: true');
     ok(!TimesheetUtils.sameDay(new Date(2014, 1, 22, 3, 12), new Date(2014, 1, 20, 12, 45)), '#sameDay() :: false');
@@ -233,7 +233,7 @@ test("TimesheetUtils", function() {
     equal(TimesheetUtils.convertHoursToFormat12(5).pm, false, '#convertHoursToFormat12 :: 5AM');
 });
 test("Timesheet: group by workeduser", function() {
-    var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', groupByField: 'workeduser', startDate: '2014-02-24'});
+    var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', groupByField: 'workeduser', startDate: '2014-02-24', reportingDay: 1});
     for (var i in TimeData.issues) {
         var issue = TimeData.issues[i];
         var pivotEntries = pivotTable.add(issue);
