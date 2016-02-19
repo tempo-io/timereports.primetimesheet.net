@@ -173,6 +173,7 @@ th.holidayDayOfWeek {
 a.disabled {
     color: #707070 !important;
     cursor: default;
+    text-decoration: none;
 }
 [ng-click]:not(.disabled):not(.aui-button-primary),
 [data-ng-click]:not(.disabled),
