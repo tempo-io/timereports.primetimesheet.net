@@ -7,7 +7,14 @@ header {
     width: 900px;
   }
   #placeholder {
-    height: 300px;
+    width: 6000px;
+  }
+}
+@media (min-width: 1000px) { 
+  .is-not-gadget .aui-page-panel-inner {
+    width: 900px;
+  }
+  #placeholder {
     width: 6000px;
   }
 }
@@ -16,7 +23,6 @@ header {
     width: 1100px;
   }
   #placeholder {
-    height: 300px;
     width: 800px;
   }
 }
@@ -25,9 +31,11 @@ header {
     width: 1300px;
   }
   #placeholder {
-    height: 300px;
     width: 1000px;
   }
+}
+#placeholder {
+  height: 300px;
 }
 .aui-page-panel-inner {
   margin: 0 !important;
@@ -169,6 +177,9 @@ th.holidayDayOfWeek {
 }
 .total {
 	font-weight: bold;
+}
+a.fa {
+    text-decoration: none;
 }
 a.disabled {
     color: #707070 !important;

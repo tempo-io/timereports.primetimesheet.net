@@ -263,3 +263,9 @@ test("Excel Export", function() {
     var excel = excelView.generate({moreFields: []});
     equal(typeof excel, 'string', 'excelView');
 });
+test("PivotTabe rows order", function() {
+    var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByUser'});
+    pivotTable.rows = {'DEMO-1000': 4, 'DEMO-1': 1, 'DEMO-100': 3, 'DEMO-2': 2};
+    var sortedRows = pivotTable.sortedRows();
+    equal(sortedRows.join(''), '1234', 'rows order');
+});

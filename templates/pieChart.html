@@ -21,6 +21,7 @@
             <span ng-repeat="option in gadgetSummary">
                 <span ng-class="option.styleClass">{{option.text}}</span>
             </span>
+            <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports" target="_parent"></a>
         </div>
         <div id="placeholder" pie-chart ng-model="pivotTable"></div>
 

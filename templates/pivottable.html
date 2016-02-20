@@ -21,6 +21,7 @@
             <span ng-repeat="option in gadgetSummary">
                 <span ng-class="option.styleClass">{{option.text}}</span>
             </span>
+            <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports" target="_parent"></a>
         </div>
 
         <table id="issuetable" cellspacing="0" cellpadding="3" border="0" width="100%" ng-show="restrictionError == null">
@@ -40,7 +41,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-class-odd="compressed ? 'rowNormal' : ''" ng-class-even="compressed ? 'rowAlternate' : ''" ng-repeat-start="row in pivotTable.rows">
+                <tr ng-class-odd="compressed ? 'rowNormal' : ''" ng-class-even="compressed ? 'rowAlternate' : ''" ng-repeat-start="row in pivotTable.sortedRows()">
                     <!-- TODO: rework to directive rowKwy with AngularJS 1.3: https://github.com/angular/angular.js/issues/1459 -->
                     <td class="nav first issuetype" width="1%" ng-if="row.rowKey.issue">
                         <issue-type issue="row.rowKey.issue" />
