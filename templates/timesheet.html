@@ -36,7 +36,7 @@
                     <th class="colHeaderLink" ng-repeat="field in pivotTable.moreFields">
                         <span ng-bind="moreFieldsOptions.findOption(field).label"></span>
                     </th>
-                    <th ng-repeat="column in pivotTable.totals" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
+                    <th ng-repeat="column in pivotTable.totals" column-key="column.columnKey" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}">
                     </th>
                     <th>
                         <br/>{{'Tot' | i18n }}
@@ -70,7 +70,7 @@
                     <td ng-init="p_show=false" ng-mouseover="p_show=column.sum == 0 && canLogWork" ng-mouseleave="p_show=false"
                         ng-click="canLogWork && addWorklogPopup.init(column.columnKey, row.rowKey); (canEditOwnWorklog || canDeleteOwnWorklog) && editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
                         class="nav border"
-                        ng-class="{toDay : column.columnKey.isToday, addWorklogPopup: column.sum == 0 && canLogWork, editWorklogPopup: column.sum != 0 && (canEditOwnWorklog || canDeleteOwnWorklog), disabled: (column.sum == 0 && !canLogWork) || (column.sum != 0 && !canEditOwnWorklog && !canDeleteOwnWorklog) }" ng-repeat="column in row.columns">
+                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend, addWorklogPopup: column.sum == 0 && canLogWork, editWorklogPopup: column.sum != 0 && (canEditOwnWorklog || canDeleteOwnWorklog), disabled: (column.sum == 0 && !canLogWork) || (column.sum != 0 && !canEditOwnWorklog && !canDeleteOwnWorklog) }" ng-repeat="column in row.columns">
                         {{column.sum | prettyHours}}
                         <span ng-show="p_show" class="fa fa-plus"></span>
                     </td>
@@ -104,7 +104,7 @@
                     <td class="nav" width="1%" ng-repeat="field in pivotTable.moreFields">
                         <issue-field field="data.rowKey._issue.fields[field]" ng-if="data.rowKey._issue"/>
                     </td>
-                    <td class="nav border" ng-class="{toDay : column.columnKey.isToday}" ng-repeat="column in pivotTable.totals">
+                    <td class="nav border" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}" ng-repeat="column in pivotTable.totals">
                         <span ng-if="data.columnKey.keyValue == column.columnKey.keyValue">
                             {{data.value | prettyHours}}
                         </span>
