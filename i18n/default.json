@@ -53,11 +53,13 @@
     "Auditors Groups": "Auditors Groups",
     "Composition Issue Link": "Composition Issue Link",
     "Parent Issue Field": "Parent Issue Field",
+    "Weekend Type": "Weekend Type",
     "Disable Problem Reporter": "Disable Problem Reporter",
     "saved successfully": "saved successfully.",
     "description.Auditors Groups": "Only users of the selected groups will be allowed to see time spent by other users.",
     "description.Composition Issue Link": "If specified, Timesheet and Pivot reports will aggregate hours, into parent issue, using specified issue link in addition to sub tasks.",
     "description.Parent Issue Field": "If specified, Timesheet and Pivot reports will aggregate hours, into parent issue, using specified issue field in addition to sub tasks. Only JIRA Agile \"Epic Link\" is supported.",
+    "description.Weekend Type": "Weekend days can be specified using this option.",
     "description.Disable Problem Reporter": "Do not suggest to report unexpected errors.",
 
     "Denied": "Denied",

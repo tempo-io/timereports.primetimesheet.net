@@ -62,6 +62,23 @@
     <div class="field-group" ng-show="allParentIssueFields">
         <span class="description">{{'description.Parent Issue Field' | i18n}}</span>
     </div>
+    <div class="field-group">
+        <label for="select2-weekendType">{{'Weekend Type' | i18n}}</label>
+        <select id="select2-weekendType"
+                class="select"
+                title="{{'Weekend Type' | i18n}}"
+                ng-model="weekendType.val"
+                ng-change="saveWeekendType()"
+                ng-options="item.id as item.label for item in allWeekendTypes">
+        </select>
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="weekendTypeSaveSuccess">
+            <strong>{{'Weekend Type' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description">{{'description.Weekend Type' | i18n}}</span>
+    </div>
     <div class="field-group" ng-show="problemReporter">
         <label for="onErrorIgnore">{{'Disable Problem Reporter' | i18n}}</label>
         <input id="onErrorIgnore"

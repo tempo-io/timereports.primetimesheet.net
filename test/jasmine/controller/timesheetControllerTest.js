@@ -123,7 +123,8 @@ describe("timesheetControllerTest", function() {
                     deferred.resolve({
                         compositionIssueLink: {},
                         parentIssueField: {},
-                        auditorsGroups: {}
+                        auditorsGroups: {},
+                        weekendType: {}
                     });
                     return deferred.promise;
                 }
