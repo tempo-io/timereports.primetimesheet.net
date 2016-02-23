@@ -3,13 +3,13 @@
         <span ng-click="changeWeek(isMonthView ? -1 : -7)"
               title="{{'Previous Week' | i18n}}"
               class="fa fa-backward"></span>
-        <span ng-show="showPrevToday()"
+        <span ng-show="showPrevToday"
               ng-click="moveToday()"
               title="{{'Current Week' | i18n}}"
               class="fa fa-step-backward"></span>
     </div>
     <div id="slider-today">
-        <span ng-click="weekSumChange()"
+        <span ng-click="weekSumChange()" ng-if="pivotTableType == 'Timesheet'"
               title="{{sumTitle | i18n}}" ng-class="sumClass"></span>
         <span ng-if="!hidePrevNext"
               title="{{'Switch to ' + (isMonthView ? 'Week View' : 'Month View') | i18n}}"
@@ -19,7 +19,7 @@
               class="fa {{compressed ? 'fa-expand' : 'fa-compress'}}" ng-click="toggleShowDetails()"></span>
     </div>
     <div id="slider-next" ng-if="!hidePrevNext">
-        <span ng-show="showNextToday()"
+        <span ng-show="showNextToday"
               ng-click="moveToday()"
               title="{{'Current Week' | i18n}}"
               class="fa fa-step-forward"></span>

@@ -33,6 +33,10 @@
 			<input ng-model="paramUserInfo.displayName" aui-user-picker ng-user-changed-func="userChange" type="text"/>
 		</div>
 		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
+            <label>{{'All Users' | i18n}}</label>
+            <input class="checkbox" type="checkbox" ng-model="allUsers" ng-change="allUsersChange(allUsers)" />
+		</div>
+		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
 			<label>{{'Groups' | i18n}}</label>
 			<input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>
 		</div>
@@ -45,6 +49,17 @@
 			        ng-change="groupByChanged()"
 			        aui-select2>
 			</select>
+		</div>
+		<div class="field-group" ng-if="pivotTableType != 'PieChart'">
+            <label>{{'Additional Fields' | i18n}}</label>
+            <select class="select"
+                    title="database select"
+                    multiple="true"
+                    ng-model="moreFieldsOptions.selected"
+                    ng-options="item.id as item.label for item in moreFieldsOptions.options"
+                    ng-change="moreFieldsChanged()"
+                    aui-select2>
+            </select>
 		</div>
 		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
                <label>{{'Sum SubTasks' | i18n}}</label>

@@ -20,6 +20,10 @@
                     <label>{{'User' | i18n}}</label>
                     <input ng-model="paramUserInfo.displayName" aui-user-picker ng-user-changed-func="userChange" type="text"/>
                 </li>
+                <li ng-if="pivotTableType != 'TimeTracking'"> <!-- All users because of multi user picker planned -->
+                    <input class="checkbox" type="checkbox" ng-model="allUsers" ng-change="allUsersChange(allUsers)" />
+                    <label>{{'All Users' | i18n}}</label>
+                </li>
                 <li ng-if="pivotTableType != 'TimeTracking'">
                     <label>{{'Groups' | i18n}}</label>
                     <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>

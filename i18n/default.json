@@ -17,6 +17,7 @@
     "End Date": "End Date:",
     "Reporting Day": "Reporting Day",
     "User": "User:",
+    "All Users": "All Users:",
     "Groups": "Groups:",
 
     "Previous Week": "Previous Week",
@@ -31,6 +32,7 @@
     "Total" : "Total:",
 
     "param.user" : "User: %s",
+    "param.allUsers" : "All Users",
     "param.startDate" : "Start Date: %s",
     "param.endDate" : "End Date: %s",
     "param.reportingDay" : "Reporging Day: %s",
