@@ -258,3 +258,6 @@ form.aui .field-group .description {
     margin-right: 1px;
     content: url('/images/day.png');
 }
+.checkbox {
+  vertical-align: bottom;
+}

@@ -21,8 +21,8 @@
                     <input ng-model="paramUserInfo.displayName" aui-user-picker ng-user-changed-func="userChange" type="text"/>
                 </li>
                 <li ng-if="pivotTableType != 'TimeTracking'"> <!-- All users because of multi user picker planned -->
-                    <input class="checkbox" type="checkbox" ng-model="allUsers" ng-change="allUsersChange(allUsers)" />
                     <label>{{'All Users' | i18n}}</label>
+                    <input class="checkbox" type="checkbox" ng-model="allUsers" ng-change="allUsersChange(allUsers)"/>
                 </li>
                 <li ng-if="pivotTableType != 'TimeTracking'">
                     <label>{{'Groups' | i18n}}</label>
@@ -68,8 +68,8 @@
                     </select>
                 </li>
                 <li>
+                    <label>{{'Sum SubTasks:' | i18n}}</label>
                     <input class="checkbox" type="checkbox" ng-model="sumSubTasks" ng-change="sumSubTasksChange(sumSubTasks)" />
-                    <label>{{'Sum SubTasks' | i18n}}</label>
                 </li>
             </ul>
         <div class="aui-nav-heading"><strong>Actions</strong></div>
