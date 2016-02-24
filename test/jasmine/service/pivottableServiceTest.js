@@ -356,7 +356,7 @@ describe("pivottableServiceTest", function() {
 
         AP.request = function(options) {
             this.getTimeoutFunc() (function() {
-                if (options.url.match(/\/search\?fields=~&jql=filter%3D10000&startAt=0$/)) {
+                if (options.url.match(/\/search\?fields=~&maxResults=1000&jql=filter%3D10000&startAt=0$/)) {
                     options.success(timeData);
                 } else {
                     throw new Error('Unexpected call ' + options.url);
