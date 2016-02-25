@@ -18,7 +18,7 @@
             <ul class="aui-nav options">
                 <li ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
                     <label>{{'User' | i18n}}</label>
-                    <input ng-model="paramUserInfo.displayName" aui-user-picker ng-user-changed-func="userChange" type="text"/>
+                    <input ng-value="paramUserInfo.displayName" aui-user-picker ng-user-changed-func="userChange" type="text"/>
                 </li>
                 <li ng-if="pivotTableType != 'TimeTracking'"> <!-- All users because of multi user picker planned -->
                     <label>{{'All Users' | i18n}}</label>
@@ -72,15 +72,17 @@
                     <input class="checkbox" type="checkbox" ng-model="sumSubTasks" ng-change="sumSubTasksChange(sumSubTasks)" />
                 </li>
             </ul>
-        <div class="aui-nav-heading"><strong>Actions</strong></div>
-        <ul class="aui-nav" ng-if="!isGadget">
-             <li><a ng-click="loading || refresh()" ng-class="{disabled: loading}">Refresh</a></li>
+        <div class="aui-nav-heading"></div>
+        <ul class="aui-nav">
+            <!--li>
+                <label>{{'Instant View:' | i18n}}</label>
+                <input class="checkbox" type="checkbox" ng-model="instantView" ng-change="instantViewChange(instantView)" />
+            </li-->
+            <li>
+                <a ng-click="refresh()" ng-disabled="loading" ng-class="{disabled: loading}">Refresh</a>
+            </li>
         </ul>
-            <div ng-if="isGadget">
-                <button class="aui-button aui-button-primary" ng-click="saveGadgetConfig()">Save</button>
-                <button class="aui-button aui-button-link" ng-click="cancelGadgetConfigSaving()">Cancel</button>
-            </div>
-        </div>
+      </div>
     </form>
 </nav>
 

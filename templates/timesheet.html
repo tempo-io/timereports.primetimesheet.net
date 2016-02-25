@@ -5,7 +5,7 @@
                          remove-action="removeMenuOption(option.key, option.labelParam)"
                          label="option.label"
                          label-param="option.labelParam"></selected-option>
-          <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading"></i>
+          <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading || !loaded"></i>
         </div>
     </div>
     <div ng-show="isGadget" class="summary">
@@ -115,7 +115,7 @@
                 </tr>
                 <tr ng-repeat-end ng-hide="true" ng-class="{details: compressed == false}"></tr>
                 <!-- total block -->
-                <tr class="rowFooter" ng-hide="loading">
+                <tr class="rowFooter" ng-hide="loading || !loaded">
                     <td colspan="{{rowKeySize}}" class="nav total">
                         {{'Total' | i18n}}
                     </td>
@@ -129,7 +129,7 @@
                         {{pivotTable.sum | prettyHours}}
                     </td>
                 </tr>
-                <tr ng-show="loading">
+                <tr ng-show="loaded && loading">
                     <td colspan="{{rowKeySize + 1}}">
                         {{'Loading' | i18n}}&nbsp;<span class="aui-icon aui-icon-wait">Wait</span>
                     </td>
@@ -141,6 +141,13 @@
         <button class="aui-button aui-button-link" ng-click="addWorklogDialog()">
             <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
             Log Work
+        </button>
+    </div>
+    <div ng-if="!loaded">
+        <br/>
+        <button class="aui-button" ng-click="execute()" ng-disabled="loading" ng-class="{disabled: loading}">
+            <span class="aui-icon aui-icon-small aui-iconfont-view"></span>
+            View Report
         </button>
     </div>
 </div>

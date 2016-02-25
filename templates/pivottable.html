@@ -5,7 +5,7 @@
                          remove-action="removeMenuOption(option.key, option.labelParam)"
                          label="option.label"
                          label-param="option.labelParam"></selected-option>
-             <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading || pivotTableType == 'TimeTracking'"></i>
+             <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading || !loaded || pivotTableType == 'TimeTracking'"></i>
         </div>
     </div>
     <div class="pagingtable">
@@ -109,7 +109,7 @@
                 </tr>
                 <tr ng-repeat-end ng-hide="true"></tr>
                 <!-- total block -->
-                <tr class="rowFooter">
+                <tr class="rowFooter" ng-hide="loading || !loaded">
                     <td colspan="{{rowKeySize}}">
                         Total:
                     </td>
@@ -123,13 +123,19 @@
                         {{pivotTable.sum | prettyHours}}
                     </td>
                 </tr>
-                <tr ng-show="loading">
+                <tr ng-show="loaded && loading">
                     <td colspan="{{rowKeySize + 1}}">
                         {{'Loading' | i18n}}&nbsp;<span class="aui-icon aui-icon-wait">Wait</span>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div ng-if="!loaded">
+        <br/>
+        <button class="aui-button" ng-click="execute()" ng-disabled="loading" ng-class="{disabled: !loading}">
+            Execute
+        </button>
     </div>
 </div>
 <resize/>

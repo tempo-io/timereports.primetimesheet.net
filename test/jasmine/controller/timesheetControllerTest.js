@@ -85,7 +85,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {},
+            $routeParams: {loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -113,7 +113,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {sumSubTasks: true},
+            $routeParams: {sumSubTasks: true, loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -153,7 +153,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {startDate: '2014-02-24'},
+            $routeParams: {startDate: '2014-02-24', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -182,7 +182,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {startDate: '2014-02-24', endDate: '2014-02-25'},
+            $routeParams: {startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -213,7 +213,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {startDate: '2014-02-24', endDate: '2014-02-25', view: 'month'},
+            $routeParams: {startDate: '2014-02-24', endDate: '2014-02-25', view: 'month', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -243,7 +243,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {startDate: '2014-02-24', endDate: '2014-02-25', groupByField: 'created'},
+            $routeParams: {startDate: '2014-02-24', endDate: '2014-02-25', groupByField: 'created', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -272,7 +272,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {pivotTableType: 'IssueWorkedTimeByUser', startDate: null, endDate: null},
+            $routeParams: {pivotTableType: 'IssueWorkedTimeByUser', startDate: null, endDate: null, loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -303,7 +303,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {pivotTableType: 'TimeTracking'},
+            $routeParams: {pivotTableType: 'TimeTracking', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -334,7 +334,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {startDate: '2014-02-24', user: 'noSuchUser'},
+            $routeParams: {startDate: '2014-02-24', user: 'noSuchUser', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -385,7 +385,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {user: 'admin', group: ['group1', 'group2']},
+            $routeParams: {user: 'admin', group: ['group1', 'group2'], loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
