@@ -49,6 +49,16 @@ input.ng-dirty.ng-invalid {
 .options > li {
   margin-bottom: 10px;
 }
+/* https://ecosystem.atlassian.net/browse/AUI-1715 */
+.aui-select2-container.select2-allowclear .select2-choice .select2-search-choice-close {
+  display: block;
+  opacity: 0.7;
+  top: 10px;
+}
+
+.aui-select2-container.select2-allowclear .select2-choice .select2-search-choice-close:hover {
+  opacity: 1;
+}
 /* add-on styles */
 ul.subtitle {
   display: inline;

@@ -18,7 +18,7 @@
             <ul class="aui-nav options">
                 <li ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
                     <label>{{'User' | i18n}}</label>
-                    <input ng-value="paramUserInfo.displayName" aui-user-picker ng-user-changed-func="userChange" type="text"/>
+                    <input ng-value="paramUserInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
                 </li>
                 <li ng-if="pivotTableType != 'TimeTracking'"> <!-- All users because of multi user picker planned -->
                     <label>{{'All Users' | i18n}}</label>

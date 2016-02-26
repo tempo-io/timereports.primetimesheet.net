@@ -30,7 +30,7 @@
 		</div>
 		<div class="field-group" ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
 			<label>{{'User' | i18n}}</label>
-			<input ng-value="userInfo.displayName" aui-user-picker ng-user-changed-func="userChange" type="text"/>
+			<input ng-value="userInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
 		</div>
 		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
             <label>{{'All Users' | i18n}}</label>
