@@ -35,7 +35,7 @@
     "param.allUsers" : "All Users",
     "param.startDate" : "Start Date: %s",
     "param.endDate" : "End Date: %s",
-    "param.reportingDay" : "Reporging Day: %s",
+    "param.reportingDay" : "Reporting Day: %s",
     "param.groupByField" : "Group By Field: %s",
     "param.moreFields" : "Additional Field: %s",
     "param.filterOrProjectId" : "Filter Or Project: %s",
