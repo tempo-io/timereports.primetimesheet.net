@@ -1,12 +1,13 @@
 describe("pivottableServiceTest", function() {
     beforeEach(function() {
         module('timesheetApp');
-        inject(function ($timeout, $window, _$httpBackend_, pivottableService) {
+        inject(function ($timeout, $window, _$httpBackend_, pivottableService, applicationLoggingService) {
             AP.$timeout = $timeout;
             $window.i18nDefault = 'i18n/default.json';
             _$httpBackend_.whenGET("i18n/default.json").respond({});
             _$httpBackend_.flush();
             pivottableService.allFields = FieldsData;
+            applicationLoggingService.debug = function() {};
         })
         AP.requestBak = AP.request;
     });

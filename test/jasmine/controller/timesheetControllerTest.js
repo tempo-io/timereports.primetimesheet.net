@@ -65,12 +65,13 @@ describe("timesheetControllerTest", function() {
         module('talis.services.logging');
         module('configuration');
         module('timesheetApp');
-        inject(function($timeout, $window, _$httpBackend_) {
+        inject(function($timeout, $window, _$httpBackend_, applicationLoggingService) {
             AP.$timeout = $timeout;
             $httpBackend = _$httpBackend_;
             $httpBackend.expectGET('/templates/main.html').respond('');
             $window.i18nDefault = 'i18n/default.json';
             $httpBackend.when("GET", 'i18n/default.json').respond({});
+            applicationLoggingService.debug = function() {};
         });
         AP.requestBak = AP.request;
     });
