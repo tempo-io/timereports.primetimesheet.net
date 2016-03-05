@@ -10,11 +10,11 @@
 				        aui-select2>
 				</select>
 		</div>
-		<div class="field-group">
+		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
 			<label>{{ 'Number of Weeks' | i18n}}</label>
 			<input ng-model="numOfWeeks" class="text" type="number" min="1" max="12" ng-change="numOfWeeksChange(numOfWeeks)" />
 		</div>
-		<div class="field-group">
+		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
             <label for="end-date-picker">{{'Reporting Day' | i18n}}</label>
             <select class="select"
                     title="{{'Reporting Day' || i18n}}"
