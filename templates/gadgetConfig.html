@@ -1,7 +1,11 @@
 <div id="config" ng-controller="GadgetController">
     <form class="aui">
 		<div class="field-group">
-			<label>{{ 'Report' | i18n }}</label>
+			<label>{{ 'Title' | i18n}}</label>
+			<input ng-model="title" class="text"/>
+		</div>
+		<div class="field-group">
+			<label>{{ 'Report' | i18n }}:</label>
 				<select class="select"
 				        title="database select"
 				        ng-model="pivotTableTypeOptions.selected"
@@ -25,7 +29,7 @@
             </select>
 			</div>
 		<div class="field-group">
-			<label>{{ 'Filter or Project' | i18n }}</label>
+			<label>{{ 'Filter or Project' | i18n }}:</label>
 			<input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"/>
 		</div>
 		<div class="field-group" ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">

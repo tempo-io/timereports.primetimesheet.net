@@ -1,6 +1,7 @@
 {
     "Time Reports": "Time Reports",
     "Advanced Time Tracking": "Flexible view of issues time tracking data",
+    "Title": "Title:",
     "Report": "Report",
     "TimeEntry": "Time Entry",
     "Timesheet": "Timesheet",
@@ -8,6 +9,7 @@
     "IssueWorkedTimeByStatus": "Pivot by Statuses",
     "TimeTracking": "Time Tracking",
     "PieChart": "Pie Chart",
+    "Number of Weeks": "Number of Weeks:",
     "Filter or Project" : "Filter or Project",
     "Saved Filter": "Saved Filter",
     "Options": "Options",
@@ -15,10 +17,11 @@
     "Additional Fields" : "Additional Fields:",
     "Start Date": "Start Date:",
     "End Date": "End Date:",
-    "Reporting Day": "Reporting Day",
+    "Reporting Day": "Reporting Day:",
     "User": "User:",
     "All Users": "All Users:",
     "Groups": "Groups:",
+    "Sum SubTasks": "Sum SubTasks:",
 
     "Previous Week": "Previous Week",
     "Current Week": "Current Week",
