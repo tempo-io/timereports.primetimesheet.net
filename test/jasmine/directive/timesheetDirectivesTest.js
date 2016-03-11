@@ -93,10 +93,10 @@ describe("timesheet directive", function(){
             closeFuncSpy(value);
         };
 
+        $httpBackend.flush();
+
         var element = prepareJQueryElement(
                 '<selected-option label="\'lab\'" label-param="\'PAR\'" remove-action="doWithOption(\'OPT\')"/>');
-
-        $httpBackend.flush();
 
         expect(element).toContainText('My label value is PAR');
         expect(element).toContainElement('span.aui-label');
