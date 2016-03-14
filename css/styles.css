@@ -2,20 +2,18 @@
 header {
   margin: 0 !important;
 }
-@media (min-width: 1000px) { 
-  .is-not-gadget .aui-page-panel-inner {
-    width: 900px;
-  }
-  #placeholder {
-    width: 6000px;
-  }
+#placeholder {
+  height: 300px;
+  width: 600px;
 }
 @media (min-width: 1000px) { 
   .is-not-gadget .aui-page-panel-inner {
     width: 900px;
   }
-  #placeholder {
-    width: 6000px;
+}
+@media (min-width: 1000px) { 
+  .is-not-gadget .aui-page-panel-inner {
+    width: 900px;
   }
 }
 @media (min-width: 1200px) { 
@@ -33,9 +31,6 @@ header {
   #placeholder {
     width: 1000px;
   }
-}
-#placeholder {
-  height: 300px;
 }
 .aui-page-panel-inner {
   margin: 0 !important;
