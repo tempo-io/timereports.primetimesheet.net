@@ -1,21 +1,22 @@
 <table cellpadding="0" border="0" cellspacing="5" width="100%">
     <tr ng-repeat="wkLog in popupData.worklogs">
-        <td>
-            {{wkLog.author.displayName}}
+        <td width="1%" nowrap ng-if="wkLog._issueInfo || wkLog._authorInfo">
+            <span ng-if="wkLog._issueInfo"><issue-key issue="wkLog._issueInfo"/></span>
+            <a ng-class="{inactive: !wkLog._authorInfo.active}" ng-href="#/?pivotTableType=Timesheet&user={{wkLog._authorInfo.key}}&group=&groupByField=" ng-if="wkLog._authorInfo" ng-bind="wkLog._authorInfo.displayName || wkLog._authorInfo.name"/>
         </td>
-        <td>
+        <td width="1%">
             {{wkLog.timeSpentSeconds | prettyHours}}
         </td>
         <td>
             {{wkLog.comment | limitTo:25}}
         </td>
-        <td nowrap>
+        <td width="1%" nowrap>
             <span class="fa fa-pencil-square-o" ng-click="popupData.openEditWorklogDialog(wkLog.id, wkLog._issue);closePopup();" title="{{'Edit worklog' | i18n}}" ng-show="popupData.canEditOwnWorklog"></span>
             <span class="fa fa-trash-o" style="color: red" ng-click="popupData.openDeleteWorklogDialog(wkLog.id, wkLog._issue);closePopup();" title="{{'Delete worklog' | i18n}}" ng-show="popupData.canDeleteOwnWorklog"></span>
         </td>
     </tr>
     <tr ng-if="popupData.canLogWork">
-        <td colspan="4" style="border-top: 1px solid black;">
+        <td colspan="{{wkLog._issueInfo || wkLog._auhtorInfo ? 4 : 3}}" style="border-top: 1px solid black;">
             <ng-include src="'/templates/popups/addWorklog.html'"></ng-include>
         </td>
     </tr>
