@@ -94,7 +94,7 @@
                         <span ng-if="data.worklog._issue">
                             <issue-key issue="data.worklog._issue" show-title="true" />
                         </span>
-                        <span title="{{data.worklog.comment.length > 175 ? data.worklog.comment : ''}}">{{data.worklog.comment | limitTo:175}}</span <!--if worklog is present-->
+                        <span title="{{data.worklog.comment.length > 175 ? data.worklog.comment : ''}}">{{data.worklog.comment | limitTo:175}}</span> <!--if worklog is present-->
                     </td>
                     <td class="nav priority" width="1%">
                         <span ng-if="data.rowKey._issue">

@@ -28,15 +28,19 @@
                     <label>{{'Groups' | i18n}}</label>
                     <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>
                 </li>
-                <li ng-if="pivotTableType != 'TimeTracking' && !isGadget">
+                <li ng-if="pivotTableType != 'TimeTracking'">
                     <label for="start-date-picker">{{'Start Date' | i18n}}</label>
                     <input ng-model="startDate" id="start-date-picker" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="select"/>
                 </li>
-                <li ng-if="pivotTableType != 'TimeTracking' && !isGadget">
+                <li ng-if="pivotTableType != 'TimeTracking'">
                     <label for="end-date-picker">{{'End Date' | i18n}}</label>
                     <input ng-model="endDate" id="end-date-picker" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
                 </li>
-                <li ng-if="pivotTableType != 'TimeTracking' && !isGadget">
+                <li ng-if="pivotTableType == 'Timesheet'">
+                    <label>{{'Show Weekends' | i18n}}</label>
+                    <input class="checkbox" type="checkbox" ng-model="showWeekends" ng-change="toggleShowWeekends()" />
+                </li>
+                <li ng-if="pivotTableType != 'TimeTracking'">
                     <label for="end-date-picker">{{'Reporting Day' | i18n}}</label>
                     <select class="select"
                             title="{{'Reporting Day' || i18n}}"
