@@ -1,6 +1,13 @@
 <div class="results-wrap">
     <div class="section-header" ng-hide="isGadget">
-        <h5>{{'Timesheet' | i18n }}</h5>
+        <div ng-init="showButtons=false" ng-mouseover="showButtons=!$form.$visible" ng-mouseleave="showButtons=false">
+            <div editable-text="currentView.name" e-required onshow="$parent.$form=$form" onhide="$parent.$form=undefined" onbeforesave="$parent.showButtons=true" onaftersave="viewNameChanged()">
+	            <h5>{{currentView.name || pivotTableType}}</h5>
+                <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
+            </div>
+            <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
+            <a class="overlay-icon aui-icon aui-icon-small aui-iconfont-remove dangerous remove-view" ng-click="deleteView()" ng-show="showButtons && showDeleteButton"></a>
+        </div>
         <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
                          remove-action="removeMenuOption(option.key, option.labelParam)"
                          label="option.label"

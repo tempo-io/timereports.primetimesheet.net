@@ -273,7 +273,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {pivotTableType: 'IssueWorkedTimeByUser', startDate: null, endDate: null, loaded: true},
+            $routeParams: {pivotTableType: 'IssueWorkedTimeByUser', startDate: '2014-02-24', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
