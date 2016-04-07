@@ -260,12 +260,12 @@ test("Timesheet: group by workeduser", function() {
 test("Excel Export", function() {
     var excelView = new ExcelView(TimeData.issues);
     equal(typeof excelView, 'object', 'excelView');
-    var excel = excelView.generate({moreFields: []});
+    var excel = excelView.generate({pivotTableType: 'Timesheet', moreFields: []});
     equal(typeof excel, 'string', 'excelView');
 });
 test("PivotTabe rows order", function() {
     var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByUser'});
-    pivotTable.rows = {'DEMO-1000': 4, 'DEMO-1': 1, 'DEMO-100': 3, 'DEMO-2': 2};
+    pivotTable.rows = {'DEMO-1000': 4, 'DEMO-1': 1, 'DEMO-100': 3, 'ZZ-1': 5, 'DEMO-2': 2};
     var sortedRows = pivotTable.sortedRows();
-    equal(sortedRows.join(''), '1234', 'rows order');
+    equal(sortedRows.join(''), '12345', 'rows order');
 });
