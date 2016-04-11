@@ -20,7 +20,7 @@
 		</div>
 		<div class="field-group" ng-if="pivotTableType == 'Timesheet'">
 			<label>{{'Show Weekends' | i18n}}</label>
-			<input class="checkbox" type="checkbox" ng-model="showWeekends" ng-change="toggleShowWeekends()" />
+			<input class="checkbox" type="checkbox" ng-model="showWeekends.enabled"/>
 		</div>
 		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
             <label for="end-date-picker">{{'Reporting Day' | i18n}}</label>
@@ -42,7 +42,7 @@
 		</div>
 		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
             <label>{{'All Users' | i18n}}</label>
-            <input class="checkbox" type="checkbox" ng-model="allUsers" ng-change="allUsersChange(allUsers)" />
+            <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)" />
 		</div>
 		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
 			<label>{{'Groups' | i18n}}</label>
