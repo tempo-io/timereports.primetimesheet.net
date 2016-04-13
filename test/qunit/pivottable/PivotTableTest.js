@@ -106,7 +106,7 @@ test("TimeTrackingGroupedByStatus", function() {
   equal(pivotTable.totals[totalKeys[4]].value.timespent, 172800, "total value 5 (timespent)");
   var rowKeys = Object.keys(pivotTable.rows);
   equal(rowKeys.length, 2, "rows");
-  equal(rowKeys[0], "TIME:Open", "rowKey");
+  equal(rowKeys[0], "Timeship:Open", "rowKey");
   var row = pivotTable.rows[rowKeys[0]];
   equal(typeof row.rowKey, "object", "typeof row.key 1");
   equal(row.sum, 93600, "row sum");
