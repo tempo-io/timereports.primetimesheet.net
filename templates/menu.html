@@ -14,7 +14,7 @@
                     <label>{{'User' | i18n}}</label>
                     <input ng-value="paramUserInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
                 </li>
-                <li ng-if="pivotTableType != 'TimeTracking'"> <!-- All users because of multi user picker planned -->
+                <li ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'"> <!-- All users because of multi user picker planned -->
                     <label>{{'All Users' | i18n}}</label>
                     <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)"/>
                 </li>
