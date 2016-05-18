@@ -269,3 +269,7 @@ test("PivotTabe rows order", function() {
     var sortedRows = pivotTable.sortedRows();
     equal(sortedRows.join(''), '12345', 'rows order');
 });
+test("isDate", function() {
+    equal(TimesheetUtils.isDate('Phase 2'), false, 'Phase 2');
+    equal(TimesheetUtils.isDate('2013-02-27T18:03:49.000+0100'), true, "2013-02-27T18:03:49.000+0100");
+});
