@@ -44,10 +44,10 @@
                     </div>
                 </div>
                 <div class="nav border" ng-class="{toDay : column.columnKey.isToday}" ng-repeat="column in row.columns">
-                    {{column.sum | prettyHours}}
+                    {{column.sum | prettyHours:jiraConfig}}
                 </div>
                 <div class="nav border total">
-                    {{row.sum | prettyHours}}
+                    {{row.sum | prettyHours:jiraConfig}}
                 </div>
             </div>
             <div class="rowFooter" ng-hide="loading">
@@ -55,10 +55,10 @@
                     {{'Total' | i18n}}
                 </div>
                 <div class="nav border total" ng-repeat="column in pivotTable.totals">
-                    {{column.sum | prettyHours}}
+                    {{column.sum | prettyHours:jiraConfig}}
                 </div>
                 <div class="nav border total">
-                    {{pivotTable.sum | prettyHours}}
+                    {{pivotTable.sum | prettyHours:jiraConfig}}
                 </div>
             </tr>
             <div ng-show="loading">

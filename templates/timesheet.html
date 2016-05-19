@@ -78,11 +78,11 @@
                         ng-click="canLogWork && addWorklogPopup.init(column.columnKey, row.rowKey); editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
                         class="nav border"
                         ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend, addWorklogPopup: column.sum == 0 && canLogWork, editWorklogPopup: column.sum != 0, disabled: column.sum == 0 && !canLogWork}" ng-repeat="column in row.columns">
-                        {{column.sum | prettyHours}}
+                        {{column.sum | prettyHours:jiraConfig}}
                         <span ng-show="p_show" class="fa fa-plus"></span>
                     </td>
                     <td class="nav border total">
-                        {{row.sum | prettyHours}}
+                        {{row.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>
                 <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="compressed == false">
@@ -113,7 +113,7 @@
                     </td>
                     <td class="nav border" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}" ng-repeat="column in pivotTable.totals">
                         <span ng-if="data.columnKey.keyValue == column.columnKey.keyValue">
-                            {{data.value | prettyHours}}
+                            {{data.value | prettyHours:jiraConfig}}
                         </span>
                     </td>
                     <td class="nav border total">
@@ -130,10 +130,10 @@
                         &nbsp;
                     </td>
                     <td class="nav border total" ng-repeat="column in pivotTable.totals">
-                        {{column.sum | prettyHours}}
+                        {{column.sum | prettyHours:jiraConfig}}
                     </td>
                     <td class="nav border total">
-                        {{pivotTable.sum | prettyHours}}
+                        {{pivotTable.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>
                 <tr ng-show="loaded && loading">

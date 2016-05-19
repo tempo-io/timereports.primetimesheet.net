@@ -5,7 +5,7 @@
             <a ng-class="{inactive: !wkLog._authorInfo.active}" ng-href="#/?pivotTableType=Timesheet&user={{wkLog._authorInfo.key}}&group=&groupByField=" ng-if="wkLog._authorInfo" ng-bind="wkLog._authorInfo.displayName || wkLog._authorInfo.name"/>
         </td>
         <td width="1%">
-            {{wkLog.timeSpentSeconds | prettyHours}}
+            {{wkLog.timeSpentSeconds | prettyHours:jiraConfig}}
         </td>
         <td>
             {{wkLog.comment | limitTo:25}}

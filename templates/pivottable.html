@@ -65,10 +65,10 @@
                         <issue-field field="row.rowKey.issue.fields[field]" ng-if="row.rowKey.issue"/>
                     </td>
                     <td class="nav first border" ng-repeat="column in pivotTable.totals">
-                        <pivot-cell key="column.columnKey" columns="row.columns"/>
+                        <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav first border total" ng-if="!hideTotalColumn">
-                        {{row.sum | prettyHours}}
+                        {{row.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>
                 <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed">
@@ -101,7 +101,7 @@
                         <issue-field field="data.rowKey._issue.fields[field]" ng-if="data.rowKey._issue"/>
                     </td>
                     <td class="nav border" ng-repeat="column in pivotTable.totals">
-                        <pivot-cell key="column.columnKey" columns="data.values"/>
+                        <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav border total" ng-if="!hideTotalColumn">
                         &nbsp;
@@ -117,10 +117,10 @@
                         &nbsp;
                     </td>
                     <td class="border" ng-repeat="column in pivotTable.totals">
-                        <pivot-cell key="column.columnKey" columns="pivotTable.totals"/>
+                        <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
                     </td>
                     <td class="border total" ng-if="!hideTotalColumn">
-                        {{pivotTable.sum | prettyHours}}
+                        {{pivotTable.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>
                 <tr ng-show="loaded && loading">
