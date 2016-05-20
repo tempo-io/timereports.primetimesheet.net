@@ -54,6 +54,10 @@
                             aui-select2>
                     </select>
                 </li>
+                <li>
+                    <label>{{'Collapse Field Groups' | i18n}}</label>
+                    <input class="checkbox" type="checkbox" ng-model="collapseFieldGroups.enabled" ng-change="collapseFieldGroupsChange(collapseFieldGroups.enabled)" />
+                </li>
                 <li ng-if="pivotTableType != 'PieChart'">
                     <label>{{'Additional Fields' | i18n}}</label>
                     <select class="select"

@@ -72,7 +72,7 @@
                         <issue-field field="row.rowKey.field" />
                     </td>
                     <td class="nav" nowrap ng-repeat="field in row.moreFields">
-                        <issue-field field="row.rowKey.issue.fields[field]" ng-if="row.rowKey.issue"/>
+                        <issue-field name="field" field="row.rowKey.issue.fields[field]" jira-config="jiraConfig" ng-if="row.rowKey.issue"/>
                     </td>
                     <td ng-init="p_show=false" ng-mouseover="p_show=column.sum == 0 && canLogWork" ng-mouseleave="p_show=false"
                         ng-click="canLogWork && addWorklogPopup.init(column.columnKey, row.rowKey); editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
@@ -109,7 +109,7 @@
                         </span>
                     </td>
                     <td class="nav" width="1%" ng-repeat="field in pivotTable.moreFields">
-                        <issue-field field="data.rowKey._issue.fields[field]" ng-if="data.rowKey._issue"/>
+                        <issue-field name="field" field="data.rowKey._issue.fields[field]" jira-config="jiraConfig" ng-if="data.rowKey._issue"/>
                     </td>
                     <td class="nav border" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}" ng-repeat="column in pivotTable.totals">
                         <span ng-if="data.columnKey.keyValue == column.columnKey.keyValue">

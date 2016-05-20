@@ -18,6 +18,7 @@ require([
     "app/controllers/worklogController",
     "app/services/pivottableService",
     "app/services/viewService",
+    "app/directives/DrawHelper",
     "app/directives/timesheetDirectives",
     "app/filters/timesheetFilters",
     "app/pivottable/PivotKey",

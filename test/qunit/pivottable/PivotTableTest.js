@@ -87,7 +87,7 @@ test("TimeTracking", function() {
   equal(row.columns[columnKeys[0]].entries.length, 1, "column entries");
 });
 test("TimeTrackingGroupedByStatus", function() {
-  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking', groupByField: 'status'});
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking', groupByField: 'status', configOptions: {}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       equal(pivotEntries.length, 1, "pivotEntries");
@@ -179,10 +179,6 @@ test("PivotTable.getOrCreate", function() {
     }
 });
 test("TimesheetUtils", function() {
-    equal(TimesheetUtils.getPrettyHours(7200), '2h', '#getPrettyHours() :: positive');
-    equal(TimesheetUtils.getPrettyHours(0), '', '#getPrettyHours() :: empty');
-    equal(TimesheetUtils.getPrettyHours(-10), '', '#getPrettyHours() :: negative');
-
     equal(TimesheetUtils.getWeekNumber(new Date(2013, 3, 1)), 14, '#getWeekNumber() :: positive 1'); // 1 April 2013
     equal(TimesheetUtils.getWeekNumber(new Date(2014, 0, 25)), 4, '#getWeekNumber() :: positive 2'); // 25 January 2014
 
