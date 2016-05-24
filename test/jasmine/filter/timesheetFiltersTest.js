@@ -11,6 +11,7 @@ describe("timesheet filters", function(){
         var func = $filter('prettyHours');
         expect(func('123')).toBe('0.03h');
         expect(func('723600', {timeFormat: 'pretty', workingHoursPerDay: 8, workingDaysPerWeek: 5})).toBe('1m 1w 1h');
+        expect(func('27000', {timeFormat: 'pretty', workingHoursPerDay: 7.5, workingDaysPerWeek: 5})).toBe('1d');
         expect(func('')).toBe('');
         expect(func(null)).toBe('');
         expect(func('wrong number')).toBe('');
