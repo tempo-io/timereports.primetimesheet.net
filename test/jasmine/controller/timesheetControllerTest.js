@@ -125,7 +125,8 @@ describe("timesheetControllerTest", function() {
                         compositionIssueLink: {},
                         parentIssueField: {},
                         auditorsGroups: {},
-                        weekendType: {}
+                        weekendType: {},
+                        prettyDuration: false
                     });
                     return deferred.promise;
                 }
