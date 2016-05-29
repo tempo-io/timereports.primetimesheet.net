@@ -12,7 +12,7 @@
                          remove-action="removeMenuOption(option.key, option.labelParam)"
                          label="option.label"
                          label-param="option.labelParam"></selected-option>
-          <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading || !loaded || restrictionError"></i>
+          <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading || restrictionError"></i>
         </div>
     </div>
     <div ng-show="isGadget" class="summary">
