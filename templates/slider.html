@@ -1,11 +1,11 @@
 <div id="slider-wrapper">
     <div id="slider-prev" ng-if="!hidePrevNext">
         <span ng-click="changeWeek(isMonthView ? -1 : -7)"
-              title="{{'Previous Week' | i18n}}"
+              title="{{isMonthView ? 'Previous Month' : 'Previous Week' | i18n}}"
               class="fa fa-backward"></span>
         <span ng-show="showPrevToday"
               ng-click="moveToday()"
-              title="{{'Current Week' | i18n}}"
+              title="{{isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
               class="fa fa-step-backward"></span>
     </div>
     <div id="slider-today">
@@ -21,10 +21,10 @@
     <div id="slider-next" ng-if="!hidePrevNext">
         <span ng-show="showNextToday"
               ng-click="moveToday()"
-              title="{{'Current Week' | i18n}}"
+              title="{{isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
               class="fa fa-step-forward"></span>
         <span ng-click="changeWeek(isMonthView ? 1 : 7)"
-              title="{{'Next Week' | i18n}}"
+              title="{{isMonthView ? 'Next Month' : 'Next Week' | i18n}}"
               class="fa fa-forward"></span>
     </div>
 </div>

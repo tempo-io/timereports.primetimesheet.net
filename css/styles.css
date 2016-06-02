@@ -87,6 +87,7 @@ th {
 #issuetable td {
     line-height: 1.286;
     padding: 5px 3px;
+    white-space: nowrap;
 }
 .nav {
     border-bottom: 1px solid #eee;
@@ -190,6 +191,18 @@ a.disabled {
     color: #707070 !important;
     cursor: default;
     text-decoration: none;
+}
+.count-pagination {
+  margin: 0;
+  padding: 5px 3px;
+}
+.results-count-start,
+.results-count-end,
+.results-count-total {
+  font-weight: bold;
+}
+.pagination {
+  float: right;
 }
 [ng-click]:not(.disabled):not(.aui-button-primary),
 [data-ng-click]:not(.disabled),

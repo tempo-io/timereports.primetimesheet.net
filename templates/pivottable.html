@@ -5,7 +5,7 @@
                          remove-action="removeMenuOption(option.key, option.labelParam)"
                          label="option.label"
                          label-param="option.labelParam"></selected-option>
-             <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading || !loaded || restrictionError || pivotTableType == 'TimeTracking'"></i>
+             <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading || restrictionError || pivotTableType == 'TimeTracking'"></i>
         </div>
     </div>
     <div class="pagingtable">
@@ -41,7 +41,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-class-odd="compressed ? 'rowNormal' : ''" ng-class-even="compressed ? 'rowAlternate' : ''" ng-repeat-start="row in pivotTable.sortedRows()">
+                <tr ng-class-odd="compressed ? 'rowNormal' : ''" ng-class-even="compressed ? 'rowAlternate' : ''" ng-repeat-start="row in pivotTable.sortedRows() | limitTo:issuesCount.maxResults:issuesCount.startAt">
                     <!-- TODO: rework to directive rowKwy with AngularJS 1.3: https://github.com/angular/angular.js/issues/1459 -->
                     <td class="nav first issuetype" width="1%" ng-if="row.rowKey.issue">
                         <issue-type issue="row.rowKey.issue" />
@@ -130,6 +130,20 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="count-pagination aui-group" ng-hide="!loaded || loading || restrictionError || pages.length < 2">
+        <div class="aui-item">
+            <span class="results-count-text">
+                <span class="results-count-start" ng-bind="issuesCount.startAt + 1"></span>–<span class="results-count-end" ng-bind="issuesCount.end"></span> of <span class="results-count-total" ng-bind="issuesCount.total"></span>
+            </span>
+        </div>
+        <div class="pagination aui-item">
+            <ol class="aui-nav aui-nav-pagination">
+                <li class="aui-nav-previous"><a ng-show="issuesCount.startAt > 0" ng-click="setStartAt(issuesCount.startAt - issuesCount.maxResults)">Prev</a><span ng-show="issuesCount.startAt <= 0">Prev</span></li>
+                <li ng-class="{'aui-nav-selected': issuesCount.startAt == startAt}" ng-repeat="p in pages" ng-init="startAt = issuesCount.maxResults * p" style="padding: 0"><a ng-click="setStartAt(startAt)" style="padding: 3px">{{p + 1}}</a></li>
+                <li class="aui-nav-next" ng-init="isNext = issuesCount.startAt + issuesCount.maxResults < issuesCount.total"><a ng-show="issuesCount.startAt + issuesCount.maxResults < issuesCount.total" ng-click="setStartAt(issuesCount.startAt + issuesCount.maxResults)" style="padding: 3px">Next</a><span ng-show="issuesCount.startAt + issuesCount.maxResults >= issuesCount.total">Next</span></li>
+            </ol>
+        </div>
     </div>
     <div ng-if="!loaded">
         <br/>
