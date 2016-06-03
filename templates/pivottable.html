@@ -33,7 +33,7 @@
                     <th class="colHeaderLink" ng-repeat="field in pivotTable.moreFields">
                         <span ng-bind="moreFieldsOptions.findOption(field).label"></span>
                     </th>
-                    <th class="colHeaderLink" ng-repeat="column in pivotTable.totals" column-key="column.columnKey"> 
+                    <th class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey">
                     </th>
                     <th ng-if="!hideTotalColumn">
                         {{'Tot' | i18n }}
@@ -64,7 +64,7 @@
                     <td class="nav first" nowrap ng-repeat="field in row.moreFields">
                         <issue-field name="field" field="row.rowKey.issue.fields[field]" jira-config="jiraConfig" ng-if="row.rowKey.issue"/>
                     </td>
-                    <td class="nav first border" ng-repeat="column in pivotTable.totals">
+                    <td class="nav first border" ng-repeat="column in pivotTable.sortedColumns()">
                         <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav first border total" ng-if="!hideTotalColumn">
@@ -100,7 +100,7 @@
                     <td class="nav" width="1%" ng-repeat="field in pivotTable.moreFields">
                         <issue-field name="field" field="data.rowKey._issue.fields[field]" jira-config="jiraConfig" ng-if="data.rowKey._issue"/>
                     </td>
-                    <td class="nav border" ng-repeat="column in pivotTable.totals">
+                    <td class="nav border" ng-repeat="column in pivotTable.sortedColumns()">
                         <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav border total" ng-if="!hideTotalColumn">
@@ -116,8 +116,8 @@
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields">
                         &nbsp;
                     </td>
-                    <td class="border" ng-repeat="column in pivotTable.totals">
-                        <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
+                    <td class="border" ng-repeat="column in pivotTable.sortedColumns()">
+                        <pivot-cell key="column.columnKey" columns="pivotTable.sortedColumns()" jira-config="jiraConfig"/>
                     </td>
                     <td class="border total" ng-if="!hideTotalColumn">
                         {{pivotTable.sum | prettyHours:jiraConfig}}

@@ -43,7 +43,7 @@
                     <th class="colHeaderLink" ng-repeat="field in pivotTable.moreFields">
                         <span ng-bind="moreFieldsOptions.findOption(field).label"></span>
                     </th>
-                    <th ng-repeat="column in pivotTable.totals" column-key="column.columnKey" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}">
+                    <th ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}">
                     </th>
                     <th>
                         <br/>{{'Tot' | i18n }}
@@ -111,7 +111,7 @@
                     <td class="nav" width="1%" ng-repeat="field in pivotTable.moreFields">
                         <issue-field name="field" field="data.rowKey._issue.fields[field]" jira-config="jiraConfig" ng-if="data.rowKey._issue"/>
                     </td>
-                    <td class="nav border" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}" ng-repeat="column in pivotTable.totals">
+                    <td class="nav border" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}" ng-repeat="column in pivotTable.sortedColumns()">
                         <span ng-if="data.columnKey.keyValue == column.columnKey.keyValue">
                             {{data.value | prettyHours:jiraConfig}}
                         </span>
@@ -129,7 +129,7 @@
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields">
                         &nbsp;
                     </td>
-                    <td class="nav border total" ng-repeat="column in pivotTable.totals">
+                    <td class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
                         {{column.sum | prettyHours:jiraConfig}}
                     </td>
                     <td class="nav border total">

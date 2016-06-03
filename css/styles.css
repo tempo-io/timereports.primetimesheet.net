@@ -6,12 +6,7 @@ header {
   height: 300px;
   width: 600px;
 }
-@media (min-width: 1000px) { 
-  .is-not-gadget .aui-page-panel-inner {
-    width: 900px;
-  }
-}
-@media (min-width: 1000px) { 
+@media (min-width: 1000px) {
   .is-not-gadget .aui-page-panel-inner {
     width: 900px;
   }
@@ -21,6 +16,7 @@ header {
     width: 1100px;
   }
   #placeholder {
+    height: 400px;
     width: 800px;
   }
 }
@@ -29,6 +25,7 @@ header {
     width: 1300px;
   }
   #placeholder {
+    height: 500px;
     width: 1000px;
   }
 }
