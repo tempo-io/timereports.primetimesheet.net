@@ -36,7 +36,7 @@
                     <th class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey">
                     </th>
                     <th ng-if="!hideTotalColumn">
-                        {{'Tot' | i18n }}
+                        {{'Total' | i18n }}
                     </th>
                 </tr>
             </thead>
@@ -116,10 +116,10 @@
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields">
                         &nbsp;
                     </td>
-                    <td class="border" ng-repeat="column in pivotTable.sortedColumns()">
-                        <pivot-cell key="column.columnKey" columns="pivotTable.sortedColumns()" jira-config="jiraConfig"/>
+                    <td class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
+                        <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
                     </td>
-                    <td class="border total" ng-if="!hideTotalColumn">
+                    <td class="nav border total" ng-if="!hideTotalColumn">
                         {{pivotTable.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>

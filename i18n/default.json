@@ -5,8 +5,8 @@
     "Report": "Report",
     "TimeEntry": "Time Entry",
     "Timesheet": "Timesheet",
-    "IssueWorkedTimeByUser": "Pivot by Users",
-    "IssueWorkedTimeByStatus": "Pivot by Statuses",
+    "IssueWorkedTimeByUser": "Pivot by User",
+    "IssueWorkedTimeByStatus": "Pivot by Status",
     "TimeTracking": "Time Tracking",
     "PieChart": "Pie Chart",
     "Number of Weeks": "Number of Weeks:",
@@ -37,7 +37,6 @@
     "Hide Details": "Hide Details",
 
     "Today": "Today",
-    "Tot": "Tot",
     "Total" : "Total:",
 
     "param.user" : "User: %s",

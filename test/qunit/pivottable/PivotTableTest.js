@@ -256,8 +256,9 @@ test("Timesheet: group by workeduser", function() {
 test("Excel Export", function() {
     var excelView = new ExcelView(TimeData.issues);
     equal(typeof excelView, 'object', 'excelView');
-    var excel = excelView.generate({pivotTableType: 'Timesheet', moreFields: []});
+    var excel = excelView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1, moreFields: []});
     equal(typeof excel, 'string', 'excelView');
+    equal(excel.match(/\d+h/g), null, "issue#902: hours with no h")
 });
 test("PivotTabe rows order", function() {
     var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByUser'});
