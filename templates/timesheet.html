@@ -19,7 +19,7 @@
         <span ng-repeat="option in gadgetSummary">
             <span ng-class="option.styleClass">{{option.text}}</span>
         </span>
-        <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports" target="_parent"></a>
+        <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent"></a>
     </div>
 
     <aui-inline-dialog template="'/templates/popups/addWorklog.html'" popup-data="addWorklogPopup" container="'.addWorklogPopup'"></aui-inline-dialog>

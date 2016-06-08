@@ -86,7 +86,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {loaded: true},
+            timesheetParams: {loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -114,7 +114,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {sumSubTasks: true, loaded: true},
+            timesheetParams: {sumSubTasks: true, loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -155,7 +155,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {startDate: '2014-02-24', loaded: true},
+            timesheetParams: {startDate: '2014-02-24', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -184,7 +184,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
+            timesheetParams: {startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -215,7 +215,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {startDate: '2014-02-24', endDate: '2014-02-25', view: 'month', loaded: true},
+            timesheetParams: {startDate: '2014-02-24', endDate: '2014-02-25', view: 'month', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -245,7 +245,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {startDate: '2014-02-24', endDate: '2014-02-25', groupByField: 'created', loaded: true},
+            timesheetParams: {startDate: '2014-02-24', endDate: '2014-02-25', groupByField: 'created', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -274,7 +274,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {pivotTableType: 'IssueWorkedTimeByUser', startDate: '2014-02-24', loaded: true},
+            timesheetParams: {pivotTableType: 'IssueWorkedTimeByUser', startDate: '2014-02-24', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -305,7 +305,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {pivotTableType: 'TimeTracking', loaded: true},
+            timesheetParams: {pivotTableType: 'TimeTracking', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -336,7 +336,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {startDate: '2014-02-24', user: 'noSuchUser', loaded: true},
+            timesheetParams: {startDate: '2014-02-24', user: 'noSuchUser', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -387,7 +387,7 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            $routeParams: {user: 'admin', group: ['group1', 'group2'], loaded: true},
+            timesheetParams: {user: 'admin', group: ['group1', 'group2'], loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
