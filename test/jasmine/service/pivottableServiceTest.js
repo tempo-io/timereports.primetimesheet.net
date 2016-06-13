@@ -508,5 +508,9 @@ describe("pivottableServiceTest", function() {
         expect(query).toBe(fields + ',worklog,customfield_10007' + maxResults + '&jql=' + encodeURIComponent('worklogDate>="2014-12-31"'));
         var query = pivottableService.getQuery({}, {pivotTableType: 'IssuePassedTimeByStatus', startDate: '2015-01-01'});
         expect(query).toBe(fields + ',customfield_10007,created' + maxResults + '&expand=changelog&jql=(' + encodeURIComponent('status changed after "2014-12-31" or created>"2014-12-31"') + ')');
+        var query = pivottableService.getQuery({}, {pivotTableType: 'IssuePassedTimeByStatus', username: 'admin'});
+        expect(query).toBe(fields + ',customfield_10007,created' + maxResults + '&expand=changelog&jql=(' + encodeURIComponent('status changed by "admin" or reporter="admin"') + ')');
+        var query = pivottableService.getQuery({}, {pivotTableType: 'IssuePassedTimeByStatus', groups: ['jira-users']});
+        expect(query).toBe(fields + ',customfield_10007,created' + maxResults + '&expand=changelog&jql=(' + encodeURIComponent('status changed by membersOf("jira-users") or reporter in membersOf("jira-users")') + ')');
     }));
 });
