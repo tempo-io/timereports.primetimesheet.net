@@ -499,4 +499,14 @@ describe("pivottableServiceTest", function() {
         expect(requestCalled).toBeTruthy();
         expect(pivottableService.allIssues.length).toBe(6);
     }));
+
+    it('getQuery', inject(function($timeout, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var fields = 'fields=project,issuetype,summary,priority,status,parent,issuelinks,timeoriginalestimate,timeestimate,timespent';
+        var maxResults = '&maxResults=1000';
+        var query = pivottableService.getQuery({}, {pivotTableType: 'IssueWorkedTimeByUser', sumSubTasks: true, startDate: '2015-01-01'});
+        expect(query).toBe(fields + ',worklog,customfield_10007' + maxResults + '&jql=' + encodeURIComponent('worklogDate>="2014-12-31"'));
+        var query = pivottableService.getQuery({}, {pivotTableType: 'IssuePassedTimeByStatus', startDate: '2015-01-01'});
+        expect(query).toBe(fields + ',customfield_10007,created' + maxResults + '&expand=changelog&jql=(' + encodeURIComponent('status changed after "2014-12-31" or created>"2014-12-31"') + ')');
+    }));
 });
