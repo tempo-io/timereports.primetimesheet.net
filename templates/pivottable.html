@@ -5,7 +5,7 @@
                          remove-action="removeMenuOption(option.key, option.labelParam)"
                          label="option.label"
                          label-param="option.labelParam"></selected-option>
-             <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading || restrictionError || pivotTableType == 'TimeTracking'"></i>
+             <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading || restrictionError || ['TimeTracking', 'IssuePassedTimeByStatus'].indexOf(pivotTableType) >= 0"></i>
         </div>
     </div>
     <div class="pagingtable">
@@ -111,7 +111,7 @@
                 <!-- total block -->
                 <tr class="rowFooter" ng-hide="loading || !loaded">
                     <td colspan="{{rowKeySize}}">
-                        Total:
+                        {{'Total' | i18n }}:
                     </td>
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields">
                         &nbsp;
