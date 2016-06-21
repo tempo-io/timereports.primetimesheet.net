@@ -54,7 +54,7 @@ describe("timesheetControllerTest", function() {
         expect(scope.filterByOptions).toBeInstanceOf(TimesheetSelectOptions);
         expect(scope.filterByOptions.options.length).toBe(2);
         expect(scope.filterByOptions.options).toContainInProperty('All issues', 'label');
-        expect(scope.filterByOptions.options).toContainInProperty('Demonstration Project', 'label');
+        expect(scope.filterByOptions.options).toContainInProperty('Demonstration Project (DEMO)', 'label');
         expect(scope.filterByOptions.options).toContainInProperty('filter_10000', 'id');
         expect(scope.filterByOptions.options).toContainInProperty('project_DEMO', 'id');
     };
