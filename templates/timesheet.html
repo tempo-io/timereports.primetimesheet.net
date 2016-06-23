@@ -96,6 +96,9 @@
                         <span ng-if="data.rowKey._issue">
                             <issue-key issue="data.rowKey._issue" show-title="true" />
                         </span>
+                        <span ng-if="data.rowKey._issue">
+                            <issue-summary issue="data.rowKey._issue" />
+                        </span>
                     </td>
                     <td colspan="{{rowKeySize - 4}}" class="nav summary">
                         <span ng-if="data.worklog._issue">
