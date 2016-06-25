@@ -47,7 +47,7 @@ describe("timesheetControllerTest", function() {
     var checkOptions = function(scope) {
         expect(scope.groupByOptions).not.toBeNull();
         expect(scope.groupByOptions).toBeInstanceOf(TimesheetSelectOptions);
-        expect(scope.groupByOptions.options.length).toBe(scope.pivotTableType == 'TimeTracking' ? 41 : 43);
+        expect(scope.groupByOptions.options.length).toBe(scope.pivotTableType == 'TimeTracking' ? 41 : 44);
         expect(scope.groupByOptions.options).toContainInProperty('Security Level', 'label');
         expect(scope.groupByOptions.options).toContainInProperty('resolution', 'id');
         expect(scope.filterByOptions).not.toBeNull();
@@ -109,7 +109,7 @@ describe("timesheetControllerTest", function() {
         checkOptions(scope);
     }));
 
-    it('default (no params) [sumSubTasks]', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+    it('default (no params) [sumSubTasks]', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout, $log) {
         var scope = $rootScope.$new();
         $controller('TimesheetController', {
             $scope: scope,
@@ -135,9 +135,27 @@ describe("timesheetControllerTest", function() {
             projectKey: 'DEMO'
         });
 
+        AP.request = function(options) {
+            if (options.url.match(/jql=project%3D%22DEMO%22%20and%20'Epic%20Link'%20is%20not%20EMPTY/)) {
+                options.success({issues: [{
+                    "id" : "10002",
+                    "key" : "TIME-3",
+                    "timeestimate" : 0,
+                    "timeoriginalestimate" : 72000,
+                    "timespent" : 36000,
+                    "fields": {
+                        "customfield_10007" : "TIME-2"                                
+                    }
+                }]});
+            } else {
+                AP.requestBak(options);
+            }
+        };
+
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
+        $log.assertEmpty();
 
         expect(scope.TimesheetUtils).not.toBeNull();
         expect(scope.loading).toBeFalsy();
