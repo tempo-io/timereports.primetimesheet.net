@@ -86,6 +86,24 @@ describe("pivottableServiceTest", function() {
         var loggedInUser = {};
         var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {parentIssueField: 'customfield_10007', compositionIssueLink: 'Duplicate'}, sumSubTasks: true};
         var pivotTable;
+        AP.request = function(options) {
+            if (options.url.match(/jql='Epic%20Link'%20is%20not%20EMPTY/)) {
+                this.getTimeoutFunc()(function() {
+                    options.success({issues: [{
+                        "id" : "10002",
+                        "key" : "TIME-3",
+                        "timeestimate" : 0,
+                        "timeoriginalestimate" : 72000,
+                        "timespent" : 36000,
+                        "fields": {
+                            "customfield_10007" : "TIME-2"                                
+                        }
+                    }]});
+                }, 500);
+            } else {
+                AP.requestBak(options);
+            }
+        };
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
             pivotTable = _pivotTable;
             pivotTable.queue['TIME-5'].promise.then(function(issue) {
@@ -414,6 +432,9 @@ describe("pivottableServiceTest", function() {
         var pivotTable = {matches: {}, queueToAdd: []}, deferred = $q.defer(), options = {};
         var issue1 = {
             key: 'DEMO-1',
+            fields: {
+                "issuetype": {}
+            },
             worklog: {
                 "maxResults" : 0,
                 "startAt" : 0,
@@ -422,6 +443,9 @@ describe("pivottableServiceTest", function() {
             }
         }, issue2 = {
             key: 'DEMO-2',
+            fields: {
+                "issuetype": {}
+            },
             worklog: {
                 "maxResults" : 0,
                 "startAt" : 0,
@@ -504,8 +528,8 @@ describe("pivottableServiceTest", function() {
         expect(pivottableService).toBeDefined();
         var fields = 'fields=project,issuetype,summary,priority,status,parent,issuelinks,timeoriginalestimate,timeestimate,timespent';
         var maxResults = '&maxResults=1000';
-        var query = pivottableService.getQuery({}, {pivotTableType: 'IssueWorkedTimeByUser', sumSubTasks: true, startDate: '2015-01-01'});
-        expect(query).toBe(fields + ',worklog,customfield_10007' + maxResults + '&jql=' + encodeURIComponent('worklogDate>="2014-12-31"'));
+        var query = pivottableService.getQuery({}, {pivotTableType: 'IssueWorkedTimeByUser', sumSubTasks: true, startDate: '2015-01-01', moreFields: ['timespent']});
+        expect(query).toBe(fields + ',worklog,customfield_10007,subtasks' + maxResults + '&jql=' + encodeURIComponent('worklogDate>="2014-12-31"'));
         var query = pivottableService.getQuery({}, {pivotTableType: 'IssuePassedTimeByStatus', startDate: '2015-01-01'});
         expect(query).toBe(fields + ',customfield_10007,created' + maxResults + '&expand=changelog&jql=(' + encodeURIComponent('status changed after "2014-12-31" or created>"2014-12-31"') + ')');
         var query = pivottableService.getQuery({}, {pivotTableType: 'IssuePassedTimeByStatus', username: 'admin'});
