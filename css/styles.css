@@ -51,6 +51,10 @@ input.ng-dirty.ng-invalid {
 .aui-select2-container.select2-allowclear .select2-choice .select2-search-choice-close:hover {
   opacity: 1;
 }
+.aui-button.aui-dropdown2-trigger:not(.aui-dropdown2-trigger-arrowless):after {
+  margin-left: -8px;
+  top: 8px;
+}
 /* add-on styles */
 ul.subtitle {
   display: inline;
@@ -180,6 +184,9 @@ th.holidayDayOfWeek {
 }
 .total {
 	font-weight: bold;
+}
+.aui-button.aui-button-link {
+    color: #333333;  
 }
 a.fa {
     text-decoration: none;
