@@ -526,10 +526,12 @@ describe("pivottableServiceTest", function() {
 
     it('getQuery', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var fields = 'fields=project,issuetype,summary,priority,status,parent,issuelinks,timeoriginalestimate,timeestimate,timespent';
+        var fields = 'fields=project,issuetype,summary,priority,status,parent,issuelinks';
         var maxResults = '&maxResults=1000';
         var query = pivottableService.getQuery({}, {pivotTableType: 'IssueWorkedTimeByUser', sumSubTasks: true, startDate: '2015-01-01', moreFields: ['timespent']});
-        expect(query).toBe(fields + ',worklog,customfield_10007,subtasks' + maxResults + '&jql=' + encodeURIComponent('worklogDate>="2014-12-31"'));
+        expect(query).toBe(fields + ',worklog,customfield_10007,timespent,subtasks' + maxResults + '&jql=' + encodeURIComponent('worklogDate>="2014-12-31"'));
+        var query = pivottableService.getQuery({}, {pivotTableType: 'TimeTracking', sumSubTasks: true, moreFields: ['timespent']});
+        expect(query).toBe(fields + ',timeoriginalestimate,timeestimate,timespent,customfield_10007,timespent,subtasks' + maxResults);
         var query = pivottableService.getQuery({}, {pivotTableType: 'IssuePassedTimeByStatus', startDate: '2015-01-01'});
         expect(query).toBe(fields + ',customfield_10007,created' + maxResults + '&expand=changelog&jql=(' + encodeURIComponent('status changed after "2014-12-31" or created>"2014-12-31"') + ')');
         var query = pivottableService.getQuery({}, {pivotTableType: 'IssuePassedTimeByStatus', username: 'admin'});
