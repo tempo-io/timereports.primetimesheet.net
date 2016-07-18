@@ -12,6 +12,7 @@ require([
     "timesheetUtils",
     "app/modules/configuration",
     "app/modules/directives",
+    "app/template/GadgetSummary",
     "app/template/TimesheetMenu",
     "app/controllers/timesheetController",
     "app/controllers/configurationController",

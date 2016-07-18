@@ -7,7 +7,7 @@
 
 <div class="aui-page-panel">
     <div class="aui-page-panel-inner">
-        <div class="aui-page-panel-nav">
+        <div ng-class="templates.menu ? 'aui-page-panel-nav': 'aui-page-panel-nav-empty'">
             <ng-include src="templates.menu"/>
         </div>
 

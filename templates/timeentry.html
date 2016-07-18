@@ -22,7 +22,7 @@
                 <div class="colHeaderLink">
                     <pivottable-slider />
                 </div>
-                <div class="colHeaderLink" ng-repeat="column in pivotTable.totals" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
+                <div class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
                 </div>
                 <div class="colHeaderLink">
                     <br/>{{'Tot' | i18n }}
@@ -54,7 +54,7 @@
                 <div class="nav total">
                     {{'Total' | i18n}}
                 </div>
-                <div class="nav border total" ng-repeat="column in pivotTable.totals">
+                <div class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
                     {{column.sum | prettyHours:jiraConfig}}
                 </div>
                 <div class="nav border total">

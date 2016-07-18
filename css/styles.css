@@ -32,6 +32,10 @@ header {
 .aui-page-panel-inner {
   margin: 0 !important;
 }
+.aui-page-panel-inner .aui-page-panel-nav-empty {
+    width: 25px;
+    display: table-cell;
+}
 #issuetable {
   width: 100%;
 }
