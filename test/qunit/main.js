@@ -16,7 +16,8 @@ require([
     "app/pivottable/TimesheetStrategy",
     "app/pivottable/PivotStrategy",
     "app/pivottable/PivotTable",
-    "app/pivottable/ExcelView"
+    "app/pivottable/ExcelView",
+    "app/pivottable/CsvView"
     ], function () {
         QUnit.start();
     }

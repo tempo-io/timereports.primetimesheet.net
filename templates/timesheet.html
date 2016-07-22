@@ -7,12 +7,21 @@
             </div>
             <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
             <a class="overlay-icon aui-icon aui-icon-small aui-iconfont-remove dangerous remove-view" ng-click="deleteView()" ng-show="showButtons && showDeleteButton"></a>
+            <div class="pull-right">
+                <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="margin: 3px 0" title="Download worklog" ng-hide="loading || restrictionError"></i>
+                <!-- Dropdown -->
+                <div id="export" class="aui-style-default aui-dropdown2">
+                    <ul class="aui-list-truncate">
+                        <li><a x-ng-click="excelView()">.xls (html)</a></li>
+                        <li><a x-ng-click="excelView(true)">.csv</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
                          remove-action="removeMenuOption(option.key, option.labelParam)"
                          label="option.label"
                          label-param="option.labelParam"></selected-option>
-          <i class="fa fa-file-excel-o" style="margin: 3px 0" excel-view="'/templates/excel.html'" pivot-table="pivotTable" ng-click="excelView()" title="Download worklog" ng-hide="loading || restrictionError"></i>
         </div>
     </div>
     <div ng-show="isGadget" class="summary">

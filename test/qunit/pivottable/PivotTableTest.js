@@ -257,8 +257,15 @@ test("Excel Export", function() {
     var excelView = new ExcelView(TimeData.issues);
     equal(typeof excelView, 'object', 'excelView');
     var excel = excelView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1, moreFields: []});
-    equal(typeof excel, 'string', 'excelView');
+    equal(typeof excel, 'string', 'excel');
     equal(excel.match(/\d+h/g), null, "issue#902: hours with no h")
+});
+test("Csv Export", function() {
+    var csvView = new CsvView(TimeData.issues);
+    equal(typeof csvView, 'object', 'csvView');
+    var csv = csvView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1, moreFields: []});
+    equal(typeof csv, 'string', 'csv');
+    equal(csv.match(/\d+h/g), null, "issue#902: hours with no h")
 });
 test("PivotTabe rows order", function() {
     var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByUser'});

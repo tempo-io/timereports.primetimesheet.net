@@ -81,7 +81,7 @@
                 <input class="checkbox" type="checkbox" ng-model="instantView" ng-change="instantViewChange(instantView)" />
             </li-->
             <li>
-                <a ng-click="refresh()" ng-disabled="loading" ng-class="{disabled: loading}">Refresh</a>
+                <a ng-click="loading || refresh()" ng-disabled="loading" ng-class="{disabled: loading}">Refresh</a>
             </li>
         </ul>
       </div>
