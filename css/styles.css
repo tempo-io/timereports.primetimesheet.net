@@ -94,6 +94,14 @@ th {
     padding: 5px 3px;
     white-space: nowrap;
 }
+#issuetable .parentIssue, .parentIssue2 {
+    background: transparent url('/images/icon-separator.png') no-repeat scroll 100% 2px;
+    color: #666;
+    padding-right: 10px;
+}
+.parentIssue2 {
+    margin-right: 2px;
+}
 .nav {
     border-bottom: 1px solid #eee;
 }
