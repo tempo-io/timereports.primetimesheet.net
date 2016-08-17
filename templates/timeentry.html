@@ -43,11 +43,14 @@
                         <issue-priority issue="row.rowKey.issue" />
                     </div>
                 </div>
-                <div class="nav border" ng-class="{toDay : column.columnKey.isToday}" ng-repeat="column in row.columns">
-                    {{column.sum | prettyHours:jiraConfig}}
+                <div class="nav border">
+                    {{row.columns['1started'].value | date}}
                 </div>
-                <div class="nav border total">
-                    {{row.sum | prettyHours:jiraConfig}}
+                <div class="nav border">
+                    {{row.columns['2timespent'].sum | prettyHours:jiraConfig}}
+                </div>
+                <div class="nav border">
+                    {{row.columns['3comment'].value}}
                 </div>
             </div>
             <div class="rowFooter" ng-hide="loading">

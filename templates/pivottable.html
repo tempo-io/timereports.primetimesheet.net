@@ -81,7 +81,7 @@
                         <issue-field name="field" field="row.rowKey.issue.fields[field]" jira-config="jiraConfig" ng-if="row.rowKey.issue"/>
                     </td>
                     <td class="nav first border" ng-repeat="column in pivotTable.sortedColumns()">
-                        <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig"/>
+                        <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false"/>
                     </td>
                     <td class="nav first border total" ng-if="!hideTotalColumn">
                         {{row.sum | prettyHours:jiraConfig}}
@@ -123,7 +123,7 @@
                         <issue-field name="field" field="data.rowKey._issue.fields[field]" jira-config="jiraConfig" ng-if="data.rowKey._issue"/>
                     </td>
                     <td class="nav border" ng-repeat="column in pivotTable.sortedColumns()">
-                        <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig"/>
+                        <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false"/>
                     </td>
                     <td class="nav border total" ng-if="!hideTotalColumn">
                         &nbsp;
@@ -166,6 +166,12 @@
                 <li class="aui-nav-next" ng-init="isNext = issuesCount.startAt + issuesCount.maxResults < issuesCount.total"><a ng-show="issuesCount.startAt + issuesCount.maxResults < issuesCount.total" ng-click="setStartAt(issuesCount.startAt + issuesCount.maxResults)" style="padding: 3px">Next</a><span ng-show="issuesCount.startAt + issuesCount.maxResults >= issuesCount.total">Next</span></li>
             </ol>
         </div>
+    </div>
+    <div ng-if="canLogWork && loaded && !loading && isStartDateToday">
+        <label for="log-work-issue">
+	        <span class="aui-icon aui-icon-small aui-iconfont-add">Start Work</span>
+        </label>
+        <input type="text" class="text" id="worklog-issue" ng-model="worklog.issueKey" aui-issue-picker="worklog.issue" ng-change="startWork(true)">
     </div>
     <div ng-if="!loaded">
         <br/>

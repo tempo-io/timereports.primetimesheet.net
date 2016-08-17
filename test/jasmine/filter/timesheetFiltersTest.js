@@ -12,6 +12,9 @@ describe("timesheet filters", function(){
         expect(func('123')).toBe('0.03h');
         expect(func('723600', {timeFormat: 'pretty', workingHoursPerDay: 8, workingDaysPerWeek: 5})).toBe('1m 1w 1h');
         expect(func('27000', {timeFormat: 'pretty', workingHoursPerDay: 7.5, workingDaysPerWeek: 5})).toBe('1d');
+        expect(func('3601', {timeFormat: 'pretty', workingHoursPerDay: 7.5, workingDaysPerWeek: 5})).toBe('1h');
+        expect(func('61', {timeFormat: 'pretty', workingHoursPerDay: 7.5, workingDaysPerWeek: 5})).toBe('1m');
+        expect(func('1', {timeFormat: 'pretty', workingHoursPerDay: 7.5, workingDaysPerWeek: 5})).toBe('0m');
         expect(func('')).toBe('');
         expect(func(null)).toBe('');
         expect(func('wrong number')).toBe('');

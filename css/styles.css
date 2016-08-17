@@ -242,12 +242,15 @@ a.disabled {
 .footer li {
     display: inline-block;
 }
-.footer li:after {
+.footer li:after, pivot-cell span:after {
     content: "\b7";
     margin: 0 10px;
     speak: none;
 }
-.footer li:last-child:after {
+pivot-cell span:after {
+    margin: 0 5px;
+}
+#footer li:last-child:after, pivot-cell span:last-child:after {
     display: none;
 }
 .inactive {
@@ -294,4 +297,15 @@ form.aui .field-group .description {
 }
 .checkbox {
   vertical-align: bottom;
+}
+label .aui-icon {
+    padding-top: 8px;
+}
+.results-wrap .aui-select2-container {
+    border: 0;
+    height: auto;
+    max-width: 330px;
+    padding: 2px;
+    vertical-align: baseline;
+    width: 100%;
 }

@@ -1,30 +1,30 @@
 <div id="slider-wrapper">
     <div id="slider-prev" ng-if="!hidePrevNext">
-        <span ng-click="changeWeek(isMonthView ? -1 : -7)"
-              title="{{isMonthView ? 'Previous Month' : 'Previous Week' | i18n}}"
+        <span ng-click="changeWeek(isMonthView || isDayView ? -1 : -7)"
+              title="{{isDayView ? 'Previous Day' : isMonthView ? 'Previous Month' : 'Previous Week' | i18n}}"
               class="fa fa-backward"></span>
         <span ng-show="showPrevToday"
               ng-click="moveToday()"
-              title="{{isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
+              title="{{isDayView ? 'Current Day' : isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
               class="fa fa-step-backward"></span>
     </div>
     <div id="slider-today">
         <span ng-click="weekSumChange()" ng-if="pivotTableType == 'Timesheet'"
               title="{{sumTitle | i18n}}" ng-class="sumClass"></span>
-        <span ng-if="!hidePrevNext"
+        <span ng-if="!hidePrevNext && !isDayView"
               title="{{'Switch to ' + (isMonthView ? 'Week View' : 'Month View') | i18n}}"
               class="fa {{isMonthView ? 'fa-calendar' : 'fa-calendar-o'}}" ng-click="toggleMonthView()"></span>
-        <span ng-if="!hideDetails"
+        <span ng-if="!hideDetails && !isDayView"
               title="{{(compressed ? 'Show Details' : 'Hide Details') | i18n}}" 
               class="fa {{compressed ? 'fa-expand' : 'fa-compress'}}" ng-click="toggleShowDetails()"></span>
     </div>
     <div id="slider-next" ng-if="!hidePrevNext">
         <span ng-show="showNextToday"
               ng-click="moveToday()"
-              title="{{isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
+              title="{{isDayView ? 'Current Day' : isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
               class="fa fa-step-forward"></span>
-        <span ng-click="changeWeek(isMonthView ? 1 : 7)"
-              title="{{isMonthView ? 'Next Month' : 'Next Week' | i18n}}"
+        <span ng-click="changeWeek(isMonthView || isDayView ? 1 : 7)"
+              title="{{isDayView ? 'Next Day' : isMonthView ? 'Next Month' : 'Next Week' | i18n}}"
               class="fa fa-forward"></span>
     </div>
 </div>

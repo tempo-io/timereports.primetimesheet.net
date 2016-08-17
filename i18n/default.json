@@ -58,6 +58,10 @@
     "4diff": "Variance",
     "5progress": "Progress",
 
+    "1started": "Started",
+    "2timespent": "Elapsed",
+    "3action": "Actions",
+
     "Time Reports Config": "Time Reports Configuration",
     "Configure Timesheet Reports and Gadgets Add-On": "Configure Timesheet Reports and Gadgets Add-On.",
     "All changes will be saved automatically": "All changes will be saved automatically.",
