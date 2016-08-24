@@ -71,6 +71,7 @@
     "Weekend Type": "Weekend Type",
     "Pretty Duration": "Pretty Duration",
     "Disable Problem Reporter": "Disable Problem Reporter",
+    "Track Support Data": "Track Support Data",
     "Maximum Fraction Digits": "Maximum Fraction Digits",
     "saved successfully": "saved successfully.",
     "description.Auditors Groups": "Only users of the selected groups will be allowed to see time spent by other users.",
@@ -80,6 +81,7 @@
     "description.Pretty Duration": " If enabled, time spent is shown e.g. as '1d 2h 30m' instead of 10.5h.",
     "description.Disable Problem Reporter": "Do not suggest to report unexpected errors.",
     "description.Maximum Fraction Digits": "Maximum Fraction Digits used to display hours",
+    "description.Track Support Data": "If enabled, you'll be able to save zip archive with support data files.",
 
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in auditors group.",
@@ -94,6 +96,8 @@
     "more options": "more options",
     "Delete worklog": "Delete worklog",
     "Edit worklog": "Edit worklog",
+    "Clear Support Data": "Clear Support Data",
+    "Support Files were successfully deleted": "Support Files were successfully deleted",
 
     "welcome.title": "Welcome to Time Reports and Gadgets Add-on",
     "welcome.subTitle": "Getting started with Time Reports Add-on",

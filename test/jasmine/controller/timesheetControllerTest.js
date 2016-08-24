@@ -65,6 +65,10 @@ describe("timesheetControllerTest", function() {
         module('talis.services.logging');
         module('configuration');
         module('timesheetApp');
+        angular.module('timesheetApp').service('flightRecorder', function() {
+            this.writeParams = function() {
+           };
+        });
         inject(function($timeout, $window, _$httpBackend_, applicationLoggingService) {
             AP.$timeout = $timeout;
             $httpBackend = _$httpBackend_;

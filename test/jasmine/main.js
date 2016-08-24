@@ -19,6 +19,7 @@ require([
     "app/controllers/worklogController",
     "app/services/pivottableService",
     "app/services/viewService",
+    "app/services/flightRecorderService",
     "app/directives/DrawHelper",
     "app/directives/timesheetDirectives",
     "app/filters/timesheetFilters",

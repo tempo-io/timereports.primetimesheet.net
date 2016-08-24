@@ -21,7 +21,7 @@ AP = {
       } else if (options.url.match(/\/user\?.*?=admin/)) {
         options.success(UserAdminData);
       } else if (options.url.match(/\/user/)) {
-        options.success({name: 'noSuchUser'});
+        options.success(UserData);
       } else if (options.url.match(/\/filter/)) {
         options.success(FiltersData);
       } else if (options.url.match(/\/project/)) {
@@ -31,14 +31,20 @@ AP = {
       } else if (options.url.match(/\/groups\/picker/)) {
         options.success(groupsPickerDate);
       } else if (options.url.match(/\/properties\/configuration/)) { // hosted configuraiton
-        options.success({value: []});
+        options.success(PropertiesConfig);
       } else if (options.url.match(/\/properties/)) { // hosted keys
-        options.success({keys: [{key: 'configuration'}]});
-      } else if (m = options.url.match(/\/issue\/TIME-(\d+)\/worklog/)) {
-        var issueNumber = parseInt(m[1]);
-        var result = issueNumber < 5 ? WorklogData[4 - issueNumber] : WorklogData[issueNumber - 1];
-        options.success(angular.copy(result));
-      } else if (m = options.url.match(/\/issue\/TIME-(\d+)/)) {
+        options.success(Properties);
+      } else if (m = options.url.match(/\/issue\/\w*-(\d+)\/worklog/)) {
+          if (IssueWorklog) {
+              return IssueWorklog;
+          }
+          var issueNumber = parseInt(m[1]);
+          var result = issueNumber < 5 ? WorklogData[4 - issueNumber] : WorklogData[issueNumber - 1];
+          options.success(angular.copy(result));
+      } else if (m = options.url.match(/\/issue\/\w*-(\d+)/)) {
+          if (Issue) {
+              return Issue;
+          }
           var issueNumber = parseInt(m[1]);
           var result = issueNumber < 5 ? TimeData.issues[4 - issueNumber] : TimeData.issues[issueNumber - 1];
           options.success(angular.copy(result));
@@ -63,11 +69,23 @@ AP = {
           callback("{}");
         } 
       });
+    } else if (what == 'history') {
+        callback({
+            pushState: function(state) {
+                console.log('history state: ' + state);
+            }
+        })
     } else {
       throw new Error("Not implemented: " + what);
     }
   }
 };
+
+var UserData = {name: 'noSuchUser'};
+var PropertiesConfig = {value: []};
+var Properties = {keys: [{key: 'configuration'}]};
+var IssueWorklog, Issue;
+
 // https://docs.atlassian.com/jira/REST/6.2/#d2e2438
 // http://localhost:2990/jira/rest/api/2/search
 var TimeData = { "expand" : "schema,names",
@@ -1957,3 +1975,56 @@ var groupsPickerDate = {
     header: "Showing 2 of 2 matching groups",
     total: 2
 };
+
+var processFlightData = function() {
+    var params;
+    var hasRest = false;
+    var skipRest = false;
+    for (var i = 0; i < FLIGHT_RECORDER_DATA.length; i++) {
+        var item = FLIGHT_RECORDER_DATA[i];
+        if (item.action == 'parameters') {
+            if (hasRest) {
+                skipRest = true;
+                console.log('Parameters were changed. IGNORED.');
+            } else {
+                params = item.params;
+            }
+        }  else if (skipRest) {
+            console.log('SKIPPING: ' + item.request.url);
+        } else if (item.action == 'rest') {
+            hasRest = true;
+            var itemData = item.response || item.error;
+            if (item.request.url.match(/search/)) {
+                TimeData = itemData;
+            } else if (item.request.url.match(/\/user\/picker/)) {
+                userPickerData = itemData;
+            } else if (item.request.url.match(/\/user\?.*?=admin/)) {
+                UserAdminData = itemData;
+            } else if (item.request.url.match(/\/user/)) {
+                UserData = itemData;
+            } else if (item.request.url.match(/\/filter/)) {
+                FiltersData = itemData;
+            } else if (item.request.url.match(/\/project/)) {
+                ProjectsData = itemData;
+            } else if (item.request.url.match(/\/field/)) {
+                FieldsData = itemData;
+            } else if (item.request.url.match(/\/groups\/picker/)) {
+                groupsPickerDate = itemData;
+            } else if (item.request.url.match(/\/properties\/configuration/)) { // hosted configuraiton
+                PropertiesConfig = itemData;
+            } else if (item.request.url.match(/\/properties/)) { // hosted keys
+                Properties = itemData;
+            } else if (item.request.url.match(/\/issue\/.*\/worklog/)) {
+                IssueWorklog = itemData;
+            } else if (item.request.url.match(/\/issue\/.*/)) {
+                Issue = itemData;
+            }
+        }
+    }
+    if (params) {
+        document.location.href =
+            document.location.href.split('?')[0] + '?' + TimesheetUtils.buildParamString(params);
+    }
+};
+
+//$.getScript("/flightRecorderData.js", processFlightData);

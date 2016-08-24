@@ -119,6 +119,28 @@
     <div class="field-group">
         <span class="description">{{'description.Maximum Fraction Digits' | i18n}}</span>
     </div>
+    <div class="field-group">
+        <label for="select2-weekendType">{{'Track Support Data' | i18n}}</label>
+        <input id="trackSupportData"
+               type="checkbox"
+               class="checkbox"
+               ng-model="trackSupportData.val"
+               ng-change="saveTrackSupportData()">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="trackSupportDataSaveSuccess">
+            <strong>{{'Track Support Data' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="trackSupportDataClearSuccess">
+            {{'Support Files were successfully deleted' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description">
+            {{'description.Track Support Data' | i18n}}
+            <!--span ng-show="trackSupportData.val" title="{{'Clear Support Data' | i18n}}" class="fa fa-trash" ng-click="clearSupportData()"></span-->
+        </span>
+    </div>
 </form>
 
 <br/>

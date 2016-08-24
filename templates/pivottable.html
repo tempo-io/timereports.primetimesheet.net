@@ -173,11 +173,15 @@
         </label>
         <input type="text" class="text" id="worklog-issue" ng-model="worklog.issueKey" aui-issue-picker="worklog.issue" ng-change="startWork(true)">
     </div>
-    <div ng-if="!loaded">
+    <div>
         <br/>
-        <button class="aui-button" ng-click="execute()" ng-disabled="loading" ng-class="{disabled: loading}">
+        <button class="aui-button" ng-click="execute()" ng-if="!loaded" ng-disabled="loading" ng-class="{disabled: loading}">
             <span class="aui-icon aui-icon-small aui-iconfont-view"></span>
             View Report
+        </button>
+        <button class="aui-button" ng-click="downloadSupportData()" ng-if="downloadSupportData && !isGadget">
+            <!--span class="aui-icon aui-icon-small aui-iconfont-export-list"></span-->
+            Download support data
         </button>
     </div>
 </div>
