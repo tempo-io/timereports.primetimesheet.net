@@ -58,15 +58,15 @@
                         <issue-type issue="row.rowKey.issue" />
                     </td>
                     <td class="nav first issuekey" width="1%" ng-if="row.rowKey.issue" nowrap>
+                        <issue-key issue="row.rowKey.issue" />
+                    </td>
+                    <td class="nav first summary" colspan="2" width="100%" ng-if="row.rowKey.issue">
                         <span ng-if="row.rowKey.issue.fields.parent">
                             <issue-key issue="row.rowKey.issue.fields.parent" show-title="true" class="parentIssue" />
                         </span>
                         <span>
-                            <issue-key issue="row.rowKey.issue" />
+                            <issue-summary issue="row.rowKey.issue" />
                         </span>
-                    </td>
-                    <td class="nav first summary" colspan="2" width="100%" ng-if="row.rowKey.issue">
-                        <issue-summary issue="row.rowKey.issue" />
                     </td>
                     <td class="nav first priority" width="1%" ng-if="row.rowKey.issue">
                         <issue-priority issue="row.rowKey.issue" />
@@ -95,9 +95,6 @@
                         </span>
                     </td>
                     <td class="nav issuekey" width="1%">
-                        <span ng-if="data.rowKey._issue.fields.parent">
-                            <issue-key issue="data.rowKey._issue.fields.parent" show-title="true" class="parentIssue" />
-                        </span>
                         <span ng-if="data.rowKey._issue">
                             <issue-key issue="data.rowKey._issue" show-title="data.worklog" />
                         </span>
@@ -106,6 +103,9 @@
                         </span>
                     </td>
                     <td colspan="{{rowKeySize - 4}}" class="nav summary">
+                        <span ng-if="data.rowKey._issue.fields.parent">
+                            <issue-key issue="data.rowKey._issue.fields.parent" show-title="true" class="parentIssue" />
+                        </span>
                         <span ng-if="data.worklog._issue">
                             <issue-key issue="data.worklog._issue" show-title="true" />
                         </span>

@@ -94,7 +94,10 @@ th {
     padding: 5px 3px;
     white-space: nowrap;
 }
-#issuetable .parentIssue, .parentIssue2 {
+#issuetable td.summary {
+    white-space: normal;
+}
+#issuetable .summary span .parentIssue, .parentIssue2 {
     background: transparent url('/images/icon-separator.png') no-repeat scroll 100% 2px;
     color: #666;
     padding-right: 10px;
