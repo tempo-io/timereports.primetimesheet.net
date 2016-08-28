@@ -6,24 +6,13 @@ header {
   height: 300px;
   width: 600px;
 }
-@media (min-width: 1000px) {
-  .is-not-gadget .aui-page-panel-inner {
-    width: 900px;
-  }
-}
 @media (min-width: 1200px) { 
-  .is-not-gadget .aui-page-panel-inner {
-    width: 1100px;
-  }
   #placeholder {
     height: 400px;
     width: 800px;
   }
 }
 @media (min-width: 1400px) { 
-  .is-not-gadget .aui-page-panel-inner {
-    width: 1300px;
-  }
   #placeholder {
     height: 500px;
     width: 1000px;
@@ -35,9 +24,6 @@ header {
 .aui-page-panel-inner .aui-page-panel-nav-empty {
     width: 25px;
     display: table-cell;
-}
-#issuetable {
-  width: 100%;
 }
 input.ng-dirty.ng-invalid {
   color: #d04437;
@@ -136,8 +122,11 @@ th {
     vertical-align: bottom;
     padding: 3px;
 }
-#slider-wrapper {
-    min-width: 300px;
+.is-not-gadget #slider-wrapper {
+    width: 600px;
+}
+.is-gadget #slider-wrapper {
+    width: 300px;
 }
 .rowHeader th, .issuetable .colHeaderLink {
     border-bottom: 1px solid #BBBBBB;

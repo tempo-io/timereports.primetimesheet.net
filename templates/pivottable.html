@@ -60,7 +60,7 @@
                     <td class="nav first issuekey" width="1%" ng-if="row.rowKey.issue" nowrap>
                         <issue-key issue="row.rowKey.issue" />
                     </td>
-                    <td class="nav first summary" colspan="2" width="100%" ng-if="row.rowKey.issue">
+                    <td class="nav first summary" colspan="2" ng-if="row.rowKey.issue">
                         <span ng-if="row.rowKey.issue.fields.parent">
                             <issue-key issue="row.rowKey.issue.fields.parent" show-title="true" class="parentIssue" />
                         </span>
@@ -74,7 +74,7 @@
                     <td class="nav first" width="1%" ng-if="row.rowKey.field" nowrap>
                         <issue-field field="row.rowKey.project" ng-if="row.rowKey.project" />
                     </td>
-                    <td class="nav first" colspan="4" width="100%" ng-if="row.rowKey.field" nowrap>
+                    <td class="nav first" colspan="4" ng-if="row.rowKey.field" nowrap>
                         <issue-field field="row.rowKey.field" />
                     </td>
                     <td class="nav first" nowrap ng-repeat="field in row.moreFields">
