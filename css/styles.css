@@ -137,7 +137,7 @@ th {
     padding: 3px;
 }
 #slider-wrapper {
-    min-width: 100px;
+    min-width: 300px;
 }
 .rowHeader th, .issuetable .colHeaderLink {
     border-bottom: 1px solid #BBBBBB;
