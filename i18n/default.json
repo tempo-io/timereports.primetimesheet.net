@@ -51,6 +51,7 @@
     "param.filterOrProjectId.project" : "Project: %s",
     "param.filterOrProjectId.filter" : "Filter: %s",
     "param.group" : "Group: %s",
+    "param.jql": "JQL: %s",
 
     "1timeoriginalestimate": "Original Estimate",
     "2esttimeremaining": "Est. Time Remaining",
