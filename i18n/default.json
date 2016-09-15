@@ -87,6 +87,8 @@
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in auditors group.",
     "error.restriction.licenseError": "License is not Active.",
+    "error.startDate.afterNow": "The Start Date is in the future.",
+    "error.startDate.afterEnd": "The Start Date is later than the End Date.",
 
     "Loading": "Loading...",
     "Configure": "Configure",

@@ -301,3 +301,9 @@ label .aui-icon {
     vertical-align: baseline;
     width: 100%;
 }
+ul.errors {
+    color: #d04437;
+    font-weight: bold;
+    list-style-type: none;
+    padding-left: 0
+}
