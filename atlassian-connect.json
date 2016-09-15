@@ -37,6 +37,16 @@
                 "condition": "user_is_logged_in"
             }]
         },
+        "postInstallPage": {
+            "name": {
+                "value": "Welcome to Time Reports and Gadgets Add-on"
+            },
+            "url": "/timereports.html?welcome=true&v=2",
+            "key": "welcome",
+            "conditions": [{
+                "condition": "user_is_logged_in"
+            }]
+        },
         "jiraReports": [{
             "url": "timereports.html?project.key={project.key}&v=2",
             "weight": 100,
@@ -108,6 +118,29 @@
             "context": "addon",
             "target": {
                 "type": "dialog"
+            }
+        }, {
+            "key": "timereports-search",
+            "location": "jira.navigator.pluggable.items",
+            "weight": 9999,
+            "name": {
+                "value": "Time Reports"
+            },
+            "icon": {
+                "width": 16,
+                "height": 16,
+                "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDMuMS4xICg4NzYxKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KIDx0aXRsZT5yZXBvcnRzPC90aXRsZT4KIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiIGhlaWdodD0iMTgiIHdpZHRoPSIxOCIgeT0iLTEiIHg9Ii0xIi8+CiA8L2c+CiA8Zz4KICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+CiAgPGcgZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJub25lIiBpZD0iUGFnZS0xIj4KICAgPGcgc3Ryb2tlPSJudWxsIiBmaWxsPSIjMzMzMzMzIiBpZD0icmVwb3J0cyI+CiAgICA8cGF0aCBzdHJva2U9Im51bGwiIGlkPSJTaGFwZSIgZD0ibTQuMjk0MTE4LDEuOTkwMTk1bDAsMTIuMzUyOTQybC0yLjQzMDIzNSwwbC0wLjAzNzg4MiwtMTIuMzUyOTQybDIuNDY4MTE4LDBsMCwwem0wLjgyMzUyOSwtMC44MjM1MjlsLTQuMTE3NjQ3LDBsMC4wNDI4MjQsMTQuMDAwMDAxbDQuMDc0ODI0LDBsMCwtMTQuMDAwMDAxbDAsMHoiLz4KICAgIDxwYXRoIHN0cm9rZT0ibnVsbCIgaWQ9IlNoYXBlIiBkPSJtOS4yMzUyOTUsNi4xMDc4NDNsMCw4LjIzNTI5NWwtMi40MzEwNTksMGwtMC4wMzYyMzUsLTguMjM1Mjk1bDIuNDY3Mjk0LDBsMCwwem0wLjgyMzUyOSwtMC44MjM1MjlsLTQuMTE3NjQ3LDBsMC4wNDI4MjQsOS44ODIzNTNsNC4wNzQ4MjQsMGwwLC05Ljg4MjM1M2wwLDB6Ii8+CiAgICA8cGF0aCBzdHJva2U9Im51bGwiIGlkPSJTaGFwZSIgZD0ibTE0LjE3NjQ3MSwxMC4yMjU0OWwwLDQuMTE3NjQ3bC0yLjQzMzUzLDBsLTAuMDMwNDcxLC00LjExNzY0N2wyLjQ2NCwwbDAsMHptMC44MjM1MjksLTAuODIzNTI5bC00LjExNzY0NywwbDAuMDQyODI0LDUuNzY0NzA2bDQuMDc0ODI0LDBsMCwtNS43NjQ3MDZsMCwweiIvPgogICA8L2c+CiAgPC9nPgogPC9nPgo8L3N2Zz4="
+            },
+            "context": "addon",
+            "url": "/timereports.html?dialog=timereports&v=2",
+            "target": {
+                "type": "dialog",
+                "options": {
+                    "header": {
+                        "value": "Time Reports"
+                    },
+                    "width": "320px"
+                }
             }
         }, {
             "name": {
