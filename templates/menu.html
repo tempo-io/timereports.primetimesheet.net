@@ -7,7 +7,7 @@
 	        <input ng-model="viewOptions.selected" aui-multi-select-picker="false" ng-value-changed-func="viewChanged" ng-options-data="viewOptions" update-event="viewUpdated" type="text"/>
         </ul>
         <div class="aui-nav-heading" ng-hide="reportDialog && reportParamsObject.jql != undefined"><strong>{{ 'Filter or Project' | i18n }}</strong></div>
-        <input ng-model="filterOrProjectId" ng-hide="reportDialog && reportParamsObject.jql != undefined" ng-disabled="disableFilterProject" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" update-event="projectUpdated" type="text"/>
+        <input ng-model="filterOrProjectId" ng-hide="reportDialog && reportParamsObject.jql != undefined" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" update-event="projectUpdated" type="text"/>
         <div class="aui-nav-heading"><strong>{{ 'Options' | i18n }}</strong></div>
             <ul class="aui-nav options">
                 <li ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
