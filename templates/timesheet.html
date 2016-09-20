@@ -107,18 +107,18 @@
                             <issue-type issue="data.rowKey._issue" />
                         </span>
                     </td>
-                    <td class="nav issuekey">
+                    <td class="nav summary">
+                        <span ng-if="data.rowKey._issue.fields.parent">
+                            <issue-key issue="data.rowKey._issue.fields.parent" show-title="true" class="parentIssue" />
+                        </span>
                         <span ng-if="data.rowKey._issue">
-                            <issue-key issue="data.rowKey._issue" show-title="true" />
+                            <issue-key issue="data.rowKey._issue" />
                         </span>
                         <span ng-if="data.rowKey._issue">
                             <issue-summary issue="data.rowKey._issue" />
                         </span>
                     </td>
                     <td colspan="{{rowKeySize - 4}}" class="nav summary">
-                        <span ng-if="data.rowKey._issue.fields.parent">
-                            <issue-key issue="data.rowKey._issue.fields.parent" show-title="true" class="parentIssue" />
-                        </span>
                         <span ng-if="data.worklog._issue">
                             <issue-key issue="data.worklog._issue" show-title="true" />
                         </span>

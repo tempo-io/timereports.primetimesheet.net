@@ -79,6 +79,7 @@ th {
     line-height: 1.286;
     padding: 5px 3px;
     white-space: nowrap;
+    vertical-align: top;
 }
 #issuetable td.summary {
     white-space: normal;
