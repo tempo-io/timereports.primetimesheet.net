@@ -24,11 +24,11 @@
                 </li>
                 <li ng-if="pivotTableType != 'TimeTracking'">
                     <label for="start-date-picker">{{'Start Date' | i18n}}</label>
-                    <input ng-model="startDate" id="start-date-picker" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="select"/>
+                    <input ng-model="startDate.value" id="start-date-picker" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="select"/>
                 </li>
                 <li ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
                     <label for="end-date-picker">{{'End Date' | i18n}}</label>
-                    <input ng-model="endDate" id="end-date-picker" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
+                    <input ng-model="endDate.value" id="end-date-picker" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
                 </li>
                 <li ng-if="pivotTableType == 'Timesheet'">
                     <label>{{'Show Weekends' | i18n}}</label>

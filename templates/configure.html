@@ -141,6 +141,28 @@
             <!--span ng-show="trackSupportData.val" title="{{'Clear Support Data' | i18n}}" class="fa fa-trash" ng-click="clearSupportData()"></span-->
         </span>
     </div>
+    <div class="field-group">
+        <label for="workLabels">{{'Work Labels' | i18n}}</label>
+        <div style="margin-bottom: 3px;">
+            <span ng-repeat="label in workLabels.val" class="aui-label aui-label-closeable">
+                {{label}}
+                <span ng-click="removeWorkLabel($index)" class="aui-icon aui-icon-close"></span>
+            </span>
+        </div>
+        <input id="workLabels" ng-init="newWorkLabel=''" ng-model="newWorkLabel" class="text" title="{{'New Work Label' | i18n}}" enter-pressed="addWorkLabel(newWorkLabel);newWorkLabel='';"/>
+        <span class="fa fa-plus-square newWorkLabel" ng-click="addWorkLabel(newWorkLabel);newWorkLabel='';"></span>
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="workLabelsSaveSuccess">
+            <strong>{{'Work Labels' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+        <div class="aui-message aui-message-error msg-overlay"
+             ng-show="workLabelsSaveError">
+            {{'error.workLabel.emptyUnique' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description">{{'description.Work Labels' | i18n}}</span>
+    </div>
 </form>
 
 <br/>

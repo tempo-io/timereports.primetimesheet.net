@@ -1,0 +1,39 @@
+.textcomplete-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+li.textcomplete-item.active > a,
+li.textcomplete-item.active > a:hover,
+li.textcomplete-item.active > a:focus {
+    background-color: #428bca;
+    color: #fff;
+    outline: 0 none;
+    text-decoration: none;
+}
+
+li.textcomplete-item > a {
+    clear: both;
+    color: #333;
+    display: block;
+    font-weight: 400;
+    line-height: 1.42857;
+    padding: 3px 20px;
+    white-space: nowrap;
+    cursor: pointer;
+}
