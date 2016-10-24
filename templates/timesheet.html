@@ -73,6 +73,9 @@
                         <span ng-if="row.rowKey.issue.fields.parent">
                             <issue-key issue="row.rowKey.issue.fields.parent" show-title="true" class="parentIssue" />
                         </span>
+                        <span ng-if="row.rowKey.issue.fields[epicLinkField.id]">
+                            <a href="{{hostBaseUrl}}/browse/{{row.rowKey.issue.fields[epicLinkField.id]}}" class="parentIssue" ng-bind="row.rowKey.issue.fields[epicLinkField.id]"></a>
+                        </span>
                         <span>
                             <issue-summary issue="row.rowKey.issue" />
                         </span>
