@@ -71,6 +71,9 @@ th {
 .issuekey {
     white-space: nowrap;
 }
+.fixed {
+    text-decoration: line-through;
+}
 #issuetable th {
     color: #999999;
     font-weight: 400;

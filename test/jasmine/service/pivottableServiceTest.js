@@ -526,7 +526,7 @@ describe("pivottableServiceTest", function() {
 
     it('getQuery', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var fields = 'fields=project,issuetype,summary,priority,status,parent,issuelinks';
+        var fields = 'fields=project,issuetype,resolution,summary,priority,status,parent,issuelinks';
         var maxResults = '&maxResults=1000';
         var query = pivottableService.getQuery({}, {pivotTableType: 'IssueWorkedTimeByUser', sumSubTasks: true, startDate: '2015-01-01', moreFields: ['timespent']});
         expect(query).toBe(fields + ',worklog,customfield_10007,timespent,subtasks' + maxResults + '&jql=' + encodeURIComponent('worklogDate>="2014-12-31"'));
