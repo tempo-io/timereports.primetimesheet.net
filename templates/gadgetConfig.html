@@ -44,11 +44,11 @@
             <label>{{'All Users' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)" />
 		</div>
-		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
+		<div class="field-group" ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
 			<label>{{'Groups' | i18n}}</label>
 			<input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>
 		</div>
-		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
+		<div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
             <label>{{'Group By Field' | i18n}}</label>
 			<select class="select"
 			        title="database select"
@@ -58,7 +58,7 @@
 			        aui-select2>
 			</select>
 		</div>
-		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
+		<div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
                <label>{{'Collapse Field Groups' | i18n}}</label>
                <input class="checkbox" type="checkbox" ng-model="collapseFieldGroups" ng-change="collapseFieldGroupsChange(collapseFieldGroups)" />
 		</div>
