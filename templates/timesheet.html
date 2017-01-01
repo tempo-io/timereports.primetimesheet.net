@@ -148,7 +148,7 @@
                 <!-- total block -->
                 <tr class="rowFooter" ng-hide="loading || !loaded">
                     <td colspan="{{rowKeySize}}" class="nav total">
-                        {{'Total' | i18n}}:
+                        {{'Total' | i18n}}&nbsp;{{pivotTable.num != 1 ? 'issues' : 'issue' | i18n:pivotTable.num}}:
                     </td>
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields">
                         &nbsp;

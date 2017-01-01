@@ -39,6 +39,8 @@
 
     "Today": "Today",
     "Total" : "Total",
+    "issues" : "(%s issues)",
+    "issue" : "(1 issue)",
 
     "param.user" : "User: %s",
     "param.allUsers" : "All Users",
