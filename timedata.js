@@ -32,6 +32,8 @@ AP = {
         options.success(groupsPickerDate);
       } else if (options.url.match(/\/properties\/configuration/)) { // hosted configuraiton
         options.success(PropertiesConfig);
+      } else if (options.url.match(/\/configuration/)) {
+        options.success({timeTrackingEnabled: true});
       } else if (options.url.match(/\/properties/)) { // hosted keys
         options.success(Properties);
       } else if (m = options.url.match(/\/issue\/\w*-(\d+)\/worklog/)) {
