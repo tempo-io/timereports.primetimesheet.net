@@ -2,7 +2,7 @@
     <div class="section-header" ng-hide="isGadget">
         <div ng-init="showButtons=false" ng-mouseover="showButtons=!$form.$visible" ng-mouseleave="showButtons=false">
             <div editable-text="currentView.name" e-required onshow="$parent.$form=$form" onhide="$parent.$form=undefined" onbeforesave="$parent.showButtons=true" onaftersave="viewNameChanged()">
-	            <h5>{{currentView.name || pivotTableType}}</h5>
+                <h5>{{currentView.name || pivotTableType}}</h5>
                 <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
             </div>
             <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
@@ -162,7 +162,9 @@
                 </tr>
                 <tr ng-show="loaded && loading">
                     <td colspan="{{rowKeySize + 1}}">
-                        {{'Loading' | i18n}}&nbsp;<span class="aui-icon aui-icon-wait">Wait</span>
+                        <div id="loading" class="aui-progress-indicator">
+                            <span class="aui-progress-indicator-value"></span>
+                        </div>
                     </td>
                 </tr>
             </tbody>

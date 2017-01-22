@@ -148,7 +148,9 @@
                 </tr>
                 <tr ng-show="loaded && loading">
                     <td colspan="{{rowKeySize + 1}}">
-                        {{'Loading' | i18n}}&nbsp;<span class="aui-icon aui-icon-wait">Wait</span>
+                        <div id="loading" class="aui-progress-indicator">
+                            <span class="aui-progress-indicator-value"></span>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -170,7 +172,7 @@
     </div>
     <div ng-if="canLogWork && loaded && !loading && isStartDateToday">
         <label for="log-work-issue">
-	        <span class="aui-icon aui-icon-small aui-iconfont-add">Start Work</span>
+            <span class="aui-icon aui-icon-small aui-iconfont-add">Start Work</span>
         </label>
         <input type="text" class="text" id="worklog-issue" ng-model="worklog.issueKey" aui-issue-picker="worklog.issue" ng-change="startWork(true)">
     </div>

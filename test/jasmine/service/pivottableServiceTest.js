@@ -301,9 +301,12 @@ describe("pivottableServiceTest", function() {
         };
 
         var result = [];
+        var progress = []
 
         pivottableService.onAllIssues('', function(data) {
             Array.prototype.push.apply(result, data.issues);
+        }).then(null, null, function(percent) {
+            progress.push(percent.toFixed(2))
         });
 
         $timeout.flush();
@@ -315,6 +318,7 @@ describe("pivottableServiceTest", function() {
         $timeout.flush();
         $log.assertEmpty();
         expect(result.length).toEqual(6); // the same TimeData returned three times
+        expect(progress).toEqual(['33.33', '66.67']);
         expect($timeout.flush).toThrow();
     }));
 

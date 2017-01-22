@@ -66,7 +66,9 @@
                 </div>
             </tr>
             <div ng-show="loading">
-                {{'Loading' | i18n}}&nbsp;<span class="aui-icon aui-icon-wait">Wait</span>
+                <div id="loading" class="aui-progress-indicator">
+                    <span class="aui-progress-indicator-value"></span>
+                </div>
             </div>
         </div>
 

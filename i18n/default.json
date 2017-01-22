@@ -96,7 +96,6 @@
     "error.startDate.afterEnd": "The Start Date is later than the End Date.",
     "error.workLabel.emptyUnique": "Work Label must not be empty and be unique",
 
-    "Loading": "Loading...",
     "Configure": "Configure",
     "Go to": "Go to",
     "Log Work for": "Log Work for",

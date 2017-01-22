@@ -1,4 +1,4 @@
-AJS = window.AJS || {$: window.$};
+AJS = window.AJS || {$: window.$, progressBars: {update: function() {}}};
 // simulate running in atlassian-connect container
 AP = {
   getUser: function(callback) {
