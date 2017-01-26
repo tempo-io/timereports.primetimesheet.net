@@ -87,7 +87,7 @@
     "description.Disable Problem Reporter": "Do not suggest to report unexpected errors.",
     "description.Maximum Fraction Digits": "Maximum Fraction Digits used to display hours",
     "description.Track Support Data": "If enabled, you'll be able to save zip archive with support data files.",
-    "description.Work Labels": "Editable list of available Work Labels",
+    "description.Work Labels": "Editable list of labels that can be used in worklog comment as hashtags, for grouping.",
 
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in auditors group.",
