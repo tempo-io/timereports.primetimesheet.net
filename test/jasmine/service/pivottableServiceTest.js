@@ -318,7 +318,7 @@ describe("pivottableServiceTest", function() {
         $timeout.flush();
         $log.assertEmpty();
         expect(result.length).toEqual(6); // the same TimeData returned three times
-        expect(progress).toEqual(['33.33', '66.67']);
+        expect(progress).toEqual(['0.33', '0.67']);
         expect($timeout.flush).toThrow();
     }));
 
