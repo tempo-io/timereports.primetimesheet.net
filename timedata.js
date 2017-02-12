@@ -51,8 +51,9 @@ AP = {
           var result = issueNumber < 5 ? TimeData.issues[4 - issueNumber] : TimeData.issues[issueNumber - 1];
           options.success(angular.copy(result));
       }
-    }, 0);
+    }, this.$timeoutDelay);
   },
+  $timeoutDelay: 0,
   resize: function() {
   },
   getTimeoutFunc: function() {

@@ -66,8 +66,8 @@ describe("timesheetControllerTest", function() {
         module('configuration');
         module('timesheetApp');
         angular.module('timesheetApp').service('flightRecorder', function() {
-            this.writeParams = function() {
-           };
+            this.writeParams = this.setEnabled = function() {
+            };
         });
         inject(function($timeout, $window, _$httpBackend_, applicationLoggingService) {
             AP.$timeout = $timeout;
@@ -431,5 +431,43 @@ describe("timesheetControllerTest", function() {
         expect(scope.rowKeySize).toBe(1);
         expect(scope.group).toEqual(['group1', 'group2']);
         checkOptions(scope);
+    }));
+
+    it('concurrent', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        AP.$timeoutDelay = 100;
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {user: 'admin'},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {key: 'admin'},
+            projectKey: 'DEMO'
+        });
+
+        $timeout.flush(200); // init
+        expect(scope.loading).toBe(1);
+
+        scope.weekSumChange();
+        expect(scope.loading).toBe(2); // no concurrent execute!
+
+        $timeout.flush(100); // concurrent init and execute
+        expect(scope.loading).toBe(0);
+        $timeout.verifyNoPendingTasks();
+
+        expect(scope.pivotTable).toBeDefined();
+        expect(scope.pivotTable.pivotStrategy).toBeDefined();
+        expect(scope.pivotTable).toHaveRowsNumber(0);
+        expect(scope.pivotTable).toHaveColumnsNumber(1); // sum week
+        expect(scope.pivotTable.sum).toBe(0);
+        expect(scope.rowKeySize).toBe(1);
+        checkOptions(scope);
+
+        $httpBackend.flush();
+        $timeout.flush();
+
+        AP.$timeoutDelay = 0;
     }));
 });
