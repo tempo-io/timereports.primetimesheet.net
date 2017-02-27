@@ -241,7 +241,7 @@ a.disabled {
 .footer li {
     display: inline-block;
 }
-.footer li:after, pivot-cell span:after {
+.footer li:not(:last-child):after, pivot-cell span:after {
     content: "\b7";
     margin: 0 10px;
     speak: none;
