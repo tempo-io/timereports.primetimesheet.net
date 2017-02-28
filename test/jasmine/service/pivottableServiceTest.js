@@ -218,7 +218,8 @@ describe("pivottableServiceTest", function() {
             result = _issue;
         });
 
-        $timeout.flush();
+        $timeout.flush(); // $q.when
+        $timeout.flush(); // AP.request
 
         expect(result).toBeDefined();
         expect(result.fields.worklog.worklogs.length).toEqual(22);
@@ -301,12 +302,9 @@ describe("pivottableServiceTest", function() {
         };
 
         var result = [];
-        var progress = []
 
         pivottableService.onAllIssues('', function(data) {
             Array.prototype.push.apply(result, data.issues);
-        }).then(null, null, function(percent) {
-            progress.push(percent.toFixed(2))
         });
 
         $timeout.flush();
@@ -318,7 +316,6 @@ describe("pivottableServiceTest", function() {
         $timeout.flush();
         $log.assertEmpty();
         expect(result.length).toEqual(6); // the same TimeData returned three times
-        expect(progress).toEqual(['0.28', '0.62', '0.95']);
         expect($timeout.flush).toThrow();
     }));
 
