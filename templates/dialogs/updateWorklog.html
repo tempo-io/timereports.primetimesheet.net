@@ -38,12 +38,20 @@
                 </div>
                 <div class="security-level">
                     <button class="aui-button aui-button-link security-level-drop-icon aui-icon aui-icon-small aui-dropdown2-trigger aui-style-default" aria-owns="security-level" aria-haspopup="true" ng-class="{'aui-iconfont-unlocked': !worklog.visibilityRole, 'aui-iconfont-locked': worklog.visibilityRole}">Worklog Visibility</button>
-                    <span class="current-level" ng-if="worklog.visibilityRole">Restricted to <span class="red">{{worklog.visibilityRole}}</span></span>
-                    <span class="current-level" ng-if="!worklog.visibilityRole">Viewable by All Users</span>
+                    <span class="current-level" ng-if="worklog.visibilityGroup || worklog.visibilityRole">Restricted to <span class="red">{{worklog.visibilityGroup || worklog.visibilityRole}}</span></span>
+                    <span class="current-level" ng-if="!(worklog.visibilityGroup || worklog.visibilityRole)">Viewable by All Users</span>
                     <div id="security-level" class="aui-style-default aui-dropdown2">
                         <ul class="aui-list-truncate">
-                            <li><a ng-click="worklog.visibilityRole = null" class="aui-button-primary">All Users</a></li>
+                            <li><a ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = null" class="aui-button-primary">All Users</a></li>
                         </ul>
+                        <div class="aui-dropdown2-section">
+                            <div class="aui-dropdown2-heading">
+                                <strong>Groups</strong>
+                            </div>
+                            <ul class="aui-list-truncate">
+                                <li ng-repeat="group in groups"><a ng-click="worklog.visibilityGroup = group.name" ng-bind="group.name" class="aui-button-primary"></a></li>
+                            </ul>
+                        </div>
                         <div class="aui-dropdown2-section">
                             <div class="aui-dropdown2-heading">
                                 <strong>Project Roles</strong>
