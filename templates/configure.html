@@ -80,19 +80,21 @@
         <span class="description">{{'description.Weekend Type' | i18n}}</span>
     </div>
     <div class="field-group">
-        <label for="select2-weekendType">{{'Pretty Duration' | i18n}}</label>
-        <input id="prettyDuration"
-                type="checkbox"
-                class="checkbox"
-                ng-model="prettyDuration.val"
-                ng-change="savePrettyDuration()">
+        <label for="select2-durationType">{{'Duration Type' | i18n}}</label>
+        <select id="select2-durationType"
+                class="select"
+                title="{{'Duration Type' | i18n}}"
+                ng-model="durationType.val"
+                ng-change="saveDurationType()"
+                ng-options="item.id as item.label for item in allDurationTypes">
+        </select>
         <div class="aui-message aui-message-success msg-overlay"
-             ng-show="prettyDurationSaveSuccess">
-            <strong>{{'Pretty Duration' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+             ng-show="durationTypeSaveSuccess">
+            <strong>{{'Duration Type' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
         </div>
     </div>
     <div class="field-group">
-        <span class="description">{{'description.Pretty Duration' | i18n}}</span>
+        <span class="description">{{'description.Duration Type' | i18n}}</span>
     </div>
     <div class="field-group" ng-show="problemReporter">
         <label for="onErrorIgnore">{{'Disable Problem Reporter' | i18n}}</label>

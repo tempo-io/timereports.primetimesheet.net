@@ -130,7 +130,8 @@ describe("timesheetControllerTest", function() {
                         parentIssueField: {},
                         auditorsGroups: {},
                         weekendType: {},
-                        prettyDuration: false
+                        prettyDuration: {val: true},
+                        durationType: {}
                     });
                     return deferred.promise;
                 }
