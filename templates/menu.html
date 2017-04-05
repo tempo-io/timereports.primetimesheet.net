@@ -73,6 +73,10 @@
                     <label>{{'Sum SubTasks' | i18n}}</label>
                     <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
                 </li>
+                <li ng-if="pivotTableType == 'Timesheet'">
+                    <label>{{'Show Empty Issues' | i18n}}</label>
+                    <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!(filterOrProjectId || reportParamsObject.jql)"/>
+                </li>
             </ul>
         <div class="aui-nav-heading" ng-if="!reportDialog"></div>
 

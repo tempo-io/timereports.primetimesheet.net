@@ -77,6 +77,10 @@
                <label>{{'Sum SubTasks' | i18n}}</label>
                <input class="checkbox" type="checkbox" ng-model="sumSubTasks" ng-change="sumSubTasksChange(sumSubTasks)" />
 		</div>
+		<div class="field-group" ng-if="pivotTableType == 'Timesheet'">
+               <label>{{'Show Empty Issues' | i18n}}</label>
+               <input class="checkbox" type="checkbox" ng-model="includeEmpty" ng-change="includeEmptyChange(includeEmpty)" ng-disabled="!filterOrProjectId" />
+		</div>
         <div class="buttons-container">
             <div class="buttons">
 				<button class="aui-button aui-button-primary" ng-click="saveGadgetConfig()">Save</button>
