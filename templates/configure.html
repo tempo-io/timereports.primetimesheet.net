@@ -122,7 +122,7 @@
         <span class="description">{{'description.Maximum Fraction Digits' | i18n}}</span>
     </div>
     <div class="field-group">
-        <label for="select2-weekendType">{{'Track Support Data' | i18n}}</label>
+        <label for="trackSupportData">{{'Track Support Data' | i18n}}</label>
         <input id="trackSupportData"
                type="checkbox"
                class="checkbox"
@@ -164,6 +164,23 @@
     </div>
     <div class="field-group">
         <span class="description">{{'description.Work Labels' | i18n}}</span>
+    </div>
+    <div class="field-group" ng-if="cacheWorklog">
+        <label for="cacheWorklog">{{'Cache Worklog' | i18n}}</label>
+        <input id="cacheWorklog"
+               type="checkbox"
+               class="checkbox"
+               ng-model="cacheWorklog.val"
+               ng-change="saveCacheWorklog()">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="cacheWorklogSaveSuccess">
+            <strong>{{'Cache Worklog' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group" ng-if="cacheWorklog">
+        <span class="description">
+            {{'description.Cache Worklog' | i18n}}
+        </span>
     </div>
 </form>
 

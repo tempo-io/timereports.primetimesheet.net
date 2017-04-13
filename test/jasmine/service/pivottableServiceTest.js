@@ -1,15 +1,20 @@
 describe("pivottableServiceTest", function() {
     beforeEach(function() {
         module('timesheetApp');
-        inject(function ($timeout, $window, _$httpBackend_, pivottableService, applicationLoggingService) {
+        inject(function ($timeout, $window, _$httpBackend_) {
             AP.$timeout = $timeout;
             $window.i18nDefault = 'i18n/default.json';
             _$httpBackend_.whenGET("i18n/default.json").respond({});
             _$httpBackend_.flush();
+        });
+        AP.requestBak = AP.request;
+    });
+
+    beforeEach(function() {
+        inject(function (pivottableService, applicationLoggingService) {
             pivottableService.allFields = FieldsData;
             applicationLoggingService.debug = function() {};
-        })
-        AP.requestBak = AP.request;
+        });
     });
 
     afterEach(function() {
@@ -525,19 +530,176 @@ describe("pivottableServiceTest", function() {
         expect(pivottableService.allIssues.length).toBe(6);
     }));
 
-    it('getQuery', inject(function($timeout, pivottableService) {
+    it('cacheWorklog', inject(function($timeout, $httpBackend, $log, pivottableService, configurationService) {
         expect(pivottableService).toBeDefined();
-        var fields = 'fields=project,issuetype,resolution,summary,priority,status,parent,issuelinks';
-        var maxResults = '&maxResults=1000';
-        var query = pivottableService.getQuery({}, {pivotTableType: 'IssueWorkedTimeByUser', sumSubTasks: true, startDate: '2015-01-01', moreFields: ['timespent']});
-        expect(query).toBe(fields + ',worklog,customfield_10007,timespent,subtasks' + maxResults + '&jql=' + encodeURIComponent('worklogDate>="2014-12-31"'));
-        var query = pivottableService.getQuery({}, {pivotTableType: 'TimeTracking', sumSubTasks: true, moreFields: ['timespent']});
-        expect(query).toBe(fields + ',timeoriginalestimate,timeestimate,timespent,customfield_10007,timespent,subtasks' + maxResults);
-        var query = pivottableService.getQuery({}, {pivotTableType: 'IssuePassedTimeByStatus', startDate: '2015-01-01'});
-        expect(query).toBe(fields + ',customfield_10007,created' + maxResults + '&expand=changelog&jql=(' + encodeURIComponent('status changed after "2014-12-31" or created>"2014-12-31"') + ')');
-        var query = pivottableService.getQuery({}, {pivotTableType: 'IssuePassedTimeByStatus', username: 'admin'});
-        expect(query).toBe(fields + ',customfield_10007,created' + maxResults + '&expand=changelog&jql=(' + encodeURIComponent('status changed by "admin" or reporter="admin"') + ')');
-        var query = pivottableService.getQuery({}, {pivotTableType: 'IssuePassedTimeByStatus', groups: ['jira-users']});
-        expect(query).toBe(fields + ',customfield_10007,created' + maxResults + '&expand=changelog&jql=(' + encodeURIComponent('status changed by membersOf("jira-users") or reporter in membersOf("jira-users")') + ')');
+        expect(configurationService).toBeDefined();
+
+        // cache disabled
+
+        configurationService.getConfiguration().then(function(config) {
+            expect(pivottableService.clearWorklogCache(config)).not.toBeDefined();
+        });
+
+        $timeout.flush();
+        $log.assertEmpty();
+
+        // cache initialization
+
+        AP.request = function(options) {
+            if (options.url.match(/properties\/configuration/)) {
+                options.success({key: 'configuration', value: [{key: 'cacheWorklog', val: true}]});
+            } else {
+                throw new Error('Unexpected call ' + options.url);
+            }
+        };
+
+        var now = Date.now() - 3600000;
+
+        configurationService.resetState();
+
+        configurationService.getConfiguration().then(function(config) {
+            window.localStorage.clear();
+            pivottableService.clearWorklogCache(config).then(function() {
+                expect(parseInt(window.localStorage.getItem('updatedSince'))).not.toBeLessThan(now);
+                expect(parseInt(window.localStorage.getItem('deletedSince'))).not.toBeLessThan(now);
+                now = window.localStorage.getItem('updatedSince');
+            });
+        });
+
+        $timeout.flush();
+        $log.assertEmpty();
+
+        // cache usage
+
+        var worklog1 = {
+            "comment" : "test comment 1",
+            "created" : "2013-12-05T00:00:00.000+0100",
+            "id" : "10000",
+            'issueId': "10999",
+            "started" : "2014-02-24T18:03:48.589+0100",
+            "timeSpent" : "1h",
+            "timeSpentSeconds" : 3600
+        };
+
+        var worklog = {
+            "maxResults" : 1,
+            "startAt" : 0,
+            "total" : 1,
+            "worklogs" : [worklog1]
+        };
+
+        var worklogCalled = 0;
+
+        AP.request = function(options) {
+            if (options.url.match(/properties\/configuration/)) {
+                options.success({key: 'configuration', value: [{key: 'cacheWorklog', val: true}]});
+            } else if (options.url.match('/updated\\?since=' + now)) {
+                options.success({values: [], until: now, lastPage: true});
+            } else if (options.url.match('deleted\\?since=' + now)) {
+                options.success({values: [], until: now, lastPage: true});
+            } else if (m = options.url.match(/\/issue\/TIME-999\/worklog/)) {
+                worklogCalled++;
+                options.success(JSON.stringify(worklog));
+            } else {
+                throw new Error('Unexpected call ' + options.url);
+            }
+        };
+
+        configurationService.getConfiguration().then(function(config) {
+            pivottableService.clearWorklogCache(config).then(function() {
+                var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'));
+                expect(cacheExpiry).toBeNull();
+                pivottableService.getIssueWorklog('TIME-999', 10999).then(function() {
+                    var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'));
+                    expect(cacheExpiry).not.toBeNull();
+                    expect(Object.keys(cacheExpiry).length).toEqual(1);
+                    pivottableService.getIssueWorklog('TIME-999', 10999).then(function() {
+                    });
+                });
+            })
+        });
+
+        $timeout.flush();
+        expect(worklogCalled).toEqual(1);
+        $log.assertEmpty();
+
+        // cache invalidation for updated worklog
+
+        AP.request = function(options) {
+            if (options.url.match('/updated\\?since=' + now)) {
+                options.success({values: [{worklogId: 10000}], until: now, lastPage: true});
+            } else if (options.url.match('deleted\\?since=' + now)) {
+                options.success({values: [], until: now, lastPage: true});
+            } else if (options.url.match('/worklog/list')) {
+                options.success([worklog1]);
+            } else if (m = options.url.match(/\/issue\/TIME-999\/worklog/)) {
+                worklogCalled++;
+                options.success(JSON.stringify(worklog));
+            } else {
+                throw new Error('Unexpected call ' + options.url);
+            }
+        };
+
+        configurationService.getConfiguration().then(function(config) {
+            pivottableService.clearWorklogCache(config).then(function() {
+                var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'));
+                expect(cacheExpiry).not.toBeNull();
+                expect(Object.keys(cacheExpiry).length).toEqual(0);
+                pivottableService.getIssueWorklog('TIME-999', 10999).then(function() {
+                    var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'));
+                    expect(cacheExpiry).not.toBeNull();
+                    expect(Object.keys(cacheExpiry).length).toEqual(1);
+                });
+            })
+        });
+
+        $timeout.flush();
+        expect(worklogCalled).toEqual(2);
+        $log.assertEmpty();
+
+        // cache invalidation for deleted worklog
+
+        AP.request = function(options) {
+            if (options.url.match('/updated\\?since=' + now)) {
+                options.success({values: [], until: now, lastPage: true});
+            } else if (options.url.match('deleted\\?since=' + now)) {
+                options.success({values: [{worklogId: 10000}], until: now, lastPage: true});
+            } else if (options.url.match('/worklog/list')) {
+                options.success([worklog1]);
+            } else if (m = options.url.match(/\/issue\/TIME-999\/worklog/)) {
+                worklogCalled++;
+                options.success(JSON.stringify(worklog));
+            } else {
+                throw new Error('Unexpected call ' + options.url);
+            }
+        };
+
+        configurationService.getConfiguration().then(function(config) {
+            pivottableService.clearWorklogCache(config).then(function() {
+                var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'));
+                expect(cacheExpiry).not.toBeNull();
+                expect(Object.keys(cacheExpiry).length).toEqual(0);
+                pivottableService.getIssueWorklog('TIME-999', 10999).then(function() {
+                    var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'));
+                    expect(cacheExpiry).not.toBeNull();
+                    expect(Object.keys(cacheExpiry).length).toEqual(1);
+                });
+            })
+        });
+
+        $timeout.flush();
+        expect(worklogCalled).toEqual(3);
+        $log.assertEmpty();
+
+        // cache expiry
+        var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'));
+        cacheExpiry[10999] = parseInt(now) - 3600000*24*7;
+        window.localStorage.setItem('cacheExpiry', JSON.stringify(cacheExpiry));
+        pivottableService.expireWorklogCache();
+        var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'));
+        expect(cacheExpiry).not.toBeNull();
+        expect(Object.keys(cacheExpiry).length).toEqual(0);
+        expect(window.localStorage.getItem('i10999')).toBeNull();
+        expect(window.localStorage.getItem('w10000')).toBeNull();
     }));
 });
