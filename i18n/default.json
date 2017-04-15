@@ -78,6 +78,7 @@
     "Maximum Fraction Digits": "Maximum Fraction Digits",
     "Work Labels": "Work Labels",
     "New Work Label": "New Work Label",
+    "Work Description Required": "Require Work Description",
     "Cache Worklog": "Cache Worklog",
     "saved successfully": "saved successfully.",
     "description.Auditors Groups": "Only users of the selected groups will be allowed to see time spent by other users.",
@@ -89,6 +90,7 @@
     "description.Maximum Fraction Digits": "Maximum Fraction Digits used to display hours",
     "description.Track Support Data": "If enabled, you'll be able to save zip archive with support data files.",
     "description.Work Labels": "Editable list of labels that can be used in worklog comment as hashtags, for grouping.",
+    "description.Work Description Required": "Require Work Description when adding or updating worklog.",
     "description.Cache Worklog": "If enabled, use local Storage for issues with more than 20 worklogs. Worklogs added last minute anywhere else will be missing in report.",
 
     "Denied": "Denied",

@@ -165,6 +165,21 @@
     <div class="field-group">
         <span class="description">{{'description.Work Labels' | i18n}}</span>
     </div>
+    <div class="field-group">
+        <label for="workDescriptionRequired">{{'Work Description Required' | i18n}}</label>
+        <input id="workDescriptionRequired"
+               type="checkbox"
+               class="checkbox"
+               ng-model="workDescriptionRequired.val"
+               ng-change="saveWorkDescriptionRequired()">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="workDescriptionRequiredSaveSuccess">
+            <strong>{{'Work Description Required' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description">{{'description.Work Description Required' | i18n}}</span>
+    </div>
     <div class="field-group" ng-if="cacheWorklog">
         <label for="cacheWorklog">{{'Cache Worklog' | i18n}}</label>
         <input id="cacheWorklog"

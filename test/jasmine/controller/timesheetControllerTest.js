@@ -131,6 +131,7 @@ describe("timesheetControllerTest", function() {
                         auditorsGroups: {},
                         weekendType: {},
                         prettyDuration: {val: true},
+                        workDescriptionRequired: {},
                         durationType: {}
                     });
                     return deferred.promise;

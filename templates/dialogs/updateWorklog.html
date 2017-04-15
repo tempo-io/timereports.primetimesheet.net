@@ -29,10 +29,10 @@
             <ng-include src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0"></ng-include>
 
             <div class="field-group">
-                <label for="comment">Work Description</label>
+                <label for="comment">Work Description<span class="aui-icon icon-required" ng-if="workDescriptionRequired"> required</span></label>
                 <div class="wiki-edit">
                     <div class="wiki-edit-content" id="comment-wiki-edit">
-                        <textarea rows="5" id="comment" cols="60" class="textarea long-field" ng-model="worklog.comment" work-labels="workLabelsList"></textarea>
+                        <textarea rows="5" id="comment" cols="60" class="textarea long-field" ng-model="worklog.comment" work-labels="workLabelsList" ng-required="workDescriptionRequired"></textarea>
                         <div class="content-inner"></div>
                     </div>
                 </div>

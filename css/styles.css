@@ -25,7 +25,7 @@ header {
     width: 25px;
     display: table-cell;
 }
-input.ng-dirty.ng-invalid {
+input.ng-dirty.ng-invalid, textarea.textarea.ng-invalid-required {
   color: #d04437;
 }
 .options > li {

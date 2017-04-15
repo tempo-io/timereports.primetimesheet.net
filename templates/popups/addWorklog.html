@@ -1,3 +1,4 @@
+<form class="aui">
 <table cellpadding="0" border="0" width="100%" ng-style="{'border-spacing': popupData.worklogs ? '0 5px' : '5px'}">
     <tr>
         <td colspan="2">
@@ -8,16 +9,17 @@
         </td>
     </tr>
     <tr>
-        <td>{{'Spent' | i18n}}</td>
+        <td><label>{{'Spent' | i18n}}</label></td>
         <td>
             <input type="text" name="timeSpent" size="8" ng-model="popupData.worklog.timeSpent" enter-pressed="popupData.addWorklog(closePopup)" auto-focus="true" required timespent/>
         </td>
         <td>(<a ng-click="popupData.openMoreOptionDialog();closePopup();">{{'more options' | i18n}}</a>)</td>
     </tr>
     <tr>
-        <td>{{'Comment' | i18n}}</td>
+        <td><label>{{'Comment' | i18n}}</label></td>
         <td colspan="2">
-            <input type="text" size="25" ng-model="popupData.worklog.comment" enter-pressed="popupData.addWorklog(closePopup)" />
+            <input class="error" type="text" size="25" ng-model="popupData.worklog.comment" enter-pressed="popupData.addWorklog(closePopup)" ng-required="workDescriptionRequired" placeholder="{{workDescriptionRequired ? '(required)' : ''}}"/>
         </td>
     </tr>
 </table>
+</form>
