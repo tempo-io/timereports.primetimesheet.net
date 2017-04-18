@@ -59,24 +59,29 @@ AP = {
   getTimeoutFunc: function() {
       return this.$timeout || window.setTimeout;
   },
-  messages: {
+  require: function(what, callback) {
+    if (what == 'messages') {
+      callback({
         error: function() {
             console.log.apply(console, arguments);
         }
-    },
-    cookie: {
+      });
+    } else if (what == 'cookie') {
+      callback({
         read: function(name, callback) {
-            callback("{}");
+          callback("{}");
         } 
-    },
-    history: {
-        pushState: function(state) {
-            console.log('history state: ' + state);
-        }
-    },
-    require: function(what, callback) {
+      });
+    } else if (what == 'history') {
+        callback({
+            pushState: function(state) {
+                console.log('history state: ' + state);
+            }
+        })
+    } else {
       throw new Error("Not implemented: " + what);
     }
+  }
 };
 
 var UserData = {name: 'noSuchUser'};
