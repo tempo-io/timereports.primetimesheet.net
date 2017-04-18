@@ -123,6 +123,7 @@
     "welcome.content.2.7": "Time Reports gadget can be added to <a href=\"admin/EditDefaultDashboard!default.jspa\">JIRA dashboard</a> to provide convenient way to keep an eye on your or your team workload on day to day basis.",
     "welcome.content.2.8": "Time Reports underlying data (worklog) can also be exported to Excel on report page.",
     "welcome.content.3": "Reports are accessible via Project menu in JIRA, under Reports tab, see Time Reports there. See also <a href=\"https://confluence.atlassian.com/jiracorecloud/reporting-765593792.html\" target=\"_blank\">JIRA Documentation</a> for more information. Gadgets can be added to JIRA Dasbhoard, see <a href=\"https://confluence.atlassian.com/adminjiracloud/configuring-the-default-dashboard-776636251.html\" target=\"_blank\"> JIRA Documentation</a> for more information.",
+    "welcome.content.3.1": "Note, add-on does not have top bar menu in purpose, but it's possible to add quick link with <a href=\"https://confluence.atlassian.com/jira/creating-links-in-the-application-navigator-346948276.html\" target=\"_blank\">Application Navigator</a>. It also allows to set link to be viewable just by the specified groups.",
     "welcome.content.4": "Additional Resources",
     "welcome.content.5.1": "<a href=\"http://www.jiratimesheet.com/timereports/\" target=\"_blank\">Documentation</a>",
     "welcome.content.5.2": "<a href=\"https://bitbucket.org/azhdanov/timereports/issues\" target=\"_blank\">Issues</a>"
