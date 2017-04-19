@@ -78,6 +78,11 @@ AP = {
                 console.log('history state: ' + state);
             }
         })
+    } else if (what == 'inlineDialog') {
+        callback({
+            hide: function() {
+            }
+        })
     } else {
       throw new Error("Not implemented: " + what);
     }
