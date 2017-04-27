@@ -88,7 +88,7 @@
                         <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false"/>
                     </td>
                     <td class="nav first border total" ng-if="!hideTotalColumn">
-                        {{row.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus'}}
+                        {{row.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus' && !workingTimeInStatus}}
                     </td>
                 </tr>
                 <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed">
@@ -143,7 +143,7 @@
                         <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav border total" ng-if="!hideTotalColumn">
-                        {{pivotTable.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus'}}
+                        {{pivotTable.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus' && !workingTimeInStatus}}
                     </td>
                 </tr>
                 <tr ng-show="loaded && loading">

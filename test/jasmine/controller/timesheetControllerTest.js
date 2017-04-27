@@ -33,7 +33,7 @@ describe("timesheetControllerTest", function() {
             }
         });
     });
-    
+
     var getFirstColumnKey = function(pivotTable) {
         var totalKeys = Object.keys(pivotTable.totals);
         return pivotTable.totals[totalKeys[0]].columnKey;
@@ -79,7 +79,7 @@ describe("timesheetControllerTest", function() {
         });
         AP.requestBak = AP.request;
     });
-    
+
     afterEach(function() {
         delete AP.$timeout;
         AP.request = AP.requestBak;
@@ -132,7 +132,8 @@ describe("timesheetControllerTest", function() {
                         weekendType: {},
                         prettyDuration: {val: true},
                         workDescriptionRequired: {},
-                        durationType: {}
+                        durationType: {},
+                        workingTimeInStatus: {}
                     });
                     return deferred.promise;
                 }
@@ -150,7 +151,7 @@ describe("timesheetControllerTest", function() {
                     "timeoriginalestimate" : 72000,
                     "timespent" : 36000,
                     "fields": {
-                        "customfield_10007" : "TIME-2"                                
+                        "customfield_10007" : "TIME-2"
                     }
                 }]});
             } else {

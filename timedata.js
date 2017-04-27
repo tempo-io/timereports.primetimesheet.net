@@ -70,7 +70,7 @@ AP = {
       callback({
         read: function(name, callback) {
           callback("{}");
-        } 
+        }
       });
     } else if (what == 'history') {
         callback({
@@ -245,18 +245,18 @@ var TimeData = { "expand" : "schema,names",
                 }
               ]
           },
-          "changelog":{  
+          "changelog":{
                 "startAt":0,
                 "maxResults":3,
                 "total":3,
-                "histories":[    
-                   {  
+                "histories":[
+                   {
                       "id":"10010",
-                      "author":{  
+                      "author":{
                          "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
                          "name":"admin",
                          "emailAddress":"azhdanov@gmail.com",
-                         "avatarUrls":{  
+                         "avatarUrls":{
                             "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
                             "24x24":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=24",
                             "16x16":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=16",
@@ -267,8 +267,8 @@ var TimeData = { "expand" : "schema,names",
                          "timeZone":"Europe/Belgrade"
                       },
                       "created":"2013-12-04T14:39:40.382+0200",
-                      "items":[  
-                         {  
+                      "items":[
+                         {
                             "field":"status",
                             "fieldtype":"jira",
                             "from":"1",
@@ -276,7 +276,7 @@ var TimeData = { "expand" : "schema,names",
                             "to":"3",
                             "toString":"In Progress"
                          },
-                         {  
+                         {
                             "field":"assignee",
                             "fieldtype":"jira",
                             "from":null,
