@@ -1,7 +1,7 @@
 describe("configurationModule", function() {
 
     // wait for async loading required modules
-    beforeAll(function(done) {
+    false && beforeAll(function(done) {
         require(['app/timesheetApp'], done);
     });
 

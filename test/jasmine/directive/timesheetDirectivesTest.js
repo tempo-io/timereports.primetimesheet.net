@@ -4,7 +4,7 @@ describe("timesheet directive", function(){
     var compile;
 
     // wait for async loading required modules
-    beforeAll(function(done) {
+    false && beforeAll(function(done) {
         require(['app/timesheetApp'], done);
     });
 

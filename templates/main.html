@@ -1,6 +1,6 @@
 <header class="aui-page-header" ng-if="!isGadget">
     <ng-include src="templates.header"></ng-include>
-    <aui-inline-dialog template="'/templates/popups/onError.html'" init-fn="initOnErrorPopup(params)"/>
+    <aui-inline-dialog id="on-error" template="'/templates/popups/onError.html'" init-fn="initOnErrorPopup(params)"/>
 </header>
 
 <style type="text/css" ng-if="isGadget">

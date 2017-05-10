@@ -1,10 +1,10 @@
 AJS = window.AJS || {$: window.$, progressBars: {update: function() {}, setIndeterminate: function() {}}};
 // simulate running in atlassian-connect container
-AP = {
+window.AP = {
   getUser: function(callback) {
-    setTimeout(function() {
+    return callback ? setTimeout(function() {
       callback({fullName: 'admin', id: 'admin', key: 'admin'});
-    });
+    }) : {displayName: 'Administrator', id: 'admin', key: 'admin', emailAddress: 'azhdanov@gmail.com'}; // for pivottableJob
   },
   getLocation: function(callback) {
       setTimeout(function() {

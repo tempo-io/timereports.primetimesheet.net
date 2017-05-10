@@ -7,6 +7,7 @@
             </div>
             <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
             <a class="overlay-icon aui-icon aui-icon-small aui-iconfont-remove dangerous remove-view" ng-click="deleteView()" ng-show="showButtons && showDeleteButton"></a>
+        </div>
             <div class="pull-right">
                 <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="margin: 3px 0" title="Download worklog" ng-hide="loading || restrictionError"></i>
                 <!-- Dropdown -->
@@ -16,8 +17,10 @@
                         <li><a x-ng-click="excelView(true)">.csv</a></li>
                     </ul>
                 </div>
+                <i id="subscribe"
+                    class="fa fa-envelope-o"  ng-click="subscribePopup.init()" style="margin: 3px 0" title="Subscribe"
+                    ng-hide="loading || restrictionError || !subscribe" ng-style="{'font-weight': currentView.jobId ? 'bold' : 'normal'}"></i>
             </div>
-        </div>
         <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
                          remove-action="removeMenuOption(option.key, option.labelParam)"
                          label="option.label"
@@ -32,8 +35,9 @@
         <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent"></a>
     </div>
 
-    <aui-inline-dialog template="'/templates/popups/addWorklog.html'" popup-data="addWorklogPopup" container="'.addWorklogPopup'" work-description-required="workDescriptionRequired"></aui-inline-dialog>
-    <aui-inline-dialog template="templates.editWorklog" popup-data="editWorklogPopup" container="'.editWorklogPopup'" work-description-required="workDescriptionRequired"></aui-inline-dialog>
+    <aui-inline-dialog id="add-worklog" template="'/templates/popups/addWorklog.html'" popup-data="addWorklogPopup" container="'.addWorklogPopup'" work-description-required="workDescriptionRequired"></aui-inline-dialog>
+    <aui-inline-dialog id="edit-worklog" template="templates.editWorklog" popup-data="editWorklogPopup" container="'.editWorklogPopup'" work-description-required="workDescriptionRequired"></aui-inline-dialog>
+    <aui-inline-dialog id="subscribe-popup" template="'/templates/popups/subscribe.html'" popup-data="subscribePopup" container="'#subscribe'"></aui-inline-dialog>
 
     <div class="pagingtable">
 

@@ -1,5 +1,5 @@
 jQuery = {};
-QUnit.config.autostart = false;
+//QUnit.config.autostart = false;
 QUnit.testStart(function() {
   moment.locale('uk_UA');
 });
@@ -31,7 +31,7 @@ test("IssueWorkedTimeByUser", function() {
       equal(1, columnKeys.length, "columns");
       equal(columnKeys[0], "admin", "columnKey");
       equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
-  }  
+  }
 });
 test("IssueWorkedTimeByStatus", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByStatus'});
@@ -51,7 +51,7 @@ test("IssueWorkedTimeByStatus", function() {
       var columnKeys = Object.keys(row.columns);
       equal(1, columnKeys.length, "columns");
       equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
-  }  
+  }
 });
 test("TimeTracking", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking'});
