@@ -136,6 +136,11 @@ describe("timesheetControllerTest", function() {
                         workingTimeInStatus: {}
                     });
                     return deferred.promise;
+                },
+                getProjects: function() {
+                  var deferred = $q.defer();
+                  deferred.resolve(ProjectsData);
+                  return deferred.promise;
                 }
             },
             loggedInUser: {},
