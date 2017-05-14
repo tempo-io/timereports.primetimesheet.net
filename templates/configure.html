@@ -80,6 +80,21 @@
         <span class="description">{{'description.Weekend Type' | i18n}}</span>
     </div>
     <div class="field-group">
+        <label for="workingTimeInStatus">{{'Working Time in Status' | i18n}}</label>
+        <input id="workingTimeInStatus"
+               type="checkbox"
+               class="checkbox"
+               ng-model="workingTimeInStatus.val"
+               ng-change="saveWorkingTimeInStatus()">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="workingTimeInStatusSaveSuccess">
+            <strong>{{'Working Time in Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description">{{'description.Working Time In Status' | i18n}}</span>
+    </div>
+    <div class="field-group">
         <label for="select2-durationType">{{'Duration Type' | i18n}}</label>
         <select id="select2-durationType"
                 class="select"
