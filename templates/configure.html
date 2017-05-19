@@ -95,6 +95,21 @@
         <span class="description">{{'description.Working Time In Status' | i18n}}</span>
     </div>
     <div class="field-group">
+        <label for="startedTimeInStatus">{{'Started Time in Status' | i18n}}</label>
+        <input id="startedTimeInStatus"
+               type="checkbox"
+               class="checkbox"
+               ng-model="startedTimeInStatus.val"
+               ng-change="saveStartedTimeInStatus()">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="startedTimeInStatusSaveSuccess">
+            <strong>{{'Started Time in Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description">{{'description.Started Time In Status' | i18n}}</span>
+    </div>
+    <div class="field-group">
         <label for="select2-durationType">{{'Duration Type' | i18n}}</label>
         <select id="select2-durationType"
                 class="select"

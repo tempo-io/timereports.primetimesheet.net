@@ -133,7 +133,8 @@ describe("timesheetControllerTest", function() {
                         prettyDuration: {val: true},
                         workDescriptionRequired: {},
                         durationType: {},
-                        workingTimeInStatus: {}
+                        workingTimeInStatus: {},
+                        startedTimeInStatus: {}
                     });
                     return deferred.promise;
                 },
