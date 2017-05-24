@@ -387,8 +387,7 @@ describe("timesheetControllerTest", function() {
         expect(scope.pivotTable).toHaveColumnsNumber(7);
         var totalColumn = getFirstColumnKey(scope.pivotTable);
         expect(totalColumn.keyName).toEqual('dayOfTheWeek');
-        console.error('Expect \'' + totalColumn.keyValue + '\' to equal \'' + 1393196400000 + '\'');
-        //expect(totalColumn.keyValue).toEqual(1393192800000);
+        expect(totalColumn.keyValue).toEqual(1393196400000);
         expect(scope.pivotTable.sum).toBe(0);
         expect(scope.rowKeySize).toBe(1);
         checkOptions(scope);
