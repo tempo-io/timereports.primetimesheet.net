@@ -160,9 +160,9 @@ var TimeData = { "expand" : "schema,names",
             "resolutiondate" : null,
             "status" : { "description" : "The issue is open and ready for the assignee to start work on it.",
                 "iconUrl" : "http://localhost:2990/jira/images/icons/status_open.gif",
-                "id" : "1",
-                "name" : "Open",
-                "self" : "http://localhost:2990/jira/rest/api/2/status/1"
+                "id" : "5",
+                "name" : "Done",
+                "self" : "http://localhost:2990/jira/rest/api/2/status/5"
               },
             "subtasks" : [  ],
             "summary" : "Mega problem",
@@ -266,7 +266,7 @@ var TimeData = { "expand" : "schema,names",
                          "active":true,
                          "timeZone":"Europe/Belgrade"
                       },
-                      "created":"2013-12-04T14:39:40.382+0200",
+                      "created":"2017-04-05T07:44:09.382+0200",
                       "items":[
                          {
                             "field":"status",
@@ -275,17 +275,66 @@ var TimeData = { "expand" : "schema,names",
                             "fromString":"Open",
                             "to":"3",
                             "toString":"In Progress"
+                         }
+                      ]
+                   },
+                   {
+                      "id":"10010",
+                      "author":{
+                         "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
+                         "name":"admin",
+                         "emailAddress":"azhdanov@gmail.com",
+                         "avatarUrls":{
+                            "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
+                            "24x24":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=24",
+                            "16x16":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=16",
+                            "32x32":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=32"
                          },
+                         "displayName":"Administrator",
+                         "active":true,
+                         "timeZone":"Europe/Belgrade"
+                      },
+                      "created":"2017-04-07T11:54:03.382+0200",
+                      "items":[
                          {
-                            "field":"assignee",
+                            "field":"status",
                             "fieldtype":"jira",
-                            "from":null,
-                            "fromString":null,
-                            "to":"admin",
-                            "toString":"Administrator"
+                            "from":"3",
+                            "fromString":"In Progress",
+                            "to":"4",
+                            "toString":"Testing"
+                         }
+                      ]
+                   },
+                   {
+                      "id":"10010",
+                      "author":{
+                         "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
+                         "name":"admin",
+                         "emailAddress":"azhdanov@gmail.com",
+                         "avatarUrls":{
+                            "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
+                            "24x24":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=24",
+                            "16x16":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=16",
+                            "32x32":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=32"
+                         },
+                         "displayName":"Administrator",
+                         "active":true,
+                         "timeZone":"Europe/Belgrade"
+                      },
+                      "created":"2017-04-10T11:04:23.382+0200",
+                      "items":[
+                         {
+                            "field":"status",
+                            "fieldtype":"jira",
+                            "from":"4",
+                            "fromString":"Testing",
+                            "to":"5",
+                            "toString":"Done"
                          }
                       ]
                    }
+
                 ]
              }
       },
