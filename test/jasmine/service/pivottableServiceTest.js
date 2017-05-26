@@ -484,11 +484,13 @@ describe("pivottableServiceTest", function() {
         var searchResult = {issues: [childIssue]};
 
         AP.request = function(options) {
-            this.getTimeoutFunc()(function() {
-                if (options.url.match(/search/)) {
+            if (options.url.match(/search/)) {
+                this.getTimeoutFunc()(function() {
                     options.success(searchResult);
-                }
-            }, 500);
+                }, 500);
+            } else {
+                AP.requestBak(options);
+            }
         };
 
         var spy = spyOn(pivottableService, 'loadAllWorklogs').and.callThrough();
@@ -497,8 +499,8 @@ describe("pivottableServiceTest", function() {
 
         $timeout.flush();
 
-        expect(pivottableService.allIssues.length).toBe(0);
-        expect(spy.calls.count()).toBe(1);
+        expect(pivottableService.allIssues.length).toBe(1);
+        expect(spy.calls.count()).toBe(2);
     }));
 
     it('PARAMETERS: groups', inject(function($timeout, $log, pivottableService) {
