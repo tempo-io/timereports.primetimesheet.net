@@ -249,7 +249,7 @@ test("TimesheetUtils", function() {
     equal(TimesheetUtils.convertHoursToFormat12(5).pm, false, '#convertHoursToFormat12 :: 5AM');
 });
 test("Timesheet: group by workeduser", function() {
-    var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', groupByField: 'workeduser', startDate: '2014-02-24', reportingDay: 1});
+    var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', groupByField: 'workeduser', startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
     for (var i in TimeData.issues) {
         var issue = TimeData.issues[i];
         var pivotEntries = pivotTable.add(issue);
@@ -263,7 +263,7 @@ test("Timesheet: group by workeduser", function() {
     equal(pivotTable.totals[totalKeys[1]].sum, 46800, "total value 2");
     var rowKeys = Object.keys(pivotTable.rows);
     equal(rowKeys.length, 1, "rows");
-    equal(rowKeys[0], "admin", "rowKey");
+    equal(rowKeys[0], "Timeship:admin", "rowKey");
     var row = pivotTable.rows[rowKeys[0]];
     equal(typeof row.rowKey, "object", "typeof row.key");
     equal(row.sum, 172800, "typeof row.key");
