@@ -90,7 +90,7 @@ window.AP = {
 };
 
 var UserData = {name: 'noSuchUser'};
-var PropertiesConfig = {value: []};
+var PropertiesConfig = {value: [{key: 'workingTimeInStatus', val: true}, {key: 'startedTimeInStatus', val: false}]};
 var Properties = {keys: [{key: 'configuration'}]};
 var IssueWorklog, Issue;
 
