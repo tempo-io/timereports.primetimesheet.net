@@ -3,7 +3,7 @@
         <div>
             <h5>{{ pivotTableType | i18n }}</h5>
             <div class="pull-right">
-                <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="margin: 3px 0" title="Download worklog" ng-hide="loading || restrictionError || ['TimeTracking'].indexOf(pivotTableType) >= 0"></i>
+                <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="margin: 3px 0" title="Download worklog" ng-hide="loading || restrictionError"></i>
                 <!-- Dropdown -->
                 <div id="export" class="aui-style-default aui-dropdown2">
                     <ul class="aui-list-truncate">
