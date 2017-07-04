@@ -1,97 +1,88 @@
-
-<nav class="aui-navgroup aui-navgroup-vertical">
     <form class="aui">
-      <div class="aui-navgroup-inner">
-        <div class="aui-nav-heading"><strong>{{ 'Report' | i18n }}</strong></div>
-        <ul class="aui-nav">
+        <div class="ak-field-group">
+            <label>{{ 'Report' | i18n }}</label>
 	        <input ng-model="viewOptions.selected" aui-multi-select-picker="false" ng-value-changed-func="viewChanged" ng-options-data="viewOptions" update-event="viewUpdated" type="text"/>
-        </ul>
-        <div class="aui-nav-heading" ng-hide="reportDialog && reportParamsObject.jql != undefined"><strong>{{ 'Filter or Project' | i18n }}</strong></div>
-        <input ng-model="filterOrProjectId" ng-hide="reportDialog && reportParamsObject.jql != undefined" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" update-event="projectUpdated" type="text"/>
-        <div class="aui-nav-heading"><strong>{{ 'Options' | i18n }}</strong></div>
-            <ul class="aui-nav options">
-                <li ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
-                    <label>{{'User' | i18n}}</label>
-                    <input ng-value="paramUserInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
-                </li>
-                <li ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'"> <!-- All users because of multi user picker planned -->
-                    <label>{{'All Users' | i18n}}</label>
-                    <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)"/>
-                </li>
-                <li ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
-                    <label>{{'Groups' | i18n}}</label>
-                    <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" update-event="groupUpdated" type="text"/>
-                </li>
-                <li ng-if="pivotTableType != 'TimeTracking'">
-                    <label for="start-date-picker">{{'Start Date' | i18n}}</label>
-                    <input ng-model="startDate.value" id="start-date-picker" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="select"/>
-                </li>
-                <li ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
-                    <label for="end-date-picker">{{'End Date' | i18n}}</label>
-                    <input ng-model="endDate.value" id="end-date-picker" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
-                </li>
-                <li ng-if="pivotTableType == 'Timesheet'">
-                    <label>{{'Show Weekends' | i18n}}</label>
-                    <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled" ng-change="toggleShowWeekends()" />
-                </li>
-                <li ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
-                    <label for="end-date-picker">{{'Reporting Day' | i18n}}</label>
-                    <select class="select"
-                            title="{{'Reporting Day' || i18n}}"
-                            ng-model="reportingDayOptions.selected"
-                            ng-options="item.id as item.label for item in reportingDayOptions.options"
-                            ng-change="reportingDayChanged()"
-                            aui-select2>
-                    </select>
-                </li>
-                <li ng-if="pivotTableType != 'TimeEntry'">
-                    <label>{{'Group By Field' | i18n}}</label>
-                    <select class="select"
-                            ng-model="groupByOptions.selected"
-                            ng-options="item.id as item.label for item in groupByOptions.options"
-                            ng-change="groupByChanged()"
-                            aui-select2>
-                    </select>
-                </li>
-                <li ng-if="pivotTableType != 'TimeEntry'">
-                    <label>{{'Categorize By Field' | i18n}}</label>
-                    <select class="select"
-                            ng-model="categorizeByOptions.selected"
-                            ng-options="item.id as item.label for item in categorizeByOptions.options"
-                            ng-change="categorizeByChanged()"
-                            aui-select2>
-                    </select>
-                </li>
-                <li ng-if="pivotTableType != 'PieChart'">
-                    <label>{{'Additional Fields' | i18n}}</label>
-                    <select class="select"
-                            multiple="true"
-                            ng-model="moreFieldsOptions.selected"
-                            ng-options="item.id as item.label for item in moreFieldsOptions.options"
-                            ng-change="moreFieldsChanged()"
-                            aui-select2>
-                    </select>
-                </li>
-                <li>
-                    <label>{{'Sum SubTasks' | i18n}}</label>
-                    <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
-                </li>
-                <li ng-if="pivotTableType == 'Timesheet'">
-                    <label>{{'Show Empty Issues' | i18n}}</label>
-                    <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!(filterOrProjectId || reportParamsObject.jql)"/>
-                </li>
-            </ul>
-        <div class="aui-nav-heading" ng-if="!reportDialog"></div>
+        </div>
+        <div class="ak-field-group" ng-hide="reportDialog && reportParamsObject.jql != undefined">
+            <label>{{ 'Filter or Project' | i18n }}</label>
+            <input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" update-event="projectUpdated" type="text"/>
+        </div>
+        <div class="ak-field-group" ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
+            <label>{{'User' | i18n}}</label>
+            <input ng-value="paramUserInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
+        </div>
+        <div class="ak-field-group" ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'"> <!-- All users because of multi user picker planned -->
+            <label style="display: inline-block; margin: 0">{{'All Users' | i18n}}</label>
+            <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)"/>
+        </div>
+        <div class="ak-field-group" ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
+            <label>{{'Groups' | i18n}}</label>
+            <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" update-event="groupUpdated" type="text"/>
+        </div>
+        <div class="ak-field-group" ng-if="pivotTableType != 'TimeTracking'">
+            <label >{{'Start Date' | i18n}}</label>
+            <input ng-model="startDate.value" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="select"/>
+        </div>
+        <div class="ak-field-group" ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
+            <label>{{'End Date' | i18n}}</label>
+            <input ng-model="endDate.value" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
+        </div>
+        <div class="ak-field-group" ng-if="pivotTableType == 'Timesheet'">
+            <label style="display: inline-block; margin: 0">{{'Show Weekends' | i18n}}</label>
+            <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled" ng-change="toggleShowWeekends()" />
+        </div>
+        <div class="ak-field-group" ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
+            <label>{{'Reporting Day' | i18n}}</label>
+            <select class="select"
+                    title="{{'Reporting Day' || i18n}}"
+                    ng-model="reportingDayOptions.selected"
+                    ng-options="item.id as item.label for item in reportingDayOptions.options"
+                    ng-change="reportingDayChanged()"
+                    aui-select2>
+            </select>
+        </div>
+        <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry'">
+            <label>{{'Group By Field' | i18n}}</label>
+            <select class="select"
+                    ng-model="groupByOptions.selected"
+                    ng-options="item.id as item.label for item in groupByOptions.options"
+                    ng-change="groupByChanged()"
+                    aui-select2>
+            </select>
+        </div>
+        <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry'">
+            <label>{{'Categorize By Field' | i18n}}</label>
+            <select class="select"
+                    ng-model="categorizeByOptions.selected"
+                    ng-options="item.id as item.label for item in categorizeByOptions.options"
+                    ng-change="categorizeByChanged()"
+                    aui-select2>
+            </select>
+        </div>
+        <div class="ak-field-group" ng-if="pivotTableType != 'PieChart'">
+            <label>{{'Additional Fields' | i18n}}</label>
+            <select class="select"
+                    multiple="true"
+                    ng-model="moreFieldsOptions.selected"
+                    ng-options="item.id as item.label for item in moreFieldsOptions.options"
+                    ng-change="moreFieldsChanged()"
+                    aui-select2>
+            </select>
+        </div>
+        <div class="ak-field-group">
+            <label style="display: inline-block; margin: 0">{{'Sum SubTasks' | i18n}}</label>
+            <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
+        </div>
+        <div class="ak-field-group">
+            <label style="display: inline-block; margin: 0">{{'Show Empty Issues' | i18n}}</label>
+            <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!(filterOrProjectId || reportParamsObject.jql)"/>
+        </div>
 
-        <ul class="aui-nav" ng-if="!reportDialog">
-            <!--li>
-                <label>{{'Instant View:' | i18n}}</label>
-                <input class="checkbox" type="checkbox" ng-model="instantView" ng-change="instantViewChange(instantView)" />
-            </li-->
-            <li>
-                <a ng-click="loading || !loaded || refresh()" ng-disabled="loading || !loaded" ng-class="{disabled: loading || !loaded}">Refresh</a>
-            </li>
-        </ul>
-      </div>
+        <!--div class="ak-field-group" ng-if="!reportDialog">
+             <label>{{'Instant View:' | i18n}}</label>
+             <input class="checkbox" type="checkbox" ng-model="instantView" ng-change="instantViewChange(instantView)" />
+        </div-->
+        <div class="ak-field-group">
+             <a ng-click="loading || !loaded || refresh()" ng-disabled="loading || !loaded" ng-class="{disabled: loading || !loaded}">Refresh</a>
+        </div>
     </form>
-</nav>

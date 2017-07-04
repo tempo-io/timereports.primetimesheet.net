@@ -1,21 +1,15 @@
-<style type="text/css">
-    .aui-page-panel {
-        margin-top: 0;
-        border: 0;
-    }
-</style>
+<ak-grid-column size="12">
+  &nbsp;
+</ak-grid-column>
 
-<div class="aui-page-panel">
-    <div class="aui-page-panel-inner">
-        <div ng-class="templates.menu && !isWelcome ? 'aui-page-panel-nav': 'aui-page-panel-nav-empty'">
-            <ng-include src="templates.menu"/>
-        </div>
+<ak-grid-column ng-size="templates.menu && !isWelcome ? 2: 0">
+    <ng-include src="templates.menu"></ng-include>
+</ak-grid-column>
 
-        <section class="aui-page-panel-content">
-            <ng-include src="contentTemplate()"/>
-        </section>
-    </div>
-    <div class="footer">
-        <ng-include src="'/templates/footer.html'"/>
-    </div>
-</div>
+<ak-grid-column ng-size="templates.menu && !isWelcome ? 10: 12">
+    <ng-include src="contentTemplate()"></ng-include>
+</ak-grid-column>
+
+<ak-grid-column size="12" class="footer">
+    <ng-include src="'/templates/footer.html'"></ng-include>
+</ak-grid-column>

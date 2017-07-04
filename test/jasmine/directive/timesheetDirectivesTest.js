@@ -103,7 +103,7 @@ describe("timesheet directive", function(){
 
         expect(closeFuncSpy).not.toHaveBeenCalled();
 
-        element.find('span.aui-icon').click();
+        element.find('span.icon-close').click();
 
         expect(closeFuncSpy.calls.count()).toEqual(1);
         expect(closeFuncSpy).toHaveBeenCalledWith("OPT");
