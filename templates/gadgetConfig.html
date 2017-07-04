@@ -51,21 +51,24 @@
 		<div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
             <label>{{'Group By Field' | i18n}}</label>
 			<select class="select"
-			        title="database select"
 			        ng-model="groupByOptions.selected"
 			        ng-options="item.id as item.label for item in groupByOptions.options"
 			        ng-change="groupByChanged()"
 			        aui-select2>
 			</select>
 		</div>
-		<div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
-               <label>{{'Collapse Field Groups' | i18n}}</label>
-               <input class="checkbox" type="checkbox" ng-model="collapseFieldGroups" ng-change="collapseFieldGroupsChange(collapseFieldGroups)" />
-		</div>
+    <div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
+        <label>{{'Categorize By Field' | i18n}}</label>
+        <select class="select"
+                ng-model="categorizeByOptions.selected"
+                ng-options="item.id as item.label for item in categorizeByOptions.options"
+                ng-change="categorizeByChanged()"
+                aui-select2>
+        </select>
+    </div>
 		<div class="field-group" ng-if="pivotTableType != 'PieChart'">
             <label>{{'Additional Fields' | i18n}}</label>
             <select class="select"
-                    title="database select"
                     multiple="true"
                     ng-model="moreFieldsOptions.selected"
                     ng-options="item.id as item.label for item in moreFieldsOptions.options"

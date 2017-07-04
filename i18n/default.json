@@ -15,6 +15,7 @@
     "Saved Filter": "Saved Filter",
     "Options": "Options",
     "Group By Field" : "Group By Field:",
+    "Categorize By Field": "Categorize By Field:",
     "Additional Fields" : "Additional Fields:",
     "Start Date": "Start Date:",
     "End Date": "End Date:",
@@ -24,7 +25,6 @@
     "All Users": "All Users:",
     "Groups": "Groups:",
     "Sum SubTasks": "Sum SubTasks:",
-    "Collapse Field Groups": "Collapse Field Groups",
 
     "Previous Week": "Previous Week",
     "Previous Month": "Previous Month",
@@ -48,6 +48,7 @@
     "param.endDate" : "End Date: %s",
     "param.reportingDay" : "Reporting Day: %s",
     "param.groupByField" : "Group By Field: %s",
+    "param.categorizeByField": "Categorize By Field: %s",
     "param.moreFields" : "Additional Field: %s",
     "param.filterOrProjectId" : "Filter Or Project: %s",
     "param.filterOrProjectId.project" : "Project: %s",

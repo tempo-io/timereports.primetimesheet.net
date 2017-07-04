@@ -107,7 +107,7 @@ test("TimeTracking", function() {
   equal(row.columns[columnKeys[0]].entries.length, 1, "column entries");
 });
 test("TimeTrackingGroupedByStatus", function() {
-  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking', groupByField: 'status', configOptions: {}});
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking', categorizeByField: 'project', groupByField: 'status', configOptions: {}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       equal(pivotEntries.length, 1, "pivotEntries");
@@ -248,8 +248,33 @@ test("TimesheetUtils", function() {
     equal(TimesheetUtils.convertHoursToFormat12(5).hour, 5, '#convertHoursToFormat12 :: 5AM');
     equal(TimesheetUtils.convertHoursToFormat12(5).pm, false, '#convertHoursToFormat12 :: 5AM');
 });
+test("Timesheet: 2 level grouping", function() {
+    var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', categorizeByField: 'issuetype', groupByField: 'reporter', startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
+    for (var i in TimeData.issues) {
+        var issue = TimeData.issues[i];
+        var pivotEntries = pivotTable.add(issue);
+        equal(pivotEntries.length, 2, "pivotEntries " + issue.key);
+    }
+    var totalKeys = Object.keys(pivotTable.totals);
+    equal(totalKeys.length, 7, "totals");
+    ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[0])), new Date(2014, 1, 24)), "totalKey 1");
+    ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[1])), new Date(2014, 1, 25)), "totalKey 2");
+    equal(pivotTable.totals[totalKeys[0]].sum, 32400, "total value 1");
+    equal(pivotTable.totals[totalKeys[1]].sum, 46800, "total value 2");
+    var rowKeys = Object.keys(pivotTable.rows);
+    equal(rowKeys.length, 1, "rows");
+    equal(rowKeys[0], "Bug:admin", "rowKey");
+    var row = pivotTable.rows[rowKeys[0]];
+    equal(typeof row.rowKey, "object", "typeof row.key");
+    equal(row.sum, 172800, "typeof row.key");
+    var columnKeys = Object.keys(row.columns);
+    equal(columnKeys.length, 7, "columns");
+    ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[0])), new Date(2014, 1, 24)), "totalKey");
+    ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[1])), new Date(2014, 1, 25)), "totalKey");
+    equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
+});
 test("Timesheet: group by workeduser", function() {
-    var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', groupByField: 'workeduser', startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
+    var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', categorizeByField: 'project', groupByField: 'workeduser', startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
     for (var i in TimeData.issues) {
         var issue = TimeData.issues[i];
         var pivotEntries = pivotTable.add(issue);
