@@ -5,9 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Time Reports</title>
   <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/6.0.6/css/aui.min.css"/>
-  <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/6.0.6/css/aui-experimental.min.css" media="all">
+  <link rel="stylesheet" href="/css/aui-experimental.css" media="all">
   <!--[if lt IE 9]><link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/6.0.6/css/aui-ie.min.css" media="all"><![endif]-->
   <!--[if IE 9]><link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/6.0.6/css/aui-ie9.min.css" media="all"><![endif]-->
+  <link rel="stylesheet" href="//unpkg.com/@atlaskit/css-reset@1.0.2"/>
+  <link rel="stylesheet" href="//unpkg.com/@atlaskit/reduced-ui-pack@2.5.0"/>
   <link rel="stylesheet" href="css/xeditable.min.css" media="all">
   <link rel="stylesheet" href="css/xeditable-aui.css" media="all">
   <link rel="stylesheet" href="css/styles.css" media="all">
@@ -35,7 +37,8 @@
   </script>
 </head>
 
-<body class="aui-page-hybrid">
-  <section id="content" role="main" ng-view></section>
+<body>
+  <div id="ac-iframe-options" data-options="margin:false"></div>
+  <ak-grid layout="fluid" id="content" ng-view/>
 </body>
 </html>
