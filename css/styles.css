@@ -236,10 +236,30 @@ a.disabled {
 .aui-navgroup-vertical .aui-nav>li>label {
     padding: 7px 10px;
 }
+.header {
+    margin-left: 4px;
+    width: 100%;
+}
+.is-not-gadget .header {
+   padding-top: 25px;
+}
+.main {
+  margin-left: 4px;
+  display: flex;
+}
+.is-not-gadget .content {
+  padding: 12px;
+  width: 100%
+}
+.menu {
+  max-width: 200px;
+}
 .footer {
     color: #707070;
     font-size: 12px;
     border-top: 1px solid #cccccc;
+    width: 100%;
+    margin-top: 15px;
 }
 .footer ul {
     margin: auto;

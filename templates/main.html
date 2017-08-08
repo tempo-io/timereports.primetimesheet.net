@@ -1,7 +1,7 @@
-<ak-grid-column size="12" ng-if="!isGadget">
+<div ng-if="!isGadget" class="header">
     <ng-include src="templates.header"></ng-include>
     <aui-inline-dialog id="on-error" template="'/templates/popups/onError.html'" init-fn="initOnErrorPopup(params)"/>
-</ak-grid-column>
+</div>
 
 <style type="text/css" ng-if="isGadget">
     .aui-page-panel {
@@ -24,18 +24,19 @@
     }
 </style>
 
-<ak-grid-column size="2" ng-if="!isGadget">
-    <ng-include src="templates.menu"></ng-include>
-</ak-grid-column>
-
-<ak-grid-column size="12" ng-if="showGadgetConfiguration">
+<div ng-if="showGadgetConfiguration">
     <ng-include src="templates.gadgetConfig"></ng-include>
-</ak-grid-column>
+</div>
 
-<ak-grid-column size="10" ng-if="!showGadgetConfiguration">
+<div ng-if="!showGadgetConfiguration" class="main">
+  <div class="menu" ng-if="!isGadget">
+    <ng-include src="templates.menu"></ng-include>
+  </div>
+  <div class="content">
     <ng-include src="contentTemplate()"></ng-include>
-</ak-grid-column>
+  </div>
+</div>
 
-<ak-grid-column size="12" class="footer" ng-if="!isGadget">
+<div class="footer" ng-if="!isGadget">
     <ng-include src="'/templates/footer.html'"></ng-include>
-</ak-grid-column>
+</div>

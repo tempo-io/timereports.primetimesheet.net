@@ -1,15 +1,12 @@
-<ak-grid-column size="12">
-  &nbsp;
-</ak-grid-column>
+<div class="main">
+    <div class="menu" ng-if="templates.menu && !isWelcome">
+        <ng-include src="templates.menu"></ng-include>
+    </div>
+    <div class="content">
+        <ng-include src="contentTemplate()"></ng-include>
+    </div>
+</div>
 
-<ak-grid-column ng-size="templates.menu && !isWelcome ? 2: 0">
-    <ng-include src="templates.menu"></ng-include>
-</ak-grid-column>
-
-<ak-grid-column ng-size="templates.menu && !isWelcome ? 10: 12">
-    <ng-include src="contentTemplate()"></ng-include>
-</ak-grid-column>
-
-<ak-grid-column size="12" class="footer">
+<div class="footer">
     <ng-include src="'/templates/footer.html'"></ng-include>
-</ak-grid-column>
+</div>
