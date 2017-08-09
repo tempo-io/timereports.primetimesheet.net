@@ -1,4 +1,4 @@
-<div ng-if="!isGadget" class="header">
+<div ng-if="!isGadget" class="header margin">
     <ng-include src="templates.header"></ng-include>
     <aui-inline-dialog id="on-error" template="'/templates/popups/onError.html'" init-fn="initOnErrorPopup(params)"/>
 </div>
@@ -28,7 +28,7 @@
     <ng-include src="templates.gadgetConfig"></ng-include>
 </div>
 
-<div ng-if="!showGadgetConfiguration" class="main">
+<div ng-if="!showGadgetConfiguration" class="main margin">
   <div class="menu" ng-if="!isGadget">
     <ng-include src="templates.menu"></ng-include>
   </div>
@@ -37,6 +37,6 @@
   </div>
 </div>
 
-<div class="footer" ng-if="!isGadget">
+<div class="footer margin" ng-if="!isGadget">
     <ng-include src="'/templates/footer.html'"></ng-include>
 </div>
