@@ -248,7 +248,20 @@ a.disabled {
   width: 100%
 }
 .menu {
-  max-width: 200px;
+  width: 200px;
+}
+.section-header > div:first-child {
+  display: flex;
+  margin-top: -2px;
+}
+.section-header > div.h5 {
+  margin: 3px 0 5px 0;
+}
+div.h5 > h5 {
+  width: 400px;
+}
+.section-header > div > div {
+  width: 400px;
 }
 .footer {
     color: #707070;

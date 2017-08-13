@@ -71,13 +71,15 @@
 
 form.editable-text {
     margin: 0 0 0 -5px;
-    width: 250px;
+    width: 300px;
     vertical-align: top;
     display: inline-block;
 }
 
 .section-header h5 {
-    width: 220px;
+    width: 300px;
+    min-height: 20px;
+    line-height: 20px;
 }
 
 form.editable-text .inline-edit-fields {
