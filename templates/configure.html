@@ -241,19 +241,39 @@
     <div class="field-group">
         <span class="description">{{'description.Work Description Required' | i18n}}</span>
     </div>
-    <div class="field-group" ng-if="cacheWorklog">
+    <div class="field-group" ng-if="storeWorklog">
+        <label for="storeWorklog">{{'Store Worklog' | i18n}}</label>
+        <input id="storeWorklog"
+               type="checkbox"
+               class="checkbox"
+               ng-model="storeWorklog.val"
+               ng-change="saveStoreWorklog()">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="storeWorklogSaveSuccess">
+            <strong>{{'Store Worklog' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+        <div class="aui-message aui-message-error msg-overlay"
+             ng-show="storeWorklogSaveError">
+            <strong>{{'Store Worklog' | i18n}}</strong>&nbsp;{{'not saved' | i18n}}
+        </div>
+    </div>
+    <div class="field-group" ng-if="storeWorklog">
+        <span class="description" data-ng-bind-html="'description.Store Worklog' | i18n | htmlSafe"></span>
+    </div>
+    <div class="field-group" ng-show="cacheWorklog">
         <label for="cacheWorklog">{{'Cache Worklog' | i18n}}</label>
         <input id="cacheWorklog"
                type="checkbox"
                class="checkbox"
                ng-model="cacheWorklog.val"
-               ng-change="saveCacheWorklog()">
+               ng-change="saveCacheWorklog()"
+               ng-disabled="storeWorklog.val">
         <div class="aui-message aui-message-success msg-overlay"
              ng-show="cacheWorklogSaveSuccess">
             <strong>{{'Cache Worklog' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
         </div>
     </div>
-    <div class="field-group" ng-if="cacheWorklog">
+    <div class="field-group"  ng-show="cacheWorklog">
         <span class="description">
             {{'description.Cache Worklog' | i18n}}
         </span>
