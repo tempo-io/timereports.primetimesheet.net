@@ -85,9 +85,7 @@
     "New Work Label": "New Work Label",
     "Work Description Required": "Require Work Description",
     "Cache Worklog": "Cache Worklog",
-    "Store Worklog": "Store Worklog",
     "saved successfully": "saved successfully.",
-    "not saved": "not saved.",
     "description.Auditors Groups": "Only users of the selected groups will be allowed to see time spent by other users.",
     "description.Composition Issue Link": "If specified, Timesheet and Pivot reports will aggregate hours, into parent issue, using specified issue link in addition to sub tasks.",
     "description.Parent Issue Field": "If specified, Timesheet and Pivot reports will aggregate hours, into parent issue, using specified issue field in addition to sub tasks. Only JIRA Agile \"Epic Link\" is supported.",
@@ -103,7 +101,6 @@
     "description.Work Labels": "Editable list of labels that can be used in worklog comment as hashtags, for grouping.",
     "description.Work Description Required": "Require Work Description when adding or updating worklog.",
     "description.Cache Worklog": "If enabled, use local Storage for issues with more than 20 worklogs. Worklogs added last minute anywhere else will be missing in report.",
-    "description.Store Worklog": "Store Worklog copy in add-on secure DB, see <a href=\"http://www.jiratimesheet.com/cloud/security.html\" target=\"_blank\">add-on security policy</a> for more details",
 
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in auditors group.",

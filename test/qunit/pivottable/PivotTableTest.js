@@ -73,7 +73,7 @@ test("IssuePassedTimeByStatus", function() {
       equal(row.columns[columnKeys[0]].entries.length, 1, "column entries");
   }
 });
-xtest("TimeTracking", function() {
+test("TimeTracking", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking'});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
@@ -106,7 +106,7 @@ xtest("TimeTracking", function() {
   equal(columnKeys[4], "5progress", "columnKey");
   equal(row.columns[columnKeys[0]].entries.length, 1, "column entries");
 });
-xtest("TimeTrackingGroupedByStatus", function() {
+test("TimeTrackingGroupedByStatus", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking', categorizeByField: 'project', groupByField: 'status', configOptions: {}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
@@ -321,23 +321,4 @@ test("PivotTabe rows order", function() {
 test("isDate", function() {
     equal(TimesheetUtils.isDate('Phase 2'), false, 'Phase 2');
     equal(TimesheetUtils.isDate('2013-02-27T18:03:49.000+0100'), true, "2013-02-27T18:03:49.000+0100");
-});
-test('stob', function() {
-  var clientKey = 'jira:7bb6742d-0000-4a5d-bffb-88e234501bda';
-  var issueId = Number.MAX_SAFE_INTEGER;
-  var charAt = function(i) {
-    var s = clientKey.substr(i, 4);
-    var c = parseInt(s, 16);
-    return String.fromCharCode(c);
-  }
-  var string = charAt(5) + charAt(9) + charAt(14) + charAt(19) + charAt(24) + charAt(29) + charAt(33) + charAt(37) + String.fromCharCode(issueId);
-  equal(0x7bb6, string.charCodeAt(0), '0');
-  equal(0x742d, string.charCodeAt(1), '1');
-  equal(0x0000, string.charCodeAt(2), '2');
-  equal(0x4a5d, string.charCodeAt(3), '3');
-  equal(0xbffb, string.charCodeAt(4), '4');
-  equal(0x88e2, string.charCodeAt(5), '5');
-  equal(0x3450, string.charCodeAt(6), '6');
-  equal(0x1bda, string.charCodeAt(7), '7');
-  equal(0xffff, string.charCodeAt(8), '8');
 });

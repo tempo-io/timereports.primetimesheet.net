@@ -1,5 +1,4 @@
 AJS = window.AJS || {$: window.$, progressBars: {update: function() {}, setIndeterminate: function() {}}};
-window.storeWorklogEnabled = true;
 // simulate running in atlassian-connect container
 window.AP = {
   getUser: function(callback) {
@@ -85,9 +84,7 @@ window.AP = {
 };
 
 var UserData = {name: 'noSuchUser'};
-var PropertiesConfig = {value: [{key: 'workingTimeInStatus', val: true},
-    {key: 'startedTimeInStatus', val: false},
-    {key: 'storeWorklog', val: false}]};
+var PropertiesConfig = {value: [{key: 'workingTimeInStatus', val: true}, {key: 'startedTimeInStatus', val: false}]};
 var Properties = {keys: [{key: 'configuration'}]};
 var IssueWorklog, Issue;
 
@@ -1242,7 +1239,7 @@ var UserAdminData = {
    },
    "displayName":"admin",
    "active":true,
-   "timeZone":"Europe/Moscow",
+   "timeZone":"Europe/Dublin",
    "groups":{
       "size":3,
       "items":[

@@ -306,9 +306,6 @@ form.aui .field-group .description {
     vertical-align: top;
     line-height: 8px;
 }
-form.aui .field-group .description a {
-    vertical-align: top;
-}
 .formTitle {
     border-bottom: 1px solid #ddd;
 }

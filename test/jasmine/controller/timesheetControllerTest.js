@@ -75,8 +75,6 @@ describe("timesheetControllerTest", function() {
             $httpBackend.expectGET('/templates/main.html').respond('');
             $window.i18nDefault = 'i18n/default.json';
             $httpBackend.when("GET", 'i18n/default.json').respond({});
-            getWorklog = _$httpBackend_.whenGET(/^\/api\/worklog/);
-            getWorklog.respond(TimeData.issues);
             applicationLoggingService.debug = function() {};
         });
         AP.requestBak = AP.request;
@@ -103,7 +101,6 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
-        $timeout.flush();
 
         expect(scope.TimesheetUtils).not.toBeNull();
         expect(scope.loading).toBeFalsy();
@@ -137,8 +134,7 @@ describe("timesheetControllerTest", function() {
                         workDescriptionRequired: {},
                         durationType: {},
                         workingTimeInStatus: {},
-                        startedTimeInStatus: {},
-                        storeWorklog: {}
+                        startedTimeInStatus: {}
                     });
                     return deferred.promise;
                 },
@@ -172,7 +168,6 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
-        $timeout.flush();
         $log.assertEmpty();
 
         expect(scope.TimesheetUtils).not.toBeNull();
@@ -202,7 +197,6 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
-        $timeout.flush();
 
         expect(scope.TimesheetUtils).not.toBeNull();
         expect(scope.loading).toBeFalsy();
@@ -232,7 +226,6 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
-        $timeout.flush();
 
         expect(scope.TimesheetUtils).not.toBeNull();
         expect(scope.loading).toBeFalsy();
@@ -264,7 +257,6 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
-        $timeout.flush();
 
         expect(scope.TimesheetUtils).not.toBeNull();
         expect(scope.loading).toBeFalsy();
@@ -295,7 +287,6 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
-        $timeout.flush();
 
         expect(scope.TimesheetUtils).not.toBeNull();
         expect(scope.loading).toBeFalsy();
@@ -325,7 +316,6 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
-        $timeout.flush();
 
         expect(scope.TimesheetUtils).not.toBeNull();
         expect(scope.loading).toBeFalsy();
@@ -357,7 +347,6 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
-        $timeout.flush();
 
         expect(scope.TimesheetUtils).not.toBeNull();
         expect(scope.loading).toBeFalsy();
@@ -374,13 +363,11 @@ describe("timesheetControllerTest", function() {
     }));
 
     it('PARAMETERS: user=noSuchUser', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
-
         var scope = $rootScope.$new();
-        var startDate = '2014-02-24';
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            timesheetParams: {startDate: startDate, user: 'noSuchUser', loaded: true},
+            timesheetParams: {startDate: '2014-02-24', user: 'noSuchUser', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -391,7 +378,6 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
-        $timeout.flush();
 
         expect(scope.TimesheetUtils).not.toBeNull();
         expect(scope.loading).toBeFalsy();
@@ -401,7 +387,7 @@ describe("timesheetControllerTest", function() {
         expect(scope.pivotTable).toHaveColumnsNumber(7);
         var totalColumn = getFirstColumnKey(scope.pivotTable);
         expect(totalColumn.keyName).toEqual('dayOfTheWeek');
-        expect(totalColumn.keyValue).toEqual(new Date(startDate + ':00:00').getTime());//1393196400000)//noSuchUser in browser timezone
+        expect(totalColumn.keyValue).toEqual(1393196400000);
         expect(scope.pivotTable.sum).toBe(0);
         expect(scope.rowKeySize).toBe(1);
         checkOptions(scope);
@@ -442,7 +428,6 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
-        $timeout.flush();
 
         expect(scope.TimesheetUtils).not.toBeNull();
         expect(scope.loading).toBeFalsy();
@@ -476,7 +461,6 @@ describe("timesheetControllerTest", function() {
         scope.weekSumChange();
         expect(scope.loading).toBe(2); // no concurrent execute!
 
-        $httpBackend.flush();
         $timeout.flush(100); // concurrent init and execute
         expect(scope.loading).toBe(0);
         $timeout.verifyNoPendingTasks();
@@ -488,6 +472,9 @@ describe("timesheetControllerTest", function() {
         expect(scope.pivotTable.sum).toBe(0);
         expect(scope.rowKeySize).toBe(1);
         checkOptions(scope);
+
+        $httpBackend.flush();
+        $timeout.flush();
 
         AP.$timeoutDelay = 0;
     }));

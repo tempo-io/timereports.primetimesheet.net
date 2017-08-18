@@ -5,9 +5,7 @@ describe("pivottableServiceTest", function() {
             AP.$timeout = $timeout;
             $window.i18nDefault = 'i18n/default.json';
             _$httpBackend_.whenGET("i18n/default.json").respond({});
-            getWorklog = _$httpBackend_.whenGET(/^\/api\/worklog/);
-            getWorklog.respond(TimeData.issues);
-            $httpBackend = _$httpBackend_;
+            _$httpBackend_.flush();
         });
         AP.requestBak = AP.request;
     });
@@ -50,7 +48,6 @@ describe("pivottableServiceTest", function() {
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
             pivotTable = _pivotTable;
         });
-        $httpBackend.flush();
         $timeout.flush();
         expect(pivotTable).toBeDefined();
         expect(pivotTable).toHaveRowsNumber(6);
@@ -64,7 +61,6 @@ describe("pivottableServiceTest", function() {
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
             pivotTable = _pivotTable;
         });
-        $httpBackend.flush();
         $timeout.flush();
         expect(pivotTable).toBeDefined();
         expect(pivotTable).toHaveRowsNumber(3);
@@ -82,7 +78,6 @@ describe("pivottableServiceTest", function() {
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
             pivotTable = _pivotTable;
         });
-        $httpBackend.flush();
         $timeout.flush();
         expect(pivotTable).toBeDefined();
         expect(pivotTable).toHaveRowsNumber(6);
@@ -106,7 +101,7 @@ describe("pivottableServiceTest", function() {
                         "timeoriginalestimate" : 72000,
                         "timespent" : 36000,
                         "fields": {
-                            "customfield_10007" : "TIME-2"
+                            "customfield_10007" : "TIME-2"                                
                         }
                     }]});
                 }, 500);
@@ -121,7 +116,6 @@ describe("pivottableServiceTest", function() {
                 expect(issue.worklog.worklogs.length).toEqual(4);
             });
         });
-        $httpBackend.flush();
         $timeout.flush();
         expect(pivotTable).toBeDefined();
         expect(pivotTable).toHaveRowsNumber(2);
@@ -148,7 +142,7 @@ describe("pivottableServiceTest", function() {
         var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, sumSubTasks: true};
 
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
-        $httpBackend.flush();
+
         $timeout.flush();
 
         expect(pivottableService.sumSubTasks).toEqual(true);
@@ -162,7 +156,7 @@ describe("pivottableServiceTest", function() {
         var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, sumSubTasks: false};
 
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
-        $httpBackend.flush();
+
         $timeout.flush();
 
         expect(pivottableService.sumSubTasks).toEqual(false);
@@ -176,7 +170,7 @@ describe("pivottableServiceTest", function() {
         var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, startDate: '2015-01-25'};
 
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
-        $httpBackend.flush();
+
         $timeout.flush();
 
         expect(pivottableService.startDate).toEqual('2015-01-25');
@@ -200,21 +194,18 @@ describe("pivottableServiceTest", function() {
                     "id" : i + "00",
                     "started" : "2014-02-24T18:03:48.589+0100",
                     "timeSpent" : i + "h",
-                    "timeSpentSeconds" : i * 3600,
-                    "author": "admin"
+                    "timeSpentSeconds" : i * 3600
                 });
             }
             return worklog;
         };
 
         AP.request = function(options) {
-          if (options.url.match(/issue\/TIME-999\/worklog/)) {
-              this.getTimeoutFunc()(function() {
-                      options.success(generateWorklogs(22));
-              }, 500);
-          } else {
-              AP.requestBak(options);
-          }
+            this.getTimeoutFunc()(function() {
+                if (options.url.match(/issue\/TIME-999\/worklog/)) {
+                    options.success(generateWorklogs(22));
+                }
+            }, 500);
         };
 
         var issue = {
@@ -266,14 +257,14 @@ describe("pivottableServiceTest", function() {
 
         var getTestUserInfoByNameCalled = false;
         AP.request = function(options) {
-          if (options.url.match(/\/user\?expand=groups&key=test$/)) {
-              this.getTimeoutFunc()(function() {
-                  getTestUserInfoByNameCalled = true;
-                  options.success({groups:{items: []}});
-              }, 500);
-          } else {
-              AP.requestBak(options);
-          }
+            this.getTimeoutFunc()(function() {
+                if (options.url.match(/\/user\?expand=groups&username=test$/)) {
+                    getTestUserInfoByNameCalled = true;
+                    options.success({groups:{items: []}});
+                } else {
+                    AP.requestBak(options);
+                }
+            }, 500);
         };
 
         pivottableService.groups = ['jira-users'];
@@ -281,7 +272,7 @@ describe("pivottableServiceTest", function() {
 
         $timeout.flush();
         $log.assertEmpty();
-
+        
         expect(pivottableService.worklogAuthors).toContain('admin');
         expect(pivottableService.worklogAuthors).not.toContain('test');
         expect(getTestUserInfoByNameCalled).toBeTruthy();
@@ -437,7 +428,7 @@ describe("pivottableServiceTest", function() {
 
         expect(result3).toBeTruthy();
 
-        expect($timeout.flush).toThrow();
+        expect($timeout.flush).toThrow();        
     }));
 
     // test issue is added to queue only once
@@ -481,38 +472,10 @@ describe("pivottableServiceTest", function() {
         expect($timeout.flush).toThrow();
     }));
 
-    it('Parent issue not in search result, DB cloudant', inject(function($timeout, pivottableService) {
+    it('Parent issue not in search result', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {};
-        var options = {pivotTableType: 'IssueWorkedTimeByUser',
-            configOptions: {storeWorklog: true},
-            sumSubTasks: true};
-
-        var childIssue = {};
-        angular.copy(TimeData.issues[5], childIssue);
-        var worklog = childIssue.worklog || childIssue.fields.worklog;
-        worklog.total += worklog.maxResults + 1;
-        var searchResult = {issues: [childIssue]};
-
-        getWorklog.respond(searchResult.issues);
-
-        var spy = spyOn(pivottableService, 'loadAllWorklogs').and.callThrough();
-
-        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
-        $httpBackend.flush();
-        $timeout.flush();
-
-        expect(pivottableService.allIssues.length).toBe(1);
-        expect(spy.calls.count()).toBe(2);
-    }));
-
-
-    it('Parent issue not in search result, DB on Jira Cloud over rest', inject(function($timeout, pivottableService) {
-        expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
-        var options = {pivotTableType: 'IssueWorkedTimeByUser',
-            configOptions: {storeWorklog: false},
-            sumSubTasks: true};
+        var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, sumSubTasks: true};
 
         var childIssue = {};
         angular.copy(TimeData.issues[5], childIssue);
@@ -540,17 +503,12 @@ describe("pivottableServiceTest", function() {
         expect(spy.calls.count()).toBe(2);
     }));
 
-    it('PARAMETERS: groups, DB cloudant', inject(function($timeout, $log, pivottableService) {
+    it('PARAMETERS: groups', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {};
-        var options = {pivotTableType: 'IssueWorkedTimeByUser',
-            groups: ["group1", "group2"],
-            moreFields: ['customfield_10008'],
-            configOptions: {storeWorklog: true}};
+        var options = {pivotTableType: 'IssueWorkedTimeByUser', groups: ["group1", "group2"], moreFields: ['customfield_10008']};
 
         var requestCalled = false;
-
-        $httpBackend.expectGET(/\/api\/worklog\?moreFields=customfield_10008&groups=group1,group2&_=\d+/);
 
         AP.request = function(options) {
             if (options.url.match(/search/)) {
@@ -558,38 +516,6 @@ describe("pivottableServiceTest", function() {
                         requestCalled = true;
                         expect(options.url).toContain("jql=(worklogAuthor%20in%20membersOf(%22group1%22)%20or%20worklogAuthor%20in%20membersOf(%22group2%22))");
                         options.success(angular.copy(TimeData));
-                }, 500);
-            } else {
-                AP.requestBak(options);
-            }
-        };
-
-        pivottableService.allFields = FieldsData;
-        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
-        $httpBackend.flush();
-        $timeout.flush();
-        $log.assertEmpty();
-
-        //expect(requestCalled).toBeTruthy();
-        expect(pivottableService.allIssues.length).toBe(6);
-    }));
-
-    it('PARAMETERS: groups, DB on Jira Cloud over rest', inject(function($timeout, $log, pivottableService) {
-        expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
-        var options = {pivotTableType: 'IssueWorkedTimeByUser',
-            groups: ["group1", "group2"],
-            moreFields: ['customfield_10008'],
-            configOptions: {storeWorklog: false}};
-
-        var requestCalled = false;
-
-        AP.request = function(options) {
-            if (options.url.match(/search/)) {
-                this.getTimeoutFunc()(function() {
-                    requestCalled = true;
-                    expect(options.url).toContain("jql=(worklogAuthor%20in%20membersOf(%22group1%22)%20or%20worklogAuthor%20in%20membersOf(%22group2%22))");
-                    options.success(angular.copy(TimeData));
                 }, 500);
             } else {
                 AP.requestBak(options);
