@@ -80,7 +80,7 @@
                <label>{{'Sum SubTasks' | i18n}}</label>
                <input class="checkbox" type="checkbox" ng-model="sumSubTasks" ng-change="sumSubTasksChange(sumSubTasks)" />
 		</div>
-		<div class="field-group" ng-if="pivotTableType == 'Timesheet'">
+		<div class="field-group" ng-if="['Timesheet', 'TimeEntry'].indexOf(pivotTableType) >= 0">
                <label>{{'Show Empty Issues' | i18n}}</label>
                <input class="checkbox" type="checkbox" ng-model="includeEmpty" ng-change="includeEmptyChange(includeEmpty)" ng-disabled="!filterOrProjectId" />
 		</div>
