@@ -277,7 +277,7 @@ describe("pivottableServiceTest", function() {
         };
 
         pivottableService.groups = ['jira-users'];
-        pivottableService.filterWorklogs(issue);
+        pivottableService.filterWorklogs(issue, /* deferred */ null, /* options */ {configOptions: {}});
 
         $timeout.flush();
         $log.assertEmpty();
@@ -550,7 +550,7 @@ describe("pivottableServiceTest", function() {
 
         var requestCalled = false;
 
-        $httpBackend.expectGET(/\/api\/worklog\?moreFields=customfield_10008&groups=group1,group2&_=\d+/);
+        $httpBackend.expectGET(/\/api\/worklog\?groups=group1,group2&moreFields=customfield_10008&_=\d+/);
 
         AP.request = function(options) {
             if (options.url.match(/search/)) {

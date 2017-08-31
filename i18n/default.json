@@ -86,6 +86,8 @@
     "Work Description Required": "Require Work Description",
     "Cache Worklog": "Cache Worklog",
     "Store Worklog": "Store Worklog",
+    "REST": "REST",
+    "Get Key": "Get Key",
     "saved successfully": "saved successfully.",
     "not saved": "not saved.",
     "description.Auditors Groups": "Only users of the selected groups will be allowed to see time spent by other users.",
@@ -104,6 +106,7 @@
     "description.Work Description Required": "Require Work Description when adding or updating worklog.",
     "description.Cache Worklog": "If enabled, use local Storage for issues with more than 20 worklogs. Worklogs added last minute anywhere else will be missing in report.",
     "description.Store Worklog": "Store Worklog copy in add-on secure DB, see <a href=\"http://www.jiratimesheet.com/cloud/security.html\" target=\"_blank\">add-on security policy</a> for more details",
+    "description.REST": "Get KEY to load worklog in JSON format from <a target=\"_blank\" href=\"https://timesheet-plugin.herokuapp.com/api/1/workog\">https://timesheet-plugin.herokuapp.com/api/1/workog</a> with HTTP Header \"Authorization: Apikey KEY.\" See also <a href=\"https://www.jiratimesheet.com/cloud/rest.html\" target=\"_blank\">REST endpoint</a>.",
 
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in auditors group.",
