@@ -1,5 +1,5 @@
     <form class="aui" name="menuForm">
-        <form-invalid ng-if="dialogType || reportDialog"></form-invalid>
+        <form-invalid ng-if="reportDialog"></form-invalid>
         <div class="ak-field-group">
             <label>{{ 'Report' | i18n }}</label>
 	        <input ng-model="viewOptions.selected" aui-multi-select-picker="false" ng-value-changed-func="viewChanged" ng-options-data="viewOptions" update-event="viewUpdated" type="text"/>
