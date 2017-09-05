@@ -99,10 +99,10 @@
                     <td class="nav" nowrap ng-repeat="field in row.moreFields">
                         <issue-field name="field" field="row.rowKey.issue.fields[field]" issue="row.rowKey.issue" jira-config="jiraConfig" ng-if="row.rowKey.issue"/>
                     </td>
-                    <td ng-init="p_show=false" ng-mouseover="p_show=column.sum == 0 && canLogWork" ng-mouseleave="p_show=false"
-                        ng-click="canLogWork && addWorklogPopup.init(column.columnKey, row.rowKey); editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
+                    <td ng-init="p_show=false" ng-mouseover="p_show=column.sum == 0 && canLogWorkIssue[row.rowKey.keyValue]" ng-mouseleave="p_show=false"
+                        ng-click="canLogWorkIssue[row.rowKey.keyValue] && addWorklogPopup.init(column.columnKey, row.rowKey); editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
                         class="nav border"
-                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend, addWorklogPopup: column.sum == 0 && canLogWork, editWorklogPopup: column.sum != 0, disabled: column.sum == 0 && !canLogWork}" ng-repeat="column in row.columns">
+                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend, addWorklogPopup: column.sum == 0 && canLogWorkIssue[row.rowKey.keyValue], editWorklogPopup: column.sum != 0, disabled: column.sum == 0 && !canLogWorkIssue[row.rowKey.keyValue]}" ng-repeat="column in row.columns">
                         {{column.sum | prettyHours:jiraConfig}}
                         <span ng-show="p_show" class="fa fa-plus"></span>
                     </td>
