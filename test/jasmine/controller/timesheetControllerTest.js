@@ -133,6 +133,7 @@ describe("timesheetControllerTest", function() {
                         parentIssueField: {},
                         auditorsGroups: {},
                         weekendType: {},
+                        preserveStartedTime: {},
                         prettyDuration: {val: true},
                         workDescriptionRequired: {},
                         durationType: {},

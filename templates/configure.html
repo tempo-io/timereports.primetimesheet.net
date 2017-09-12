@@ -80,6 +80,21 @@
         <span class="description">{{'description.Weekend Type' | i18n}}</span>
     </div>
     <div class="field-group">
+        <label for="preserveStartedTimeSaveSuccess">{{'Preserve Started Time' | i18n}}</label>
+        <input id="preserveStartedTimeSaveSuccess"
+               type="checkbox"
+               class="checkbox"
+               ng-model="preserveStartedTime.val"
+               ng-change="savePreserveStartedTime()">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="preserveStartedTimeSaveSuccess">
+            <strong>{{'Preserve Started Time' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description" ng-bind-html="'description.Preserve Started Time' | i18n | htmlSafe"></span>
+    </div>
+    <div class="field-group">
         <label for="workingTimeInStatus">{{'Working Time in Status' | i18n}}</label>
         <input id="workingTimeInStatus"
                type="checkbox"
