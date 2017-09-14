@@ -542,7 +542,7 @@ describe("pivottableServiceTest", function() {
 
     it('PARAMETERS: groups, DB cloudant', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
+        var loggedInUser = {key: 'admin', groups: {items: ['group1', 'group2']}};
         var options = {pivotTableType: 'IssueWorkedTimeByUser',
             groups: ["group1", "group2"],
             moreFields: ['customfield_10008'],
@@ -576,7 +576,7 @@ describe("pivottableServiceTest", function() {
 
     it('PARAMETERS: groups, DB on Jira Cloud over rest', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
+        var loggedInUser = {key: 'admin', groups: {items: ['group1', 'group2']}};
         var options = {pivotTableType: 'IssueWorkedTimeByUser',
             groups: ["group1", "group2"],
             moreFields: ['customfield_10008'],

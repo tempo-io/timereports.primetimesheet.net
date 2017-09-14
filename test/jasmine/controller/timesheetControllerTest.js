@@ -436,7 +436,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin', groups: {items: ['group1', 'group2']}},
             projectKey: 'DEMO'
         });
 

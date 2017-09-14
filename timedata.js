@@ -2077,7 +2077,7 @@ var processFlightData = function() {
     }
     if (params) {
         document.location.href =
-            document.location.href.split('?')[0] + '?' + TimesheetUtils.buildParamString(params);
+            document.location.href.split('?')[0] + '?' + $.param(params);
     }
 };
 
