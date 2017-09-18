@@ -140,6 +140,34 @@ describe("pivottableServiceTest", function() {
         expect(pivotTable.sum).toEqual(176400);
     }));
 
+    it('sumSubTasks_copy_worklogs', inject(function($timeout, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {};
+        var options = {
+            pivotTableType: 'IssueWorkedTimeByUser',
+            configOptions: {
+                parentIssueField: 'customfield_10007',
+                compositionIssueLink: 'Duplicate'
+            },
+            sumSubTasks: true
+        };
+        var pivotTable;
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
+            pivotTable = _pivotTable;
+        });
+        $httpBackend.flush();
+        $timeout.flush();
+
+        var issueFromQueue = pivotTable.queue['TIME-2'].promise.$$state.value;
+        var issue = angular.copy(issueFromQueue);
+        var length = issueFromQueue.worklog.worklogs.length;
+        delete issueFromQueue.worklog; // simulate resolved without worklog issue
+        pivottableService.processIssue(pivotTable, options, issue);
+        $timeout.flush();
+
+        expect(issueFromQueue.worklog.worklogs.length).toBe(length);
+    }));
+
     // verify subsequent resolve does not make effect
     it('deferredTest', inject(function($timeout, $q) {
         var deferred = $q.defer();
@@ -246,6 +274,67 @@ describe("pivottableServiceTest", function() {
 
         expect(result).toBeDefined();
         expect(result.fields.worklog.worklogs.length).toEqual(22);
+    }));
+
+    it('loadAllChangelogs [changelog.total > changelog.maxResults]', inject(function($timeout, pivottableService) {
+        expect(pivottableService).toBeDefined();
+
+        var generateChangelogs = function(total, count, startAt) {
+            var changelog = {
+                "maxResults" : count,
+                "startAt" : startAt,
+                "total" : total,
+                "values" : []
+            };
+            if (total <= startAt + count) {
+                changelog.isLast = true;
+            } else {
+                changelog.nextPage = "/issue/TIME-999/changelog?startAt=" + (startAt + count);
+            }
+            for (var i = 0; i < Math.min(count, total - startAt); i++) {
+                changelog.values.push({
+                    "comment" : "test comment " + (startAt + i)
+                });
+            }
+            return changelog;
+        };
+
+        AP.request = function(options) {
+          if (options.url.match(/issue\/TIME-999\/changelog/)) {
+              var a = options.url.split("startAt=");
+              var startAt = 0;
+              if (a.length > 1) {
+                  startAt = parseInt(a[1]);
+              }
+              this.getTimeoutFunc()(function() {
+                      options.success(generateChangelogs(25, 10, startAt));
+              }, 500);
+          } else {
+              AP.requestBak(options);
+          }
+        };
+
+        var issue = {
+            key: "TIME-999",
+            changelog: {
+                histories: [],
+                maxResults: 10,
+                total: 25
+            }
+        };
+        for (var i = 0; i < 10; i++) {
+            issue.changelog.histories.push({
+                "comment" : "test comment " + i
+            });
+        }
+
+        pivottableService.loadAllChangelogs(issue, {pivotTableType: 'IssueWorkedTimeByStatus'});
+
+        $timeout.flush(); // $q.when
+        $timeout.flush(); // AP.request 10
+        $timeout.flush(); // AP.request 20
+
+        expect(issue.changelog.histories.length).toEqual(25);
     }));
 
     // test filterWorklogs fills in worklogAuthors
