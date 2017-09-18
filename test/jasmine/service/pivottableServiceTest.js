@@ -94,19 +94,27 @@ describe("pivottableServiceTest", function() {
     it('IssueWorkedTimeByUser_sumSubTasks', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {};
-        var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {parentIssueField: 'customfield_10007', compositionIssueLink: 'Duplicate'}, sumSubTasks: true};
+        var options = {
+            pivotTableType: "IssueWorkedTimeByUser",
+            configOptions: {
+                parentIssueField: "customfield_10007",
+                compositionIssueLink: "Duplicate"
+            },
+            moreFields: ['timespent'],
+            sumSubTasks: true
+        };
         var pivotTable;
         AP.request = function(options) {
-            if (options.url.match(/jql='Epic%20Link'%20is%20not%20EMPTY/)) {
+            if (options.url.match(/jql=key%20in%20\(TIME-2\)/)) {
                 this.getTimeoutFunc()(function() {
                     options.success({issues: [{
                         "id" : "10002",
-                        "key" : "TIME-3",
+                        "key" : "TIME-2",
                         "timeestimate" : 0,
                         "timeoriginalestimate" : 72000,
                         "timespent" : 36000,
                         "fields": {
-                            "customfield_10007" : "TIME-2"
+                            "issuetype": {"name": "Bug"}
                         }
                     }]});
                 }, 500);
@@ -122,6 +130,7 @@ describe("pivottableServiceTest", function() {
             });
         });
         $httpBackend.flush();
+        $timeout.flush();
         $timeout.flush();
         expect(pivotTable).toBeDefined();
         expect(pivotTable).toHaveRowsNumber(2);

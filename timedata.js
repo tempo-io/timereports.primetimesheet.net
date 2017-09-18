@@ -662,7 +662,14 @@ var TimeData = { "expand" : "schema,names",
             "duedate" : null,
             "environment" : null,
             "fixVersions" : [  ],
-            "issuelinks" : [  ],
+            "issuelinks" : [ {
+                "type": {
+                  "name": "Duplicate"
+                },
+                "inwardIssue": {
+                  "key": "TIME-2"
+                }
+              } ],
             "issuetype" : { "description" : "A problem which impairs or prevents the functions of the product.",
                 "iconUrl" : "http://localhost:2990/jira/images/icons/bug.gif",
                 "id" : "1",
@@ -872,7 +879,7 @@ var TimeData = { "expand" : "schema,names",
                 },
                 "workratio" : -1
             },
-            "id" : "10002",
+            "id" : "10004",
             "key" : "TIME-5",
             "self" : "http://localhost:2990/jira/rest/api/2/issue/10002",
             "worklog" : { "maxResults" : 2,
@@ -1021,7 +1028,7 @@ var TimeData = { "expand" : "schema,names",
                 },
                 "workratio" : -1
             },
-            "id" : "10003",
+            "id" : "10005",
             "key" : "TIME-6",
             "self" : "http://localhost:2990/jira/rest/api/2/issue/10003",
             "worklog" : { "maxResults" : 2,
