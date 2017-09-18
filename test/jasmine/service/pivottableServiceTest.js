@@ -145,27 +145,40 @@ describe("pivottableServiceTest", function() {
         var loggedInUser = {};
         var options = {
             pivotTableType: 'IssueWorkedTimeByUser',
-            configOptions: {
-                parentIssueField: 'customfield_10007',
-                compositionIssueLink: 'Duplicate'
-            },
             sumSubTasks: true
         };
-        var pivotTable;
-        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
-            pivotTable = _pivotTable;
+        AP.request = function(options) {
+            var timeout = this.getTimeoutFunc();
+            var m;
+            if (m = options.url.match(/search\?.+&startAt=(\d+)/)) {
+                var startAt = parseInt(m[1]);
+                timeout(function () {
+                    options.success({
+                      "issues": TimeData.issues.slice(startAt, startAt + 1),
+                      "maxResults" : 1,
+                      "startAt" : startAt,
+                      "total" : 6
+                    });
+                }, 500);
+            } else {
+                AP.requestBak(options);
+            }
+        };
+
+        var pivotTable = PivotTableFactory.createPivotTable(options, /* logger */ null);
+        pivotTable.queue = {};
+        pivottableService.onAllIssues(pivottableService.getQuery(pivotTable, options), function(data) {
+          var result = pivottableService.processIssues(pivotTable, options, data, /* notify */ null);
+        }).then(function () {
+          //console.log(arguments);
         });
+
         $httpBackend.flush();
-        $timeout.flush();
-
-        var issueFromQueue = pivotTable.queue['TIME-2'].promise.$$state.value;
-        var issue = angular.copy(issueFromQueue);
-        var length = issueFromQueue.worklog.worklogs.length;
-        delete issueFromQueue.worklog; // simulate resolved without worklog issue
-        pivottableService.processIssue(pivotTable, options, issue);
-        $timeout.flush();
-
-        expect(issueFromQueue.worklog.worklogs.length).toBe(length);
+        $timeout.flush(); // first search (timeout = 500) and findIssueByKey (AP.$timeoutDelay = 0)
+        var issueFromQueue = pivotTable.queue['TIME-3'].promise.$$state.value;
+        expect(issueFromQueue.fields.worklog.worklogs.length).toBe(0);
+        $timeout.flush(); // subsequent search requests
+        expect(issueFromQueue.fields.worklog.worklogs.length).toBe(2);
     }));
 
     // verify subsequent resolve does not make effect
