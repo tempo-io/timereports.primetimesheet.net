@@ -492,4 +492,122 @@ describe("timesheetControllerTest", function() {
 
         AP.$timeoutDelay = 0;
     }));
+
+    it('inplace replacement, delete', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'DEMO'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-1', 'TIME-2', 'TIME-3', 'TIME-4']);
+        var data = {
+            action: "deleted",
+            issueKey: "TIME-2",
+            worklogOld: {
+                "started" : "2014-02-25T18:03:49.225+0100",
+                "timeSpent" : "5h",
+                "timeSpentSeconds" : 18000,
+                "id": "10004"
+            }
+        };
+        scope.dialogCloseFunction(data);
+        expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-2']);
+    }));
+
+    it('inplace replacement, update', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'DEMO'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-1', 'TIME-2', 'TIME-3', 'TIME-4']);
+        var data = {
+            action: "updated",
+            issueKey: "TIME-2",
+            worklogOld: {
+                "started" : "2014-02-25T18:03:49.225+0100",
+                "timeSpent" : "5h",
+                "timeSpentSeconds" : 18000,
+                "id": "10004"
+            },
+            worklog: {
+                "started" : "2014-02-24T18:03:49.225+0100",
+                "timeSpent" : "1h",
+                "timeSpentSeconds" : 3600,
+                "id": "10004"
+            }
+        };
+        expect(scope.pivotTable.sum).toBe(79200);
+        expect(scope.pivotTable).toHaveRowsNumber(4);
+        expect(scope.pivotTable).toHaveColumnsNumber(2);
+        expect(scope.pivotTable.rows["TIME-2"].columns[scope.pivotTable.sortedColumns()[0].columnKey.keyValue].entries.length).toBe(0);
+        expect(scope.pivotTable.rows["TIME-2"].columns[scope.pivotTable.sortedColumns()[1].columnKey.keyValue].entries.length).toBe(1);
+
+        scope.dialogCloseFunction(data);
+        expect(scope.pivotTable).toHaveRowsNumber(4);
+        expect(scope.pivotTable).toHaveColumnsNumber(2);
+        expect(scope.pivotTable.sum).toBe(79200 - 5 * 3600 + 1 * 3600);
+        expect(scope.pivotTable.rows["TIME-2"].columns[scope.pivotTable.sortedColumns()[0].columnKey.keyValue].entries.length).toBe(1);
+        expect(scope.pivotTable.rows["TIME-2"].columns[scope.pivotTable.sortedColumns()[1].columnKey.keyValue].entries.length).toBe(0);
+    }));
+
+    it('inplace replacement, add', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'DEMO'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-7']);
+        var data = {
+            action: "added",
+            issueKey: "TIME-7",
+            worklog: TimeDataTIME_7.worklog.worklogs[0]
+        };
+        expect(scope.pivotTable.sum).toBe(79200);
+        expect(scope.pivotTable).toHaveRowsNumber(4);
+        expect(scope.pivotTable).toHaveColumnsNumber(2);
+
+        scope.dialogCloseFunction(data);
+        $timeout.flush();
+        expect(scope.pivotTable).toHaveRowsNumber(5);
+        expect(scope.pivotTable).toHaveColumnsNumber(2);
+        expect(scope.pivotTable.sum).toBe(79200 + 3600);
+    }));
+
 });

@@ -15,7 +15,9 @@ window.AP = {
   request: function(options) {
     this.getTimeoutFunc()(function() {
       var m;
-      if (options.url.match(/search/)) {
+      if (options.url.match(/rest\/api\/2\/issue\/TIME-7/)) {
+          options.success(angular.copy(TimeDataTIME_7));
+      } else if (options.url.match(/search/)) {
         options.success(angular.copy(TimeData));
       } else if (options.url.match(/\/user\/picker/)) {
         options.success(userPickerData);
@@ -1142,6 +1144,150 @@ var TimeData = { "expand" : "schema,names",
   "total" : 6,
   "names":{"customfield_10007": "Epic Link"}
 };
+var TimeDataTIME_7 = {
+    "expand": "editmeta,renderedFields,transitions,changelog,operations,worklog",
+    "fields": {
+        "aggregateprogress": {
+            "percent": 100,
+            "progress": 3600,
+            "total": 3600
+        },
+        "aggregatetimeestimate": 0,
+        "aggregatetimeoriginalestimate": null,
+        "aggregatetimespent": 3600,
+        "assignee": {
+            "active": true,
+            "avatarUrls": {
+                "16x16": "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
+                "48x48": "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
+            },
+            "displayName": "admin",
+            "emailAddress": "admin@example.com",
+            "name": "admin",
+            "self": "http://localhost:2990/jira/rest/api/2/user?username=admin"
+        },
+        "components": [],
+        "customfield_10007": "",
+        "customfield_10004": 2.0,
+        "created": "2013-02-27T18:02:37.000+0100",
+        "description": null,
+        "duedate": null,
+        "environment": null,
+        "fixVersions": [],
+        "issuelinks": [],
+        "issuetype": {
+            "description": "A problem which impairs or prevents the functions of the product.",
+            "iconUrl": "http://localhost:2990/jira/images/icons/bug.gif",
+            "id": "1",
+            "name": "Bug",
+            "self": "http://localhost:2990/jira/rest/api/2/issuetype/1",
+            "subtask": false
+        },
+        "labels": [],
+        "priority": {
+            "iconUrl": "http://localhost:2990/jira/images/icons/priority_major.gif",
+            "id": "3",
+            "name": "Major",
+            "self": "http://localhost:2990/jira/rest/api/2/priority/3"
+        },
+        "progress": {
+            "percent": 100,
+            "progress": 3600,
+            "total": 3600
+        },
+        "project": {
+            "avatarUrls": {
+                "16x16": "http://localhost:2990/jira/secure/projectavatar?size=small&pid=10000&avatarId=10011",
+                "48x48": "http://localhost:2990/jira/secure/projectavatar?pid=10000&avatarId=10011"
+            },
+            "id": "10000",
+            "key": "TIME",
+            "name": "Timeship",
+            "self": "http://localhost:2990/jira/rest/api/2/project/TIME"
+        },
+        "reporter": {
+            "active": true,
+            "avatarUrls": {
+                "16x16": "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
+                "48x48": "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
+            },
+            "displayName": "admin",
+            "emailAddress": "admin@example.com",
+            "name": "admin",
+            "self": "http://localhost:2990/jira/rest/api/2/user?username=admin"
+        },
+        "resolution": null,
+        "resolutiondate": null,
+        "status": {
+            "description": "The issue is open and ready for the assignee to start work on it.",
+            "iconUrl": "http://localhost:2990/jira/images/icons/status_open.gif",
+            "id": "1",
+            "name": "In Progress",
+            "self": "http://localhost:2990/jira/rest/api/2/status/1"
+        },
+        "subtasks": [],
+        "summary": "Hindenbug",
+        "timeestimate": 0,
+        "timeoriginalestimate": 100000,
+        "timespent": 3600,
+        "updated": "2013-02-27T18:03:49.000+0100",
+        "versions": [],
+        "votes": {
+            "hasVoted": false,
+            "self": "http://localhost:2990/jira/rest/api/2/issue/TIME-7/votes",
+            "votes": 0
+        },
+        "watches": {
+            "isWatching": false,
+            "self": "http://localhost:2990/jira/rest/api/2/issue/TIME-7/watchers",
+            "watchCount": 0
+        },
+        "workratio": -1
+    },
+    "id": "10007",
+    "key": "TIME-7",
+    "self": "http://localhost:2990/jira/rest/api/2/issue/10007",
+    "worklog": {
+        "maxResults": 1,
+        "startAt": 0,
+        "total": 1,
+        "worklogs": [{
+            "author": {
+                "active": true,
+                "avatarUrls": {
+                    "16x16": "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
+                    "48x48": "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
+                },
+                "displayName": "admin",
+                "emailAddress": "admin@example.com",
+                "name": "admin",
+                "timeZone": "Europe/Moscow",
+                "self": "http://localhost:2990/jira/rest/api/2/user?username=admin"
+            },
+            "comment": "test 3",
+            "created": "2014-02-24T18:03:49.225+0100",
+            "id": "10008",
+            "self": "http://localhost:2990/jira/rest/api/2/issue/10007/worklog/10008",
+            "started": "2014-02-24T18:03:49.225+0100",
+            "timeSpent": "1h",
+            "timeSpentSeconds": 3600,
+            "updateAuthor": {
+                "active": true,
+                "avatarUrls": {
+                    "16x16": "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
+                    "48x48": "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
+                },
+                "displayName": "admin",
+                "emailAddress": "admin@example.com",
+                "name": "admin",
+                "self": "http://localhost:2990/jira/rest/api/2/user?username=admin"
+            },
+            "updated": "2014-02-24T18:03:49.225+0100"
+        }
+        ]
+    }
+};
+
 var WorklogData = [
   // TIME-4
   { "maxResults" : 3,
