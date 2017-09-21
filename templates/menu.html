@@ -8,7 +8,7 @@
             <label>{{ 'Filter or Project' | i18n }}</label>
             <input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" update-event="projectUpdated" type="text"/>
         </div>
-        <div class="ak-field-group" ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
+        <div class="ak-field-group" ng-if="['TimeEntry', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) < 0">
             <label>{{'User' | i18n}}</label>
             <input ng-value="paramUserInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
         </div>
@@ -16,15 +16,15 @@
             <label style="display: inline-block; margin: 0">{{'All Users' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)"/>
         </div>
-        <div class="ak-field-group" ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
+        <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry'">
             <label>{{'Groups' | i18n}}</label>
             <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" update-event="groupUpdated" type="text"/>
         </div>
-        <div class="ak-field-group" ng-if="pivotTableType != 'TimeTracking'">
+        <div class="ak-field-group">
             <label >{{'Start Date' | i18n}}</label>
             <input ng-model="startDate.value" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="select"/>
         </div>
-        <div class="ak-field-group" ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
+        <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry'">
             <label>{{'End Date' | i18n}}</label>
             <input ng-model="endDate.value" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
         </div>

@@ -36,7 +36,7 @@
 			<label>{{ 'Filter or Project' | i18n }}:</label>
 			<input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"/>
 		</div>
-		<div class="field-group" ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
+		<div class="field-group" ng-if="['TimeEntry', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) < 0">
 			<label>{{'User' | i18n}}</label>
 			<input ng-value="userInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
 		</div>
@@ -44,7 +44,7 @@
             <label>{{'All Users' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)" />
 		</div>
-		<div class="field-group" ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
+		<div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
 			<label>{{'Groups' | i18n}}</label>
 			<input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>
 		</div>
