@@ -115,7 +115,8 @@
     "error.restriction.licenseError": "License is not Active.",
     "error.startDate.afterNow": "The Start Date is in the future.",
     "error.startDate.afterEnd": "The Start Date is later than the End Date.",
-    "error.workLabel.emptyUnique": "Work Label must not be empty and be unique",
+    "error.workLabel.emptyUnique": "Work Label must not be empty and be unique.",
+    "error.cannotLogWorkIssue": "Work can not be logged for the issue.",
 
     "Configure": "Configure",
     "Go to": "Go to",
