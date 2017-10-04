@@ -178,7 +178,7 @@ describe("pivottableServiceTest", function() {
         var issueFromQueue = pivotTable.queue['TIME-3'].promise.$$state.value;
         expect(issueFromQueue.fields.worklog.worklogs.length).toBe(0);
         $timeout.flush(); // subsequent search requests
-        expect(issueFromQueue.fields.worklog.worklogs.length).toBe(2);
+        expect(issueFromQueue.worklog.worklogs.length).toBe(2);
     }));
 
     // verify subsequent resolve does not make effect
