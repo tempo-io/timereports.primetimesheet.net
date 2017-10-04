@@ -15,9 +15,7 @@ window.AP = {
   request: function(options) {
     this.getTimeoutFunc()(function() {
       var m;
-      if (options.url.match(/rest\/api\/2\/issue\/TIME-7/)) {
-          options.success(angular.copy(TimeDataTIME_7));
-      } else if (options.url.match(/search/)) {
+      if (options.url.match(/search/)) {
         options.success(angular.copy(TimeData));
       } else if (options.url.match(/\/user\/picker/)) {
         options.success(userPickerData);

@@ -523,6 +523,7 @@ describe("timesheetControllerTest", function() {
             }
         };
         scope.dialogCloseFunction(data);
+        $timeout.flush();
         expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-2']);
     }));
 
@@ -545,6 +546,12 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
 
         expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-1', 'TIME-2', 'TIME-3', 'TIME-4']);
+        expect(scope.pivotTable.sum).toBe(79200);
+        expect(scope.pivotTable).toHaveRowsNumber(4);
+        expect(scope.pivotTable).toHaveColumnsNumber(2);
+        expect(scope.pivotTable.rows["TIME-2"].columns[scope.pivotTable.sortedColumns()[0].columnKey.keyValue].entries.length).toBe(0);
+        expect(scope.pivotTable.rows["TIME-2"].columns[scope.pivotTable.sortedColumns()[1].columnKey.keyValue].entries.length).toBe(1);
+
         var data = {
             action: "updated",
             issueKey: "TIME-2",
@@ -561,13 +568,8 @@ describe("timesheetControllerTest", function() {
                 "id": "10004"
             }
         };
-        expect(scope.pivotTable.sum).toBe(79200);
-        expect(scope.pivotTable).toHaveRowsNumber(4);
-        expect(scope.pivotTable).toHaveColumnsNumber(2);
-        expect(scope.pivotTable.rows["TIME-2"].columns[scope.pivotTable.sortedColumns()[0].columnKey.keyValue].entries.length).toBe(0);
-        expect(scope.pivotTable.rows["TIME-2"].columns[scope.pivotTable.sortedColumns()[1].columnKey.keyValue].entries.length).toBe(1);
-
         scope.dialogCloseFunction(data);
+        $timeout.flush();
         expect(scope.pivotTable).toHaveRowsNumber(4);
         expect(scope.pivotTable).toHaveColumnsNumber(2);
         expect(scope.pivotTable.sum).toBe(79200 - 5 * 3600 + 1 * 3600);
@@ -594,20 +596,235 @@ describe("timesheetControllerTest", function() {
         $timeout.flush();
 
         expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-7']);
+        expect(scope.pivotTable.sum).toBe(79200);
+        expect(scope.pivotTable).toHaveRowsNumber(4);
+        expect(scope.pivotTable).toHaveColumnsNumber(2);
+
         var data = {
             action: "added",
             issueKey: "TIME-7",
             worklog: TimeDataTIME_7.worklog.worklogs[0]
         };
-        expect(scope.pivotTable.sum).toBe(79200);
-        expect(scope.pivotTable).toHaveRowsNumber(4);
-        expect(scope.pivotTable).toHaveColumnsNumber(2);
-
+        AP.request = function(options) {
+            if (options.url.match(/rest\/api\/2\/issue\/TIME-7/)) {
+                options.success(angular.copy(TimeDataTIME_7));
+            } else {
+                AP.requestBak(options);
+            }
+        };
         scope.dialogCloseFunction(data);
         $timeout.flush();
         expect(scope.pivotTable).toHaveRowsNumber(5);
         expect(scope.pivotTable).toHaveColumnsNumber(2);
         expect(scope.pivotTable.sum).toBe(79200 + 3600);
+    }));
+
+    it('inplace replacement, add subtask from allIssues, sumSubTasks: true', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {jql: true, sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'DEMO'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-5']);
+        expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-6']);
+        expect(scope.pivotTable.sum).toBe(79200);
+        expect(scope.pivotTable).toHaveRowsNumber(3);
+
+        var data = {
+            action: "added",
+            issueKey: "TIME-6",
+            worklog: {
+                "created": "2014-02-24T18:03:49.225+0100",
+                "started": "2014-02-24T18:03:49.225+0100",
+                "timeSpent": "1h",
+                "timeSpentSeconds": 3600}
+        };
+        AP.request = function(options) {
+            if (options.url.match(/rest\/api\/2\/issue\/TIME-6/)) {
+                var issue6 = angular.copy(TimeData.issues[5]);
+                issue6.worklog.maxResults++;
+                issue6.worklog.total++;
+                issue6.worklog.worklogs.push(data.worklog);
+                options.success(issue6);
+            } else {
+                AP.requestBak(options);
+            }
+        };
+
+        scope.dialogCloseFunction(data);
+        $timeout.flush();
+        expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-5']);
+        expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-6']);
+        expect(scope.pivotTable).toHaveRowsNumber(4);
+        expect(scope.pivotTable.sum).toBe(79200 + 3600);
+    }));
+
+    it('inplace replacement, add subtask not from allIssues, sumSubTasks: true', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {jql: true, sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'DEMO'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-5']);
+        expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-6']);
+        expect(scope.pivotTable.sum).toBe(79200);
+        expect(scope.pivotTable).toHaveRowsNumber(3);
+
+        var data = {
+            action: "added",
+            issueKey: "TIME-6",
+            worklog: {
+                "created": "2014-02-24T18:03:49.225+0100",
+                "started": "2014-02-24T18:03:49.225+0100",
+                "timeSpent": "1h",
+                "timeSpentSeconds": 3600}
+        };
+        AP.request = function(options) {
+            if (options.url.match(/rest\/api\/2\/issue\/TIME-6/)) {
+                var issue6 = angular.copy(TimeData.issues[5]);
+                issue6.worklog.maxResults++;
+                issue6.worklog.total++;
+                issue6.worklog.worklogs.push(data.worklog);
+                options.success(issue6);
+            } else {
+                AP.requestBak(options);
+            }
+        };
+
+        //clean reduntant issues to simulate no issues provided
+        pivottableService.allIssues = pivottableService.allIssues.filter(function (issue) {
+            return issue.key != 'TIME-5' && issue.key != 'TIME-6';
+        });
+        scope.dialogCloseFunction(data);
+        $timeout.flush();
+        expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-5']);
+        expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-6']);
+        expect(scope.pivotTable).toHaveRowsNumber(4);
+        expect(scope.pivotTable.sum).toBe(79200 + 3600);
+    }));
+
+    it('inplace replacement, add regular task, issue in allIssues, sumSubTasks: true', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {jql: true, sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-24', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'DEMO'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-2']);
+        expect(scope.pivotTable.sum).toBe(32400);
+        expect(scope.pivotTable).toHaveRowsNumber(2);
+
+        var data = {
+            action: "added",
+            issueKey: "TIME-2",
+            worklog: {
+                "created": "2014-02-24T18:03:49.225+0100",
+                "started": "2014-02-24T18:03:49.225+0100",
+                "timeSpent": "1h",
+                "timeSpentSeconds": 3600}
+        };
+        AP.request = function(options) {
+            if (options.url.match(/rest\/api\/2\/issue\/TIME-2/)) {
+                var issue2 = angular.copy(TimeData.issues[2]);
+                issue2.worklog.maxResults++;
+                issue2.worklog.total++;
+                issue2.worklog.worklogs.push(data.worklog);
+                options.success(issue2);
+            } else {
+                AP.requestBak(options);
+            }
+        };
+
+        scope.dialogCloseFunction(data);
+        $timeout.flush();
+        expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-2']);
+        expect(scope.pivotTable).toHaveRowsNumber(3);
+        expect(scope.pivotTable.sum).toBe(32400 + 3600);
+    }));
+
+    it('inplace replacement, add regular task, issue not in allIssues, sumSubTasks: true', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {jql: true, sumSubTasks: true, startDate: '2017-10-03', endDate: '2017-10-03', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'DEMO'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-2']);
+        expect(scope.pivotTable.sum).toBe(0);
+        expect(scope.pivotTable).toHaveRowsNumber(0);
+
+        var data = {
+            action: "added",
+            issueKey: "TIME-7",
+            worklog: {
+                "created": "2017-10-03T18:03:49.225+0100",
+                "started": "2017-10-03T18:03:49.225+0100",
+                "timeSpent": "1h",
+                "timeSpentSeconds": 3600}
+        };
+        AP.request = function(options) {
+            if (options.url.match(/rest\/api\/2\/issue\/TIME-7/)) {
+                var issue7 = angular.copy(TimeDataTIME_7);
+                issue7.worklog.maxResults++;
+                issue7.worklog.total++;
+                issue7.worklog.worklogs.push(data.worklog);
+                options.success(issue7);
+            } else {
+                AP.requestBak(options);
+            }
+        };
+
+        scope.dialogCloseFunction(data);
+        $timeout.flush();
+        expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-7']);
+        expect(scope.pivotTable).toHaveRowsNumber(1);
+        expect(scope.pivotTable.sum).toBe(3600);
     }));
 
 });
