@@ -140,7 +140,10 @@ describe("pivottableServiceTest", function() {
         expect(pivotTable.sum).toEqual(176400);
     }));
 
-    it('sumSubTasks_copy_worklogs', inject(function($timeout, pivottableService) {
+    // test worklog is not loaded by findIssueByKey and then added from search result
+    // obsolete due to jiratimesheet issue#1172 iniitial problem
+    // TODO: rework it into something meaningful, e.g. test checkInQueue logic
+    xit('sumSubTasks_copy_worklogs', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {};
         var options = {
@@ -178,7 +181,7 @@ describe("pivottableServiceTest", function() {
         var issueFromQueue = pivotTable.queue['TIME-3'].promise.$$state.value;
         expect(issueFromQueue.fields.worklog.worklogs.length).toBe(0);
         $timeout.flush(); // subsequent search requests
-        expect(issueFromQueue.worklog.worklogs.length).toBe(2);
+        expect(issueFromQueue.fields.worklog.worklogs.length).toBe(2);
     }));
 
     // verify subsequent resolve does not make effect
