@@ -1,9 +1,13 @@
 <form class="aui" name="SubmitIssueForm">
     <form-invalid/>
     <input type="hidden" name="_replyto" ng-value="useremail">
+    <div class="field-group">
+        Send email to add-on support team as {{replyTo}} <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
+        <p>See <a href="http://www.jiratimesheet.com/timereports/support.html" target="_blank">Support page</a> for other options</p>
+    </div>
     <div class="form-body" class="aui">
         <div class="field-group">
-            <label for="issue-title">
+            <label for="title">
                 Title <span class="aui-icon icon-required"></span><span class="content">required</span>
             </label>
             <input type="text" name="title" class="text long-field ui-autocomplete-input" maxlength="150" id="issue-title" ng-model="title" autocomplete="off" required>
@@ -16,12 +20,13 @@
                         <textarea rows="7" name="comment" cols="60" class="textarea long-field" ng-model="content" ng-change="changeContent(content)"></textarea>
                         <div class="content-inner"></div>
                     </div>
-		            <div class="description">Describe what you've been doing when the error occurred (keep exception trace if available)</div>
+		            <div>Describe what you've been doing when the problem occurred (keep exception trace if available)</div>
                 </div>
             </div>
         </fieldset>
-        <div class="field-group">
-            Send email to vendor as {{replyTo}} <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
+        <div class="field-group" ng-if="includeSupportData">
+            <label for="include-support-data">Include Support Data</label>
+            <input class="checkbox" type="checkbox" name="include-support-data" ng-model="includeSupportData.enabled"/>
         </div>
     </div>
 </form>
