@@ -2,8 +2,8 @@
     <form-invalid/>
     <input type="hidden" name="_replyto" ng-value="useremail">
     <div class="field-group">
-        Send email to add-on support team as {{replyTo}} <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
-        <p>See <a href="http://www.jiratimesheet.com/timereports/support.html" target="_blank">Support page</a> for other options</p>
+        <p>Send email to add-on support team as {{replyTo}}</p>
+        <p>See <a href="http://www.jiratimesheet.com/timereports/support.html" target="_blank">Support page</a> for other options <span class="aui-icon aui-icon-wait" ng-show="loading"></span></p>
     </div>
     <div class="form-body" class="aui">
         <div class="field-group">
@@ -27,6 +27,7 @@
         <div class="field-group" ng-if="includeSupportData">
             <label for="include-support-data">Include Support Data</label>
             <input class="checkbox" type="checkbox" name="include-support-data" ng-model="includeSupportData.enabled"/>
+            <div>Enable this option if you'd like to provide recorded responses from JIRA to let support replay the report</div>
         </div>
     </div>
 </form>
