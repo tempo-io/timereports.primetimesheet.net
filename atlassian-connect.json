@@ -1,11 +1,11 @@
 {
     "key": "timereports",
-    "name": "Time Reports for JIRA Cloud",
-    "description": "Provides miscellaneous views for JIRA time tracking data",
+    "name": "Time Reports for Jira Cloud",
+    "description": "Provides miscellaneous views for Jira time tracking data",
     "enableLicensing": true,
     "vendor": {
         "name": "Andriy Zhdanov",
-        "url": "http://www.jiratimesheet.com"
+        "url": "http://www.jiratimesheet.com/timereports"
     },
     "baseUrl": "https://timereports.github.io/",
     "links": {
@@ -75,6 +75,40 @@
                 "condition": "user_is_logged_in"
             }]
         }],
+        "webPanels": [
+          {
+            "url": "/timereports.html?issue.key={issue.key}&issue.id={issue.id}&v=3",
+            "location": "atl.jira.view.issue.right.context",
+            "layout": {
+              "width": "10px",
+              "height": "100%"
+            },
+            "weight": 50,
+            "name": {
+              "value": "Time Entry"
+            },
+            "conditions": [
+              {
+                "and": [
+                  {
+                    "condition": "addon_property_contains_any_user_group",
+                    "params": {
+                      "propertyKey": "configuration",
+                      "objectName": "timeentryPanelGroups"
+                    }
+                  },
+                  {
+                    "condition": "has_issue_permission",
+                    "params": {
+                      "permission": "WORK_ON_ISSUES"
+                    }
+                  }
+                ]
+              }
+            ],
+            "key": "timeentry-panel"
+          }
+        ],
         "webItems" : [{
             "name": {
                 "value": "Delete Worklog"
