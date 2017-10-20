@@ -79,7 +79,7 @@ test("TimeTracking", function() {
       equal(pivotEntries.length, 1, "pivotEntries");
   }
   var totalKeys = Object.keys(pivotTable.totals);
-  equal(totalKeys.length, 5, "totals");
+  equal(totalKeys.length, 6, "totals");
   equal(totalKeys[0], "1timeoriginalestimate", "totalKey");
   equal(totalKeys[1], "2esttimeremaining", "totalKey");
   equal(totalKeys[2], "3timespent", "totalKey");
@@ -88,8 +88,9 @@ test("TimeTracking", function() {
   equal(pivotTable.totals[totalKeys[1]].sum, 118800, "total value 2");
   equal(pivotTable.totals[totalKeys[2]].sum, 172800, "total value 3");
   equal(pivotTable.totals[totalKeys[3]].sum, -26000, "total value 4");
-  equal(pivotTable.totals[totalKeys[4]].value.estimate, 118800, "total value 5 (estimate)");
-  equal(pivotTable.totals[totalKeys[4]].value.timespent, 172800, "total value 5 (timespent)");
+  equal(pivotTable.totals[totalKeys[4]].sum, 146800, "total value 5");
+  equal(pivotTable.totals[totalKeys[5]].value.estimate, 118800, "total value 6 (estimate)");
+  equal(pivotTable.totals[totalKeys[5]].value.timespent, 172800, "total value 6 (timespent)");
   var rowKeys = Object.keys(pivotTable.rows);
   equal(rowKeys.length, 6, "rows");
   equal(rowKeys[0], "TIME-4", "rowKey");
@@ -97,12 +98,13 @@ test("TimeTracking", function() {
   equal(typeof row.rowKey, "object", "typeof row.key 1");
   equal(row.sum, 0, "row sum");
   var columnKeys = Object.keys(row.columns);
-  equal(columnKeys.length, 5, "columns");
+  equal(columnKeys.length, 6, "columns");
   equal(columnKeys[0], "1timeoriginalestimate", "columnKey");
   equal(columnKeys[1], "2esttimeremaining", "columnKey");
   equal(columnKeys[2], "3timespent", "columnKey");
   equal(columnKeys[3], "4diff", "columnKey");
-  equal(columnKeys[4], "5progress", "columnKey");
+  equal(columnKeys[4], "5originalestimateremaining", "columnKey");
+  equal(columnKeys[5], "6progress", "columnKey");
   equal(row.columns[columnKeys[0]].entries.length, 1, "column entries");
 });
 test("TimeTrackingGroupedByStatus", function() {
@@ -112,7 +114,7 @@ test("TimeTrackingGroupedByStatus", function() {
       equal(pivotEntries.length, 1, "pivotEntries");
   }
   var totalKeys = Object.keys(pivotTable.totals);
-  equal(totalKeys.length, 5, "totals");
+  equal(totalKeys.length, 6, "totals");
   equal(totalKeys[0], "1timeoriginalestimate", "totalKey");
   equal(totalKeys[1], "2esttimeremaining", "totalKey");
   equal(totalKeys[2], "3timespent", "totalKey");
@@ -121,8 +123,9 @@ test("TimeTrackingGroupedByStatus", function() {
   equal(pivotTable.totals[totalKeys[1]].sum, 118800, "total value 2");
   equal(pivotTable.totals[totalKeys[2]].sum, 172800, "total value 3");
   equal(pivotTable.totals[totalKeys[3]].sum, -26000, "total value 4");
-  equal(pivotTable.totals[totalKeys[4]].value.estimate, 118800, "total value 5 (estimate)");
-  equal(pivotTable.totals[totalKeys[4]].value.timespent, 172800, "total value 5 (timespent)");
+  equal(pivotTable.totals[totalKeys[4]].sum, 146800, "total value 5");
+  equal(pivotTable.totals[totalKeys[5]].value.estimate, 118800, "total value 6 (estimate)");
+  equal(pivotTable.totals[totalKeys[5]].value.timespent, 172800, "total value 6 (timespent)");
   var rowKeys = Object.keys(pivotTable.rows);
   equal(rowKeys.length, 3, "rows");
   equal(rowKeys[2], "Timeship:Open", "rowKey");
@@ -134,15 +137,17 @@ test("TimeTrackingGroupedByStatus", function() {
   equal(row.data[0].values["2esttimeremaining"], 0, "data value 2");
   equal(row.data[0].values["3timespent"], 46800, "data value 3");
   equal(row.data[0].values["4diff"], 46800, "data value 4");
-  equal(row.data[0].values["5progress"].timespent, 46800, "data value 5 (timespent)");
-  equal(row.data[0].values["5progress"].estimate, 0, "data value 5 (estimate)");
+  equal(row.data[0].values["5originalestimateremaining"], 46800, "data value 5");
+  equal(row.data[0].values["6progress"].timespent, 46800, "data value 6 (timespent)");
+  equal(row.data[0].values["6progress"].estimate, 0, "data value 6 (estimate)");
   var columnKeys = Object.keys(row.columns);
-  equal(columnKeys.length, 5, "columns");
+  equal(columnKeys.length, 6, "columns");
   equal(columnKeys[0], "1timeoriginalestimate", "columnKey");
   equal(columnKeys[1], "2esttimeremaining", "columnKey");
   equal(columnKeys[2], "3timespent", "columnKey");
   equal(columnKeys[3], "4diff", "columnKey");
-  equal(columnKeys[4], "5progress", "columnKey");
+  equal(columnKeys[4], "5originalestimateremaining", "columnKey");
+  equal(columnKeys[5], "6progress", "columnKey");
   equal(row.columns[columnKeys[0]].entries.length, 3, "column entries");
 });
 // see also timeData.js#CookieUtils for locked time frame

@@ -365,7 +365,7 @@ describe("timesheetControllerTest", function() {
         expect(scope.pivotTable).not.toBeNull();
         expect(scope.pivotTable.pivotStrategy).not.toBeNull();
         expect(scope.pivotTable).toHaveRowsNumber(6);
-        expect(scope.pivotTable).toHaveColumnsNumber(5);
+        expect(scope.pivotTable).toHaveColumnsNumber(6);
         var totalColumn = getFirstColumnKey(scope.pivotTable);
         expect(totalColumn.keyName).toEqual('PlannedVsActual');
         expect(totalColumn.keyValue).toEqual('1timeoriginalestimate');

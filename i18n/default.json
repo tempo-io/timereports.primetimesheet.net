@@ -60,7 +60,8 @@
     "2esttimeremaining": "Est. Time Remaining",
     "3timespent": "Time Spent",
     "4diff": "Variance",
-    "5progress": "Progress",
+    "5originalestimateremaining": "Original Estimate Remaining",
+    "6progress": "Progress",
 
     "1started": "Started",
     "2timespent": "Spent",
