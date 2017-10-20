@@ -220,6 +220,22 @@
         <span class="description">{{'description.Worklog Visibility Role' | i18n}}</span>
     </div>
     <div class="field-group">
+        <label for="timeentryPanelGroups">{{'User Groups With Time Entry Panel' | i18n}}</label>
+        <input id="timeentryPanelGroups"
+               aui-group-picker
+               class="text"
+               title="{{'User Groups' | i18n}}"
+               ng-model="timeentryPanelGroups.val"
+               ng-group-changed-func="saveTimeentryPanelGroups">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="timeentryPanelGroupsSaveSuccess">
+            <strong>{{'User Groups With Time Entry Panel' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description">{{'description.User Groups With Time Entry Panel' | i18n}}</span>
+    </div>
+    <div class="field-group">
         <label for="workLabels">{{'Work Labels' | i18n}}</label>
         <div style="margin-bottom: 3px;">
             <span ng-repeat="label in workLabels.val" class="aui-label aui-label-closeable">

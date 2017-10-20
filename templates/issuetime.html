@@ -1,11 +1,5 @@
-<div class="results-wrap">
+<div class="results-wrap" style="margin-left: -4px">
     <div class="section-header">
-        <h5>{{'Time Entry' | i18n }}</h5>
-        <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
-                         remove-action="removeMenuOption(option.key, option.labelParam)"
-                         label="option.label"
-                         label-param="option.labelParam" />
-        </div>
         <validation-errors errors="errors"></validation-errors>
     </div>
 
@@ -25,47 +19,31 @@
                 </div>
                 <div class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
                 </div>
-                <div class="colHeaderLink">
-                    <br/>{{'Tot' | i18n }}
+            </div>
+            <div ng-class-odd="'rowNormal'" ng-class-even="'rowAlternate'" ng-repeat="data in pivotTable.rows[issueKey].data"  ng-mouseover="p_show=true" ng-mouseleave="p_show=false">
+                <div class="nav" ng-if="data.worklog.id">
+                    <span><old-worklog worklog="data.worklog" edit-work="editWorklog" delete-work="deleteWorklog"
+                                       cannot-edit="cannotEditOwnWorklogIssue[issueKey]"
+                                       cannot-delete="cannotDeleteOwnWorklogIssue[issueKey]"/>
+                    </span>
+                    &nbsp;
+                    <span ng-hide="p_show" title="{{data.worklog.comment.length > 75 ? data.worklog.comment : ''}}">{{data.worklog.comment | limitTo:75}}</span>
+                </div>
+                <div class="nav" ng-if="!data.worklog.id">
+                    <new-worklog worklog="data.worklog" log-work="startWork" entry="data" remove-cashed-worklog = "removeCashedWorklog" />
+                </div>
+                <div class="nav border nowrap">
+                    {{data.values['1started'] | time:'short'}}
+                </div>
+                <div class="nav border nowrap">
+                    {{data.values['2timespent'] | prettyHours:jiraConfig}}
                 </div>
             </div>
-            <div ng-class-odd="'rowNormal'" ng-class-even="'rowAlternate'" ng-repeat="row in pivotTable.rows">
-                <div class="nav">
-                    <div class="issuetype">
-                        <issue-type issue="row.rowKey.issue" />
-                    </div>
-                    <div class="issuekey">
-                        <issue-key issue="row.rowKey.issue" />
-                    </div>
-                    <div class="summary">
-                        <issue-summary issue="row.rowKey.issue" />
-                    </div>
-                    <div class="priority">
-                        <issue-priority issue="row.rowKey.issue" />
-                    </div>
-                </div>
-                <div class="nav border">
-                    {{row.columns['1started'].value | date}}
-                </div>
-                <div class="nav border">
-                    {{row.columns['2timespent'].sum | prettyHours:jiraConfig}}
-                </div>
-                <div class="nav border">
-                    {{row.columns['3comment'].value}}
-                </div>
-            </div>
-            <div class="rowFooter" ng-hide="loading">
-                <div class="nav total">
-                    {{'Total' | i18n}}
-                </div>
-                <div class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
-                    {{column.sum | prettyHours:jiraConfig}}
-                </div>
-                <div class="nav border total">
-                    {{pivotTable.sum | prettyHours:jiraConfig}}
-                </div>
-            </tr>
         </div>
-
     </div>
+    <button ng-if="isStartDateToday" class="aui-button aui-button-link" ng-init="worklog = {issueKey: issueKey, started: 1}" ng-click="startWork(true)">
+        <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
+        Start Work
+    </button>
 </div>
+<resize/>

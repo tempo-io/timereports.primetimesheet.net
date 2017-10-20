@@ -22,7 +22,7 @@
         </li>
         <li>
             <a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!pivotTableType=IssueWorkedTimeByStatus" target="_blank" ng-bind="'IssueWorkedTimeByStatus' | i18n">Pivot by Status</a>
-            <span data-ng-bind-html="'welcome.content.2.3' | i18n | htmlSafe"></span>
+            <span data-ng-bind-html="'welcome.content.2.3' | i18n:hostBaseUrl | htmlSafe"></span>
         </li>
         <li>
             <a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!pivotTableType=TimeTracking" target="_blank" ng-bind="'TimeTracking' | i18n">Time Tracking</a>
@@ -47,7 +47,10 @@
         <span data-ng-bind-html="'welcome.content.3' | i18n | htmlSafe"></span>
     </p>
     <p>
-        <span data-ng-bind-html="'welcome.content.3.1' | i18n | htmlSafe"></span>
+        <span data-ng-bind-html="'welcome.content.3.1' | i18n:hostBaseUrl | htmlSafe"></span>
+    </p>
+    <p>
+        <span data-ng-bind-html="'welcome.content.3.2' | i18n | htmlSafe"></span>
     </p>
     <h3>
         <span data-ng-bind-html="'welcome.content.4' | i18n | htmlSafe"></span>
