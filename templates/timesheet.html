@@ -201,9 +201,11 @@
             <span class="aui-icon aui-icon-small aui-iconfont-view"></span>
             View Report
         </button>
-        <button class="aui-button" ng-click="downloadSupportData()" ng-if="downloadSupportData && !isGadget">
-            <!--span class="aui-icon aui-icon-small aui-iconfont-export-list"></span-->
-            Download support data
+        <button class="aui-button" ng-click="downloadSupportData()" ng-if="downloadSupportData && !isGadget" ng-disabled="supportDataLoaded" ng-class="{disabled: supportDataLoaded}">
+            <span class="aui-icon aui-icon-small aui-icon-wait" ng-show="supportDataLoading"></span>
+            <span class="aui-icon aui-icon-small aui-iconfont-email" ng-hide="supportDataLoading"></span>
+            <span ng-hide="supportDataLoaded">Send support data</span>
+            <span ng-show="supportDataLoaded">Support data sent</span>
         </button>
     </div>
 </div>
