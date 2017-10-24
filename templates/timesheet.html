@@ -40,6 +40,7 @@
     <aui-inline-dialog id="add-worklog" template="'/templates/popups/addWorklog.html'" popup-data="addWorklogPopup" container="'.addWorklogPopup'" work-description-required="workDescriptionRequired"></aui-inline-dialog>
     <aui-inline-dialog id="edit-worklog" template="templates.editWorklog" popup-data="editWorklogPopup" container="'.editWorklogPopup'" work-description-required="workDescriptionRequired"></aui-inline-dialog>
     <aui-inline-dialog id="subscribe-popup" template="'/templates/popups/subscribe.html'" popup-data="subscribePopup" container="'#subscribe'"></aui-inline-dialog>
+    <aui-inline-dialog id="problem-description-popup" template="'/templates/popups/problemDescription.html'" popup-data="problemDescriptionPopup" container="'#downloadSupportData'"></aui-inline-dialog>
 
     <div class="pagingtable">
 
@@ -201,9 +202,7 @@
             <span class="aui-icon aui-icon-small aui-iconfont-view"></span>
             View Report
         </button>
-        <button class="aui-button" ng-click="downloadSupportData()" ng-if="downloadSupportData && !isGadget" ng-disabled="supportDataLoaded" ng-class="{disabled: supportDataLoaded}">
-            <span class="aui-icon aui-icon-small aui-icon-wait" ng-show="supportDataLoading"></span>
-            <span class="aui-icon aui-icon-small aui-iconfont-email" ng-hide="supportDataLoading"></span>
+        <button id="downloadSupportData" class="aui-button aui-button-subtle" ng-click="downloadSupportData()" ng-if="downloadSupportData && !isGadget" ng-disabled="supportDataLoaded" ng-class="{disabled: supportDataLoaded}">
             <span ng-hide="supportDataLoaded">Send support data</span>
             <span ng-show="supportDataLoaded">Support data sent</span>
         </button>
