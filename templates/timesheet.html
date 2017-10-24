@@ -92,10 +92,10 @@
                         <issue-priority issue="row.rowKey.issue" />
                     </td>
                     <td class="nav" width="1%" ng-if="row.rowKey.field" nowrap>
-                        <issue-field field="row.rowKey.project" ng-if="row.rowKey.project" />
+                        <issue-field field="row.rowKey.project" ng-if="row.rowKey.project" jira-config="jiraConfig" />
                     </td>
                     <td class="nav" colspan="4" ng-if="row.rowKey.field" nowrap>
-                        <issue-field field="row.rowKey.field" name='row.rowKey.keyName' />
+                        <issue-field field="row.rowKey.field" name='row.rowKey.keyName' jira-config="jiraConfig" />
                     </td>
                     <td class="nav" nowrap ng-repeat="field in row.moreFields">
                         <issue-field name="field" field="row.rowKey.issue.fields[field]" issue="row.rowKey.issue" jira-config="jiraConfig" ng-if="row.rowKey.issue"/>
