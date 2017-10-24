@@ -25,7 +25,7 @@
     "All Users": "All Users:",
     "Groups": "Groups:",
     "Sum SubTasks": "Sum SubTasks:",
-    "Problem Description": "Problem Description",
+    "Problem Description": "You are about to send recorded responses from Jira to let support reproduce the problem. Are you sure?",
     "Describe your problem here": "Describe your problem here (required)",
 
     "Previous Week": "Previous Week",
@@ -115,7 +115,6 @@
     "description.Cache Worklog": "If enabled, use local Storage for issues with more than 20 worklogs. Worklogs added last minute anywhere else will be missing in report.",
     "description.Store Worklog": "Store Worklog copy in add-on secure DB, see <a href=\"http://www.jiratimesheet.com/cloud/security.html\" target=\"_blank\">add-on security policy</a> for more details",
     "description.REST": "Get KEY to load worklog in JSON format from <a target=\"_blank\" href=\"https://timesheet-plugin.herokuapp.com/api/1/worklog\">https://timesheet-plugin.herokuapp.com/api/1/worklog</a> with HTTP Header \"Authorization: Apikey KEY.\" See also <a href=\"https://www.jiratimesheet.com/cloud/rest.html\" target=\"_blank\">REST endpoint</a>.",
-    "description.Problem Description": "You are about to send recorded responses from Jira to let support reproduce the problem. Are you sure?",
 
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in auditors group.",

@@ -1,28 +1,14 @@
-<form class="aui">
-<table cellpadding="0" border="0" width="100%">
-    <tr>
-        <td>
-            {{'description.Problem Description' | i18n}}
-        </td>
-        <td width="20px">
-            <span class="aui-icon aui-icon-wait" ng-show="popupData.loading"></span>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <div class="wiki-edit">
-                <div class="wiki-edit-content">
-                    <textarea rows="5" id="comment" cols="39" class="textarea long-field" ng-model="popupData.problemDescription"
-                              placeholder="{{'Describe your problem here' | i18n}}" ng-required="true"></textarea>
-                </div>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <button class="aui-button aui-button-primary" ng-click="popupData.confirmSend(closePopup)" ng-disabled="!popupData.problemDescription">Yes, send support data</button>
+<form class="aui" name="subscribeForm" style="margin: 15px">
+
+    <div>{{'Problem Description' | i18n}}&nbsp;<span class="aui-icon aui-icon-wait" ng-show="popupData.loading"></span></div>
+    <fieldset style="padding-top: 10px">
+        <textarea rows="5" id="comment" cols="39" class="textarea long-field" ng-model="popupData.problemDescription"
+                  placeholder="{{'Describe your problem here' | i18n}}"></textarea>
+    </fieldset>
+    <div style="padding-top: 20px; text-align: right">
+        <div>
+            <button class="aui-button aui-button-primary" ng-click="popupData.confirmSend(closePopup)" ng-disabled="!popupData.problemDescription">Send support data</button>
             <button class="aui-button aui-button-subtle" ng-click="closePopup()">Cancel</button>
-        </td>
-    </tr>
-</table>
+        </div>
+    </div>
 </form>
