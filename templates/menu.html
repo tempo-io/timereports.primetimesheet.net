@@ -8,6 +8,16 @@
             <label>{{ 'Filter or Project' | i18n }}</label>
             <input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" update-event="projectUpdated" type="text"/>
         </div>
+        <div class="ak-field-group" ng-if="pivotTableType == 'TimeTracking' && sumSubTasks.enabled">
+            <label>{{'Children Filter' | i18n}}</label>
+            <select class="select"
+                    title="{{'Children Filter' || i18n}}"
+                    ng-model="childrenFilterOptions.selected"
+                    ng-options="item.id as item.label for item in childrenFilterOptions.options"
+                    ng-change="childrenFilterChanged()"
+                    aui-select2>
+            </select>
+        </div>
         <div class="ak-field-group" ng-if="['TimeEntry', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) < 0">
             <label>{{'User' | i18n}}</label>
             <input ng-value="paramUserInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>

@@ -12,6 +12,7 @@
     "IssuePassedTimeByStatus": "Time in Status",
     "Number of Weeks": "Number of Weeks:",
     "Filter or Project" : "Filter or Project",
+    "Children Filter" : "Children Filter",
     "Saved Filter": "Saved Filter",
     "Options": "Options",
     "Group By Field" : "Group By Field:",
@@ -55,6 +56,7 @@
     "param.filterOrProjectId" : "Filter Or Project: %s",
     "param.filterOrProjectId.project" : "Project: %s",
     "param.filterOrProjectId.filter" : "Filter: %s",
+    "param.childrenFilterId" : "Children Filter: %s",
     "param.group" : "Group: %s",
     "param.jql": "JQL: %s",
 

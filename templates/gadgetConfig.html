@@ -36,6 +36,16 @@
 			<label>{{ 'Filter or Project' | i18n }}:</label>
 			<input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"/>
 		</div>
+    <div class="field-group" ng-if="pivotTableType == 'TimeTracking' && sumSubTasks.enabled">
+        <label>{{'Children Filter' | i18n}}:</label>
+        <select class="select"
+                title="{{'Children Filter' || i18n}}"
+                ng-model="childrenFilterOptions.selected"
+                ng-options="item.id as item.label for item in childrenFilterOptions.options"
+                ng-change="childrenFilterChanged()"
+                aui-select2>
+        </select>
+    </div>
 		<div class="field-group" ng-if="['TimeEntry', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) < 0">
 			<label>{{'User' | i18n}}</label>
 			<input ng-value="userInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
@@ -78,11 +88,11 @@
 		</div>
 		<div class="field-group">
                <label>{{'Sum SubTasks' | i18n}}</label>
-               <input class="checkbox" type="checkbox" ng-model="sumSubTasks" ng-change="sumSubTasksChange(sumSubTasks)" />
+               <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
 		</div>
 		<div class="field-group" ng-if="['Timesheet', 'TimeEntry'].indexOf(pivotTableType) >= 0">
                <label>{{'Show Empty Issues' | i18n}}</label>
-               <input class="checkbox" type="checkbox" ng-model="includeEmpty" ng-change="includeEmptyChange(includeEmpty)" ng-disabled="!filterOrProjectId" />
+               <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!filterOrProjectId" />
 		</div>
         <div class="buttons-container">
             <div class="buttons">
