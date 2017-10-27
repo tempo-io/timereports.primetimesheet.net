@@ -88,7 +88,7 @@ test("TimeTracking", function() {
   equal(pivotTable.totals[totalKeys[1]].sum, 118800, "total value 2");
   equal(pivotTable.totals[totalKeys[2]].sum, 172800, "total value 3");
   equal(pivotTable.totals[totalKeys[3]].sum, -26000, "total value 4");
-  equal(pivotTable.totals[totalKeys[4]].sum, 146800, "total value 5");
+  equal(pivotTable.totals[totalKeys[4]].sum, 92800, "total value 5");
   equal(pivotTable.totals[totalKeys[5]].value.estimate, 118800, "total value 6 (estimate)");
   equal(pivotTable.totals[totalKeys[5]].value.timespent, 172800, "total value 6 (timespent)");
   var rowKeys = Object.keys(pivotTable.rows);
@@ -123,7 +123,7 @@ test("TimeTrackingGroupedByStatus", function() {
   equal(pivotTable.totals[totalKeys[1]].sum, 118800, "total value 2");
   equal(pivotTable.totals[totalKeys[2]].sum, 172800, "total value 3");
   equal(pivotTable.totals[totalKeys[3]].sum, -26000, "total value 4");
-  equal(pivotTable.totals[totalKeys[4]].sum, 146800, "total value 5");
+  equal(pivotTable.totals[totalKeys[4]].sum, 92800, "total value 5");
   equal(pivotTable.totals[totalKeys[5]].value.estimate, 118800, "total value 6 (estimate)");
   equal(pivotTable.totals[totalKeys[5]].value.timespent, 172800, "total value 6 (timespent)");
   var rowKeys = Object.keys(pivotTable.rows);
