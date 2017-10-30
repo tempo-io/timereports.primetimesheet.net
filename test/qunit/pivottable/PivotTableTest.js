@@ -61,7 +61,7 @@ test("IssuePassedTimeByStatus", function() {
   var totalKeys = Object.keys(pivotTable.totals);
   equal(totalKeys.length, 4, "totals");
   equal(totalKeys[0], "Open", "totalKey");
-  equal(pivotTable.totals[totalKeys[0]].sum, 1835049.382 + (moment().utcOffset() * 60), "total value 0");
+  equal(pivotTable.totals[totalKeys[0]].sum, 1838649.382 + (moment().utcOffset() * 60), "total value 0");
   equal(pivotTable.totals[totalKeys[1]].sum, 1397394, "total value 1");
   var rowKeys = Object.keys(pivotTable.rows);
   equal(rowKeys.length, 6, "rows");
