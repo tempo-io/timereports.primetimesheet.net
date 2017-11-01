@@ -98,7 +98,7 @@
                         <issue-field field="row.rowKey.field" name='row.rowKey.keyName' jira-config="jiraConfig" />
                     </td>
                     <td class="nav" nowrap ng-repeat="field in row.moreFields">
-                        <issue-field name="field" field="row.rowKey.issue.fields[field]" issue="row.rowKey.issue" jira-config="jiraConfig" ng-if="row.rowKey.issue"/>
+                        <issue-field name="field" field="row.rowKey.issue.fields[field] || row.rowKey._issue.fields[field]" issue="row.rowKey.issue || row.rowKey._issue" jira-config="jiraConfig" ng-if="row.rowKey.issue || row.rowKey._issue"/>
                     </td>
                     <td ng-init="p_show=false" ng-mouseover="p_show=column.sum == 0 && canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue]" ng-mouseleave="p_show=false"
                         ng-click="canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue] && addWorklogPopup.init(column.columnKey, row.rowKey); editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"

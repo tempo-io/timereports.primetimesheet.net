@@ -253,7 +253,7 @@ test("TimesheetUtils", function() {
     equal(TimesheetUtils.convertHoursToFormat12(5).pm, false, '#convertHoursToFormat12 :: 5AM');
 });
 test("Timesheet: 2 level grouping", function() {
-    var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', categorizeByField: 'issuetype', groupByField: 'reporter', startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
+    var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', categorizeByField: 'issuetype', groupByField: 'reporter', moreFields: ['timespent'], startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
     for (var i in TimeData.issues) {
         var issue = TimeData.issues[i];
         var pivotEntries = pivotTable.add(issue);
@@ -271,6 +271,7 @@ test("Timesheet: 2 level grouping", function() {
     var row = pivotTable.rows[rowKeys[0]];
     equal(typeof row.rowKey, "object", "typeof row.key");
     equal(row.sum, 172800, "typeof row.key");
+    equal(row.rowKey._issue.fields.timespent, 172800, "timespent sum");
     var columnKeys = Object.keys(row.columns);
     equal(columnKeys.length, 7, "columns");
     ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[0])), new Date(2014, 1, 24)), "totalKey");
