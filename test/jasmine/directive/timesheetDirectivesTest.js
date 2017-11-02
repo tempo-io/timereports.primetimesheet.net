@@ -28,7 +28,7 @@ describe("timesheet directive", function(){
     }));
 
     it('context', inject(function($httpBackend){
-        $httpBackend.when("GET", 'i18n/default.json').respond({});
+        $httpBackend.when("GET", 'i18n/default.json').respond(200, {});
         prepareJQueryElement('<context items="{prop1:4,prop2:8}"/>');
         expect(scope['prop1']).toEqual(4);
         expect(scope['prop2']).toEqual(8);
@@ -47,7 +47,7 @@ describe("timesheet directive", function(){
     }));
 
     it('issueKey', inject(function($httpBackend){
-        $httpBackend.when("GET", 'i18n/default.json').respond({});
+        $httpBackend.when("GET", 'i18n/default.json').respond(200, {});
         var issueKey = 'IssueKey-1';
         scope.issue = {key: issueKey};
 
@@ -83,7 +83,7 @@ describe("timesheet directive", function(){
     }));
 
     it('selectedOption', inject(function($httpBackend) {
-        $httpBackend.when("GET", 'i18n/default.json').respond({
+        $httpBackend.when("GET", 'i18n/default.json').respond(200, {
             "lab": "My label value is %s"
         });
 

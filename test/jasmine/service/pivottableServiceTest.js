@@ -4,9 +4,10 @@ describe("pivottableServiceTest", function() {
         inject(function ($timeout, $window, _$httpBackend_) {
             AP.$timeout = $timeout;
             $window.i18nDefault = 'i18n/default.json';
-            _$httpBackend_.whenGET("i18n/default.json").respond({});
+            _$httpBackend_.whenGET("i18n/default.json").respond(200, {});
+            _$httpBackend_.whenGET("/templates/main.html").respond(200, "");
             getWorklog = _$httpBackend_.whenGET(/^\/api\/worklog/);
-            getWorklog.respond(TimeData.issues);
+            getWorklog.respond(200, TimeData.issues);
             $httpBackend = _$httpBackend_;
         });
         AP.requestBak = AP.request;
@@ -608,7 +609,7 @@ describe("pivottableServiceTest", function() {
         worklog.total += worklog.maxResults + 1;
         var searchResult = {issues: [childIssue]};
 
-        getWorklog.respond(searchResult.issues);
+        getWorklog.respond(200, searchResult.issues);
 
         var spy = spyOn(pivottableService, 'loadAllWorklogs').and.callThrough();
 
