@@ -97,12 +97,11 @@
                 </tr>
                 <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed">
                     <td class="nav">&nbsp;</td>
-                    <td class="nav issuetype" width="1%">
+                    <td class="nav">&nbsp;</td>
+                    <td colspan="{{rowKeySize - 3}}" class="nav summary">
                         <span ng-if="data.rowKey._issue">
                             <issue-type issue="data.rowKey._issue" />
                         </span>
-                    </td>
-                    <td class="nav summary" width="1%">
                         <span ng-if="data.rowKey._issue.fields.parent && data.rowKey._issue.fields.parent.key != data.rowKey._issue.key">
                             <issue-key issue="data.rowKey._issue.fields.parent" show-title="true" class="parentIssue" />
                         </span>
@@ -112,8 +111,6 @@
                         <span ng-if="data.rowKey._issue">
                             <issue-summary issue="data.rowKey._issue" />
                         </span>
-                    </td>
-                    <td colspan="{{rowKeySize - 4}}" class="nav summary">
                         <span ng-if="data.worklog._issue">
                             <issue-key issue="data.worklog._issue" show-title="true" />
                         </span>
