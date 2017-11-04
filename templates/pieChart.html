@@ -26,7 +26,21 @@
             </span>
             <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent"></a>
         </div>
+        <div ng-show="loaded && loading">
+            <loading/>
+        </div>
         <div id="placeholder" pie-chart ng-model="pivotTable"></div>
+        <div>
+            <br/>
+            <button class="aui-button" ng-click="execute()" ng-if="!loaded" ng-disabled="loading" ng-class="{disabled: loading}">
+                <span class="aui-icon aui-icon-small aui-iconfont-view"></span>
+                View Report
+            </button>
+            <button id="downloadSupportData" class="aui-button aui-button-subtle" ng-click="downloadSupportData()" ng-if="downloadSupportData && !isGadget" ng-disabled="supportDataLoaded" ng-class="{disabled: supportDataLoaded}">
+                <span ng-hide="supportDataLoaded">Send Support Data</span>
+                <span ng-show="supportDataLoaded">Support Data Sent</span>
+            </button>
+        </div>
 
     </div>
 </div>
