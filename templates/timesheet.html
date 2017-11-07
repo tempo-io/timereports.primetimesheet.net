@@ -64,7 +64,7 @@
                     <th ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}">
                     </th>
                     <th>
-                        <br/>{{'Total' | i18n }}
+                        <br/>{{'Total' | i18n}}
                     </th>
                 </tr>
             </thead>
@@ -103,7 +103,7 @@
                     <td ng-init="p_show=false" ng-mouseover="p_show=column.sum == 0 && canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue]" ng-mouseleave="p_show=false"
                         ng-click="canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue] && addWorklogPopup.init(column.columnKey, row.rowKey); editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
                         class="nav border"
-                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend, addWorklogPopup: column.sum == 0 && canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue], editWorklogPopup: column.sum != 0, disabled: column.sum == 0 && cannotLogWorkIssue[row.rowKey.keyValue]}" ng-repeat="column in row.columns">
+                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend, addWorklogPopup: column.sum == 0 && canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue], editWorklogPopup: column.sum != 0, disabled: column.sum == 0 && cannotLogWorkIssue[row.rowKey.keyValue]}" ng-repeat="column in pivotTable.sortedColumns()">
                         {{column.sum | prettyHours:jiraConfig}}
                         <span ng-show="p_show" class="fa fa-plus"></span>
                     </td>
@@ -153,7 +153,7 @@
                 <!-- total block -->
                 <tr class="rowFooter" ng-hide="loading || !loaded">
                     <td colspan="{{rowKeySize}}" class="nav total">
-                        {{'Total' | i18n}}&nbsp;{{pivotTable.num != 1 ? 'issues' : 'issue' | i18n:pivotTable.num}}:
+                        {{'Total' | i18n}}&nbsp;{{pivotTable.num != 1 ? 'issues' : 'issue' | i18n:pivotTable.num}}
                     </td>
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields">
                         &nbsp;

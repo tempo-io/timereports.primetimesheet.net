@@ -52,7 +52,7 @@
                     <th class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey">
                     </th>
                     <th ng-if="!hideTotalColumn">
-                        {{'Total' | i18n }}
+                        {{'Total' | i18n}}
                     </th>
                 </tr>
             </thead>
@@ -135,7 +135,7 @@
                 <!-- total block -->
                 <tr class="rowFooter" ng-hide="loading || !loaded">
                     <td colspan="{{rowKeySize}}">
-                        {{'Total' | i18n }}&nbsp;{{pivotTable.num != 1 ? 'issues' : 'issue' | i18n:pivotTable.num}}:
+                        {{'Total' | i18n}}&nbsp;{{pivotTable.num != 1 ? 'issues' : 'issue' | i18n:pivotTable.num}}
                     </td>
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields">
                         &nbsp;
