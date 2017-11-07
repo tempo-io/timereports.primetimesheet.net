@@ -103,7 +103,7 @@
                     <td ng-init="p_show=false" ng-mouseover="p_show=column.sum == 0 && canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue]" ng-mouseleave="p_show=false"
                         ng-click="canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue] && addWorklogPopup.init(column.columnKey, row.rowKey); editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
                         class="nav border"
-                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend, addWorklogPopup: column.sum == 0 && canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue], editWorklogPopup: column.sum != 0, disabled: column.sum == 0 && cannotLogWorkIssue[row.rowKey.keyValue]}" ng-repeat="column in pivotTable.sortedColumns()">
+                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend, addWorklogPopup: column.sum == 0 && canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue], editWorklogPopup: column.sum != 0, disabled: column.sum == 0 && cannotLogWorkIssue[row.rowKey.keyValue]}" ng-repeat="column in row.columns">
                         {{column.sum | prettyHours:jiraConfig}}
                         <span ng-show="p_show" class="fa fa-plus"></span>
                     </td>
