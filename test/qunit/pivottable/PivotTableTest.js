@@ -33,7 +33,7 @@ test("IssueWorkedTimeByUser", function() {
   }
 });
 test("IssueWorkedTimeByStatus", function() {
-  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByStatus', configOptions: {}});
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByStatus', configOptions: {statuses: TimeStatuses}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       equal(pivotEntries.length, 2, "pivotEntries");
@@ -53,13 +53,15 @@ test("IssueWorkedTimeByStatus", function() {
   }
 });
 test("IssuePassedTimeByStatus", function() {
-  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssuePassedTimeByStatus', startDate: '2017-04-05', endDate: '2017-04-11', configOptions: {}});
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssuePassedTimeByStatus',
+      startDate: '2017-04-05', endDate: '2017-04-11',
+      configOptions: {statuses: TimeStatuses, timeInStatusCategories: ["2", "4"]}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
-      equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue == 'TIME-4' ? 4 : 1, "pivotEntries " + pivotEntries[0].rowKey.keyValue);
+      equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue == 'TIME-4' ? 3 : 1, "pivotEntries " + pivotEntries[0].rowKey.keyValue);
   }
   var totalKeys = Object.keys(pivotTable.totals);
-  equal(totalKeys.length, 4, "totals");
+  equal(totalKeys.length, 3, "totals");
   equal(totalKeys[0], "Open", "totalKey");
   equal(pivotTable.totals[totalKeys[0]].sum, 1838649.382 + (moment().utcOffset() * 60), "total value 0");
   equal(pivotTable.totals[totalKeys[1]].sum, 1397394, "total value 1");
@@ -68,7 +70,7 @@ test("IssuePassedTimeByStatus", function() {
   for (var rowKey in pivotTable.rows) {
       var row = pivotTable.rows[rowKey];
       var columnKeys = Object.keys(row.columns);
-      equal(rowKey == 'TIME-4' ? 4 : 1, columnKeys.length, "columns " + rowKey);
+      equal(rowKey == 'TIME-4' ? 3 : 1, columnKeys.length, "columns " + rowKey);
       equal(row.columns[columnKeys[0]].entries.length, 1, "column entries");
   }
 });

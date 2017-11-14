@@ -95,6 +95,23 @@
         <span class="description" ng-bind-html="'description.Preserve Started Time' | i18n | htmlSafe"></span>
     </div>
     <div class="field-group">
+        <label for="timeInStatusCategories">{{'Time In Status Categories' | i18n}}</label>
+        <input id="timeInStatusCategories"
+               aui-multi-select-picker
+               class="text"
+               title="{{'Time In Status Categories' | i18n}}"
+               ng-model="timeInStatusCategories.val"
+               ng-options-data="timeInStatusCategoriesData"
+               ng-value-changed-func="saveTimeInStatusCategories">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="timeInStatusCategoriesSaveSuccess">
+            <strong>{{'Time In Status Categories' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description" ng-bind-html="'description.Time In Status Categories' | i18n | htmlSafe"></span>
+    </div>
+    <div class="field-group">
         <label for="workingTimeInStatus">{{'Working Time in Status' | i18n}}</label>
         <input id="workingTimeInStatus"
                type="checkbox"

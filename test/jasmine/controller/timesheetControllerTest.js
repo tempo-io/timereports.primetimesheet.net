@@ -134,6 +134,8 @@ describe("timesheetControllerTest", function() {
                         auditorsGroups: {},
                         weekendType: {},
                         preserveStartedTime: {},
+                        statuses: {},
+                        timeInStatusCategories: {},
                         prettyDuration: {val: true},
                         workDescriptionRequired: {},
                         durationType: {},

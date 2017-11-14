@@ -2181,6 +2181,15 @@ var groupsPickerDate = {
     total: 2
 };
 
+var TimeStatuses = {
+    1: {order: 1, categoryId: "2"},
+    3: {order: 3, categoryId: "4"},
+    4: {order: 4, categoryId: "4"},
+    5: {order: 5, categoryId: "3"},
+    10000: {order: 6, categoryId: "2"},
+    10001: {order: 7, categoryId: "3"}
+};
+
 var processFlightData = function() {
     var params;
     var hasRest = false;
