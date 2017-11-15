@@ -398,9 +398,9 @@ var TimeData = { "expand" : "schema,names",
             "resolutiondate" : null,
             "status" : { "description" : "The issue is open and ready for the assignee to start work on it.",
                 "iconUrl" : "http://localhost:2990/jira/images/icons/status_open.gif",
-                "id" : "1",
+                "id" : "3",
                 "name" : "In Progress",
-                "self" : "http://localhost:2990/jira/rest/api/2/status/1"
+                "self" : "http://localhost:2990/jira/rest/api/2/status/3"
               },
             "subtasks" : [  ],
             "summary" : "Hindenbug",
@@ -858,9 +858,9 @@ var TimeData = { "expand" : "schema,names",
                 "resolutiondate" : null,
                 "status" : { "description" : "The issue is open and ready for the assignee to start work on it.",
                     "iconUrl" : "http://localhost:2990/jira/images/icons/status_open.gif",
-                    "id" : "1",
+                    "id" : "3",
                     "name" : "In Progress",
-                    "self" : "http://localhost:2990/jira/rest/api/2/status/1"
+                    "self" : "http://localhost:2990/jira/rest/api/2/status/3"
                 },
                 "subtasks" : [  ],
                 "summary" : "Hindenbug",
@@ -1219,9 +1219,9 @@ var TimeDataTIME_7 = {
         "status": {
             "description": "The issue is open and ready for the assignee to start work on it.",
             "iconUrl": "http://localhost:2990/jira/images/icons/status_open.gif",
-            "id": "1",
+            "id": "3",
             "name": "In Progress",
-            "self": "http://localhost:2990/jira/rest/api/2/status/1"
+            "self": "http://localhost:2990/jira/rest/api/2/status/3"
         },
         "subtasks": [],
         "summary": "Hindenbug",
