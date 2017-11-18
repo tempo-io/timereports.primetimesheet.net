@@ -342,6 +342,7 @@ describe("pivottableServiceTest", function() {
         for (var i = 0; i < 10; i++) {
             issue.changelog.histories.push({
                 "id": "" + i,
+                "created": TimesheetUtils.formatDate(moment()),
                 "comment" : "test comment " + i
             });
         }
@@ -358,6 +359,7 @@ describe("pivottableServiceTest", function() {
         for (var i = 0; i < 10; i++) {
             issue.changelog.histories.push({
                 "id": "" + (25 - i),
+                "created": TimesheetUtils.formatDate(moment().add(-i, 'days')),
                 "comment" : "test comment " + (25 - i)
             });
         }
