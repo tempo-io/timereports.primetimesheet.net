@@ -341,6 +341,7 @@ describe("pivottableServiceTest", function() {
         };
         for (var i = 0; i < 10; i++) {
             issue.changelog.histories.push({
+                "id": "" + i,
                 "comment" : "test comment " + i
             });
         }
@@ -350,8 +351,23 @@ describe("pivottableServiceTest", function() {
         $timeout.flush(); // $q.when
         $timeout.flush(); // AP.request 10
         $timeout.flush(); // AP.request 20
-
+        expect($timeout.flush).toThrow();
         expect(issue.changelog.histories.length).toEqual(25);
+
+        issue.changelog.histories = [];
+        for (var i = 0; i < 10; i++) {
+            issue.changelog.histories.push({
+                "id": "" + (25 - i),
+                "comment" : "test comment " + (25 - i)
+            });
+        }
+        pivottableService.loadAllChangelogs(issue, {pivotTableType: 'IssueWorkedTimeByStatus'});
+        $timeout.flush(); // $q.when
+        $timeout.flush(); // AP.request 10
+        $timeout.flush(); // AP.request 20
+        $timeout.flush(); // AP.request 25
+        expect(issue.changelog.histories.length).toEqual(25);
+
     }));
 
     // test filterWorklogs fills in worklogAuthors
