@@ -310,6 +310,8 @@ describe("pivottableServiceTest", function() {
             }
             for (var i = 0; i < Math.min(count, total - startAt); i++) {
                 changelog.values.push({
+                    "id": "" + (startAt + i),
+                    "created": TimesheetUtils.formatDate(moment()),
                     "comment" : "test comment " + (startAt + i)
                 });
             }
@@ -343,7 +345,7 @@ describe("pivottableServiceTest", function() {
             issue.changelog.histories.push({
                 "id": "" + i,
                 "created": TimesheetUtils.formatDate(moment()),
-                "comment" : "test comment " + i
+                "comment" : "comment " + i
             });
         }
 
@@ -354,6 +356,7 @@ describe("pivottableServiceTest", function() {
         $timeout.flush(); // AP.request 20
         expect($timeout.flush).toThrow();
         expect(issue.changelog.histories.length).toEqual(25);
+        expect(issue.changelog.histories[0].comment).toEqual('comment 0'); // changelog preserved
 
         issue.changelog.histories = [];
         for (var i = 0; i < 10; i++) {
@@ -369,7 +372,20 @@ describe("pivottableServiceTest", function() {
         $timeout.flush(); // AP.request 20
         $timeout.flush(); // AP.request 25
         expect(issue.changelog.histories.length).toEqual(25);
+        expect(issue.changelog.histories[0].id).toEqual('0'); // order reset
 
+        issue.changelog.maxResults = issue.changelog.total;
+        issue.changelog.histories = [];
+        for (var i = 0; i < 10; i++) {
+            issue.changelog.histories.push({
+                "id": "" + (25 - i),
+                "created": TimesheetUtils.formatDate(moment().add(-i, 'days')),
+                "comment" : "test comment " + (25 - i)
+            });
+        }
+        pivottableService.loadAllChangelogs(issue, {pivotTableType: 'IssueWorkedTimeByStatus'});
+        expect(issue.changelog.histories.length).toEqual(10);
+        expect(issue.changelog.histories[0].id).toEqual('16'); // reordered
     }));
 
     // test filterWorklogs fills in worklogAuthors
