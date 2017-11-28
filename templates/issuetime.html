@@ -20,14 +20,14 @@
                 <div class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
                 </div>
             </div>
-            <div ng-class-odd="'rowNormal'" ng-class-even="'rowAlternate'" ng-repeat="data in pivotTable.rows[issueKey].data"  ng-mouseover="p_show=true" ng-mouseleave="p_show=false">
+            <div ng-class-odd="'rowNormal'" ng-class-even="'rowAlternate'" ng-repeat="data in pivotTable.rows[issueKey].data">
                 <div class="nav" ng-if="data.worklog.id">
                     <span><old-worklog worklog="data.worklog" edit-work="editWorklog" delete-work="deleteWorklog"
                                        cannot-edit="cannotEditOwnWorklogIssue[issueKey]"
                                        cannot-delete="cannotDeleteOwnWorklogIssue[issueKey]"/>
                     </span>
                     &nbsp;
-                    <span ng-hide="p_show" title="{{data.worklog.comment.length > 75 ? data.worklog.comment : ''}}">{{data.worklog.comment | limitTo:75}}</span>
+                    <span title="{{data.worklog.comment.length > 75 ? data.worklog.comment : ''}}">{{data.worklog.comment | limitTo:75}}</span>
                 </div>
                 <div class="nav" ng-if="!data.worklog.id">
                     <new-worklog worklog="data.worklog" log-work="startWork" entry="data" remove-cashed-worklog = "removeCashedWorklog" />
