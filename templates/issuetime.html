@@ -24,7 +24,8 @@
                 <div class="nav" ng-if="data.worklog.id">
                     <span><old-worklog worklog="data.worklog" edit-work="editWorklog" delete-work="deleteWorklog"
                                        cannot-edit="cannotEditOwnWorklogIssue[issueKey]"
-                                       cannot-delete="cannotDeleteOwnWorklogIssue[issueKey]"/>
+                                       cannot-delete="cannotDeleteOwnWorklogIssue[issueKey]"
+                                       ng-init="data.worklog.issueKey = issueKey"/>
                     </span>
                     &nbsp;
                     <span title="{{data.worklog.comment.length > 75 ? data.worklog.comment : ''}}">{{data.worklog.comment | limitTo:75}}</span>
