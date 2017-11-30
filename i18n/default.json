@@ -25,7 +25,6 @@
     "User": "User:",
     "All Users": "All Users:",
     "Groups": "Groups:",
-    "Show Empty Issues": "Show Empty Issues",
     "Sum SubTasks": "Sum SubTasks:",
     "Problem Description": "Send collected support data to reproduce the problem.",
     "Describe your problem here": "Describe the problem here (required)",
@@ -38,7 +37,6 @@
     "Next Month": "Next Month",
     "Switch to Month View": "Switch to Month View",
     "Switch to Week View": "Switch to Week View",
-    "Sum worked hours by week": "Sum worked hours by week",
     "Show Details": "Show Details",
     "Hide Details": "Hide Details",
 

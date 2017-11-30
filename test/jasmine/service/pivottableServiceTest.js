@@ -3,16 +3,12 @@ describe("pivottableServiceTest", function() {
         module('timesheetApp');
         inject(function ($timeout, $window, _$httpBackend_) {
             AP.$timeout = $timeout;
-            $httpBackend = _$httpBackend_;
-            $httpBackend.whenGET("/templates/main.html").respond(200, "");
             $window.i18nDefault = 'i18n/default.json';
-            var translations = {'Today': 'Today'};
-            for (var pivotTableType in PivotTableType) {
-                translations[pivotTableType] = pivotTableType;
-            }
-            $httpBackend.whenGET($window.i18nDefault).respond(200, translations);
-            getWorklog = $httpBackend.whenGET(/^\/api\/worklog/);
+            _$httpBackend_.whenGET("i18n/default.json").respond(200, {});
+            _$httpBackend_.whenGET("/templates/main.html").respond(200, "");
+            getWorklog = _$httpBackend_.whenGET(/^\/api\/worklog/);
             getWorklog.respond(200, TimeData.issues);
+            $httpBackend = _$httpBackend_;
         });
         AP.requestBak = AP.request;
     });

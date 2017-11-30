@@ -5,7 +5,7 @@ require.config({
     }
 });
 require([
-    "bower_components/zef-angularjs-i18n/angular-internationalization.js",
+    "lib/zef-angularjs-i18n/localization",
     "bower_components/sprintf/src/sprintf",
     "bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020",
     "bower_components/angular-xeditable/dist/js/xeditable",
