@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
+    "zef-angularjs-i18n": "~1.2.7",
     "sprintf": "1.0.2",
     "moment": "~2.10.6",
     "moment-timezone": "~0.4.0-2015d",

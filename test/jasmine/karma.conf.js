@@ -12,9 +12,6 @@ module.exports = function(config){
       '../../js/bower_components/jasmine-jquery/lib/jasmine-jquery.js',
       '../../js/bower_components/jasmine-ajax/lib/mock-ajax.js',
 
-      '../../js/lib/zef-angularjs-i18n/localization.js',
-      '../../js/bower_components/sprintf/src/sprintf.js',
-      '../../js/bower_components/moment/moment.js',
       '../../timedata.js',
       '../../js/app.js',
       '../../test/jasmine/**/*.js'
