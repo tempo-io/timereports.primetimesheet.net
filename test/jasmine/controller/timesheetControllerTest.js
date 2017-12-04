@@ -72,11 +72,15 @@ describe("timesheetControllerTest", function() {
         inject(function($timeout, $window, _$httpBackend_, applicationLoggingService) {
             AP.$timeout = $timeout;
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('/templates/main.html').respond('');
+            $httpBackend.whenGET('/templates/main.html').respond(200, '');
             $window.i18nDefault = 'i18n/default.json';
-            $httpBackend.when("GET", 'i18n/default.json').respond({});
-            getWorklog = _$httpBackend_.whenGET(/^\/api\/worklog/);
-            getWorklog.respond(TimeData.issues);
+            var translations = {'Today': 'Today'};
+            for (var pivotTableType in PivotTableType) {
+                translations[pivotTableType] = pivotTableType;
+            }
+            $httpBackend.whenGET($window.i18nDefault).respond(200, translations);
+            getWorklog = $httpBackend.whenGET(/^\/api\/worklog/)
+            getWorklog.respond(200, TimeData.issues);
             applicationLoggingService.debug = function() {};
         });
         AP.requestBak = AP.request;
