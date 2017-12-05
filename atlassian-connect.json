@@ -5,7 +5,7 @@
     "enableLicensing": true,
     "vendor": {
         "name": "Andriy Zhdanov",
-        "url": "http://www.jiratimesheet.com/timereports"
+        "url": "https://www.jiratimesheet.com/timereports"
     },
     "baseUrl": "https://timereports.github.io/",
     "links": {
