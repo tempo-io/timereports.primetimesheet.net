@@ -14,7 +14,7 @@
     <div class="radio">
         <input type="radio" class="radio" value="new" ng-model="worklog.estimateType" id="adjust-estimate-new">
         <label for="adjust-estimate-new">Set to</label>
-        <input type="text" class="text short-field" ng-model="worklog.estimateValue" id="adjust-estimate-new-value" ng-disabled="worklog.estimateType != 'new'" ng-model="estimateValue" timespent ng-required="worklog.estimateType == 'new'">
+        <input type="text" class="text short-field" ng-model="worklog.estimateValue" id="adjust-estimate-new-value" ng-disabled="worklog.estimateType != 'new'" ng-model="estimateValue" timespent zeroable="true" ng-required="worklog.estimateType == 'new'">
         <span id="adjust-estimate-new-example">(eg. 4h 30m)</span>
     </div>
     <div class="radio" ng-show="reduceBy || increaseBy">
