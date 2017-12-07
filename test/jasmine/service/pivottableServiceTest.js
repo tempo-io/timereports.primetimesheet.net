@@ -433,12 +433,12 @@ describe("pivottableServiceTest", function() {
         pivottableService.filterWorklogs(issue, /* deferred */ null, /* options */ {configOptions: {}});
 
         $timeout.flush();
+        $timeout.flush();
         $log.assertEmpty();
 
         expect(pivottableService.worklogAuthors).toContain('admin');
         expect(pivottableService.worklogAuthors).not.toContain('test');
         expect(getTestUserInfoByNameCalled).toBeTruthy();
-
         expect($timeout.flush).toThrow();
     }));
 
