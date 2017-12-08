@@ -1,9 +1,16 @@
 <div class="results-wrap">
     <div class="section-header" ng-hide="isGadget">
         <div class="h5">
-            <h5>{{ pivotTableType | i18n }}</h5>
+            <div ng-init="showButtons=false" ng-mouseover="showButtons=!$form.$visible" ng-mouseleave="showButtons=false">
+                <div editable-text="currentView.name" e-required onshow="$parent.$form=$form" onhide="$parent.$form=undefined" onaftersave="viewNameChanged()">
+                    <h5>{{currentView.name || (pivotTableType | i18n)}}</h5>
+                    <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
+                </div>
+                <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
+                <a class="overlay-icon aui-icon aui-icon-small aui-iconfont-remove dangerous remove-view" ng-click="deleteView()" ng-show="showButtons && showDeleteButton"></a>
+            </div>
             <div>
-                <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="margin: 3px 0" title="Download worklog" ng-hide="loading || restrictionError"></i>
+                <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="margin: 9px 5px 5px 5px" title="Download worklog" ng-hide="loading || restrictionError"></i>
                 <!-- Dropdown -->
                 <div id="export" class="aui-style-default aui-dropdown2">
                     <ul class="aui-list-truncate">

@@ -2,15 +2,15 @@
     <div class="section-header" ng-hide="isGadget">
         <div>
             <div ng-init="showButtons=false" ng-mouseover="showButtons=!$form.$visible" ng-mouseleave="showButtons=false">
-                <div editable-text="currentView.name" e-required onshow="$parent.$form=$form" onhide="$parent.$form=undefined" onbeforesave="$parent.showButtons=true" onaftersave="viewNameChanged()">
-                    <h5>{{currentView.name || pivotTableType}}</h5>
+                <div editable-text="currentView.name" e-required onshow="$parent.$form=$form" onhide="$parent.$form=undefined" onaftersave="viewNameChanged()">
+                    <h5>{{currentView.name || (pivotTableType | i18n)}}</h5>
                     <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
                 </div>
                 <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
                 <a class="overlay-icon aui-icon aui-icon-small aui-iconfont-remove dangerous remove-view" ng-click="deleteView()" ng-show="showButtons && showDeleteButton"></a>
             </div>
             <div>
-                <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="margin: 6px 0" title="Download worklog" ng-hide="loading || restrictionError"></i>
+                <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="margin: 9px 5px 5px 5px" title="Download worklog" ng-hide="loading || restrictionError"></i>
                 <!-- Dropdown -->
                 <div id="export" class="aui-style-default aui-dropdown2">
                     <ul class="aui-list-truncate">
@@ -19,7 +19,7 @@
                     </ul>
                 </div>
                 <i id="subscribe"
-                    class="fa fa-envelope-o"  ng-click="subscribePopup.init()" style="margin: 6px 0" title="Subscribe"
+                    class="fa fa-envelope-o"  ng-click="subscribePopup.init()" style="margin: 9px 5px 5px 5px" title="Subscribe"
                     ng-hide="loading || restrictionError || !subscribe" ng-style="{'font-weight': currentView.jobId ? 'bold' : 'normal'}"></i>
             </div>
         </div>
