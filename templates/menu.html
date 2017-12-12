@@ -11,7 +11,7 @@
         <div class="ak-field-group" ng-if="pivotTableType == 'TimeTracking' && sumSubTasks.enabled">
             <label>{{'Children Filter' | i18n}}</label>
             <select class="select"
-                    title="{{'Children Filter' || i18n}}"
+                    title="{{'Children Filter' | i18n}}"
                     ng-model="childrenFilterOptions.selected"
                     ng-options="item.id as item.label for item in childrenFilterOptions.options"
                     ng-change="childrenFilterChanged()"
@@ -45,7 +45,7 @@
         <div class="ak-field-group" ng-if="pivotTableType != 'TimeTracking' && pivotTableType != 'TimeEntry'">
             <label>{{'Reporting Day' | i18n}}</label>
             <select class="select"
-                    title="{{'Reporting Day' || i18n}}"
+                    title="{{'Reporting Day' | i18n}}"
                     ng-model="reportingDayOptions.selected"
                     ng-options="item.id as item.label for item in reportingDayOptions.options"
                     ng-change="reportingDayChanged()"

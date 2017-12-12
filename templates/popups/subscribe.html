@@ -7,8 +7,8 @@
         <label for="every-week-on">
             On
         </label>
-        <select class="select" style="min-width: 137px"
-                title="{{'Email on' || i18n}}"
+        <select id="every-week-on" class="select" style="min-width: 137px"
+                title="{{'Email on' | i18n}}"
                 ng-model="popupData.everyWeekOptions.selected"
                 ng-options="item.id as item.label for item in popupData.everyWeekOptions.options"
                 aui-select2

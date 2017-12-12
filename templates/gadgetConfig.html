@@ -23,9 +23,9 @@
 			<input class="checkbox" type="checkbox" ng-model="showWeekends.enabled"/>
 		</div>
 		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
-            <label for="end-date-picker">{{'Reporting Day' | i18n}}</label>
+            <label>{{'Reporting Day' | i18n}}</label>
             <select class="select"
-                    title="{{'Reporting Day' || i18n}}"
+                    title="{{'Reporting Day' | i18n}}"
                     ng-model="reportingDayOptions.selected"
                     ng-options="item.id as item.label for item in reportingDayOptions.options"
                     ng-change="reportingDayChanged()"
@@ -39,7 +39,7 @@
     <div class="field-group" ng-if="pivotTableType == 'TimeTracking' && sumSubTasks.enabled">
         <label>{{'Children Filter' | i18n}}:</label>
         <select class="select"
-                title="{{'Children Filter' || i18n}}"
+                title="{{'Children Filter' | i18n}}"
                 ng-model="childrenFilterOptions.selected"
                 ng-options="item.id as item.label for item in childrenFilterOptions.options"
                 ng-change="childrenFilterChanged()"
