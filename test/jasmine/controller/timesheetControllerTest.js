@@ -101,7 +101,7 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
@@ -156,7 +156,7 @@ describe("timesheetControllerTest", function() {
                 }
             },
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         AP.request = function(options) {
@@ -203,7 +203,7 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
@@ -233,7 +233,7 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
@@ -265,7 +265,7 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
@@ -296,7 +296,7 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
@@ -326,7 +326,7 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
@@ -358,7 +358,7 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
@@ -392,7 +392,7 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
@@ -443,7 +443,7 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {key: 'admin', groups: {items: ['group1', 'group2']}},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
@@ -474,7 +474,7 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {key: 'admin'},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush(200); // init
@@ -509,13 +509,14 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
         $timeout.flush();
+        expect(scope.loading).toBeFalsy();
 
         expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-1', 'TIME-2', 'TIME-3', 'TIME-4']);
         var data = {
@@ -543,13 +544,14 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
         $timeout.flush();
+        expect(scope.loading).toBeFalsy();
 
         expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-1', 'TIME-2', 'TIME-3', 'TIME-4']);
         expect(scope.pivotTable.sum).toBe(79200);
@@ -593,13 +595,14 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
         $timeout.flush();
+        expect(scope.loading).toBeFalsy();
 
         expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-7']);
         expect(scope.pivotTable.sum).toBe(79200);
@@ -630,18 +633,19 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            timesheetParams: {jql: true, sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
+            timesheetParams: {sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
         $timeout.flush();
+        expect(scope.loading).toBeFalsy();
 
         expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-5']);
         expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-6']);
@@ -682,18 +686,19 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            timesheetParams: {jql: true, sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
+            timesheetParams: {sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
         $timeout.flush();
+        expect(scope.loading).toBeFalsy();
 
         expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-5']);
         expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-6']);
@@ -738,18 +743,19 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            timesheetParams: {jql: true, sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-24', loaded: true},
+            timesheetParams: {sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-24', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
         $timeout.flush();
+        expect(scope.loading).toBeFalsy();
 
         expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-2']);
         expect(scope.pivotTable.sum).toBe(32400);
@@ -788,18 +794,19 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            timesheetParams: {jql: true, sumSubTasks: true, startDate: '2017-10-03', endDate: '2017-10-03', loaded: true},
+            timesheetParams: {sumSubTasks: true, startDate: '2017-10-03', endDate: '2017-10-03', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
             loggedInUser: {},
-            projectKey: 'DEMO'
+            projectKey: 'TIME'
         });
 
         $timeout.flush();
         expect(scope.loading).toBeDefined();
         $httpBackend.flush();
         $timeout.flush();
+        expect(scope.loading).toBeFalsy();
 
         expect(Object.keys(scope.pivotTable.rows)).not.toContainAll(['TIME-2']);
         expect(scope.pivotTable.sum).toBe(0);
