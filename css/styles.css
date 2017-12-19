@@ -4,18 +4,18 @@ header {
 }
 #placeholder {
   height: 350px;
-  width: 800px;
+  width: 500px;
 }
 @media (min-width: 1200px) {
   #placeholder {
     height: 400px;
-    width: 1000px;
+    width: 800px;
   }
 }
 @media (min-width: 1400px) {
   #placeholder {
     height: 500px;
-    width: 1200px;
+    width: 950px;
   }
 }
 .aui-page-panel-inner {
@@ -130,6 +130,9 @@ th {
 }
 .is-not-gadget #slider-wrapper {
     width: 500px;
+}
+.is-not-gadget .chart #slider-wrapper {
+    width: 250px;
 }
 .is-gadget #slider-wrapper {
     width: 250px;
