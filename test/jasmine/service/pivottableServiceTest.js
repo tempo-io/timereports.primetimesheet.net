@@ -475,6 +475,7 @@ describe("pivottableServiceTest", function() {
         });
 
         $timeout.flush();
+        $timeout.flush(); // onAllIssuesDelayed
         $log.assertEmpty();
 
         expect(result).toBeDefined();
@@ -564,6 +565,7 @@ describe("pivottableServiceTest", function() {
         });
 
         $timeout.flush();
+        $timeout.flush(); // onAllIssuesDelayed
         $log.assertEmpty();
 
         expect(result1).toBeDefined();
@@ -688,6 +690,7 @@ describe("pivottableServiceTest", function() {
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
 
         $timeout.flush();
+        $timeout.flush(); // onAllIssuesDelayed
 
         expect(pivottableService.allIssues.length).toBe(1);
         expect(spy.calls.count()).toBe(2);
@@ -753,6 +756,7 @@ describe("pivottableServiceTest", function() {
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
 
         $timeout.flush();
+        $timeout.flush(); // onAllIssuesDelayed
         $log.assertEmpty();
 
         expect(requestCalled).toBeTruthy();

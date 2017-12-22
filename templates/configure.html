@@ -45,22 +45,39 @@
     <div class="field-group">
         <span class="description">{{'description.Composition Issue Link' | i18n}}</span>
     </div>
-    <div class="field-group" ng-show="allParentIssueFields">
+    <div class="field-group" ng-show="parentIssueFields">
         <label for="select2-parentIssueField">{{'Parent Issue Field' | i18n}}</label>
         <select id="select2-parentIssueField"
                 class="select"
                 title="{{'Parent Issue Field' | i18n}}"
                 ng-model="parentIssueField.val"
                 ng-change="saveParentIssueField()"
-                ng-options="item.id as item.label for item in allParentIssueFields">
+                ng-options="item.id as item.name for item in parentIssueFields">
         </select>
         <div class="aui-message aui-message-success msg-overlay"
              ng-show="parentIssueFieldSaveSuccess">
             <strong>{{'Parent Issue Field' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
         </div>
     </div>
-    <div class="field-group" ng-show="allParentIssueFields">
+    <div class="field-group" ng-show="parentIssueFields">
         <span class="description">{{'description.Parent Issue Field' | i18n}}</span>
+    </div>
+    <div class="field-group" ng-show="parentIssueTypes">
+        <label for="select2-parentIssueType">{{'Parent Issue Type' | i18n}}</label>
+        <select id="select2-parentIssueType"
+                class="select"
+                title="{{'Parent Issue Type' | i18n}}"
+                ng-model="parentIssueType.val"
+                ng-change="saveParentIssueType()"
+                ng-options="item.id as item.name for item in parentIssueTypes">
+        </select>
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="parentIssueTypeSaveSuccess">
+            <strong>{{'Parent Issue Type' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group" ng-show="parentIssueTypes">
+        <span class="description">{{'description.Parent Issue Type' | i18n}}</span>
     </div>
     <div class="field-group">
         <label for="select2-weekendType">{{'Weekend Type' | i18n}}</label>

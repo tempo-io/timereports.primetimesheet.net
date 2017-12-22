@@ -135,6 +135,7 @@ describe("timesheetControllerTest", function() {
                     deferred.resolve({
                         compositionIssueLink: {},
                         parentIssueField: {},
+                        parentIssueType: {},
                         auditorsGroups: {},
                         weekendType: {},
                         preserveStartedTime: {},
