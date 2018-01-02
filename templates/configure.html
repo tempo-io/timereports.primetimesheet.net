@@ -345,7 +345,7 @@
     </div>
     <div class="field-group" ng-if="storeWorklog">
         <label for="getApiKey">{{'REST' | i18n}}</label>
-        <button type="button" class="btn btn-default" id="getApiKey" ng-click="getApiKey()" ng-disabled="!storeWorklog.val">{{'Get Key' | i18n}}</button>
+        <button type="button" class="btn btn-default" id="getApiKey" ng-click="getApiKey()" ng-class="{disabled: !storeWorklog.val}">{{'Get Key' | i18n}}</button>
     </div>
     <div class="field-group" ng-if="storeWorklog">
         <span class="description" data-ng-bind-html="'description.REST' | i18n | htmlSafe"></span>
