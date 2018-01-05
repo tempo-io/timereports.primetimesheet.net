@@ -75,7 +75,9 @@ test("IssuePassedTimeByStatus", function() {
   }
 });
 test("TimeTracking", function() {
-  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking'});
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking',
+      configOptions: {timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
+          '3timespent', '4diff', '5originalestimateremaining', '6progress']}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       equal(pivotEntries.length, 1, "pivotEntries");
@@ -109,8 +111,44 @@ test("TimeTracking", function() {
   equal(columnKeys[5], "6progress", "columnKey");
   equal(row.columns[columnKeys[0]].entries.length, 1, "column entries");
 });
+test("TimeTracking5ReOrderedColumns", function() {
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking',
+      configOptions: {timeTrackingColumns: ['6progress', '2esttimeremaining',
+          '3timespent', '4diff', '5originalestimateremaining']}});
+  for (var i in TimeData.issues) {
+      var pivotEntries = pivotTable.add(TimeData.issues[i]);
+      equal(pivotEntries.length, 1, "pivotEntries");
+  }
+  var totalKeys = Object.keys(pivotTable.totals);
+  equal(totalKeys.length, 5, "totals");
+  equal(totalKeys[0], "2esttimeremaining", "totalKey");
+  equal(totalKeys[1], "3timespent", "totalKey");
+  equal(totalKeys[2], "4diff", "totalKey");
+  equal(pivotTable.totals[totalKeys[0]].sum, 118800, "total value 2");
+  equal(pivotTable.totals[totalKeys[1]].sum, 172800, "total value 3");
+  equal(pivotTable.totals[totalKeys[2]].sum, -26000, "total value 4");
+  equal(pivotTable.totals[totalKeys[3]].value.value, 92800, "total value 5");
+  equal(pivotTable.totals[totalKeys[4]].value.estimate, 118800, "total value 6 (estimate)");
+  equal(pivotTable.totals[totalKeys[4]].value.timespent, 172800, "total value 6 (timespent)");
+  var rowKeys = Object.keys(pivotTable.rows);
+  equal(rowKeys.length, 6, "rows");
+  equal(rowKeys[0], "TIME-4", "rowKey");
+  var row = pivotTable.rows[rowKeys[0]];
+  equal(typeof row.rowKey, "object", "typeof row.key 1");
+  equal(row.sum, 0, "row sum");
+  var columnKeys = Object.keys(row.columns);
+  equal(columnKeys.length, 5, "columns");
+  equal(columnKeys[0], "2esttimeremaining", "columnKey");
+  equal(columnKeys[1], "3timespent", "columnKey");
+  equal(columnKeys[2], "4diff", "columnKey");
+  equal(columnKeys[3], "5originalestimateremaining", "columnKey");
+  equal(columnKeys[4], "6progress", "columnKey");
+  equal(row.columns[columnKeys[0]].entries.length, 1, "column entries");
+});
 test("TimeTrackingGroupedByStatus", function() {
-  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking', categorizeByField: 'project', groupByField: 'status', configOptions: {}});
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking', categorizeByField: 'project',
+      groupByField: 'status', configOptions: {timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
+          '3timespent', '4diff', '5originalestimateremaining', '6progress']}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       equal(pivotEntries.length, 1, "pivotEntries");

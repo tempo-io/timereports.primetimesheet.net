@@ -112,6 +112,23 @@
         <span class="description" ng-bind-html="'description.Preserve Started Time' | i18n | htmlSafe"></span>
     </div>
     <div class="field-group">
+        <label for="timeTrackingColumns">{{'Time Tracking Columns' | i18n}}</label>
+        <input id="timeTrackingColumns"
+               aui-multi-select-picker
+               class="text"
+               title="{{'Time Tracking Columns' | i18n}}"
+               ng-model="timeTrackingColumns.val"
+               ng-options-data="timeTrackingColumnsData"
+               ng-value-changed-func="saveTimeTrackingColumns">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="timeTrackingColumnsSaveSuccess">
+            <strong>{{'Time Tracking Columns' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description" ng-bind-html="'description.Time Tracking Columns' | i18n | htmlSafe"></span>
+    </div>
+    <div class="field-group">
         <label for="timeInStatusCategories">{{'Time In Status Categories' | i18n}}</label>
         <input id="timeInStatusCategories"
                aui-multi-select-picker

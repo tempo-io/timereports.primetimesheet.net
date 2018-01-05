@@ -6,7 +6,15 @@ describe("pivottableServiceTest", function() {
             $httpBackend = _$httpBackend_;
             $httpBackend.whenGET("/templates/main.html").respond(200, "");
             $window.i18nDefault = 'i18n/default.json';
-            var translations = {'Today': 'Today'};
+            var translations = {
+                'Today': 'Today',
+                "1timeoriginalestimate": "Original Estimate",
+                "2esttimeremaining": "Est. Time Remaining",
+                "3timespent": "Time Spent",
+                "4diff": "Variance",
+                "5originalestimateremaining": "Original Estimate Remaining",
+                "6progress": "Progress"
+            };
             for (var pivotTableType in PivotTableType) {
                 translations[pivotTableType] = pivotTableType;
             }
