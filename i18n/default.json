@@ -69,6 +69,7 @@
     "param.jql": "JQL: %s",
 
     "1timeoriginalestimate": "Original Estimate",
+    "12estimate": "Estimate",
     "2esttimeremaining": "Est. Time Remaining",
     "3timespent": "Time Spent",
     "4diff": "Variance",

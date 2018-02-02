@@ -77,6 +77,7 @@ describe("timesheetControllerTest", function() {
             var translations = {
                 'Today': 'Today',
                 "1timeoriginalestimate": "Original Estimate",
+                "12estimate": "Estimate",
                 "2esttimeremaining": "Est. Time Remaining",
                 "3timespent": "Time Spent",
                 "4diff": "Variance",
