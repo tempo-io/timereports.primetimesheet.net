@@ -1,13 +1,9 @@
-<form class="aui" name="logWorkForm">
-    <form-invalid/>
-    <div class="aui form-body" style="max-height: 188px;">
         <div class="field-group">
             <label for="log-work-issue">
                 Issue Key <span class="aui-icon icon-required"></span><span class="content">required</span>
             </label>
             <input type="text" class="text long-field" id="log-work-issue" name="log-work-issue" ng-model="worklog.issueKey" log-work-permission aui-issue-picker ng-disabled="dialogType != 'add'" required>
         </div>
-        <fieldset>
             <legend>
                 <span>Time entry</span>
             </legend>
@@ -66,6 +62,3 @@
             <div class="field-group">
                 <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
             </div>
-        </fieldset>
-    </div>
-</form>

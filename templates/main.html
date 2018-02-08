@@ -28,7 +28,11 @@
     <ng-include src="templates.gadgetConfig"></ng-include>
 </div>
 
-<div ng-if="!showGadgetConfiguration" class="main margin">
+<div style="margin: 0" ng-if="gadgetDialog" >
+    <modal-like-dialog controller="'WorklogDialogController'" data="worklogDialogData"/>
+</div>
+
+<div ng-if="!showGadgetConfiguration && !gadgetDialog" class="main margin">
   <div class="menu" ng-if="!isGadget">
     <ng-include src="templates.menu"></ng-include>
   </div>
@@ -37,6 +41,146 @@
   </div>
 </div>
 
+<script type="text/ng-template" id="on-error-dialog-template">
+    <!-- Dialog header -->
+    <header class="aui-dialog2-header">
+        <!-- The dialog''s title -->
+        <h1 class="aui-dialog2-header-main">
+            Report Problem
+        </h1>
+        <!-- Close icon -->
+        <a class="aui-dialog2-header-close" ng-click="cancel()">
+            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+        </a>
+    </header>
+    <!-- Main dialog content -->
+    <div class="aui-dialog2-content">
+        <form class="aui" name="SubmitIssueForm">
+            <div class="form-body" class="aui">
+                <div class="field-group">
+                    <label for="issue-title">
+                        Title <span class="aui-icon icon-required"></span><span class="content">required</span>
+                    </label>
+                    <input type="text" name="title" class="text long-field ui-autocomplete-input" maxlength="50" id="issue-title" ng-model="params.title" autocomplete="off" required>
+                </div>
+                <fieldset>
+                    <div class="field-group">
+                        <label for="issue-content">Problem Description</label>
+                        <div id="issue-content" class="wiki-edit">
+                            <div class="wiki-edit-content" id="comment-wiki-edit">
+                                <textarea rows="7" name="comment" cols="60" class="textarea long-field" ng-model="params.content"></textarea>
+                                <div class="content-inner"></div>
+                            </div>
+                            <div class="description">{{params.description}}</div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="field-group">
+                    Create support ticket in Bitbucket <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Dialog footer -->
+    <footer class="aui-dialog2-footer">
+        <!-- Actions to render on the right of the footer -->
+        <div class="aui-dialog2-footer-actions">
+            <button class="aui-button submit" ng-click="save()" ng-disabled="SubmitIssueForm.$invalid">Create</button>
+            <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+        </div>
+    </footer>
+</script>
+<script type="text/ng-template" id="worklog-dialog-template">
+    <!-- Dialog header -->
+    <header class="aui-dialog2-header">
+        <!-- The dialog''s title -->
+        <h1 class="aui-dialog2-header-main">
+            Log Work Done
+        </h1>
+        <!-- Close icon -->
+        <a class="aui-dialog2-header-close" ng-click="cancel()">
+            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+        </a>
+    </header>
+    <!-- Main dialog content -->
+    <div class="aui-dialog2-content">
+        <form class="aui" name="logWorkForm">
+            <ng-include src="'/templates/dialogs/updateWorklog.html'"></ng-include>
+        </form>
+    </div>
+    <!-- Dialog footer -->
+    <footer class="aui-dialog2-footer">
+        <!-- Actions to render on the right of the footer -->
+        <div class="aui-dialog2-footer-actions">
+            <button class="aui-button submit" ng-click="save()" ng-disabled="logWorkForm.$invalid">Save</button>
+            <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+        </div>
+    </footer>
+</script>
+<script type="text/ng-template" id="worklog-gadget-dialog-template">
+    <!-- Dialog header -->
+    <h1 class="aui-dialog2-header-main" style="padding: 0 4px">
+        Log Work Done
+    </h1>
+    <!-- Main dialog content -->
+    <div>
+        <form class="aui" name="logWorkForm">
+            <ng-include src="'/templates/dialogs/updateWorklog.html'"></ng-include>
+            <div class="buttons-container">
+                <div class="buttons">
+                    <button class="aui-button submit" ng-click="save()" ng-disabled="logWorkForm.$invalid">Save</button>
+                    <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Dialog footer -->
+</script>
+<script type="text/ng-template" id="delete-worklog-dialog-template">
+    <!-- Dialog header -->
+    <header class="aui-dialog2-header">
+        <!-- The dialog''s title -->
+        <h1 class="aui-dialog2-header-main">
+            Delete Work Log
+        </h1>
+        <!-- Close icon -->
+        <a class="aui-dialog2-header-close" ng-click="cancel()">
+            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+        </a>
+    </header>
+    <!-- Main dialog content -->
+    <div class="aui-dialog2-content">
+        <form class="aui" name="deleteWorkForm">
+            <ng-include src="'/templates/dialogs/deleteWorklog.html'"></ng-include>
+        </form>
+    </div>
+    <!-- Dialog footer -->
+    <footer class="aui-dialog2-footer">
+        <!-- Actions to render on the right of the footer -->
+        <div class="aui-dialog2-footer-actions">
+            <button class="aui-button submit" ng-click="delete()" ng-disabled="deleteWorkForm.$invalid">Delete</button>
+            <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+         </div>
+    </footer>
+</script>
+<script type="text/ng-template" id="delete-worklog-gadget-dialog-template">
+    <!-- Dialog header -->
+    <h1 class="aui-dialog2-header-main" style="padding: 0 4px">
+        Delete Work Log
+    </h1>
+    <!-- Main dialog content -->
+    <div class="aui-dialog2-content">
+        <form class="aui" name="deleteWorkForm">
+            <ng-include src="'/templates/dialogs/deleteWorklog.html'"></ng-include>
+            <div class="buttons-container">
+                <div class="buttons">
+                    <button class="aui-button submit" ng-click="delete()" ng-disabled="deleteWorkForm.$invalid">Delete</button>
+                    <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
 <div class="footer margin" ng-if="!isGadget">
     <ng-include src="'/templates/footer.html'"></ng-include>
 </div>
