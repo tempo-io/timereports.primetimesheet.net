@@ -110,6 +110,7 @@
     </div>
     <!-- Dialog footer -->
     <footer class="aui-dialog2-footer">
+        <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
         <!-- Actions to render on the right of the footer -->
         <div class="aui-dialog2-footer-actions">
             <button class="aui-button submit" ng-click="save()" ng-disabled="logWorkForm.$invalid">Save</button>
@@ -130,6 +131,7 @@
                 <div class="buttons">
                     <button class="aui-button submit" ng-click="save()" ng-disabled="logWorkForm.$invalid">Save</button>
                     <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+                    <span class="aui-icon aui-icon-wait" ng-show="loading" style="margin: 0 50px;"></span>
                 </div>
             </div>
         </form>
@@ -156,6 +158,7 @@
     </div>
     <!-- Dialog footer -->
     <footer class="aui-dialog2-footer">
+        <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
         <!-- Actions to render on the right of the footer -->
         <div class="aui-dialog2-footer-actions">
             <button class="aui-button submit" ng-click="delete()" ng-disabled="deleteWorkForm.$invalid">Delete</button>
@@ -176,6 +179,7 @@
                 <div class="buttons">
                     <button class="aui-button submit" ng-click="delete()" ng-disabled="deleteWorkForm.$invalid">Delete</button>
                     <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+                    <span class="aui-icon aui-icon-wait" ng-show="loading" style="margin: 0 50px;"></span>
                 </div>
             </div>
         </form>
