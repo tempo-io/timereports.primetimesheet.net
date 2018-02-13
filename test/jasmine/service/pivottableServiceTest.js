@@ -451,6 +451,56 @@ describe("pivottableServiceTest", function() {
         expect($timeout.flush).toThrow();
     }));
 
+    // test filterChangelogs fills in changelogAuthors
+    it('filterChangelogs', inject(function($timeout, $q, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+
+        var issue = {
+            key: 'DEMO-1',
+            changelog: {
+                "maxResults" : 0,
+                "startAt" : 0,
+                "total" : 0,
+                "histories" : [
+                    {
+                        author: {
+                            name: 'admin'
+                        }
+                    },
+                    {
+                        author: {
+                            name: 'test'
+                        }
+                    }
+                ]
+            }
+        };
+
+        var getTestUserInfoByNameCalled = false;
+        AP.request = function(options) {
+          if (options.url.match(/\/user\?expand=groups&key=test$/)) {
+              this.getTimeoutFunc()(function() {
+                  getTestUserInfoByNameCalled = true;
+                  options.success({groups:{items: []}});
+              }, 500);
+          } else {
+              AP.requestBak(options);
+          }
+        };
+
+        pivottableService.groups = ['jira-users'];
+        pivottableService.filterChangelogs(issue, /* deferred */ null, /* options */ {configOptions: {}});
+
+        $timeout.flush();
+        $timeout.flush();
+        $log.assertEmpty();
+
+        expect(pivottableService.changelogAuthors).toContain('admin');
+        expect(pivottableService.changelogAuthors).not.toContain('test');
+        expect(getTestUserInfoByNameCalled).toBeTruthy();
+        expect($timeout.flush).toThrow();
+    }));
+
     it('onAllIssues [total > maxResults]', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
 

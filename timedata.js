@@ -244,8 +244,8 @@ var TimeData = { "expand" : "schema,names",
           },
           "changelog":{
                 "startAt":0,
-                "maxResults":3,
-                "total":3,
+                "maxResults":4,
+                "total":4,
                 "histories":[
                    {
                       "id":"10010",
@@ -272,11 +272,17 @@ var TimeData = { "expand" : "schema,names",
                             "fromString":"Open",
                             "to":"3",
                             "toString":"In Progress"
+                         },
+                         {
+                             "field":"timeestimate",
+                             "fieldtype":"jira",
+                             "from":null,
+                             "to":"7200"
                          }
                       ]
                    },
                    {
-                      "id":"10010",
+                      "id":"10011",
                       "author":{
                          "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
                          "name":"admin",
@@ -300,11 +306,23 @@ var TimeData = { "expand" : "schema,names",
                             "fromString":"In Progress",
                             "to":"4",
                             "toString":"Testing"
+                         },
+                         {
+                            "field":"timespent",
+                            "fieldtype":"jira",
+                            "from":"0",
+                            "to":"7200"
+                         },
+                         {
+                            "field": "timeestimate",
+                            "fieldtype": "jira",
+                            "from": "7200",
+                            "to": "3600"
                          }
                       ]
                    },
                    {
-                      "id":"10010",
+                      "id":"10012",
                       "author":{
                          "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
                          "name":"admin",
@@ -328,7 +346,45 @@ var TimeData = { "expand" : "schema,names",
                             "fromString":"Testing",
                             "to":"5",
                             "toString":"Done"
+                         },
+                         {
+                            "field":"timespent",
+                            "fieldtype":"jira",
+                            "from":"7200",
+                            "to":"3600"
                          }
+                      ]
+                   },
+                   {
+                      "id":"10013",
+                      "author":{
+                         "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
+                         "name":"admin",
+                         "emailAddress":"azhdanov@gmail.com",
+                         "avatarUrls":{
+                            "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
+                            "24x24":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=24",
+                            "16x16":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=16",
+                            "32x32":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=32"
+                         },
+                         "displayName":"Administrator",
+                         "active":true,
+                         "timeZone":"Europe/Belgrade"
+                      },
+                      "created":"2017-04-10T15:04:23.382+0200",
+                      "items":[
+                         {
+                             "field": "timeestimate",
+                             "fieldtype": "jira",
+                             "from": "3600",
+                             "to": "0"
+                         },
+                         {
+                             "field":"timespent",
+                             "fieldtype":"jira",
+                             "from":"3600",
+                             "to":"7200"
+                          }
                       ]
                    }
 
@@ -1094,8 +1150,8 @@ var TimeData = { "expand" : "schema,names",
             },
             "changelog":{
                 "startAt":0,
-                "maxResults":3,
-                "total":3,
+                "maxResults":2,
+                "total":2,
                 "histories":[
                     {
                         "id":"10010",
@@ -1130,6 +1186,38 @@ var TimeData = { "expand" : "schema,names",
                                 "fromString":null,
                                 "to":"admin",
                                 "toString":"Administrator"
+                            },
+                            {
+                                "field":"timespent",
+                                "fieldtype":"jira",
+                                "from":"0",
+                                "to":"3600"
+                            }
+                        ]
+                    },
+                    {
+                        "id":"10011",
+                        "author":{
+                            "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
+                            "name":"admin",
+                            "emailAddress":"azhdanov@gmail.com",
+                            "avatarUrls":{
+                                "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
+                                "24x24":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=24",
+                                "16x16":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=16",
+                                "32x32":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=32"
+                            },
+                            "displayName":"Administrator",
+                            "active":true,
+                            "timeZone":"Europe/Belgrade"
+                        },
+                        "created":"2013-12-05T14:39:40.382+0200",
+                        "items":[
+                            {
+                                "field":"timespent",
+                                "fieldtype":"jira",
+                                "from":"3600",
+                                "to":"7200"
                             }
                         ]
                     }
@@ -1159,15 +1247,30 @@ var TimeDataTIME_7 = {
                 "16x16": "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
                 "48x48": "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
             },
-            "displayName": "admin",
-            "emailAddress": "admin@example.com",
-            "name": "admin",
-            "self": "http://localhost:2990/jira/rest/api/2/user?username=admin"
+            "displayName": "user",
+            "emailAddress": "user@example.com",
+            "name": "user",
+            "self": "http://localhost:2990/jira/rest/api/2/user?username=user"
         },
         "components": [],
         "customfield_10007": "",
         "customfield_10004": 2.0,
-        "created": "2013-02-27T18:02:37.000+0100",
+        "creator": {
+            "self": "https://avelytchenko.atlassian.net/rest/api/2/user?username=user",
+            "name": "user",
+            "key": "user",
+            "emailAddress": "user@ukr.net",
+            "avatarUrls": {
+                "48x48": "https://avatar-cdn.atlassian.com/bea67933ceee0576c2dd9381176590ff?s=48&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fbea67933ceee0576c2dd9381176590ff%3Fd%3Dmm%26s%3D48%26noRedirect%3Dtrue",
+                "24x24": "https://avatar-cdn.atlassian.com/bea67933ceee0576c2dd9381176590ff?s=24&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fbea67933ceee0576c2dd9381176590ff%3Fd%3Dmm%26s%3D24%26noRedirect%3Dtrue",
+                "16x16": "https://avatar-cdn.atlassian.com/bea67933ceee0576c2dd9381176590ff?s=16&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fbea67933ceee0576c2dd9381176590ff%3Fd%3Dmm%26s%3D16%26noRedirect%3Dtrue",
+                "32x32": "https://avatar-cdn.atlassian.com/bea67933ceee0576c2dd9381176590ff?s=32&d=https%3A%2F%2Fsecure.gravatar.com%2Favatar%2Fbea67933ceee0576c2dd9381176590ff%3Fd%3Dmm%26s%3D32%26noRedirect%3Dtrue"
+            },
+            "displayName": "user",
+            "active": true,
+            "timeZone": "Europe/Kiev"
+        },
+        "created": "2017-04-05T06:44:09.382+0200",
         "description": null,
         "duedate": null,
         "environment": null,
@@ -1209,10 +1312,10 @@ var TimeDataTIME_7 = {
                 "16x16": "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
                 "48x48": "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
             },
-            "displayName": "admin",
-            "emailAddress": "admin@example.com",
-            "name": "admin",
-            "self": "http://localhost:2990/jira/rest/api/2/user?username=admin"
+            "displayName": "user",
+            "emailAddress": "user@example.com",
+            "name": "user",
+            "self": "http://localhost:2990/jira/rest/api/2/user?username=user"
         },
         "resolution": null,
         "resolutiondate": null,
@@ -1225,8 +1328,8 @@ var TimeDataTIME_7 = {
         },
         "subtasks": [],
         "summary": "Hindenbug",
-        "timeestimate": 0,
-        "timeoriginalestimate": 100000,
+        "timeestimate": 3600,
+        "timeoriginalestimate": 7200,
         "timespent": 3600,
         "updated": "2013-02-27T18:03:49.000+0100",
         "versions": [],
@@ -1256,11 +1359,11 @@ var TimeDataTIME_7 = {
                     "16x16": "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
                     "48x48": "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
                 },
-                "displayName": "admin",
-                "emailAddress": "admin@example.com",
-                "name": "admin",
+                "displayName": "user",
+                "emailAddress": "user@example.com",
+                "name": "user",
                 "timeZone": "Europe/Moscow",
-                "self": "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self": "http://localhost:2990/jira/rest/api/2/user?username=user"
             },
             "comment": "test 3",
             "created": "2014-02-24T18:03:49.225+0100",
@@ -1275,13 +1378,135 @@ var TimeDataTIME_7 = {
                     "16x16": "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
                     "48x48": "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
                 },
-                "displayName": "admin",
-                "emailAddress": "admin@example.com",
-                "name": "admin",
-                "self": "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "displayName": "user",
+                "emailAddress": "user@example.com",
+                "name": "user",
+                "self": "http://localhost:2990/jira/rest/api/2/user?username=user"
             },
             "updated": "2014-02-24T18:03:49.225+0100"
         }
+        ]
+    },
+    "changelog":{
+        "startAt":0,
+        "maxResults":3,
+        "total":3,
+        "histories":[
+            {
+                "id":"10010",
+                "author":{
+                    "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=user",
+                    "name":"user",
+                    "emailAddress":"user@gmail.com",
+                    "avatarUrls":{
+                        "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
+                        "24x24":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=24",
+                        "16x16":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=16",
+                        "32x32":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=32"
+                    },
+                    "displayName":"user",
+                    "active":true,
+                    "timeZone":"Europe/Belgrade"
+                },
+                "created":"2017-04-05T07:44:09.382+0200",
+                "items":[
+                    {
+                        "field":"status",
+                        "fieldtype":"jira",
+                        "from":"1",
+                        "fromString":"Open",
+                        "to":"3",
+                        "toString":"In Progress"
+                    },
+                    {
+                        "field":"timeestimate",
+                        "fieldtype":"jira",
+                        "from":null,
+                        "to":"7200"
+                    },
+                    {
+                        "field":"timeoriginalestimate",
+                        "fieldtype":"jira",
+                        "from":null,
+                        "to":"7200"
+                    }
+                ]
+            },
+            {
+                "id":"10011",
+                "author":{
+                    "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=user",
+                    "name":"user",
+                    "emailAddress":"user@gmail.com",
+                    "avatarUrls":{
+                        "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
+                        "24x24":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=24",
+                        "16x16":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=16",
+                        "32x32":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=32"
+                    },
+                    "displayName":"user",
+                    "active":true,
+                    "timeZone":"Europe/Belgrade"
+                },
+                "created":"2017-04-07T11:54:03.382+0200",
+                "items":[
+                    {
+                        "field":"status",
+                        "fieldtype":"jira",
+                        "from":"3",
+                        "fromString":"In Progress",
+                        "to":"4",
+                        "toString":"Testing"
+                    },
+                    {
+                        "field":"timespent",
+                        "fieldtype":"jira",
+                        "from":"0",
+                        "to":"7200"
+                    },
+                    {
+                        "field": "timeestimate",
+                        "fieldtype": "jira",
+                        "from": "7200",
+                        "to": "3600"
+                    }
+                ]
+            },
+            {
+                "id":"10012",
+                "author":{
+                    "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=user",
+                    "name":"user",
+                    "emailAddress":"user@gmail.com",
+                    "avatarUrls":{
+                        "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
+                        "24x24":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=24",
+                        "16x16":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=16",
+                        "32x32":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=32"
+                    },
+                    "displayName":"user",
+                    "active":true,
+                    "timeZone":"Europe/Belgrade"
+                },
+                "created":"2017-04-10T11:04:23.382+0200",
+                "items":[
+                    {
+                        "field":"status",
+                        "fieldtype":"jira",
+                        "from":"4",
+                        "fromString":"Testing",
+                        "to":"5",
+                        "toString":"Done"
+                    },
+                    {
+                        "field":"timespent",
+                        "fieldtype":"jira",
+                        "from":"7200",
+                        "to":"3600"
+                    }
+                ]
+            }
+
         ]
     }
 };
