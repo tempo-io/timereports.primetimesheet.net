@@ -47,7 +47,9 @@
     "Sum worked hours by month": "Sum worked hours by month",
     "Show Details": "Show Details",
     "Hide Details": "Hide Details",
-    "Email on": "Email on",
+    "Email": "Email",
+    "Daily": "Daily",
+    "Every": "Every",
 
     "Today": "Today",
     "Total" : "Total",
