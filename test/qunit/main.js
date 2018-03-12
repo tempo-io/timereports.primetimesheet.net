@@ -5,7 +5,6 @@ require.config({
     }
 });
 require([
-    "lib/jquery.base64",
     "bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020",
     "timesheetUtils",
     "app/directives/DrawHelper",
@@ -22,5 +21,3 @@ require([
         QUnit.start();
     }
 );
-
-
