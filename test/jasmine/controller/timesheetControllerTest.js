@@ -161,7 +161,7 @@ describe("timesheetControllerTest", function() {
                         workingTimeInStatus: {},
                         startedTimeInStatus: {},
                         storeWorklog: {},
-                        timespentColumns: {val: []},
+                        timeBalanceColumns: {val: []},
                         timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
                             '3timespent', '4diff', '5originalestimateremaining', '6progress']}
                     });
@@ -398,12 +398,12 @@ describe("timesheetControllerTest", function() {
         checkOptions(scope);
     }));
 
-    it('PARAMETERS: pivotTableType=Timespent', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+    it('PARAMETERS: pivotTableType=TimeBalance', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
         var scope = $rootScope.$new();
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            timesheetParams: {startDate: '2013-12-04', endDate: '2017-04-10',  pivotTableType: 'Timespent', loaded: true},
+            timesheetParams: {startDate: '2013-12-04', endDate: '2017-04-10',  pivotTableType: 'TimeBalance', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
@@ -430,12 +430,12 @@ describe("timesheetControllerTest", function() {
         expect(scope.rowKeySize).toBe(5);
     }));
 
-    it('PARAMETERS: pivotTableType=Timespent, sumSubTasks: true', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+    it('PARAMETERS: pivotTableType=TimeBalance, sumSubTasks: true', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
         var scope = $rootScope.$new();
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            timesheetParams: {sumSubTasks: true, startDate: '2013-12-04', endDate: '2017-04-10',  pivotTableType: 'Timespent', loaded: true},
+            timesheetParams: {sumSubTasks: true, startDate: '2013-12-04', endDate: '2017-04-10',  pivotTableType: 'TimeBalance', loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,

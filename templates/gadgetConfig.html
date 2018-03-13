@@ -22,7 +22,7 @@
 			<label>{{'Show Weekends' | i18n}}</label>
 			<input class="checkbox" type="checkbox" ng-model="showWeekends.enabled"/>
 		</div>
-		<div class="field-group" ng-if="['TimeTracking', 'TimeEntry', 'Timespent'].indexOf(pivotTableType) < 0">
+		<div class="field-group" ng-if="['TimeTracking', 'TimeEntry', 'Timespent', 'TimeBalance'].indexOf(pivotTableType) < 0">
             <label>{{'Reporting Day' | i18n}}</label>
             <select class="select"
                     title="{{'Reporting Day' | i18n}}"
@@ -36,7 +36,7 @@
 			<label>{{ 'Filter or Project' | i18n }}:</label>
 			<input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"/>
 		</div>
-    <div class="field-group" ng-if="pivotTableType == 'TimeTracking' && sumSubTasks.enabled">
+    <div class="field-group" ng-if="showChildrenFilter">
         <label>{{'Children Filter' | i18n}}:</label>
         <select class="select"
                 title="{{'Children Filter' | i18n}}"
@@ -58,7 +58,7 @@
 			<label>{{'Groups' | i18n}}</label>
 			<input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>
 		</div>
-		<div class="field-group" ng-if="['TimeEntry', 'Timespent'].indexOf(pivotTableType) < 0">
+		<div class="field-group" ng-if="['TimeEntry', 'TimeBalance'].indexOf(pivotTableType) < 0">
             <label>{{'Group By Field' | i18n}}</label>
 			<select class="select"
 			        ng-model="groupByOptions.selected"
@@ -67,7 +67,7 @@
 			        aui-select2>
 			</select>
 		</div>
-    <div class="field-group" ng-if="['TimeEntry', 'Timespent'].indexOf(pivotTableType) < 0">
+    <div class="field-group" ng-if="['TimeEntry', 'TimeBalance'].indexOf(pivotTableType) < 0">
         <label>{{'Categorize By Field' | i18n}}</label>
         <select class="select"
                 ng-model="categorizeByOptions.selected"

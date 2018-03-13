@@ -190,7 +190,7 @@ test("TimeTrackingGroupedByStatus", function() {
   equal(columnKeys[5], "6progress", "columnKey");
   equal(row.columns[columnKeys[0]].entries.length, 3, "column entries");
 });
-var testTimespentCommonCase = function (pivotTable) {
+var testTimeBalanceCommonCase = function (pivotTable) {
     var totalKeys = Object.keys(pivotTable.totals);
     equal(totalKeys.length, 5, "totals");
     equal(totalKeys[0], "3timespent", "totalKey");
@@ -230,35 +230,35 @@ var testTimespentCommonCase = function (pivotTable) {
     equal(columnKeys[4], "6progress", "columnKey");
     equal(row.columns[columnKeys[0]].entries.length, 4, "column entries");
 };
-test("Timespent5Columns", function() {
-    var pivotTable = PivotTableFactory.createPivotTable({startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'Timespent',
-        configOptions: {timespentColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+test("TimeBalance5Columns", function() {
+    var pivotTable = PivotTableFactory.createPivotTable({startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
+        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
     for (var i in TimeData.issues) {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }
-    testTimespentCommonCase(pivotTable);
+    testTimeBalanceCommonCase(pivotTable);
 });
-test("Timespent5Columns extended data group=jira-administrators", function() {
-    var pivotTable = PivotTableFactory.createPivotTable({changelogAuthors: 'admin', startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'Timespent',
-        configOptions: {timespentColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+test("TimeBalance5Columns extended data group=jira-administrators", function() {
+    var pivotTable = PivotTableFactory.createPivotTable({changelogAuthors: 'admin', startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
+        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
     for (var i in TimeData.issues) {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }
     pivotTable.add(TimeDataTIME_7);
-    testTimespentCommonCase(pivotTable);
+    testTimeBalanceCommonCase(pivotTable);
 });
-test("Timespent5Columns filter user=user", function() {
-    var pivotTable = PivotTableFactory.createPivotTable({user: 'user', startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'Timespent',
-        configOptions: {timespentColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+test("TimeBalance5Columns filter user=user", function() {
+    var pivotTable = PivotTableFactory.createPivotTable({user: 'user', startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
+        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
     for (var i in TimeData.issues) {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }
     var totalKeys = Object.keys(pivotTable.totals);
     equal(totalKeys.length, 0, "totals");
 });
-test("Timespent5Columns filter user=user extended data", function() {
-    var pivotTable = PivotTableFactory.createPivotTable({user: 'user', startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'Timespent',
-        configOptions: {timespentColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+test("TimeBalance5Columns filter user=user extended data", function() {
+    var pivotTable = PivotTableFactory.createPivotTable({user: 'user', startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
+        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
     for (var i in TimeData.issues) {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }
@@ -324,6 +324,27 @@ test("Timesheet", function() {
   ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[0])), new Date(2014, 1, 24)), "totalKey");
   ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[1])), new Date(2014, 1, 25)), "totalKey");
   equal(row.columns[columnKeys[0]].entries.length, 1, "column entries");
+});
+test("Timespent", function() {
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timespent', startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
+  for (var i in TimeData.issues) {
+      var issue = TimeData.issues[i];
+      var pivotEntries = pivotTable.add(issue);
+      equal(pivotEntries.length, 2, "pivotEntries " + issue.key);
+  }
+  var totalKeys = Object.keys(pivotTable.totals);
+  equal(totalKeys.length, 1, "totals");
+  equal(pivotTable.totals[totalKeys[0]].sum, 172800, "total value 1");
+  var rowKeys = Object.keys(pivotTable.rows);
+  equal(rowKeys.length, 6, "rows");
+  equal(rowKeys[0], "TIME-4", "rowKey");
+  var row = pivotTable.rows[rowKeys[0]];
+  equal(typeof row.rowKey, "object", "typeof row.key");
+  equal(row.sum, 7200, "typeof row.key");
+  var columnKeys = Object.keys(row.columns);
+  equal(columnKeys.length, 1, "columns");
+  ok(totalKeys[0], '3timespent', "totalKey");
+  equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
 });
 test("TimesheetUtils.convertDate", function() {
     // default

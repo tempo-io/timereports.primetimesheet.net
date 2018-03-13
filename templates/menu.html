@@ -8,7 +8,7 @@
             <label>{{ 'Filter or Project' | i18n }}</label>
             <input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" update-event="projectUpdated" type="text"/>
         </div>
-        <div class="ak-field-group" ng-if="pivotTableType == 'TimeTracking' && sumSubTasks.enabled">
+        <div class="ak-field-group" ng-if="showChildrenFilter">
             <label>{{'Children Filter' | i18n}}</label>
             <select class="select"
                     title="{{'Children Filter' | i18n}}"
@@ -42,7 +42,7 @@
             <label style="display: inline-block; margin: 0">{{'Show Weekends' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled" ng-change="toggleShowWeekends()" />
         </div>
-        <div class="ak-field-group" ng-if="['TimeTracking', 'TimeEntry', 'Timespent'].indexOf(pivotTableType) < 0">
+        <div class="ak-field-group" ng-if="['TimeTracking', 'TimeEntry', 'Timespent', 'TimeBalance'].indexOf(pivotTableType) < 0">
             <label>{{'Reporting Day' | i18n}}</label>
             <select class="select"
                     title="{{'Reporting Day' | i18n}}"
@@ -52,7 +52,7 @@
                     aui-select2>
             </select>
         </div>
-        <div class="ak-field-group" ng-if="['TimeEntry', 'Timespent'].indexOf(pivotTableType) < 0">
+        <div class="ak-field-group" ng-if="['TimeEntry', 'TimeBalance'].indexOf(pivotTableType) < 0">
             <label>{{'Group By Field' | i18n}}</label>
             <select class="select"
                     ng-model="groupByOptions.selected"
@@ -61,7 +61,7 @@
                     aui-select2>
             </select>
         </div>
-        <div class="ak-field-group" ng-if="['TimeEntry', 'Timespent'].indexOf(pivotTableType) < 0">
+        <div class="ak-field-group" ng-if="['TimeEntry', 'TimeBalance'].indexOf(pivotTableType) < 0">
             <label>{{'Categorize By Field' | i18n}}</label>
             <select class="select"
                     ng-model="categorizeByOptions.selected"

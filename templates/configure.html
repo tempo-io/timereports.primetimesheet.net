@@ -129,21 +129,21 @@
         <span class="description" ng-bind-html="'description.Time Tracking Columns' | i18n | htmlSafe"></span>
     </div>
     <div class="field-group">
-        <label for="timespentColumns">{{'Timespent Columns' | i18n}}</label>
-        <input id="timespentColumns"
+        <label for="timeBalanceColumns">{{'Time Balance Columns' | i18n}}</label>
+        <input id="timeBalanceColumns"
                aui-multi-select-picker
                class="text"
-               title="{{'Timespent Columns' | i18n}}"
-               ng-model="timespentColumns.val"
-               ng-options-data="timespentColumnsData"
-               ng-value-changed-func="saveTimespentColumns">
+               title="{{'Time Balance Columns' | i18n}}"
+               ng-model="timeBalanceColumns.val"
+               ng-options-data="timeBalanceColumnsData"
+               ng-value-changed-func="saveTimeBalanceColumns">
         <div class="aui-message aui-message-success msg-overlay"
-             ng-show="timespentColumnsSaveSuccess">
-            <strong>{{'Timespent Columns' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+             ng-show="timeBalanceColumnsSaveSuccess">
+            <strong>{{'Time Balance Columns' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
         </div>
     </div>
     <div class="field-group">
-        <span class="description" ng-bind-html="'description.Timespent Columns' | i18n | htmlSafe"></span>
+        <span class="description" ng-bind-html="'description.Time Balance Columns' | i18n | htmlSafe"></span>
     </div>
     <div class="field-group">
         <label for="timeInStatusCategories">{{'Time In Status Categories' | i18n}}</label>
