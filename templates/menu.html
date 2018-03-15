@@ -52,7 +52,7 @@
                     aui-select2>
             </select>
         </div>
-        <div class="ak-field-group" ng-if="['TimeEntry', 'TimeBalance'].indexOf(pivotTableType) < 0">
+        <div class="ak-field-group" ng-if="['TimeEntry'].indexOf(pivotTableType) < 0">
             <label>{{'Group By Field' | i18n}}</label>
             <select class="select"
                     ng-model="groupByOptions.selected"
@@ -61,7 +61,7 @@
                     aui-select2>
             </select>
         </div>
-        <div class="ak-field-group" ng-if="['TimeEntry', 'TimeBalance'].indexOf(pivotTableType) < 0">
+        <div class="ak-field-group" ng-if="['TimeEntry'].indexOf(pivotTableType) < 0">
             <label>{{'Categorize By Field' | i18n}}</label>
             <select class="select"
                     ng-model="categorizeByOptions.selected"

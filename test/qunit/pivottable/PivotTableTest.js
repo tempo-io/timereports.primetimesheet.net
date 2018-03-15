@@ -190,7 +190,7 @@ test("TimeTrackingGroupedByStatus", function() {
   equal(columnKeys[5], "6progress", "columnKey");
   equal(row.columns[columnKeys[0]].entries.length, 3, "column entries");
 });
-var testTimeBalanceCommonCase = function (pivotTable) {
+var testTimeBalanceCommonCase = function (pivotTable, rowKeysLendth, rowKeysString, row0DataLength) {
     var totalKeys = Object.keys(pivotTable.totals);
     equal(totalKeys.length, 5, "totals");
     equal(totalKeys[0], "3timespent", "totalKey");
@@ -203,10 +203,10 @@ var testTimeBalanceCommonCase = function (pivotTable) {
     equal(pivotTable.totals[totalKeys[4]].value.estimate, 0, "total value 6 (estimate)");
     equal(pivotTable.totals[totalKeys[4]].value.timespent, 14400, "total value 6 (timespent)");
     var rowKeys = Object.keys(pivotTable.rows);
-    equal(rowKeys.length, 2, "rows");
-    equal(rowKeys[0], "TIME-4", "rowKey");
+    equal(rowKeys.length, rowKeysLendth, "rows");
+    equal(rowKeys.join(','), rowKeysString, "rowKeys");
     var row = pivotTable.rows[rowKeys[0]];
-    equal(row.data.length, 4, "data length");
+    equal(row.data.length, row0DataLength, "data length");
     equal(row.data[0].values["2esttimeremaining"], 7200, "data value 2");
     equal(row.data[0].values["3timespent"], 0, "data value 3");
     equal(row.data[0].values["4diff"], -7200, "data value 4");
@@ -228,7 +228,7 @@ var testTimeBalanceCommonCase = function (pivotTable) {
     equal(columnKeys[2], "2esttimeremaining", "columnKey");
     equal(columnKeys[3], "5originalestimateremaining", "columnKey");
     equal(columnKeys[4], "6progress", "columnKey");
-    equal(row.columns[columnKeys[0]].entries.length, 4, "column entries");
+    equal(row.columns[columnKeys[0]].entries.length, row0DataLength, "column entries");
 };
 test("TimeBalance5Columns", function() {
     var pivotTable = PivotTableFactory.createPivotTable({startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
@@ -236,7 +236,7 @@ test("TimeBalance5Columns", function() {
     for (var i in TimeData.issues) {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }
-    testTimeBalanceCommonCase(pivotTable);
+    testTimeBalanceCommonCase(pivotTable, 2, 'TIME-4,TIME-6', 4);
 });
 test("TimeBalance5Columns extended data group=jira-administrators", function() {
     var pivotTable = PivotTableFactory.createPivotTable({changelogAuthors: 'admin', startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
@@ -245,7 +245,34 @@ test("TimeBalance5Columns extended data group=jira-administrators", function() {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }
     pivotTable.add(TimeDataTIME_7);
-    testTimeBalanceCommonCase(pivotTable);
+    testTimeBalanceCommonCase(pivotTable, 2, 'TIME-4,TIME-6', 4);
+});
+test("TimeBalance5Columns grouped by status categorized by project", function() {
+    var pivotTable = PivotTableFactory.createPivotTable({categorizeByField: 'project', groupByField: 'status',
+        startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
+        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+    for (var i in TimeData.issues) {
+        var pivotEntries = pivotTable.add(TimeData.issues[i]);
+    }
+    testTimeBalanceCommonCase(pivotTable, 2, 'Timeship:Done,Timeship:Open', 4);
+});
+test("TimeBalance5Columns grouped by status", function() {
+    var pivotTable = PivotTableFactory.createPivotTable({groupByField: 'status',
+        startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
+        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+    for (var i in TimeData.issues) {
+        var pivotEntries = pivotTable.add(TimeData.issues[i]);
+    }
+    testTimeBalanceCommonCase(pivotTable, 2, 'Done,Open', 4);
+});
+test("TimeBalance5Columns grouped by project", function() {
+    var pivotTable = PivotTableFactory.createPivotTable({groupByField: 'project',
+        startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
+        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+    for (var i in TimeData.issues) {
+        var pivotEntries = pivotTable.add(TimeData.issues[i]);
+    }
+    testTimeBalanceCommonCase(pivotTable, 1, 'Timeship', 6);
 });
 test("TimeBalance5Columns filter user=user", function() {
     var pivotTable = PivotTableFactory.createPivotTable({user: 'user', startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
