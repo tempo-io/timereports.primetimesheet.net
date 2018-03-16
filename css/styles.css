@@ -245,6 +245,7 @@ a.disabled {
 }
 .main {
   display: flex;
+  min-height: 600px;
 }
 .is-not-gadget .content {
   padding: 12px 24px;
