@@ -95,7 +95,9 @@
                         <issue-field field="row.rowKey.project" ng-if="row.rowKey.project" jira-config="jiraConfig" />
                     </td>
                     <td class="nav" colspan="4" ng-if="row.rowKey.field" nowrap>
-                        <issue-field field="row.rowKey.field" name='row.rowKey.keyName' jira-config="jiraConfig" />
+                        <span><issue-field field="row.rowKey.field" name='row.rowKey.keyName' jira-config="jiraConfig" /></span>
+                        &nbsp;
+                        <span>{{row.data.length != 1 ? 'issues' : 'issue' | i18n:{placeholders:[row.data.length]} }}</span>
                     </td>
                     <td class="nav" nowrap ng-repeat="field in row.moreFields">
                         <issue-field name="field" field="row.rowKey.issue.fields[field] || row.rowKey._issue.fields[field]" issue="row.rowKey.issue || row.rowKey._issue" jira-config="jiraConfig" ng-if="row.rowKey.issue || row.rowKey._issue"/>
