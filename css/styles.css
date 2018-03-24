@@ -245,6 +245,8 @@ a.disabled {
 }
 .main {
   display: flex;
+}
+.is-not-gadget .main {
   min-height: 600px;
 }
 .is-not-gadget .content {
