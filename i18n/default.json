@@ -134,7 +134,7 @@
     "description.Work Labels": "Editable list of labels that can be used in worklog comment as hashtags, for grouping.",
     "description.Work Description Required": "Require Work Description when adding or updating worklog.",
     "description.Cache Worklog": "If enabled, use local Storage for issues with more than 20 worklogs. Worklogs added last minute anywhere else will be missing in report.",
-    "description.Store Worklog": "Store Worklog copy in add-on secure DB, see <a href=\"http://www.primetimesheet.net/cloud/security.html\" target=\"_blank\">add-on security policy</a> for more details",
+    "description.Store Worklog": "Store Worklog copy in add-on secure DB, see <a href=\"https://www.primetimesheet.net/cloud/security.html\" target=\"_blank\">add-on security policy</a> for more details",
     "description.REST": "Get KEY to load worklog in JSON format from <a target=\"_blank\" href=\"https://timesheet-plugin.herokuapp.com/api/1/worklog\">https://timesheet-plugin.herokuapp.com/api/1/worklog</a> with HTTP Header \"Authorization: Apikey KEY.\" See also <a href=\"https://www.primetimesheet.net/cloud/rest.html\" target=\"_blank\">REST endpoint</a>.<br>Store Worklog needs to be enabled first.",
     "description.Time Tracking Columns": "These columns will be shown in Time Tracking Report and exported to files. Columns order will be the same. Please note, if nothing selected, all columns with default order will be shown.",
     "description.Time Balance Columns": "These columns will be shown in Time Balance Report and exported to files. Columns order will be the same. Please note, if nothing selected, all columns with default order will be shown.",
@@ -176,6 +176,6 @@
     "welcome.content.3.1": "It is possible to add Time Entry issue panel to record worked hours in real time right from issue, see Time Entry Issue Panel Groups option in <a href=\"%s/plugins/servlet/ac/timereports/configuration\" target=\"_blank\">add-on configuration</a>.",
     "welcome.content.3.2": "Note, add-on does not have top bar menu in purpose, but it's possible to add quick link with <a href=\"https://confluence.atlassian.com/jira/creating-links-in-the-application-navigator-346948276.html\" target=\"_blank\">Application Navigator</a>. It also allows to set link to be viewable just by the specified groups.",
     "welcome.content.4": "Additional Resources",
-    "welcome.content.5.1": "<a href=\"http://www.primetimesheet.net/timereports/\" target=\"_blank\">Documentation</a>",
+    "welcome.content.5.1": "<a href=\"https://www.primetimesheet.net/timereports/\" target=\"_blank\">Documentation</a>",
     "welcome.content.5.2": "<a href=\"https://bitbucket.org/azhdanov/timereports/issues\" target=\"_blank\">Issues</a>"
 }
