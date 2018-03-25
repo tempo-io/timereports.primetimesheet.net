@@ -52,7 +52,7 @@ test("IssueWorkedTimeByStatus", function() {
       equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
   }
 });
-test("IssuePassedTimeByStatus", function() {
+xtest("IssuePassedTimeByStatus", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssuePassedTimeByStatus',
       startDate: '2017-04-05', endDate: '2017-04-11',
       configOptions: {statuses: TimeStatuses, timeInStatusCategories: ["2", "4"]}});
