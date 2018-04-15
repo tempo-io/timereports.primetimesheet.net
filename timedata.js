@@ -30,7 +30,9 @@ window.AP = {
       } else if (options.url.match(/\/field/)) {
         options.success(FieldsData);
       } else if (options.url.match(/\/groups\/picker/)) {
-        options.success(groupsPickerDate);
+        options.success(GroupsPickerData);
+      } else if (options.url.match(/\/status/)) {
+        options.success(StatusData);
       } else if (options.url.match(/\/properties\/configuration/)) { // hosted configuraiton
         options.success(PropertiesConfig);
       } else if (options.url.match(/\/configuration/)) {
@@ -2400,11 +2402,58 @@ var userPickerData = {
    "header":"Showing 1 of 1 matching users"
 };
 
-var groupsPickerDate = {
+var GroupsPickerData = {
     groups: [{name: "atlassian-addons", html: "atlassian-addons"}, {name: "jira-users", html: "jira-users"}],
     header: "Showing 2 of 2 matching groups",
     total: 2
 };
+
+var StatusData = [
+  {
+    self: "https://timereports.atlassian.net/rest/api/2/status/3",
+    description:
+      "This issue is being actively worked on at the moment by the assignee.",
+    iconUrl:
+      "https://timereports.atlassian.net/images/icons/statuses/inprogress.png",
+    name: "In Progress",
+    id: "3",
+    statusCategory: {
+      self: "https://timereports.atlassian.net/rest/api/2/statuscategory/4",
+      id: 4,
+      key: "indeterminate",
+      colorName: "yellow",
+      name: "In Progress"
+    }
+  },
+  {
+    self: "https://timereports.atlassian.net/rest/api/2/status/10000",
+    description: "",
+    iconUrl: "https://timereports.atlassian.net/",
+    name: "To Do",
+    id: "10000",
+    statusCategory: {
+      self: "https://timereports.atlassian.net/rest/api/2/statuscategory/2",
+      id: 2,
+      key: "new",
+      colorName: "blue-gray",
+      name: "To Do"
+    }
+  },
+  {
+    self: "https://timereports.atlassian.net/rest/api/2/status/10001",
+    description: "",
+    iconUrl: "https://timereports.atlassian.net/",
+    name: "Done",
+    id: "10001",
+    statusCategory: {
+      self: "https://timereports.atlassian.net/rest/api/2/statuscategory/3",
+      id: 3,
+      key: "done",
+      colorName: "green",
+      name: "Done"
+    }
+  }
+];
 
 var TimeStatuses = {
     1: {order: 1, categoryId: "2"},
@@ -2448,7 +2497,7 @@ var processFlightData = function() {
             } else if (item.request.url.match(/\/field/)) {
                 FieldsData = itemData;
             } else if (item.request.url.match(/\/groups\/picker/)) {
-                groupsPickerDate = itemData;
+                GroupsPickerData = itemData;
             } else if (item.request.url.match(/\/properties\/configuration/)) { // hosted configuraiton
                 PropertiesConfig = itemData;
             } else if (item.request.url.match(/\/properties/)) { // hosted keys

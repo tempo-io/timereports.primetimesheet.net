@@ -52,7 +52,7 @@ test("IssueWorkedTimeByStatus", function() {
       equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
   }
 });
-xtest("IssuePassedTimeByStatus", function() {
+test("IssuePassedTimeByStatus", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssuePassedTimeByStatus',
       startDate: '2017-04-05', endDate: '2017-04-11',
       configOptions: {statuses: TimeStatuses, timeInStatusCategories: ["2", "4"]}});
@@ -63,7 +63,7 @@ xtest("IssuePassedTimeByStatus", function() {
   var totalKeys = Object.keys(pivotTable.totals);
   equal(totalKeys.length, 3, "totals");
   equal(totalKeys[0], "Open", "totalKey");
-  equal(pivotTable.totals[totalKeys[0]].sum, 1838649.382 + (moment().utcOffset() * 60), "total value 0");
+  equal(pivotTable.totals[totalKeys[0]].sum, 1842249.382, "total value 0");
   equal(pivotTable.totals[totalKeys[1]].sum, 1397394, "total value 1");
   var rowKeys = Object.keys(pivotTable.rows);
   equal(rowKeys.length, 6, "rows");
