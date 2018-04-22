@@ -1,108 +1,117 @@
 <div id="config" ng-controller="GadgetController">
-    <form class="aui">
-		<div class="field-group">
-			<label>{{ 'Title' | i18n}}</label>
-			<input ng-model="title" class="text"/>
-		</div>
-		<div class="field-group">
-			<label>{{ 'Report' | i18n }}:</label>
-				<select class="select"
-				        title="database select"
-				        ng-model="pivotTableTypeOptions.selected"
-				        ng-options="item.id as item.label for item in pivotTableTypeOptions.options"
-				        ng-change="pivotTableTypeChanged()"
-				        aui-select2>
-				</select>
-		</div>
-		<div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
-			<label>{{ 'Number of Weeks' | i18n}}</label>
-			<input ng-model="numOfWeeks" class="text" type="number" min="1" max="12" ng-change="numOfWeeksChange(numOfWeeks)" />
-		</div>
-		<div class="field-group" ng-if="pivotTableType == 'Timesheet'">
-			<label>{{'Show Weekends' | i18n}}</label>
-			<input class="checkbox" type="checkbox" ng-model="showWeekends.enabled"/>
-		</div>
-		<div class="field-group" ng-if="['TimeTracking', 'TimeEntry', 'Timespent', 'TimeBalance'].indexOf(pivotTableType) < 0">
-            <label>{{'Reporting Day' | i18n}}</label>
-            <select class="select"
-                    title="{{'Reporting Day' | i18n}}"
-                    ng-model="reportingDayOptions.selected"
-                    ng-options="item.id as item.label for item in reportingDayOptions.options"
-                    ng-change="reportingDayChanged()"
-                    aui-select2>
-            </select>
-			</div>
-		<div class="field-group">
-			<label>{{ 'Filter or Project' | i18n }}:</label>
-			<input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"/>
-		</div>
+  <form class="aui">
+    <div class="field-group">
+      <label>{{ 'Title' | i18n}}</label>
+      <input ng-model="title" class="text"/>
+    </div>
+    <div class="field-group">
+      <label>{{ 'Report' | i18n }}:</label>
+      <select class="select"
+              title="database select"
+              ng-model="pivotTableTypeOptions.selected"
+              ng-options="item.id as item.label for item in pivotTableTypeOptions.options"
+              ng-change="pivotTableTypeChanged()"
+              aui-select2>
+      </select>
+    </div>
+    <div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
+      <label>{{ 'Number of Weeks' | i18n}}</label>
+      <input ng-model="numOfWeeks" class="text" type="number" min="1" max="12" ng-change="numOfWeeksChange(numOfWeeks)" />
+    </div>
+    <div class="field-group" ng-if="pivotTableType == 'Timesheet'">
+      <label>{{'Show Weekends' | i18n}}</label>
+      <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled"/>
+    </div>
+    <div class="field-group" ng-if="['TimeTracking', 'TimeEntry', 'Timespent', 'TimeBalance'].indexOf(pivotTableType) < 0">
+      <label>{{'Reporting Day' | i18n}}</label>
+      <select class="select"
+              title="{{'Reporting Day' | i18n}}"
+              ng-model="reportingDayOptions.selected"
+              ng-options="item.id as item.label for item in reportingDayOptions.options"
+              ng-change="reportingDayChanged()"
+              aui-select2>
+      </select>
+    </div>
+    <div class="field-group">
+      <label>{{ 'Filter or Project' | i18n }}:</label>
+      <input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"/>
+    </div>
     <div class="field-group" ng-if="showChildrenFilter">
-        <label>{{'Children Filter' | i18n}}:</label>
-        <select class="select"
-                title="{{'Children Filter' | i18n}}"
-                ng-model="childrenFilterOptions.selected"
-                ng-options="item.id as item.label for item in childrenFilterOptions.options"
-                ng-change="childrenFilterChanged()"
-                aui-select2>
-        </select>
+      <label>{{'Children Filter' | i18n}}:</label>
+      <select class="select"
+              title="{{'Children Filter' | i18n}}"
+              ng-model="childrenFilterOptions.selected"
+              ng-options="item.id as item.label for item in childrenFilterOptions.options"
+              ng-change="childrenFilterChanged()"
+              aui-select2>
+      </select>
     </div>
-		<div class="field-group" ng-if="['TimeEntry', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) < 0">
-			<label>{{'User' | i18n}}</label>
-			<input ng-value="userInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
-		</div>
-		<div class="field-group" ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
-            <label>{{'All Users' | i18n}}</label>
-            <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)" />
-		</div>
-		<div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
-			<label>{{'Groups' | i18n}}</label>
-			<input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>
-		</div>
-		<div class="field-group" ng-if="['TimeEntry'].indexOf(pivotTableType) < 0">
-            <label>{{'Group By Field' | i18n}}</label>
-			<select class="select"
-			        ng-model="groupByOptions.selected"
-			        ng-options="item.id as item.label for item in groupByOptions.options"
-			        ng-change="groupByChanged()"
-			        aui-select2>
-			</select>
-		</div>
+    <div class="field-group" ng-if="['TimeEntry', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) < 0">
+      <label>{{'User' | i18n}}</label>
+      <input ng-value="userInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
+    </div>
+    <div class="field-group" ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
+      <label>{{'All Users' | i18n}}</label>
+      <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)" />
+    </div>
+    <div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
+      <label>{{'Groups' | i18n}}</label>
+      <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>
+    </div>
     <div class="field-group" ng-if="['TimeEntry'].indexOf(pivotTableType) < 0">
-        <label>{{'Categorize By Field' | i18n}}</label>
-        <select class="select"
-                ng-model="categorizeByOptions.selected"
-                ng-options="item.id as item.label for item in categorizeByOptions.options"
-                ng-change="categorizeByChanged()"
-                aui-select2>
-        </select>
+      <label>{{'Group By Field' | i18n}}</label>
+      <select class="select"
+              ng-model="groupByOptions.selected"
+              ng-options="item.id as item.label for item in groupByOptions.options"
+              ng-change="groupByChanged()"
+              aui-select2>
+      </select>
     </div>
-		<div class="field-group" ng-if="pivotTableType != 'PieChart'">
-            <label>{{'Additional Fields' | i18n}}</label>
-            <select class="select"
-                    multiple="true"
-                    ng-model="moreFieldsOptions.selected"
-                    ng-options="item.id as item.label for item in moreFieldsOptions.options"
-                    ng-change="moreFieldsChanged()"
-                    aui-select2>
-            </select>
-		</div>
-		<div class="field-group">
-               <label>{{'Sum SubTasks' | i18n}}</label>
-               <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
-		</div>
-		<div class="field-group" ng-if="['Timesheet', 'TimeEntry'].indexOf(pivotTableType) >= 0">
-               <label>{{'Show Empty Issues' | i18n}}</label>
-               <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!filterOrProjectId" />
-		</div>
-        <div class="buttons-container">
-            <div class="buttons">
-				<button class="aui-button aui-button-primary" ng-click="saveGadgetConfig()">Save</button>
-				<button class="aui-button aui-button-link" ng-click="cancelGadgetConfigSaving()">Cancel</button>
-            </div>
-        </div>
-    </form>
+    <div class="field-group" ng-if="['TimeEntry'].indexOf(pivotTableType) < 0">
+      <label>{{'Categorize By Field' | i18n}}</label>
+      <select class="select"
+              ng-model="categorizeByOptions.selected"
+              ng-options="item.id as item.label for item in categorizeByOptions.options"
+              ng-change="categorizeByChanged()"
+              aui-select2>
+      </select>
+    </div>
+    <div class="field-group" ng-if="pivotTableType != 'PieChart'">
+      <label>{{'Additional Fields' | i18n}}</label>
+      <select class="select"
+              multiple="true"
+              ng-model="moreFieldsOptions.selected"
+              ng-options="item.id as item.label for item in moreFieldsOptions.options"
+              ng-change="moreFieldsChanged()"
+              aui-select2>
+      </select>
+    </div>
+    <div class="field-group" ng-if="!groupByOptions.selected && !categorizeByOptions.selected">
+      <label>{{'Order By Field' | i18n}}</label>
+      <select class="select"
+              ng-model="orderByOptions.selected"
+              ng-options="item.id as item.label for item in orderByOptions.options"
+              ng-change="orderByChanged()"
+              aui-select2>
+      </select>
+    </div>
+    <div class="field-group">
+      <label>{{'Sum SubTasks' | i18n}}</label>
+      <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
+    </div>
+    <div class="field-group" ng-if="['Timesheet', 'TimeEntry'].indexOf(pivotTableType) >= 0">
+      <label>{{'Show Empty Issues' | i18n}}</label>
+      <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!filterOrProjectId" />
+    </div>
+    <div class="buttons-container">
+      <div class="buttons">
+        <button class="aui-button aui-button-primary" ng-click="saveGadgetConfig()">Save</button>
+        <button class="aui-button aui-button-link" ng-click="cancelGadgetConfigSaving()">Cancel</button>
+      </div>
+    </div>
+  </form>
 </div>
 <div class="footer">
-	<ng-include src="'/templates/footer.html'"></ng-include>
+  <ng-include src="'/templates/footer.html'"></ng-include>
 </div>
 <resize/>
