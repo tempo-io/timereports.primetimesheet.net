@@ -426,10 +426,10 @@ var TimeData = { "expand" : "schema,names",
                 "subtask" : false
               },
             "labels" : [  ],
-            "priority" : { "iconUrl" : "http://localhost:2990/jira/images/icons/priority_major.gif",
-                "id" : "3",
-                "name" : "Major",
-                "self" : "http://localhost:2990/jira/rest/api/2/priority/3"
+            "priority" : { "iconUrl" : "http://localhost:2990/jira/images/icons/priority_high.gif",
+                "id" : "2",
+                "name" : "High",
+                "self" : "http://localhost:2990/jira/rest/api/2/priority/2"
               },
             "progress" : { "percent" : 100,
                 "progress" : 36000,

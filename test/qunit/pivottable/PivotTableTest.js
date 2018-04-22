@@ -190,6 +190,24 @@ test("TimeTrackingGroupedByStatus", function() {
   equal(columnKeys[5], "6progress", "columnKey");
   equal(row.columns[columnKeys[0]].entries.length, 3, "column entries");
 });
+test("TimeTrackingRowComparator", function() {
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking',
+      configOptions: {timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
+          '3timespent', '4diff', '5originalestimateremaining', '6progress']},
+      orderByField: 'priority'});
+  for (var i in TimeData.issues) {
+      var pivotEntries = pivotTable.add(TimeData.issues[i]);
+      equal(pivotEntries.length, 1, "pivotEntries");
+  }
+  var sortedRows = pivotTable.sortedRows();
+  equal(sortedRows.length, 6, "sortedRows");
+  equal(sortedRows[0].rowKey.keyValue, "TIME-3", 'row1')
+  equal(sortedRows[1].rowKey.keyValue, "TIME-4", 'row2')
+  equal(sortedRows[2].rowKey.keyValue, "TIME-2", 'row3')
+  equal(sortedRows[3].rowKey.keyValue, "TIME-1", 'row4')
+  equal(sortedRows[4].rowKey.keyValue, "TIME-5", 'row5')
+  equal(sortedRows[5].rowKey.keyValue, "TIME-6", 'row6')
+});
 var testTimeBalanceCommonCase = function (pivotTable, rowKeysLendth, rowKeysString, row0DataLength) {
     var totalKeys = Object.keys(pivotTable.totals);
     equal(totalKeys.length, 5, "totals");

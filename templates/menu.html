@@ -80,6 +80,15 @@
                     aui-select2>
             </select>
         </div>
+        <div class="ak-field-group" ng-if="!groupByOptions.selected && !categorizeByOptions.selected">
+            <label>{{'Order By Field' | i18n}}</label>
+            <select class="select"
+                    ng-model="orderByOptions.selected"
+                    ng-options="item.id as item.label for item in orderByOptions.options"
+                    ng-change="orderByChanged()"
+                    aui-select2>
+            </select>
+        </div>
         <div class="ak-field-group">
             <label style="display: inline-block; margin: 0">{{'Sum SubTasks' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
