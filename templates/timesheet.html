@@ -14,8 +14,9 @@
                 <!-- Dropdown -->
                 <div id="export" class="aui-style-default aui-dropdown2">
                     <ul class="aui-list-truncate">
-                        <li><a x-ng-click="excelView()">.xls (html)</a></li>
-                        <li><a x-ng-click="excelView(true)">.csv</a></li>
+                        <li><a x-ng-click="excelView('xls')">exportData.xls (html)</a></li>
+                        <li><a x-ng-click="excelView('csv')">exportData.csv</a></li>
+                        <li><a x-ng-click="excelView('html')">exportView.xls (html)</a></li>
                     </ul>
                 </div>
                 <i id="subscribe"
