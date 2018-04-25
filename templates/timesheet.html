@@ -140,7 +140,7 @@
                             <issue-priority issue="data.rowKey._issue" />
                         </span>
                     </td>
-                    <td class="nav" width="1%" ng-repeat="field in pivotTable.moreFields">
+                    <td class="nav" width="1%" ng-repeat="field in row.moreFields">
                         <issue-field name="field" field="data.rowKey._issue.fields[field]" issue="data.rowKey._issue" jira-config="jiraConfig" ng-if="data.rowKey._issue"/>
                     </td>
                     <td class="nav border" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}" ng-repeat="column in pivotTable.sortedColumns()">
@@ -159,7 +159,7 @@
                         {{'Total' | i18n}}&nbsp;{{pivotTable.num != 1 ? 'issues' : 'issue' | i18n:{placeholders:[pivotTable.num]} }}
                     </td>
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields">
-                        &nbsp;
+                        <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
                         {{column.sum | prettyHours:jiraConfig}}

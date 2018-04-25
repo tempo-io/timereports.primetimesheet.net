@@ -148,7 +148,7 @@
                         {{'Total' | i18n}}&nbsp;{{pivotTable.num != 1 ? 'issues' : 'issue' | i18n:{placeholders:[pivotTable.num]} }}
                     </td>
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields">
-                        &nbsp;
+                        <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
                         <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
