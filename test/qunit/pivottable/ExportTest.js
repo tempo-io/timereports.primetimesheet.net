@@ -42,20 +42,25 @@ test("Html Export Timesheet Compressed", function() {
     var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
     equal(row2, "<td>Bug</td><td></td><td><a href='/browse/TIME-2'>TIME-2</a></td><td><a href='/browse/TIME-2'>Loch Ness Monster Bug</a></td><td>Major</td><td>0h</td><td>5h</td><td>0h</td><td>8h</td><td>0h</td><td>13h</td>", "row2");
 });
-test("Html Export Timesheet Grouped by Worked User", function() {
+test("Html Export Timesheet Grouped by Worked User More Fields", function() {
     var htmlView = new HtmlView(TimeData.issues);
     equal(typeof htmlView, 'object', 'excelView');
+    var moreFieldsOptions = new TimesheetSelectOptions(TimesheetGeneralOption, []);
+    moreFieldsOptions.addOption('Assignee', 'assignee');
+    moreFieldsOptions.addOption('Timespent', 'timespent');
+    moreFieldsOptions.addOption('Estimate', 'timetrackingestimate');
     var html = htmlView.generate({groupByField: 'workeduser', groupByFieldObject: {name: 'Worked User'}, pivotTableType: 'Timesheet', startDate: '2014-02-24',
-        reportingDay: 1, moreFields: [], configOptions: {}, jiraConfig: {timeFormat: ''}});
+        reportingDay: 1, moreFields: ['assignee', 'timespent', 'timetrackingestimate'], configOptions: {}, jiraConfig: {timeFormat: ''},
+        moreFieldsOptions: moreFieldsOptions});
     equal(typeof html, 'string', 'html');
     console.log(html);
     var lines = html.split('\n');
-    var header = lines.slice(10, 22).map(s => s.trim()).join('');
-    equal(header, "<td>Worked User</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
-    var row1 = lines.slice(24, 36).map(s => s.trim()).join('');
-    equal(row1, "<td>admin</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "row1");
-    var row2 = lines.slice(38, 50).map(s => s.trim()).join('');
-    equal(row2, "<td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
+    var header = lines.slice(10, 25).map(s => s.trim()).join('');
+    equal(header, "<td>Worked User</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
+    var row1 = lines.slice(27, 42).map(s => s.trim()).join('');
+    equal(row1, "<td>admin</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48</td><td>81</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "row1");
+    var row2 = lines.slice(44, 59).map(s => s.trim()).join('');
+    equal(row2, "<td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>admin</td><td>11</td><td>44</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
 });
 test("Html Export Timesheet More Fields", function() {
     var htmlView = new HtmlView(TimeData.issues);
