@@ -96,7 +96,7 @@
                         <span>{{row.data.length != 1 ? 'issues' : 'issue' | i18n:{placeholders:[row.data.length]} }}</span>
                     </td>
                     <td class="nav first" nowrap ng-repeat="field in row.moreFields">
-                        <issue-field name="field" field="row.rowKey.issue.fields[field] || row.rowKey._issue.fields[field]" issue="row.rowKey.issue || row.rowKey._issue" jira-config="jiraConfig" ng-if="row.rowKey.issue || row.rowKey._issue"/>
+                        <issue-field name="field" field="row.rowKey.issue.fields[field] || row.rowKey._issue.fields[field] || row.rowKey.field.fields[field]" issue="row.rowKey.issue || row.rowKey._issue || row.rowKey.field" jira-config="jiraConfig" ng-if="row.rowKey.issue || row.rowKey._issue || row.rowKey.keyName == 'issue'"/>
                     </td>
                     <td class="nav first border" ng-repeat="column in pivotTable.sortedColumns()">
                         <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cashed-worklog = "removeCashedWorklog" />

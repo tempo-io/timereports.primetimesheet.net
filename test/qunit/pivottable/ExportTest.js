@@ -85,6 +85,28 @@ test("Html Export Timesheet More Fields", function() {
     var total = lines.slice(333, 349).map(s => s.trim()).join('');
     equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48</td><td>81</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "total");
 });
+test("Html Export Pivot by User Grouped by Issue Itself More Fields", function() {
+    var htmlView = new HtmlView(TimeData.issues);
+    equal(typeof htmlView, 'object', 'excelView');
+    var moreFieldsOptions = new TimesheetSelectOptions(TimesheetGeneralOption, []);
+    moreFieldsOptions.addOption('Assignee', 'assignee');
+    moreFieldsOptions.addOption('Timespent', 'timespent');
+    moreFieldsOptions.addOption('Estimate', 'timetrackingestimate');
+    var html = htmlView.generate({groupByField: 'issue', groupByFieldObject: {name: 'Issue itself'}, pivotTableType: 'IssueWorkedTimeByUser', startDate: '2014-02-24',
+        reportingDay: 1, moreFields: ['assignee', 'timespent', 'timetrackingestimate'], configOptions: {}, jiraConfig: {timeFormat: ''},
+        moreFieldsOptions: moreFieldsOptions});
+    equal(typeof html, 'string', 'html');
+    console.log(html);
+    var lines = html.split('\n');
+    var header = lines.slice(10, 21).map(s => s.trim()).join('');
+    equal(header, "<td>Issue itself</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>admin</td><td>Total</td>", "header");
+    var row1 = lines.slice(23, 34).map(s => s.trim()).join('');
+    // FIXME: issue type, key, summary, priority
+    equal(row1, "<td>TIME-1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>admin</td><td>11</td><td>44</td><td>11h</td><td>11h</td>", "row1");
+    var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
+    // FIXME: worklog comment
+    equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td>", "row2");
+});
 test("Html Export TimeTracking", function() {
     var htmlView = new HtmlView(TimeData.issues);
     equal(typeof htmlView, 'object', 'excelView');
