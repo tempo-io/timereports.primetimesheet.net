@@ -58,9 +58,9 @@ test("Html Export Timesheet Grouped by Worked User More Fields", function() {
     var header = lines.slice(10, 25).map(s => s.trim()).join('');
     equal(header, "<td>Worked User</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
     var row1 = lines.slice(27, 42).map(s => s.trim()).join('');
-    equal(row1, "<td>admin</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48</td><td>81</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "row1");
+    equal(row1, "<td>admin</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48h</td><td>81h</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "row1");
     var row2 = lines.slice(44, 59).map(s => s.trim()).join('');
-    equal(row2, "<td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>admin</td><td>11</td><td>44</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
+    equal(row2, "<td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>admin</td><td>11h</td><td>44h</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
 });
 test("Html Export Timesheet More Fields", function() {
     var htmlView = new HtmlView(TimeData.issues);
@@ -79,11 +79,11 @@ test("Html Export Timesheet More Fields", function() {
     var header = lines.slice(10, 25).map(s => s.trim()).join('');
     equal(header, "<td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Comment</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
     var row1 = lines.slice(27, 42).map(s => s.trim()).join('');
-    equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>&nbsp</td><td>admin</td><td>11</td><td>44</td><td>8h</td><td>3h</td><td>0h</td><td>0h</td><td>0h</td><td>11h</td>", "row1");
+    equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>&nbsp</td><td>admin</td><td>11h</td><td>44h</td><td>8h</td><td>3h</td><td>0h</td><td>0h</td><td>0h</td><td>11h</td>", "row1");
     var row2 = lines.slice(44, 59).map(s => s.trim()).join('');
     equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>test 7</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
     var total = lines.slice(333, 349).map(s => s.trim()).join('');
-    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48</td><td>81</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "total");
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48h</td><td>81h</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "total");
 });
 test("Html Export Pivot by User Grouped by Issue Itself More Fields", function() {
     var htmlView = new HtmlView(TimeData.issues);
@@ -102,7 +102,7 @@ test("Html Export Pivot by User Grouped by Issue Itself More Fields", function()
     equal(header, "<td>Issue itself</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>admin</td><td>Total</td>", "header");
     var row1 = lines.slice(23, 34).map(s => s.trim()).join('');
     // FIXME: issue type, key, summary, priority
-    equal(row1, "<td>TIME-1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>admin</td><td>11</td><td>44</td><td>11h</td><td>11h</td>", "row1");
+    equal(row1, "<td>TIME-1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>admin</td><td>11h</td><td>44h</td><td>11h</td><td>11h</td>", "row1");
     var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
     // FIXME: worklog comment
     equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td>", "row2");
