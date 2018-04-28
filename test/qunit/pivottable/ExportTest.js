@@ -3,7 +3,14 @@ test("Excel Export", function() {
     equal(typeof excelView, 'object', 'excelView');
     var excel = excelView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1, moreFields: [], configOptions: {}, jiraConfig: {}});
     equal(typeof excel, 'string', 'excel');
-    equal(excel.match(/\d+h/g), null, "issue#902: hours with no h")
+    equal(excel.match(/\d+h/g), null, "issue#902: hours with no h");
+    var lines = excel.split('\n');
+    var header = lines.slice(10, 20).map(s => s.trim()).join('');
+    equal(header, "<td>Project</td><td>Issue Type</td><td>Key</td><td>Summary</td><td>Priority</td><td>Date Started</td><td>Username</td><td>Display Name</td><td>Time Spent (h)</td><td>Work Description</td>", "header");
+    var row1 = lines.slice(22, 32).map(s => s.trim()).join('');
+    equal(row1, "<td>Timeship</td><td>Bug</td><td><a href='/browse/TIME-4'>TIME-4</a></td><td><a href='/browse/TIME-4'>Mega problem</a></td><td>Major</td><td>2014-02-24 21:03:48</td><td>admin</td><td>admin</td><td>1</td><td>test 1</td>", "row1");
+    var row2 = lines.slice(34, 44).map(s => s.trim()).join('');
+    equal(row2, "<td>Timeship</td><td>Bug</td><td><a href='/browse/TIME-4'>TIME-4</a></td><td><a href='/browse/TIME-4'>Mega problem</a></td><td>Major</td><td>2014-02-25 21:03:48</td><td>admin</td><td>admin</td><td>1</td><td>test 2</td>", "row2");
 });
 test("Csv Export", function() {
     var csvView = new CsvView(TimeData.issues);
@@ -11,6 +18,10 @@ test("Csv Export", function() {
     var csv = csvView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1, moreFields: [], configOptions: {}, jiraConfig: {}});
     equal(typeof csv, 'string', 'csv');
     equal(csv.match(/\d+h/g), null, "issue#902: hours with no h")
+    var lines = csv.split('\n');
+    equal(lines[0], 'Project,Issue Type,Key,Summary,Priority,Date Started,Username,Display Name,Time Spent (h),Work Description', "header");
+    equal(lines[1], '"Timeship",Bug,TIME-4,"Mega problem","Major",2014-02-24 21:03:48,admin,"admin",1,"test 1"', "row1");
+    equal(lines[2], '"Timeship",Bug,TIME-4,"Mega problem","Major",2014-02-25 21:03:48,admin,"admin",1,"test 2"', "row2");
 });
 test("Html Export Timesheet", function() {
     var htmlView = new HtmlView(TimeData.issues);
@@ -18,7 +29,6 @@ test("Html Export Timesheet", function() {
     var html = htmlView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24',
         reportingDay: 1, moreFields: [], configOptions: {}, jiraConfig: {timeFormat: ''}});
     equal(typeof html, 'string', 'html');
-    //console.log(html);
     var lines = html.split('\n');
     var header = lines.slice(10, 22).map(s => s.trim()).join('');
     equal(header, "<td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Comment</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
@@ -33,7 +43,6 @@ test("Html Export Timesheet Compressed", function() {
     var html = htmlView.generate({compressed: true, pivotTableType: 'Timesheet', startDate: '2014-02-24',
         reportingDay: 1, moreFields: [], configOptions: {}, jiraConfig: {timeFormat: ''}});
     equal(typeof html, 'string', 'html');
-    //console.log(html);
     var lines = html.split('\n');
     var header = lines.slice(10, 21).map(s => s.trim()).join('');
     equal(header, "<td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
@@ -53,7 +62,6 @@ test("Html Export Timesheet Grouped by Worked User More Fields", function() {
         reportingDay: 1, moreFields: ['assignee', 'timespent', 'timetrackingestimate'], configOptions: {}, jiraConfig: {timeFormat: ''},
         moreFieldsOptions: moreFieldsOptions});
     equal(typeof html, 'string', 'html');
-    console.log(html);
     var lines = html.split('\n');
     var header = lines.slice(10, 25).map(s => s.trim()).join('');
     equal(header, "<td>Worked User</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
@@ -74,7 +82,6 @@ test("Html Export Timesheet More Fields", function() {
         configOptions: {}, jiraConfig: {timeFormat: ''},
         moreFieldsOptions: moreFieldsOptions});
     equal(typeof html, 'string', 'html');
-    //console.log(html);
     var lines = html.split('\n');
     var header = lines.slice(10, 25).map(s => s.trim()).join('');
     equal(header, "<td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Comment</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
@@ -96,7 +103,6 @@ test("Html Export Pivot by User Grouped by Issue Itself More Fields", function()
         reportingDay: 1, moreFields: ['assignee', 'timespent', 'timetrackingestimate'], configOptions: {}, jiraConfig: {timeFormat: ''},
         moreFieldsOptions: moreFieldsOptions});
     equal(typeof html, 'string', 'html');
-    console.log(html);
     var lines = html.split('\n');
     var header = lines.slice(10, 21).map(s => s.trim()).join('');
     equal(header, "<td>Issue itself</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>admin</td><td>Total</td>", "header");
@@ -123,7 +129,6 @@ test("Html Export TimeTracking", function() {
           '6progress': 'Progress',
         }, jiraConfig: {timeFormat: ''}});
     equal(typeof html, 'string', 'html');
-    //console.log(html);
     var lines = html.split('\n');
     var header = lines.slice(10, 21).map(s => s.trim()).join('');
     equal(header, "<td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Original</td><td>Estimate</td><td>Spent</td><td>Diff</td><td>Remaining</td><td>Progress</td>", "header");
@@ -148,7 +153,6 @@ test("Html Export TimeTracking Grouped by Assignee", function() {
           '6progress': 'Progress',
         }, jiraConfig: {timeFormat: ''}});
     equal(typeof html, 'string', 'html');
-    //console.log(html);
     var lines = html.split('\n');
     var header = lines.slice(10, 22 ).map(s => s.trim()).join('');
     equal(header, "<td>Assignee</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Original</td><td>Estimate</td><td>Spent</td><td>Diff</td><td>Remaining</td><td>Progress</td>", "header");

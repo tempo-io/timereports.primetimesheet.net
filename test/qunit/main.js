@@ -15,8 +15,8 @@ require([
     "app/pivottable/TimesheetStrategy",
     "app/pivottable/PivotStrategy",
     "app/pivottable/PivotTable",
-    "app/pivottable/ExcelView",
     "app/pivottable/CsvView",
+    "app/pivottable/ExcelView",
     "app/pivottable/HtmlView",
     "app/template/TimesheetMenu"
     ], function () {
