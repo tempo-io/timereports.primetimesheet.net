@@ -36,6 +36,9 @@ test("Html Export Timesheet", function() {
     equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>&nbsp</td><td>8h</td><td>3h</td><td>0h</td><td>0h</td><td>0h</td><td>11h</td>", "row1");
     var row2 = lines.slice(38, 50).map(s => s.trim()).join('');
     equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>test 7</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
+    var total = lines.slice(/* 14*19 + 10 */ 276, 288).map(s => s.trim()).join('');
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "total");
+    equal(lines.length, 14*20 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export Timesheet Compressed", function() {
     var htmlView = new HtmlView(TimeData.issues);
@@ -50,6 +53,9 @@ test("Html Export Timesheet Compressed", function() {
     equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>8h</td><td>3h</td><td>0h</td><td>0h</td><td>0h</td><td>11h</td>", "row1");
     var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
     equal(row2, "<td>Bug</td><td></td><td><a href='/browse/TIME-2'>TIME-2</a></td><td><a href='/browse/TIME-2'>Loch Ness Monster Bug</a></td><td>Major</td><td>0h</td><td>5h</td><td>0h</td><td>8h</td><td>0h</td><td>13h</td>", "row2");
+    var total = lines.slice(/* 13*7 + 10 */ 101, 111).map(s => s.trim()).join('');
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td>", "total");
+    equal(lines.length, 13*8 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export Timesheet Grouped by Worked User More Fields", function() {
     var htmlView = new HtmlView(TimeData.issues);
@@ -69,6 +75,9 @@ test("Html Export Timesheet Grouped by Worked User More Fields", function() {
     equal(row1, "<td>admin</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48h</td><td>81h</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "row1");
     var row2 = lines.slice(44, 59).map(s => s.trim()).join('');
     equal(row2, "<td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>admin</td><td>11h</td><td>44h</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
+    var total = lines.slice(/* 17*14 + 10 */ 248, 263).map(s => s.trim()).join('');
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48h</td><td>81h</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "total");
+    equal(lines.length, 17*15 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export Timesheet More Fields", function() {
     var htmlView = new HtmlView(TimeData.issues);
@@ -89,8 +98,9 @@ test("Html Export Timesheet More Fields", function() {
     equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>&nbsp</td><td>admin</td><td>11h</td><td>44h</td><td>8h</td><td>3h</td><td>0h</td><td>0h</td><td>0h</td><td>11h</td>", "row1");
     var row2 = lines.slice(44, 59).map(s => s.trim()).join('');
     equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>test 7</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
-    var total = lines.slice(333, 349).map(s => s.trim()).join('');
-    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48h</td><td>81h</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "total");
+    var total = lines.slice(/* 17*19 + 10 */ 333, 348).map(s => s.trim()).join('');
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48h</td><td>81h</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "total");
+    equal(lines.length, 17*20 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export Pivot by User Grouped by Issue Itself More Fields", function() {
     var htmlView = new HtmlView(TimeData.issues);
@@ -112,6 +122,9 @@ test("Html Export Pivot by User Grouped by Issue Itself More Fields", function()
     var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
     // FIXME: worklog comment
     equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td>", "row2");
+    var total = lines.slice(/* 13*19 + 10 */ 257, 268).map(s => s.trim()).join('');
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48h</td><td>81h</td><td>48h</td><td>48h</td>", "total");
+    equal(lines.length, 13*20 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export TimeTracking", function() {
     var htmlView = new HtmlView(TimeData.issues);
@@ -136,6 +149,9 @@ test("Html Export TimeTracking", function() {
     equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>0h</td><td>33h</td><td>11h</td><td>-44h</td><td>-11h</td><td>25%</td>", "row1");
     var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
     equal(row2, "<td>Bug</td><td></td><td><a href='/browse/TIME-2'>TIME-2</a></td><td><a href='/browse/TIME-2'>Loch Ness Monster Bug</a></td><td>Major</td><td>26h</td><td>0h</td><td>13h</td><td>13h</td><td>13h</td><td>100%</td>", "row2");
+    var total = lines.slice(/* 13*7 + 10 */ 101, 112).map(s => s.trim()).join('');
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>73.78h</td><td>33h</td><td>48h</td><td>-7.22h</td><td>25.78h</td><td>59%</td>", "total");
+    equal(lines.length, 13*8 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export TimeTracking Grouped by Assignee", function() {
     var htmlView = new HtmlView(TimeData.issues);
@@ -160,4 +176,7 @@ test("Html Export TimeTracking Grouped by Assignee", function() {
     equal(row1, "<td>admin</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>73.78h</td><td>33h</td><td>48h</td><td>-7.22h</td><td>25.78h</td><td>59%</td>", "row1");
     var row2 = lines.slice(38, 50).map(s => s.trim()).join('');
     equal(row2, "<td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>0h</td><td>33h</td><td>11h</td><td>-44h</td><td>-11h</td><td>25%</td>", "row2");
+    var total = lines.slice(/* 14*8 + 10 */ 122, 134).map(s => s.trim()).join('');
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>73.78h</td><td>33h</td><td>48h</td><td>-7.22h</td><td>25.78h</td><td>59%</td>", "total");
+    equal(lines.length, 14*9 + 10 + 1 /* new line at end of file */, "lines");
 });
