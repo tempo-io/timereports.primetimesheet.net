@@ -84,7 +84,16 @@ describe("timesheetControllerTest", function() {
                 "3timespent": "Time Spent",
                 "4diff": "Variance",
                 "5originalestimateremaining": "Original Estimate Remaining",
-                "6progress": "Progress"
+                "6progress": "Progress",
+                "project": "Project",
+                "issuetype": "Issue Type",
+                "key": "Key",
+                "summary": "Summary",
+                "priority": "Priority",
+                "datestarted": "Date Started",
+                "username": "Username",
+                "displayname": "Display Name",
+                "descriptionstatus": "Work Description / Status"
             };
             for (var pivotTableType in PivotTableType) {
                 translations[pivotTableType] = pivotTableType;
@@ -163,7 +172,8 @@ describe("timesheetControllerTest", function() {
                         storeWorklog: {},
                         timeBalanceColumns: {val: []},
                         timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
-                            '3timespent', '4diff', '5originalestimateremaining', '6progress']}
+                            '3timespent', '4diff', '5originalestimateremaining', '6progress']},
+                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']}
                     });
                     return deferred.promise;
                 },

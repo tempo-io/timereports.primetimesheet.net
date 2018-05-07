@@ -163,6 +163,23 @@
         <span class="description" ng-bind-html="'description.Time In Status Categories' | i18n | htmlSafe"></span>
     </div>
     <div class="field-group">
+        <label for="exportColumns">{{'Columns For Export' | i18n}}</label>
+        <input id="exportColumns"
+               aui-multi-select-picker
+               class="text"
+               title="{{'Columns For Export' | i18n}}"
+               ng-model="exportColumns.val"
+               ng-options-data="exportColumnsData"
+               ng-value-changed-func="saveExportColumns">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="exportColumnsSaveSuccess">
+            <strong>{{'Columns For Export' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description" ng-bind-html="'description.Columns For Export' | i18n | htmlSafe"></span>
+    </div>
+    <div class="field-group">
         <label for="workingTimeInStatus">{{'Working Time In Status' | i18n}}</label>
         <input id="workingTimeInStatus"
                type="checkbox"
