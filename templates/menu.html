@@ -6,7 +6,7 @@
         </div>
         <div class="ak-field-group" ng-hide="reportDialog && reportParamsObject.jql != undefined">
             <label>{{ 'Filter or Project' | i18n }}</label>
-            <input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" update-event="projectUpdated" type="text"/>
+            <input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" update-event="filterOrProjectIdUpdated" type="text"/>
         </div>
         <div class="ak-field-group" ng-if="showChildrenFilter">
             <label>{{'Children Filter' | i18n}}</label>
@@ -72,13 +72,12 @@
         </div>
         <div class="ak-field-group" ng-if="pivotTableType != 'PieChart'">
             <label>{{'Additional Fields' | i18n}}</label>
-            <select class="select"
-                    multiple="true"
-                    ng-model="moreFieldsOptions.selected"
-                    ng-options="item.id as item.label for item in moreFieldsOptions.options"
-                    ng-change="moreFieldsChanged()"
-                    aui-select2>
-            </select>
+            <input ng-model="moreFields"
+                   aui-multi-select-picker
+                   ng-value-changed-func="moreFieldsChanged"
+                   ng-options-data="moreFieldsOptions"
+                   update-event="moreFieldsUpdated"
+                   type="text"/>
         </div>
         <div class="ak-field-group" ng-if="!groupByOptions.selected && !categorizeByOptions.selected">
             <label>{{'Order By Field' | i18n}}</label>
