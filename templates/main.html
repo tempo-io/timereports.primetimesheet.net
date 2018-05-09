@@ -127,6 +127,11 @@
     <div>
         <form class="aui" name="logWorkForm">
             <ng-include src="'/templates/dialogs/updateWorklog.html'"></ng-include>
+            <div class="buttons-container" ng-if="!showMore">
+                <div class="buttons">
+                    <button class="aui-button aui-button-link" ng-click="toggleShowMore()">(more options)</button>
+                </div>
+            </div>
             <div class="buttons-container">
                 <div class="buttons">
                     <button class="aui-button submit" ng-click="save()" ng-disabled="logWorkForm.$invalid">Save</button>

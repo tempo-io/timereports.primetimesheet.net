@@ -310,7 +310,6 @@ pivot-cell span:after, new-worklog span:after, old-worklog span:after {
 form.aui .field-group .description {
     font-size: 12px;
     vertical-align: top;
-    line-height: 8px;
 }
 form.aui .field-group .description a {
     vertical-align: top;

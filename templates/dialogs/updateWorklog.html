@@ -1,4 +1,4 @@
-        <div class="field-group">
+        <div class="field-group" ng-if="pivotTableType != 'IssueTime'">
             <label for="log-work-issue">
                 Issue Key <span class="aui-icon icon-required"></span><span class="content">required</span>
             </label>
@@ -13,16 +13,16 @@
                 </label>
                 <input type="text" id="log-work-time-logged" name="timeSpent" class="text short-field" ng-model="worklog.timeSpent" autofocus required timespent/>
                 <span id="log-work-time-example" class="aui-form example">(eg. 4h 30m)</span>
-                <div class="description">An estimate of how much time you have spent working.</div>
+                <div ng-if="showMore" class="description">An estimate of how much time you have spent working.</div>
             </div>
-            <div class="field-group test-datepicker">
+            <div ng-if="showMore" class="field-group test-datepicker">
                 <label for="log-work-date-logged">Date Started<span class="aui-icon icon-required"> required</span></label>
                 <input type="date" id="log-work-date-logged" class="text medium-field" style="max-width: 100px; margin-right: 10px;"
                        ng-model="worklogDatetime.date" aui-date-picker>
                 <time-picker time="worklogDatetime.time"></time-picker>
             </div>
 
-            <ng-include src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0"></ng-include>
+            <ng-include ng-if="showMore" src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0"></ng-include>
 
             <div class="field-group">
                 <label for="comment">Work Description<span class="aui-icon icon-required" ng-if="workDescriptionRequired"> required</span></label>
@@ -32,7 +32,7 @@
                         <div class="content-inner"></div>
                     </div>
                 </div>
-                <div class="security-level">
+                <div ng-if="showMore" class="security-level">
                     <button class="aui-button aui-button-link security-level-drop-icon aui-icon aui-icon-small aui-dropdown2-trigger aui-style-default" aria-owns="security-level" aria-haspopup="true" ng-class="{'aui-iconfont-unlocked': !worklog.visibilityRole, 'aui-iconfont-locked': worklog.visibilityRole}">Worklog Visibility</button>
                     <span class="current-level" ng-if="worklog.visibilityGroup || worklog.visibilityRole">Restricted to <span class="red">{{worklog.visibilityGroup || worklog.visibilityRole}}</span></span>
                     <span class="current-level" ng-if="!(worklog.visibilityGroup || worklog.visibilityRole)">Viewable by All Users</span>
@@ -58,4 +58,5 @@
                         </div>
                     </div>
                 </div>
+                <resize ng-if="!showMore"/>
             </div>
