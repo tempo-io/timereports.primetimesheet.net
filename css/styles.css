@@ -25,7 +25,7 @@ header {
     width: 25px;
     display: table-cell;
 }
-div.select2-container.ng-dirty.ng-invalid, input.ng-dirty.ng-invalid, textarea.textarea.ng-invalid-required {
+div.select2-container.ng-invalid, input.ng-invalid, textarea.textarea.ng-invalid-required {
   color: #d04437;
 }
 /* https://ecosystem.atlassian.net/browse/AUI-1715 */
