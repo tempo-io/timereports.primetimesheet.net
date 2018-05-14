@@ -25,6 +25,7 @@ describe("pivottableServiceTest", function() {
                 "datestarted": "Date Started",
                 "username": "Username",
                 "displayname": "Display Name",
+                "emailaddress": "Email Address",
                 "descriptionstatus": "Work Description / Status"
             };
             for (var pivotTableType in PivotTableType) {

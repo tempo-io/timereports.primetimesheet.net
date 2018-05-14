@@ -2,7 +2,10 @@
     <tr ng-repeat="wkLog in popupData.worklogs">
         <td width="1%" nowrap ng-if="wkLog._issueInfo || wkLog._authorInfo">
             <span ng-if="wkLog._issueInfo"><issue-key issue="wkLog._issueInfo"/></span>
-            <a ng-class="{inactive: !wkLog._authorInfo.active}" ng-href="#!/?pivotTableType=Timesheet&user={{wkLog._authorInfo.key}}&group=&groupByField=" ng-if="wkLog._authorInfo" ng-bind="wkLog._authorInfo.displayName || wkLog._authorInfo.name"/>
+            <a ng-class="{inactive: !wkLog._authorInfo.active}"
+                title="{{wkLog._authorInfo.emailAddress}}"
+                ng-href="#!/?pivotTableType=Timesheet&user={{wkLog._authorInfo.key}}&group=&groupByField="
+                ng-if="wkLog._authorInfo" ng-bind="wkLog._authorInfo.displayName || wkLog._authorInfo.name"/>
         </td>
         <td width="1%">
             {{wkLog.timeSpentSeconds | prettyHours:jiraConfig}}

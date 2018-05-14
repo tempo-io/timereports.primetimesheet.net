@@ -375,3 +375,31 @@ table {
 table td {
     padding: 0;
 }
+.hoverpopup {
+    z-index: 1000;
+    max-width: 360px;
+}
+.user-hover-info {
+    min-height: 48px;
+    position: relative;
+    padding: 7px;
+}
+.user-hover-avatar {
+    float: left;
+    margin: 0 10px 0 0;
+    height: 48px;
+    width: 48px;
+}
+.user-hover-info .user-hover-avatar img {
+    border-radius: 24px;
+}
+.user-hover-info h5 a {
+    padding-top: 7px;
+    text-decoration: underline;
+}
+.user-hover-info .user-hover-details {
+    margin-left: 8px;
+}
+.user-hover-details {
+    overflow: hidden;
+}

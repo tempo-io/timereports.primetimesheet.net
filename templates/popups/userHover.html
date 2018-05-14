@@ -1,0 +1,24 @@
+<div class="hoverpopup">
+    <div class="user-hover-info">
+        <div class="user-hover-avatar">
+            <a id="avatar-image-link" ng-title="{{popupData.user.name}}" ng-href="{{hostBaseUrl + '/secure/ViewProfile.jspa?name=' + popupData.user.key}}" target="_parent">
+               <img ng-alt="{{popupData.user.name}}" class="avatar-image" ng-src="{{popupData.user.avatarUrls['48x48']}}" width="48" height="48">
+            </a>
+        </div>
+        <div class="user-hover-details">
+            <h4>
+                <a id="avatar-full-name-link" ng-title="{{popupData.user.name}}" ng-href="{{hostBaseUrl + '/secure/ViewProfile.jspa?name=' + popupData.user.key}}" target="_parent" ng-bind="popupData.user.displayName"/>
+            </h4>
+            <h5 id="user-hover-email">
+                <a ng-href="mailto:{{popupData.user.emailAddress}}" ng-bind="popupData.user.emailAddress"/>
+            </h5>
+            <!-- TODO: https://d8baqcx46fbgi.cloudfront.net/atl-vertigo--shard-jira-prod-us-12--3--jres.atlassian.net/s/ifdvbo/b/21/1.0/_/download/resources/jira.webresources:global-static/images/time_of_day_sprite.png -->
+            <!--h5 class="time-zone-info" style="white-space: nowrap; overflow: hidden;">
+                <span class="user-time-icon hour-of-day-21">FIXME</span>
+                <div class="user-time-text">
+                    FIXME: 9:23 PM - <span>Thursday</span> - {{popupData.user.timeZone}}
+                </div>
+            </h5-->
+        </div>
+    </div>
+</div>
