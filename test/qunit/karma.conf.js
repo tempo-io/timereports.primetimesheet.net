@@ -19,7 +19,7 @@ module.exports = function(config){
 
     frameworks: ['qunit'],
 
-    browsers : ['Chrome'],
+    browsers : ['ChromeHeadless'],
 
     plugins : [
             'karma-chrome-launcher',
