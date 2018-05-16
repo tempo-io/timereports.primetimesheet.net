@@ -25,18 +25,13 @@ module.exports = function(config){
 
     frameworks: ['jasmine'],
 
-    browsers : ['ChromeHeadless'],
+    browsers: ['ChromeHeadlessNoSandbox'],
 
     customLaunchers: {
-      ChromeHeadless: {
-        base: 'Chrome',
-        flags: [
-          '--disable-gpu',
-          '--headless',
-          '--no-sandbox',
-          '--remote-debugging-port=9222',
-        ],
-      },
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
     },
 
     plugins : [
