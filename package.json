@@ -15,8 +15,8 @@
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.1.2",
     "karma-junit-reporter": "^1.2.0",
-    "karma-qunit": "^2.1.0",
-    "qunit": "^2.6.1"
+    "karma-qunit": "~0.1.9",
+    "qunitjs": "~1.14.0"
   },
   "scripts": {
     "postinstall": "./node_modules/bower/bin/bower install --config.interactive=false",

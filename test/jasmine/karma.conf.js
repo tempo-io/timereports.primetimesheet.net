@@ -25,7 +25,19 @@ module.exports = function(config){
 
     frameworks: ['jasmine'],
 
-    browsers : ['Chrome'],
+    browsers : ['ChromeHeadless'],
+
+    customLaunchers: {
+      ChromeHeadless: {
+        base: 'Chrome',
+        flags: [
+          '--disable-gpu',
+          '--headless',
+          '--no-sandbox',
+          '--remote-debugging-port=9222',
+        ],
+      },
+    },
 
     plugins : [
             'karma-chrome-launcher',
