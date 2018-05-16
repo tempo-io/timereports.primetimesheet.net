@@ -110,11 +110,11 @@ test("Html Export Timesheet", function() {
     var header = lines.slice(10, 22).map(s => s.trim()).join('');
     equal(header, "<td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Comment</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
     var row1 = lines.slice(24, 36).map(s => s.trim()).join('');
-    equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>&nbsp</td><td>8h</td><td>3h</td><td>0h</td><td>0h</td><td>0h</td><td>11h</td>", "row1");
+    equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>&nbsp</td><td>8</td><td>3</td><td>0</td><td>0</td><td>0</td><td>11</td>", "row1");
     var row2 = lines.slice(38, 50).map(s => s.trim()).join('');
-    equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>test 7</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
+    equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>test 7</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
     var total = lines.slice(/* 14*19 + 10 */ 276, 288).map(s => s.trim()).join('');
-    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "total");
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>9</td><td>13</td><td>0</td><td>13</td><td>13</td><td>48</td>", "total");
     equal(lines.length, 14*20 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export Timesheet Compressed", function() {
@@ -127,11 +127,11 @@ test("Html Export Timesheet Compressed", function() {
     var header = lines.slice(10, 21).map(s => s.trim()).join('');
     equal(header, "<td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
     var row1 = lines.slice(23, 34).map(s => s.trim()).join('');
-    equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>8h</td><td>3h</td><td>0h</td><td>0h</td><td>0h</td><td>11h</td>", "row1");
+    equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>8</td><td>3</td><td>0</td><td>0</td><td>0</td><td>11</td>", "row1");
     var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
-    equal(row2, "<td>Bug</td><td></td><td><a href='/browse/TIME-2'>TIME-2</a></td><td><a href='/browse/TIME-2'>Loch Ness Monster Bug</a></td><td>Major</td><td>0h</td><td>5h</td><td>0h</td><td>8h</td><td>0h</td><td>13h</td>", "row2");
+    equal(row2, "<td>Bug</td><td></td><td><a href='/browse/TIME-2'>TIME-2</a></td><td><a href='/browse/TIME-2'>Loch Ness Monster Bug</a></td><td>Major</td><td>0</td><td>5</td><td>0</td><td>8</td><td>0</td><td>13</td>", "row2");
     var total = lines.slice(/* 13*7 + 10 */ 101, 111).map(s => s.trim()).join('');
-    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td>", "total");
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>9</td><td>13</td><td>0</td><td>13</td><td>13</td>", "total");
     equal(lines.length, 13*8 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export Timesheet Grouped by Worked User More Fields", function() {
@@ -149,11 +149,11 @@ test("Html Export Timesheet Grouped by Worked User More Fields", function() {
     var header = lines.slice(10, 25).map(s => s.trim()).join('');
     equal(header, "<td>Worked User</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
     var row1 = lines.slice(27, 42).map(s => s.trim()).join('');
-    equal(row1, "<td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48h</td><td>81h</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "row1");
+    equal(row1, "<td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48</td><td>81</td><td>9</td><td>13</td><td>0</td><td>13</td><td>13</td><td>48</td>", "row1");
     var row2 = lines.slice(44, 59).map(s => s.trim()).join('');
-    equal(row2, "<td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>11h</td><td>44h</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
+    equal(row2, "<td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>11</td><td>44</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
     var total = lines.slice(/* 17*14 + 10 */ 248, 263).map(s => s.trim()).join('');
-    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48h</td><td>81h</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "total");
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48</td><td>81</td><td>9</td><td>13</td><td>0</td><td>13</td><td>13</td><td>48</td>", "total");
     equal(lines.length, 17*15 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export Timesheet More Fields", function() {
@@ -172,11 +172,11 @@ test("Html Export Timesheet More Fields", function() {
     var header = lines.slice(10, 25).map(s => s.trim()).join('');
     equal(header, "<td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Comment</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
     var row1 = lines.slice(27, 42).map(s => s.trim()).join('');
-    equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>&nbsp</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>11h</td><td>44h</td><td>8h</td><td>3h</td><td>0h</td><td>0h</td><td>0h</td><td>11h</td>", "row1");
+    equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>&nbsp</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>11</td><td>44</td><td>8</td><td>3</td><td>0</td><td>0</td><td>0</td><td>11</td>", "row1");
     var row2 = lines.slice(44, 59).map(s => s.trim()).join('');
-    equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>test 7</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
+    equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>test 7</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
     var total = lines.slice(/* 17*19 + 10 */ 333, 348).map(s => s.trim()).join('');
-    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48h</td><td>81h</td><td>9h</td><td>13h</td><td>0h</td><td>13h</td><td>13h</td><td>48h</td>", "total");
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48</td><td>81</td><td>9</td><td>13</td><td>0</td><td>13</td><td>13</td><td>48</td>", "total");
     equal(lines.length, 17*20 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export Pivot by User Grouped by Issue Itself More Fields", function() {
@@ -195,12 +195,12 @@ test("Html Export Pivot by User Grouped by Issue Itself More Fields", function()
     equal(header, "<td>Issue itself</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>Total</td>", "header");
     var row1 = lines.slice(23, 34).map(s => s.trim()).join('');
     // FIXME: issue type, key, summary, priority
-    equal(row1, "<td>TIME-1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>11h</td><td>44h</td><td>11h</td><td>11h</td>", "row1");
+    equal(row1, "<td>TIME-1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>11</td><td>44</td><td>11</td><td>11</td>", "row1");
     var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
     // FIXME: worklog comment
-    equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>3h</td><td>&nbsp;</td>", "row2");
+    equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td>", "row2");
     var total = lines.slice(/* 13*19 + 10 */ 257, 268).map(s => s.trim()).join('');
-    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48h</td><td>81h</td><td>48h</td><td>48h</td>", "total");
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48</td><td>81</td><td>48</td><td>48</td>", "total");
     equal(lines.length, 13*20 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export TimeTracking", function() {
@@ -216,11 +216,11 @@ test("Html Export TimeTracking", function() {
     var header = lines.slice(10, 21).map(s => s.trim()).join('');
     equal(header, "<td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Original Estimate</td><td>Est. Time Remaining</td><td>Time Spent</td><td>Variance</td><td>Original Estimate Remaining</td><td>Progress</td>", "header");
     var row1 = lines.slice(23, 34).map(s => s.trim()).join('');
-    equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>0h</td><td>33h</td><td>11h</td><td>-44h</td><td>-11h</td><td>25%</td>", "row1");
+    equal(row1, "<td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>0</td><td>33</td><td>11</td><td>-44</td><td>-11</td><td>25%</td>", "row1");
     var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
-    equal(row2, "<td>Bug</td><td></td><td><a href='/browse/TIME-2'>TIME-2</a></td><td><a href='/browse/TIME-2'>Loch Ness Monster Bug</a></td><td>Major</td><td>26h</td><td>0h</td><td>13h</td><td>13h</td><td>13h</td><td>100%</td>", "row2");
+    equal(row2, "<td>Bug</td><td></td><td><a href='/browse/TIME-2'>TIME-2</a></td><td><a href='/browse/TIME-2'>Loch Ness Monster Bug</a></td><td>Major</td><td>26</td><td>0</td><td>13</td><td>13</td><td>13</td><td>100%</td>", "row2");
     var total = lines.slice(/* 13*7 + 10 */ 101, 112).map(s => s.trim()).join('');
-    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>73.78h</td><td>33h</td><td>48h</td><td>-7.22h</td><td>25.78h</td><td>59%</td>", "total");
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>73.78</td><td>33</td><td>48</td><td>-7.22</td><td>25.78</td><td>59%</td>", "total");
     equal(lines.length, 13*8 + 10 + 1 /* new line at end of file */, "lines");
 });
 test("Html Export TimeTracking Grouped by Assignee", function() {
@@ -236,10 +236,10 @@ test("Html Export TimeTracking Grouped by Assignee", function() {
     var header = lines.slice(10, 22 ).map(s => s.trim()).join('');
     equal(header, "<td>Assignee</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Original Estimate</td><td>Est. Time Remaining</td><td>Time Spent</td><td>Variance</td><td>Original Estimate Remaining</td><td>Progress</td>", "header");
     var row1 = lines.slice(24, 36).map(s => s.trim()).join('');
-    equal(row1, "<td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>73.78h</td><td>33h</td><td>48h</td><td>-7.22h</td><td>25.78h</td><td>59%</td>", "row1");
+    equal(row1, "<td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>73.78</td><td>33</td><td>48</td><td>-7.22</td><td>25.78</td><td>59%</td>", "row1");
     var row2 = lines.slice(38, 50).map(s => s.trim()).join('');
-    equal(row2, "<td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>0h</td><td>33h</td><td>11h</td><td>-44h</td><td>-11h</td><td>25%</td>", "row2");
+    equal(row2, "<td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>0</td><td>33</td><td>11</td><td>-44</td><td>-11</td><td>25%</td>", "row2");
     var total = lines.slice(/* 14*8 + 10 */ 122, 134).map(s => s.trim()).join('');
-    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>73.78h</td><td>33h</td><td>48h</td><td>-7.22h</td><td>25.78h</td><td>59%</td>", "total");
+    equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>73.78</td><td>33</td><td>48</td><td>-7.22</td><td>25.78</td><td>59%</td>", "total");
     equal(lines.length, 14*9 + 10 + 1 /* new line at end of file */, "lines");
 });
