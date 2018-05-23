@@ -284,6 +284,41 @@ describe("timesheetControllerTest", function() {
         checkOptions(scope);
     }));
 
+    it('PARAMETERS: numOfWeeks, offset', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        TimesheetUtils.getLastMondayDateBak = TimesheetUtils.getLastMondayDate;
+        TimesheetUtils.getLastMondayDate = function () {
+          return new Date('2014-03-03'); // '2014-02-24' + 1 week
+        };
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {numOfWeeks: 1, offset: -1, loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'TIME'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(scope.TimesheetUtils).not.toBeNull();
+        expect(scope.loading).toBeFalsy();
+        expect(scope.pivotTable).not.toBeNull();
+        expect(scope.pivotTable.pivotStrategy).not.toBeNull();
+        expect(scope.pivotTable).toHaveRowsNumber(6);
+        expect(scope.pivotTable).toHaveColumnsNumber(7);
+        expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-1', 'TIME-2', 'TIME-3', 'TIME-4', 'TIME-5', 'TIME-6']);
+        expect(scope.pivotTable.sum).toBe(176400);
+        expect(scope.rowKeySize).toBe(5);
+        checkOptions(scope);
+        TimesheetUtils.getLastMondayDate = TimesheetUtils.getLastMondayDateBak;
+    }));
+
     it('PARAMETERS: monthView', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
         var scope = $rootScope.$new();
         $controller('TimesheetController', {
