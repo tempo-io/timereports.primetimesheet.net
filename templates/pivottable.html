@@ -23,8 +23,7 @@
         </div>
         <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
                          remove-action="removeMenuOption(option.key, option.labelParam)"
-                         label="option.label"
-                         label-param="option.labelParam"></selected-option>
+                         option="option"/>
         </div>
         <validation-errors errors="errors"></validation-errors>
     </div>

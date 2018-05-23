@@ -14,9 +14,21 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="pivotTableType != 'TimeTracking'">
-      <label>{{ 'Number of Weeks' | i18n}}</label>
-      <input ng-model="numOfWeeks" class="text" type="number" min="1" max="12" ng-change="numOfWeeksChange(numOfWeeks)" />
+    <div class="field-group">
+      <label>{{ (isMonthView ? 'Number of Months' : 'Number of Weeks') | i18n}}</label>
+      <input ng-model="numOfWeeks.value" class="text" type="number" min="1" max="12" ng-change="numOfWeeksChange(numOfWeeks.value)" ng-disabled="!startDate.calculated || !endDate.calculated"/>
+    </div>
+    <div class="field-group">
+      <label>{{ 'Offset' | i18n}}</label>
+      <input ng-model="offset" class="text" type="number" ng-change="offsetChange(offset)" ng-disabled="!startDate.calculated && !endDate.calculated"/>
+    </div>
+    <div class="field-group">
+      <label >{{'Start Date' | i18n}}</label>
+      <input ng-model="startDate.value" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="select"/>
+    </div>
+    <div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
+      <label>{{'End Date' | i18n}}</label>
+      <input ng-model="endDate.value" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
     </div>
     <div class="field-group" ng-if="pivotTableType == 'Timesheet'">
       <label>{{'Show Weekends' | i18n}}</label>
