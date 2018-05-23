@@ -30,19 +30,13 @@
             <label>{{'Groups' | i18n}}</label>
             <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" update-event="groupUpdated" type="text"/>
         </div>
-        <div class="ak-field-group" ng-if="!isDayView">
-            <label>{{ (isMonthView ? 'Number of Months' : 'Number of Weeks') | i18n}}</label>
-            <input ng-model="numOfWeeks.value" class="text" type="number" min="1" max="12" ng-change="numOfWeeksChange(numOfWeeks.value)" ng-disabled="!startDate.calculated || !endDate.calculated"/>
-        </div>
         <div class="ak-field-group">
             <label >{{'Start Date' | i18n}}</label>
-            <input ng-model="startDate.value" type="date" aui-date-picker ng-date-changed-func="startChangeDate"
-                   class="select" ng-class="{inactive: startDate.calculated}"/>
+            <input ng-model="startDate.value" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="select"/>
         </div>
         <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry'">
             <label>{{'End Date' | i18n}}</label>
-            <input ng-model="endDate.value" type="date" aui-date-picker ng-date-changed-func="endChangeDate"
-                   class="select" ng-class="{inactive: endDate.calculated}"/>
+            <input ng-model="endDate.value" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
         </div>
         <div class="ak-field-group" ng-if="pivotTableType == 'Timesheet'">
             <label style="display: inline-block; margin: 0">{{'Show Weekends' | i18n}}</label>

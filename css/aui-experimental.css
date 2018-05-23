@@ -32,14 +32,14 @@
   text-align: left;
   text-decoration: none;
 }
-.aui-label:not(.inactive):hover {
+.aui-label:hover {
   background: #ebecf0;
 }
 span.icon-close > svg {
   color: #333333;
   padding: 2px 0 2px 6px;
 }
-span.icon-close:not(.inactive):hover > svg {
+span.icon-close:hover > svg {
   color: #bf2600;
 }
 /* Need the split hover to trigger border on parent while split label/X are hovered */

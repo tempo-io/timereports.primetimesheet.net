@@ -95,9 +95,8 @@ describe("timesheet directive", function(){
 
         $httpBackend.flush();
 
-        scope.option = {label: 'lab', labelParam: 'PAR'};
         var element = prepareJQueryElement(
-                '<selected-option option="option" remove-action="doWithOption(\'OPT\')"/>');
+                '<selected-option label="\'lab\'" label-param="\'PAR\'" remove-action="doWithOption(\'OPT\')"/>');
 
         expect(element).toContainText('My label value is PAR');
         expect(element).toContainElement('span.aui-label');
