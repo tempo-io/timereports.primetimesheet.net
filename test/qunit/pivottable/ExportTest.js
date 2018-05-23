@@ -141,7 +141,7 @@ QUnit.test("Html Export Timesheet Grouped by Worked User More Fields", function(
     moreFieldsOptions.addOption('Assignee', 'assignee');
     moreFieldsOptions.addOption('Timespent', 'timespent');
     moreFieldsOptions.addOption('Estimate', 'timetrackingestimate');
-    var html = htmlView.generate({groupByField: 'workeduser', groupByFieldObject: {name: 'Worked User'}, pivotTableType: 'Timesheet', startDate: '2014-02-24',
+    var html = htmlView.generate({groupByField: 'workeduser', groupByFieldOption: {label: 'Worked User'}, pivotTableType: 'Timesheet', startDate: '2014-02-24',
         reportingDay: 1, moreFields: ['assignee', 'timespent', 'timetrackingestimate'], configOptions: {}, jiraConfig: {timeFormat: ''},
         moreFieldsOptions: moreFieldsOptions});
     QUnit.assert.equal(typeof html, 'string', 'html');
@@ -186,7 +186,7 @@ QUnit.test("Html Export Pivot by User Grouped by Issue Itself More Fields", func
     moreFieldsOptions.addOption('Assignee', 'assignee');
     moreFieldsOptions.addOption('Timespent', 'timespent');
     moreFieldsOptions.addOption('Estimate', 'timetrackingestimate');
-    var html = htmlView.generate({groupByField: 'issue', groupByFieldObject: {name: 'Issue itself'}, pivotTableType: 'IssueWorkedTimeByUser', startDate: '2014-02-24',
+    var html = htmlView.generate({groupByField: 'issue', groupByFieldOption: {label: 'Issue itself'}, pivotTableType: 'IssueWorkedTimeByUser', startDate: '2014-02-24',
         reportingDay: 1, moreFields: ['assignee', 'timespent', 'timetrackingestimate'], configOptions: {}, jiraConfig: {timeFormat: ''},
         moreFieldsOptions: moreFieldsOptions});
     QUnit.assert.equal(typeof html, 'string', 'html');
@@ -226,7 +226,7 @@ QUnit.test("Html Export TimeTracking", function() {
 QUnit.test("Html Export TimeTracking Grouped by Assignee", function() {
     var htmlView = new HtmlView(TimeData.issues);
     QUnit.assert.equal(typeof htmlView, 'object', 'excelView');
-    var html = htmlView.generate({groupByField: 'assignee', groupByFieldObject: {name: 'Assignee'}, pivotTableType: 'TimeTracking', startDate: '2014-02-24',
+    var html = htmlView.generate({groupByField: 'assignee', groupByFieldOption: {label: 'Assignee'}, pivotTableType: 'TimeTracking', startDate: '2014-02-24',
         reportingDay: 1, moreFields: [], configOptions: {timeTrackingColumns: [
             '1timeoriginalestimate', '2esttimeremaining',  '3timespent', '4diff',
              '5originalestimateremaining', '6progress']},
