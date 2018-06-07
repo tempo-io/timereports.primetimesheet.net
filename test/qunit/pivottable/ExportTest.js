@@ -141,19 +141,20 @@ QUnit.test("Html Export Timesheet Grouped by Worked User More Fields", function(
     moreFieldsOptions.addOption('Assignee', 'assignee');
     moreFieldsOptions.addOption('Timespent', 'timespent');
     moreFieldsOptions.addOption('Estimate', 'timetrackingestimate');
-    var html = htmlView.generate({groupByField: 'workeduser', groupByFieldOption: {label: 'Worked User'}, pivotTableType: 'Timesheet', startDate: '2014-02-24',
-        reportingDay: 1, moreFields: ['assignee', 'timespent', 'timetrackingestimate'], configOptions: {}, jiraConfig: {timeFormat: ''},
+    var html = htmlView.generate({categorizeByField: 'assignee', categorizeByFieldOption: {label: 'Assignee'},
+        groupByField: 'workeduser', groupByFieldOption: {label: 'Worked User'}, pivotTableType: 'Timesheet', startDate: '2014-02-24',
+        reportingDay: 1, moreFields: ['timespent', 'timetrackingestimate'], configOptions: {}, jiraConfig: {timeFormat: ''},
         moreFieldsOptions: moreFieldsOptions});
     QUnit.assert.equal(typeof html, 'string', 'html');
     var lines = html.split('\n');
     var header = lines.slice(10, 25).map(s => s.trim()).join('');
-    QUnit.assert.equal(header, "<td>Worked User</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
+    QUnit.assert.equal(header, "<td>Assignee</td><td>Worked User</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Timespent</td><td>Estimate</td><td>24/Feb</td><td>25/Feb</td><td>26/Feb</td><td>27/Feb</td><td>28/Feb</td><td>Total</td>", "header");
     var row1 = lines.slice(27, 42).map(s => s.trim()).join('');
-    QUnit.assert.equal(row1, "<td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48</td><td>81</td><td>9</td><td>13</td><td>0</td><td>13</td><td>13</td><td>48</td>", "row1");
+    QUnit.assert.equal(row1, "<td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>48</td><td>81</td><td>9</td><td>13</td><td>0</td><td>13</td><td>13</td><td>48</td>", "row1");
     var row2 = lines.slice(44, 59).map(s => s.trim()).join('');
-    QUnit.assert.equal(row2, "<td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>11</td><td>44</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
+    QUnit.assert.equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td>11</td><td>44</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>", "row2");
     var total = lines.slice(/* 17*14 + 10 */ 248, 263).map(s => s.trim()).join('');
-    QUnit.assert.equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td></td><td>48</td><td>81</td><td>9</td><td>13</td><td>0</td><td>13</td><td>13</td><td>48</td>", "total");
+    QUnit.assert.equal(total, "<td>Total</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>48</td><td>81</td><td>9</td><td>13</td><td>0</td><td>13</td><td>13</td><td>48</td>", "total");
     QUnit.assert.equal(lines.length, 17*15 + 10 + 1 /* new line at end of file */, "lines");
 });
 QUnit.test("Html Export Timesheet More Fields", function() {
@@ -195,7 +196,7 @@ QUnit.test("Html Export Pivot by User Grouped by Issue Itself More Fields", func
     QUnit.assert.equal(header, "<td>Issue itself</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>Total</td>", "header");
     var row1 = lines.slice(23, 34).map(s => s.trim()).join('');
     // FIXME: issue type, key, summary, priority
-    QUnit.assert.equal(row1, "<td>TIME-1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>11</td><td>44</td><td>11</td><td>11</td>", "row1");
+    QUnit.assert.equal(row1, "<td><a href='/browse/TIME-1' title='Hocus Focus Problem'>TIME-1</a></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>11</td><td>44</td><td>11</td><td>11</td>", "row1");
     var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
     // FIXME: worklog comment
     QUnit.assert.equal(row2, "<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td>", "row2");
