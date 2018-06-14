@@ -41,6 +41,7 @@ describe("pivottableServiceTest", function() {
     beforeEach(function() {
         inject(function (pivottableService, applicationLoggingService) {
             pivottableService.allFields = FieldsData;
+            pivottableService.allNumericFields = pivottableService.getNumericFields();
             applicationLoggingService.debug = function() {};
         });
     });
