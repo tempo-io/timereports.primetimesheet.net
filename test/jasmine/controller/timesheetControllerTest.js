@@ -508,6 +508,68 @@ describe("timesheetControllerTest", function() {
         expect(scope.rowKeySize).toBe(5);
     }));
 
+    it('PARAMETERS: pivotTableType=IssuePassedTimeByResolution, sumSubTasks: true', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {sumSubTasks: true, startDate: '2014-02-24', numOfWeeks: 1,  pivotTableType: 'IssuePassedTimeByResolution', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'TIME'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(scope.TimesheetUtils).not.toBeNull();
+        expect(scope.loading).toBeFalsy();
+        expect(scope.pivotTable).not.toBeNull();
+        expect(scope.pivotTable.pivotStrategy).not.toBeNull();
+        expect(scope.pivotTable).toHaveRowsNumber(4);
+        expect(scope.pivotTable).toHaveColumnsNumber(1);
+        var totalColumn = getFirstColumnKey(scope.pivotTable);
+        expect(totalColumn.keyName).toEqual(undefined);
+        expect(totalColumn.keyValue).toEqual('Unresolved');
+        expect(scope.pivotTable.totals['Unresolved'].sum).toBe(864000);
+        expect(scope.rowKeySize).toBe(5);
+    }));
+
+    it('PARAMETERS: pivotTableType=IssuePassedTimeByStatus, sumSubTasks: true', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {sumSubTasks: true, startDate: '2014-02-24', numOfWeeks: 1,  pivotTableType: 'IssuePassedTimeByStatus', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'TIME'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(scope.TimesheetUtils).not.toBeNull();
+        expect(scope.loading).toBeFalsy();
+        expect(scope.pivotTable).not.toBeNull();
+        expect(scope.pivotTable.pivotStrategy).not.toBeNull();
+        expect(scope.pivotTable).toHaveRowsNumber(4);
+        expect(scope.pivotTable).toHaveColumnsNumber(2);
+        var totalColumn = getFirstColumnKey(scope.pivotTable);
+        expect(totalColumn.keyName).toEqual(undefined);
+        expect(totalColumn.keyValue).toEqual('Open');
+        expect(scope.pivotTable.totals['Open'].sum).toBe(576000);
+        expect(scope.rowKeySize).toBe(5);
+    }));
+
     it('PARAMETERS: user=noSuchUser', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
 
         var scope = $rootScope.$new();
