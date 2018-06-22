@@ -61,6 +61,9 @@ div.select2-container.ng-invalid, input.ng-invalid, textarea.textarea.ng-invalid
 .aui-dropdown2-heading {
   font-weight: normal;
 }
+.aui-datepicker-dialog {
+    z-index: 10000;
+}
 /* add-on styles */
 ul.subtitle {
   display: inline;
