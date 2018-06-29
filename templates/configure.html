@@ -180,12 +180,12 @@
         <span class="description" ng-bind-html="'description.Columns For Export' | i18n | htmlSafe"></span>
     </div>
     <div class="field-group">
-        <label for="workingTimeInStatus">{{'Working Time In Status' | i18n}}</label>
-        <input id="workingTimeInStatus"
-               type="checkbox"
-               class="checkbox"
-               ng-model="workingTimeInStatus.val"
-               ng-change="saveWorkingTimeInStatus()">
+        <label for="workingDayStart">{{'Working Time In Status' | i18n}}</label>
+        {{'From' | i18n}}&nbsp;<input id="workingDayStart" ng-model="workingTimeInStatus.val.from" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
+               type="number" class="text" title="{{'Working Day Start' | i18n}}" style="max-width: 70px;"/>
+        &nbsp;{{'To' | i18n}}&nbsp;
+        <input id="workingDayEnd" ng-model="workingTimeInStatus.val.to" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
+               type="number" class="text" title="{{'Working Day End' | i18n}}" style="max-width: 70px;"/>
         <div class="aui-message aui-message-success msg-overlay"
              ng-show="workingTimeInStatusSaveSuccess">
             <strong>{{'Working Time In Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}

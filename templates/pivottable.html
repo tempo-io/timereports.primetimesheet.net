@@ -104,7 +104,7 @@
                         <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-caсhed-worklog = "removeCachedWorklog" />
                     </td>
                     <td class="nav first border total" ng-if="!hideTotalColumn">
-                        {{row.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus' && !workingTimeInStatus}}
+                        {{row.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus' && !(workingTimeInStatus.from && workingTimeInStatus.to)}}
                     </td>
                 </tr>
                 <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed">
