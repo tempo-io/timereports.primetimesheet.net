@@ -156,7 +156,7 @@
                         <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav border total" ng-if="!hideTotalColumn">
-                        {{pivotTable.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus' && !workingTimeInStatus)}}
+                        {{pivotTable.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus' && !(workingTimeInStatus.from && workingTimeInStatus.to)}}
                     </td>
                 </tr>
                 <tr ng-show="loaded && loading">
