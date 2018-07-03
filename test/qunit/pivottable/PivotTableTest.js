@@ -59,6 +59,9 @@ QUnit.test("IssuePassedTimeByStatus", function() {
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue == 'TIME-4' ? 3 : 1, "pivotEntries " + pivotEntries[0].rowKey.keyValue);
+      if (pivotEntries.length == 1) {
+          QUnit.assert.equal(pivotEntries[0].worklog.comment, "2017-04-05 00:00:00 - 2017-04-12 00:00:00", );
+      }
   }
   var totalKeys = Object.keys(pivotTable.totals);
   QUnit.assert.equal(totalKeys.length, 3, "totals");
@@ -82,6 +85,9 @@ QUnit.test("IssuePassedTimeByStatus with Working Hours", function() {
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue == 'TIME-4' ? 3 : 1, "pivotEntries " + pivotEntries[0].rowKey.keyValue);
+      if (pivotEntries.length == 1) {
+          QUnit.assert.equal(pivotEntries[0].worklog.comment, "2017-04-05 05:00:00 - 2017-04-11 22:00:00");
+      }
   }
   var totalKeys = Object.keys(pivotTable.totals);
   QUnit.assert.equal(totalKeys.length, 3, "totals");
