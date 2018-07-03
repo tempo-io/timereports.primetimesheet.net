@@ -31,7 +31,7 @@
                     <span title="{{data.worklog.comment.length > 75 ? data.worklog.comment : ''}}">{{data.worklog.comment | limitTo:75}}</span>
                 </div>
                 <div class="nav" ng-if="!data.worklog.id">
-                    <new-worklog worklog="data.worklog" log-work="startWork" entry="data" remove-cached-worklog = "removeCachedWorklog" />
+                    <new-worklog worklog="data.worklog" log-work="startWork" entry="data" remove-caсhed-worklog = "removeCachedWorklog" />
                 </div>
                 <div class="nav border nowrap">
                     {{data.values['1started'] | time:'short'}}
