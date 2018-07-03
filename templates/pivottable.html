@@ -101,7 +101,7 @@
                                      ng-if="row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue'" />
                     </td>
                     <td class="nav first border" ng-repeat="column in pivotTable.sortedColumns()">
-                        <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-caсhed-worklog = "removeCachedWorklog" />
+                        <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
                     </td>
                     <td class="nav first border total" ng-if="!hideTotalColumn">
                         {{row.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus' && !(workingTimeInStatus.from && workingTimeInStatus.to)}}
@@ -137,7 +137,7 @@
                         <issue-field name="field" field="data.rowKey._issue.fields[field]" issue="data.rowKey._issue" jira-config="jiraConfig" ng-if="data.rowKey._issue"/>
                     </td>
                     <td class="nav border" ng-repeat="column in pivotTable.sortedColumns()">
-                        <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-caсhed-worklog = "removeCachedWorklog" />
+                        <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
                     </td>
                     <td class="nav border total" ng-if="!hideTotalColumn">
                         &nbsp;
