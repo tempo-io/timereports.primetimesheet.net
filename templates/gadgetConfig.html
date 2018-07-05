@@ -113,7 +113,8 @@
     </div>
     <div class="field-group" ng-if="['Timesheet', 'TimeEntry', 'Timespent'].indexOf(pivotTableType) >= 0">
       <label>{{'Show Empty Issues' | i18n}}</label>
-      <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!filterOrProjectId" />
+      <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)"
+             ng-disabled="!filterOrProjectId || sumSubTasks.enabled || groupByOptions.selected" />
     </div>
     <div class="buttons-container">
       <div class="buttons">
