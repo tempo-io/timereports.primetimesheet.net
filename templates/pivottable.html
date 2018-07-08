@@ -9,17 +9,6 @@
                 <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
                 <a class="overlay-icon aui-icon aui-icon-small aui-iconfont-remove dangerous remove-view" ng-click="deleteView()" ng-show="showButtons && showDeleteButton"></a>
             </div>
-            <div>
-                <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="margin: 9px 5px 5px 5px" title="Download worklog" ng-hide="loading || restrictionError"></i>
-                <!-- Dropdown -->
-                <div id="export" class="aui-style-default aui-dropdown2">
-                    <ul class="aui-list-truncate">
-                        <li><a x-ng-click="excelView('xls')">exportData.xls (html)</a></li>
-                        <li><a x-ng-click="excelView('csv')">exportData.csv</a></li>
-                        <li><a x-ng-click="excelView('html')">exportView.xls (html)</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
         <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
                          remove-action="removeMenuOption(option.key, option.labelParam)"
@@ -45,14 +34,25 @@
             <span ng-repeat="option in gadgetSummary">
                 <span ng-class="option.styleClass">{{option.text}}</span>
             </span>
-            <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent"></a>
+            <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent" aui-tooltip></a>
         </div>
 
         <table id="issuetable" cellspacing="0" cellpadding="3" border="0" width="100%" ng-show="restrictionError == null">
             <thead>
                 <tr class="rowHeader">
                     <th class="colHeaderLink" colspan="{{rowKeySize}}">
-                        <pivottable-slider />
+                        <span><pivottable-slider /></span>
+                        <span style="height: 20px">
+                            <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="padding-left: 10px" title="Download worklog" ng-hide="loading || restrictionError" aui-tooltip></i>
+                            <!-- Dropdown -->
+                            <div id="export" class="aui-style-default aui-dropdown2">
+                                <ul class="aui-list-truncate">
+                                    <li><a x-ng-click="excelView('xls')">exportData.xls (html)</a></li>
+                                    <li><a x-ng-click="excelView('csv')">exportData.csv</a></li>
+                                    <li><a x-ng-click="excelView('html')">exportView.xls (html)</a></li>
+                                </ul>
+                            </div>
+                        </span>
                     </th>
                     <th class="colHeaderLink" ng-repeat="field in pivotTable.moreFields">
                         <span ng-bind="moreFieldsOptions.findOption(field).label"></span>

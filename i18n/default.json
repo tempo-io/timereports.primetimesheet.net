@@ -36,6 +36,9 @@
     "Problem Description": "Send collected support data to reproduce the problem.",
     "Describe your problem here": "Describe the problem here (required)",
 
+    "Refresh": "Refresh",
+    "Log Work": "Log Work",
+
     "From": "From",
     "To": "To",
 

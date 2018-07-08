@@ -9,20 +9,6 @@
                 <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
                 <a class="overlay-icon aui-icon aui-icon-small aui-iconfont-remove dangerous remove-view" ng-click="deleteView()" ng-show="showButtons && showDeleteButton"></a>
             </div>
-            <div>
-                <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="margin: 9px 5px 5px 5px" title="Download worklog" ng-hide="loading || restrictionError"></i>
-                <!-- Dropdown -->
-                <div id="export" class="aui-style-default aui-dropdown2">
-                    <ul class="aui-list-truncate">
-                        <li><a x-ng-click="excelView('xls')">exportData.xls (html)</a></li>
-                        <li><a x-ng-click="excelView('csv')">exportData.csv</a></li>
-                        <li><a x-ng-click="excelView('html')">exportView.xls (html)</a></li>
-                    </ul>
-                </div>
-                <i id="subscribe"
-                    class="fa fa-envelope-o"  ng-click="subscribePopup.init()" style="margin: 9px 5px 5px 5px" title="Subscribe"
-                    ng-hide="loading || restrictionError || !subscribe" ng-style="{'font-weight': currentView.jobId ? 'bold' : 'normal'}"></i>
-            </div>
         </div>
         <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
                          remove-action="removeMenuOption(option.key, option.labelParam)"
@@ -34,7 +20,7 @@
         <span ng-repeat="option in gadgetSummary">
             <span ng-class="option.styleClass">{{option.text}}</span>
         </span>
-        <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent"></a>
+        <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent" aui-tooltip></a>
     </div>
 
     <aui-inline-dialog id="add-worklog" template="'/templates/popups/addWorklog.html'" popup-data="addWorklogPopup" container="'.addWorklogPopup'" work-description-required="workDescriptionRequired"></aui-inline-dialog>
@@ -57,7 +43,27 @@
             <thead>
                 <tr class="rowHeader">
                     <th class="colHeaderLink" colspan="{{rowKeySize}}">
-                        <pivottable-slider />
+                        <span><pivottable-slider /></span>
+                        <span ng-if="loaded && !loading && !restrictionError">
+                            <button ng-if="canLogWork" class="aui-button aui-button-link button-compact" ng-click="addWorklogDialog()" title="Log Work against an issue" aui-tooltip>
+                                <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
+                                {{'Log Work' | i18n}}
+                            </button>
+                        </span>
+                        <span style="height: 22px">
+                            <i href="#export" aria-owns="export" aria-haspopup="true" style="padding-left: 10px" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" title="Download worklog" aui-tooltip></i>
+                            <!-- Dropdown -->
+                            <div id="export" class="aui-style-default aui-dropdown2">
+                                <ul class="aui-list-truncate">
+                                    <li><a x-ng-click="excelView('xls')">exportData.xls (html)</a></li>
+                                    <li><a x-ng-click="excelView('csv')">exportData.csv</a></li>
+                                    <li><a x-ng-click="excelView('html')">exportView.xls (html)</a></li>
+                                </ul>
+                            </div>
+                            <i id="subscribe"
+                                class="fa fa-envelope-o"  ng-click="subscribePopup.init()" title="Subscribe"  aui-tooltip
+                                ng-if="subscribe" ng-style="{'font-weight': currentView.jobId ? 'bold' : 'normal'}"></i>
+                        </span>
                     </th>
                     <th class="colHeaderLink" ng-repeat="field in pivotTable.moreFields">
                         <span ng-bind="moreFieldsOptions.findOption(field).label"></span>
@@ -110,7 +116,7 @@
                         class="nav border"
                         ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend, addWorklogPopup: column.sum == 0 && canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue], editWorklogPopup: column.sum != 0, disabled: column.sum == 0 && cannotLogWorkIssue[row.rowKey.keyValue]}" ng-repeat="column in row.columns">
                         {{column.sum | prettyHours:jiraConfig}}
-                        <span ng-show="p_show" class="fa fa-plus"></span>
+                        <span ng-show="p_show" class="fa fa-plus" title="Log Work against this issue"></span>
                     </td>
                     <td class="nav border total">
                         {{row.sum | prettyHours:jiraConfig}}
@@ -192,10 +198,10 @@
             </ol>
         </div>
     </div>
-    <div ng-if="canLogWork && loaded && !loading">
-        <button class="aui-button aui-button-link" ng-click="addWorklogDialog()">
+    <div ng-if="loaded && !loading && !restrictionError">
+        <button ng-if="canLogWork" class="aui-button aui-button-link" ng-click="addWorklogDialog()" title="Log Work against an issue" aui-tooltip>
             <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
-            Log Work
+            {{'Log Work' | i18n}}
         </button>
     </div>
     <div>

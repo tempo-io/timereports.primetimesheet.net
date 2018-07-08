@@ -65,6 +65,18 @@ div.select2-container.ng-invalid, input.ng-invalid, textarea.textarea.ng-invalid
     z-index: 10000;
 }
 /* add-on styles */
+.aui-button.aui-button-link.button-compact {
+  padding: 0 8px 0 0;
+  height: 22px;
+  line-height: 18px;
+}
+.rowHeader > .colHeaderLink:first-child {
+   min-width: 500px;
+   padding: 3px 0 0 0;
+}
+.rowHeader > .colHeaderLink:first-child > div {
+  display: inline-block;
+}
 ul.subtitle {
   display: inline;
   list-style-type: none;

@@ -4,7 +4,7 @@
         <ul class="subtitle">
             <li>{{'Advanced Time Tracking' | i18n }}</li>
             <li>
-                <i href="#help" class="fa fa-question-circle aui-dropdown2-trigger x-ng-click" x-ng-click="" title="Help" aria-owns="help" style="width: 0; padding-right: 15px !important"/>
+                <i href="#help" class="fa fa-question-circle aui-dropdown2-trigger x-ng-click" x-ng-click="" title="Help" aria-owns="help" style="width: 0; padding-right: 15px !important" aui-tooltip/>
                 <!-- Dropdown -->
                 <div id="help" class="aui-style-default aui-dropdown2">
                     <ul class="aui-list-truncate">
@@ -25,7 +25,7 @@
                 </div>
             </li>
             <li ng-show="isAdmin == true">
-                <a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/configuration" target="_parent">{{'Configure' | i18n }}</a>
+                <a class="fa fa-cog" href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/configuration" target="_parent" title="{{'Configure' | i18n }}" aui-tooltip/>
             </li>
             <li ng-if="!licenseStatus.isActive" ng-bind-html="licenseStatus.message"></li>
         </ul>
