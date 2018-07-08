@@ -70,13 +70,7 @@ div.select2-container.ng-invalid, input.ng-invalid, textarea.textarea.ng-invalid
   height: 22px;
   line-height: 18px;
 }
-.rowHeader > .colHeaderLink:first-child {
-   min-width: 500px;
-   padding: 3px 0 0 0;
-}
-.rowHeader > .colHeaderLink:first-child > div {
-  display: inline-block;
-}
+
 ul.subtitle {
   display: inline;
   list-style-type: none;
@@ -159,8 +153,8 @@ th {
 }
 .colHeaderLink {
     display: table-cell;
-    vertical-align: bottom;
-    padding: 3px;
+    vertical-align: middle;
+    padding: 0;
 }
 .is-not-gadget #slider-wrapper {
     width: 500px;
@@ -293,12 +287,6 @@ a.disabled {
 .section-header > div:first-child {
   display: flex;
   margin-top: -2px;
-}
-.section-header > div.h5 {
-  margin: 3px 0 5px 0;
-}
-div.h5 > h5 {
-  width: 400px;
 }
 .section-header > div > div {
   width: 400px;
