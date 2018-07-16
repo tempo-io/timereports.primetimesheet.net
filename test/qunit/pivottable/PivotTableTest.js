@@ -239,6 +239,23 @@ QUnit.test("TimeTrackingRowComparator", function() {
   QUnit.assert.equal(sortedRows[4].rowKey.keyValue, "TIME-5", 'row5')
   QUnit.assert.equal(sortedRows[5].rowKey.keyValue, "TIME-6", 'row6')
 });
+QUnit.test("TimeTrackingRowComparator assignee", function() {
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking',
+      configOptions: {timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
+          '3timespent', '4diff', '5originalestimateremaining', '6progress']},
+      orderByField: 'assignee'});
+  for (var i in TimeData.issues) {
+      var issue = angular.copy(TimeData.issues[i]);
+      issue.fields.assignee.displayName += (5 - i); // reverse order
+      var pivotEntries = pivotTable.add(issue);
+      QUnit.assert.equal(pivotEntries.length, 1, "pivotEntries");
+  }
+  var sortedRows = pivotTable.sortedRows();
+  QUnit.assert.equal(sortedRows.length, 6, "sortedRows");
+  for (var i = 0; i < 6; i++) {
+      QUnit.assert.equal(sortedRows[i].rowKey.issue.fields.assignee.displayName, "admin" + i, 'row' + (i + 1));
+  }
+});
 var testTimeBalanceCommonCase = function (pivotTable, rowKeysLendth, rowKeysString, row0DataLength) {
     var totalKeys = Object.keys(pivotTable.totals);
     QUnit.assert.equal(totalKeys.length, 5, "totals");
