@@ -69,7 +69,7 @@ describe("timesheetControllerTest", function() {
             this.writeParams = this.setEnabled = function() {
             };
         });
-        inject(function($timeout, $window, _$httpBackend_, applicationLoggingService) {
+        inject(function($timeout, $window, _$httpBackend_, applicationLoggingService, $rootScope) {
             AP.$timeout = $timeout;
             $httpBackend = _$httpBackend_;
             $httpBackend.whenGET('/templates/main.html').respond(200, '');
@@ -106,6 +106,7 @@ describe("timesheetControllerTest", function() {
             getWorklog = $httpBackend.whenGET(/^\/api\/worklog/)
             getWorklog.respond(200, TimeData.issues);
             applicationLoggingService.debug = function() {};
+            $rootScope.license = 'active';
         });
         AP.requestBak = AP.request;
     });
