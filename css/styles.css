@@ -282,7 +282,7 @@ a.disabled {
   width: 100%
 }
 .menu {
-  width: 200px;
+  min-width: 200px;
 }
 .section-header > div:first-child {
   display: flex;

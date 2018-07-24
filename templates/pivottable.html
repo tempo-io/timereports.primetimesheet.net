@@ -16,6 +16,12 @@
         </div>
         <validation-errors errors="errors"></validation-errors>
     </div>
+    <div ng-show="isGadget">
+            <span ng-repeat="option in gadgetSummary">
+                <span ng-class="option.styleClass">{{option.text}}</span>
+            </span>
+        <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent" aui-tooltip></a>
+    </div>
 
     <aui-inline-dialog id="problem-description-popup" template="'/templates/popups/problemDescription.html'" popup-data="problemDescriptionPopup" container="'#downloadSupportData'"></aui-inline-dialog>
     <aui-inline-dialog id="user-hover" template="'/templates/popups/userHover.html'" popup-data="userHoverPopup" container="'.userHoverPopup'" on-hover="true"></aui-inline-dialog>
@@ -30,19 +36,12 @@
             <p ng-if="restrictionError.msg" ng-bind-html="restrictionError.msg"></p>
         </div>
 
-        <div ng-show="isGadget" class="summary">
-            <span ng-repeat="option in gadgetSummary">
-                <span ng-class="option.styleClass">{{option.text}}</span>
-            </span>
-            <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent" aui-tooltip></a>
-        </div>
-
         <table id="issuetable" cellspacing="0" cellpadding="3" border="0" width="100%" ng-show="restrictionError == null">
             <thead>
                 <tr class="rowHeader">
                     <th class="colHeaderLink" colspan="{{rowKeySize}}">
                         <span><pivottable-slider /></span>
-                        <span">
+                        <span>
                             <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="padding-left: 10px" title="Download worklog" ng-hide="loading || restrictionError" aui-tooltip></i>
                             <!-- Dropdown -->
                             <div id="export" class="aui-style-default aui-dropdown2">
