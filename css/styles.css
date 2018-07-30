@@ -278,11 +278,15 @@ a.disabled {
   min-height: 600px;
 }
 .is-not-gadget .content {
-  padding: 12px 24px;
+  padding-top: 12px;
+  padding-right: 24px;
+  padding-bottom: 12px;
+  padding-left: 0;
   width: 100%
 }
 .menu {
   min-width: 200px;
+  padding-right: 24px;
 }
 .section-header > div:first-child {
   display: flex;

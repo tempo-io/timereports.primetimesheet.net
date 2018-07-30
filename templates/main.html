@@ -33,7 +33,7 @@
 </div>
 
 <div ng-if="!showGadgetConfiguration && !gadgetDialog" class="main margin">
-  <div class="menu" ng-if="!isGadget">
+  <div class="menu" ng-if="!isGadget && !hideMenu">
     <ng-include src="templates.menu"></ng-include>
   </div>
   <div class="content">
