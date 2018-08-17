@@ -175,6 +175,7 @@ describe("timesheetControllerTest", function() {
                         workingTimeInStatus: {},
                         startedTimeInStatus: {},
                         storeWorklog: {},
+                        inProgressIssuesJql: {},
                         timeBalanceColumns: {val: []},
                         timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
                             '3timespent', '4diff', '5originalestimateremaining', '6progress']},

@@ -26,7 +26,7 @@ header {
     display: table-cell;
 }
 div.select2-container.ng-invalid, input.ng-invalid, textarea.textarea.ng-invalid-required {
-  color: #d04437;
+  color: #d04437 !important;
 }
 /* https://ecosystem.atlassian.net/browse/AUI-1715 */
 .aui-select2-container.select2-allowclear .select2-choice .select2-search-choice-close {
@@ -234,6 +234,9 @@ th.holidayDayOfWeek {
 }
 a.fa {
     text-decoration: none;
+}
+.aui-button .fa {
+    color: #707070;
 }
 a.disabled {
     color: #707070 !important;

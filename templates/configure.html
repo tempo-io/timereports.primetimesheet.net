@@ -16,7 +16,7 @@
     {{'All changes will be saved automatically' | i18n}}
 </div>
 
-<form class="aui" style="width: 750px">
+<form class="aui" style="width: 750px" name="configForm">
     <div class="field-group">
         <label for="select2-auditorGroups">{{'Auditors Groups' | i18n}}</label>
         <input id="select2-auditorGroups" ng-model="auditorsGroups.val" aui-group-picker ng-group-changed-func="saveAuditorsGroups" type="text" title="{{'Auditors Groups' | i18n}}"/>
@@ -182,10 +182,10 @@
     <div class="field-group">
         <label for="workingDayStart">{{'Working Time In Status' | i18n}}</label>
         {{'From' | i18n}}&nbsp;<input id="workingDayStart" ng-model="workingTimeInStatus.val.from" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
-               type="number" class="text" title="{{'Working Day Start' | i18n}}" style="max-width: 70px;"/>
+               type="number" class="text" title="{{'Working Day Start' | i18n}}" style="max-width: 70px;" ng-model-options='{ debounce: 1000 }'/>
         &nbsp;{{'To' | i18n}}&nbsp;
         <input id="workingDayEnd" ng-model="workingTimeInStatus.val.to" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
-               type="number" class="text" title="{{'Working Day End' | i18n}}" style="max-width: 70px;"/>
+               type="number" class="text" title="{{'Working Day End' | i18n}}" style="max-width: 70px;" ng-model-options='{ debounce: 1000 }'/>
         <div class="aui-message aui-message-success msg-overlay"
              ng-show="workingTimeInStatusSaveSuccess">
             <strong>{{'Working Time In Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
@@ -242,7 +242,13 @@
     </div>
     <div class="field-group">
         <label for="maxFractionDigits">{{'Maximum Fraction Digits' | i18n}}</label>
-        <input id="maxFractionDigits" ng-model="maxFractionDigits.val" min="0" max="20" ng-change="saveMaxFractionDigits()" type="number" class="text" title="{{'Maximum Fraction Digits' | i18n}}"/>
+        <input id="maxFractionDigits"
+                ng-model="maxFractionDigits.val"
+                min="0" max="20"
+                ng-change="saveMaxFractionDigits()"
+                type="number" class="text"
+                ng-model-options='{ debounce: 1000 }'
+                title="{{'Maximum Fraction Digits' | i18n}}"/>
         <div class="aui-message aui-message-success msg-overlay"
              ng-show="maxFractionDigitsSaveSuccess">
             <strong>{{'Maximum Fraction Digits' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
@@ -356,6 +362,27 @@
     </div>
     <div class="field-group">
         <span class="description">{{'description.Work Description Required' | i18n}}</span>
+    </div>
+    <div class="field-group">
+        <label for="inProgressIssuesJql">{{'In Progress Issues jql' | i18n}}</label>
+        <input name="inProgressIssuesJql"
+               id="inProgressIssuesJql"
+               type="text"
+               class="text"
+               ng-model="inProgressIssuesJql.val"
+               jql
+               ng-model-options='{ debounce: 1000 }'
+               ng-change="saveInProgressIssuesJql(configForm)">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="inProgressIssuesJqlSaveSuccess">
+            <strong>{{'In Progress Issues jql' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+        <div ng-show="configForm.inProgressIssuesJql.$error.jql" role="alert" class="red">
+            {{configForm.inProgressIssuesJql.$error.jqlError}}
+        </div>
+    </div>
+    <div class="field-group">
+        <span class="description">{{'description.In Progress Issues jql' | i18n}}</span>
     </div>
     <div class="field-group" ng-if="storeWorklog">
         <label for="storeWorklog">{{'Store Worklog' | i18n}}</label>
