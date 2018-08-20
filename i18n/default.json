@@ -167,7 +167,7 @@
     "description.Time Tracking Columns": "These columns will be shown in Time Tracking Report and exported to files. Columns order will be the same. Please note, if nothing selected, all columns with default order will be shown.",
     "description.Time Balance Columns": "These columns will be shown in Time Balance Report and exported to files. Columns order will be the same. Please note, if nothing selected, all columns with default order will be shown.",
     "description.Columns For Export": "Base columns for export in exportData files. If nothing selected, all will be processed. Order is predefined.",
-    "description.In Progress Issues jql": "JQL for issues in Time Entry view.",
+    "description.In Progress Issues jql": "Specify JQL to always show issues in Timesheet in basic self user view and in Time Entry, e.g. 'assignee = currentUser() and status = \"In Progress\"'.",
 
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in auditors group.",
