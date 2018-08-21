@@ -170,7 +170,7 @@
     "description.In Progress Issues jql": "Specify JQL to always show issues in Timesheet in basic self user view and in Time Entry, e.g. 'assignee = currentUser() and status = \"In Progress\"'.",
 
     "Denied": "Denied",
-    "error.restriction.auditorsGroups": "You are not in auditors group.",
+    "error.restriction.auditorsGroups": "You are not in auditors group. Please select yourself in User field to see own worklogs.",
     "error.restriction.licenseError": "License is not Active.",
     "error.startDate.afterNow": "The Start Date is in the future.",
     "error.startDate.afterEnd": "The Start Date is later than the End Date.",
