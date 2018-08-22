@@ -1,6 +1,15 @@
 <form class="aui" name="subscribeForm" style="margin: 15px">
     <div>Send report by email&nbsp;<span class="aui-icon aui-icon-wait" ng-show="popupData.loading"></span></div>
     <fieldset style="padding-top: 10px">
+        <label>
+            {{'Now' | i18n}}
+        </label>
+        <a style="float: right" class="aui-button" ng-click="popupData.send(closePopup)" ng-disabled="popupData.loading" ng-class="{disabled: popupData.loading}">{{'Send' | i18n}}</a>
+    </fieldset>
+    <fieldset style="padding-top: 10px; margin-top: 10px; border-top: 1px solid #cccccc;">
+        <label>
+            {{'Periodically' | i18n}}
+        </label>
         <select id="every-week-on" class="select" style="min-width: 137px"
                 title="{{'Email' | i18n}}"
                 ng-model="popupData.everyWeekOptions.selected"
@@ -11,7 +20,7 @@
     </fieldset>
     <fieldset style="padding-top: 10px">
         <label>
-            At
+            {{'At' | i18n}}
         </label>
         <span style="display: block">
             <select class="select short-field"
@@ -29,7 +38,7 @@
             <select class="select short-field"
                 ng-model="popupData.everyWeekOptions.period"
                 ng-options="item for item in ['am', 'pm']"
-                style="max-width: 70px; padding-top: 3px"
+                style="max-width: 60px; padding-top: 3px"
                 required>
             </select>
         </span>
@@ -37,8 +46,8 @@
     <div style="padding-top: 20px; text-align: right">
         <div>
             <input class="aui-button aui-button-primary" type="submit" ng-value="popupData.currentView.jobId ? 'Update' : 'Subscribe'" ng-disabled="subscribeForm.$invalid" ng-click="popupData.subscribe(closePopup)">
-            <a ng-if="popupData.currentView.jobId" style="margin-left: 10px" class="aui-button" ng-click="popupData.unsubscribe(closePopup)">Unsubscribe</a>
-            <a style="margin-left: 10px" ng-click="closePopup()">Cancel</a>
+            <a ng-if="popupData.currentView.jobId" style="margin-left: 10px" class="aui-button" ng-click="popupData.unsubscribe(closePopup)">{{'Unsubscribe' | i18n}}</a>
+            <a style="margin-left: 10px" ng-click="closePopup()">{{'Cancel' | i18n}}</a>
         </div>
     </div>
 </form>

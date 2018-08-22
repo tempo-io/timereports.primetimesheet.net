@@ -43,6 +43,12 @@
 
     "From": "From",
     "To": "To",
+    "Now": "Now",
+    "Send": "Send",
+    "Periodically": "Periodically",
+    "At": "At",
+    "Unsubscribe": "Unsubscribe",
+    "Cancel": "Cancel",
 
     "Previous Day": "Previous Day",
     "Previous Week": "Previous Week",
