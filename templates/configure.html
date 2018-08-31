@@ -421,11 +421,11 @@
             {{'description.Cache Worklog' | i18n}}
         </span>
     </div>
-    <div class="field-group" ng-if="true || storeWorklog">
+    <div class="field-group" ng-if="subscribe">
         <label for="getApiKey">{{'REST' | i18n}}</label>
-        <button type="button" class="btn btn-default" id="getApiKey" ng-click="getApiKey()" ng-class="{disabled: false && !storeWorklog.val}">{{'Get Key' | i18n}}</button>
+        <button type="button" class="btn btn-default" id="getApiKey" ng-click="getApiKey()" ng-class="{disabled: !subscribe}">{{'Get Key' | i18n}}</button>
     </div>
-    <div class="field-group" ng-if="true || storeWorklog">
+    <div class="field-group" ng-if="subscribe">
         <span class="description" data-ng-bind-html="'description.REST' | i18n | htmlSafe"></span>
     </div>
 </form>
