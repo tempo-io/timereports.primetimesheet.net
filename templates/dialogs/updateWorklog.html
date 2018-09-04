@@ -12,7 +12,7 @@
                     Time Spent<span class="aui-icon icon-required"> required</span>
                 </label>
                 <input type="text" id="log-work-time-logged" name="timeSpent" class="text short-field" ng-model="worklog.timeSpent" autofocus required timespent/>
-                <span id="log-work-time-example" class="aui-form example">(eg. 4h 30m, or 2d for two entries of 8h per day)</span>
+                <span id="log-work-time-example" class="aui-form example">(eg. 4h 30m{{dialogType == 'add' ? ', or 2d for two entries of 8h per day' : ''}})</span>
                 <div ng-if="showMore" class="description">An estimate of how much time you have spent working.</div>
             </div>
             <div ng-if="showMore" class="field-group test-datepicker">
