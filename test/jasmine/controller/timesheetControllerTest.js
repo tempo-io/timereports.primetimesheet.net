@@ -868,6 +868,43 @@ describe("timesheetControllerTest", function() {
         expect(scope.pivotTable.sum).toBe(79200 + 3600);
     }));
 
+    it('inplace replacement, add array of worklogs', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {startDate: '2014-02-24', endDate: '2014-02-25', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'TIME'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+        expect(scope.loading).toBeFalsy();
+
+        expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-1']);
+        expect(scope.pivotTable.sum).toBe(79200);
+        expect(scope.pivotTable).toHaveRowsNumber(4);
+        expect(scope.pivotTable).toHaveColumnsNumber(2);
+
+        var data = {
+            action: "added",
+            issueKey: "TIME-1",
+            worklog: [{timeSpentSeconds: 1000, "created": "2014-02-24T18:03:49.225+0100", "started": "2014-02-24T18:03:49.225+0100"},
+                {timeSpentSeconds: 2000, "created": "2014-02-24T18:03:49.225+0100", "started": "2014-02-25T18:03:49.225+0100"}]
+        };
+        scope.dialogCloseFunction(data);
+        $timeout.flush();
+        expect(scope.pivotTable).toHaveRowsNumber(4);
+        expect(scope.pivotTable).toHaveColumnsNumber(2);
+        expect(scope.pivotTable.sum).toBe(79200 + 1000 + 2000);
+    }));
+
     it('inplace replacement, add subtask from allIssues, sumSubTasks: true', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
         var scope = $rootScope.$new();
         $controller('TimesheetController', {

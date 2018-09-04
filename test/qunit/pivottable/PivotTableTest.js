@@ -515,6 +515,46 @@ QUnit.test("TimesheetUtils", function() {
     QUnit.assert.equal(TimesheetUtils.convertHoursToFormat12(5).hour, 5, '#convertHoursToFormat12 :: 5AM');
     QUnit.assert.equal(TimesheetUtils.convertHoursToFormat12(5).pm, false, '#convertHoursToFormat12 :: 5AM');
 });
+QUnit.test("TimesheetUtils.getTimeSpents", function() {
+    var config = {defaultUnit: 'h', workingDaysPerWeek: 5};
+
+    var timespents = TimesheetUtils.getTimeSpents('5', config);
+    QUnit.assert.equal(timespents.length, 1, "length");
+    QUnit.assert.equal(timespents[0], '300m', "5h");
+
+    var timespents = TimesheetUtils.getTimeSpents('1d', config);
+    QUnit.assert.equal(timespents.length, 1, "length");
+    QUnit.assert.equal(timespents[0], '1d', "1d");
+
+    var timespents = TimesheetUtils.getTimeSpents('3d 5h', config);
+    QUnit.assert.equal(timespents.length, 4, "length");
+    QUnit.assert.equal(timespents[0], '300m', "5h");
+    QUnit.assert.equal(timespents[3], '1d', "1d");
+
+    var timespents = TimesheetUtils.getTimeSpents('2w 3d 5h', config);
+    QUnit.assert.equal(timespents.length, 14, "length");
+    QUnit.assert.equal(timespents[0], '300m', "5h");
+    QUnit.assert.equal(timespents[13], '1d', "1d");
+
+    var timespents = TimesheetUtils.getTimeSpents('2w 3.5d 5h', config);
+    QUnit.assert.equal(timespents.length, 15, "length");
+    QUnit.assert.equal(timespents[0], '300m', "5h");
+    QUnit.assert.equal(timespents[1], '0.5d', "0.5d");
+    QUnit.assert.equal(timespents[13], '1d', "1d");
+
+    var timespents = TimesheetUtils.getTimeSpents('0.2w', config);
+    QUnit.assert.equal(timespents.length, 1, "length");
+    QUnit.assert.equal(timespents[0], '1d', "0.2w");
+
+    var timespents = TimesheetUtils.getTimeSpents('1.5d', config);
+    QUnit.assert.equal(timespents.length, 2, "length");
+    QUnit.assert.equal(timespents[0], '0.5d', "0.5d");
+    QUnit.assert.equal(timespents[1], '1d', "1d");
+
+    var timespents = TimesheetUtils.getTimeSpents('150h', config);
+    QUnit.assert.equal(timespents.length, 1, "length");
+    QUnit.assert.equal(timespents[0], (150 * 60) + 'm', "150h");
+});
 QUnit.test("Timesheet: 2 level grouping", function() {
     var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', categorizeByField: 'issuetype', groupByField: 'reporter', moreFields: ['timespent'], startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
     for (var i in TimeData.issues) {
