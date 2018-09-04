@@ -35,6 +35,8 @@ window.AP = {
         options.success(StatusData);
       } else if (options.url.match(/\/properties\/configuration/)) { // hosted configuraiton
         options.success(PropertiesConfig);
+      } else if (options.url.match(/\/properties\/preferences4admin/)) { // hosted configuraiton
+        options.success(PropertiesPreferences4admin);
       } else if (options.url.match(/\/configuration/)) {
         options.success({timeTrackingEnabled: true, timeTrackingConfiguration: {workingHoursPerDay: 8, workingDaysPerWeek: 5, defaultUnit: 'm'}});
       } else if (options.url.match(/\/properties/)) { // hosted keys
@@ -90,7 +92,8 @@ var UserData = {name: 'noSuchUser'};
 var PropertiesConfig = {value: [{key: 'workingTimeInStatus', val: true},
     {key: 'startedTimeInStatus', val: false},
     {key: 'storeWorklog', val: false}]};
-var Properties = {keys: [{key: 'configuration'}]};
+var PropertiesPreferences4admin = {};
+var Properties = {keys: [{key: 'configuration'}, {key: 'preferences4admin'}]};
 var IssueWorklog, Issue;
 
 // https://docs.atlassian.com/jira/REST/6.2/#d2e2438

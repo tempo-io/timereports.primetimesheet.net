@@ -50,6 +50,11 @@
     "Unsubscribe": "Unsubscribe",
     "Cancel": "Cancel",
 
+    "Use default": "Use default",
+    "Default": "Default",
+    "Enabled": "Enabled",
+    "Disabled": "Disabled",
+
     "Previous Day": "Previous Day",
     "Previous Week": "Previous Week",
     "Previous Month": "Previous Month",
@@ -184,6 +189,8 @@
     "error.cannotLogWorkIssue": "Work can not be logged for the issue.",
 
     "Configure": "Configure",
+    "Configuration": "Configuration",
+    "User Preferences": "User Preferences",
     "Go to": "Go to",
     "Log Work for": "Log Work for",
     "Spent": "Spent",

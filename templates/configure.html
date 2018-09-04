@@ -226,20 +226,6 @@
     <div class="field-group">
         <span class="description">{{'description.Duration Type' | i18n}}</span>
     </div>
-    <div class="field-group" ng-show="problemReporter">
-        <label for="onErrorIgnore">{{'Disable Problem Reporter' | i18n}}</label>
-        <input id="onErrorIgnore"
-                type="checkbox"
-                class="checkbox"
-                ng-model="onErrorIgnore.val"
-                ng-change="saveOnErrorIgnore()">
-        <div class="aui-message aui-message-success msg-overlay" ng-show="onErrorIgnoreSaveSuccess">
-            <strong>{{'Disable Problem Reporter' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
-        </div>
-    </div>
-    <div class="field-group" ng-show="problemReporter">
-        <span class="description">{{'description.Disable Problem Reporter' | i18n}}</span>
-    </div>
     <div class="field-group">
         <label for="maxFractionDigits">{{'Maximum Fraction Digits' | i18n}}</label>
         <input id="maxFractionDigits"
@@ -256,28 +242,6 @@
     </div>
     <div class="field-group">
         <span class="description">{{'description.Maximum Fraction Digits' | i18n}}</span>
-    </div>
-    <div class="field-group">
-        <label for="trackSupportData">{{'Track Support Data' | i18n}}</label>
-        <input id="trackSupportData"
-               type="checkbox"
-               class="checkbox"
-               ng-model="trackSupportData.val"
-               ng-change="saveTrackSupportData()">
-        <div class="aui-message aui-message-success msg-overlay"
-             ng-show="trackSupportDataSaveSuccess">
-            <strong>{{'Track Support Data' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
-        </div>
-        <div class="aui-message aui-message-success msg-overlay"
-             ng-show="trackSupportDataClearSuccess">
-            {{'Support Files were successfully deleted' | i18n}}
-        </div>
-    </div>
-    <div class="field-group">
-        <span class="description">
-            {{'description.Track Support Data' | i18n}}
-            <!--span ng-show="trackSupportData.val" title="{{'Clear Support Data' | i18n}}" class="fa fa-trash" ng-click="clearSupportData()"></span-->
-        </span>
     </div>
     <div class="field-group">
         <label for="worklogVisibilityGroup">{{'Worklog Visibility Group' | i18n}}</label>

@@ -20,7 +20,11 @@ var translations = {
     "datestarted": "Date Started",
     "username": "Username",
     "displayname": "Display Name",
-    "descriptionstatus": "Work Description / Status"
+    "descriptionstatus": "Work Description / Status",
+    "Use default": "Use default",
+    "Default": "Default",
+    "Enabled": "Enabled",
+    "Disabled": "Disabled"
 };
 QUnit.test("Excel Export", function() {
     var excelView = new ExcelView(TimeData.issues);

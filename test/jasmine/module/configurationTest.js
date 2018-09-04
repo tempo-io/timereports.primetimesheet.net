@@ -8,22 +8,57 @@ describe("configurationModule", function() {
     beforeEach(function() {
         module('talis.services.logging');
         module('configuration');
-        inject(function(_$httpBackend_) {
+        inject(function($timeout, _$httpBackend_) {
+            AP.$timeout = $timeout;
             $httpBackend = _$httpBackend_;
-            configurationRequestHandler = $httpBackend.when('GET', '/api/configuration/').respond([{key: 'auditorsGroups', value: ['jira-users']}]);
         });
     });
 
     afterEach(function() {
+        delete AP.$timeout;
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.verifyNoOutstandingRequest();
     });
 
-    it('get configuration', inject(function(configurationService) {
-        var promise = configurationService.getConfiguration();
-        promise.then(function() {
-            expect(configurationService.data.config['auditorsGroups'].key).toEqual('auditorsGroups');
-            expect(configurationService.data.config['auditorsGroups'].value).toEqual(['jira-users']);
+    it('get configuration', function (done) {
+        inject(function(configurationService, $timeout) {
+            configurationService.getConfiguration({key: 'admin'}).then(function(config) {
+                expect(config['weekendType'].val).toEqual('60');
+                expect(config['workingTimeInStatus'].val).toEqual({from: 9, to: 17});
+                expect(config['durationType'].val).toEqual('h');
+                expect(config['maxFractionDigits'].val).toEqual(2);
+                expect(config['startedTimeInStatus'].val).toBe(false);
+                done();
+            }).catch(done.fail);
+            $timeout.flush();
         });
-    }));
+    });
+
+    it('get user preferences', function (done) {
+        inject(function(configurationService, $timeout) {
+            configurationService.getUserPreferences({key: 'admin'}).then(function(config) {
+                expect(config['weekendType'].val).toEqual('default');
+                expect(config['workingTimeInStatus'].val).toBe(undefined);
+                expect(config['durationType'].val).toEqual('default');
+                expect(config['maxFractionDigits'].val).toBe(undefined);
+                expect(config['startedTimeInStatus']).toBe(undefined);
+                done();
+            }).catch(done.fail);
+            $timeout.flush();
+        });
+    });
+
+    it('get user configuration', function (done) {
+        inject(function(configurationService, $timeout) {
+            configurationService.getUserConfiguration({key: 'admin'}).then(function(config) {
+                expect(config['weekendType'].val).toEqual('60');
+                expect(config['workingTimeInStatus'].val).toEqual({ from: 9, to: 17 });
+                expect(config['durationType'].val).toEqual('h');
+                expect(config['maxFractionDigits'].val).toEqual(2);
+                expect(config['startedTimeInStatus'].val).toBe(false);
+                done();
+            }).catch(done.fail);
+            $timeout.flush();
+        });
+    });
 });

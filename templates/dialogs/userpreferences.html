@@ -1,0 +1,133 @@
+<!-- Dialog header -->
+<header class="aui-dialog2-header">
+    <!-- The dialog''s title -->
+    <h1 class="aui-dialog2-header-main">
+        {{'User Preferences' | i18n }}
+    </h1>
+    <!-- Close icon -->
+    <a class="aui-dialog2-header-close" ng-click="cancel()">
+        <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+    </a>
+</header>
+<!-- Main dialog content -->
+<div class="aui-dialog2-content">
+    <div class="aui-message aui-message-info" style="margin: 0">
+        {{'All changes will be saved automatically' | i18n}}
+    </div>
+    <form class="aui">
+        <div class="field-group">
+            <label for="select2-weekendType">{{'Weekend Type' | i18n}}</label>
+            <select id="select2-weekendType"
+                    class="select"
+                    title="{{'Weekend Type' | i18n}}"
+                    ng-model="weekendType.val"
+                    ng-change="saveWeekendType()"
+                    ng-options="item.id as item.label for item in allWeekendTypes">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="weekendTypeSaveSuccess">
+                <strong>{{'Weekend Type' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Weekend Type' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="workingDayStart">{{'Working Time In Status' | i18n}}</label>
+            {{'From' | i18n}}&nbsp;<input id="workingDayStart" ng-model="workingTimeInStatus.val.from" min="0" max="24"
+                                          ng-change="saveWorkingTimeInStatus()" type="number" class="text"
+                                          title="{{'Working Day Start' | i18n}}"
+                                          placeholder="{{workingTimeInStatus.val ? '' : defaults.workingTimeInStatus.defaultFrom}}"
+                                          style="max-width: 93px; "/>
+            &nbsp;{{'To' | i18n}}&nbsp;
+            <input id="workingDayEnd" ng-model="workingTimeInStatus.val.to" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
+                   type="number" class="text" title="{{'Working Day End' | i18n}}"
+                   placeholder="{{workingTimeInStatus.val ? '' : defaults.workingTimeInStatus.defaultTo}}"
+                   style="max-width: 93px;"/>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="workingTimeInStatusSaveSuccess">
+                <strong>{{'Working Time In Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Working Time In Status' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="select2-durationType">{{'Duration Type' | i18n}}</label>
+            <select id="select2-durationType"
+                    class="select"
+                    title="{{'Duration Type' | i18n}}"
+                    ng-model="durationType.val"
+                    ng-change="saveDurationType()"
+                    ng-options="item.id as item.label for item in allDurationTypes">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="durationTypeSaveSuccess">
+                <strong>{{'Duration Type' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Duration Type' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="maxFractionDigits">{{'Maximum Fraction Digits' | i18n}}</label>
+            <input id="maxFractionDigits"
+                   ng-model="maxFractionDigits.val"
+                   min="0" max="20"
+                   ng-change="saveMaxFractionDigits()"
+                   type="number" class="text"
+                   title="{{'Maximum Fraction Digits' | i18n}}"
+                   placeholder="{{defaults.maxFractionDigits.default}}"/>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="maxFractionDigitsSaveSuccess">
+                <strong>{{'Maximum Fraction Digits' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Maximum Fraction Digits' | i18n}}</span>
+        </div>
+        <div class="field-group" ng-show="problemReporter">
+            <label for="onErrorIgnore">{{'Disable Problem Reporter' | i18n}}</label>
+            <input id="onErrorIgnore"
+                   type="checkbox"
+                   class="checkbox"
+                   ng-model="onErrorIgnore.val"
+                   ng-change="saveOnErrorIgnore()">
+            <div class="aui-message aui-message-success msg-overlay" ng-show="onErrorIgnoreSaveSuccess">
+                <strong>{{'Disable Problem Reporter' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group" ng-show="problemReporter">
+            <span class="description">{{'description.Disable Problem Reporter' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="trackSupportData">{{'Track Support Data' | i18n}}</label>
+            <input id="trackSupportData"
+                   type="checkbox"
+                   class="checkbox"
+                   ng-model="trackSupportData.val"
+                   ng-change="saveTrackSupportData()">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="trackSupportDataSaveSuccess">
+                <strong>{{'Track Support Data' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="trackSupportDataClearSuccess">
+                {{'Support Files were successfully deleted' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">
+                {{'description.Track Support Data' | i18n}}
+                <!--span ng-show="trackSupportData.val" title="{{'Clear Support Data' | i18n}}" class="fa fa-trash" ng-click="clearSupportData()"></span-->
+            </span>
+        </div>
+    </form>
+</div>
+<!-- Dialog footer -->
+<footer class="aui-dialog2-footer">
+    <!-- Actions to render on the right of the footer -->
+    <div class="aui-dialog2-footer-actions">
+        <button class="aui-button aui-button-link" ng-click="cancel()">Close</button>
+    </div>
+</footer>

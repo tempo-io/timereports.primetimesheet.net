@@ -29,7 +29,11 @@ describe("pivottableServiceTest", function() {
                 "username": "Username",
                 "displayname": "Display Name",
                 "emailaddress": "Email Address",
-                "descriptionstatus": "Work Description / Status"
+                "descriptionstatus": "Work Description / Status",
+                "Use default": "Use default",
+                "Default": "Default",
+                "Enabled": "Enabled",
+                "Disabled": "Disabled"
             };
             for (var pivotTableType in PivotTableType) {
                 translations[pivotTableType] = pivotTableType;

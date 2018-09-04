@@ -97,7 +97,11 @@ describe("timesheetControllerTest", function() {
                 "username": "Username",
                 "displayname": "Display Name",
                 "emailaddress": "Email Address",
-                "descriptionstatus": "Work Description / Status"
+                "descriptionstatus": "Work Description / Status",
+                "Use default": "Use default",
+                "Default": "Default",
+                "Enabled": "Enabled",
+                "Disabled": "Disabled"
             };
             for (var pivotTableType in PivotTableType) {
                 translations[pivotTableType] = pivotTableType;
@@ -125,7 +129,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -158,6 +162,7 @@ describe("timesheetControllerTest", function() {
                 getConfiguration: function () {
                     var deferred = $q.defer();
                     deferred.resolve({
+                        maxFractionDigits: {},
                         compositionIssueLink: {},
                         parentIssueField: {},
                         parentIssueType: {},
@@ -183,13 +188,53 @@ describe("timesheetControllerTest", function() {
                     });
                     return deferred.promise;
                 },
+                getUserConfiguration: function () {
+                    var deferred = $q.defer();
+                    deferred.resolve({
+                        maxFractionDigits: {},
+                        compositionIssueLink: {},
+                        parentIssueField: {},
+                        parentIssueType: {},
+                        auditorsGroups: {},
+                        weekendType: {},
+                        preserveStartedTime: {},
+                        statuses: {},
+                        timeInStatusCategories: {},
+                        prettyDuration: {val: true},
+                        workLabels: {},
+                        workDescriptionRequired: {},
+                        worklogVisibilityGroup: {},
+                        worklogVisibilityRole: {},
+                        durationType: {},
+                        workingTimeInStatus: {},
+                        startedTimeInStatus: {},
+                        storeWorklog: {},
+                        inProgressIssuesJql: {},
+                        timeBalanceColumns: {val: []},
+                        timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
+                            '3timespent', '4diff', '5originalestimateremaining', '6progress']},
+                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']}
+                    });
+                    return deferred.promise;
+                },
+                getUserPreferences: function () {
+                    var deferred = $q.defer();
+                    deferred.resolve({
+                        maxFractionDigits: {},
+                        weekendType: {},
+                        durationType: {},
+                        workingTimeInStatus: {},
+                        startedTimeInStatus: {}
+                    });
+                    return deferred.promise;
+                },
                 getProjects: function() {
                   var deferred = $q.defer();
                   deferred.resolve(ProjectsData);
                   return deferred.promise;
                 }
             },
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -236,7 +281,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -266,7 +311,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -302,7 +347,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -333,7 +378,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -364,7 +409,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -394,7 +439,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -426,7 +471,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -458,7 +503,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -490,7 +535,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -522,7 +567,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -553,7 +598,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -586,7 +631,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {},
+            loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
 
@@ -679,7 +724,7 @@ describe("timesheetControllerTest", function() {
         expect(scope.loading).toBe(2); // no concurrent execute!
 
         $httpBackend.flush();
-        $timeout.flush(100); // concurrent init and execute
+        $timeout.flush(200); // concurrent init and execute
         expect(scope.loading).toBe(0);
         $timeout.verifyNoPendingTasks();
 

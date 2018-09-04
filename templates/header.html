@@ -25,8 +25,14 @@
                     </div>
                 </div>
             </li>
-            <li ng-show="isAdmin == true">
-                <a class="fa fa-cog" href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/configuration" target="_parent" title="{{'Configure' | i18n }}"/>
+            <li>
+                <i href="#conf" class="fa fa-cog aui-dropdown2-trigger x-ng-click" x-ng-click="" title="{{'Configure' | i18n }}" aria-owns="conf" style="width: 0; padding-right: 15px !important"/>
+                <div id="conf" class="aui-style-default aui-dropdown2">
+                    <ul class="aui-list-truncate">
+                        <li><a style="color:#333" ng-click="openUserPreferencesDialog()">{{'User Preferences' | i18n }}</a></li>
+                        <li ng-show="isAdmin == true"><a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/configuration" target="_parent">{{'Configuration' | i18n }}</a></li>
+                    </ul>
+                </div>
             </li>
             <li ng-if="!licenseStatus.isActive" ng-bind-html="licenseStatus.message"></li>
         </ul>
