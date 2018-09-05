@@ -92,7 +92,7 @@
             "name": {
               "value": "Time Entry"
             },
-            "key": "timeentry-panel"
+            "key": "timeentry-issue-content"
           }
         ],
         "webPanels": [
