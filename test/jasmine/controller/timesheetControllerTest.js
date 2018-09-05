@@ -620,6 +620,45 @@ describe("timesheetControllerTest", function() {
         expect(scope.rowKeySize).toBe(5);
     }));
 
+    xit('PARAMETERS: pivotTableType=Timesheet, sumSubTasks: true, 3 levels', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        AP.request = function(options) {
+            if (options.url.match(/search/)) {
+                var time7 = angular.copy(TimeDataTIME_7);
+                time7.fields.parent = {"key": "TIME-4"};
+                // TIME-3->TIME-4->TIME-7
+                var timeData = angular.copy(TimeData);
+                timeData.issues = timeData.issues.concat(time7);
+                options.success(timeData);
+            } else {
+                AP.requestBak(options);
+            }
+        };
+
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {includeEmpty: true, sumSubTasks: true, startDate: '2014-02-24', numOfWeeks: 1, moreFields: ['timespent'],  pivotTableType: 'Timesheet', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'TIME'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(scope.TimesheetUtils).not.toBeNull();
+        expect(scope.loading).toBeFalsy();
+        expect(scope.pivotTable).not.toBeNull();
+        expect(scope.pivotTable.pivotStrategy).not.toBeNull();
+        expect(scope.pivotTable.rows['TIME-3'].data.length).toBe(5 + 1);
+        expect(scope.pivotTable.rows['TIME-3'].rowKey.issue.fields.timespent).toBe((12 + 1) * 3600);
+    }));
+
     it('PARAMETERS: user=noSuchUser', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
 
         var scope = $rootScope.$new();
@@ -1115,6 +1154,75 @@ describe("timesheetControllerTest", function() {
         expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-7']);
         expect(scope.pivotTable).toHaveRowsNumber(1);
         expect(scope.pivotTable.sum).toBe(3600);
+    }));
+
+    it('inplace replacement, add and delete subtask, sumSubTasks: true, includeEmpty: true, moreFields', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {moreFields: ['timespent'], includeEmpty: true, sumSubTasks: true, startDate: '2017-10-03', endDate: '2017-10-03', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {},
+            projectKey: 'TIME'
+        });
+
+        var checkCommon = function () {
+            expect(scope.pivotTable).toHaveRowsNumber(4);
+            expect(Object.keys(scope.pivotTable.rows)).toContainAll(['TIME-1', 'TIME-2', 'TIME-3', 'TIME-5']);
+            expect(scope.pivotTable.rows['TIME-5'].data.length).toBe(1);
+        };
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+        expect(scope.loading).toBeFalsy();
+
+        checkCommon();
+        expect(scope.pivotTable.rows['TIME-5'].rowKey._issue.fields['original_timespent']).toBe(undefined);
+        expect(scope.pivotTable.rows['TIME-5'].rowKey._issue.fields['timespent']).toBe(36000 + 2 * 3600);
+        expect(scope.pivotTable.rows['TIME-5'].data[0].worklog).toBe(undefined);
+
+        var data = {
+            action: "added",
+            issueKey: "TIME-6",
+            worklog: {
+                "id": "id",
+                "created": "2017-10-03T18:03:49.225+0100",
+                "started": "2017-10-03T18:03:49.225+0100",
+                "timeSpent": "1h",
+                "timeSpentSeconds": 3600}
+        };
+
+        scope.dialogCloseFunction(data);
+        $timeout.flush();
+
+        checkCommon();
+        expect(scope.pivotTable.rows['TIME-5'].rowKey._issue.fields['original_timespent']).toBe(36000);
+        expect(scope.pivotTable.rows['TIME-5'].rowKey._issue.fields['timespent']).toBe(36000 + 2 * 3600);
+        expect(scope.pivotTable.rows['TIME-5'].data[0].worklog).not.toBe(undefined);
+
+        var dataDel = {
+            action: "deleted",
+            issueKey: "TIME-6",
+            worklogOld: {
+                "id": "id",
+                "created": "2017-10-03T18:03:49.225+0100",
+                "started": "2017-10-03T18:03:49.225+0100",
+                "timeSpent": "1h",
+                "timeSpentSeconds": 3600}
+        };
+        scope.dialogCloseFunction(dataDel);
+        $timeout.flush();
+
+        checkCommon();
+        expect(scope.pivotTable.rows['TIME-5'].rowKey._issue.fields['original_timespent']).toBe(36000);
+        expect(scope.pivotTable.rows['TIME-5'].rowKey._issue.fields['timespent']).toBe(36000 + 2 * 3600);
+        expect(scope.pivotTable.rows['TIME-5'].data[0].worklog).toBe(undefined);
+
     }));
 
 });

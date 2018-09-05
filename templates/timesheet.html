@@ -126,17 +126,19 @@
                     <td class="nav">&nbsp;</td>
                     <td class="nav">&nbsp;</td>
                     <td colspan="{{rowKeySize - 3}}" class="nav summary">
-                        <span ng-if="data.rowKey._issue">
-                            <issue-type issue="data.rowKey._issue" />
-                        </span>
-                        <span ng-if="data.rowKey._issue.fields.parent && data.rowKey._issue.fields.parent.key != data.rowKey._issue.key">
-                            <issue-key issue="data.rowKey._issue.fields.parent" show-title="true" class="parentIssue" />
-                        </span>
-                        <span ng-if="data.rowKey._issue">
-                            <issue-key issue="data.rowKey._issue" />
-                        </span>
-                        <span ng-if="data.rowKey._issue">
-                            <issue-summary issue="data.rowKey._issue" />
+                        <span ng-if="data.rowKey._issue && (data.rowKey._issue.key != data.rowKey.issue.key)">
+                            <span ng-if="data.rowKey._issue">
+                                <issue-type issue="data.rowKey._issue" />
+                            </span>
+                            <span ng-if="data.rowKey._issue.fields.parent && data.rowKey._issue.fields.parent.key != data.rowKey._issue.key">
+                                <issue-key issue="data.rowKey._issue.fields.parent" show-title="true" class="parentIssue" />
+                            </span>
+                            <span ng-if="data.rowKey._issue">
+                                <issue-key issue="data.rowKey._issue" />
+                            </span>
+                            <span ng-if="data.rowKey._issue">
+                                <issue-summary issue="data.rowKey._issue" />
+                            </span>
                         </span>
                         <span ng-if="data.worklog._issue">
                             <issue-key issue="data.worklog._issue" show-title="true" />
@@ -149,7 +151,7 @@
                         </span>
                     </td>
                     <td class="nav" width="1%" ng-repeat="field in row.moreFields">
-                        <issue-field name="field" field="data.rowKey._issue.fields[field]" issue="data.rowKey._issue" jira-config="jiraConfig" ng-if="data.rowKey._issue"/>
+                        <issue-field name="field" field="data.rowKey._issue.fields[field]" issue="data.rowKey._issue" jira-config="jiraConfig" ng-if="data.rowKey._issue" once="pivotTable"/>
                     </td>
                     <td class="nav border" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}" ng-repeat="column in pivotTable.sortedColumns()">
                         <span ng-if="data.columnKey.keyValue == column.columnKey.keyValue">
