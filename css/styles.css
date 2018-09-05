@@ -165,6 +165,15 @@ th {
 .is-gadget #slider-wrapper {
     width: 250px;
 }
+.issuetime .colHeaderLink:first-child {
+    width: 100%;
+}
+.issuetime .colHeaderLink:not(:first-child) {
+    padding: 2px;
+}
+.results-wrap.issuetime {
+    margin-left: -4px;
+}
 .legendColorBox {
     width: 1px;
 }
