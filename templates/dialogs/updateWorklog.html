@@ -2,7 +2,7 @@
             <label for="log-work-issue">
                 Issue Key <span class="aui-icon icon-required"></span><span class="content">required</span>
             </label>
-            <input type="text" class="text long-field" id="log-work-issue" name="log-work-issue" ng-model="worklog.issueKey" log-work-permission aui-issue-picker ng-disabled="dialogType != 'add'" required>
+            <input type="text" class="text long-field" id="log-work-issue" name="log-work-issue" ng-model="worklog.issueKey" log-work-permission aui-issue-picker ng-disabled="dialogType != 'add'" required focus-if="!worklog.issueKey">
         </div>
             <legend>
                 <span>Time entry</span>
@@ -11,7 +11,7 @@
                 <label for="log-work-time-logged">
                     Time Spent<span class="aui-icon icon-required"> required</span>
                 </label>
-                <input type="text" id="log-work-time-logged" name="timeSpent" class="text short-field" ng-model="worklog.timeSpent" autofocus required timespent/>
+                <input type="text" id="log-work-time-logged" name="timeSpent" class="text short-field" ng-model="worklog.timeSpent" required timespent focus-if="worklog.issueKey"/>
                 <span id="log-work-time-example" class="aui-form example">(eg. 4h 30m{{dialogType == 'add' ? ', or 1d 2h for two entries of 8h and 2h per day' : ''}})</span>
                 <div ng-if="showMore" class="description">An estimate of how much time you have spent working.</div>
             </div>
