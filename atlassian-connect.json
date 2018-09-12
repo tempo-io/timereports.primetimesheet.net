@@ -92,6 +92,25 @@
             "name": {
               "value": "Time Entry"
             },
+            "conditions": [
+              {
+                "and": [
+                  {
+                    "condition": "addon_property_contains_any_user_group",
+                    "params": {
+                      "propertyKey": "configuration",
+                      "objectName": "timeentryPanelGroups"
+                    }
+                  },
+                  {
+                    "condition": "has_issue_permission",
+                    "params": {
+                      "permission": "WORK_ON_ISSUES"
+                    }
+                  }
+                ]
+              }
+            ],
             "key": "timeentry-issue-content"
           }
         ],
