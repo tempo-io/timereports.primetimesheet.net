@@ -65,7 +65,7 @@
                                 ng-if="subscribe" ng-style="{'font-weight': currentView.jobId ? 'bold' : 'normal'}"></i>
                         </span>
                     </th>
-                    <th class="colHeaderLink" ng-repeat="field in pivotTable.moreFields">
+                    <th class="colHeaderLink moreFields" ng-repeat="field in pivotTable.moreFields">
                         <span ng-bind="moreFieldsOptions.findOption(field).label"></span>
                     </th>
                     <th ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}">
@@ -106,7 +106,7 @@
                         &nbsp;
                         <span ng-if="row.rowKey._issue">{{row.num != 1 ? 'issues' : 'issue' | i18n:{placeholders:[row.num]} }}</span>
                     </td>
-                    <td class="nav" nowrap ng-repeat="field in row.moreFields">
+                    <td class="nav" ng-repeat="field in row.moreFields">
                         <issue-field name="field" field="row.rowKey._issue.fields[field] || row.rowKey.issue.fields[field] || row.rowKey.field.fields[field]"
                                      issue="row.rowKey._issue || row.rowKey.issue || row.rowKey.field" jira-config="jiraConfig"
                                      ng-if="row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue'" />

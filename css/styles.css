@@ -108,10 +108,12 @@ th {
     color: #999999;
     font-weight: 400;
 }
+#issuetable th.moreFields {
+    width: 20%;
+}
 #issuetable td {
     line-height: 1.286;
     padding: 5px 3px;
-    white-space: nowrap;
     vertical-align: top;
 }
 #issuetable td.summary {
