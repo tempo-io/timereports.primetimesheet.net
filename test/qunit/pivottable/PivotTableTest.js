@@ -453,6 +453,12 @@ QUnit.test("TimesheetUtils.convertDate", function() {
   date = TimesheetUtils.convertDate("2015-02-24T20:00:00.000+0000", 'Europe/Moscow');
   QUnit.assert.equal(date.getDate(), 24, "Moscow 2015 day of month");
 });
+QUnit.test("Calculated endDate", function() {
+  var date = TimesheetUtils.getLastDayOfTheMonth(TimesheetUtils.addMonths(moment('2018-01-31'), 1));
+  var date20180228 = new Date('2018-02-28');
+  QUnit.assert.equal(date.getDate(), 28, "Date");
+  QUnit.assert.equal(date.getMonth(), 1, "Month"); // starts from 0
+});
 QUnit.test("PivotTable.getOrCreate", function() {
     var getOrCreateObject = {};
     var RecordClass = function(key){this.key = key;};
