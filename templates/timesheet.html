@@ -62,7 +62,7 @@
                             </div>
                             <i id="subscribe"
                                 class="fa fa-envelope-o"  ng-click="subscribePopup.init()" title="Subscribe"
-                                ng-if="subscribe" ng-style="{'font-weight': currentView.jobId ? 'bold' : 'normal'}"></i>
+                                ng-if="subscribe && !isGadget" ng-style="{'font-weight': currentView.jobId ? 'bold' : 'normal'}"></i>
                         </span>
                     </th>
                     <th class="colHeaderLink moreFields" ng-repeat="field in pivotTable.moreFields">
