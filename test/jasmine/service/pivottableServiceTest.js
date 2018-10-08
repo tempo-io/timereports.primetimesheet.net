@@ -715,37 +715,11 @@ describe("pivottableServiceTest", function() {
         expect($timeout.flush).toThrow();
     }));
 
-    it('Parent issue not in search result, DB cloudant', inject(function($timeout, pivottableService) {
-        expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
-        var options = {pivotTableType: 'IssueWorkedTimeByUser',
-            configOptions: {storeWorklog: true},
-            sumSubTasks: true};
-
-        var childIssue = {};
-        angular.copy(TimeData.issues[5], childIssue);
-        var worklog = childIssue.worklog || childIssue.fields.worklog;
-        worklog.total += worklog.maxResults + 1;
-        var searchResult = {issues: [childIssue]};
-
-        getWorklog.respond(200, searchResult.issues);
-
-        var spy = spyOn(pivottableService, 'loadAllWorklogs').and.callThrough();
-
-        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
-        $httpBackend.flush();
-        $timeout.flush();
-
-        expect(pivottableService.allIssues.length).toBe(1);
-        expect(spy.calls.count()).toBe(2);
-    }));
-
-
     it('Parent issue not in search result, DB on Jira Cloud over rest', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {};
         var options = {pivotTableType: 'IssueWorkedTimeByUser',
-            configOptions: {storeWorklog: false},
+            configOptions: {},
             sumSubTasks: true};
 
         var childIssue = {};
@@ -775,47 +749,13 @@ describe("pivottableServiceTest", function() {
         expect(spy.calls.count()).toBe(2);
     }));
 
-    it('PARAMETERS: groups, DB cloudant', inject(function($timeout, $log, pivottableService) {
-        expect(pivottableService).toBeDefined();
-        var loggedInUser = {key: 'admin', groups: {items: ['group1', 'group2']}};
-        var options = {pivotTableType: 'IssueWorkedTimeByUser',
-            groups: ["group1", "group2"],
-            moreFields: ['customfield_10008'],
-            configOptions: {storeWorklog: true}};
-
-        var requestCalled = false;
-
-        $httpBackend.expectGET(/\/api\/worklog\?groups=group1,group2&moreFields=customfield_10008&_=\d+/);
-
-        AP.request = function(options) {
-            if (options.url.match(/search/)) {
-                this.getTimeoutFunc()(function() {
-                        requestCalled = true;
-                        expect(options.url).toContain("jql=(worklogAuthor%20in%20membersOf(%22group1%22)%20or%20worklogAuthor%20in%20membersOf(%22group2%22))");
-                        options.success(angular.copy(TimeData));
-                }, 500);
-            } else {
-                AP.requestBak(options);
-            }
-        };
-
-        pivottableService.allFields = FieldsData;
-        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
-        $httpBackend.flush();
-        $timeout.flush();
-        $log.assertEmpty();
-
-        //expect(requestCalled).toBeTruthy();
-        expect(pivottableService.allIssues.length).toBe(6);
-    }));
-
     it('PARAMETERS: groups, DB on Jira Cloud over rest', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {key: 'admin', groups: {items: ['group1', 'group2']}};
         var options = {pivotTableType: 'IssueWorkedTimeByUser',
             groups: ["group1", "group2"],
             moreFields: ['customfield_10008'],
-            configOptions: {storeWorklog: false}};
+            configOptions: {}};
 
         var requestCalled = false;
 

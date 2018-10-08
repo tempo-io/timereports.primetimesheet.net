@@ -322,6 +322,12 @@ a.disabled {
 .is-gadget .margin {
     margin-left: 4px;
 }
+.is-gadget .main.margin {
+    width: 100%;
+}
+.is-gadget .content {
+    width: 100%;
+}
 .footer ul {
     margin: auto;
     display: table;
