@@ -54,8 +54,8 @@ QUnit.test("IssueWorkedTimeByStatus", function() {
 });
 QUnit.test("IssuePassedTimeByStatus", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssuePassedTimeByStatus',
-      startDate: '2017-04-05', endDate: '2017-04-11',
-      configOptions: {workingTimeInStatus: {}, statuses: TimeStatuses, timeInStatusCategories: ["2", "4"]}});
+      startDate: '2017-04-05', endDate: '2017-04-11', timeInStatusCategories: ["2", "4"],
+      configOptions: {workingTimeInStatus: {}, statuses: TimeStatuses}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue == 'TIME-4' ? 3 : 1, "pivotEntries " + pivotEntries[0].rowKey.keyValue);
@@ -80,8 +80,8 @@ QUnit.test("IssuePassedTimeByStatus", function() {
 });
 QUnit.test("IssuePassedTimeByStatus with Working Hours", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssuePassedTimeByStatus',
-      startDate: '2017-04-05', endDate: '2017-04-11',
-      configOptions: {statuses: TimeStatuses, timeInStatusCategories: ["2", "4"],
+      startDate: '2017-04-05', endDate: '2017-04-11', timeInStatusCategories: ["2", "4"],
+      configOptions: {statuses: TimeStatuses,
           workingTimeInStatus: {from: 5, to: 22}}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
@@ -107,8 +107,8 @@ QUnit.test("IssuePassedTimeByStatus with Working Hours", function() {
 });
 QUnit.test("TimeTracking", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking',
-      configOptions: {timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
-          '3timespent', '4diff', '5originalestimateremaining', '6progress']}});
+      timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
+          '3timespent', '4diff', '5originalestimateremaining', '6progress']});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, 1, "pivotEntries");
@@ -144,8 +144,8 @@ QUnit.test("TimeTracking", function() {
 });
 QUnit.test("TimeTracking5ReOrderedColumns", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking',
-      configOptions: {timeTrackingColumns: ['6progress', '2esttimeremaining',
-          '3timespent', '4diff', '5originalestimateremaining']}});
+      timeTrackingColumns: ['6progress', '2esttimeremaining',
+          '3timespent', '4diff', '5originalestimateremaining']});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, 1, "pivotEntries");
@@ -178,8 +178,8 @@ QUnit.test("TimeTracking5ReOrderedColumns", function() {
 });
 QUnit.test("TimeTrackingGroupedByStatus", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking', categorizeByField: 'project',
-      groupByField: 'status', configOptions: {timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
-          '3timespent', '4diff', '5originalestimateremaining', '6progress']}});
+      groupByField: 'status', timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
+          '3timespent', '4diff', '5originalestimateremaining', '6progress']});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, 1, "pivotEntries");
@@ -223,8 +223,8 @@ QUnit.test("TimeTrackingGroupedByStatus", function() {
 });
 QUnit.test("TimeTrackingRowComparator", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking',
-      configOptions: {timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
-          '3timespent', '4diff', '5originalestimateremaining', '6progress']},
+      timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
+          '3timespent', '4diff', '5originalestimateremaining', '6progress'],
       orderByField: 'priority'});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
@@ -241,8 +241,8 @@ QUnit.test("TimeTrackingRowComparator", function() {
 });
 QUnit.test("TimeTrackingRowComparator assignee", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'TimeTracking',
-      configOptions: {timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
-          '3timespent', '4diff', '5originalestimateremaining', '6progress']},
+      timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
+          '3timespent', '4diff', '5originalestimateremaining', '6progress'],
       orderByField: 'assignee'});
   for (var i in TimeData.issues) {
       var issue = angular.copy(TimeData.issues[i]);
@@ -298,7 +298,7 @@ var testTimeBalanceCommonCase = function (pivotTable, rowKeysLendth, rowKeysStri
 };
 QUnit.test("TimeBalance5Columns", function() {
     var pivotTable = PivotTableFactory.createPivotTable({startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
-        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+        timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']});
     for (var i in TimeData.issues) {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }
@@ -306,7 +306,7 @@ QUnit.test("TimeBalance5Columns", function() {
 });
 QUnit.test("TimeBalance5Columns extended data group=jira-administrators", function() {
     var pivotTable = PivotTableFactory.createPivotTable({changelogAuthors: 'admin', startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
-        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+        timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']});
     for (var i in TimeData.issues) {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }
@@ -316,7 +316,7 @@ QUnit.test("TimeBalance5Columns extended data group=jira-administrators", functi
 QUnit.test("TimeBalance5Columns grouped by status categorized by project", function() {
     var pivotTable = PivotTableFactory.createPivotTable({categorizeByField: 'project', groupByField: 'status',
         startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
-        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+        timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']});
     for (var i in TimeData.issues) {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }
@@ -325,7 +325,7 @@ QUnit.test("TimeBalance5Columns grouped by status categorized by project", funct
 QUnit.test("TimeBalance5Columns grouped by status", function() {
     var pivotTable = PivotTableFactory.createPivotTable({groupByField: 'status',
         startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
-        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+        timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']});
     for (var i in TimeData.issues) {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }
@@ -334,7 +334,7 @@ QUnit.test("TimeBalance5Columns grouped by status", function() {
 QUnit.test("TimeBalance5Columns grouped by project", function() {
     var pivotTable = PivotTableFactory.createPivotTable({groupByField: 'project',
         startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
-        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+        timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']});
     for (var i in TimeData.issues) {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }
@@ -351,7 +351,7 @@ QUnit.test("TimeBalance5Columns filter user=user", function() {
 });
 QUnit.test("TimeBalance5Columns filter user=user extended data", function() {
     var pivotTable = PivotTableFactory.createPivotTable({user: 'user', startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance',
-        configOptions: {timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']}});
+        timeBalanceColumns: ['6progress', '2esttimeremaining','3timespent', '4diff', '5originalestimateremaining']});
     for (var i in TimeData.issues) {
         var pivotEntries = pivotTable.add(TimeData.issues[i]);
     }

@@ -230,6 +230,23 @@ describe("timesheetControllerTest", function() {
                   var deferred = $q.defer();
                   deferred.resolve(ProjectsData);
                   return deferred.promise;
+                },
+                getDefaultTimeTrackingColumns: function () {
+                    return [];
+                },
+                getDefaultTimeBalanceColumns: function () {
+                    return [];
+                },
+                getAllTimeTrackingColumns : function () {
+                    return [];
+                },
+                getAllTimeBalanceColumns : function () {
+                    return [];
+                },
+                getAllStatusCategories : function () {
+                    var deferred = $q.defer();
+                    deferred.resolve(StatusCategoryData);
+                    return deferred.promise;
                 }
             },
             loggedInUser: {key: 'admin'},
@@ -469,6 +486,54 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
+            configurationService: {
+                getUserConfiguration: function () {
+                    var deferred = $q.defer();
+                    deferred.resolve({
+                        maxFractionDigits: {},
+                        compositionIssueLink: {},
+                        parentIssueField: {},
+                        parentIssueType: {},
+                        auditorsGroups: {},
+                        weekendType: {},
+                        preserveStartedTime: {},
+                        statuses: {},
+                        timeInStatusCategories: {},
+                        prettyDuration: {val: true},
+                        workLabels: {},
+                        workDescriptionRequired: {},
+                        worklogVisibilityGroup: {},
+                        worklogVisibilityRole: {},
+                        durationType: {},
+                        workingTimeInStatus: {},
+                        startedTimeInStatus: {},
+                        storeWorklog: {},
+                        inProgressIssuesJql: {},
+                        timeBalanceColumns: {val: []},
+                        timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
+                                '3timespent', '4diff', '5originalestimateremaining', '6progress']},
+                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']}
+                    });
+                    return deferred.promise;
+                },
+                getProjects: function() {
+                    var deferred = $q.defer();
+                    deferred.resolve(ProjectsData);
+                    return deferred.promise;
+                },
+                getDefaultTimeTrackingColumns: function () {
+                    return [];
+                },
+                getDefaultTimeBalanceColumns: function () {
+                    return [];
+                },
+                getAllTimeTrackingColumns : function () {
+                    return [];
+                },
+                getAllTimeBalanceColumns : function () {
+                    return [];
+                }
+            },
             loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
@@ -501,6 +566,54 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
+            configurationService: {
+                getUserConfiguration: function () {
+                    var deferred = $q.defer();
+                    deferred.resolve({
+                        maxFractionDigits: {},
+                        compositionIssueLink: {},
+                        parentIssueField: {},
+                        parentIssueType: {},
+                        auditorsGroups: {},
+                        weekendType: {},
+                        preserveStartedTime: {},
+                        statuses: {},
+                        timeInStatusCategories: {},
+                        prettyDuration: {val: true},
+                        workLabels: {},
+                        workDescriptionRequired: {},
+                        worklogVisibilityGroup: {},
+                        worklogVisibilityRole: {},
+                        durationType: {},
+                        workingTimeInStatus: {},
+                        startedTimeInStatus: {},
+                        storeWorklog: {},
+                        inProgressIssuesJql: {},
+                        timeBalanceColumns: {val: ["3timespent", "12estimate", "4diff", "1timeoriginalestimate", "6progress"]},
+                        timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
+                                '3timespent', '4diff', '5originalestimateremaining', '6progress']},
+                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']}
+                    });
+                    return deferred.promise;
+                },
+                getProjects: function() {
+                    var deferred = $q.defer();
+                    deferred.resolve(ProjectsData);
+                    return deferred.promise;
+                },
+                getDefaultTimeTrackingColumns: function () {
+                    return [];
+                },
+                getDefaultTimeBalanceColumns: function () {
+                    return ["3timespent", "12estimate", "4diff", "1timeoriginalestimate", "6progress"];
+                },
+                getAllTimeTrackingColumns : function () {
+                    return [];
+                },
+                getAllTimeBalanceColumns : function () {
+                    return [];
+                }
+            },
             loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });
@@ -533,6 +646,54 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
+            configurationService: {
+                getUserConfiguration: function () {
+                    var deferred = $q.defer();
+                    deferred.resolve({
+                        maxFractionDigits: {},
+                        compositionIssueLink: {},
+                        parentIssueField: {},
+                        parentIssueType: {},
+                        auditorsGroups: {},
+                        weekendType: {},
+                        preserveStartedTime: {},
+                        statuses: {},
+                        timeInStatusCategories: {},
+                        prettyDuration: {val: true},
+                        workLabels: {},
+                        workDescriptionRequired: {},
+                        worklogVisibilityGroup: {},
+                        worklogVisibilityRole: {},
+                        durationType: {},
+                        workingTimeInStatus: {},
+                        startedTimeInStatus: {},
+                        storeWorklog: {},
+                        inProgressIssuesJql: {},
+                        timeBalanceColumns: {val: ["3timespent", "12estimate", "4diff", "1timeoriginalestimate", "6progress"]},
+                        timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
+                                '3timespent', '4diff', '5originalestimateremaining', '6progress']},
+                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']}
+                    });
+                    return deferred.promise;
+                },
+                getProjects: function() {
+                    var deferred = $q.defer();
+                    deferred.resolve(ProjectsData);
+                    return deferred.promise;
+                },
+                getDefaultTimeTrackingColumns: function () {
+                    return [];
+                },
+                getDefaultTimeBalanceColumns: function () {
+                    return ["3timespent", "12estimate", "4diff", "1timeoriginalestimate", "6progress"];
+                },
+                getAllTimeTrackingColumns : function () {
+                    return [];
+                },
+                getAllTimeBalanceColumns : function () {
+                    return [];
+                }
+            },
             loggedInUser: {key: 'admin'},
             projectKey: 'TIME'
         });

@@ -31,6 +31,8 @@ window.AP = {
         options.success(FieldsData);
       } else if (options.url.match(/\/groups\/picker/)) {
         options.success(GroupsPickerData);
+      } else if (options.url.match(/\/statuscategory/)) {
+          options.success(StatusCategoryData);
       } else if (options.url.match(/\/status/)) {
         options.success(StatusData);
       } else if (options.url.match(/\/properties\/configuration/)) { // hosted configuraiton
@@ -2455,6 +2457,37 @@ var StatusData = [
       name: "Done"
     }
   }
+];
+
+var StatusCategoryData = [
+    {
+        "self": "https://timereports.atlassian.net/rest/api/2/statuscategory/1",
+        "id": 1,
+        "key": "undefined",
+        "colorName": "medium-gray",
+        "name": "No Category"
+    },
+    {
+        "self": "https://timereports.atlassian.net/rest/api/2/statuscategory/2",
+        "id": 2,
+        "key": "new",
+        "colorName": "blue-gray",
+        "name": "To Do"
+    },
+    {
+        "self": "https://timereports.atlassian.net/rest/api/2/statuscategory/4",
+        "id": 4,
+        "key": "indeterminate",
+        "colorName": "yellow",
+        "name": "In Progress"
+    },
+    {
+        "self": "https://timereports.atlassian.net/rest/api/2/statuscategory/3",
+        "id": 3,
+        "key": "done",
+        "colorName": "green",
+        "name": "Done"
+    }
 ];
 
 var TimeStatuses = {

@@ -49,9 +49,9 @@ QUnit.test("Excel Export TimeTracking", function() {
     QUnit.assert.equal(typeof excelView, 'object', 'excelView');
     var excel = excelView.generate({pivotTableType: 'TimeTracking', startDate: '2014-02-24',
         reportingDay: 1, moreFields: [], translations: translations, configOptions: {exportColumns:['project', 'issuetype',
-            'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus'],
+            'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
             timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',  '3timespent', '4diff',
-            '5originalestimateremaining', '6progress']},
+            '5originalestimateremaining', '6progress'],
         jiraConfig: {}});
     QUnit.assert.equal(typeof excel, 'string', 'html');
     var lines = excel.split('\n');
@@ -82,9 +82,9 @@ QUnit.test("Csv Export TimeTracking", function() {
     QUnit.assert.equal(typeof csvView, 'object', 'csvView');
     var csv = csvView.generate({pivotTableType: 'TimeTracking', startDate: '2014-02-24',
         reportingDay: 1, moreFields: [], translations: translations, configOptions: {exportColumns:['project', 'issuetype',
-            'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus'],
+            'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
             timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',  '3timespent', '4diff',
-                '5originalestimateremaining', '6progress']},
+                '5originalestimateremaining', '6progress'],
         jiraConfig: {}});
     QUnit.assert.equal(typeof csv, 'string', 'csv');
     QUnit.assert.equal(csv.match(/\d+h/g), null, "issue#902: hours with no h")
@@ -216,9 +216,9 @@ QUnit.test("Html Export TimeTracking", function() {
     var htmlView = new HtmlView(TimeData.issues);
     QUnit.assert.equal(typeof htmlView, 'object', 'excelView');
     var html = htmlView.generate({pivotTableType: 'TimeTracking', startDate: '2014-02-24',
-        reportingDay: 1, moreFields: [], configOptions: {timeTrackingColumns: [
+        reportingDay: 1, moreFields: [], timeTrackingColumns: [
             '1timeoriginalestimate', '2esttimeremaining',  '3timespent', '4diff',
-             '5originalestimateremaining', '6progress']},
+             '5originalestimateremaining', '6progress'],
         translations: translations, jiraConfig: {timeFormat: ''}});
     QUnit.assert.equal(typeof html, 'string', 'html');
     var lines = html.split('\n');
@@ -236,9 +236,9 @@ QUnit.test("Html Export TimeTracking Grouped by Assignee", function() {
     var htmlView = new HtmlView(TimeData.issues);
     QUnit.assert.equal(typeof htmlView, 'object', 'excelView');
     var html = htmlView.generate({groupByField: 'assignee', groupByFieldOption: {label: 'Assignee'}, pivotTableType: 'TimeTracking', startDate: '2014-02-24',
-        reportingDay: 1, moreFields: [], configOptions: {timeTrackingColumns: [
+        reportingDay: 1, moreFields: [], timeTrackingColumns: [
             '1timeoriginalestimate', '2esttimeremaining',  '3timespent', '4diff',
-             '5originalestimateremaining', '6progress']},
+             '5originalestimateremaining', '6progress'],
         translations: translations, jiraConfig: {timeFormat: ''}});
     QUnit.assert.equal(typeof html, 'string', 'html');
     var lines = html.split('\n');

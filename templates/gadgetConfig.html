@@ -107,6 +107,33 @@
               aui-select2>
       </select>
     </div>
+    <div class="field-group" ng-if="pivotTableType == 'TimeTracking'">
+      <label>{{'Columns' | i18n}}</label>
+      <input aui-multi-select-picker
+             class="text"
+             title="{{'Time Tracking Columns' | i18n}}"
+             ng-model="timeTrackingColumns"
+             ng-options-data="timeTrackingColumnsData"
+             ng-value-changed-func="timeTrackingColumnsChanged">
+    </div>
+    <div class="field-group" ng-if="pivotTableType == 'TimeBalance'">
+      <label>{{'Columns' | i18n}}</label>
+      <input aui-multi-select-picker
+             class="text"
+             title="{{'Time Balance Columns' | i18n}}"
+             ng-model="timeBalanceColumns"
+             ng-options-data="timeBalanceColumnsData"
+             ng-value-changed-func="timeBalanceColumnsChanged">
+    </div>
+    <div class="field-group" ng-if="pivotTableType == 'IssuePassedTimeByStatus'">
+      <label>{{'Status Categories' | i18n}}</label>
+      <input aui-multi-select-picker
+             class="text"
+             title="{{'Time In Status Categories' | i18n}}"
+             ng-model="timeInStatusCategories"
+             ng-options-data="timeInStatusCategoriesData"
+             ng-value-changed-func="timeInStatusCategoriesChanged">
+    </div>
     <div class="field-group">
       <label>{{'Sum SubTasks' | i18n}}</label>
       <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
