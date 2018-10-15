@@ -4,8 +4,13 @@ window.storeWorklogEnabled = true;
 window.AP = {
   getUser: function(callback) {
     return callback ? setTimeout(function() {
-      callback({fullName: 'admin', id: 'admin', key: 'admin'});
-    }) : {displayName: 'Administrator', id: 'admin', key: 'admin', emailAddress: 'azhdanov@gmail.com'}; // for pivottableJob
+      callback({fullName: 'admin', id: 'admin', key: 'admin', accountId : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"});
+    }) : {displayName: 'Administrator', id: 'admin', key: 'admin', emailAddress: 'azhdanov@gmail.com', accountId : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"}; // for pivottableJob
+  },
+  getCurrentUser: function(callback) {
+    return callback ? setTimeout(function() {
+      callback({"atlassianAccountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"});
+    }) : {"atlassianAccountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"}; // for pivottableJob
   },
   getLocation: function(callback) {
       setTimeout(function() {
@@ -19,7 +24,7 @@ window.AP = {
         options.success(angular.copy(TimeData));
       } else if (options.url.match(/\/user\/picker/)) {
         options.success(userPickerData);
-      } else if (options.url.match(/\/user\?.*?=admin/)) {
+      } else if (options.url.match(/\/user\?.*?=.*aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa/)) {
         options.success(UserAdminData);
       } else if (options.url.match(/\/user/)) {
         options.success(UserData);
@@ -37,7 +42,7 @@ window.AP = {
         options.success(StatusData);
       } else if (options.url.match(/\/properties\/configuration/)) { // hosted configuraiton
         options.success(PropertiesConfig);
-      } else if (options.url.match(/\/properties\/preferences4admin/)) { // hosted configuraiton
+      } else if (options.url.match(/\/properties\/preferences4aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa/)) { // hosted configuraiton
         options.success(PropertiesPreferences4admin);
       } else if (options.url.match(/\/configuration/)) {
         options.success({timeTrackingEnabled: true, timeTrackingConfiguration: {workingHoursPerDay: 8, workingDaysPerWeek: 5, defaultUnit: 'm'}});
@@ -90,11 +95,11 @@ window.AP = {
     }
 };
 
-var UserData = {name: 'noSuchUser'};
+var UserData = {name: 'noSuchUser', accountId: '"accountId-noSuchUser-accountId'};
 var PropertiesConfig = {value: [{key: 'workingTimeInStatus', val: true},
     {key: 'startedTimeInStatus', val: false}]};
 var PropertiesPreferences4admin = {};
-var Properties = {keys: [{key: 'configuration'}, {key: 'preferences4admin'}]};
+var Properties = {keys: [{key: 'configuration'}, {key: 'preferences4aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'}]};
 var IssueWorklog, Issue;
 
 // https://docs.atlassian.com/jira/REST/6.2/#d2e2438
@@ -115,6 +120,7 @@ var TimeData = { "expand" : "schema,names",
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "components" : [  ],
@@ -157,6 +163,7 @@ var TimeData = { "expand" : "schema,names",
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "resolution" : null,
@@ -197,6 +204,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
@@ -214,6 +222,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:48.589+0100"
@@ -225,6 +234,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
@@ -242,6 +252,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:48.762+0100"
@@ -258,6 +269,7 @@ var TimeData = { "expand" : "schema,names",
                       "author":{
                          "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
                          "name":"admin",
+                         "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                          "emailAddress":"azhdanov@gmail.com",
                          "avatarUrls":{
                             "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
@@ -292,6 +304,7 @@ var TimeData = { "expand" : "schema,names",
                       "author":{
                          "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
                          "name":"admin",
+                         "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                          "emailAddress":"azhdanov@gmail.com",
                          "avatarUrls":{
                             "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
@@ -332,6 +345,7 @@ var TimeData = { "expand" : "schema,names",
                       "author":{
                          "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
                          "name":"admin",
+                         "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                          "emailAddress":"azhdanov@gmail.com",
                          "avatarUrls":{
                             "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
@@ -366,6 +380,7 @@ var TimeData = { "expand" : "schema,names",
                       "author":{
                          "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
                          "name":"admin",
+                         "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                          "emailAddress":"azhdanov@gmail.com",
                          "avatarUrls":{
                             "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
@@ -412,6 +427,7 @@ var TimeData = { "expand" : "schema,names",
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "components" : [  ],
@@ -454,6 +470,7 @@ var TimeData = { "expand" : "schema,names",
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "resolution" : null,
@@ -494,6 +511,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
@@ -511,6 +529,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:48.891+0100"
@@ -522,6 +541,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
@@ -539,6 +559,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:49.037+0100"
@@ -561,6 +582,7 @@ var TimeData = { "expand" : "schema,names",
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "components" : [  ],
@@ -609,6 +631,7 @@ var TimeData = { "expand" : "schema,names",
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "resolution" : null,
@@ -649,6 +672,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
@@ -666,6 +690,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:49.225+0100"
@@ -677,6 +702,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
@@ -694,6 +720,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:49.376+0100"
@@ -716,6 +743,7 @@ var TimeData = { "expand" : "schema,names",
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "components" : [  ],
@@ -764,6 +792,7 @@ var TimeData = { "expand" : "schema,names",
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "resolution" : null,
@@ -804,6 +833,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
@@ -821,6 +851,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                   "updated" : "2014-01-27T18:03:49.536+0100"
@@ -832,6 +863,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
@@ -849,6 +881,7 @@ var TimeData = { "expand" : "schema,names",
                       "displayName" : "admin",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
+                      "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:49.685+0100"
@@ -871,6 +904,7 @@ var TimeData = { "expand" : "schema,names",
                     "displayName" : "admin",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
+                    "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                 },
                 "components" : [  ],
@@ -914,6 +948,7 @@ var TimeData = { "expand" : "schema,names",
                     "displayName" : "admin",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
+                    "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                 },
                 "resolution" : null,
@@ -954,6 +989,7 @@ var TimeData = { "expand" : "schema,names",
                     "displayName" : "admin",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
+                    "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "timeZone": "Europe/Moscow",
                     "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                 },
@@ -971,6 +1007,7 @@ var TimeData = { "expand" : "schema,names",
                         "displayName" : "admin",
                         "emailAddress" : "admin@example.com",
                         "name" : "admin",
+                        "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                         "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                     "updated" : "2014-10-20T13:03:48.891+0100"
@@ -982,6 +1019,7 @@ var TimeData = { "expand" : "schema,names",
                     "displayName" : "admin",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
+                    "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "timeZone": "Europe/Moscow",
                     "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                 },
@@ -999,6 +1037,7 @@ var TimeData = { "expand" : "schema,names",
                         "displayName" : "admin",
                         "emailAddress" : "admin@example.com",
                         "name" : "admin",
+                        "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                         "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                     "updated" : "2014-10-20T13:03:48.891+0100"
@@ -1021,6 +1060,7 @@ var TimeData = { "expand" : "schema,names",
                     "displayName" : "admin",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
+                    "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                 },
                 "components" : [  ],
@@ -1063,6 +1103,7 @@ var TimeData = { "expand" : "schema,names",
                     "displayName" : "admin",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
+                    "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                 },
                 "resolution" : null,
@@ -1103,6 +1144,7 @@ var TimeData = { "expand" : "schema,names",
                     "displayName" : "admin",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
+                    "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "timeZone": "Europe/Moscow",
                     "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                 },
@@ -1120,6 +1162,7 @@ var TimeData = { "expand" : "schema,names",
                         "displayName" : "admin",
                         "emailAddress" : "admin@example.com",
                         "name" : "admin",
+                        "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                         "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                     "updated" : "2014-10-20T18:03:48.589+0100"
@@ -1131,6 +1174,7 @@ var TimeData = { "expand" : "schema,names",
                     "displayName" : "admin",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
+                    "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "timeZone": "Europe/Moscow",
                     "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                 },
@@ -1148,6 +1192,7 @@ var TimeData = { "expand" : "schema,names",
                         "displayName" : "admin",
                         "emailAddress" : "admin@example.com",
                         "name" : "admin",
+                        "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                         "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
                     },
                     "updated" : "2014-10-20T18:03:48.589+0100"
@@ -1164,6 +1209,7 @@ var TimeData = { "expand" : "schema,names",
                         "author":{
                             "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
                             "name":"admin",
+                            "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                             "emailAddress":"azhdanov@gmail.com",
                             "avatarUrls":{
                                 "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
@@ -1206,6 +1252,7 @@ var TimeData = { "expand" : "schema,names",
                         "author":{
                             "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
                             "name":"admin",
+                            "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                             "emailAddress":"azhdanov@gmail.com",
                             "avatarUrls":{
                                 "48x48":"https://secure.gravatar.com/avatar/0e6d4fc0601c429541b57e0cd8dc84ec?d=mm&s=48",
@@ -1529,6 +1576,7 @@ var WorklogData = [
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "timeZone": "Europe/Moscow",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
@@ -1546,6 +1594,7 @@ var WorklogData = [
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "updated" : "2013-02-27T18:03:48.589+0100"
@@ -1557,6 +1606,7 @@ var WorklogData = [
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "timeZone": "Europe/Moscow",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
@@ -1574,6 +1624,7 @@ var WorklogData = [
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "updated" : "2013-02-27T18:03:48.762+0100"
@@ -1585,6 +1636,7 @@ var WorklogData = [
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "timeZone": "Europe/Moscow",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
@@ -1602,6 +1654,7 @@ var WorklogData = [
                 "displayName" : "admin",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "updated" : "2013-02-27T18:03:48.762+0100"
@@ -1615,6 +1668,7 @@ var UserAdminData = {
    "self":"http://localhost:2990/jira/rest/api/2/user?username=admin",
    "key":"admin",
    "name":"admin",
+   "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
    "emailAddress":"admin@example.com",
    "avatarUrls":{
       "16x16":"http://localhost:2990/jira/secure/useravatar?size=xsmall&avatarId=10122",
@@ -1653,6 +1707,7 @@ var FiltersData = [
          "self":"http://localhost:2990/jira/rest/api/2/user?username=admin",
          "key":"admin",
          "name":"admin",
+         "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
          "avatarUrls":{
             "16x16":"http://localhost:2990/jira/secure/useravatar?size=xsmall&avatarId=10122",
             "24x24":"http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
@@ -2397,6 +2452,7 @@ var userPickerData = {
    "users":[
       {
          "name":"admin",
+         "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
          "key":"admin",
          "html":"<strong>a</strong>dmin - <strong>a</strong>dmin@example.com (<strong>a</strong>dmin)",
          "displayName":"admin"

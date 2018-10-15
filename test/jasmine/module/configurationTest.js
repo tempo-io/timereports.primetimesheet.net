@@ -22,7 +22,7 @@ describe("configurationModule", function() {
 
     it('get configuration', function (done) {
         inject(function(configurationService, $timeout) {
-            configurationService.getConfiguration({key: 'admin'}).then(function(config) {
+            configurationService.getConfiguration({accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'}).then(function(config) {
                 expect(config['weekendType'].val).toEqual('60');
                 expect(config['workingTimeInStatus'].val).toEqual({from: 9, to: 17});
                 expect(config['durationType'].val).toEqual('h');
@@ -36,7 +36,7 @@ describe("configurationModule", function() {
 
     it('get user preferences', function (done) {
         inject(function(configurationService, $timeout) {
-            configurationService.getUserPreferences({key: 'admin'}).then(function(config) {
+            configurationService.getUserPreferences({accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'}).then(function(config) {
                 expect(config['weekendType'].val).toEqual('default');
                 expect(config['workingTimeInStatus'].val).toBe(undefined);
                 expect(config['durationType'].val).toEqual('default');
@@ -50,7 +50,7 @@ describe("configurationModule", function() {
 
     it('get user configuration', function (done) {
         inject(function(configurationService, $timeout) {
-            configurationService.getUserConfiguration({key: 'admin'}).then(function(config) {
+            configurationService.getUserConfiguration({accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'}).then(function(config) {
                 expect(config['weekendType'].val).toEqual('60');
                 expect(config['workingTimeInStatus'].val).toEqual({ from: 9, to: 17 });
                 expect(config['durationType'].val).toEqual('h');

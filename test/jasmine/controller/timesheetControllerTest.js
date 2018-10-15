@@ -129,7 +129,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -249,7 +249,7 @@ describe("timesheetControllerTest", function() {
                     return deferred.promise;
                 }
             },
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -296,7 +296,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -326,7 +326,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -362,7 +362,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -393,7 +393,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -424,7 +424,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -454,7 +454,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -534,7 +534,7 @@ describe("timesheetControllerTest", function() {
                     return [];
                 }
             },
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -614,7 +614,7 @@ describe("timesheetControllerTest", function() {
                     return [];
                 }
             },
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -694,7 +694,7 @@ describe("timesheetControllerTest", function() {
                     return [];
                 }
             },
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -726,7 +726,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -757,7 +757,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -829,7 +829,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
             projectKey: 'TIME'
         });
 
@@ -876,11 +876,11 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            timesheetParams: {user: 'admin', group: ['group1', 'group2'], loaded: true},
+            timesheetParams: {user: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', group: ['group1', 'group2'], loaded: true},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin', groups: {items: ['group1', 'group2']}},
+            loggedInUser: {accountId : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa", groups: {items: ['group1', 'group2']}},
             projectKey: 'TIME'
         });
 
@@ -907,11 +907,11 @@ describe("timesheetControllerTest", function() {
         $controller('TimesheetController', {
             $scope: scope,
             $route: $route,
-            timesheetParams: {user: 'admin'},
+            timesheetParams: {user: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"},
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {key: 'admin'},
+            loggedInUser: {accountId : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"},
             projectKey: 'TIME'
         });
 

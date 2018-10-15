@@ -201,7 +201,7 @@ QUnit.test("Html Export Pivot by User Grouped by Issue Itself More Fields", func
     QUnit.assert.equal(typeof html, 'string', 'html');
     var lines = html.split('\n');
     var header = lines.slice(10, 22).map(s => s.trim()).join('');
-    QUnit.assert.equal(header, "<td>Issue itself</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>Work Description</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>Total</td>", "header");
+    QUnit.assert.equal(header, "<td>Issue itself</td><td>Issue Type</td><td>Parent</td><td>Key</td><td>Summary</td><td>Priority</td><td>Assignee</td><td>Timespent</td><td>Estimate</td><td>Work Description</td><td><a href='/secure/ViewProfile.jspa?accountId=aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' title='admin@example.com'>admin</a></td><td>Total</td>", "header");
     var row1 = lines.slice(24, 36).map(s => s.trim()).join('');
     // FIXME: issue type, key, summary, priority
     QUnit.assert.equal(row1, "<td><a href='/browse/TIME-1' title='Hocus Focus Problem'>TIME-1 Hocus Focus Problem</a> (1 issue)</td><td>Bug</td><td></td><td><a href='/browse/TIME-1'>TIME-1</a></td><td><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td>Major</td><td><a href='/secure/ViewProfile.jspa?name=admin' title='admin@example.com'>admin</a></td><td>11</td><td>44</td><td>&nbsp</td><td>11</td><td>11</td>", "row1");

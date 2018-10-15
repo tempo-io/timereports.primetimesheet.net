@@ -78,7 +78,7 @@ describe("pivottableServiceTest", function() {
 
     it('Timesheet', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
+        var loggedInUser = {accountId: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"};
         var options = {pivotTableType: 'Timesheet', startDate: '2014-02-24', configOptions: {}, reportingDay: 1};
         var pivotTable;
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
@@ -92,7 +92,7 @@ describe("pivottableServiceTest", function() {
 
     it('Timesheet [endDate, w/out startDate]', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
+        var loggedInUser = {accountId: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"};
         var options = {pivotTableType: 'Timesheet', endDate: '2014-03-06', configOptions: {}};
         var pivotTable;
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
@@ -110,7 +110,7 @@ describe("pivottableServiceTest", function() {
 
     it('IssueWorkedTimeByUser', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
+        var loggedInUser = {accountId: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"};
         var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}};
         var pivotTable;
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
@@ -127,7 +127,7 @@ describe("pivottableServiceTest", function() {
 
     it('IssueWorkedTimeByUser_sumSubTasks', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
+        var loggedInUser = {accountId: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"};
         var options = {
             pivotTableType: "IssueWorkedTimeByUser",
             configOptions: {
@@ -179,7 +179,7 @@ describe("pivottableServiceTest", function() {
     // TODO: rework it into something meaningful, e.g. test checkInQueue logic
     xit('sumSubTasks_copy_worklogs', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
+        var loggedInUser = {accountId: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"};
         var options = {
             pivotTableType: 'IssueWorkedTimeByUser',
             sumSubTasks: true
@@ -231,7 +231,7 @@ describe("pivottableServiceTest", function() {
 
     it('getPivotTable [options:set/reset] sumSubTasks: true', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
+        var loggedInUser = {accountId: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"};
         var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, sumSubTasks: true};
 
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
@@ -245,7 +245,7 @@ describe("pivottableServiceTest", function() {
 
     it('getPivotTable [options:set/reset] sumSubTasks: false', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
+        var loggedInUser = {accountId: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"};
         var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, sumSubTasks: false};
 
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
@@ -259,7 +259,7 @@ describe("pivottableServiceTest", function() {
 
     it('getPivotTable [options:set/reset] startDate', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
+        var loggedInUser = {accountId: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"};
         var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, startDate: '2015-01-25'};
 
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
@@ -434,12 +434,14 @@ describe("pivottableServiceTest", function() {
                 "worklogs" : [
                     {
                         author: {
-                            name: 'admin'
+                            name: 'admin',
+                            accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'
                         }
                     },
                     {
                         author: {
-                            name: 'test'
+                            name: 'test',
+                            accountId: 'accountId-test-accountId'
                         }
                     }
                 ]
@@ -448,7 +450,7 @@ describe("pivottableServiceTest", function() {
 
         var getTestUserInfoByNameCalled = false;
         AP.request = function(options) {
-          if (options.url.match(/\/user\?expand=groups&key=test$/)) {
+          if (options.url.match(/\/user\?expand=groups&accountId=accountId-test-accountId$/)) {
               this.getTimeoutFunc()(function() {
                   getTestUserInfoByNameCalled = true;
                   options.success({groups:{items: []}});
@@ -465,8 +467,8 @@ describe("pivottableServiceTest", function() {
         $timeout.flush();
         $log.assertEmpty();
 
-        expect(pivottableService.worklogAuthors).toContain('admin');
-        expect(pivottableService.worklogAuthors).not.toContain('test');
+        expect(pivottableService.worklogAuthors).toContain('aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa');
+        expect(pivottableService.worklogAuthors).not.toContain('accountId-test-accountId');
         expect(getTestUserInfoByNameCalled).toBeTruthy();
         expect($timeout.flush).toThrow();
     }));
@@ -484,12 +486,14 @@ describe("pivottableServiceTest", function() {
                 "histories" : [
                     {
                         author: {
-                            name: 'admin'
+                            name: 'admin',
+                            accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'
                         }
                     },
                     {
                         author: {
-                            name: 'test'
+                            name: 'test',
+                            accountId: 'accountId-test-accountId'
                         }
                     }
                 ]
@@ -498,7 +502,7 @@ describe("pivottableServiceTest", function() {
 
         var getTestUserInfoByNameCalled = false;
         AP.request = function(options) {
-          if (options.url.match(/\/user\?expand=groups&key=test$/)) {
+          if (options.url.match(/\/user\?expand=groups&accountId=accountId-test-accountId$/)) {
               this.getTimeoutFunc()(function() {
                   getTestUserInfoByNameCalled = true;
                   options.success({groups:{items: []}});
@@ -515,8 +519,8 @@ describe("pivottableServiceTest", function() {
         $timeout.flush();
         $log.assertEmpty();
 
-        expect(pivottableService.changelogAuthors).toContain('admin');
-        expect(pivottableService.changelogAuthors).not.toContain('test');
+        expect(pivottableService.changelogAuthors).toContain('aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa');
+        expect(pivottableService.changelogAuthors).not.toContain('accountId-test-accountId');
         expect(getTestUserInfoByNameCalled).toBeTruthy();
         expect($timeout.flush).toThrow();
     }));
@@ -717,7 +721,7 @@ describe("pivottableServiceTest", function() {
 
     it('Parent issue not in search result, DB on Jira Cloud over rest', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {};
+        var loggedInUser = {accountId: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"};
         var options = {pivotTableType: 'IssueWorkedTimeByUser',
             configOptions: {},
             sumSubTasks: true};
@@ -751,7 +755,7 @@ describe("pivottableServiceTest", function() {
 
     it('PARAMETERS: groups, DB on Jira Cloud over rest', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {key: 'admin', groups: {items: ['group1', 'group2']}};
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: ['group1', 'group2']}};
         var options = {pivotTableType: 'IssueWorkedTimeByUser',
             groups: ["group1", "group2"],
             moreFields: ['customfield_10008'],
