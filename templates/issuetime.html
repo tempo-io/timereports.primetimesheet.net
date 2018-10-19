@@ -44,11 +44,16 @@
     </div>
     <button ng-if="canLogWork && loaded && !loading && isStartDateToday" class="aui-button aui-button-link" ng-init="worklog = {issueKey: issueKey, started: 1}" ng-click="startWork(true)">
         <span><i class="fa fa-play"></i></span>
-        Start Work
+        {{'Start Work' | i18n}}
     </button>
     <button ng-if="canLogWork && loaded && !loading" class="aui-button aui-button-link" ng-click="addWorklogDialog(null, issueKey)">
         <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
-        Log Work
+        {{'Log Work' | i18n}}
     </button>
+    &nbsp;
+    <a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!pivotTableType=TimeEntry&startDate={{TimesheetUtils.formatDateForSearch(startDate.value)}}" target="_parent">
+         <span class="aui-icon aui-icon-small aui-iconfont-time"></span>
+        {{'TimeEntry' | i18n}}
+    </a>
 </div>
 <resize/>
