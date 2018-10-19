@@ -35,6 +35,7 @@
     "Sum SubTasks": "Sum SubTasks:",
     "Problem Description": "Send collected support data to reproduce the problem.",
     "Describe your problem here": "Describe the problem here (required)",
+    "Send support data": "Send support data",
 
     "Show Menu": "Show Menu",
     "Hide Menu": "Hide Menu",
@@ -47,8 +48,10 @@
     "Send": "Send",
     "Periodically": "Periodically",
     "At": "At",
+    "Subscribe": "Subscribe",
     "Unsubscribe": "Unsubscribe",
     "Cancel": "Cancel",
+    "Contact support": "Contact support",
 
     "Use default": "Use default",
     "Default": "Default",

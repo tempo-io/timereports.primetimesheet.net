@@ -1,33 +1,44 @@
 <form class="aui" name="SubmitIssueForm">
     <form-invalid/>
-    <input type="hidden" name="_replyto" ng-value="useremail">
     <div class="field-group">
-        <p>Send email to add-on support team as {{replyTo}}</p>
-        <p>See <a href="https://www.primetimesheet.net/timereports/support.html" target="_blank">Support page</a> for other options <span class="aui-icon aui-icon-wait" ng-show="loading"></span></p>
+        <p>Send email to add-on support team{{ loggedInUser.emailAddress ? loggedInUser.displayName ? ' as ' + loggedInUser.displayName + ' < ' + loggedInUser.emailAddress + '>' : ' as ' + loggedInUser.emailAddress : ''}}.
+            <br>See <a href="https://www.primetimesheet.net/timereports/support.html" target="_blank">Support page</a> for other options. <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
+        </p>
     </div>
     <div class="form-body" class="aui">
+        <div ng-show="!loggedInUser.emailAddress" class="field-group">
+            <label for="email">Email</label>
+            <input id="email" type="text" class="text" maxlength="40" ng-model="email">
+        </div>
+        <div ng-show="!loggedInUser.emailAddress" class="field-group">
+            <span class="description">If you’d like to receive response, please, specify your email address.</span>
+        </div>
         <div class="field-group">
-            <label for="title">
+            <label for="issue-title">
                 Title <span class="aui-icon icon-required"></span><span class="content">required</span>
             </label>
-            <input type="text" name="title" class="text long-field ui-autocomplete-input" maxlength="150" id="issue-title" ng-model="title" autocomplete="off" required>
+            <input type="text" id="issue-title" class="text long-field ui-autocomplete-input" maxlength="150" id="issue-title" ng-model="title" autocomplete="off" required>
         </div>
         <fieldset>
             <div class="field-group">
                 <label for="issue-content">Problem Description</label>
                 <div class="wiki-edit">
                     <div class="wiki-edit-content" id="comment-wiki-edit">
-                        <textarea rows="7" name="comment" cols="60" class="textarea long-field" ng-model="content" ng-change="changeContent(content)"></textarea>
+                        <textarea rows="{{loggedInUser.emailAddress ? 8 : 5}}" cols="60" class="textarea long-field"  id="issue-content" ng-model="content" ng-change="changeContent(content)"></textarea>
                         <div class="content-inner"></div>
                     </div>
-		            <div>Describe what you've been doing when the problem occurred (keep exception trace if available)</div>
                 </div>
+            </div>
+            <div class="field-group">
+                <span class="description">Describe what you've been doing when the problem occurred (keep exception trace if available)</span>
             </div>
         </fieldset>
         <div class="field-group" ng-if="includeSupportData.options">
             <label for="include-support-data">Include Support Data</label>
-            <input class="checkbox" type="checkbox" name="include-support-data" ng-model="includeSupportData.enabled"/>
-            <div>Enable this option if you'd like to provide recorded responses from Jira to let support replay the report</div>
+            <input class="checkbox" type="checkbox" id="include-support-data" ng-model="includeSupportData.enabled"/>
+        </div>
+        <div  ng-if="includeSupportData.options" class="field-group">
+            <span class="description">Enable this option if you'd like to provide recorded responses from Jira to let support replay the report</span>
         </div>
     </div>
 </form>

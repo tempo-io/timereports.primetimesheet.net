@@ -1,13 +1,13 @@
 <div class="hoverpopup">
     <div class="user-hover-info">
         <div class="user-hover-avatar">
-            <a id="avatar-image-link" ng-title="{{popupData.user.name}}" ng-href="{{hostBaseUrl + '/secure/ViewProfile.jspa?name=' + popupData.user.key}}" target="_parent">
+            <a id="avatar-image-link" ng-title="{{popupData.user.name}}" ng-href="{{hostBaseUrl + '/people/' + popupData.user.accountId}}" target="_parent">
                <img ng-alt="{{popupData.user.name}}" class="avatar-image" ng-src="{{popupData.user.avatarUrls['48x48']}}" width="48" height="48">
             </a>
         </div>
         <div class="user-hover-details">
             <h4>
-                <a id="avatar-full-name-link" ng-title="{{popupData.user.name}}" ng-href="{{hostBaseUrl + '/secure/ViewProfile.jspa?name=' + popupData.user.key}}" target="_parent" ng-bind="popupData.user.displayName"/>
+                <a id="avatar-full-name-link" ng-title="{{popupData.user.displayName || popupData.user.accountId}}" ng-href="{{hostBaseUrl + '/people/' + popupData.user.accountId}}" target="_parent" ng-bind="popupData.user.displayName || popupData.user.accountId"/>
             </h4>
             <h5 id="user-hover-email">
                 <a ng-href="mailto:{{popupData.user.emailAddress}}" ng-bind="popupData.user.emailAddress"/>
