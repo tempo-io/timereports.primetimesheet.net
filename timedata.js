@@ -586,6 +586,7 @@ var TimeData = { "expand" : "schema,names",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
             "components" : [  ],
+            "customfield_10008" : "Test Epic",
             "created" : "2013-02-27T18:02:37.000+0100",
             "description" : null,
             "duedate" : null,

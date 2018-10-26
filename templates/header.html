@@ -23,6 +23,16 @@
                             <li><a href="https://primetimesheet.atlassian.net/servicedesk/customer/kb/view/327717" target="_blank" title="All How-to articles">...</a></li>
                         </ul>
                     </div>
+                    <div class="aui-dropdown2-section">
+                        <div class="aui-dropdown2-heading">
+                            Examples
+                        </div>
+                        <ul class="aui-list-truncate">
+                            <li><a ng-click="example({allUsers: true, groupByField: 'workeduser', loaded: true})" title="Timesheet Report by All Users<">Timesheet by Users</a></li>
+                            <li ng-if="epicNameField"><a ng-click="example({pivotTableType: 'Timespent', categorizeByField: 'epicNameField.id', groupByField: 'workeduser', filterOrProjectId: 'jql_0', includeEmpty: true, moreFields: 'timeestimate', loaded: true})" title="Timespent Report grouped by Epic Name for Active sprints issues<">Active Sprints Workload</a></li>
+                            <li><a ng-click="example({pivotTableType: 'TimeTracking', filterOrProjectId: projectKey ? 'project_' + projectKey : 'jql_8', loaded: true})" title="TimeTracking Report for {{projectKey ? projectKey + ' project ' : 'Recently Updated issues'}}">Project Progress</a></li>
+                        </ul>
+                    </div>
                 </div>
             </li>
             <li>

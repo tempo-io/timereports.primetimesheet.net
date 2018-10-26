@@ -39,9 +39,13 @@ describe("timesheetControllerTest", function() {
         return pivotTable.totals[totalKeys[0]].columnKey;
     };
 
-    var getFirstRowKey = function(pivotTable) {
+    var getFirstRow = function(pivotTable) {
         var rowKeys = Object.keys(pivotTable.rows);
-        return pivotTable.rows[rowKeys[0]].rowKey;
+        return pivotTable.rows[rowKeys[0]];
+    };
+
+    var getFirstRowKey = function(pivotTable) {
+        return getFirstRow(pivotTable).rowKey;
     };
 
     var checkOptions = function(scope) {
@@ -52,7 +56,7 @@ describe("timesheetControllerTest", function() {
         expect(scope.groupByOptions.options).toContainInProperty('resolution', 'id');
         expect(scope.filterByOptions).not.toBeNull();
         expect(scope.filterByOptions).toBeInstanceOf(TimesheetSelectOptions);
-        expect(scope.filterByOptions.options.length).toBe(2);
+        expect(scope.filterByOptions.options.length).toBe(12);
         expect(scope.filterByOptions.options).toContainInProperty('All issues', 'label');
         expect(scope.filterByOptions.options).toContainInProperty('Demonstration Project (DEMO)', 'label');
         expect(scope.filterByOptions.options).toContainInProperty('filter_10000', 'id');
@@ -439,6 +443,38 @@ describe("timesheetControllerTest", function() {
         expect(scope.pivotTable.pivotStrategy).not.toBeNull();
         expect(scope.pivotTable).toHaveRowsNumber(1);
         expect(getFirstRowKey(scope.pivotTable).keyName).toEqual("created");
+        expect(scope.pivotTable).toHaveColumnsNumber(2);
+        expect(scope.pivotTable.sum).toBe(79200);
+        expect(scope.rowKeySize).toBe(5);
+        checkOptions(scope);
+    }));
+
+    it('PARAMETERS: groupBy Epic Name', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {startDate: '2014-02-24', endDate: '2014-02-25', groupByField: 'customfield_10008', loaded: true},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'},
+            projectKey: 'TIME'
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(scope.TimesheetUtils).not.toBeNull();
+        expect(scope.loading).toBeFalsy();
+        expect(scope.pivotTable).not.toBeNull();
+        expect(scope.pivotTable.pivotStrategy).not.toBeNull();
+        expect(scope.pivotTable).toHaveRowsNumber(2);
+        expect(getFirstRowKey(scope.pivotTable).keyName).toEqual("customfield_10008");
+        expect(getFirstRowKey(scope.pivotTable).keyValue).toEqual("Test Epic");
+        expect(getFirstRow(scope.pivotTable).sum).toEqual(39600);
         expect(scope.pivotTable).toHaveColumnsNumber(2);
         expect(scope.pivotTable.sum).toBe(79200);
         expect(scope.rowKeySize).toBe(5);

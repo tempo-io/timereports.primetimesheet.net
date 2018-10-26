@@ -84,7 +84,6 @@ describe("pivottableServiceTest", function() {
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
             pivotTable = _pivotTable;
         });
-        $httpBackend.flush();
         $timeout.flush();
         expect(pivotTable).toBeDefined();
         expect(pivotTable).toHaveRowsNumber(6);
@@ -98,7 +97,6 @@ describe("pivottableServiceTest", function() {
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
             pivotTable = _pivotTable;
         });
-        $httpBackend.flush();
         $timeout.flush();
         expect(pivotTable).toBeDefined();
         expect(pivotTable).toHaveRowsNumber(3);
@@ -116,7 +114,6 @@ describe("pivottableServiceTest", function() {
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
             pivotTable = _pivotTable;
         });
-        $httpBackend.flush();
         $timeout.flush();
         expect(pivotTable).toBeDefined();
         expect(pivotTable).toHaveRowsNumber(6);
@@ -163,7 +160,6 @@ describe("pivottableServiceTest", function() {
                 expect(issue.worklog.worklogs.length).toEqual(4);
             });
         });
-        $httpBackend.flush();
         $timeout.flush();
         $timeout.flush();
         expect(pivotTable).toBeDefined();
@@ -210,7 +206,6 @@ describe("pivottableServiceTest", function() {
           //console.log(arguments);
         });
 
-        $httpBackend.flush();
         $timeout.flush(); // first search (timeout = 500) and findIssueByKey (AP.$timeoutDelay = 0)
         var issueFromQueue = pivotTable.queue['TIME-3'].promise.$$state.value;
         expect(issueFromQueue.fields.worklog.worklogs.length).toBe(0);
@@ -235,7 +230,6 @@ describe("pivottableServiceTest", function() {
         var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, sumSubTasks: true};
 
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
-        $httpBackend.flush();
         $timeout.flush();
 
         expect(pivottableService.sumSubTasks).toEqual(true);
@@ -249,7 +243,6 @@ describe("pivottableServiceTest", function() {
         var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, sumSubTasks: false};
 
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
-        $httpBackend.flush();
         $timeout.flush();
 
         expect(pivottableService.sumSubTasks).toEqual(false);
@@ -263,7 +256,6 @@ describe("pivottableServiceTest", function() {
         var options = {pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, startDate: '2015-01-25'};
 
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
-        $httpBackend.flush();
         $timeout.flush();
 
         expect(pivottableService.startDate).toEqual('2015-01-25');
