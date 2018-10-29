@@ -28,6 +28,22 @@
     <div class="field-group">
         <span class="description">{{'description.Auditors Groups' | i18n}}</span>
     </div>
+    <div class="field-group" ng-if="auditorsRoles">
+        <label for="auditorsRoles">{{'Auditors Roles' | i18n}}</label>
+        <input id="auditorsRoles"
+               aui-multi-select-picker
+               type="text"
+               ng-model="auditorsRoles.val"
+               ng-options-data="worklogVisibilityRoles"
+               ng-value-changed-func="saveAuditorsRoles">
+        <div class="aui-message aui-message-success msg-overlay"
+             ng-show="auditorsRolesSaveSuccess">
+            <strong>{{'Auditors Roles' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        </div>
+    </div>
+    <div class="field-group" ng-if="auditorsRoles">
+        <span class="description">{{'description.Auditors Roles' | i18n}}</span>
+    </div>
     <div class="field-group">
         <label for="select2-compositionIssueLink">{{'Composition Issue Link' | i18n}}</label>
         <select id="select2-compositionIssueLink"
