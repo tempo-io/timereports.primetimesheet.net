@@ -105,7 +105,10 @@ describe("timesheetControllerTest", function() {
                 "Use default": "Use default",
                 "Default": "Default",
                 "Enabled": "Enabled",
-                "Disabled": "Disabled"
+                "Disabled": "Disabled",
+                'created': 'created',
+                'updated': 'updated',
+                'resolved': 'resolved'
             };
             for (var pivotTableType in PivotTableType) {
                 translations[pivotTableType] = pivotTableType;
@@ -187,7 +190,8 @@ describe("timesheetControllerTest", function() {
                         timeBalanceColumns: {val: []},
                         timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
                             '3timespent', '4diff', '5originalestimateremaining', '6progress']},
-                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']}
+                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
+                        dateFields: {val: []}
                     });
                     return deferred.promise;
                 },
@@ -215,7 +219,8 @@ describe("timesheetControllerTest", function() {
                         timeBalanceColumns: {val: []},
                         timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
                             '3timespent', '4diff', '5originalestimateremaining', '6progress']},
-                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']}
+                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
+                        dateFields: {val: []}
                     });
                     return deferred.promise;
                 },
@@ -245,6 +250,9 @@ describe("timesheetControllerTest", function() {
                     return [];
                 },
                 getAllTimeBalanceColumns : function () {
+                    return [];
+                },
+                getAllDateFields : function () {
                     return [];
                 },
                 getAllStatusCategories : function () {
@@ -548,7 +556,8 @@ describe("timesheetControllerTest", function() {
                         timeBalanceColumns: {val: []},
                         timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
                                 '3timespent', '4diff', '5originalestimateremaining', '6progress']},
-                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']}
+                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
+                        dateFields: {val: []}                        
                     });
                     return deferred.promise;
                 },
@@ -628,7 +637,8 @@ describe("timesheetControllerTest", function() {
                         timeBalanceColumns: {val: ["3timespent", "12estimate", "4diff", "1timeoriginalestimate", "6progress"]},
                         timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
                                 '3timespent', '4diff', '5originalestimateremaining', '6progress']},
-                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']}
+                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
+                        dateFields: {val: []}
                     });
                     return deferred.promise;
                 },
@@ -708,7 +718,8 @@ describe("timesheetControllerTest", function() {
                         timeBalanceColumns: {val: ["3timespent", "12estimate", "4diff", "1timeoriginalestimate", "6progress"]},
                         timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
                                 '3timespent', '4diff', '5originalestimateremaining', '6progress']},
-                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']}
+                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
+                        dateFields: {val: []}
                     });
                     return deferred.promise;
                 },

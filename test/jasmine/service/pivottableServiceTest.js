@@ -33,7 +33,10 @@ describe("pivottableServiceTest", function() {
                 "Use default": "Use default",
                 "Default": "Default",
                 "Enabled": "Enabled",
-                "Disabled": "Disabled"
+                "Disabled": "Disabled",
+                'created': 'created',
+                'updated': 'updated',
+                'resolved': 'resolved'
             };
             for (var pivotTableType in PivotTableType) {
                 translations[pivotTableType] = pivotTableType;
@@ -776,6 +779,106 @@ describe("pivottableServiceTest", function() {
 
         expect(requestCalled).toBeTruthy();
         expect(pivottableService.allIssues.length).toBe(6);
+    }));
+
+    it('JQL for Date Fields for TimeBalance ["resolved"]', inject(function($timeout, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'};
+        var options = {pivotTableType: 'TimeBalance',
+            dateFields: ['resolved'],
+            startDate: '2018-10-23',
+            endDate: '2018-10-24',
+            configOptions: {}};
+
+        var requestCalled = false;
+
+        AP.request = function(options) {
+            if (options.url.match(/search/)) {
+                this.getTimeoutFunc()(function() {
+                    requestCalled = true;
+                    expect(options.url).toContain("jql=(resolved%20%3E%3D%20%222018-10-23%22)%20and%20(resolved%20%3C%20%222018-10-25%22)");
+                    options.success(angular.copy(TimeData));
+                }, 500);
+            } else {
+                AP.requestBak(options);
+            }
+        };
+
+        pivottableService.allFields = FieldsData;
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
+
+        $timeout.flush();
+        $timeout.flush(); // onAllIssuesDelayed
+        $log.assertEmpty();
+
+        expect(requestCalled).toBeTruthy();
+    }));
+
+    it('JQL for Date Fields for TimeTracking 3 fields', inject(function($timeout, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'};
+        var options = {pivotTableType: 'TimeTracking',
+            dateFields: ['resolved', 'created', 'updated'],
+            startDate: '2018-10-23',
+            endDate: '2018-10-24',
+            timeTrackingColumns: ['3timespent'],
+            configOptions: {}};
+
+        var requestCalled = false;
+
+        AP.request = function(options) {
+            if (options.url.match(/search/)) {
+                this.getTimeoutFunc()(function() {
+                    requestCalled = true;
+                    expect(options.url).toContain("jql=(resolved%20%3E%3D%20%222018-10-23%22%20or%20created%20%3E%3D%20%222018-10-23%22%20or%20updated%20%3E%3D%20%222018-10-23%22)%20and%20(resolved%20%3C%20%222018-10-25%22%20or%20created%20%3C%20%222018-10-25%22%20or%20updated%20%3C%20%222018-10-25%22)");
+                    options.success(angular.copy(TimeData));
+                }, 500);
+            } else {
+                AP.requestBak(options);
+            }
+        };
+
+        pivottableService.allFields = FieldsData;
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
+
+        $timeout.flush();
+        $timeout.flush(); // onAllIssuesDelayed
+        $log.assertEmpty();
+
+        expect(requestCalled).toBeTruthy();
+    }));
+
+    it('JQL for Date Fields for IssuePassedTimeByStatus no "updated"', inject(function($timeout, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'};
+        var options = {pivotTableType: 'IssuePassedTimeByStatus',
+            dateFields: ['resolved', 'created'],
+            startDate: '2018-10-23',
+            endDate: '2018-10-24',
+            configOptions: {workingTimeInStatus: {}, statuses: []}};
+
+        var requestCalled = false;
+
+        AP.request = function(options) {
+            if (options.url.match(/search/)) {
+                this.getTimeoutFunc()(function() {
+                    requestCalled = true;
+                    expect(options.url).toContain("jql=(status%20changed%20after%20%222018-10-23%22%20or%20status%20changed%20on%20%222018-10-23%22%20or%20created%20%3E%3D%20%222018-10-23%22)%20and%20(status%20changed%20before%20%222018-10-25%22%20or%20created%20%3C%20%222018-10-25%22)");
+                    options.success(angular.copy(TimeData));
+                }, 500);
+            } else {
+                AP.requestBak(options);
+            }
+        };
+
+        pivottableService.allFields = FieldsData;
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
+
+        $timeout.flush();
+        $timeout.flush(); // onAllIssuesDelayed
+        $log.assertEmpty();
+
+        expect(requestCalled).toBeTruthy();
     }));
 
     it('cacheWorklog', inject(function($timeout, $httpBackend, $log, pivottableService, configurationService) {

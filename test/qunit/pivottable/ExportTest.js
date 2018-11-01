@@ -24,7 +24,10 @@ var translations = {
     "Use default": "Use default",
     "Default": "Default",
     "Enabled": "Enabled",
-    "Disabled": "Disabled"
+    "Disabled": "Disabled",
+    'created': 'created',
+    'updated': 'updated',
+    'resolved': 'resolved'
 };
 QUnit.test("Excel Export", function() {
     var excelView = new ExcelView(TimeData.issues);
