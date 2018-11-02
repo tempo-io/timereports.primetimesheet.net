@@ -1,5 +1,4 @@
 AJS = window.AJS || {$: window.$, progressBars: {update: function() {}, setIndeterminate: function() {}}};
-window.storeWorklogEnabled = true;
 // simulate running in atlassian-connect container
 window.AP = {
   getUser: function(callback) {
