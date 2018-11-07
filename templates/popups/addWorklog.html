@@ -13,7 +13,7 @@
         <td>
             <input type="text" name="timeSpent" size="8" ng-model="popupData.worklog.timeSpent" enter-pressed="popupData.addWorklog(closePopup)" auto-focus="true" required timespent/>
         </td>
-        <td>(<a ng-click="popupData.openMoreOptionDialog();closePopup();">{{'more options' | i18n}}</a>)</td>
+        <td><longer-one-day-warning>&gt;1d!</longer-one-day-warning>(<a ng-click="popupData.openMoreOptionDialog();closePopup();">{{'more options' | i18n}}</a>)</td>
     </tr>
     <tr>
         <td><label>{{'Comment' | i18n}}</label></td>
