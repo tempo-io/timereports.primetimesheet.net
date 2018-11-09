@@ -1,7 +1,7 @@
 <form class="aui" name="SubmitIssueForm">
     <form-invalid/>
     <div class="field-group">
-        <p>Send email to add-on support team{{ loggedInUser.emailAddress ? loggedInUser.displayName ? ' as ' + loggedInUser.displayName + ' <' + loggedInUser.emailAddress + '>' : ' as ' + loggedInUser.emailAddress : ''}}.
+        <p>Send email to add-on support team{{ loggedInUser.emailAddress ? ' as ' + loggedInUser.displayName + ' <' + loggedInUser.emailAddress + '>' : ''}}.
             <br>See <a href="https://www.primetimesheet.net/timereports/support.html" target="_blank">Support page</a> for other options. <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
         </p>
     </div>
