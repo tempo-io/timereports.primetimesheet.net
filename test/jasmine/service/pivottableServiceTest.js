@@ -7,6 +7,9 @@ describe("pivottableServiceTest", function() {
             $httpBackend.whenGET("/templates/main.html").respond(200, "");
             $window.i18nDefault = 'i18n/default.json';
             var translations = {
+                "Day": "Day",
+                "Week": "Week",
+                "Month": "Month",
                 "Today": "Today",
                 "Daily": "Daily",
                 "Every": "Every",

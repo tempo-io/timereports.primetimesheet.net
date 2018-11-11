@@ -1,4 +1,7 @@
 var translations = {
+    "Day": "Day",
+    "Week": "Week",
+    "Month": "Month",
     "Today": "Today",
     "Daily": "Daily",
     "Every": "Every",

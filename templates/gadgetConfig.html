@@ -30,10 +30,6 @@
       <label>{{'End Date' | i18n}}</label>
       <input ng-model="endDate.value" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
     </div>
-    <div class="field-group" ng-if="pivotTableType == 'Timesheet'">
-      <label>{{'Show Weekends' | i18n}}</label>
-      <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled"/>
-    </div>
     <div class="field-group" ng-if="['TimeTracking', 'TimeEntry', 'Timespent', 'TimeBalance'].indexOf(pivotTableType) < 0">
       <label>{{'Reporting Day' | i18n}}</label>
       <select class="select"
@@ -133,6 +129,28 @@
              ng-model="timeInStatusCategories"
              ng-options-data="timeInStatusCategoriesData"
              ng-value-changed-func="timeInStatusCategoriesChanged">
+    </div>
+    <div class="field-group" ng-if="pivotTableType == 'Timesheet'">
+      <label>{{'Show Weekends' | i18n}}</label>
+      <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled"/>
+    </div>
+    <div class="field-group" ng-if="pivotTableType != 'PieChart'">
+      <label>{{'Show Details' | i18n}}</label>
+      <input class="checkbox" type="checkbox" ng-model="showDetails.enabled" ng-change="showDetailsChange(showDetails.enabled)" />
+    </div>
+    <div class="field-group" ng-if="['TimeEntry', 'IssueTime'].indexOf(pivotTableType) < 0">
+      <label>{{'Month View' | i18n}}</label>
+      <input class="checkbox" type="checkbox" ng-model="monthView.enabled" ng-change="monthViewChanged(monthView.enabled)" />
+    </div>
+    <div class="field-group" ng-if="pivotTableType == 'Timesheet'">
+      <label>{{'Sum By' | i18n}}</label>
+      <select class="select"
+              title="{{'Sum By' | i18n}}"
+              ng-model="sumOptions.selected"
+              ng-options="item.id as item.label for item in sumOptions.options"
+              ng-change="sumChanged()"
+              aui-select2>
+      </select>
     </div>
     <div class="field-group">
       <label>{{'Sum SubTasks' | i18n}}</label>
