@@ -680,7 +680,7 @@ describe("pivottableServiceTest", function() {
     it('addOnceIfMatches', inject(function($timeout, $q, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
 
-        var pivotTable = {matches: {}, queueToAdd: []}, deferred = $q.defer(), options = {};
+        var pivotTable = {matches: {}, queueToAdd: []}, options = {configOptions: {}};
         var issue1 = {
             key: 'DEMO-1',
             fields: {
@@ -705,9 +705,9 @@ describe("pivottableServiceTest", function() {
             }
         };
 
-        pivottableService.addOnceIfMatches(pivotTable, issue1, deferred, options);
-        pivottableService.addOnceIfMatches(pivotTable, issue1, deferred, options);
-        pivottableService.addOnceIfMatches(pivotTable, issue2, deferred, options);
+        pivottableService.addOnceIfMatches(pivotTable, issue1, options);
+        pivottableService.addOnceIfMatches(pivotTable, issue1, options);
+        pivottableService.addOnceIfMatches(pivotTable, issue2, options);
 
         $timeout.flush();
         $log.assertEmpty();
