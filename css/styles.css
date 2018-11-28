@@ -353,6 +353,9 @@ pivot-cell span:after, new-worklog span:after, old-worklog span:after {
 .red {
     color: #d04437;
 }
+.yellow {
+    color: #ff8b00;
+}
 form.aui .field-group .description {
     font-size: 12px;
     vertical-align: top;
