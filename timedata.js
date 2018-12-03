@@ -13,8 +13,13 @@ window.AP = {
   },
   getLocation: function(callback) {
       setTimeout(function() {
-          callback("http://localhost:2990/jira/timereports?project.id=10000&project.key=DEMO");
+          callback("https://timereports.atlassian.net/timereports?project.id=10000&project.key=DEMO");
       });
+  },
+  context: {
+      getContext: function(cb) {
+          cb({});
+      }
   },
   request: function(options) {
     this.getTimeoutFunc()(function() {
