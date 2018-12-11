@@ -95,6 +95,23 @@ describe("pivottableServiceTest", function() {
         expect(pivotTable).toHaveRowsNumber(6);
     }));
 
+    it('Timesheet restricted', inject(function($timeout, pivottableService, $httpBackend) {
+
+        $httpBackend.whenGET(/\/restricted\/TIME/).respond(200, true);
+
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {accountId: "restrictedUser"};
+        var options = {pivotTableType: 'Timesheet', startDate: '2014-02-24', configOptions: {auditorsRoles: "Administrators"}, reportingDay: 1};
+        var pivotTable;
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {
+            pivotTable = _pivotTable;
+        });
+        $timeout.flush();
+        $httpBackend.flush();
+        expect(pivotTable).toBeDefined();
+        expect(pivotTable).toHaveRowsNumber(0);
+    }));
+
     it('Timesheet [endDate, w/out startDate]', inject(function($timeout, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {accountId: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"};
@@ -313,7 +330,7 @@ describe("pivottableServiceTest", function() {
         };
         var result;
 
-        pivottableService.loadAllWorklogs(issue).promise.then(function(_issue) {
+        pivottableService.loadAllWorklogs(issue, null, {configOptions: {}}).promise.then(function(_issue) {
             result = _issue;
         });
 
@@ -715,6 +732,60 @@ describe("pivottableServiceTest", function() {
         expect(pivotTable.queueToAdd.length).toBe(2);
 
         expect($timeout.flush).toThrow();
+    }));
+
+    it('Filter in strategy worklog of restricted issue', inject(function($timeout, $q, $log, pivottableService, $httpBackend) {
+
+        $httpBackend.whenGET(/\/restricted\/TIME/).respond(200, false);
+        $httpBackend.whenGET(/\/restricted\/RESTRICTED/).respond(200, true);
+
+        expect(pivottableService).toBeDefined();
+
+        var pivotTable = {matches: {}, queueToAdd: []}, options = {sumSubTasks: true, configOptions: {auditorsRoles: "Administrators"}};
+        var issue1 = {
+            key: 'TIME-1',
+            fields: {
+                "issuetype": {},
+                "project": {"key": 'TIME'}
+            },
+            worklog: {
+                "maxResults" : 1,
+                "startAt" : 1,
+                "total" : 1,
+                "worklogs" : [{"timeSpentSeconds" : 3600}]
+            }
+        }, issue2 = {
+            key: 'RESTRICTED-2',
+            fields: {
+                "parent" : {"key": "TIME-1"},
+                "issuetype": {},
+                "project": {"key": 'RESTRICTED'}
+            },
+            worklog: {
+                "maxResults" : 1,
+                "startAt" : 1,
+                "total" : 1,
+                "worklogs" : [{"timeSpentSeconds" : 3600}]
+            }
+        };
+
+        pivottableService.addOnceIfMatches(pivotTable, issue1, options);
+        pivottableService.addOnceIfMatches(pivotTable, issue1, options);
+        pivottableService.addOnceIfMatches(pivotTable, issue2, options);
+
+        $timeout.flush();
+        $httpBackend.flush();
+        $log.assertEmpty();
+
+        expect(pivotTable.queueToAdd.length).toBe(2);
+
+        options.restrictedProjects = pivottableService.restrictedProjects;
+        pivottableService.addWorklogs(issue2, issue1, options);
+        expect(issue1.worklog.worklogs.length).toBe(2);
+        var strategy = new TimesheetStrategy(PivotKey.Issue, PivotKey.MonthOfTheYear, options);
+        var entries = strategy.getEntries(issue1);
+        expect(entries.length).toBe(1);
+
     }));
 
     it('Parent issue not in search result, DB on Jira Cloud over rest', inject(function($timeout, pivottableService) {

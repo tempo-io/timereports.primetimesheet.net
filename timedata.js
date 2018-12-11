@@ -1,3 +1,6 @@
+if (typeof module === 'object' && module.exports) {
+    var window = {};
+}
 AJS = window.AJS || {$: window.$, progressBars: {update: function() {}, setIndeterminate: function() {}}};
 // simulate running in atlassian-connect container
 window.AP = {
@@ -49,7 +52,7 @@ window.AP = {
       } else if (options.url.match(/\/properties\/preferences4aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa/)) { // hosted configuraiton
         options.success(PropertiesPreferences4admin);
       } else if (options.url.match(/\/configuration/)) {
-        options.success({timeTrackingEnabled: true, timeTrackingConfiguration: {workingHoursPerDay: 8, workingDaysPerWeek: 5, defaultUnit: 'm'}});
+        options.success(Configuration);
       } else if (options.url.match(/\/properties/)) { // hosted keys
         options.success(Properties);
       } else if (m = options.url.match(/\/issue\/\w*-(\d+)\/worklog/)) {
@@ -103,6 +106,7 @@ var UserData = {name: 'noSuchUser', accountId: '"accountId-noSuchUser-accountId'
 var PropertiesConfig = {value: [{key: 'workingTimeInStatus', val: true},
     {key: 'startedTimeInStatus', val: false}]};
 var PropertiesPreferences4admin = {};
+var Configuration = {timeTrackingEnabled: true, timeTrackingConfiguration: {workingHoursPerDay: 8, workingDaysPerWeek: 5, defaultUnit: 'm'}};
 var Properties = {keys: [{key: 'configuration'}, {key: 'preferences4aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'}]};
 var IssueWorklog, Issue;
 
@@ -2612,3 +2616,16 @@ var processFlightData = function() {
 };
 
 //$.getScript("/flightRecorderData.js", processFlightData);
+
+if (typeof module === 'object' && module.exports) {
+    module.exports = {
+        TimeData: TimeData,
+        UserAdminData: UserAdminData,
+        ProjectsData: ProjectsData,
+        FieldsData: FieldsData,
+        WorklogData: WorklogData,
+        Configuration:Configuration,
+        PropertiesConfig:PropertiesConfig,
+        PropertiesPreferences4admin:PropertiesPreferences4admin
+    };
+}

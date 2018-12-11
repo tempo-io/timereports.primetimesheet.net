@@ -462,9 +462,9 @@ QUnit.test("Calculated endDate", function() {
 QUnit.test("PivotTable.getOrCreate", function() {
     var getOrCreateObject = {};
     var RecordClass = function(key){this.key = key;};
-    PivotTable.getOrCreate(getOrCreateObject, {keyValue:'key1'}, RecordClass);
-    PivotTable.getOrCreate(getOrCreateObject, {keyValue:'key1'}, RecordClass);
-    PivotTable.getOrCreate(getOrCreateObject, {keyValue:'key2'}, RecordClass);
+    TimesheetUtils.getOrCreate(getOrCreateObject, {keyValue:'key1'}, RecordClass);
+    TimesheetUtils.getOrCreate(getOrCreateObject, {keyValue:'key1'}, RecordClass);
+    TimesheetUtils.getOrCreate(getOrCreateObject, {keyValue:'key2'}, RecordClass);
     var keys = Object.keys(getOrCreateObject);
     QUnit.assert.equal(keys.length, 2, "#getOrCreateObject() :: length");
     for (var i in keys) {
