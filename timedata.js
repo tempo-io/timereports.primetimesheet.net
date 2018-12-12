@@ -2625,6 +2625,7 @@ if (typeof module === 'object' && module.exports) {
         FieldsData: FieldsData,
         WorklogData: WorklogData,
         Configuration:Configuration,
+        Properties:Properties,
         PropertiesConfig:PropertiesConfig,
         PropertiesPreferences4admin:PropertiesPreferences4admin
     };
