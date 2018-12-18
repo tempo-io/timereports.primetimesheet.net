@@ -190,6 +190,13 @@
                 <!--span ng-show="trackSupportData.val" title="{{'Clear Support Data' | i18n}}" class="fa fa-trash" ng-click="clearSupportData()"></span-->
             </span>
         </div>
+        <div class="field-group" ng-if="isTimesheet">
+            <label for="sendMobileLink">{{'Link For Mobile Devices' | i18n}}</label>
+            <button type="button" class="btn btn-default" id="sendMobileLink" ng-click="sendMobileLink()" >{{'Send' | i18n}}</button>
+        </div>
+        <div class="field-group" ng-if="isTimesheet">
+            <span class="description" data-ng-bind-html="'description.Link For Mobile Devices' | i18n | htmlSafe"></span>
+        </div>
     </form>
 </div>
 <!-- Dialog footer -->

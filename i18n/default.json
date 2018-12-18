@@ -171,6 +171,7 @@
     "Working Day End": "Working Day End",
     "In Progress Issues jql": "In Progress Issues jql",
     "Date Fields": "Date Fields",
+    "Link For Mobile Devices": "Link For Mobile Devices",
     "description.Auditors Groups": "Only users of the selected groups will be allowed to see time spent by other users.",
     "description.Auditors Roles": "Only users of the selected roles will be allowed to see time spent by other users.",
     "description.Composition Issue Link": "If specified, Timesheet and Pivot reports will aggregate hours, into parent issue, using specified issue link in addition to sub tasks.",
@@ -197,6 +198,7 @@
     "description.Columns For Export": "Base columns for export in exportData files. If nothing selected, all will be processed. Order is predefined.",
     "description.In Progress Issues jql": "Specify JQL to always show issues in Timesheet in basic self user view and in Time Entry, e.g. 'assignee = currentUser() and status = \"In Progress\"'.",
     "description.Date Fields": "Date Fields for query, combined with OR in JQL, 'created or updated' if nothing selected for Time Tracking and Time Balance reports",
+    "description.Link For Mobile Devices": "Send Link For Timesheet Progressive Web Application to you email.",
 
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in auditors group. Please select yourself in User field to see own worklogs.",

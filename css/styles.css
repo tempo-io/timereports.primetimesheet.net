@@ -452,3 +452,6 @@ table td {
 .user-hover-details {
     overflow: hidden;
 }
+.aui-dialog2.aui-layer {
+    top: 69px;
+}
