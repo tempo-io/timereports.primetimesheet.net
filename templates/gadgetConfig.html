@@ -16,7 +16,12 @@
     </div>
     <div class="field-group">
       <label>{{ (isMonthView ? 'Number of Months' : 'Number of Weeks') | i18n}}</label>
-      <input ng-model="numOfWeeks.value" class="text" type="number" min="1" max="12" ng-change="numOfWeeksChange(numOfWeeks.value)" ng-disabled="!startDate.calculated && !endDate.calculated"/>
+      <input ng-model="numOfWeeks.value"
+             class="text"
+             type="number"
+             min="1" max="12"
+             ng-change="numOfWeeksChange(numOfWeeks.value)"
+             ng-disabled="!startDate.calculated && !endDate.calculated"/>
     </div>
     <div class="field-group">
       <label>{{ 'Offset' | i18n}}</label>

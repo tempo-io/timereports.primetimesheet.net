@@ -109,6 +109,7 @@
     "param.childrenFilterId" : "Children Filter: %s",
     "param.group" : "Group: %s",
     "param.jql": "JQL: %s",
+    "param.numOfWeeks": "All time",
 
     "1timeoriginalestimate": "Original Estimate",
     "12estimate": "Estimate",
