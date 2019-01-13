@@ -42,7 +42,7 @@
         </div>
     </div>
     <div class="field-group" ng-if="auditorsRoles">
-        <span class="description">{{'description.Auditors Roles' | i18n}}</span>
+        <span class="description" ng-bind-html="'description.Auditors Roles' | i18n | htmlSafe"></span>
     </div>
     <div class="field-group">
         <label for="select2-compositionIssueLink">{{'Composition Issue Link' | i18n}}</label>

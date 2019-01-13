@@ -174,7 +174,7 @@
     "Date Fields": "Date Fields",
     "Link For Mobile Devices": "Link For Mobile Devices",
     "description.Auditors Groups": "Only users of the selected groups will be allowed to see time spent by other users.",
-    "description.Auditors Roles": "Only users of the selected roles will be allowed to see time spent by other users.",
+    "description.Auditors Roles": "Only users of the selected roles will be allowed to see time spent by other users. <span class=\"yellow\">CAUTION</span>: Next-Gen projects are not supported, and will not appear in reports if any role is selected.",
     "description.Composition Issue Link": "If specified, Timesheet and Pivot reports will aggregate hours, into parent issue, using specified issue link in addition to sub tasks.",
     "description.Parent Issue Field": "If specified, reports will aggregate hours, into parent issue, using specified issue field in addition to sub tasks. Only Jira Agile \"Epic Link\" is supported.",
     "description.Parent Issue Type": "If specified, reports will aggregate hours, into parent issue, using Jira Portfolio issue hierarchy. Specify Jira Portfolio parent issue type here.",
