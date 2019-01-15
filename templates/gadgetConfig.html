@@ -63,7 +63,7 @@
       <label>{{'User' | i18n}}</label>
       <input ng-value="userInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
     </div>
-    <div class="field-group" ng-if="pivotTableType == 'Timesheet' || pivotTableType == 'PieChart'">
+    <div class="field-group" ng-if="['Timesheet', 'Timespent', 'PieChart'].indexOf(pivotTableType) >= 0">
       <label>{{'All Users' | i18n}}</label>
       <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)" />
     </div>
