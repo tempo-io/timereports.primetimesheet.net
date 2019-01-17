@@ -1,9 +1,9 @@
-<div class="formTitle">
+<div class="formTitle margin">
     <h2>{{'welcome.title' | i18n}}</h2>
 </div>
-<div class="formTitleDescription">{{'welcome.subTitle' | i18n}}</div>
+<div class="formTitleDescription margin">{{'welcome.subTitle' | i18n}}</div>
 
-<div class="aui">
+<div class="aui margin">
     <p>
         <span data-ng-bind-html="'welcome.content.1' | i18n | htmlSafe"></span>
     </p>
@@ -44,12 +44,6 @@
             <a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!pivotTableType=TimeBalance" target="_blank" ng-bind="'TimeBalance' | i18n">Time Balance</a>
             <span data-ng-bind-html="'welcome.content.2.6.1' | i18n | htmlSafe"></span>
         </li>
-        <li>
-            <span data-ng-bind-html="'welcome.content.2.7' | i18n:{placeholders:[hostBaseUrl]} | htmlSafe"></span>
-        </li>
-        <li>
-            <span data-ng-bind-html="'welcome.content.2.8' | i18n | htmlSafe"></span>
-        </li>
     </ul>
     <p>
         <span data-ng-bind-html="'welcome.content.3' | i18n | htmlSafe"></span>
@@ -60,6 +54,15 @@
     <p>
         <span data-ng-bind-html="'welcome.content.3.2' | i18n | htmlSafe"></span>
     </p>
+    <p>
+        <span data-ng-bind-html="'welcome.content.3.3' | i18n:{placeholders:[hostBaseUrl]} | htmlSafe"></span>
+    </p>
+    <p>
+        <span data-ng-bind-html="'welcome.content.3.4' | i18n | htmlSafe"></span>
+    </p>
+    <p ng-if="isTimesheet">
+        <span data-ng-bind-html="'welcome.content.3.5' | i18n | htmlSafe"></span>
+    </p>
     <h3>
         <span data-ng-bind-html="'welcome.content.4' | i18n | htmlSafe"></span>
     </h3>
@@ -69,6 +72,9 @@
         </li>
         <li>
             <span data-ng-bind-html="'welcome.content.5.2' | i18n | htmlSafe"></span>
+        </li>
+        <li>
+            <span data-ng-bind-html="'welcome.content.5.3' | i18n | htmlSafe"></span>
         </li>
     </ul>
 </div>
