@@ -1,5 +1,28 @@
-<form class="aui">
-    <div class="ak-field-group">
-      <a ng-click="">{{ 'Time Reports Config' | i18n }}</a>
+<div class="aui margin">
+    <div style="margin-top: 24px">
+        <h4>{{ 'Time Reports Config' | i18n }}</h4>
     </div>
-</form>
+    <ul>
+        <li>
+              <a ng-click="activePage('access')" ng-class="{disabled: page=='access'}" >{{ 'Access' | i18n }}</a>
+        </li>
+        <li>
+            <div class="ak-field-group">
+              <a ng-click="activePage('hierarchy')" ng-class="{disabled: page=='hierarchy'}" >{{ 'Issues Hierarchy' | i18n }}</a>
+            </div>
+        </li>
+        <li>
+            <div class="ak-field-group">
+                <a ng-click="activePage('defaults')" ng-class="{disabled: page=='defaults'}" >{{ 'User Defaults' | i18n }}</a>
+            </div>
+        </li>
+        <li>
+            <div class="ak-field-group">
+              <a ng-click="activePage('general')" ng-class="{disabled: page=='general'}" >{{ 'General' | i18n }}</a>
+            </div>
+        </li>
+    </ul>
+    <br>
+    <br>
+    {{'Go to' | i18n}} <a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/timereports" target="_parent">{{'Time Reports' | i18n}}</a>
+</div>

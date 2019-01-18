@@ -134,6 +134,11 @@
     "emailaddress": "Email Address",
     "descriptionstatus": "Work Description / Status",
 
+    "General": "General",
+    "Access": "Access",
+    "Issues Hierarchy": "Issues Hierarchy",
+    "User Defaults": "User Default Settings",
+
     "Time Reports Config": "Time Reports Configuration",
     "Configure Time Reports": "Configure Time Reports.",
     "All changes will be saved automatically": "All changes will be saved automatically.",
