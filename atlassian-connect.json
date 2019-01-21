@@ -26,6 +26,36 @@
             "conditions": [{
                 "condition": "user_is_logged_in"
             }]
+        }, {
+            "name": {
+                "value": "Time Reports"
+            },
+            "icon": {
+                "width": 16,
+                "height": 16,
+                "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA2NCIgaGVpZ2h0PSIxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPiA8Zz4gIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4gIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPiA8L2c+IDxnPiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgaWQ9InN2Z18xIiBkPSJtNTMyLDEwMjRjLTY5LjMzNCwwIC0xMzUuNTgzLC0xMy41ODMgLTE5OC43NSwtNDAuNzVzLTExNy41ODMsLTYzLjU4MyAtMTYzLjI1LC0xMDkuMjVzLTgyLjA4MywtMTAwLjA4MyAtMTA5LjI1LC0xNjMuMjVzLTQwLjc1LC0xMjkuNDE2IC00MC43NSwtMTk4Ljc1czEzLjU4MywtMTM1LjU4MyA0MC43NSwtMTk4Ljc1czYzLjU4MywtMTE3LjU4MyAxMDkuMjUsLTE2My4yNXMxMDAuMDgzLC04Mi4wODMgMTYzLjI1LC0xMDkuMjVzMTI5LjQxNiwtNDAuNzUgMTk4Ljc1LC00MC43NXMxMzUuNTgzLDEzLjU4MyAxOTguNzUsNDAuNzVzMTE3LjU4Myw2My41ODMgMTYzLjI1LDEwOS4yNXM4Mi4wODMsMTAwLjA4MyAxMDkuMjUsMTYzLjI1czQwLjc1LDEyOS40MTYgNDAuNzUsMTk4Ljc1cy0xMy41ODMsMTM1LjU4MyAtNDAuNzUsMTk4Ljc1cy02My41ODMsMTE3LjU4MyAtMTA5LjI1LDE2My4yNXMtMTAwLjA4Myw4Mi4wODMgLTE2My4yNSwxMDkuMjVzLTEyOS40MTYsNDAuNzUgLTE5OC43NSw0MC43NXptMCwtOTI1Yy01NiwwIC0xMDkuNSwxMC45MTcgLTE2MC41LDMyLjc1cy05NC45MTYsNTEuMTY2IC0xMzEuNzUsODhzLTY2LjE2Nyw4MC43NSAtODgsMTMxLjc1cy0zMi43NSwxMDQuNSAtMzIuNzUsMTYwLjVzMTAuOTE3LDEwOS41IDMyLjc1LDE2MC41czUxLjE2Niw5NC45MTYgODgsMTMxLjc1czgwLjc1LDY2LjE2NyAxMzEuNzUsODhzMTA0LjUsMzIuNzUgMTYwLjUsMzIuNzVzMTA5LjUsLTEwLjkxNyAxNjAuNSwtMzIuNzVzOTQuOTE2LC01MS4xNjYgMTMxLjc1LC04OHM2Ni4xNjcsLTgwLjc1IDg4LC0xMzEuNzVzMzIuNzUsLTEwNC41IDMyLjc1LC0xNjAuNXMtMTAuOTE3LC0xMDkuNSAtMzIuNzUsLTE2MC41cy01MS4xNjYsLTk0LjkxNiAtODgsLTEzMS43NXMtODAuNzUsLTY2LjE2NyAtMTMxLjc1LC04OHMtMTA0LjUsLTMyLjc1IC0xNjAuNSwtMzIuNzV6bTQ2LDQxMWwxMjQsLTExOHM0MS41MjQsNS41ODYgNTguNzgsMjQuODcyYzE2LjczNiwxOC43MDUgMTUuMjIsNTMuMTI4IDE1LjIyLDUzLjEyOGwtMTk3LjgxNSwxOTQuMjM5bC00Ni4wNzUsMzguOGwtNjQuMTEsLTM3LjAzOWwwLC00MTBzMjYuMTM1LC0yMS40ODkgNTUuOTQ3LC0yMC45ODRjMjkuMTgxLDAuNDk1IDU0LjA1MywyMi45ODQgNTQuMDUzLDIyLjk4NGwwLDI1MnoiLz4gPC9nPjwvc3ZnPg=="
+            },
+            "key": "timereports-system",
+            "url": "/timereports.html?v=3",
+            "cacheable": true,
+            "location": "system.top.navigation.bar",
+            "conditions": [{
+                  "or": [{
+                      "condition": "addon_property_contains_any_user_group",
+                      "params": {
+                          "propertyKey": "configuration",
+                          "objectName": "timeentryPanelGroups"
+                      }
+                  }, {
+                      "condition": "addon_property_contains_any_user_group",
+                      "params": {
+                          "propertyKey": "configuration",
+                          "objectName": "auditorsGroups"
+                      }
+                  }]
+              }, {
+                  "condition": "user_is_logged_in"
+            }]
         }],
         "configurePage": {
             "name": {
