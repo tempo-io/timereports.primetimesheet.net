@@ -117,6 +117,21 @@
     </div>
     <div ng-show="page=='general'">
         <div class="field-group">
+            <label for="disableLogWork">{{'Disable Log Work' | i18n}}</label>
+            <input id="disableLogWork"
+                   type="checkbox"
+                   class="checkbox"
+                   ng-model="disableLogWork.val"
+                   ng-change="saveDisableLogWork()">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="disableLogWorkSaveSuccess">
+                <strong>{{'Disable Log Work' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Disable Log Work' | i18n}}</span>
+        </div>
+        <div class="field-group">
             <label for="workDescriptionRequired">{{'Work Description Required' | i18n}}</label>
             <input id="workDescriptionRequired"
                    type="checkbox"
