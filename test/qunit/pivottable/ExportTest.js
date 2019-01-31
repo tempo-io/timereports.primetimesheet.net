@@ -30,7 +30,8 @@ var translations = {
     "Disabled": "Disabled",
     'created': 'created',
     'updated': 'updated',
-    'resolved': 'resolved'
+    'resolved': 'resolved',
+    'Data is limited by Auditors Roles': 'Data is limited by Auditors Roles'
 };
 QUnit.test("Excel Export", function() {
     var excelView = new ExcelView(TimeData.issues);

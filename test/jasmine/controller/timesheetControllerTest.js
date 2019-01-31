@@ -111,7 +111,8 @@ describe("timesheetControllerTest", function() {
                 "Disabled": "Disabled",
                 'created': 'created',
                 'updated': 'updated',
-                'resolved': 'resolved'
+                'resolved': 'resolved',
+                'Data is limited by Auditors Roles': 'Data is limited by Auditors Roles'
             };
             for (var pivotTableType in PivotTableType) {
                 translations[pivotTableType] = pivotTableType;
@@ -559,7 +560,7 @@ describe("timesheetControllerTest", function() {
                         timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
                                 '3timespent', '4diff', '5originalestimateremaining', '6progress']},
                         exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
-                        dateFields: {val: []}                        
+                        dateFields: {val: []}
                     });
                     return deferred.promise;
                 },

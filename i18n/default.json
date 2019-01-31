@@ -208,6 +208,7 @@
     "description.Date Fields": "Date Fields for query, combined with OR in JQL, 'created or updated' if nothing selected for Time Tracking and Time Balance reports",
     "description.Link For Mobile Devices": "Send Link For Timesheet Progressive Web Application to you email. See also <a href=\"https://www.primetimesheet.net/cloud/Mobile.html\" target=\"_blank\">documentation</a>.",
 
+    "Data is limited by Auditors Roles": "Because of the Auditors Roles configured, data is limited to own worklogs for the following project(s):",
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in auditors group. Please select yourself in User field to see own worklogs.",
     "error.restriction.licenseError": "License is not Active.",

@@ -39,7 +39,8 @@ describe("pivottableServiceTest", function() {
                 "Disabled": "Disabled",
                 'created': 'created',
                 'updated': 'updated',
-                'resolved': 'resolved'
+                'resolved': 'resolved',
+                'Data is limited by Auditors Roles': 'Data is limited by Auditors Roles'
             };
             for (var pivotTableType in PivotTableType) {
                 translations[pivotTableType] = pivotTableType;

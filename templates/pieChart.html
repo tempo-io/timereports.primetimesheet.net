@@ -38,6 +38,9 @@
             <loading/>
         </div>
         <div id="placeholder" pie-chart ng-model="pivotTable"></div>
+        <div class="aui-message aui-message warning" ng-show="loaded && !loading && restrictedProjects">
+            <strong>{{'Data is limited Auditors Roles' | i18n}}</strong>&nbsp;{{restrictedProjects}}
+        </div>
         <div>
             <br/>
             <button class="aui-button" ng-click="execute()" ng-if="!loaded" ng-disabled="loading" ng-class="{disabled: loading}">
