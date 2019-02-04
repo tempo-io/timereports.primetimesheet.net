@@ -24,6 +24,10 @@ window.AP = {
           cb({});
       }
   },
+  events: {
+      onPublic: function() {
+      }
+  },
   request: function(options) {
     this.getTimeoutFunc()(function() {
       var m;
