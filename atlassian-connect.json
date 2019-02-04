@@ -16,6 +16,21 @@
         "type": "none"
     },
     "modules": {
+        "adminPages": [{
+            "url": "/timereports.html?configuration=true&v=2",
+            "name": {
+              "value": "Time Reports Configuration"
+            },
+            "location": "admin_plugins_menu/timetracking_section",
+            "key": "timereports-time-tracking-config"
+        }],
+        "jiraTimeTrackingProviders": [{
+            "key": "timereports-time-tracking-provider",
+            "name": {
+              "value": "Time Reports provided time tracking"
+            },
+            "adminPageKey": "timereports-time-tracking-config"
+        }],
         "generalPages": [{
             "location": "find_link/timesheet-menu",
             "name": {
@@ -36,7 +51,7 @@
                 "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA2NCIgaGVpZ2h0PSIxMDI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPiA8Zz4gIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4gIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPiA8L2c+IDxnPiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgaWQ9InN2Z18xIiBkPSJtNTMyLDEwMjRjLTY5LjMzNCwwIC0xMzUuNTgzLC0xMy41ODMgLTE5OC43NSwtNDAuNzVzLTExNy41ODMsLTYzLjU4MyAtMTYzLjI1LC0xMDkuMjVzLTgyLjA4MywtMTAwLjA4MyAtMTA5LjI1LC0xNjMuMjVzLTQwLjc1LC0xMjkuNDE2IC00MC43NSwtMTk4Ljc1czEzLjU4MywtMTM1LjU4MyA0MC43NSwtMTk4Ljc1czYzLjU4MywtMTE3LjU4MyAxMDkuMjUsLTE2My4yNXMxMDAuMDgzLC04Mi4wODMgMTYzLjI1LC0xMDkuMjVzMTI5LjQxNiwtNDAuNzUgMTk4Ljc1LC00MC43NXMxMzUuNTgzLDEzLjU4MyAxOTguNzUsNDAuNzVzMTE3LjU4Myw2My41ODMgMTYzLjI1LDEwOS4yNXM4Mi4wODMsMTAwLjA4MyAxMDkuMjUsMTYzLjI1czQwLjc1LDEyOS40MTYgNDAuNzUsMTk4Ljc1cy0xMy41ODMsMTM1LjU4MyAtNDAuNzUsMTk4Ljc1cy02My41ODMsMTE3LjU4MyAtMTA5LjI1LDE2My4yNXMtMTAwLjA4Myw4Mi4wODMgLTE2My4yNSwxMDkuMjVzLTEyOS40MTYsNDAuNzUgLTE5OC43NSw0MC43NXptMCwtOTI1Yy01NiwwIC0xMDkuNSwxMC45MTcgLTE2MC41LDMyLjc1cy05NC45MTYsNTEuMTY2IC0xMzEuNzUsODhzLTY2LjE2Nyw4MC43NSAtODgsMTMxLjc1cy0zMi43NSwxMDQuNSAtMzIuNzUsMTYwLjVzMTAuOTE3LDEwOS41IDMyLjc1LDE2MC41czUxLjE2Niw5NC45MTYgODgsMTMxLjc1czgwLjc1LDY2LjE2NyAxMzEuNzUsODhzMTA0LjUsMzIuNzUgMTYwLjUsMzIuNzVzMTA5LjUsLTEwLjkxNyAxNjAuNSwtMzIuNzVzOTQuOTE2LC01MS4xNjYgMTMxLjc1LC04OHM2Ni4xNjcsLTgwLjc1IDg4LC0xMzEuNzVzMzIuNzUsLTEwNC41IDMyLjc1LC0xNjAuNXMtMTAuOTE3LC0xMDkuNSAtMzIuNzUsLTE2MC41cy01MS4xNjYsLTk0LjkxNiAtODgsLTEzMS43NXMtODAuNzUsLTY2LjE2NyAtMTMxLjc1LC04OHMtMTA0LjUsLTMyLjc1IC0xNjAuNSwtMzIuNzV6bTQ2LDQxMWwxMjQsLTExOHM0MS41MjQsNS41ODYgNTguNzgsMjQuODcyYzE2LjczNiwxOC43MDUgMTUuMjIsNTMuMTI4IDE1LjIyLDUzLjEyOGwtMTk3LjgxNSwxOTQuMjM5bC00Ni4wNzUsMzguOGwtNjQuMTEsLTM3LjAzOWwwLC00MTBzMjYuMTM1LC0yMS40ODkgNTUuOTQ3LC0yMC45ODRjMjkuMTgxLDAuNDk1IDU0LjA1MywyMi45ODQgNTQuMDUzLDIyLjk4NGwwLDI1MnoiLz4gPC9nPjwvc3ZnPg=="
             },
             "key": "timereports-system",
-            "url": "/timereports.html?v=3",
+            "url": "/timereports.html?v=2",
             "cacheable": true,
             "location": "system.top.navigation.bar",
             "conditions": [{
@@ -53,8 +68,8 @@
                           "objectName": "auditorsGroups"
                       }
                   }]
-              }, {
-                  "condition": "user_is_logged_in"
+            }, {
+                "condition": "user_is_logged_in"
             }]
         }],
         "configurePage": {
@@ -105,8 +120,7 @@
                 "condition": "user_is_logged_in"
             }]
         }],
-        "jiraIssueContents": [
-          {
+        "jiraIssueContents": [{
             "icon": {
               "width": 0,
               "height": 0,
@@ -114,7 +128,7 @@
             },
             "target": {
               "type": "web_panel",
-              "url": "/timereports.html?issue.key={issue.key}&issue.id={issue.id}&v=3"
+              "url": "/timereports.html?issue.key={issue.key}&issue.id={issue.id}&v=2"
             },
             "tooltip": {
               "value": "Log work done"
@@ -122,31 +136,24 @@
             "name": {
               "value": "Time Entry"
             },
-            "conditions": [
-              {
-                "and": [
-                  {
-                    "condition": "addon_property_contains_any_user_group",
-                    "params": {
-                      "propertyKey": "configuration",
-                      "objectName": "timeentryPanelGroups"
-                    }
-                  },
-                  {
-                    "condition": "has_issue_permission",
-                    "params": {
-                      "permission": "WORK_ON_ISSUES"
-                    }
-                  }
-                ]
-              }
-            ],
+            "conditions": [{
+                "condition": "addon_property_contains_any_user_group",
+                "params": {
+                  "propertyKey": "configuration",
+                  "objectName": "timeentryPanelGroups"
+                }
+            }, {
+                "condition": "has_issue_permission",
+                "params": {
+                  "permission": "WORK_ON_ISSUES"
+                }
+            }],
             "key": "timeentry-issue-content"
           }
         ],
         "webPanels": [
           {
-            "url": "/timereports.html?issue.key={issue.key}&issue.id={issue.id}&v=3",
+            "url": "/timereports.html?issue.key={issue.key}&issue.id={issue.id}&v=2",
             "location": "atl.jira.view.issue.left.context",
             "layout": {
               "width": "10px",
@@ -156,77 +163,29 @@
             "name": {
               "value": "Time Entry"
             },
-            "conditions": [
-              {
-                "and": [
-                  {
-                    "condition": "addon_property_contains_any_user_group",
-                    "params": {
-                      "propertyKey": "configuration",
-                      "objectName": "timeentryPanelGroups"
-                    }
-                  },
-                  {
-                    "condition": "has_issue_permission",
-                    "params": {
-                      "permission": "WORK_ON_ISSUES"
-                    }
-                  }
-                ]
-              }
-            ],
+            "conditions": [{
+                "condition": "addon_property_contains_any_user_group",
+                "params": {
+                  "propertyKey": "configuration",
+                  "objectName": "timeentryPanelGroups"
+                }
+              }, {
+                "condition": "has_issue_permission",
+                "params": {
+                  "permission": "WORK_ON_ISSUES"
+                }
+            }],
             "key": "timeentry-panel"
           }
         ],
         "webItems" : [{
-            "name": {
-                "value": "Delete Worklog"
-            },
-            "key": "deleteworklog",
-            "url": "/timereports.html?dialog=deleteworklog&v=2",
-            "location": "none",
-            "context": "addon",
-            "target": {
-                "type": "dialog"
-            }
-        }, {
-            "name": {
-                "value": "Update Worklog"
-            },
-            "key": "updateworklog",
-            "url": "/timereports.html?dialog=updateworklog&v=2",
-            "location": "none",
-            "context": "addon",
-            "target": {
-                "type": "dialog"
-            }
-        }, {
-            "name": {
-                "value": "Create Worklog"
-            },
-            "key": "createworklog",
-            "url": "/timereports.html?dialog=createworklog&v=2",
-            "location": "none",
-            "context": "addon",
-            "target": {
-                "type": "dialog"
-            }
-        }, {
-            "name": {
-                "value": "Add Worklog"
-            },
-            "key": "addworklog",
-            "url": "/timereports.html?dialog=addworklog&v=2",
-            "location": "none",
-            "context": "addon",
-            "target": {
-                "type": "dialog"
-            }
-        }, {
             "key": "timereports-search",
             "location": "jira.navigator.pluggable.items",
             "weight": 9999,
             "name": {
+                "value": "Time Reports"
+            },
+            "tooltip": {
                 "value": "Time Reports"
             },
             "icon": {
@@ -234,6 +193,7 @@
                 "height": 16,
                 "url": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDMuMS4xICg4NzYxKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KIDx0aXRsZT5yZXBvcnRzPC90aXRsZT4KIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgoKIDxnPgogIDx0aXRsZT5iYWNrZ3JvdW5kPC90aXRsZT4KICA8cmVjdCBmaWxsPSJub25lIiBpZD0iY2FudmFzX2JhY2tncm91bmQiIGhlaWdodD0iMTgiIHdpZHRoPSIxOCIgeT0iLTEiIHg9Ii0xIi8+CiA8L2c+CiA8Zz4KICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+CiAgPGcgZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJub25lIiBpZD0iUGFnZS0xIj4KICAgPGcgc3Ryb2tlPSJudWxsIiBmaWxsPSIjMzMzMzMzIiBpZD0icmVwb3J0cyI+CiAgICA8cGF0aCBzdHJva2U9Im51bGwiIGlkPSJTaGFwZSIgZD0ibTQuMjk0MTE4LDEuOTkwMTk1bDAsMTIuMzUyOTQybC0yLjQzMDIzNSwwbC0wLjAzNzg4MiwtMTIuMzUyOTQybDIuNDY4MTE4LDBsMCwwem0wLjgyMzUyOSwtMC44MjM1MjlsLTQuMTE3NjQ3LDBsMC4wNDI4MjQsMTQuMDAwMDAxbDQuMDc0ODI0LDBsMCwtMTQuMDAwMDAxbDAsMHoiLz4KICAgIDxwYXRoIHN0cm9rZT0ibnVsbCIgaWQ9IlNoYXBlIiBkPSJtOS4yMzUyOTUsNi4xMDc4NDNsMCw4LjIzNTI5NWwtMi40MzEwNTksMGwtMC4wMzYyMzUsLTguMjM1Mjk1bDIuNDY3Mjk0LDBsMCwwem0wLjgyMzUyOSwtMC44MjM1MjlsLTQuMTE3NjQ3LDBsMC4wNDI4MjQsOS44ODIzNTNsNC4wNzQ4MjQsMGwwLC05Ljg4MjM1M2wwLDB6Ii8+CiAgICA8cGF0aCBzdHJva2U9Im51bGwiIGlkPSJTaGFwZSIgZD0ibTE0LjE3NjQ3MSwxMC4yMjU0OWwwLDQuMTE3NjQ3bC0yLjQzMzUzLDBsLTAuMDMwNDcxLC00LjExNzY0N2wyLjQ2NCwwbDAsMHptMC44MjM1MjksLTAuODIzNTI5bC00LjExNzY0NywwbDAuMDQyODI0LDUuNzY0NzA2bDQuMDc0ODI0LDBsMCwtNS43NjQ3MDZsMCwweiIvPgogICA8L2c+CiAgPC9nPgogPC9nPgo8L3N2Zz4="
             },
+            "cacheable": true,
             "context": "addon",
             "url": "/timereports.html?dialog=timereports&v=2",
             "target": {
@@ -256,6 +216,40 @@
             "target": {
                 "type": "dialog"
             }
+        }, {
+            "key": "log-work",
+            "location": "operations-work",
+            "weight": 100,
+            "name": {
+              "value": "Log work"
+            },
+            "url": "/timereports.html?dialog=createworklog&v=2",
+            "cacheable": true,
+            "context": "addon",
+            "target": {
+              "type": "dialog",
+              "options": {
+                "header": {
+                  "value": "Log Work Done"
+                },
+                "height": "420px"
+              }
+            },
+            "conditions": [{
+                "condition": "addon_time_tracking_provider_enabled",
+                "params": {
+                  "addonKey": "timereports",
+                  "moduleKey": "timereports-time-tracking-provider"
+                }
+            }, {
+                "condition": "addon_property_equal_to",
+                "invert": true,
+                "params": {
+                  "propertyKey": "configuration",
+                  "objectName": "disableLogWork",
+                  "value": "true"
+                }
+            }]
         }]
     },
     "scopes": [
