@@ -20,7 +20,7 @@ QUnit.test("IssueWorkedTimeByUser", function() {
   }
   var totalKeys = Object.keys(pivotTable.totals);
   QUnit.assert.equal(totalKeys.length, 1, "totals");
-  QUnit.assert.equal(totalKeys[0], "admin", "totalKey");
+  QUnit.assert.equal(totalKeys[0], "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa", "totalKey");
   QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 172800, "total value");
   var rowKeys = Object.keys(pivotTable.rows);
   QUnit.assert.equal(rowKeys.length, 6, "rows");
@@ -28,7 +28,7 @@ QUnit.test("IssueWorkedTimeByUser", function() {
       var row = pivotTable.rows[rowKey];
       var columnKeys = Object.keys(row.columns);
       QUnit.assert.equal(1, columnKeys.length, "columns");
-      QUnit.assert.equal(columnKeys[0], "admin", "columnKey");
+      QUnit.assert.equal(columnKeys[0], "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa", "columnKey");
       QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
   }
 });

@@ -519,7 +519,7 @@ describe("timesheetControllerTest", function() {
         expect(scope.pivotTable).toHaveColumnsNumber(1);
         var totalColumn = getFirstColumnKey(scope.pivotTable);
         expect(totalColumn.keyName).toEqual('user');
-        expect(totalColumn.keyValue).toEqual('admin');
+        expect(totalColumn.keyValue).toEqual('aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa');
         expect(scope.pivotTable.sum).toBe(176400);
         expect(scope.rowKeySize).toBe(5);
         checkOptions(scope);
