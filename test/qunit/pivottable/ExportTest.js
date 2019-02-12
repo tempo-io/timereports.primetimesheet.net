@@ -37,26 +37,26 @@ QUnit.test("Excel Export", function() {
     var excelView = new ExcelView(TimeData.issues);
     QUnit.assert.equal(typeof excelView, 'object', 'excelView');
     var excel = excelView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1, moreFields: [],
-        translations: translations, configOptions: {exportColumns:['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
+        translations: translations, configOptions: {exportColumns:['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
         jiraConfig: {}});
     QUnit.assert.equal(typeof excel, 'string', 'excel');
     QUnit.assert.equal(excel.match(/\d+h/g), null, "issue#902: hours with no h");
     var lines = excel.split('\n');
-    var header = lines.slice(10, 20).map(s => s.trim()).join('');
-    QUnit.assert.equal(header, "<td>Project</td><td>Issue Type</td><td>Key</td><td>Summary</td><td>Priority</td><td>Date Started</td><td>Username</td><td>Display Name</td><td>Time Spent (h)</td><td>Work Description</td>", "header");
-    var row1 = lines.slice(22, 32).map(s => s.trim()).join('');
-    QUnit.assert.equal(row1, "<td>Timeship</td><td>Bug</td><td><a href='/browse/TIME-4'>TIME-4</a></td><td><a href='/browse/TIME-4'>Mega problem</a></td><td>Major</td><td>2014-02-24 21:03:48</td><td>admin</td><td>admin</td><td>1</td><td>test 1</td>", "row1");
-    var row2 = lines.slice(34, 44).map(s => s.trim()).join('');
-    QUnit.assert.equal(row2, "<td>Timeship</td><td>Bug</td><td><a href='/browse/TIME-4'>TIME-4</a></td><td><a href='/browse/TIME-4'>Mega problem</a></td><td>Major</td><td>2014-02-25 21:03:48</td><td>admin</td><td>admin</td><td>1</td><td>test 2</td>", "row2");
-    var total = lines.slice(166, 176).map(s => s.trim()).join('');
-    QUnit.assert.equal(total, '<td>Total</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>48</td><td></td>', "total");
+    var header = lines.slice(10, 19).map(s => s.trim()).join('');
+    QUnit.assert.equal(header, "<td>Project</td><td>Issue Type</td><td>Key</td><td>Summary</td><td>Priority</td><td>Date Started</td><td>Display Name</td><td>Time Spent (h)</td><td>Work Description</td>", "header");
+    var row1 = lines.slice(21, 30).map(s => s.trim()).join('');
+    QUnit.assert.equal(row1, "<td>Timeship</td><td>Bug</td><td><a href='/browse/TIME-4'>TIME-4</a></td><td><a href='/browse/TIME-4'>Mega problem</a></td><td>Major</td><td>2014-02-24 21:03:48</td><td>admin</td><td>1</td><td>test 1</td>", "row1");
+    var row2 = lines.slice(32, 41).map(s => s.trim()).join('');
+    QUnit.assert.equal(row2, "<td>Timeship</td><td>Bug</td><td><a href='/browse/TIME-4'>TIME-4</a></td><td><a href='/browse/TIME-4'>Mega problem</a></td><td>Major</td><td>2014-02-25 21:03:48</td><td>admin</td><td>1</td><td>test 2</td>", "row2");
+    var total = lines.slice(153, 162).map(s => s.trim()).join('');
+    QUnit.assert.equal(total, '<td>Total</td><td></td><td></td><td></td><td></td><td></td><td></td><td>48</td><td></td>', "total");
 });
 QUnit.test("Excel Export TimeTracking", function() {
     var excelView = new ExcelView(TimeData.issues);
     QUnit.assert.equal(typeof excelView, 'object', 'excelView');
     var excel = excelView.generate({pivotTableType: 'TimeTracking', startDate: '2014-02-24',
         reportingDay: 1, moreFields: [], translations: translations, configOptions: {exportColumns:['project', 'issuetype',
-            'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
+            'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
             timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',  '3timespent', '4diff',
             '5originalestimateremaining', '6progress'],
         jiraConfig: {}});
@@ -74,22 +74,22 @@ QUnit.test("Csv Export", function() {
     var csvView = new CsvView(TimeData.issues);
     QUnit.assert.equal(typeof csvView, 'object', 'csvView');
     var csv = csvView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1, moreFields: [],
-        translations: translations, configOptions: {exportColumns:['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
+        translations: translations, configOptions: {exportColumns:['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
         jiraConfig: {}});
     QUnit.assert.equal(typeof csv, 'string', 'csv');
     QUnit.assert.equal(csv.match(/\d+h/g), null, "issue#902: hours with no h")
     var lines = csv.split('\n');
-    QUnit.assert.equal(lines[0], 'Project,Issue Type,Key,Summary,Priority,Date Started,Username,Display Name,Time Spent (h),Work Description', "header");
-    QUnit.assert.equal(lines[1], '"Timeship",Bug,TIME-4,"Mega problem","Major",2014-02-24 21:03:48,admin,"admin",1,"test 1"', "row1");
-    QUnit.assert.equal(lines[2], '"Timeship",Bug,TIME-4,"Mega problem","Major",2014-02-25 21:03:48,admin,"admin",1,"test 2"', "row2");
-    QUnit.assert.equal(lines[13], 'Total,,,,,,,,48,', "total");
+    QUnit.assert.equal(lines[0], 'Project,Issue Type,Key,Summary,Priority,Date Started,Display Name,Time Spent (h),Work Description', "header");
+    QUnit.assert.equal(lines[1], '"Timeship",Bug,TIME-4,"Mega problem","Major",2014-02-24 21:03:48,"admin",1,"test 1"', "row1");
+    QUnit.assert.equal(lines[2], '"Timeship",Bug,TIME-4,"Mega problem","Major",2014-02-25 21:03:48,"admin",1,"test 2"', "row2");
+    QUnit.assert.equal(lines[13], 'Total,,,,,,,48,', "total");
 });
 QUnit.test("Csv Export TimeTracking", function() {
     var csvView = new CsvView(TimeData.issues);
     QUnit.assert.equal(typeof csvView, 'object', 'csvView');
     var csv = csvView.generate({pivotTableType: 'TimeTracking', startDate: '2014-02-24',
         reportingDay: 1, moreFields: [], translations: translations, configOptions: {exportColumns:['project', 'issuetype',
-            'key', 'summary', 'priority', 'datestarted', 'username', 'displayname', 'descriptionstatus']},
+            'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
             timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',  '3timespent', '4diff',
                 '5originalestimateremaining', '6progress'],
         jiraConfig: {}});
