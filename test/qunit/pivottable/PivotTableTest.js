@@ -561,6 +561,20 @@ QUnit.test("TimesheetUtils.getTimeSpents", function() {
     QUnit.assert.equal(timespents.length, 1, "length");
     QUnit.assert.equal(timespents[0], (150 * 60) + 'm', "150h");
 });
+QUnit.test("TimesheetUtils.validateParams", function() {
+    var err = TimesheetUtils.validateParams({
+        pivotTableType: 'NotExists', 
+        filterOrProjectId: 'lalala', 
+        numOfWeeks: '5r', 
+        reportingDay:7,
+        offset:'4e',
+        endDate:'2020-12-20',//real
+        startDate:'2020-20-20',
+        sum:'true',
+        view:'false'
+    });
+    QUnit.assert.equal(err.join(','), 'Unknown PivotTableType: NotExists,Unknown filterOrProjectId: lalala,numOfWeeks should be Integer,reportingDay should be -1..6,offset should be Integer,startDate should be date in YYYY-MM-DD format,sum should be in ["day", "week", "month"],view should be in ["day", "week", "month"]', "all");
+});
 QUnit.test("Timesheet: 2 level grouping", function() {
     var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', categorizeByField: 'issuetype', groupByField: 'reporter', moreFields: ['timespent'], startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
     for (var i in TimeData.issues) {

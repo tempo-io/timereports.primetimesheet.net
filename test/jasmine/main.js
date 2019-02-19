@@ -31,7 +31,8 @@ require([
     "app/pivottable/PivotEntry",
     "app/pivottable/TimesheetStrategy",
     "app/pivottable/PivotStrategy",
-    "app/pivottable/PivotTable"
+    "app/pivottable/PivotTable",
+    "app/pivottable/PivotTableType"
     ], function() {
         require([
             "controller/timesheetControllerTest.js",

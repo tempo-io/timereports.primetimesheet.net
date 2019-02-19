@@ -16,6 +16,7 @@ require([
     "app/pivottable/TimesheetStrategy",
     "app/pivottable/PivotStrategy",
     "app/pivottable/PivotTable",
+    "app/pivottable/PivotTableType",
     "app/pivottable/CsvView",
     "app/pivottable/ExcelView",
     "app/pivottable/HtmlView",
