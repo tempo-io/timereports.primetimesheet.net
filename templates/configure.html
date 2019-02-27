@@ -61,6 +61,23 @@
         <div class="field-group">
             <span class="description">{{'description.User Groups With Time Entry Panel' | i18n}}</span>
         </div>
+        <div class="field-group">
+            <label for="timeentryPanelProjects">{{'Projects With Time Entry Panel' | i18n}}</label>
+            <input id="timeentryPanelProjects"
+                   aui-multi-select-picker
+                   class="text"
+                   title="{{'Projects' | i18n}}"
+                   ng-model="timeentryPanelProjects.val"
+                   ng-options-data="timeentryPanelProjectsData"
+                   ng-value-changed-func="saveTimeentryPanelProjects">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="timeentryPanelProjectsSaveSuccess">
+                <strong>{{'Projects With Time Entry Panel' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Projects With Time Entry Panel' | i18n}}</span>
+        </div>
     </div>
     <div ng-show="page=='hierarchy'">
         <div class="field-group">
