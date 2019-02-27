@@ -137,11 +137,20 @@
               "value": "Time Entry"
             },
             "conditions": [{
-                "condition": "addon_property_contains_any_user_group",
-                "params": {
-                  "propertyKey": "configuration",
-                  "objectName": "timeentryPanelGroups"
-                }
+                "or": [{
+                    "condition": "addon_property_contains_any_user_group",
+                    "params": {
+                        "propertyKey": "configuration",
+                        "objectName": "timeentryPanelGroups"
+                    }
+                }, {
+                    "condition": "addon_property_contains_context",
+                    "params": {
+                        "propertyKey": "configuration",
+                        "objectName": "timeentryPanelProjects",
+                        "contextParameter": "project.key"
+                    }
+                }]
             }, {
                 "condition": "has_issue_permission",
                 "params": {
@@ -164,11 +173,20 @@
               "value": "Time Entry"
             },
             "conditions": [{
-                "condition": "addon_property_contains_any_user_group",
-                "params": {
-                  "propertyKey": "configuration",
-                  "objectName": "timeentryPanelGroups"
-                }
+                "or": [{
+                    "condition": "addon_property_contains_any_user_group",
+                    "params": {
+                        "propertyKey": "configuration",
+                        "objectName": "timeentryPanelGroups"
+                    }
+                }, {
+                    "condition": "addon_property_contains_context",
+                    "params": {
+                        "propertyKey": "configuration",
+                        "objectName": "timeentryPanelProjects",
+                        "contextParameter": "project.key"
+                    }
+                }]
               }, {
                 "condition": "has_issue_permission",
                 "params": {
