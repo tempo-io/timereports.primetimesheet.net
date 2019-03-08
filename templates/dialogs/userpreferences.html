@@ -14,7 +14,7 @@
     <div class="aui-message aui-message-info" style="margin: 0">
         {{'All changes will be saved automatically' | i18n}}
     </div>
-    <form class="aui">
+    <form class="aui" name="configForm">
         <div class="field-group">
             <label for="select2-weekendType">{{'Weekend Type' | i18n}}</label>
             <select id="select2-weekendType"
@@ -138,6 +138,23 @@
             <span class="description" ng-bind-html="'description.Time In Status Categories' | i18n | htmlSafe"></span>
         </div>
         <div class="field-group">
+            <label for="exportColumns">{{'Columns For Export' | i18n}}</label>
+            <input id="exportColumns"
+                   aui-multi-select-picker
+                   class="text"
+                   title="{{'Columns For Export' | i18n}}"
+                   ng-model="exportColumns.val"
+                   ng-options-data="exportColumnsData"
+                   ng-value-changed-func="saveExportColumns">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="exportColumnsSaveSuccess">
+                <strong>{{'Columns For Export' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description" ng-bind-html="'description.Columns For Export' | i18n | htmlSafe"></span>
+        </div>
+        <div class="field-group">
             <label for="dateFields">{{'Date Fields' | i18n}}</label>
             <input id="dateFields"
                    aui-multi-select-picker
@@ -153,6 +170,29 @@
         </div>
         <div class="field-group">
             <span class="description" ng-bind-html="'description.Date Fields' | i18n | htmlSafe"></span>
+        </div>
+        <div class="field-group">
+            <label for="inProgressIssuesJql">{{'In Progress Issues jql' | i18n}}</label>
+            <input name="inProgressIssuesJql"
+                   id="inProgressIssuesJql"
+                   type="text"
+                   class="text"
+                   ng-model="inProgressIssuesJql.val"
+                   jql
+                   ng-model-options='{ debounce: 1000 }'
+                   inProgressIssuesJql
+                   ng-change="saveInProgressIssuesJql(configForm)"
+                   placeholder="{{defaults.inProgressIssuesJql.default}}">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="inProgressIssuesJqlSaveSuccess">
+                <strong>{{'In Progress Issues jql' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+            <div ng-show="configForm.inProgressIssuesJql.$error.jql" role="alert" class="red">
+                {{configForm.inProgressIssuesJql.$error.jqlError}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.In Progress Issues jql' | i18n}}</span>
         </div>
         <div class="field-group" ng-show="problemReporter">
             <label for="onErrorIgnore">{{'Disable Problem Reporter' | i18n}}</label>
