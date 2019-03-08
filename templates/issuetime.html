@@ -37,7 +37,7 @@
                           onshow="$parent.$form=$form"
                           onhide="$parent.$form=undefined"
                           onaftersave="commentChanged(data.worklog)">
-                            {{data.worklog.comment  || ('< No comment >' | i18n)| limitTo:75}}
+                            <worklog-comment worklog="data.worklog" no-comment="'< No comment >' | i18n"/>
                             <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
                         </span>
                 </div>

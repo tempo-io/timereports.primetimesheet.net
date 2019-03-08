@@ -133,7 +133,7 @@
                               onshow="$parent.$form=$form"
                               onhide="$parent.$form=undefined"
                               onaftersave="commentChanged(data.worklog)">
-                            {{data.worklog.comment  || ('< No comment >' | i18n)| limitTo:175}}
+                            <worklog-comment worklog="data.worklog" no-comment="'< No comment >' | i18n"/>
                             <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
                         </span>
                         <span ng-if="'TimeEntry' != pivotTableType" title="{{data.worklog.comment.length > 175 ? data.worklog.comment : ''}}">{{data.worklog.comment | limitTo:175}}</span> <!--if worklog is present-->
