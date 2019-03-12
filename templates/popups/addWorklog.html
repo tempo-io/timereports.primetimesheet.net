@@ -21,5 +21,11 @@
             <input class="error" type="text" size="25" ng-model="popupData.worklog.comment" enter-pressed="popupData.addWorklog(closePopup)" ng-required="workDescriptionRequired" placeholder="{{workDescriptionRequired ? '(required)' : ''}}"/>
         </td>
     </tr>
+    <tr ng-if="popupData.worklog.user">
+        <td><label>{{'On Behalf of' | i18n}}</label></td>
+        <td colspan="2">
+            <input type="text" size="25" ng-model="popupData.worklog.user.displayName" readonly="readonly"/>
+        </td>
+    </tr>
 </table>
 </form>

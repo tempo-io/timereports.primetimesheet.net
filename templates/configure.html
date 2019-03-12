@@ -45,6 +45,17 @@
         <div class="field-group" ng-if="auditorsRoles">
             <span class="description" ng-bind-html="'description.Auditors Roles' | i18n | htmlSafe"></span>
         </div>
+        <div class="field-group" ng-if="isTimesheet">
+            <label for="select2-logWorkForOthersGroups">{{'Log Work For Others Groups' | i18n}}</label>
+            <input id="select2-logWorkForOthersGroups" ng-model="logWorkForOthersGroups.val" aui-group-picker ng-group-changed-func="saveLogWorkForOthersGroups" type="text" title="{{'Log Work For Others Groups' | i18n}}"/>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="logWorkForOthersGroupsSaveSuccess">
+                <strong>{{'Log Work For Others Groups' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group" ng-if="isTimesheet">
+            <span class="description">{{'description.Log Work For Others Groups' | i18n}}</span>
+        </div>
         <div class="field-group">
             <label for="timeentryPanelGroups">{{'User Groups With Time Entry Panel' | i18n}}</label>
             <input id="timeentryPanelGroups"

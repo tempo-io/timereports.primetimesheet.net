@@ -95,7 +95,7 @@
     <header class="aui-dialog2-header">
         <!-- The dialog''s title -->
         <h1 class="aui-dialog2-header-main">
-            Log Work Done
+            {{dialogType == 'add' ? 'Log Work Done' : 'Edit Work Log'}}
         </h1>
         <!-- Close icon -->
         <a class="aui-dialog2-header-close" ng-click="cancel()">
@@ -121,7 +121,7 @@
 <script type="text/ng-template" id="worklog-gadget-dialog-template">
     <!-- Dialog header -->
     <h1 class="aui-dialog2-header-main" style="padding: 0 4px" ng-if="!standaloneDialog">
-        Log Work Done
+        {{dialogType == 'add' ? 'Log Work Done' : 'Edit Work Log'}}
     </h1>
     <!-- Main dialog content -->
     <div>

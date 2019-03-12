@@ -61,3 +61,15 @@
                 </div>
                 <resize ng-if="!showMore"/>
             </div>
+            <div class="field-group" ng-if="worklog.user">
+                <label for="log-work-user">
+                    {{'On Behalf of' | i18n}}
+                </label>
+                <input type="text"
+                       class="text long-field"
+                       id="log-work-user"
+                       name="log-work-user"
+                       ng-value="worklog.user"
+                       readonly="readonly"
+                       aui-user-picker>
+            </div>
