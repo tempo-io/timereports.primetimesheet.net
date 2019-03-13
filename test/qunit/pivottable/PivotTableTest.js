@@ -33,7 +33,7 @@ QUnit.test("IssueWorkedTimeByUser", function() {
   }
 });
 QUnit.test("IssueWorkedTimeByStatus", function() {
-  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByStatus', configOptions: {workingTimeInStatus: {}, statuses: TimeStatuses}, loggedInUser: {}});
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByStatus', configOptions: {workingTimeInStatus: {}, statuses: TimeStatuses}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, 2, "pivotEntries");
@@ -55,8 +55,7 @@ QUnit.test("IssueWorkedTimeByStatus", function() {
 QUnit.test("IssuePassedTimeByStatus", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssuePassedTimeByStatus',
       startDate: '2017-04-05', endDate: '2017-04-11', timeInStatusCategories: ["2", "4"],
-      configOptions: {workingTimeInStatus: {}, statuses: TimeStatuses},
-      loggedInUser: {}});
+      configOptions: {workingTimeInStatus: {}, statuses: TimeStatuses}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue == 'TIME-4' ? 3 : 1, "pivotEntries " + pivotEntries[0].rowKey.keyValue);
@@ -68,7 +67,7 @@ QUnit.test("IssuePassedTimeByStatus", function() {
   var totalKeys = Object.keys(pivotTable.totals);
   QUnit.assert.equal(totalKeys.length, 3, "totals");
   QUnit.assert.equal(totalKeys[0], "Open", "totalKey");
-  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 1835049.382 + (moment('2017-04-05').utcOffset() * 60), "total value 0");
+  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 1835049 + (moment('2017-04-05').utcOffset() * 60), "total value 0");
   QUnit.assert.equal(pivotTable.totals[totalKeys[1]].sum, 1397394, "total value 1");
   var rowKeys = Object.keys(pivotTable.rows);
   QUnit.assert.equal(rowKeys.length, 6, "rows");
@@ -83,8 +82,7 @@ QUnit.test("IssuePassedTimeByStatus with Working Hours", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssuePassedTimeByStatus',
       startDate: '2017-04-05', endDate: '2017-04-11', timeInStatusCategories: ["2", "4"],
       configOptions: {statuses: TimeStatuses,
-          workingTimeInStatus: {from: 5, to: 22}},
-      loggedInUser: {}});
+          workingTimeInStatus: {from: 5, to: 22}}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue == 'TIME-4' ? 3 : 1, "pivotEntries " + pivotEntries[0].rowKey.keyValue);
@@ -96,7 +94,7 @@ QUnit.test("IssuePassedTimeByStatus with Working Hours", function() {
   var totalKeys = Object.keys(pivotTable.totals);
   QUnit.assert.equal(totalKeys.length, 3, "totals");
   QUnit.assert.equal(totalKeys[0], "Open", "totalKey");
-  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 920649.382 + moment('2017-04-05').utcOffset() * 60, "total value 0");
+  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 920649 + moment('2017-04-05').utcOffset() * 60, "total value 0");
   QUnit.assert.equal(pivotTable.totals[totalKeys[1]].sum, 749394, "total value 1");
   var rowKeys = Object.keys(pivotTable.rows);
   QUnit.assert.equal(rowKeys.length, 6, "rows");
