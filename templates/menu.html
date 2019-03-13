@@ -130,7 +130,7 @@
             <label style="display: inline-block; margin: 0">{{'Sum SubTasks' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
         </div>
-        <div class="ak-field-group" ng-if="['Timesheet', 'TimeEntry', 'Timespent'].indexOf(pivotTableType) >= 0">
+        <div class="ak-field-group" ng-if="['Timesheet', 'TimeEntry', 'Timespent', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) >= 0">
             <label style="display: inline-block; margin: 0">{{'Show Empty Issues' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!(filterOrProjectId || reportParamsObject.jql)"/>
         </div>
