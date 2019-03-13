@@ -33,7 +33,7 @@ QUnit.test("IssueWorkedTimeByUser", function() {
   }
 });
 QUnit.test("IssueWorkedTimeByStatus", function() {
-  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByStatus', configOptions: {workingTimeInStatus: {}, statuses: TimeStatuses}});
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByStatus', configOptions: {workingTimeInStatus: {}, statuses: TimeStatuses}, loggedInUser: {}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, 2, "pivotEntries");
@@ -55,7 +55,8 @@ QUnit.test("IssueWorkedTimeByStatus", function() {
 QUnit.test("IssuePassedTimeByStatus", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssuePassedTimeByStatus',
       startDate: '2017-04-05', endDate: '2017-04-11', timeInStatusCategories: ["2", "4"],
-      configOptions: {workingTimeInStatus: {}, statuses: TimeStatuses}});
+      configOptions: {workingTimeInStatus: {}, statuses: TimeStatuses},
+      loggedInUser: {}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue == 'TIME-4' ? 3 : 1, "pivotEntries " + pivotEntries[0].rowKey.keyValue);
@@ -82,7 +83,8 @@ QUnit.test("IssuePassedTimeByStatus with Working Hours", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssuePassedTimeByStatus',
       startDate: '2017-04-05', endDate: '2017-04-11', timeInStatusCategories: ["2", "4"],
       configOptions: {statuses: TimeStatuses,
-          workingTimeInStatus: {from: 5, to: 22}}});
+          workingTimeInStatus: {from: 5, to: 22}},
+      loggedInUser: {}});
   for (var i in TimeData.issues) {
       var pivotEntries = pivotTable.add(TimeData.issues[i]);
       QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue == 'TIME-4' ? 3 : 1, "pivotEntries " + pivotEntries[0].rowKey.keyValue);
@@ -563,9 +565,9 @@ QUnit.test("TimesheetUtils.getTimeSpents", function() {
 });
 QUnit.test("TimesheetUtils.validateParams", function() {
     var err = TimesheetUtils.validateParams({
-        pivotTableType: 'NotExists', 
-        filterOrProjectId: 'lalala', 
-        numOfWeeks: '5r', 
+        pivotTableType: 'NotExists',
+        filterOrProjectId: 'lalala',
+        numOfWeeks: '5r',
         reportingDay:7,
         offset:'4e',
         endDate:'2020-12-20',//real

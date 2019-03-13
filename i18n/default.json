@@ -189,7 +189,7 @@
     "description.Parent Issue Field": "If specified, reports will aggregate hours, into parent issue, using specified issue field in addition to sub tasks. Only Jira Agile \"Epic Link\" is supported.",
     "description.Parent Issue Type": "If specified, reports will aggregate hours, into parent issue, using Jira Portfolio issue hierarchy. Specify Jira Portfolio parent issue type here.",
     "description.Weekend Type": "Weekend days can be specified using this option.",
-    "description.Preserve Started Time": "Do not convert worklog started time to current user timezone. See also <a href=\"https://www.primetimesheet.net/wiki/Multiple_Time_Zones.html\" target=\"_blank\">Multiple Time Zones</a> for information about default behaviour.",
+    "description.Preserve Started Time": "Do not convert worklog started time and issue changelog records date to current user timezone. See also <a href=\"https://www.primetimesheet.net/wiki/Multiple_Time_Zones.html\" target=\"_blank\">Multiple Time Zones</a> for information about default behaviour.",
     "description.Time In Status Categories": "Status Categories of Statuses that should be included in Time In Status report (allows to exclude Resolved Statuses). All statuses are included unless anything specified.",
     "description.Working Time In Status": "Use Working Time for calculating hours in Time in Status and Resolution Time reports (otherwise, all elapsed time is used), e.g. 9 - 17.",
     "description.Started Time In Status": "Use worklog started time only for Pivot by Status report (do not split timespent between statuses; not applicable for Time in Status report).",

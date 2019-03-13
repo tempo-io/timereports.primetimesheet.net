@@ -930,6 +930,7 @@ describe("pivottableServiceTest", function() {
             dateFields: ['resolved', 'created'],
             startDate: '2018-10-23',
             endDate: '2018-10-24',
+            loggedInUser: loggedInUser,
             configOptions: {workingTimeInStatus: {}, statuses: []}};
 
         var requestCalled = false;
