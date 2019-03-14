@@ -616,7 +616,7 @@ QUnit.test("Timesheet: group by workeduser", function() {
     QUnit.assert.equal(pivotTable.totals[totalKeys[1]].sum, 46800, "total value 2");
     var rowKeys = Object.keys(pivotTable.rows);
     QUnit.assert.equal(rowKeys.length, 1, "rows");
-    QUnit.assert.equal(rowKeys[0], "Timeship:adminadmin", "rowKey");
+    QUnit.assert.equal(rowKeys[0], "Timeship:admin", "rowKey");
     var row = pivotTable.rows[rowKeys[0]];
     QUnit.assert.equal(typeof row.rowKey, "object", "typeof row.key");
     QUnit.assert.equal(row.sum, 172800, "typeof row.key");
