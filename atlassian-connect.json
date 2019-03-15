@@ -2,16 +2,15 @@
     "key": "timereports",
     "name": "Time Reports for Jira Cloud",
     "description": "Provides miscellaneous views for Jira time tracking data",
-    "version": "1.1.11-AC",
     "enableLicensing": true,
     "vendor": {
         "name": "Andriy Zhdanov",
         "url": "https://www.primetimesheet.net/timereports"
     },
-    "baseUrl": "https://timereports-azhdanov-1.c9users.io/",
+    "baseUrl": "https://timereports.github.io/",
     "links": {
-        "self": "https://timereports-azhdanov-1.c9users.io/atlassian-connect.json",
-        "homepage": "https://timereports-azhdanov-1.c9users.io/atlassian-connect.json"
+        "self": "https://timereports.github.io/atlassian-connect.json",
+        "homepage": "https://timereports.github.io/atlassian-connect.json"
     },
     "authentication": {
         "type": "none"
