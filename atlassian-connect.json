@@ -2,15 +2,16 @@
     "key": "timereports",
     "name": "Time Reports for Jira Cloud",
     "description": "Provides miscellaneous views for Jira time tracking data",
+    "version": "1.1.11-AC",
     "enableLicensing": true,
     "vendor": {
         "name": "Andriy Zhdanov",
         "url": "https://www.primetimesheet.net/timereports"
     },
-    "baseUrl": "https://timereports.github.io/",
+    "baseUrl": "https://timereports-azhdanov-1.c9users.io/",
     "links": {
-        "self": "https://timereports.github.io/atlassian-connect.json",
-        "homepage": "https://timereports.github.io/atlassian-connect.json"
+        "self": "https://timereports-azhdanov-1.c9users.io/atlassian-connect.json",
+        "homepage": "https://timereports-azhdanov-1.c9users.io/atlassian-connect.json"
     },
     "authentication": {
         "type": "none"
@@ -68,6 +69,40 @@
                           "objectName": "auditorsGroups"
                       }
                   }]
+            }, {
+                "condition": "user_is_logged_in"
+            }]
+        }],
+        "jiraProjectPages": [{
+            "key": "timereports-project",
+            "name": {
+                "value": "Time Reports"
+            },
+            "url": "/timereports.html?v=2",
+            "cacheable": true,
+            "iconUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDY0IiBoZWlnaHQ9IjEwMjQiIHN0eWxlPSIiPjxyZWN0IGlkPSJiYWNrZ3JvdW5kcmVjdCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgeD0iMCIgeT0iMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJub25lIi8+PGcgY2xhc3M9ImN1cnJlbnRMYXllciIgc3R5bGU9IiI+PHRpdGxlPkxheWVyIDE8L3RpdGxlPjxwYXRoIGQ9Ik01MzIgMTAyNGMtNjkuMzM0IDAtMTM1LjU4My0xMy41ODMtMTk4Ljc1LTQwLjc1UzIxNS42NjcgOTE5LjY2NyAxNzAgODc0IDg3LjkxNyA3NzMuOTE3IDYwLjc1IDcxMC43NSAyMCA1ODEuMzM0IDIwIDUxMnMxMy41ODMtMTM1LjU4MyA0MC43NS0xOTguNzVTMTI0LjMzMyAxOTUuNjY3IDE3MCAxNTAgMjcwLjA4MyA2Ny45MTcgMzMzLjI1IDQwLjc1IDQ2Mi42NjYgMCA1MzIgMHMxMzUuNTgzIDEzLjU4MyAxOTguNzUgNDAuNzVTODQ4LjMzMyAxMDQuMzMzIDg5NCAxNTBzODIuMDgzIDEwMC4wODMgMTA5LjI1IDE2My4yNVMxMDQ0IDQ0Mi42NjYgMTA0NCA1MTJzLTEzLjU4MyAxMzUuNTgzLTQwLjc1IDE5OC43NVM5MzkuNjY3IDgyOC4zMzMgODk0IDg3NHMtMTAwLjA4MyA4Mi4wODMtMTYzLjI1IDEwOS4yNVM2MDEuMzM0IDEwMjQgNTMyIDEwMjR6bTAtOTI1Yy01NiAwLTEwOS41IDEwLjkxNy0xNjAuNSAzMi43NXMtOTQuOTE2IDUxLjE2Ni0xMzEuNzUgODgtNjYuMTY3IDgwLjc1LTg4IDEzMS43NVMxMTkgNDU2IDExOSA1MTJzMTAuOTE3IDEwOS41IDMyLjc1IDE2MC41IDUxLjE2NiA5NC45MTYgODggMTMxLjc1IDgwLjc1IDY2LjE2NyAxMzEuNzUgODhTNDc2IDkyNSA1MzIgOTI1czEwOS41LTEwLjkxNyAxNjAuNS0zMi43NSA5NC45MTYtNTEuMTY2IDEzMS43NS04OCA2Ni4xNjctODAuNzUgODgtMTMxLjc1Uzk0NSA1NjggOTQ1IDUxMnMtMTAuOTE3LTEwOS41LTMyLjc1LTE2MC41LTUxLjE2Ni05NC45MTYtODgtMTMxLjc1LTgwLjc1LTY2LjE2Ny0xMzEuNzUtODhTNTg4IDk5IDUzMiA5OXptNDYgNDExbDEyNC0xMThzNDEuNTI0IDUuNTg2IDU4Ljc4IDI0Ljg3MkM3NzcuNTE2IDQzNS41NzcgNzc2IDQ3MCA3NzYgNDcwTDU3OC4xODUgNjY0LjIzOWwtNDYuMDc1IDM4LjhMNDY4IDY2NlYyNTZzMjYuMTM1LTIxLjQ4OSA1NS45NDctMjAuOTg0QzU1My4xMjggMjM1LjUxMSA1NzggMjU4IDU3OCAyNTh2MjUyeiIgaWQ9InN2Z18xIiBjbGFzcz0ic2VsZWN0ZWQiIHN0cm9rZS1vcGFjaXR5PSIxIiBzdHJva2U9IiM1MDVmNzkiIGZpbGw9IiM1MDVmNzkiIGZpbGwtb3BhY2l0eT0iMSIvPjwvZz48L3N2Zz4=",
+            "weight": 1,
+            "conditions": [{
+                "or": [{
+                    "condition": "addon_property_contains_any_user_group",
+                    "params": {
+                        "propertyKey": "configuration",
+                        "objectName": "timeentryPanelGroups"
+                    }
+                }, {
+                    "condition": "addon_property_contains_context",
+                    "params": {
+                        "propertyKey": "configuration",
+                        "objectName": "timeentryPanelProjects",
+                        "contextParameter": "project.key"
+                    }
+                }, {
+                    "condition": "addon_property_contains_any_user_group",
+                    "params": {
+                        "propertyKey": "configuration",
+                        "objectName": "auditorsGroups"
+                    }
+                }]
             }, {
                 "condition": "user_is_logged_in"
             }]
