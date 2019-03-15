@@ -67,7 +67,7 @@ QUnit.test("IssuePassedTimeByStatus", function() {
   var totalKeys = Object.keys(pivotTable.totals);
   QUnit.assert.equal(totalKeys.length, 3, "totals");
   QUnit.assert.equal(totalKeys[0], "Open", "totalKey");
-  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 1835049 + (moment('2017-04-05').utcOffset() * 60), "total value 0");
+  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 1842249, "total value 0");
   QUnit.assert.equal(pivotTable.totals[totalKeys[1]].sum, 1397394, "total value 1");
   var rowKeys = Object.keys(pivotTable.rows);
   QUnit.assert.equal(rowKeys.length, 6, "rows");
@@ -94,7 +94,7 @@ QUnit.test("IssuePassedTimeByStatus with Working Hours", function() {
   var totalKeys = Object.keys(pivotTable.totals);
   QUnit.assert.equal(totalKeys.length, 3, "totals");
   QUnit.assert.equal(totalKeys[0], "Open", "totalKey");
-  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 920649 + moment('2017-04-05').utcOffset() * 60, "total value 0");
+  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 927849, "total value 0");
   QUnit.assert.equal(pivotTable.totals[totalKeys[1]].sum, 749394, "total value 1");
   var rowKeys = Object.keys(pivotTable.rows);
   QUnit.assert.equal(rowKeys.length, 6, "rows");
