@@ -655,3 +655,19 @@ QUnit.test('stob', function() {
   QUnit.assert.equal(0x1bda, string.charCodeAt(7), '7');
   QUnit.assert.equal(0xffff, string.charCodeAt(8), '8');
 });
+QUnit.test("clone", function() {
+    function Class(value) {
+      this.value = value;
+    };
+    Class.prototype.getValue = function() {
+      return this.value;
+    }
+    Class.prototype.setValue = function (value) {
+      this.value = value;
+    }
+    var a = new Class(new Date('2020-12-20'));
+    var b = TimesheetUtils.clone(a);
+    QUnit.assert.equal(b.getValue().getTime(), new Date('2020-12-20').getTime(), 'initial value');
+    b.setValue('b');
+    QUnit.assert.equal(b.getValue(), 'b', 'b');
+});
