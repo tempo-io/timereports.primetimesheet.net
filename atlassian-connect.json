@@ -304,7 +304,7 @@
             }]
         }]
     },
-    "apiMirgations": {
+    "apiMigrations": {
         "gdpr": true
     },
     "scopes": [
