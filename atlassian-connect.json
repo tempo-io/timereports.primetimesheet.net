@@ -194,6 +194,34 @@
             "key": "timeentry-issue-content"
           }
         ],
+        "jiraIssueTabPanels": [
+            {
+                "url": "/timereports.html?issuetimebalance=true&v=2",
+                "cacheable": true,
+                "weight": 100,
+                "name": {
+                    "value": "Time Balance"
+                },
+                "key": "timebalance-tab",
+                "conditions": [
+                    {
+                        "condition": "addon_property_equal_to",
+                        "invert": true,
+                        "params": {
+                            "propertyKey": "configuration",
+                            "objectName": "disableLogWork",
+                            "value": "true"
+                        }
+                    },
+                    {
+                        "condition": "has_issue_permission",
+                        "params": {
+                            "permission": "WORK_ON_ISSUES"
+                        }
+                    }
+                ]
+            }
+        ],
         "webPanels": [
           {
             "url": "/timereports.html?issue.key={issue.key}&issue.id={issue.id}&v=2",
