@@ -89,7 +89,8 @@
     "Daily": "Daily",
     "Every": "Every",
     "< No comment >": "< No comment >",
-
+    "Edit Worklog": "Edit Worklog",
+    "Delete Worklog": "Delete Worklog",
     "Today": "Today",
     "Total" : "Total",
     "issues" : "(%s issues)",

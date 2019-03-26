@@ -1,0 +1,68 @@
+<div class="results-wrap">
+    <div class="pagingtable">
+
+        <div class="aui-message aui-message-error" ng-show="restrictionError != null">
+            <p class="title">
+                <strong>{{'Denied' | i18n}}</strong>
+            </p>
+            <p>{{restrictionError.msgKey | i18n}}</p>
+            <p ng-if="restrictionError.msg" ng-bind-html="restrictionError.msg"></p>
+        </div>
+
+        <table id="issuetable" cellspacing="0" cellpadding="3" border="0" width="100%" ng-show="restrictionError == null">
+            <thead>
+                <tr class="rowHeader">
+                    <th class="colHeaderLink" width="100%">
+                    </th>
+                    <th class="colHeaderLink moreFields" ng-repeat="field in pivotTable.moreFields">
+                        <span ng-bind="moreFieldsOptions.findOption(field).label"></span>
+                    </th>
+                    <th class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey">
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-class-odd="compressed ? 'rowNormal' : ''" ng-class-even="compressed ? 'rowAlternate' : ''" ng-repeat-start="row in pivotTable.sortedRows() | limitTo:issuesCount.maxResults:issuesCount.startAt">
+                    <td class="nav first <summary></summary>" width="1%">
+                        &nbsp;
+                    </td>
+                    <td class="nav first border" ng-repeat="column in pivotTable.sortedColumns()">
+                        <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
+                    </td>
+                    <td class="nav first border total">
+                        <span><i title="{{'Log Work' | i18n}}" class="fa fa-pencil-square-o" ng-click="addWorklogDialog(null, issueKey)" ng-hide="cannotEdit"></i></span>
+                    </td>
+                </tr>
+                <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed">
+                    <td class="nav summary">
+                        <a ng-if="data.worklog.author.accountId" ng-title="{{data.worklog.author.displayName}}"
+                           ng-href="{{hostBaseUrl + '/people/' + data.worklog.author.accountId}}" target="_parent">
+                            <img ng-alt="{{data.worklog.author.displayName}}" class="avatar-image" style="border-radius: 50%"
+                                 ng-src="{{data.worklog.author.avatarUrls['16x16']}}" width="16" height="16">
+                        </a>
+                        {{data.worklog.comment}}
+                    </td>
+                    <td class="nav border" ng-repeat="column in pivotTable.sortedColumns()">
+                        <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
+                    </td>
+                    <td class="nav border total">
+                        <div ng-if="data.worklogId">
+                            <span><i class="fa fa-pencil-square-o" ng-click="updateWorklogDialog(data.worklogId, issueKey)" ng-hide="cannotEdit" title="{{'Edit Worklog' | i18n}}"></i></span>
+                            <span><i class="fa fa-trash-o" ng-click="deleteWorklogDialog(data.worklogId, issueKey)" ng-hide="cannotDelete" title="{{'Delete Worklog' | i18n}}"></i></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-repeat-end ng-hide="true"></tr>
+                <tr ng-show="loaded && loading">
+                    <td colspan="{{pivotTable.sortedColumns().length + 2}}">
+                        <loading/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<resize/>

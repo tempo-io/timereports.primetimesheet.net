@@ -136,6 +136,11 @@
                             <worklog-comment worklog="data.worklog" no-comment="'< No comment >' | i18n"/>
                             <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
                         </span>
+                        <a ng-if="'TimeBalance' == pivotTableType && data.worklog.author.accountId" ng-title="{{data.worklog.author.displayName}}"
+                           ng-href="{{hostBaseUrl + '/people/' + data.worklog.author.accountId}}" target="_parent">
+                            <img ng-alt="{{data.worklog.author.displayName}}" class="avatar-image" style="border-radius: 50%"
+                                 ng-src="{{data.worklog.author.avatarUrls['16x16']}}" width="16" height="16">
+                        </a>
                         <span ng-if="'TimeEntry' != pivotTableType" title="{{data.worklog.comment.length > 175 ? data.worklog.comment : ''}}">{{data.worklog.comment | limitTo:175}}</span> <!--if worklog is present-->
                     </td>
                     <td class="nav priority" width="1%">
