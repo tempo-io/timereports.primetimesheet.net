@@ -205,18 +205,10 @@
                 "key": "timebalance-tab",
                 "conditions": [
                     {
-                        "condition": "addon_property_equal_to",
-                        "invert": true,
+                        "condition": "addon_time_tracking_provider_enabled",
                         "params": {
-                            "propertyKey": "configuration",
-                            "objectName": "disableLogWork",
-                            "value": "true"
-                        }
-                    },
-                    {
-                        "condition": "has_issue_permission",
-                        "params": {
-                            "permission": "WORK_ON_ISSUES"
+                            "addonKey": "timereports",
+                            "moduleKey": "timereports-time-tracking-provider"
                         }
                     }
                 ]
