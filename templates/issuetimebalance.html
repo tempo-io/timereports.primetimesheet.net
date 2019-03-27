@@ -33,7 +33,7 @@
                         <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
                     </td>
                     <td class="nav first border total">
-                        <span><i title="{{'Log Work' | i18n}}" class="fa fa-pencil-square-o" ng-click="addWorklogDialog(null, issueKey)" ng-hide="cannotEdit"></i></span>
+                        <span><i title="{{'Log Work' | i18n}}" class="fa fa-pencil-square-o" ng-click="addWorklogDialog(null, issueKey)" ng-hide="!canLogWork || cannotLogWorkIssue[issueKey]"></i></span>
                     </td>
                 </tr>
                 <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed">
@@ -50,8 +50,8 @@
                     </td>
                     <td class="nav border total">
                         <div ng-if="data.worklogId">
-                            <span><i class="fa fa-pencil-square-o" ng-click="updateWorklogDialog(data.worklogId, issueKey)" ng-hide="cannotEdit" title="{{'Edit Worklog' | i18n}}"></i></span>
-                            <span><i class="fa fa-trash-o" ng-click="deleteWorklogDialog(data.worklogId, issueKey)" ng-hide="cannotDelete" title="{{'Delete Worklog' | i18n}}"></i></span>
+                            <span><i class="fa fa-pencil-square-o" ng-click="updateWorklogDialog(data.worklogId, issueKey)" ng-hide="!canEditAllWorklog || cannotEditAllWorklogIssue[issueKey]" title="{{'Edit Worklog' | i18n}}"></i></span>
+                            <span><i class="fa fa-trash-o" ng-click="deleteWorklogDialog(data.worklogId, issueKey)" ng-hide="!canDeleteAllWorklog || cannotDeleteAllWorklogIssue[issueKey]" title="{{'Delete Worklog' | i18n}}"></i></span>
                         </div>
                     </td>
                 </tr>
