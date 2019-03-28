@@ -43,6 +43,8 @@
                             <img ng-alt="{{data.worklog.author.displayName}}" class="avatar-image" style="border-radius: 50%"
                                  ng-src="{{data.worklog.author.avatarUrls['16x16']}}" width="16" height="16">
                         </a>
+                        <span ng-bind="data.worklog.author.displayName"></span>
+                        <span ng-bind="data.worklog.started | date:'medium'"></span>
                         {{data.worklog.comment}}
                     </td>
                     <td class="nav border" ng-repeat="column in pivotTable.sortedColumns()">
