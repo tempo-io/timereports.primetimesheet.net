@@ -89,6 +89,8 @@
     "Daily": "Daily",
     "Every": "Every",
     "< No comment >": "< No comment >",
+    "If Incomplete": "If timesheet is not complete for the period",
+
     "Edit Worklog": "Edit Worklog",
     "Delete Worklog": "Delete Worklog",
     "Today": "Today",

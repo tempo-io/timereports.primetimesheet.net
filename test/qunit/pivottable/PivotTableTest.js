@@ -400,6 +400,15 @@ QUnit.test("Timesheet", function() {
       var pivotEntries = pivotTable.add(issue);
       QUnit.assert.equal(pivotEntries.length, 2, "pivotEntries " + issue.key);
   }
+  var columnsTemplate = pivotTable.pivotStrategy.columnsTemplate;
+  var columnsTemplateKeys = Object.keys(columnsTemplate);
+  QUnit.assert.equal(columnsTemplateKeys.length, 7, "columns number");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[0]].columnKey.isToday, false, "isToday 0");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[0]].columnKey.isWeekend, false, "isWeekend 0");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[0]].columnKey.keyName, "dayOfTheWeek", "keyName 0");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[5]].columnKey.isToday, false, "isToday 5");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[5]].columnKey.isWeekend, true, "isWeekend 5");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[5]].columnKey.keyName, "dayOfTheWeek", "keyName 5");
   var totalKeys = Object.keys(pivotTable.totals);
   QUnit.assert.equal(totalKeys.length, 7, "totals");
   QUnit.assert.ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[0])), new Date(2014, 1, 24)), "totalKey 1");
@@ -414,9 +423,67 @@ QUnit.test("Timesheet", function() {
   QUnit.assert.equal(row.sum, 7200, "typeof row.key");
   var columnKeys = Object.keys(row.columns);
   QUnit.assert.equal(columnKeys.length, 7, "columns");
-  QUnit.assert.ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[0])), new Date(2014, 1, 24)), "totalKey");
-  QUnit.assert.ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[1])), new Date(2014, 1, 25)), "totalKey");
   QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 1, "column entries");
+});
+QUnit.test("Timesheet sum by week", function() {
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', sum: 'week', startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
+  for (var i in TimeData.issues) {
+      var issue = TimeData.issues[i];
+      var pivotEntries = pivotTable.add(issue);
+      QUnit.assert.equal(pivotEntries.length, 2, "pivotEntries " + issue.key);
+  }
+  var columnsTemplate = pivotTable.pivotStrategy.columnsTemplate;
+  var columnsTemplateKeys = Object.keys(columnsTemplate);
+  QUnit.assert.equal(columnsTemplateKeys.length, 1, "columns number");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[0]].columnKey.isToday, false, "isToday 0");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[0]].columnKey.isWeekend, undefined, "isWeekend 0");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[0]].columnKey.keyName, "weekOfTheYear", "keyName 0");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[0]].columnKey.weekNumber, "09", "weekNumber 0");
+  var totalKeys = Object.keys(pivotTable.totals);
+  QUnit.assert.equal(totalKeys.length, 1, "totals");
+  QUnit.assert.ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[0])), new Date(2014, 1, 24)), "totalKey 1");
+  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 172800, "total value 1");
+  var rowKeys = Object.keys(pivotTable.rows);
+  QUnit.assert.equal(rowKeys.length, 6, "rows");
+  QUnit.assert.equal(rowKeys[0], "TIME-4", "rowKey");
+  var row = pivotTable.rows[rowKeys[0]];
+  QUnit.assert.equal(typeof row.rowKey, "object", "typeof row.key");
+  QUnit.assert.equal(row.sum, 7200, "typeof row.key");
+  var columnKeys = Object.keys(row.columns);
+  QUnit.assert.equal(columnKeys.length, 1, "columns");
+  QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
+});
+QUnit.test("Timesheet sum by month", function() {
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timesheet', sum: 'month', startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
+  for (var i in TimeData.issues) {
+      var issue = TimeData.issues[i];
+      var pivotEntries = pivotTable.add(issue);
+      QUnit.assert.equal(pivotEntries.length, 2, "pivotEntries " + issue.key);
+  }
+  var columnsTemplate = pivotTable.pivotStrategy.columnsTemplate;
+  var columnsTemplateKeys = Object.keys(columnsTemplate);
+  QUnit.assert.equal(columnsTemplateKeys.length, 2, "columns number");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[0]].columnKey.isToday, false, "isToday 0");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[0]].columnKey.isWeekend, undefined, "isWeekend 0");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[0]].columnKey.keyName, "monthOfTheYear", "keyName 0");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[1]].columnKey.isToday, false, "isToday 1");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[1]].columnKey.isWeekend, undefined, "isWeekend 1");
+  QUnit.assert.equal(columnsTemplate[columnsTemplateKeys[1]].columnKey.keyName, "monthOfTheYear", "keyName 1");
+  var totalKeys = Object.keys(pivotTable.totals);
+  QUnit.assert.equal(totalKeys.length, 2, "totals");
+  QUnit.assert.ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[0])), new Date(2014, 1, 1)), "totalKey 1");
+  QUnit.assert.ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[1])), new Date(2014, 2, 1)), "totalKey 2");
+  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 172800, "total value 1");
+  QUnit.assert.equal(pivotTable.totals[totalKeys[1]].sum, 0, "total value 2");
+  var rowKeys = Object.keys(pivotTable.rows);
+  QUnit.assert.equal(rowKeys.length, 6, "rows");
+  QUnit.assert.equal(rowKeys[0], "TIME-4", "rowKey");
+  var row = pivotTable.rows[rowKeys[0]];
+  QUnit.assert.equal(typeof row.rowKey, "object", "typeof row.key");
+  QUnit.assert.equal(row.sum, 7200, "typeof row.key");
+  var columnKeys = Object.keys(row.columns);
+  QUnit.assert.equal(columnKeys.length, 2, "columns");
+  QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
 });
 QUnit.test("Timespent", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Timespent', startDate: '2014-02-24', reportingDay: 1, configOptions: {}});
