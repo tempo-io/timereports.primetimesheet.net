@@ -168,7 +168,21 @@ var TimeData = { "expand" : "schema,names",
                 "name" : "Timeship",
                 "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
               },
-            "reporter" : { "active" : true,
+            "reporter": {
+                "timeZone": "Europe/Kiev",
+                "active" : true,
+                "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
+                    "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
+                  },
+                "displayName" : "admin",
+                "emailAddress" : "admin@example.com",
+                "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
+                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+              },
+            "creator": {
+                "timeZone": "America/Los_Angeles",
+                "active" : true,
                 "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
                     "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
                   },
@@ -475,7 +489,21 @@ var TimeData = { "expand" : "schema,names",
                 "name" : "Timeship",
                 "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
               },
-            "reporter" : { "active" : true,
+            "reporter": {
+                "timeZone": "Europe/Kiev",
+                "active" : true,
+                "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
+                    "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
+                  },
+                "displayName" : "admin",
+                "emailAddress" : "admin@example.com",
+                "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
+                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+              },
+            "creator": {
+                "timeZone": "America/Los_Angeles",
+                "active" : true,
                 "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
                     "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
                   },
@@ -637,7 +665,21 @@ var TimeData = { "expand" : "schema,names",
                 "name" : "Timeship",
                 "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
               },
-            "reporter" : { "active" : true,
+            "reporter": {
+                "timeZone": "Europe/Kiev",
+                "active" : true,
+                "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
+                    "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
+                  },
+                "displayName" : "admin",
+                "emailAddress" : "admin@example.com",
+                "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
+                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+              },
+            "creator": {
+                "timeZone": "America/Los_Angeles",
+                "active" : true,
                 "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
                     "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
                   },
@@ -798,7 +840,21 @@ var TimeData = { "expand" : "schema,names",
                 "name" : "Timeship",
                 "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
               },
-            "reporter" : { "active" : true,
+            "reporter": {
+                "timeZone": "Europe/Kiev",
+                "active" : true,
+                "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
+                    "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
+                  },
+                "displayName" : "admin",
+                "emailAddress" : "admin@example.com",
+                "name" : "admin",
+                "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
+                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+              },
+            "creator": {
+                "timeZone": "America/Los_Angeles",
+                "active" : true,
                 "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
                     "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
                   },
@@ -954,7 +1010,21 @@ var TimeData = { "expand" : "schema,names",
                     "name" : "Timeship",
                     "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
                 },
-                "reporter" : { "active" : true,
+                "reporter": {
+                    "timeZone": "Europe/Kiev",
+                    "active" : true,
+                    "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
+                        "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
+                    },
+                    "displayName" : "admin",
+                    "emailAddress" : "admin@example.com",
+                    "name" : "admin",
+                    "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
+                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                },
+                "creator": {
+                    "timeZone": "America/Los_Angeles",
+                    "active" : true,
                     "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
                         "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
                     },
@@ -1109,7 +1179,21 @@ var TimeData = { "expand" : "schema,names",
                     "name" : "Timeship",
                     "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
                 },
-                "reporter" : { "active" : true,
+                "reporter": {
+                    "timeZone": "Europe/Kiev",
+                    "active" : true,
+                    "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
+                        "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
+                    },
+                    "displayName" : "admin",
+                    "emailAddress" : "admin@example.com",
+                    "name" : "admin",
+                    "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
+                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                },
+                "creator": {
+                    "timeZone": "America/Los_Angeles",
+                    "active" : true,
                     "avatarUrls" : { "16x16" : "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
                         "48x48" : "http://localhost:2990/jira/secure/useravatar?avatarId=10122"
                     },
@@ -1334,7 +1418,7 @@ var TimeDataTIME_7 = {
             },
             "displayName": "user",
             "active": true,
-            "timeZone": "Europe/Kiev"
+            "timeZone": "America/Los_Angeles"
         },
         "created": "2017-04-05T06:44:09.382+0200",
         "description": null,
@@ -1373,6 +1457,7 @@ var TimeDataTIME_7 = {
             "self": "http://localhost:2990/jira/rest/api/2/project/TIME"
         },
         "reporter": {
+            "timeZone": "Europe/Kiev",
             "active": true,
             "avatarUrls": {
                 "16x16": "http://localhost:2990/jira/secure/useravatar?size=small&avatarId=10122",
