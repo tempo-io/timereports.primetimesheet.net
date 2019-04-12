@@ -137,6 +137,7 @@
     "displayname": "Display Name",
     "emailaddress": "Email Address",
     "descriptionstatus": "Work Description / Status",
+    "worklogid": "Worklog Id",
 
     "General": "General",
     "Access": "Access",

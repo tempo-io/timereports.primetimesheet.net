@@ -29,7 +29,7 @@ describe("pivottableServiceTest", function() {
                 "summary": "Summary",
                 "priority": "Priority",
                 "datestarted": "Date Started",
-                "username": "Username",
+                "worklogid": "Worklog Id",
                 "displayname": "Display Name",
                 "emailaddress": "Email Address",
                 "descriptionstatus": "Work Description / Status",

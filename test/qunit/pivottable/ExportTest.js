@@ -70,6 +70,25 @@ QUnit.test("Excel Export TimeTracking", function() {
     QUnit.assert.equal(total, "<td>Total</td><td></td><td></td><td></td><td></td><td>73.78</td><td>33</td><td>48</td><td>-7.22</td><td>25.78</td><td>59%</td>", "total");
     QUnit.assert.equal(lines.length, 109, "lines");
 });
+QUnit.test("Excel Export TimeBalance", function() {
+    var excelView = new ExcelView(TimeData.issues);
+    QUnit.assert.equal(typeof excelView, 'object', 'excelView');
+    var excel = excelView.generate({pivotTableType: 'TimeBalance', startDate: '2014-02-24',
+        reportingDay: 1, moreFields: [], translations: translations, configOptions: {exportColumns:['project', 'issuetype',
+            'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
+            timeBalanceColumns: ['1timeoriginalestimate', '2esttimeremaining',  '3timespent', '4diff',
+            '5originalestimateremaining', '6progress'],
+        jiraConfig: {}});
+    QUnit.assert.equal(typeof excel, 'string', 'html');
+    var lines = excel.split('\n');
+    var header = lines.slice(10, 24).map(s => s.trim()).join('');
+    QUnit.assert.equal(header, "<td>Project</td><td>Issue Type</td><td>Key</td><td>Summary</td><td>Priority</td><td>Date Started</td><td>Display Name</td><td>Changed</td><td>Original Estimate (h)</td><td>Est. Time Remaining (h)</td><td>Time Spent (h)</td><td>Variance (h)</td><td>Original Estimate Remaining (h)</td><td>Progress</td>", "header");
+    var row1 = lines.slice(26, 40).map(s => s.trim()).join('');
+    QUnit.assert.equal(row1, "<td>Timeship</td><td>Bug</td><td><a href='/browse/TIME-4'>TIME-4</a></td><td><a href='/browse/TIME-4'>Mega problem</a></td><td>Major</td><td>" + moment('2017-04-05T07:44:09.382+0200').format(TimesheetUtils.dateTimeFormat) + "</td><td>Administrator</td><td>updated Estimate</td><td>0</td><td>2</td><td>0</td><td>-2</td><td>0</td><td>0%</td>", "row1");
+    var total = lines.slice(86, 100).map(s => s.trim()).join('');
+    QUnit.assert.equal(total, "<td>Total</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0</td><td>0</td><td>2</td><td>-2</td><td>-2</td><td>100%</td>", "total");
+    QUnit.assert.equal(lines.length, 103, "lines");
+});
 QUnit.test("Csv Export", function() {
     var csvView = new CsvView(TimeData.issues);
     QUnit.assert.equal(typeof csvView, 'object', 'csvView');
@@ -99,6 +118,22 @@ QUnit.test("Csv Export TimeTracking", function() {
     QUnit.assert.equal(lines[0], 'Project,Issue Type,Key,Summary,Priority,Original Estimate (h),Est. Time Remaining (h),Time Spent (h),Variance (h),Original Estimate Remaining (h),Progress', "header");
     QUnit.assert.equal(lines[1], '"Timeship",Bug,TIME-4,"Mega problem","Major",0,0,2,-2,-2,100%', "row1");
     QUnit.assert.equal(lines[7], 'Total,,,,,73.78,33,48,-7.22,25.78,59%', "total");
+});
+QUnit.test("Csv Export TimeBalance", function() {
+    var csvView = new CsvView(TimeData.issues);
+    QUnit.assert.equal(typeof csvView, 'object', 'csvView');
+    var csv = csvView.generate({pivotTableType: 'TimeBalance', startDate: '2014-02-24',
+        reportingDay: 1, moreFields: [], translations: translations, configOptions: {exportColumns:['project', 'issuetype',
+            'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
+            timeBalanceColumns: ['1timeoriginalestimate', '2esttimeremaining',  '3timespent', '4diff',
+                '5originalestimateremaining', '6progress'],
+        jiraConfig: {}});
+    QUnit.assert.equal(typeof csv, 'string', 'csv');
+    QUnit.assert.equal(csv.match(/\d+h/g), null, "issue#902: hours with no h")
+    var lines = csv.split('\n');
+    QUnit.assert.equal(lines[0], 'Project,Issue Type,Key,Summary,Priority,Date Started,Display Name,Changed,Original Estimate (h),Est. Time Remaining (h),Time Spent (h),Variance (h),Original Estimate Remaining (h),Progress', "header");
+    QUnit.assert.equal(lines[1], '"Timeship",Bug,TIME-4,"Mega problem","Major",' + moment('2017-04-05T07:44:09.382+0200').format(TimesheetUtils.dateTimeFormat) + ',"Administrator","updated Estimate",0,2,0,-2,0,0%', "row1");
+    QUnit.assert.equal(lines[5], 'Total,,,,,,,,0,0,2,-2,-2,100%', "total");
 });
 QUnit.test("Csv Export Custom Columns", function() {
     var csvView = new CsvView(TimeData.issues);
