@@ -59,6 +59,8 @@ window.AP = {
         options.success(Configuration);
       } else if (options.url.match(/\/properties/)) { // hosted keys
         options.success(Properties);
+      } else if (options.url.match(/\/mypermissions/)) {
+        options.success({permissions: {}});
       } else if (m = options.url.match(/\/issue\/\w*-(\d+)\/worklog/)) {
           if (IssueWorklog) {
               return IssueWorklog;

@@ -196,7 +196,8 @@ describe("timesheetControllerTest", function() {
                         timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
                             '3timespent', '4diff', '5originalestimateremaining', '6progress']},
                         exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
-                        dateFields: {val: []}
+                        dateFields: {val: []},
+                        disableLogWork: {}
                     });
                     return deferred.promise;
                 },
