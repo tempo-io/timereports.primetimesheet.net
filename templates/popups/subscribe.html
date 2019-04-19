@@ -10,14 +10,6 @@
         <label>
             {{'Periodically' | i18n}}
         </label>
-        <span ng-if="popupData.currentUser">
-            ,<input id="period-check"
-                   type="checkbox"
-                   ng-model="popupData.everyWeekOptions.ifIncomplete">
-            <label for="period-check">
-                {{'If Incomplete' | i18n}}
-            </label>
-        </span>
     </fieldset>
     <fieldset style="padding-top: 10px">
         <select id="every-week-on" class="select" style="min-width: 137px"
@@ -52,6 +44,16 @@
                 required>
             </select>
         </span>
+    </fieldset>
+    <fieldset>
+        <div ng-if="popupData.currentUser">
+            <input id="period-check"
+                   type="checkbox"
+                   ng-model="popupData.everyWeekOptions.ifIncomplete">
+            <label for="period-check">
+                {{'If Incomplete' | i18n}}
+            </label>
+        </div>
     </fieldset>
     <div style="padding-top: 20px; text-align: right">
         <div>
