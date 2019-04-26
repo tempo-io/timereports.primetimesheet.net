@@ -23,7 +23,6 @@
         <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent"></a>
     </div>
 
-    <aui-inline-dialog id="problem-description-popup" template="'/templates/popups/problemDescription.html'" popup-data="problemDescriptionPopup" container="'#downloadSupportData'"></aui-inline-dialog>
     <aui-inline-dialog id="user-hover" template="'/templates/popups/userHover.html'" popup-data="userHoverPopup" container="'.userHoverPopup'" on-hover="true"></aui-inline-dialog>
 
     <div class="pagingtable">
@@ -213,15 +212,11 @@
     <div class="aui-message aui-message warning" ng-show="loaded && !loading && restrictedProjects">
         <strong>{{'Data is limited by Auditors Roles' | i18n}}</strong>&nbsp;{{restrictedProjects}}
     </div>
-    <div>
+    <div ng-if="!loaded">
         <br/>
-        <button class="aui-button" ng-click="execute()" ng-if="!loaded" ng-disabled="loading" ng-class="{disabled: loading}">
+        <button class="aui-button" ng-click="execute()" ng-disabled="loading" ng-class="{disabled: loading}">
             <span class="aui-icon aui-icon-small aui-iconfont-view"></span>
             View Report
-        </button>
-        <button id="downloadSupportData" class="aui-button aui-button-subtle" ng-click="downloadSupportData()" ng-if="downloadSupportData && !isGadget" ng-disabled="supportDataLoaded" ng-class="{disabled: supportDataLoaded}">
-            <span ng-hide="supportDataLoaded">Send Support Data</span>
-            <span ng-show="supportDataLoaded">Support Data Sent</span>
         </button>
     </div>
 </div>
