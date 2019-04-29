@@ -72,6 +72,33 @@ describe("timesheetControllerTest", function() {
         angular.module('timesheetApp').service('flightRecorder', function() {
             this.writeParams = this.setEnabled = function() {
             };
+        }).factory('userConfiguration', function () {
+            return {
+                maxFractionDigits: {},
+                compositionIssueLink: {},
+                parentIssueField: {},
+                parentIssueType: {},
+                auditorsGroups: {},
+                weekendType: {},
+                preserveStartedTime: {},
+                statuses: {},
+                timeInStatusCategories: {},
+                prettyDuration: {val: true},
+                workLabels: {},
+                workDescriptionRequired: {},
+                worklogVisibilityGroup: {},
+                worklogVisibilityRole: {},
+                durationType: {},
+                workingTimeInStatus: {val: {from: 9, to: 17}},
+                startedTimeInStatus: {val: false},
+                inProgressIssuesJql: {},
+                timeBalanceColumns: {val: ["3timespent", "12estimate", "4diff", "1timeoriginalestimate", "6progress"]},
+                timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
+                    '3timespent', '4diff', '5originalestimateremaining', '6progress']},
+                exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
+                dateFields: {val: []},
+                disableLogWork: {}
+            };
         });
         inject(function($timeout, $window, _$httpBackend_, applicationLoggingService, $rootScope) {
             AP.$timeout = $timeout;
@@ -171,77 +198,6 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             configurationService: {
-                getConfiguration: function () {
-                    var deferred = $q.defer();
-                    deferred.resolve({
-                        maxFractionDigits: {},
-                        compositionIssueLink: {},
-                        parentIssueField: {},
-                        parentIssueType: {},
-                        auditorsGroups: {},
-                        weekendType: {},
-                        preserveStartedTime: {},
-                        statuses: {},
-                        timeInStatusCategories: {},
-                        prettyDuration: {val: true},
-                        workLabels: {},
-                        workDescriptionRequired: {},
-                        worklogVisibilityGroup: {},
-                        worklogVisibilityRole: {},
-                        durationType: {},
-                        workingTimeInStatus: {},
-                        startedTimeInStatus: {},
-                        inProgressIssuesJql: {},
-                        timeBalanceColumns: {val: []},
-                        timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
-                            '3timespent', '4diff', '5originalestimateremaining', '6progress']},
-                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
-                        dateFields: {val: []},
-                        disableLogWork: {}
-                    });
-                    return deferred.promise;
-                },
-                getUserConfiguration: function () {
-                    var deferred = $q.defer();
-                    deferred.resolve({
-                        maxFractionDigits: {},
-                        compositionIssueLink: {},
-                        parentIssueField: {},
-                        parentIssueType: {},
-                        auditorsGroups: {},
-                        weekendType: {},
-                        preserveStartedTime: {},
-                        statuses: {},
-                        timeInStatusCategories: {},
-                        prettyDuration: {val: true},
-                        workLabels: {},
-                        workDescriptionRequired: {},
-                        worklogVisibilityGroup: {},
-                        worklogVisibilityRole: {},
-                        durationType: {},
-                        workingTimeInStatus: {},
-                        startedTimeInStatus: {},
-                        inProgressIssuesJql: {},
-                        timeBalanceColumns: {val: []},
-                        timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
-                            '3timespent', '4diff', '5originalestimateremaining', '6progress']},
-                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
-                        dateFields: {val: []},
-                        disableLogWork: {}
-                    });
-                    return deferred.promise;
-                },
-                getUserPreferences: function () {
-                    var deferred = $q.defer();
-                    deferred.resolve({
-                        maxFractionDigits: {},
-                        weekendType: {},
-                        durationType: {},
-                        workingTimeInStatus: {},
-                        startedTimeInStatus: {}
-                    });
-                    return deferred.promise;
-                },
                 getProjects: function() {
                   var deferred = $q.defer();
                   deferred.resolve(ProjectsData);
@@ -538,36 +494,6 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             configurationService: {
-                getUserConfiguration: function () {
-                    var deferred = $q.defer();
-                    deferred.resolve({
-                        maxFractionDigits: {},
-                        compositionIssueLink: {},
-                        parentIssueField: {},
-                        parentIssueType: {},
-                        auditorsGroups: {},
-                        weekendType: {},
-                        preserveStartedTime: {},
-                        statuses: {},
-                        timeInStatusCategories: {},
-                        prettyDuration: {val: true},
-                        workLabels: {},
-                        workDescriptionRequired: {},
-                        worklogVisibilityGroup: {},
-                        worklogVisibilityRole: {},
-                        durationType: {},
-                        workingTimeInStatus: {},
-                        startedTimeInStatus: {},
-                        inProgressIssuesJql: {},
-                        timeBalanceColumns: {val: []},
-                        timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
-                                '3timespent', '4diff', '5originalestimateremaining', '6progress']},
-                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
-                        dateFields: {val: []},
-                        disableLogWork: {}
-                    });
-                    return deferred.promise;
-                },
                 getProjects: function() {
                     var deferred = $q.defer();
                     deferred.resolve(ProjectsData);
@@ -619,36 +545,6 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             configurationService: {
-                getUserConfiguration: function () {
-                    var deferred = $q.defer();
-                    deferred.resolve({
-                        maxFractionDigits: {},
-                        compositionIssueLink: {},
-                        parentIssueField: {},
-                        parentIssueType: {},
-                        auditorsGroups: {},
-                        weekendType: {},
-                        preserveStartedTime: {},
-                        statuses: {},
-                        timeInStatusCategories: {},
-                        prettyDuration: {val: true},
-                        workLabels: {},
-                        workDescriptionRequired: {},
-                        worklogVisibilityGroup: {},
-                        worklogVisibilityRole: {},
-                        durationType: {},
-                        workingTimeInStatus: {},
-                        startedTimeInStatus: {},
-                        inProgressIssuesJql: {},
-                        timeBalanceColumns: {val: ["3timespent", "12estimate", "4diff", "1timeoriginalestimate", "6progress"]},
-                        timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
-                                '3timespent', '4diff', '5originalestimateremaining', '6progress']},
-                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
-                        dateFields: {val: []},
-                        disableLogWork: {}
-                    });
-                    return deferred.promise;
-                },
                 getProjects: function() {
                     var deferred = $q.defer();
                     deferred.resolve(ProjectsData);
@@ -700,36 +596,6 @@ describe("timesheetControllerTest", function() {
             $sce: $sce,
             pivottableService: pivottableService,
             configurationService: {
-                getUserConfiguration: function () {
-                    var deferred = $q.defer();
-                    deferred.resolve({
-                        maxFractionDigits: {},
-                        compositionIssueLink: {},
-                        parentIssueField: {},
-                        parentIssueType: {},
-                        auditorsGroups: {},
-                        weekendType: {},
-                        preserveStartedTime: {},
-                        statuses: {},
-                        timeInStatusCategories: {},
-                        prettyDuration: {val: true},
-                        workLabels: {},
-                        workDescriptionRequired: {},
-                        worklogVisibilityGroup: {},
-                        worklogVisibilityRole: {},
-                        durationType: {},
-                        workingTimeInStatus: {},
-                        startedTimeInStatus: {},
-                        inProgressIssuesJql: {},
-                        timeBalanceColumns: {val: ["3timespent", "12estimate", "4diff", "1timeoriginalestimate", "6progress"]},
-                        timeTrackingColumns: {val: ['1timeoriginalestimate', '2esttimeremaining',
-                                '3timespent', '4diff', '5originalestimateremaining', '6progress']},
-                        exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
-                        dateFields: {val: []},
-                        disableLogWork: {}
-                    });
-                    return deferred.promise;
-                },
                 getProjects: function() {
                     var deferred = $q.defer();
                     deferred.resolve(ProjectsData);

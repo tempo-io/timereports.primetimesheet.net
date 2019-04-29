@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="field-group" ng-if="auditorsRoles">
-            <span class="description" ng-bind-html="'description.Auditors Roles' | i18n | htmlSafe"></span>
+            <span class="description" data-ng-bind-html="'description.Auditors Roles' | i18n | htmlSafe"></span>
         </div>
         <div class="field-group" ng-if="isTimesheet">
             <label for="select2-logWorkForOthersGroups">{{'Log Work For Others Groups' | i18n}}</label>
@@ -187,7 +187,7 @@
             </div>
         </div>
         <div class="field-group">
-            <span class="description" ng-bind-html="'description.Preserve Started Time' | i18n | htmlSafe"></span>
+            <span class="description" data-ng-bind-html="'description.Preserve Started Time' | i18n | htmlSafe"></span>
         </div>
         <div class="field-group">
             <label for="worklogVisibilityGroup">{{'Worklog Visibility Group' | i18n}}</label>
@@ -269,6 +269,23 @@
     </div>
     <div ng-show="page=='defaults'">
         <div class="field-group">
+            <label for="select2-reportingDay">{{'Reporting Day' | i18n}}</label>
+            <select id="select2-reportingDay"
+                    class="select"
+                    title="{{'Reporting Day' | i18n}}"
+                    ng-model="reportingDay.val"
+                    ng-change="saveReportingDay()"
+                    ng-options="item.id as item.label for item in reportingDayOptions.options">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="reportingDaySaveSuccess">
+                <strong>{{'Reporting Day' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Reporting Day' | i18n}}</span>
+        </div>
+        <div class="field-group">
             <label for="select2-weekendType">{{'Weekend Type' | i18n}}</label>
             <select id="select2-weekendType"
                     class="select"
@@ -349,7 +366,7 @@
             </div>
         </div>
         <div class="field-group">
-            <span class="description" ng-bind-html="'description.Time Tracking Columns' | i18n | htmlSafe"></span>
+            <span class="description" data-ng-bind-html="'description.Time Tracking Columns' | i18n | htmlSafe"></span>
         </div>
         <div class="field-group">
             <label for="timeBalanceColumns">{{'Time Balance Columns' | i18n}}</label>
@@ -366,7 +383,7 @@
             </div>
         </div>
         <div class="field-group">
-            <span class="description" ng-bind-html="'description.Time Balance Columns' | i18n | htmlSafe"></span>
+            <span class="description" data-ng-bind-html="'description.Time Balance Columns' | i18n | htmlSafe"></span>
         </div>
         <div class="field-group">
             <label for="timeInStatusCategories">{{'Time In Status Categories' | i18n}}</label>
@@ -383,7 +400,7 @@
             </div>
         </div>
         <div class="field-group">
-            <span class="description" ng-bind-html="'description.Time In Status Categories' | i18n | htmlSafe"></span>
+            <span class="description" data-ng-bind-html="'description.Time In Status Categories' | i18n | htmlSafe"></span>
         </div>
         <div class="field-group">
             <label for="exportColumns">{{'Columns For Export' | i18n}}</label>
@@ -400,7 +417,7 @@
             </div>
         </div>
         <div class="field-group">
-            <span class="description" ng-bind-html="'description.Columns For Export' | i18n | htmlSafe"></span>
+            <span class="description" data-ng-bind-html="'description.Columns For Export' | i18n | htmlSafe"></span>
         </div>
         <div class="field-group">
             <label for="startedTimeInStatus">{{'Started Time In Status' | i18n}}</label>
