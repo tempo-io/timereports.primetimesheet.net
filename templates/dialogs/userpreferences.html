@@ -155,6 +155,23 @@
             <span class="description" ng-bind-html="'description.Columns For Export' | i18n | htmlSafe"></span>
         </div>
         <div class="field-group">
+            <label for="select2-durationTypeForExport">{{'Duration Type For Export' | i18n}}</label>
+            <select id="select2-durationTypeForExport"
+                    class="select"
+                    title="{{'Duration Type For Export' | i18n}}"
+                    ng-model="durationTypeForExport.val"
+                    ng-change="saveDurationTypeForExport()"
+                    ng-options="item.id as item.label for item in allDurationTypesForExport">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="durationTypeForExportSaveSuccess">
+                <strong>{{'Duration Type For Export' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Duration Type For Export' | i18n}}</span>
+        </div>
+        <div class="field-group">
             <label for="dateFields">{{'Date Fields' | i18n}}</label>
             <input id="dateFields"
                    aui-multi-select-picker

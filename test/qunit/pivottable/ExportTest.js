@@ -51,6 +51,24 @@ QUnit.test("Excel Export", function() {
     var total = lines.slice(153, 162).map(s => s.trim()).join('');
     QUnit.assert.equal(total, '<td>Total</td><td></td><td></td><td></td><td></td><td></td><td></td><td>48</td><td></td>', "total");
 });
+QUnit.test("Excel Export in Days", function() {
+    var excelView = new ExcelView(TimeData.issues);
+    QUnit.assert.equal(typeof excelView, 'object', 'excelView');
+    var excel = excelView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1, moreFields: [],
+        translations: translations, configOptions: {exportColumns:[], durationTypeForExport: 'd'},
+        jiraConfig: {}});
+    QUnit.assert.equal(typeof excel, 'string', 'excel');
+    QUnit.assert.equal(excel.match(/\d+h/g), null, "issue#902: hours with no h");
+    var lines = excel.split('\n');
+    var header = lines.slice(10, 11).map(s => s.trim()).join('');
+    QUnit.assert.equal(header, "<td>Time Spent (d)</td>", "header");
+    var row1 = lines.slice(13, 14).map(s => s.trim()).join('');
+    QUnit.assert.equal(row1, "<td>0.13</td>", "row1");
+    var row2 = lines.slice(16, 17).map(s => s.trim()).join('');
+    QUnit.assert.equal(row2, "<td>0.13</td>", "row2");
+    var total = lines.slice(49, 50).map(s => s.trim()).join('');
+    QUnit.assert.equal(total, '<td>6</td>', "total"); // no <td>Total</td>
+});
 QUnit.test("Excel Export TimeTracking", function() {
     var excelView = new ExcelView(TimeData.issues);
     QUnit.assert.equal(typeof excelView, 'object', 'excelView');
@@ -148,6 +166,20 @@ QUnit.test("Csv Export Custom Columns", function() {
     QUnit.assert.equal(lines[1], 'TIME-4,1,"test 1"', "row1");
     QUnit.assert.equal(lines[2], 'TIME-4,1,"test 2"', "row2");
     QUnit.assert.equal(lines[13], 'Total,48,', "total");
+});
+QUnit.test("Csv Export Custom Columns In Days", function() {
+    var csvView = new CsvView(TimeData.issues);
+    QUnit.assert.equal(typeof csvView, 'object', 'csvView');
+    var csv = csvView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1, moreFields: [],
+        translations: translations, configOptions: {exportColumns:['key', 'descriptionstatus'], durationTypeForExport: 'd'},
+        jiraConfig: {}});
+    QUnit.assert.equal(typeof csv, 'string', 'csv');
+    QUnit.assert.equal(csv.match(/\d+h/g), null, "issue#902: hours with no h")
+    var lines = csv.split('\n');
+    QUnit.assert.equal(lines[0], 'Key,Time Spent (d),Work Description', "header");
+    QUnit.assert.equal(lines[1], 'TIME-4,0.13,"test 1"', "row1");
+    QUnit.assert.equal(lines[2], 'TIME-4,0.13,"test 2"', "row2");
+    QUnit.assert.equal(lines[13], 'Total,6,', "total");
 });
 QUnit.test("Html Export Timesheet", function() {
     var htmlView = new HtmlView(TimeData.issues);

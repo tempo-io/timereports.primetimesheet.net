@@ -89,6 +89,7 @@ describe("timesheetControllerTest", function() {
                 worklogVisibilityGroup: {},
                 worklogVisibilityRole: {},
                 durationType: {},
+                durationTypeForExport: {},
                 workingTimeInStatus: {val: {from: 9, to: 17}},
                 startedTimeInStatus: {val: false},
                 inProgressIssuesJql: {},
