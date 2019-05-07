@@ -1,6 +1,6 @@
 <table cellpadding="0" border="0" cellspacing="5" width="100%">
     <tr ng-repeat="wkLog in popupData.worklogs">
-        <td width="1%" nowrap ng-if="wkLog._issueInfo || wkLog._authorInfo">
+        <td ng-if="wkLog._issueInfo || wkLog._authorInfo">
             <span ng-if="wkLog._issueInfo"><issue-key issue="wkLog._issueInfo"/></span>
             <a ng-class="{inactive: !wkLog._authorInfo.active}"
                 title="{{wkLog._authorInfo.emailAddress}}"
