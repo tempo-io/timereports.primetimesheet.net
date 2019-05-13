@@ -18,6 +18,11 @@ header {
     width: 950px;
   }
 }
+@media print {
+  .noprint {
+    display: none !important;
+  }
+}
 .aui-page-panel-inner {
   margin: 0 !important;
 }

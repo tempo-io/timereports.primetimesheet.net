@@ -33,7 +33,7 @@
 </div>
 
 <div ng-if="!showGadgetConfiguration && !gadgetDialog" class="main margin">
-  <div class="menu" ng-if="!isGadget && !hideMenu">
+  <div class="menu noprint" ng-if="!isGadget && !hideMenu">
     <ng-include src="templates.menu"></ng-include>
   </div>
   <div class="content">
@@ -191,6 +191,6 @@
         </form>
     </div>
 </script>
-<div class="footer margin" ng-if="!isGadget">
+<div class="footer margin noprint" ng-if="!isGadget">
     <ng-include src="'/templates/footer.html'"></ng-include>
 </div>

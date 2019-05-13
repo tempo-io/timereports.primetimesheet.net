@@ -40,7 +40,7 @@
                 <tr class="rowHeader">
                     <th class="colHeaderLink" colspan="{{rowKeySize}}">
                         <span><pivottable-slider /></span>
-                        <span>
+                        <span class="noprint">
                             <i href="#export" aria-owns="export" aria-haspopup="true" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" style="padding-left: 10px" title="Download worklog" ng-hide="loading || restrictionError"></i>
                             <!-- Dropdown -->
                             <div id="export" class="aui-style-default aui-dropdown2">
@@ -191,11 +191,11 @@
             <span class="results-count-text" ng-if="issuesCount.end">
                 <span class="results-count-start" ng-bind="issuesCount.startAt + 1"></span>–<span class="results-count-end" ng-bind="issuesCount.end"></span> of <span class="results-count-total" ng-bind="issuesCount.total"></span>
             </span>
-            <a ng-click="loading || !loaded || refresh()" ng-disabled="loading || !loaded" ng-class="{disabled: loading || !loaded}" title="Refresh">
+            <a ng-click="loading || !loaded || refresh()" ng-disabled="loading || !loaded" ng-class="{disabled: loading || !loaded}" title="Refresh" class="noprint">
                 <span class="aui-icon aui-icon-small aui-iconfont-refresh-small">Refresh</span>
             </a>
         </div>
-        <div class="pagination aui-item">
+        <div class="pagination aui-item noprint">
             <ol class="aui-nav aui-nav-pagination">
                 <li class="aui-nav-previous"><a ng-show="issuesCount.startAt > 0" ng-click="setStartAt(issuesCount.startAt - issuesCount.maxResults)">Prev</a><span ng-show="issuesCount.startAt <= 0 && issuesCount.total">Prev</span></li>
                 <li ng-class="{'aui-nav-selected': issuesCount.startAt == startAt}" ng-repeat="p in pages" ng-init="startAt = issuesCount.maxResults * p" style="padding: 0"><a ng-click="setStartAt(startAt)" style="padding: 3px">{{p + 1}}</a></li>
