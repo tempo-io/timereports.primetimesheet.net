@@ -76,7 +76,7 @@
                     </div>
                 </fieldset>
                 <div class="field-group">
-                    Create support ticket in Bitbucket <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
+                    Create support ticket in Bitbucket <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
                 </div>
             </div>
         </form>
@@ -110,10 +110,10 @@
     </div>
     <!-- Dialog footer -->
     <footer class="aui-dialog2-footer">
-        <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
+        <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
         <!-- Actions to render on the right of the footer -->
         <div class="aui-dialog2-footer-actions">
-            <button class="aui-button submit" ng-click="save()" ng-disabled="logWorkForm.$invalid">Save</button>
+            <button class="aui-button submit" ng-click="save()" ng-disabled="logWorkForm.$invalid || loading" ng-class="{disabled: logWorkForm.$invalid || loading}">Save</button>
             <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
         </div>
     </footer>
@@ -135,9 +135,9 @@
             </div>
             <div class="buttons-container" ng-if="!standaloneDialog">
                 <div class="buttons">
-                    <button class="aui-button submit" ng-click="save()" ng-disabled="logWorkForm.$invalid">Save</button>
+                    <button class="aui-button submit" ng-click="save()" ng-disabled="logWorkForm.$invalid || loading" ng-class="{disabled: logWorkForm.$invalid || loading}">Save</button>
                     <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
-                    <span class="aui-icon aui-icon-wait" ng-show="loading" style="margin: 0 50px;"></span>
+                    <span class="fa fa-spinner fa-spin" ng-show="loading" style="margin: 0 50px;"></span>
                 </div>
             </div>
         </form>
@@ -164,10 +164,10 @@
     </div>
     <!-- Dialog footer -->
     <footer class="aui-dialog2-footer">
-        <span class="aui-icon aui-icon-wait" ng-show="loading"></span>
+        <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
         <!-- Actions to render on the right of the footer -->
         <div class="aui-dialog2-footer-actions">
-            <button class="aui-button submit" ng-click="delete()" ng-disabled="deleteWorkForm.$invalid">Delete</button>
+            <button class="aui-button submit" ng-click="delete()" ng-disabled="deleteWorkForm.$invalid || loading" ng-class="{disabled: deleteWorkForm.$invalid || loading}">Delete</button>
             <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
          </div>
     </footer>
@@ -183,9 +183,9 @@
             <ng-include src="'/templates/dialogs/deleteWorklog.html'"></ng-include>
             <div class="buttons-container">
                 <div class="buttons">
-                    <button class="aui-button submit" ng-click="delete()" ng-disabled="deleteWorkForm.$invalid">Delete</button>
+                    <button class="aui-button submit" ng-click="delete()" ng-disabled="deleteWorkForm.$invalid || loading" ng-class="{disabled: deleteWorkForm.$invalid || loading}">Delete</button>
                     <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
-                    <span class="aui-icon aui-icon-wait" ng-show="loading" style="margin: 0 50px;"></span>
+                    <span class="fa fa-spinner fa-spin" ng-show="loading" style="margin: 0 50px;"></span>
                 </div>
             </div>
         </form>

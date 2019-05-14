@@ -5,7 +5,7 @@
             {{'Log Work for' | i18n}} {{popupData.worklog.date | date:'dd/MMM/yy'}}
         </td>
         <td>
-            <span class="aui-icon aui-icon-wait" ng-show="popupData.loading"></span>
+            <span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span>
         </td>
     </tr>
     <tr>
@@ -18,7 +18,7 @@
     <tr>
         <td><label>{{'Comment' | i18n}}</label></td>
         <td colspan="2">
-            <input class="error" type="text" size="25" ng-model="popupData.worklog.comment" enter-pressed="popupData.addWorklog(closePopup)" ng-required="workDescriptionRequired" placeholder="{{workDescriptionRequired ? '(required)' : ''}}"/>
+            <input class="error" type="text" size="25" ng-model="popupData.worklog.comment" enter-pressed="popupData.loading || popupData.addWorklog(closePopup)" ng-required="workDescriptionRequired" placeholder="{{workDescriptionRequired ? '(required)' : ''}}"/>
         </td>
     </tr>
     <tr ng-if="popupData.worklog.user">
