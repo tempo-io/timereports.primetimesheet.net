@@ -3,22 +3,9 @@
         <h4>{{ 'Time Reports Config' | i18n }}</h4>
     </div>
     <ul>
-        <li>
-              <a ng-click="activePage('access')" ng-class="{disabled: page=='access'}" >{{ 'Access' | i18n }}</a>
-        </li>
-        <li>
+        <li ng-repeat="pageKey in pageKeys">
             <div class="ak-field-group">
-              <a ng-click="activePage('hierarchy')" ng-class="{disabled: page=='hierarchy'}" >{{ 'Issues Hierarchy' | i18n }}</a>
-            </div>
-        </li>
-        <li>
-            <div class="ak-field-group">
-                <a ng-click="activePage('defaults')" ng-class="{disabled: page=='defaults'}" >{{ 'User Defaults' | i18n }}</a>
-            </div>
-        </li>
-        <li>
-            <div class="ak-field-group">
-              <a ng-click="activePage('general')" ng-class="{disabled: page=='general'}" >{{ 'General' | i18n }}</a>
+              <a ng-click="activePage(pageKey)" ng-class="{disabled: pageKey==page}" >{{ pages[pageKey] | i18n }}</a>
             </div>
         </li>
     </ul>
