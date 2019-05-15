@@ -8,6 +8,7 @@
     "Timespent": "Timespent",
     "IssueWorkedTimeByUser": "Pivot by User",
     "IssueWorkedTimeByStatus": "Pivot by Status",
+    "IssueWorkedTimeByLabel": "Pivot by Label",
     "TimeTracking": "Time Tracking",
     "TimeBalance": "Time Balance",
     "PieChart": "Pie Chart",

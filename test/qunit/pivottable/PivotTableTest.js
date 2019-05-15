@@ -52,6 +52,22 @@ QUnit.test("IssueWorkedTimeByStatus", function() {
       QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
   }
 });
+QUnit.test("IssueWorkedTimeByLabel", function() {
+  var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByLabel', configOptions: {}});
+  for (var i in TimeData.issues) {
+      var pivotEntries = pivotTable.add(TimeData.issues[i]);
+      QUnit.assert.equal(pivotEntries.length, 2, "pivotEntries");
+  }
+  var totalKeys = Object.keys(pivotTable.totals);
+  QUnit.assert.equal(totalKeys.length, 3, "totals");
+  QUnit.assert.equal(totalKeys[0], "", "totalKey");
+  QUnit.assert.equal(totalKeys[1], "tag5", "totalKey");
+  QUnit.assert.equal(totalKeys[2], "tag8", "totalKey");
+  QUnit.assert.equal(pivotTable.totals[totalKeys[1]].sum, 18000, "total value tag5");
+  QUnit.assert.equal(pivotTable.totals[totalKeys[2]].sum, 28800, "total value tag8");
+  var rowKeys = Object.keys(pivotTable.rows);
+  QUnit.assert.equal(rowKeys.length, 6, "rows");
+});
 QUnit.test("IssuePassedTimeByStatus", function() {
   var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssuePassedTimeByStatus',
       startDate: '2017-04-05', endDate: '2017-04-11', timeInStatusCategories: ["2", "4"],
