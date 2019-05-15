@@ -743,7 +743,8 @@ describe("pivottableServiceTest", function() {
 
         expect(pivottableService).toBeDefined();
 
-        var pivotTable = {matches: {}, queueToAdd: []}, options = {sumSubTasks: true, configOptions: {auditorsRoles: "Administrators"}};
+        var loggedInUser = {accountId: "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"};
+        var pivotTable = {matches: {}, queueToAdd: []}, options = {sumSubTasks: true, configOptions: {auditorsRoles: "Administrators"}, loggedInUser: loggedInUser};
         var issue1 = {
             key: 'TIME-1',
             fields: {
