@@ -858,6 +858,89 @@ describe("pivottableServiceTest", function() {
         expect(pivottableService.allIssues.length).toBe(6);
     }));
 
+    it('PARAMETERS: no restrictedGroups  no auditorsGroups', inject(function($timeout, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}, {name: 'group2'}]}};
+        var options = {pivotTableType: 'IssueWorkedTimeByUser',
+            configOptions: {}};
+
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
+
+        $timeout.flush();
+
+        expect(pivottableService.worklogAuthors.length).toBe(0);
+    }));
+
+    it('PARAMETERS: restrictedGroups auditorsGroups', inject(function($timeout, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}, {name: 'group2'}]}};
+        var options = {pivotTableType: 'IssueWorkedTimeByUser',
+            configOptions: {auditorsGroups: ["group1"], restrictedGroups: ["group2"]}};
+
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
+
+        $timeout.flush();
+
+        expect(pivottableService.worklogAuthors.length).toBe(1);
+        expect(pivottableService.worklogAuthors[0]).toBe(loggedInUser.accountId);
+    }));
+
+    it('PARAMETERS: restrictedGroups 1 author', inject(function($timeout, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}, {name: 'group2'}]}};
+        var options = {pivotTableType: 'IssueWorkedTimeByUser',
+            configOptions: {restrictedGroups: ["group1"]}};
+
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
+
+        $timeout.flush();
+
+        expect(pivottableService.worklogAuthors.length).toBe(1);
+        expect(pivottableService.worklogAuthors[0]).toBe(loggedInUser.accountId);
+    }));
+
+    it('PARAMETERS: restrictedGroups ang groups 1 author', inject(function($timeout, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}, {name: 'group2'}]}};
+        var options = {pivotTableType: 'IssueWorkedTimeByUser',
+            groups: ["group2"],
+            configOptions: {restrictedGroups: ["group1"]}};
+
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
+
+        $timeout.flush();
+
+        expect(pivottableService.worklogAuthors.length).toBe(1);
+        expect(pivottableService.worklogAuthors[0]).toBe(loggedInUser.accountId);
+    }));
+
+    it('PARAMETERS: restrictedGroups ang groups 0 authors', inject(function($timeout, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}]}};
+        var options = {pivotTableType: 'IssueWorkedTimeByUser',
+            groups: ["group2"],
+            configOptions: {restrictedGroups: ["group1"]}};
+
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
+
+        $timeout.flush();
+
+        expect(pivottableService.worklogAuthors.length).toBe(0);
+    }));
+
+    it('PARAMETERS: restrictedGroups 0 authors', inject(function($timeout, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}, {name: 'group2'}]}};
+        var options = {pivotTableType: 'IssueWorkedTimeByUser',
+            configOptions: {restrictedGroups: ["group3"]}};
+
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
+
+        $timeout.flush();
+
+        expect(pivottableService.worklogAuthors.length).toBe(0);
+    }));
+
     it('JQL for Date Fields for TimeBalance ["resolved"]', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'};
