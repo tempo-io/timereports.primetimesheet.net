@@ -14,6 +14,7 @@
     "PieChart": "Pie Chart",
     "IssuePassedTimeByStatus": "Time in Status",
     "IssuePassedTimeByResolution": "Resolution Time",
+    "Calendar": "Calendar",
     "Number of Weeks": "Number of Weeks:",
     "Number of Months": "Number of Months:",
     "Offset": "Offset:",
@@ -48,6 +49,14 @@
     "created": "Created",
     "updated": "Updated",
     "resolved": "Resolved",
+
+    "00": "Sunday",
+    "01": "Monday",
+    "02": "Tuesday",
+    "03": "Wednesday",
+    "04": "Thursday",
+    "05": "Friday",
+    "06": "Saturday",
 
     "From": "From",
     "To": "To",

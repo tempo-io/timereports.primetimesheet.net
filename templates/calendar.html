@@ -1,0 +1,157 @@
+<div class="results-wrap">
+    <div class="section-header" ng-hide="isGadget">
+        <div>
+            <div ng-init="showButtons=false" ng-mouseover="showButtons=!$form.$visible" ng-mouseleave="showButtons=false">
+                <div editable-text="currentView.name" e-required onshow="$parent.$form=$form" onhide="$parent.$form=undefined" onaftersave="viewNameChanged()">
+                    <h5>{{currentView.name || (pivotTableType | i18n)}}</h5>
+                    <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
+                </div>
+                <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
+                <a class="overlay-icon aui-icon aui-icon-small aui-iconfont-remove dangerous remove-view" ng-click="deleteView()" ng-show="showButtons && showDeleteButton"></a>
+            </div>
+        </div>
+        <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
+                         remove-action="removeMenuOption(option.key, option.labelParam)"
+                         option="option"/>
+        </div>
+        <validation-errors errors="errors"></validation-errors>
+    </div>
+    <div ng-show="isGadget">
+            <span ng-repeat="option in gadgetSummary">
+                <span ng-class="option.styleClass">{{option.text}}</span>
+            </span>
+        <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent"></a>
+    </div>
+
+    <aui-inline-dialog id="problem-description-popup" template="'/templates/popups/problemDescription.html'" popup-data="problemDescriptionPopup" container="'#downloadSupportData'"></aui-inline-dialog>
+    <aui-inline-dialog id="user-hover" template="'/templates/popups/userHover.html'" popup-data="userHoverPopup" container="'.userHoverPopup'" on-hover="true"></aui-inline-dialog>
+    <aui-inline-dialog
+            id="edit-worklog"
+            template="templates.editWorklog"
+            popup-data="editWorklogPopup"
+            container="'.editWorklogPopup'"
+            work-description-required="workDescriptionRequired"
+            jira-config="jiraConfig">
+    </aui-inline-dialog>
+
+    <div class="pagingtable">
+
+        <div class="aui-message aui-message-error" ng-show="restrictionError != null">
+            <p class="title">
+                <strong>{{'Denied' | i18n}}</strong>
+            </p>
+            <p>{{restrictionError.msgKey | i18n}}</p>
+            <p ng-if="restrictionError.msg" ng-bind-html="restrictionError.msg"></p>
+        </div>
+
+        <table id="issuetable" cellspacing="0" cellpadding="3" border="0" width="100%" ng-show="restrictionError == null">
+            <thead>
+                <tr class="rowHeader">
+                    <th class="colHeaderLink">
+                        <span><pivottable-slider class="calendar"/></span>
+                    </th>
+                    <th class="colHeaderLink"
+                        ng-class="{nonBusinessDay: column.columnKey.isWeekend}"
+                        ng-repeat="column in pivotTable.sortedColumns()"
+                        column-key="column.columnKey">
+                    </th>
+                    <th>
+                        {{'Total' | i18n}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat-start="row in pivotTable.sortedRows() | limitTo:issuesCount.maxResults:issuesCount.startAt">
+                    <td class="nav first" width="8%" nowrap>
+                        {{row.rowKey.keyValue}}
+                        <!--May 19
+                        <br>
+                        {{moment(row.rowKey.field.startDate).format('MMMM YY')}}-->
+                    </td>
+                    <td width="12%"
+                        style="cursor:default"
+                        ng-init="currentDay=moment(row.rowKey.field.startDate).add($index,'days')"
+                        ng-click="editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
+                        class="nav border"
+                        ng-class="{toDay: column.columnKey.isToday,
+                        nonBusinessDay: column.columnKey.isWeekend,
+                        editWorklogPopup: column.sum != 0}"
+                        ng-repeat="column in row.columns">
+                        <div ng-class="{invisible: currentDay.toDate() > endDate.value || currentDay.toDate() < startDate.value}">
+                            <p class="day-of-month">
+                                {{currentDay.format('DD')}}
+                            </p>
+                            <p ng-if="column.sum" style="cursor:pointer">
+                                {{column.sum | prettyHours:jiraConfig}}
+                            </p>
+                            <p ng-if="!column.sum"
+                               ng-init="p_show=false"
+                               ng-mouseover="p_show=canLogWork || canLogWorkForUser"
+                               ng-mouseleave="p_show=false"
+                               ng-click="(canLogWork || canLogWorkForUser) && addWorklogDialog(null, null, currentDay)"
+                               ng-class="{addWorklogPopup: canLogWork || canLogWorkForUser}">
+                                <span ng-click="" ng-show="p_show" class="fa fa-plus"
+                                      title="Log Work against this day"></span>&nbsp;
+                            </p>
+                        </div>
+                    </td>
+                    <td class="nav first border total" width="8%">
+                        {{row.sum | prettyHours:jiraConfig}}
+                    </td>
+                </tr>
+                <tr ng-repeat-end ng-hide="true"></tr>
+                <!-- total block -->
+                <tr class="rowFooter" ng-hide="loading || !loaded || !pivotTable">
+                    <td class="nav total">
+                        {{'Total' | i18n}}
+                    </td>
+                    <td class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
+                        <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
+                    </td>
+                    <td class="nav border total">
+                        {{pivotTable.sum | prettyHours:jiraConfig}}
+                    </td>
+                </tr>
+                <tr ng-show="loaded && loading">
+                    <td colspan="1">
+                        <loading/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="count-pagination aui-group" ng-hide="!loaded || loading || restrictionError || !pivotTable">
+        <div class="aui-item">
+            <span class="results-count-text" ng-if="issuesCount.end">
+                <span class="results-count-start" ng-bind="issuesCount.startAt + 1"></span>–<span class="results-count-end" ng-bind="issuesCount.end"></span> of <span class="results-count-total" ng-bind="issuesCount.total"></span>
+            </span>
+            <a ng-click="loading || !loaded || refresh()" ng-disabled="loading || !loaded" ng-class="{disabled: loading || !loaded}" title="Refresh">
+                <span class="aui-icon aui-icon-small aui-iconfont-refresh-small">Refresh</span>
+            </a>
+        </div>
+        <div class="pagination aui-item">
+            <ol class="aui-nav aui-nav-pagination">
+                <li class="aui-nav-previous"><a ng-show="issuesCount.startAt > 0" ng-click="setStartAt(issuesCount.startAt - issuesCount.maxResults)">Prev</a><span ng-show="issuesCount.startAt <= 0 && issuesCount.total">Prev</span></li>
+                <li ng-class="{'aui-nav-selected': issuesCount.startAt == startAt}" ng-repeat="p in pages" ng-init="startAt = issuesCount.maxResults * p" style="padding: 0"><a ng-click="setStartAt(startAt)" style="padding: 3px">{{p + 1}}</a></li>
+                <li class="aui-nav-next" ng-init="isNext = issuesCount.startAt + issuesCount.maxResults < issuesCount.total"><a ng-show="issuesCount.startAt + issuesCount.maxResults < issuesCount.total" ng-click="setStartAt(issuesCount.startAt + issuesCount.maxResults)" style="padding: 3px">Next</a><span ng-show="issuesCount.startAt + issuesCount.maxResults >= issuesCount.total && issuesCount.total">Next</span></li>
+            </ol>
+        </div>
+    </div>
+    <div ng-if="loaded && !loading && !restrictionError">
+        <button ng-if="canLogWork || canLogWorkForUser" class="aui-button aui-button-link" ng-click="addWorklogDialog()" title="Log Work against an issue">
+            <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
+            {{'Log Work' | i18n}}
+        </button>
+    </div>
+    <div class="aui-message aui-message warning" ng-show="loaded && !loading && restrictedProjects">
+        <strong>{{'Data is limited by Auditors Roles' | i18n}}</strong>&nbsp;{{restrictedProjects}}
+    </div>
+    <div ng-if="!loaded">
+        <br/>
+        <button class="aui-button" ng-click="execute()" ng-disabled="loading" ng-class="{disabled: loading}">
+            <span class="aui-icon aui-icon-small aui-iconfont-view"></span>
+            View Report
+        </button>
+    </div>
+</div>
+<resize/>

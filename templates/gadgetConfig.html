@@ -63,7 +63,7 @@
       <label>{{'User' | i18n}}</label>
       <input ng-value="userInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
     </div>
-    <div class="field-group" ng-if="['Timesheet', 'Timespent', 'PieChart'].indexOf(pivotTableType) >= 0">
+    <div class="field-group" ng-if="['Timesheet', 'Timespent', 'PieChart', 'Calendar'].indexOf(pivotTableType) >= 0">
       <label>{{'All Users' | i18n}}</label>
       <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)" />
     </div>
@@ -71,7 +71,7 @@
       <label>{{'Groups' | i18n}}</label>
       <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>
     </div>
-    <div class="field-group" ng-if="['TimeEntry'].indexOf(pivotTableType) < 0">
+    <div class="field-group" ng-if="['TimeEntry', 'Calendar'].indexOf(pivotTableType) < 0">
       <label>{{'Group By Field' | i18n}}</label>
       <select class="select"
               ng-model="groupByOptions.selected"
@@ -80,7 +80,7 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="['TimeEntry'].indexOf(pivotTableType) < 0">
+    <div class="field-group" ng-if="['TimeEntry', 'Calendar'].indexOf(pivotTableType) < 0">
       <label>{{'Categorize By Field' | i18n}}</label>
       <select class="select"
               ng-model="categorizeByOptions.selected"
@@ -89,7 +89,7 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="pivotTableType != 'PieChart'">
+    <div class="field-group" ng-if="['PieChart', 'Calendar'].indexOf(pivotTableType) < 0">
       <label>{{'Additional Fields' | i18n}}</label>
       <select class="select"
               multiple="true"
@@ -99,7 +99,7 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="!groupByOptions.selected && !categorizeByOptions.selected">
+    <div class="field-group" ng-if="['Calendar'].indexOf(pivotTableType) < 0 && !groupByOptions.selected && !categorizeByOptions.selected">
       <label>{{'Order By Field' | i18n}}</label>
       <select class="select"
               ng-model="orderByOptions.selected"
@@ -135,15 +135,15 @@
              ng-options-data="timeInStatusCategoriesData"
              ng-value-changed-func="timeInStatusCategoriesChanged">
     </div>
-    <div class="field-group" ng-if="pivotTableType == 'Timesheet'">
+    <div class="field-group" ng-if="['Timesheet', 'Calendar'].indexOf(pivotTableType) >= 0>
       <label>{{'Show Weekends' | i18n}}</label>
       <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled"/>
     </div>
-    <div class="field-group" ng-if="pivotTableType != 'PieChart'">
+    <div class="field-group" ng-if="['PieChart', 'Calendar'].indexOf(pivotTableType) < 0">
       <label>{{'Show Details' | i18n}}</label>
       <input class="checkbox" type="checkbox" ng-model="showDetails.enabled" ng-change="showDetailsChange(showDetails.enabled)" />
     </div>
-    <div class="field-group" ng-if="['TimeEntry', 'IssueTime'].indexOf(pivotTableType) < 0">
+    <div class="field-group" ng-if="['TimeEntry', 'IssueTime', 'Calendar'].indexOf(pivotTableType) < 0">
       <label>{{'Month View' | i18n}}</label>
       <input class="checkbox" type="checkbox" ng-model="monthView.enabled" ng-change="monthViewChanged(monthView.enabled)" />
     </div>
@@ -157,7 +157,7 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group">
+    <div class="field-group" ng-if="['Calendar'].indexOf(pivotTableType) < 0">
       <label>{{'Sum SubTasks' | i18n}}</label>
       <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
     </div>

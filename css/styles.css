@@ -169,8 +169,14 @@ th {
 .is-not-gadget .chart #slider-wrapper {
     width: 250px;
 }
+.is-not-gadget .calendar #slider-wrapper {
+    width: 70px;
+}
 .is-gadget #slider-wrapper {
     width: 250px;
+}
+.is-gadget .calendar #slider-wrapper {
+    width: 70px;
 }
 .issuetime .colHeaderLink:first-child {
     width: 100%;
@@ -459,4 +465,11 @@ table td {
 }
 .aui-dialog2.aui-layer {
     top: 69px;
+}
+.ng-scope .invisible {
+    display: none;
+}
+.day-of-month {
+    text-align: right;
+    color: #333;
 }

@@ -569,7 +569,7 @@ QUnit.test("TimesheetUtils", function() {
     var weeksForMonth = TimesheetUtils.getWeeksForMonth({startDate: new Date(2014, 1, 26), endDate: new Date(2014, 2, 5), reportingDay: 1}); // 26 February 2014 - 05 March 2014
     QUnit.assert.equal(weeksForMonth.length, 2, 'getWeeksForMonth length');
     QUnit.assert.ok(TimesheetUtils.sameDay(weeksForMonth[0].date, new Date(2014, 1, 24)), '#getWeeksForMonth() :: first week date');
-    QUnit.assert.equal(weeksForMonth[0].week, 'Week 9', '#getWeeksForMonth() :: first week number');
+    QUnit.assert.equal(weeksForMonth[0].week, 'Week 09', '#getWeeksForMonth() :: first week number');
     QUnit.assert.ok(TimesheetUtils.sameDay(weeksForMonth[1].date, new Date(2014, 2, 3)), '#getWeeksForMonth() :: last week date');
     QUnit.assert.equal(weeksForMonth[1].week, 'Week 10', '#getWeeksForMonth() :: last week number');
 
@@ -708,6 +708,28 @@ QUnit.test("Timesheet: group by workeduser", function() {
     QUnit.assert.ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[0])), new Date(2014, 1, 24)), "totalKey");
     QUnit.assert.ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[1])), new Date(2014, 1, 25)), "totalKey");
     QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 2, "column entries");
+});
+QUnit.test("Calendar", function() {
+    var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'Calendar',
+        startDate: '2014-02-24',
+        reportingDay: 1,
+        configOptions: {preserveStartedTime: true},
+        loggedInUser: {timeZone: "Europe/Kiev"}});
+    for (var i in TimeData.issues) {
+        var issue = TimeData.issues[i];
+        var pivotEntries = pivotTable.add(issue);
+        QUnit.assert.equal(pivotEntries.length, 2, "pivotEntries " + issue.key);
+    }
+    QUnit.assert.equal(pivotTable.sum, 172800, "sum");
+    var totalKeys = Object.keys(pivotTable.totals);
+    QUnit.assert.equal(totalKeys.length, 7, "totals");
+    QUnit.assert.equal(totalKeys[5], "05", "total key 5");
+    var rowKeys = Object.keys(pivotTable.rows);
+    QUnit.assert.ok(rowKeys.length > 0, "rows");
+    QUnit.assert.ok(rowKeys[0].startsWith("Week 0"), "rowKey");
+    var row = pivotTable.rows[rowKeys[0]];
+    var columnKeys = Object.keys(row.columns);
+    QUnit.assert.equal(columnKeys.length, 7, "columns");
 });
 QUnit.test("PivotTabe rows order", function() {
     var pivotTable = PivotTableFactory.createPivotTable({pivotTableType: 'IssueWorkedTimeByUser'});
