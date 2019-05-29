@@ -438,6 +438,43 @@ describe("pivottableServiceTest", function() {
         expect(issue.changelog.histories[0].id).toEqual('16'); // reordered
     }));
 
+    it('groupBy workedusergroup tests userInfos', inject(function($timeout, $q, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+
+        var issue = {
+            key: 'DEMO-1',
+            worklog: {
+                "maxResults" : 0,
+                "startAt" : 0,
+                "total" : 0,
+                "worklogs" : [
+                    {
+                        author: {
+                            name: 'admin',
+                            accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'
+                        }
+                    },
+                    {
+                        author: {
+                            name: 'test',
+                            accountId: 'accountId-noSuchUser-accountId'
+                        }
+                    }
+                ]
+            }
+        };
+
+        pivottableService.groupByField = 'workedusergroup';
+        pivottableService.filterWorklogs(issue, /* deferred */ null, /* options */ {groupByField: 'workedusergroup', configOptions: {}});
+
+        $timeout.flush();
+        $log.assertEmpty();
+
+        expect(pivottableService.userInfos['aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa']).toBeDefined();
+        expect(pivottableService.userInfos['accountId-noSuchUser-accountId']).toBeDefined();
+        expect($timeout.flush).toThrow();
+    }));
+
     // test filterWorklogs fills in worklogAuthors
     it('filterWorklogs', inject(function($timeout, $q, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
