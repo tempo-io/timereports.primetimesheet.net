@@ -50,10 +50,12 @@
                     <td class="nav border" ng-repeat="column in pivotTable.sortedColumns()">
                         <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
                     </td>
-                    <td class="nav border total">
-                        <div ng-if="data.worklogId">
-                            <span ng-if="canEditAllWorklog && !cannotEditAllWorklogIssue[issueKey]"><i class="fa fa-pencil-square-o" ng-click="updateWorklogDialog(data.worklogId, issueKey)" title="{{'Edit Worklog' | i18n}}"></i></span>
-                            <span ng-if="canDeleteAllWorklog && !cannotDeleteAllWorklogIssue[issueKey]"><i class="fa fa-trash-o" ng-click="deleteWorklogDialog(data.worklogId, issueKey)" title="{{'Delete Worklog' | i18n}}"></i></span>
+                    <td nowrap class="nav border">
+                        <div ng-if="data.worklog.id">
+                            <old-worklog worklog="data.worklog" edit-work="editWorklog" delete-work="deleteWorklog"
+                                     cannot-edit="!canEditAllWorklog || cannotEditAllWorklogIssue[issueKey]"
+                                     cannot-delete="!canDeleteAllWorklog || cannotDeleteAllWorklogIssue[issueKey]"
+                                     ng-init="data.worklog.issueKey = issueKey"/>
                         </div>
                     </td>
                 </tr>
