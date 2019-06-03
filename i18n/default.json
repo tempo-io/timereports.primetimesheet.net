@@ -235,6 +235,7 @@
     "description.Reporting Day": "Reporting day (start of week)",
 
     "Data is limited by Auditors Roles": "Because of the Auditors Roles configured, data is limited to own worklogs for the following project(s):",
+    "Data is limited to Restricted Groups": "Because of the Restricted Groups configured, data is limited to worklogs of users from the following group(s):",
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in auditors group. Please select yourself in User field to see own worklogs.",
     "error.restriction.licenseError": "License is not Active.",

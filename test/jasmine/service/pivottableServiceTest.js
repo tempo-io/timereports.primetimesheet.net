@@ -465,6 +465,7 @@ describe("pivottableServiceTest", function() {
         };
 
         pivottableService.groupByField = 'workedusergroup';
+        pivottableService.needUserInfos = true;
         pivottableService.filterWorklogs(issue, /* deferred */ null, /* options */ {groupByField: 'workedusergroup', configOptions: {}});
 
         $timeout.flush();
@@ -940,7 +941,7 @@ describe("pivottableServiceTest", function() {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}, {name: 'group2'}]}};
         var options = {pivotTableType: 'IssueWorkedTimeByUser',
-            groups: ["group2"],
+            groups: ["group1"],
             configOptions: {restrictedGroups: ["group1"]}};
 
         pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
