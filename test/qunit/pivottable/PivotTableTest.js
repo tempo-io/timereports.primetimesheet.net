@@ -726,8 +726,8 @@ QUnit.test("Calendar", function() {
     QUnit.assert.equal(totalKeys[5], "05", "total key 5");
     var rowKeys = Object.keys(pivotTable.rows);
     QUnit.assert.ok(rowKeys.length > 0, "rows");
-    QUnit.assert.ok(rowKeys[0].startsWith("Week 0"), "rowKey");
     var row = pivotTable.rows[rowKeys[0]];
+    QUnit.assert.ok(/0/.test(row.rowKey.field.weekNumber), "week");
     var columnKeys = Object.keys(row.columns);
     QUnit.assert.equal(columnKeys.length, 7, "columns");
 });

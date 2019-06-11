@@ -63,7 +63,7 @@
             <tbody>
                 <tr ng-repeat-start="row in pivotTable.sortedRows() | limitTo:issuesCount.maxResults:issuesCount.startAt">
                     <td class="nav first" width="8%" nowrap>
-                        {{row.rowKey.keyValue}}
+                        {{'Week' | i18n}}&nbsp;{{row.rowKey.field.weekNumber}}
                         <!--May 19
                         <br>
                         {{moment(row.rowKey.field.startDate).format('MMMM YY')}}-->
