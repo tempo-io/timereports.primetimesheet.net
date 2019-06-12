@@ -108,7 +108,7 @@ window.AP = {
     }
 };
 
-var UserData = {name: 'noSuchUser', accountId: 'accountId-noSuchUser-accountId', groups: {items: []}};
+var UserData = {name: 'noSuchUser', accountId: 'accountId-noSuchUser-accountId', groups: {items: [{name: 'noGroup'}]}};
 var PropertiesConfig = {value: [{key: 'workingTimeInStatus', val: true},
     {key: 'startedTimeInStatus', val: false}]};
 var PropertiesPreferences4admin = {};

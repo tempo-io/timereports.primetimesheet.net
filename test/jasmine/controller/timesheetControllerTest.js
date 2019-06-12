@@ -264,6 +264,130 @@ describe("timesheetControllerTest", function() {
         checkOptions(scope);
     }));
 
+    it('canLogWorkForUser in restrictedGroups', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        // logWorkForOthersGroups: {['teamA']}
+        // restrictedGroups: {['noGroup']}
+        // user: 'noSuchUser' (groups: {['noGroup']})
+        // loggedInUser: {groups: ['teamA','noGroup']}
+
+        //expect scope.canLogWorkForUser == true
+
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {loaded: true, user: 'noSuchUser'},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'teamA'}, {name: 'noGroup'}]}},
+            projectKey: 'TIME',
+            userConfiguration: {
+                maxFractionDigits: {},
+                compositionIssueLink: {},
+                parentIssueField: {},
+                parentIssueType: {},
+                auditorsGroups: {},
+                logWorkForOthersGroups: {val: ['teamA']},
+                restrictedGroups: {val: ['noGroup']},
+                weekendType: {},
+                preserveStartedTime: {},
+                statuses: {},
+                timeInStatusCategories: {},
+                prettyDuration: {val: true},
+                workLabels: {},
+                workDescriptionRequired: {},
+                worklogVisibilityGroup: {},
+                worklogVisibilityRole: {},
+                durationType: {},
+                durationTypeForExport: {},
+                workingTimeInStatus: {val: {from: 9, to: 17}},
+                startedTimeInStatus: {val: false},
+                inProgressIssuesJql: {},
+                timeBalanceColumns: {val: ["3timespent", "12estimate", "4diff", "1timeoriginalestimate", "6progress"]},
+                timeTrackingColumns: {
+                    val: ['1timeoriginalestimate', '2esttimeremaining', '3timespent', '4diff', '5originalestimateremaining', '6progress']
+                },
+                exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
+                dateFields: {val: []},
+                disableLogWork: {}
+            }
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(scope.TimesheetUtils).not.toBeNull();
+        expect(scope.loading).toBeFalsy();
+        expect(scope.pivotTable).not.toBeNull();
+
+        expect(scope.canLogWorkForUser).toBe(true);
+    }));
+
+    it('canLogWorkForUser not in restrictedGroups', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
+        // logWorkForOthersGroups: {['teamA']}
+        // restrictedGroups: {['noGroup', 'teamA']}
+        // user: 'noSuchUser' (groups: {['noGroup']})
+        // loggedInUser: {groups: ['teamA']}
+
+        //expect scope.canLogWorkForUser == false
+
+        var scope = $rootScope.$new();
+        $controller('TimesheetController', {
+            $scope: scope,
+            $route: $route,
+            timesheetParams: {loaded: true, user: 'noSuchUser'},
+            $location: $location,
+            $sce: $sce,
+            pivottableService: pivottableService,
+            loggedInUser: {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'teamA'}]}},
+            projectKey: 'TIME',
+            userConfiguration: {
+                maxFractionDigits: {},
+                compositionIssueLink: {},
+                parentIssueField: {},
+                parentIssueType: {},
+                auditorsGroups: {},
+                logWorkForOthersGroups: {val: ['teamA']},
+                restrictedGroups: {val: ['noGroup', 'teamA']},
+                weekendType: {},
+                preserveStartedTime: {},
+                statuses: {},
+                timeInStatusCategories: {},
+                prettyDuration: {val: true},
+                workLabels: {},
+                workDescriptionRequired: {},
+                worklogVisibilityGroup: {},
+                worklogVisibilityRole: {},
+                durationType: {},
+                durationTypeForExport: {},
+                workingTimeInStatus: {val: {from: 9, to: 17}},
+                startedTimeInStatus: {val: false},
+                inProgressIssuesJql: {},
+                timeBalanceColumns: {val: ["3timespent", "12estimate", "4diff", "1timeoriginalestimate", "6progress"]},
+                timeTrackingColumns: {
+                    val: ['1timeoriginalestimate', '2esttimeremaining', '3timespent', '4diff', '5originalestimateremaining', '6progress']
+                },
+                exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
+                dateFields: {val: []},
+                disableLogWork: {}
+            }
+        });
+
+        $timeout.flush();
+        expect(scope.loading).toBeDefined();
+        $httpBackend.flush();
+        $timeout.flush();
+
+        expect(scope.TimesheetUtils).not.toBeNull();
+        expect(scope.loading).toBeFalsy();
+        expect(scope.pivotTable).not.toBeNull();
+
+        expect(scope.canLogWorkForUser).toBe(false);
+    }));
+
     it('PARAMETERS: startDate', inject(function($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
         var scope = $rootScope.$new();
         $controller('TimesheetController', {
@@ -802,7 +926,7 @@ describe("timesheetControllerTest", function() {
             $location: $location,
             $sce: $sce,
             pivottableService: pivottableService,
-            loggedInUser: {accountId : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa", groups: {items: ['group1', 'group2']}},
+            loggedInUser: {accountId : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa", groups: {items: [{name: 'group1'}, {name: 'group2'}]}},
             projectKey: 'TIME'
         });
 

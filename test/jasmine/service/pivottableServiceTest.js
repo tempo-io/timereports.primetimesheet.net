@@ -865,7 +865,7 @@ describe("pivottableServiceTest", function() {
 
     it('PARAMETERS: groups, DB on Jira Cloud over rest', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
-        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: ['group1', 'group2']}};
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}, {name: 'group2'}]}};
         var options = {pivotTableType: 'IssueWorkedTimeByUser',
             groups: ["group1", "group2"],
             moreFields: ['customfield_10008'],
@@ -937,7 +937,7 @@ describe("pivottableServiceTest", function() {
         expect(pivottableService.worklogAuthors[0]).toBe(loggedInUser.accountId);
     }));
 
-    it('PARAMETERS: restrictedGroups ang groups 1 author', inject(function($timeout, $log, pivottableService) {
+    it('PARAMETERS: restrictedGroups and groups 1 author', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}, {name: 'group2'}]}};
         var options = {pivotTableType: 'IssueWorkedTimeByUser',
@@ -952,7 +952,7 @@ describe("pivottableServiceTest", function() {
         expect(pivottableService.worklogAuthors[0]).toBe(loggedInUser.accountId);
     }));
 
-    it('PARAMETERS: restrictedGroups ang groups 0 authors', inject(function($timeout, $log, pivottableService) {
+    it('PARAMETERS: restrictedGroups and groups 0 authors', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}]}};
         var options = {pivotTableType: 'IssueWorkedTimeByUser',
