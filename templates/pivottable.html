@@ -23,6 +23,7 @@
         <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent"></a>
     </div>
 
+    <aui-inline-dialog id="subscribe-popup" template="templates.subscribe" popup-data="subscribePopup" container="'#subscribe'" persistent="true"></aui-inline-dialog>
     <aui-inline-dialog id="user-hover" template="'/templates/popups/userHover.html'" popup-data="userHoverPopup" container="'.userHoverPopup'" on-hover="true"></aui-inline-dialog>
 
     <div class="pagingtable">
@@ -50,7 +51,10 @@
                                     <li><a x-ng-click="excelView('html')">exportView.xls (html)</a></li>
                                 </ul>
                             </div>
-                        </span>
+                             <i id="subscribe"
+                                class="fa fa-envelope-o"  ng-click="subscribePopup.init()" title="{{'Subscribe' | i18n}}"
+                                ng-if="'TimeEntry' != pivotTableType && subscribe && !isGadget && loggedInUser.emailAddress" ng-style="{'font-weight': currentView.jobId ? 'bold' : 'normal'}"></i>
+                       </span>
                     </th>
                     <th class="colHeaderLink moreFields" ng-repeat="field in pivotTable.moreFields">
                         <span ng-bind="moreFieldsOptions.findOption(field).label"></span>

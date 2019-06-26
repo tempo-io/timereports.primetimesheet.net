@@ -46,7 +46,7 @@
         </span>
     </fieldset>
     <fieldset>
-        <div ng-if="popupData.currentUser">
+        <div ng-if="popupData.currentUser && ['Timesheet', 'Timespent'].indexOf(popupData.pivotTableType) >= 0">
             <input id="period-check"
                    type="checkbox"
                    ng-model="popupData.everyWeekOptions.ifIncomplete">
