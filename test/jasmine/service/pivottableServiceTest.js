@@ -6,46 +6,6 @@ describe("pivottableServiceTest", function() {
             $httpBackend = _$httpBackend_;
             $httpBackend.whenGET("/templates/main.html").respond(200, "");
             $window.i18nDefault = 'i18n/default.json';
-            var translations = {
-                "Day": "Day",
-                "Week": "Week",
-                "Month": "Month",
-                "Today": "Today",
-                "Daily": "Daily",
-                "Every": "Every",
-                '1started': 'Started',
-                '2timespent': 'Spent',
-                '3action': 'Actions',
-                "1timeoriginalestimate": "Original Estimate",
-                "12estimate": "Estimate",
-                "2esttimeremaining": "Est. Time Remaining",
-                "3timespent": "Time Spent",
-                "4diff": "Variance",
-                "5originalestimateremaining": "Original Estimate Remaining",
-                "6progress": "Progress",
-                "project": "Project",
-                "issuetype": "Type",
-                "key": "Issue Key",
-                "summary": "Summary",
-                "priority": "Priority",
-                "datestarted": "Date Started",
-                "worklogid": "Worklog Id",
-                "workcreated": "Work Created",
-                "displayname": "Display Name",
-                "emailaddress": "Email Address",
-                "descriptionstatus": "Work Description / Status",
-                "Use default": "Use default",
-                "Default": "Default",
-                "Enabled": "Enabled",
-                "Disabled": "Disabled",
-                'created': 'created',
-                'updated': 'updated',
-                'resolved': 'resolved',
-                'Data is limited by Auditors Roles': 'Data is limited by Auditors Roles'
-            };
-            for (var pivotTableType in PivotTableType) {
-                translations[pivotTableType] = pivotTableType;
-            }
             $httpBackend.whenGET($window.i18nDefault).respond(200, translations);
             getWorklog = $httpBackend.whenGET(/^\/api\/worklog/);
             getWorklog.respond(200, TimeData.issues);

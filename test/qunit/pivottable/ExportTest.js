@@ -1,38 +1,3 @@
-var translations = {
-    "Day": "Day",
-    "Week": "Week",
-    "Month": "Month",
-    "Today": "Today",
-    "Daily": "Daily",
-    "Every": "Every",
-    '1started': 'Started',
-    '2timespent': 'Spent',
-    '3action': 'Actions',
-    "1timeoriginalestimate": "Original Estimate",
-    "12estimate": "Estimate",
-    "2esttimeremaining": "Est. Time Remaining",
-    "3timespent": "Time Spent",
-    "4diff": "Variance",
-    "5originalestimateremaining": "Original Estimate Remaining",
-    "6progress": "Progress",
-    "project": "Project",
-    "issuetype": "Issue Type",
-    "key": "Key",
-    "summary": "Summary",
-    "priority": "Priority",
-    "datestarted": "Date Started",
-    "username": "Username",
-    "displayname": "Display Name",
-    "descriptionstatus": "Work Description / Status",
-    "Use default": "Use default",
-    "Default": "Default",
-    "Enabled": "Enabled",
-    "Disabled": "Disabled",
-    'created': 'created',
-    'updated': 'updated',
-    'resolved': 'resolved',
-    'Data is limited by Auditors Roles': 'Data is limited by Auditors Roles'
-};
 QUnit.test("Excel Export", function() {
     var excelView = new ExcelView(TimeData.issues);
     QUnit.assert.equal(typeof excelView, 'object', 'excelView');
@@ -185,7 +150,7 @@ QUnit.test("Html Export Timesheet", function() {
     var htmlView = new HtmlView(TimeData.issues);
     QUnit.assert.equal(typeof htmlView, 'object', 'excelView');
     var html = htmlView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24',
-        reportingDay: 1, moreFields: [], configOptions: {}, jiraConfig: {timeFormat: ''}});
+        reportingDay: 1, moreFields: [], translations: translations, configOptions: {}, jiraConfig: {timeFormat: ''}});
     QUnit.assert.equal(typeof html, 'string', 'html');
     var lines = html.split('\n');
     var header = lines.slice(10, 22).map(s => s.trim()).join('');
@@ -195,14 +160,14 @@ QUnit.test("Html Export Timesheet", function() {
     var row2 = lines.slice(38, 50).map(s => s.trim()).join('');
     QUnit.assert.equal(row2, "<td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>test 7</td><td class='nav border'>&nbsp;</td><td class='nav border'>3h</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td>", "row2");
     var total = lines.slice(/* 14*19 + 10 */ 276, 288).map(s => s.trim()).join('');
-    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issues)</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>9h</td><td class='nav border total'>13h</td><td class='nav border total'></td><td class='nav border total'>13h</td><td class='nav border total'>13h</td><td class='nav border total'>48h</td>", "total");
+    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issue(s))</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>9h</td><td class='nav border total'>13h</td><td class='nav border total'></td><td class='nav border total'>13h</td><td class='nav border total'>13h</td><td class='nav border total'>48h</td>", "total");
     QUnit.assert.equal(lines.length, 14*20 + 10 + 1 /* new line at end of file */, "lines");
 });
 QUnit.test("Html Export Timesheet Compressed", function() {
     var htmlView = new HtmlView(TimeData.issues);
     QUnit.assert.equal(typeof htmlView, 'object', 'excelView');
     var html = htmlView.generate({compressed: true, pivotTableType: 'Timesheet', startDate: '2014-02-24',
-        reportingDay: 1, moreFields: [], configOptions: {}, jiraConfig: {timeFormat: ''}});
+        reportingDay: 1, moreFields: [], translations: translations, configOptions: {}, jiraConfig: {timeFormat: ''}});
     QUnit.assert.equal(typeof html, 'string', 'html');
     var lines = html.split('\n');
     var header = lines.slice(10, 21).map(s => s.trim()).join('');
@@ -212,14 +177,14 @@ QUnit.test("Html Export Timesheet Compressed", function() {
     var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
     QUnit.assert.equal(row2, "<td class='nav border'>Bug</td><td class='nav border'></td><td class='nav border'><a href='/browse/TIME-2'>TIME-2</a></td><td class='nav border'><a href='/browse/TIME-2'>Loch Ness Monster Bug</a></td><td class='nav border'>Major</td><td class='nav border'></td><td class='nav border'>5h</td><td class='nav border'></td><td class='nav border'>8h</td><td class='nav border'></td><td class='nav border total'>13h</td>", "row2");
     var total = lines.slice(/* 13*7 + 10 */ 101, 111).map(s => s.trim()).join('');
-    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issues)</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>9h</td><td class='nav border total'>13h</td><td class='nav border total'></td><td class='nav border total'>13h</td><td class='nav border total'>13h</td>", "total");
+    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issue(s))</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>9h</td><td class='nav border total'>13h</td><td class='nav border total'></td><td class='nav border total'>13h</td><td class='nav border total'>13h</td>", "total");
     QUnit.assert.equal(lines.length, 13*8 + 10 + 1 /* new line at end of file */, "lines");
 });
 QUnit.test("Html Export IssueWorkedTimeByLabel Compressed", function() {
     var htmlView = new HtmlView(TimeData.issues);
     QUnit.assert.equal(typeof htmlView, 'object', 'excelView');
     var html = htmlView.generate({compressed: true, pivotTableType: 'IssueWorkedTimeByLabel', startDate: '2014-02-24',
-        reportingDay: 1, moreFields: [], configOptions: {}, jiraConfig: {timeFormat: ''}});
+        reportingDay: 1, moreFields: [], translations: translations, configOptions: {}, jiraConfig: {timeFormat: ''}});
     QUnit.assert.equal(typeof html, 'string', 'html');
     var lines = html.split('\n');
     var header = lines.slice(10, 19).map(s => s.trim()).join('');
@@ -229,7 +194,7 @@ QUnit.test("Html Export IssueWorkedTimeByLabel Compressed", function() {
     var row2 = lines.slice(32, 41).map(s => s.trim()).join('');
     QUnit.assert.equal(row2, "<td class='nav border'>Bug</td><td class='nav border'></td><td class='nav border'><a href='/browse/TIME-2'>TIME-2</a></td><td class='nav border'><a href='/browse/TIME-2'>Loch Ness Monster Bug</a></td><td class='nav border'>Major</td><td class='nav border'>8h</td><td class='nav border'>5h</td><td class='nav border'></td><td class='nav border total'>13h</td>", "row2");
     var total = lines.slice(87, 96).map(s => s.trim()).join('');
-    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issues)</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>35h</td><td class='nav border total'>5h</td><td class='nav border total'>8h</td><td class='nav border total'>48h</td>", "total");
+    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issue(s))</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>35h</td><td class='nav border total'>5h</td><td class='nav border total'>8h</td><td class='nav border total'>48h</td>", "total");
     QUnit.assert.equal(lines.length, 11*8 + 10 + 1 /* new line at end of file */, "lines");
 });
 QUnit.test("Html Export Timesheet Grouped by Worked User More Fields", function() {
@@ -241,7 +206,7 @@ QUnit.test("Html Export Timesheet Grouped by Worked User More Fields", function(
     moreFieldsOptions.addOption('Estimate', 'timetrackingestimate');
     var html = htmlView.generate({categorizeByField: 'assignee', categorizeByFieldOption: {label: 'Assignee'},
         groupByField: 'workeduser', groupByFieldOption: {label: 'Worked User'}, pivotTableType: 'Timesheet', startDate: '2014-02-24',
-        reportingDay: 1, moreFields: ['timespent', 'timetrackingestimate'], configOptions: {}, jiraConfig: {timeFormat: ''},
+        reportingDay: 1, moreFields: ['timespent', 'timetrackingestimate'], translations: translations, configOptions: {}, jiraConfig: {timeFormat: ''},
         moreFieldsOptions: moreFieldsOptions});
     QUnit.assert.equal(typeof html, 'string', 'html');
     var lines = html.split('\n');
@@ -252,7 +217,7 @@ QUnit.test("Html Export Timesheet Grouped by Worked User More Fields", function(
     var row2 = lines.slice(46, 62).map(s => s.trim()).join('');
     QUnit.assert.equal(row2, "<td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>Bug</td><td class='nav border'></td><td class='nav border'><a href='/browse/TIME-1'>TIME-1</a></td><td class='nav border'><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td class='nav border'>Major</td><td class='nav border'>11h</td><td class='nav border'>44h</td><td class='nav border'>test 7</td><td class='nav border'>&nbsp;</td><td class='nav border'>3h</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td>", "row2");
     var total = lines.slice(/* 18*14 + 10 */ 262, 278).map(s => s.trim()).join('');
-    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issues)</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>48h</td><td class='nav border total'>81h</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>9h</td><td class='nav border total'>13h</td><td class='nav border total'></td><td class='nav border total'>13h</td><td class='nav border total'>13h</td><td class='nav border total'>48h</td>", "total");
+    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issue(s))</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>48h</td><td class='nav border total'>81h</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>9h</td><td class='nav border total'>13h</td><td class='nav border total'></td><td class='nav border total'>13h</td><td class='nav border total'>13h</td><td class='nav border total'>48h</td>", "total");
     QUnit.assert.equal(lines.length, 18*15 + 10 + 1 /* new line at end of file */, "lines");
 });
 QUnit.test("Html Export Timesheet More Fields", function() {
@@ -264,7 +229,7 @@ QUnit.test("Html Export Timesheet More Fields", function() {
     moreFieldsOptions.addOption('Estimate', 'timetrackingestimate');
     var html = htmlView.generate({pivotTableType: 'Timesheet', startDate: '2014-02-24',
         reportingDay: 1, moreFields: ['assignee', 'timespent', 'timetrackingestimate'],
-        configOptions: {}, jiraConfig: {timeFormat: ''},
+        translations: translations, configOptions: {}, jiraConfig: {timeFormat: ''},
         moreFieldsOptions: moreFieldsOptions});
     QUnit.assert.equal(typeof html, 'string', 'html');
     var lines = html.split('\n');
@@ -275,7 +240,7 @@ QUnit.test("Html Export Timesheet More Fields", function() {
     var row2 = lines.slice(44, 59).map(s => s.trim()).join('');
     QUnit.assert.equal(row2, "<td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>test 7</td><td class='nav border'>&nbsp;</td><td class='nav border'>3h</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td>", "row2");
     var total = lines.slice(/* 17*19 + 10 */ 333, 348).map(s => s.trim()).join('');
-    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issues)</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'></td><td class='nav border total'>48h</td><td class='nav border total'>81h</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>9h</td><td class='nav border total'>13h</td><td class='nav border total'></td><td class='nav border total'>13h</td><td class='nav border total'>13h</td><td class='nav border total'>48h</td>", "total");
+    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issue(s))</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'></td><td class='nav border total'>48h</td><td class='nav border total'>81h</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>9h</td><td class='nav border total'>13h</td><td class='nav border total'></td><td class='nav border total'>13h</td><td class='nav border total'>13h</td><td class='nav border total'>48h</td>", "total");
     QUnit.assert.equal(lines.length, 17*20 + 10 + 1 /* new line at end of file */, "lines");
 });
 QUnit.test("Html Export Pivot by User Grouped by Issue Itself More Fields", function() {
@@ -286,7 +251,7 @@ QUnit.test("Html Export Pivot by User Grouped by Issue Itself More Fields", func
     moreFieldsOptions.addOption('Time Spent', 'timespent');
     moreFieldsOptions.addOption('Estimate', 'timetrackingestimate');
     var html = htmlView.generate({groupByField: 'issue', groupByFieldOption: {label: 'Issue itself'}, pivotTableType: 'IssueWorkedTimeByUser', startDate: '2014-02-24',
-        reportingDay: 1, moreFields: ['assignee', 'timespent', 'timetrackingestimate'], configOptions: {}, jiraConfig: {timeFormat: ''},
+        reportingDay: 1, moreFields: ['assignee', 'timespent', 'timetrackingestimate'], translations: translations, configOptions: {}, jiraConfig: {timeFormat: ''},
         moreFieldsOptions: moreFieldsOptions});
     QUnit.assert.equal(typeof html, 'string', 'html');
     var lines = html.split('\n');
@@ -299,7 +264,7 @@ QUnit.test("Html Export Pivot by User Grouped by Issue Itself More Fields", func
     // FIXME: worklog comment
     QUnit.assert.equal(row2, "<td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>&nbsp;</td><td class='nav border'>test 7</td><td class='nav border'>3h</td><td class='nav border'>&nbsp;</td>", "row2");
     var total = lines.slice(/* 14*19 + 10 */ 276, 288).map(s => s.trim()).join('');
-    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issues)</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'></td><td class='nav border total'>48h</td><td class='nav border total'>81h</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>48h</td><td class='nav border total'>48h</td>", "total");
+    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issue(s))</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'></td><td class='nav border total'>48h</td><td class='nav border total'>81h</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>48h</td><td class='nav border total'>48h</td>", "total");
     QUnit.assert.equal(lines.length, 14*20 + 10 + 1 /* new line at end of file */, "lines");
 });
 QUnit.test("Html Export TimeTracking", function() {
@@ -319,7 +284,7 @@ QUnit.test("Html Export TimeTracking", function() {
     var row2 = lines.slice(36, 47).map(s => s.trim()).join('');
     QUnit.assert.equal(row2, "<td class='nav border'>Bug</td><td class='nav border'></td><td class='nav border'><a href='/browse/TIME-2'>TIME-2</a></td><td class='nav border'><a href='/browse/TIME-2'>Loch Ness Monster Bug</a></td><td class='nav border'>Major</td><td class='nav border'>26h</td><td class='nav border'></td><td class='nav border'>13h</td><td class='nav border'>13h</td><td class='nav border'>13h</td><td class='nav border'>100%</td>", "row2");
     var total = lines.slice(/* 13*7 + 10 */ 101, 112).map(s => s.trim()).join('');
-    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issues)</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>73.78h</td><td class='nav border total'>33h</td><td class='nav border total'>48h</td><td class='nav border total'>-7.22h</td><td class='nav border total'>25.78h</td><td class='nav border total'>59%</td>", "total");
+    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issue(s))</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>73.78h</td><td class='nav border total'>33h</td><td class='nav border total'>48h</td><td class='nav border total'>-7.22h</td><td class='nav border total'>25.78h</td><td class='nav border total'>59%</td>", "total");
     QUnit.assert.equal(lines.length, 13*8 + 10 + 1 /* new line at end of file */, "lines");
 });
 QUnit.test("Html Export TimeTracking Grouped by Assignee", function() {
@@ -339,6 +304,6 @@ QUnit.test("Html Export TimeTracking Grouped by Assignee", function() {
     var row2 = lines.slice(38, 50).map(s => s.trim()).join('');
     QUnit.assert.equal(row2, "<td class='nav border'>&nbsp;</td><td class='nav border'>Bug</td><td class='nav border'></td><td class='nav border'><a href='/browse/TIME-1'>TIME-1</a></td><td class='nav border'><a href='/browse/TIME-1'>Hocus Focus Problem</a></td><td class='nav border'>Major</td><td class='nav border'></td><td class='nav border'>33h</td><td class='nav border'>11h</td><td class='nav border'>-44h</td><td class='nav border'>-11h</td><td class='nav border'>25%</td>", "row2");
     var total = lines.slice(/* 14*8 + 10 */ 122, 134).map(s => s.trim()).join('');
-    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issues)</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>73.78h</td><td class='nav border total'>33h</td><td class='nav border total'>48h</td><td class='nav border total'>-7.22h</td><td class='nav border total'>25.78h</td><td class='nav border total'>59%</td>", "total");
+    QUnit.assert.equal(total, "<td class='nav border total'>Total (6 issue(s))</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>&nbsp;</td><td class='nav border total'>73.78h</td><td class='nav border total'>33h</td><td class='nav border total'>48h</td><td class='nav border total'>-7.22h</td><td class='nav border total'>25.78h</td><td class='nav border total'>59%</td>", "total");
     QUnit.assert.equal(lines.length, 14*9 + 10 + 1 /* new line at end of file */, "lines");
 });

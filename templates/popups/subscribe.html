@@ -1,5 +1,5 @@
 <form class="aui" name="subscribeForm" style="margin: 15px">
-    <div>Send report by email&nbsp;<span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span></div>
+    <div>{{'Send report by email' | i18n}}&nbsp;<span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span></div>
     <fieldset style="padding-top: 10px">
         <label>
             {{'Now' | i18n}}
@@ -57,7 +57,7 @@
     </fieldset>
     <div style="padding-top: 20px; text-align: right">
         <div>
-            <input class="aui-button aui-button-primary" type="submit" ng-value="popupData.currentView.jobId ? 'Update' : 'Subscribe'" ng-disabled="subscribeForm.$invalid" ng-click="popupData.subscribe(closePopup)">
+            <input class="aui-button aui-button-primary" type="submit" ng-value="popupData.currentView.jobId ? '{{'Update' | i18n}}' : '{{'Subscribe' | i18n}}'" ng-disabled="subscribeForm.$invalid" ng-click="popupData.subscribe(closePopup)">
             <a ng-if="popupData.currentView.jobId" style="margin-left: 10px" class="aui-button" ng-click="popupData.unsubscribe(closePopup)">{{'Unsubscribe' | i18n}}</a>
             <a style="margin-left: 10px" ng-click="closePopup()">{{'Cancel' | i18n}}</a>
         </div>

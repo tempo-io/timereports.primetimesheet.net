@@ -5,11 +5,11 @@
             <li><i class="fa fa-bars" ng-click="toggleHideMenu()" title="{{(hideMenu ? 'Show Menu' : 'Hide Menu') | i18n}}"></i></li>
             <li>{{'Advanced Time Tracking' | i18n }}</li>
             <li>
-                <i href="#help" class="fa fa-question-circle aui-dropdown2-trigger x-ng-click" x-ng-click="" title="Help" aria-owns="help" style="width: 0; padding-right: 15px !important"/>
+                <i href="#help" class="fa fa-question-circle aui-dropdown2-trigger x-ng-click" x-ng-click="" title="{{'Help' | i18n}}" aria-owns="help" style="width: 0; padding-right: 15px !important"/>
                 <!-- Dropdown -->
                 <div id="help" class="aui-style-default aui-dropdown2">
                     <ul class="aui-list-truncate">
-                        <li><a href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/welcome" target="_blank" title="Getting started with Time Reports">Get Started</a></li>
+                        <li><a href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/welcome" target="_blank" title="{{'Getting started with Time Reports' | i18n}}">{{'Get Started' | i18n}}</a></li>
                         <li><a href="https://primetimesheet.atlassian.net/wiki/spaces/KB/blog" target="_blank" title="What's New">What's New</a></li>
                     </ul>
                     <div class="aui-dropdown2-section">
@@ -26,12 +26,12 @@
                     </div>
                     <div class="aui-dropdown2-section">
                         <div class="aui-dropdown2-heading">
-                            Examples
+                            {{'Examples' | i18n}}
                         </div>
                         <ul class="aui-list-truncate">
-                            <li><a ng-click="example({allUsers: true, groupByField: 'workeduser', loaded: true})" title="Timesheet Report by All Users<">Timesheet by Users</a></li>
-                            <li ng-if="epicNameField"><a ng-click="example({pivotTableType: 'Timespent', categorizeByField: 'epicNameField.id', groupByField: 'workeduser', filterOrProjectId: 'jql_0', includeEmpty: true, moreFields: 'timeestimate', loaded: true})" title="Timespent Report grouped by Epic Name for Active sprints issues<">Active Sprints Workload</a></li>
-                            <li><a ng-click="example({pivotTableType: 'TimeTracking', filterOrProjectId: projectKey ? 'project_' + projectKey : 'jql_8', loaded: true})" title="TimeTracking Report for {{projectKey ? projectKey + ' project ' : 'Recently Updated issues'}}">Project Progress</a></li>
+                            <li><a ng-click="example({allUsers: true, groupByField: 'workeduser', loaded: true})" title="{{'Timesheet Report by All Users' | i18n}}">{{'Timesheet by Users' | i18n}}</a></li>
+                            <li ng-if="epicNameField"><a ng-click="example({pivotTableType: 'Timespent', categorizeByField: 'epicNameField.id', groupByField: 'workeduser', filterOrProjectId: 'jql_0', includeEmpty: true, moreFields: 'timeestimate', loaded: true})" title="{{'Timespent Report grouped by Epic Name for Active sprints issues' | i18n}}">{{'Active Sprints Workload' | i18n}}</a></li>
+                            <li><a ng-click="example({pivotTableType: 'TimeTracking', filterOrProjectId: projectKey ? 'project_' + projectKey : 'jql_8', loaded: true})" title="{{'TimeTracking Report for ' + (projectKey ? 'project' : 'Recently Updated issues') | i18n}}">{{'Project Progress' | i18n}}</a></li>
                         </ul>
                     </div>
                 </div>

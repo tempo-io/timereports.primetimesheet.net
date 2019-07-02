@@ -64,7 +64,7 @@
                             </button>
                         </span>
                         <span class="noprint">
-                            <i href="#export" aria-owns="export" aria-haspopup="true" style="padding-left: 10px" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" title="Download worklog" ng-hide="loading || restrictionError"></i>
+                            <i href="#export" aria-owns="export" aria-haspopup="true" style="padding-left: 10px" class="fa fa-file-excel-o aui-dropdown2-trigger x-ng-click"  x-ng-click="" title="{{'Download worklog' | i18n}}" ng-hide="loading || restrictionError"></i>
                             <!-- Dropdown -->
                             <div id="export" class="aui-style-default aui-dropdown2">
                                 <ul class="aui-list-truncate">
@@ -239,7 +239,7 @@
         <br/>
         <button class="aui-button" ng-click="execute()" ng-disabled="loading" ng-class="{disabled: loading}">
             <span class="aui-icon aui-icon-small aui-iconfont-view"></span>
-            View Report
+            {{'View Report' | i18n}}
         </button>
     </div>
 </div>
