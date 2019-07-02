@@ -19,7 +19,8 @@
         "adminPages": [{
             "url": "/timereports.html?configuration=true&v=2",
             "name": {
-              "value": "Time Reports Configuration"
+                "value": "Time Reports Configuration",
+                "i18n": "Time Reports Configuration"
             },
             "location": "admin_plugins_menu/timetracking_section",
             "key": "timereports-time-tracking-config"
@@ -34,7 +35,8 @@
         "generalPages": [{
             "location": "find_link/timesheet-menu",
             "name": {
-                "value": "Time Reports"
+                "value": "Time Reports",
+                "i18n": "Time Reports"
             },
             "url": "/timereports.html?project.key={project.key}&v=2",
             "key": "timereports",
@@ -43,7 +45,8 @@
             }]
         }, {
             "name": {
-                "value": "Time Reports"
+                "value": "Time Reports",
+                "i18n": "Time Reports"
             },
             "icon": {
                 "width": 16,
@@ -75,7 +78,8 @@
         "jiraProjectPages": [{
             "key": "timereports-project",
             "name": {
-                "value": "Time Reports"
+                "value": "Time Reports",
+                "i18n": "Time Reports"
             },
             "url": "/timereports.html?v=2",
             "cacheable": true,
@@ -108,7 +112,8 @@
         }],
         "configurePage": {
             "name": {
-                "value": "Time Reports Configuration"
+                "value": "Time Reports Configuration",
+                "i18n": "Time Reports Configuration"
             },
             "url": "/timereports.html?configuration=true&v=2",
             "key": "configuration",
@@ -118,7 +123,8 @@
         },
         "postInstallPage": {
             "name": {
-                "value": "Welcome to Time Reports and Gadgets Add-on"
+                "value": "Welcome to Time Reports",
+                "i18n": "Welcome to Time Reports"
             },
             "url": "/timereports.html?welcome=true&v=2",
             "key": "welcome",
@@ -130,23 +136,27 @@
             "url": "timereports.html?project.key={project.key}&v=2",
             "weight": 100,
             "description": {
-              "value": "Flexible view of issues time tracking data"
+                "value": "Flexible view of issues time tracking data",
+                "i18n": "Flexible view of issues time tracking data"
             },
             "reportCategory": "other",
             "thumbnailUrl": "/images/timesheet-report-thumb.png",
             "key": "timereports-report",
             "name": {
-              "value": "Time Reports"
+                "value": "Time Reports",
+                "i18n": "Time Reports"
             }
          }],
         "jiraDashboardItems": [{
             "name" : {
-                "value" : "Time Reports"
+                "value" : "Time Reports",
+                "i18n": "Time Reports"
             },
             "url" : "/timereports.html?project.key={project.key}&dashboard={dashboard.id}&dashboardItem={dashboardItem.id}&v=2",
             "key" : "timereports-gadget",
             "description" : {
-                "value" : "Flexible view of issues time tracking data."
+                "value" : "Flexible view of issues time tracking data.",
+                "i18n": "Flexible view of issues time tracking data"
             },
             "thumbnailUrl": "/images/timesheet-gadget-thumb.png",
             "configurable" : true,
@@ -165,10 +175,12 @@
               "url": "/timereports.html?issue.key={issue.key}&issue.id={issue.id}&v=2"
             },
             "tooltip": {
-              "value": "Log work done"
+                "value": "Log Work Done",
+                "i18n": "Log Work Done"
             },
             "name": {
-              "value": "Time Entry"
+                "value": "Time Entry",
+                "i18n": "Time Entry"
             },
             "conditions": [{
                 "or": [{
@@ -200,15 +212,16 @@
                 "cacheable": true,
                 "weight": 100,
                 "name": {
-                    "value": "Time Balance"
+                    "value": "Time Balance",
+                    "i18n": "Time Balance"
                 },
                 "key": "timebalance-tab",
                 "conditions": [
                     {
                         "condition": "addon_time_tracking_provider_enabled",
                         "params": {
-                            "addonKey": "timereports",
-                            "moduleKey": "timereports-time-tracking-provider"
+                          "addonKey": "timereports",
+                          "moduleKey": "timereports-time-tracking-provider"
                         }
                     }
                 ]
@@ -224,7 +237,8 @@
             },
             "weight": 500,
             "name": {
-              "value": "Time Entry"
+                "value": "Time Entry",
+                "i18n": "Time Entry"
             },
             "conditions": [{
                 "or": [{
@@ -255,10 +269,12 @@
             "location": "jira.navigator.pluggable.items",
             "weight": 9999,
             "name": {
-                "value": "Time Reports"
+                "value": "Time Reports",
+                "i18n": "Time Reports"
             },
             "tooltip": {
-                "value": "Time Reports"
+                "value": "Time Reports",
+                "i18n": "Time Reports"
             },
             "icon": {
                 "width": 16,
@@ -272,14 +288,16 @@
                 "type": "dialog",
                 "options": {
                     "header": {
-                        "value": "Time Reports"
+                        "value": "Time Reports",
+                        "i18n": "Time Reports"
                     },
                     "width": "320px"
                 }
             }
         }, {
             "name": {
-                "value": "Report Problem"
+                "value": "Report Problem",
+                "i18n": "Report Problem"
             },
             "key": "bitbucket",
             "url": "/timereports.html?dialog=bitbucket&v=2",
@@ -293,7 +311,8 @@
             "location": "operations-work",
             "weight": 100,
             "name": {
-              "value": "Log work"
+                "value": "Log work",
+                "i18n": "Log work"
             },
             "url": "/timereports.html?dialog=createworklog&v=2",
             "cacheable": true,
@@ -302,7 +321,8 @@
               "type": "dialog",
               "options": {
                 "header": {
-                  "value": "Log Work Done"
+                    "value": "Log Work Done",
+                    "i18n": "Log Work Done"
                 },
                 "height": "420px"
               }
@@ -326,6 +346,13 @@
     },
     "apiMigrations": {
         "gdpr": true
+    },
+    "translations": {
+        "paths": {
+            "ru-RU": "/i18n/descriptor_ru.json",
+            "fr-FR": "/i18n/descriptor_fr.json",
+            "de-DE": "/i18n/descriptor_de.json"
+        }
     },
     "scopes": [
         "READ",
