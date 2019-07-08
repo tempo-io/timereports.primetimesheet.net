@@ -1,14 +1,14 @@
 {
-  "Time Reports": "Time Reports",
-  "Timesheet": "Timesheet",
-  "Flexible view of issues time tracking data": "Flexible view of issues time tracking data",
-  "Time Reports Configuration": "Time Reports Configuration",
-  "Timesheet Configuration": "Timesheet Configuration",
-  "Welcome to Time Reports": "Welcome to Time Reports",
-  "Welcome to Timesheet": "Welcome to Timesheet",
-  "Log work done": "Log work done",
-  "Log work": "Log work",
-  "Time Entry": "Time Entry",
-  "Time Balance": "Time Balance",
-  "Report Problem": "Report Problem"
+  "Time Reports": "Rapports du temps",
+  "Timesheet": "Relevé du temps",
+  "Flexible view of issues time tracking data": "Visualisation flexible des données de suivi du temps des problème",
+  "Time Reports Configuration": "Configuration des rapports du temps",
+  "Timesheet Configuration": "Configuration du relevé du temps",
+  "Welcome to Time Reports": "Bienvenue à \"Rapports du temps\"",
+  "Welcome to Timesheet": "Bienvenue à \"Relevé du temps\"",
+  "Log work done": "Travail est enregistré",
+  "Log work": "Journal de travail",
+  "Time Entry": "Noter le temps",
+  "Time Balance": "Équilibre du temps",
+  "Report Problem": " Signaler un problème "
 }
