@@ -30,6 +30,10 @@
             <label>{{'Groups' | i18n}}</label>
             <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" update-event="groupUpdated" type="text"/>
         </div>
+        <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry'">
+            <label>{{'Exclude Groups' | i18n}}</label>
+            <input ng-model="excludeGroup" aui-group-picker ng-group-changed-func="excludeGroupChange" update-event="excludeGroupUpdated" type="text"/>
+        </div>
         <div class="ak-field-group" ng-if="!isDayView">
             <label>{{ (isMonthView ? 'Number of Months' : 'Number of Weeks') | i18n}}</label>
             <input ng-model="numOfWeeks.value"

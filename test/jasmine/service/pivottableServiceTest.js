@@ -856,6 +856,21 @@ describe("pivottableServiceTest", function() {
         expect(pivottableService.allIssues.length).toBe(6);
     }));
 
+    it('PARAMETERS: excludeGroups', inject(function($timeout, $log, pivottableService) {
+        expect(pivottableService).toBeDefined();
+        var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}, {name: 'group2'}]}};
+        var options = {pivotTableType: 'IssueWorkedTimeByUser',
+            excludeGroups: ["group1"],
+            configOptions: {}};
+
+        pivottableService.getPivotTable(loggedInUser, options).then(function(_pivotTable) {});
+
+        $timeout.flush();
+
+        expect(pivottableService.worklogAuthors.length).toBe(0);
+        expect(options.worklogAuthors).not.toBeNull();
+    }));
+
     it('PARAMETERS: no restrictedGroups  no auditorsGroups', inject(function($timeout, $log, pivottableService) {
         expect(pivottableService).toBeDefined();
         var loggedInUser = {accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: {items: [{name: 'group1'}, {name: 'group2'}]}};
