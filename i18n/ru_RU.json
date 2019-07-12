@@ -301,6 +301,10 @@
     "description.Link For Mobile Devices": "Отправьте ссылку на Progressive Web Application \"Табель\" на Вашу электронную почту. Также смотрите <a href=\"https://www.primetimesheet.net/cloud/Mobile.html\" target=\"_blank\">documentation</a>.",
     "description.Log Work For Others Groups": "Пользователи из выбранных групп будут иметь возможность вести учета времени от имени других пользователей.",
     "description.Reporting Day": "День подачи отчетности (начало недели)",
+    "Under Limit Color": "Цвет недоработки",
+    "Over Limit Color": "Цвет переработки",
+    "description.Under Limit Color": "Цвет текста недоработки 1d.",
+    "description.Over Limit Color": "Цвет текста переработки 1d.",
 
     "Data is limited by Auditors Roles": "Из-за конфигурации \"Роли аудиторов\" данные ограничиваются собственными журналами учета работ по следующим проектам:",
     "Data is limited to Restricted Groups": "Из-за конфигурации \"Ограниченные группы\" данные ограничиваются собственными журналами учета работ пользователей из следующих групп:",

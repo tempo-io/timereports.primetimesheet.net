@@ -134,11 +134,13 @@
                         addWorklogPopup: column.sum == 0 && (canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue] || canLogWorkForUser),
                         editWorklogPopup: column.sum != 0,
                         disabled: column.sum == 0 && cannotLogWorkIssue[row.rowKey.keyValue] && !canLogWorkForUser}"
+                        style="color: {{column.color}}"
+                        title="{{column.title}}"
                         ng-repeat="column in row.columns">
                         {{column.sum | prettyHours:jiraConfig}}
                         <span ng-show="p_show" class="fa fa-plus" title="Log Work against this issue"></span>
                     </td>
-                    <td class="nav border total">
+                    <td style="color: {{row.color}}" title="{{row.title}}" class="nav border total">
                         {{row.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>
@@ -191,10 +193,10 @@
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields">
                         <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
                     </td>
-                    <td class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
+                    <td style="color: {{column.color}}" title="{{column.title}}" class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
                         {{column.sum | prettyHours:jiraConfig}}
                     </td>
-                    <td class="nav border total">
+                    <td style="color: {{pivotTable.color}}" title="{{pivotTable.title}}" class="nav border total">
                         {{pivotTable.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>

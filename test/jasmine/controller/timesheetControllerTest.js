@@ -99,7 +99,9 @@ describe("timesheetControllerTest", function() {
                     '3timespent', '4diff', '5originalestimateremaining', '6progress']},
                 exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
                 dateFields: {val: []},
-                disableLogWork: {}
+                disableLogWork: {},
+                workUnderLimitColor: {},
+                workOverLimitColor: {}
             };
         });
         inject(function($timeout, $window, _$httpBackend_, applicationLoggingService, $rootScope) {
@@ -270,7 +272,9 @@ describe("timesheetControllerTest", function() {
                 },
                 exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
                 dateFields: {val: []},
-                disableLogWork: {}
+                disableLogWork: {},
+                workUnderLimitColor: {},
+                workOverLimitColor: {}
             }
         });
 
@@ -332,7 +336,9 @@ describe("timesheetControllerTest", function() {
                 },
                 exportColumns: {val: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus']},
                 dateFields: {val: []},
-                disableLogWork: {}
+                disableLogWork: {},
+                workUnderLimitColor: {},
+                workOverLimitColor: {}
             }
         });
 

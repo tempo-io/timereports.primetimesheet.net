@@ -371,8 +371,8 @@ form.aui .field-group .description {
     font-size: 12px;
     vertical-align: top;
 }
-form.aui .field-group .description a {
-    vertical-align: top;
+form.aui .field-group .description a, .align-top {
+    vertical-align: top !important;
 }
 .formTitle {
     border-bottom: 1px solid #ddd;

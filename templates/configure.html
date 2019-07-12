@@ -248,6 +248,44 @@
         <div class="field-group">
             <span class="description">{{'description.Work Labels' | i18n}}</span>
         </div>
+        <div class="field-group">
+            <label for="workUnderLimitColor">{{'Under Limit Color' | i18n}}</label>
+            <input id="workUnderLimitColor"
+                   name="workUnderLimitColor"
+                   type="text"
+                   color-picker
+                   ng-model="workUnderLimitColor.val"
+                   ng-model-options='{ debounce: 1000 }'
+                   ng-change="saveWorkUnderLimitColor()"
+                   class="text short-field align-top"
+                   title="{{'Under Limit Color' | i18n}}"/>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="workUnderLimitColorSaveSuccess">
+                <strong>{{'Under Limit Color' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Under Limit Color' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="workOverLimitColor">{{'Over Limit Color' | i18n}}</label>
+            <input id="workOverLimitColor"
+                   name="workOverLimitColor"
+                   type="text"
+                   color-picker
+                   ng-model="workOverLimitColor.val"
+                   ng-model-options='{ debounce: 1000 }'
+                   ng-change="saveWorkOverLimitColor()"
+                   class="text short-field align-top"
+                   title="{{'Over Limit Color' | i18n}}"/>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="workOverLimitColorSaveSuccess">
+                <strong>{{'Over Limit Color' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Over Limit Color' | i18n}}</span>
+        </div>
         <div class="field-group" ng-show="cacheWorklog">
             <label for="cacheWorklog">{{'Cache Worklog' | i18n}}</label>
             <input id="cacheWorklog"
