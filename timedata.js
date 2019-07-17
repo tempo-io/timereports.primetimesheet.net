@@ -37,6 +37,8 @@ window.AP = {
         options.success(userPickerData);
       } else if (options.url.match(/\/user\?.*?=.*aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa/)) {
         options.success(UserAdminData);
+      } else if (options.url.match(/\/myself/)) {
+        options.success(UserAdminData);
       } else if (options.url.match(/\/user/)) {
         options.success(UserData);
       } else if (options.url.match(/\/filter/)) {

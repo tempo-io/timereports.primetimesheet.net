@@ -868,7 +868,7 @@ describe("timesheetControllerTest", function() {
 
         var configCalled = false;
         AP.request = function(options) {
-            configCalled = options.url.match(/properties\/configuration/);
+            configCalled = configCalled || options.url.match(/properties\/configuration/);
         };
         configurationService.getConfiguration();
         $timeout.flush();

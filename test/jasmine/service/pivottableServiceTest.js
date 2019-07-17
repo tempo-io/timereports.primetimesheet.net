@@ -560,7 +560,7 @@ describe("pivottableServiceTest", function() {
                 var m = options.url.match(/\/search\?startAt=(\d)$/);
                 if (m && [0, 2, 4].indexOf(parseInt(m[1])) >= 0) {
                     options.success(timeData);
-                } else {
+                } else if (!options.url.match(/\/myself/)) {
                     throw new Error('Unexpected call ' + options.url);
                 }
             }, 500);
@@ -644,7 +644,7 @@ describe("pivottableServiceTest", function() {
             this.getTimeoutFunc() (function() {
                 if (options.url.match(/\/search\?fields=~&maxResults=1000&jql=filter%3D10000&startAt=0$/)) {
                     options.success(timeData);
-                } else {
+                } else if (!options.url.match(/\/myself/)) {
                     throw new Error('Unexpected call ' + options.url);
                 }
             }, 500);
