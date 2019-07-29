@@ -1,14 +1,14 @@
 {
-  "Time Reports": "Time Reports",
-  "Timesheet": "Timesheet",
-  "Flexible view of issues time tracking data": "Flexible view of issues time tracking data",
-  "Time Reports Configuration": "Time Reports Configuration",
-  "Timesheet Configuration": "Timesheet Configuration",
-  "Welcome to Time Reports": "Welcome to Time Reports",
-  "Welcome to Timesheet": "Welcome to Timesheet",
-  "Log work done": "Log work done",
-  "Log work": "Log work",
-  "Time Entry": "Time Entry",
-  "Time Balance": "Time Balance",
-  "Report Problem": "Report Problem"
+  "Time Reports": "Zeitberichte",
+  "Timesheet": "Stundenzettel",
+  "Flexible view of issues time tracking data": "Flexible Ansicht der Vorgangzeitverfolgungsdaten",
+  "Time Reports Configuration": "Zeitberichte-Konfiguration",
+  "Timesheet Configuration": "Stundenzettel-Konfiguration",
+  "Welcome to Time Reports": "Willkommen bei Zeitberichte",
+  "Welcome to Timesheet": "Willkommen bei Stundenzettel",
+  "Log work done": "Protokollierte Arbeitszeit",
+  "Log work": "Arbeitszeit protokollieren",
+  "Time Entry": "Zeiterfassung",
+  "Time Balance": "Zeitsaldo",
+  "Report Problem": "Problem melden"
 }
