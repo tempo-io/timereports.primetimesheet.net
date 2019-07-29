@@ -101,7 +101,8 @@ describe("timesheetControllerTest", function() {
                 dateFields: {val: []},
                 disableLogWork: {},
                 workUnderLimitColor: {},
-                workOverLimitColor: {}
+                workOverLimitColor: {},
+                showDetailsCount: {}
             };
         });
         inject(function($timeout, $window, _$httpBackend_, applicationLoggingService, $rootScope) {
@@ -274,7 +275,8 @@ describe("timesheetControllerTest", function() {
                 dateFields: {val: []},
                 disableLogWork: {},
                 workUnderLimitColor: {},
-                workOverLimitColor: {}
+                workOverLimitColor: {},
+                showDetailsCount: {}
             }
         });
 
@@ -338,7 +340,8 @@ describe("timesheetControllerTest", function() {
                 dateFields: {val: []},
                 disableLogWork: {},
                 workUnderLimitColor: {},
-                workOverLimitColor: {}
+                workOverLimitColor: {},
+                showDetailsCount: {}
             }
         });
 

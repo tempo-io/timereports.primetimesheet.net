@@ -473,3 +473,7 @@ table td {
     text-align: right;
     color: #333;
 }
+.small {
+    font-size: x-small;
+    vertical-align: top;
+}

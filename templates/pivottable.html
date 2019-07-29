@@ -103,10 +103,18 @@
                                      ng-if="row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue'" all-fields="allFields" />
                     </td>
                     <td class="nav first border" ng-repeat="column in pivotTable.sortedColumns()">
-                        <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
+                        <span>
+                            <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
+                        </span>
+                        <span class="small" ng-if="showDetailsCount" title="{{'time(s)' | i18n}}">
+                            &nbsp;{{row.columns[column.columnKey.keyValue].detailsNum}}
+                        </span>
                     </td>
                     <td class="nav first border total" ng-if="!hideTotalColumn">
                         {{row.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus' && !(workingTimeInStatus.from && workingTimeInStatus.to)}}
+                        <span class="small" ng-if="showDetailsCount" title="{{'time(s)' | i18n}}">
+                            &nbsp;{{row.detailsNum}}
+                        </span>
                     </td>
                 </tr>
                 <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed">
@@ -176,10 +184,18 @@
                         <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
-                        <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
+                        <span>
+                            <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
+                        </span>
+                        <span class="small" ng-if="showDetailsCount" title="{{'time(s)' | i18n}}">
+                            &nbsp;{{column.detailsNum}}
+                        </span>
                     </td>
                     <td class="nav border total" ng-if="!hideTotalColumn">
                         {{pivotTable.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus' && !(workingTimeInStatus.from && workingTimeInStatus.to)}}
+                        <span class="small" ng-if="showDetailsCount" title="{{'time(s)' | i18n}}">
+                            &nbsp;{{pivotTable.detailsNum}}
+                        </span>
                     </td>
                 </tr>
                 <tr ng-show="loaded && loading">
