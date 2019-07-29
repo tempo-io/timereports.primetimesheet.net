@@ -303,8 +303,8 @@
     "Over Limit Color": "Couleur hors limit",
     "description.Under Limit Color": "Couleur des heures travaillées sélectionnées de moins de 1d.",
     "description.Over Limit Color": "Couleur des heures travaillées sélectionnées à partir de 1d.",
-    "Show Details' Number": "Show Details' Number",
-    "description.Show Details' Number": "Count details and show its number next to main value, e.g. to see number of times issue was reopened in Time In Status report.",
+    "Show Details Number": "Show Details' Number",
+    "description.Show Details Number": "Count details and show its number next to main value, e.g. to see number of times issue was reopened in Time In Status report.",
 
     "Data is limited by Auditors Roles": " En raison des rôles d'auditeur configurés, les données sont limitées à leurs propres journaux de travail pour les projet(s) suivant(s): ",
     "Data is limited to Restricted Groups": "En raison des groupes restreints configurés, les données sont limitées aux journaux de travail des utilisateurs des groupe(s) suivant(s): ",
