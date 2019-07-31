@@ -1,26 +1,17 @@
 <fieldset class="group">
     <legend>
-        <span>Remaining Estimate</span>
+        <span>{{'Remaining Estimate' | i18n}}</span>
     </legend>
-    <div class="radio">
-        <input type="radio" class="radio" id="adjust-estimate-auto" value="auto" ng-model="worklog.estimateType">
-        <label for="adjust-estimate-auto">Adjust automatically</label>
-        <div class="description">the estimate will be reduced by the amount of work done, but never below 0.</div>
-    </div>
-    <div class="radio">
-        <input type="radio" class="radio" value="leave" ng-model="worklog.estimateType" id="adjust-estimate-leave">
-        <label for="adjust-estimate-leave">Use existing estimate</label>
-    </div>
-    <div class="radio">
-        <input type="radio" class="radio" value="new" ng-model="worklog.estimateType" id="adjust-estimate-new">
-        <label for="adjust-estimate-new">Set to</label>
-        <input type="text" class="text short-field" ng-model="worklog.estimateValue" id="adjust-estimate-new-value" ng-disabled="worklog.estimateType != 'new'" ng-model="estimateValue" timespent zeroable="true" ng-required="worklog.estimateType == 'new'">
-        <span id="adjust-estimate-new-example">(eg. 4h 30m)</span>
-    </div>
-    <div class="radio" ng-show="reduceBy || increaseBy">
-        <input type="radio" class="radio" value="manual" ng-model="worklog.estimateType" id="adjust-estimate-manual">
-        <label for="adjust-estimate-manual" ng-bind="reduceBy ? 'Reduce by' : 'Increase estimated time remaining by'"/></label>
-        <input type="text" class="text short-field" ng-model="worklog.adjustmentAmount" id="adjust-estimate-manual-value" ng-disabled="worklog.estimateType != 'manual'" timespent ng-required="worklog.estimateType == 'manual'">
-        <span id="adjust-estimate-manual-example">(eg. 4h 30m)</span>
+    <div>
+        <input type="text"
+               class="text short-field"
+               ng-model="worklog.estimateValue"
+               id="adjust-estimate-new-value"
+               timespent
+               zeroable="true"
+               placeholder="{{estimatePlaceholder}}"
+               title="(eg. 4h 30m)">
+        &nbsp;
+        <a ng-if="timeestimate" ng-click="worklog.estimateValue=timeestimatePretty">{{'Use current' | i18n}}&nbsp;{{timeestimatePretty}}</a>
     </div>
 </fieldset>

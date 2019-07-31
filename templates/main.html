@@ -95,11 +95,11 @@
     <header class="aui-dialog2-header">
         <!-- The dialog''s title -->
         <h1 class="aui-dialog2-header-main">
-            {{dialogType == 'add' ? 'Log Work Done' : 'Edit Work Log'}}
+            {{dialogType == 'add' ? 'Log Work Done' : 'Edit Work Log' | i18n}}
         </h1>
         <!-- Close icon -->
         <a class="aui-dialog2-header-close" ng-click="cancel()">
-            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">{{'Close' | i18n}}</span>
         </a>
     </header>
     <!-- Main dialog content -->
@@ -113,15 +113,20 @@
         <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
         <!-- Actions to render on the right of the footer -->
         <div class="aui-dialog2-footer-actions">
-            <button class="aui-button submit" ng-click="save()" ng-disabled="logWorkForm.$invalid || loading" ng-class="{disabled: logWorkForm.$invalid || loading}">Save</button>
-            <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+            <button class="aui-button submit"
+                    ng-click="save()"
+                    ng-disabled="logWorkForm.$invalid || loading"
+                    ng-class="{disabled: logWorkForm.$invalid || loading}">
+                {{'Save' | i18n}}
+            </button>
+            <button class="aui-button aui-button-link" ng-click="cancel()">{{'Cancel' | i18n}}</button>
         </div>
     </footer>
 </script>
 <script type="text/ng-template" id="worklog-gadget-dialog-template">
     <!-- Dialog header -->
     <h1 class="aui-dialog2-header-main" style="padding: 0 4px" ng-if="!standaloneDialog">
-        {{dialogType == 'add' ? 'Log Work Done' : 'Edit Work Log'}}
+        {{dialogType == 'add' ? 'Log Work Done' : 'Edit Work Log' | i18n}}
     </h1>
     <!-- Main dialog content -->
     <div>
@@ -130,13 +135,18 @@
             <ng-include src="'/templates/dialogs/updateWorklog.html'"></ng-include>
             <div class="buttons-container" ng-if="!showMore">
                 <div class="buttons">
-                    <button class="aui-button aui-button-link" ng-click="toggleShowMore()">(more options)</button>
+                    <button class="aui-button aui-button-link" ng-click="toggleShowMore()">({{'more options' | i18n}})</button>
                 </div>
             </div>
             <div class="buttons-container" ng-if="!standaloneDialog">
                 <div class="buttons">
-                    <button class="aui-button submit" ng-click="save()" ng-disabled="logWorkForm.$invalid || loading" ng-class="{disabled: logWorkForm.$invalid || loading}">Save</button>
-                    <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+                    <button class="aui-button submit"
+                            ng-click="save()"
+                            ng-disabled="logWorkForm.$invalid || loading"
+                            ng-class="{disabled: logWorkForm.$invalid || loading}">
+                        {{'Save' | i18n}}
+                    </button>
+                    <button class="aui-button aui-button-link" ng-click="cancel()">{{'Cancel' | i18n}}</button>
                     <span class="fa fa-spinner fa-spin" ng-show="loading" style="margin: 0 50px;"></span>
                 </div>
             </div>
@@ -149,11 +159,11 @@
     <header class="aui-dialog2-header">
         <!-- The dialog''s title -->
         <h1 class="aui-dialog2-header-main">
-            Delete Work Log
+            {{'Delete Work Log' | i18n}}
         </h1>
         <!-- Close icon -->
         <a class="aui-dialog2-header-close" ng-click="cancel()">
-            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">{{'Close' | i18n}}</span>
         </a>
     </header>
     <!-- Main dialog content -->
@@ -167,15 +177,20 @@
         <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
         <!-- Actions to render on the right of the footer -->
         <div class="aui-dialog2-footer-actions">
-            <button class="aui-button submit" ng-click="delete()" ng-disabled="deleteWorkForm.$invalid || loading" ng-class="{disabled: deleteWorkForm.$invalid || loading}">Delete</button>
-            <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+            <button class="aui-button submit"
+                    ng-click="delete()"
+                    ng-disabled="deleteWorkForm.$invalid || loading"
+                    ng-class="{disabled: deleteWorkForm.$invalid || loading}">
+                {{'Delete' | i18n}}
+            </button>
+            <button class="aui-button aui-button-link" ng-click="cancel()">{{'Cancel' | i18n}}</button>
          </div>
     </footer>
 </script>
 <script type="text/ng-template" id="delete-worklog-gadget-dialog-template">
     <!-- Dialog header -->
     <h1 class="aui-dialog2-header-main" style="padding: 0 4px">
-        Delete Work Log
+        {{'Delete Work Log' | i18n}}
     </h1>
     <!-- Main dialog content -->
     <div class="aui-dialog2-content">
@@ -183,8 +198,13 @@
             <ng-include src="'/templates/dialogs/deleteWorklog.html'"></ng-include>
             <div class="buttons-container">
                 <div class="buttons">
-                    <button class="aui-button submit" ng-click="delete()" ng-disabled="deleteWorkForm.$invalid || loading" ng-class="{disabled: deleteWorkForm.$invalid || loading}">Delete</button>
-                    <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+                    <button class="aui-button submit"
+                            ng-click="delete()"
+                            ng-disabled="deleteWorkForm.$invalid || loading"
+                            ng-class="{disabled: deleteWorkForm.$invalid || loading}">
+                        {{'Delete' | i18n}}
+                    </button>
+                    <button class="aui-button aui-button-link" ng-click="cancel()">{{'Cancel' | i18n}}</button>
                     <span class="fa fa-spinner fa-spin" ng-show="loading" style="margin: 0 50px;"></span>
                 </div>
             </div>

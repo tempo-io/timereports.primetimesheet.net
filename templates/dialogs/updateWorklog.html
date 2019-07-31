@@ -1,23 +1,30 @@
         <div class="field-group" ng-if="['IssueTime', 'IssueTimeBalance'].indexOf(pivotTableType) < 0">
             <label for="log-work-issue">
-                Issue Key <span class="aui-icon icon-required"></span><span class="content">required</span>
+                {{'Issue Key' | i18n}}&nbsp;<span class="aui-icon icon-required"></span><span class="content">required</span>
             </label>
             <input type="text" class="text long-field" id="log-work-issue" name="log-work-issue" ng-model="worklog.issueKey" log-work-permission aui-issue-picker ng-disabled="dialogType != 'add'" required focus-if="!worklog.issueKey">
         </div>
             <legend>
-                <span>Time entry</span>
+                <span>{{'Time entry' | i18n}}</span>
             </legend>
             <div class="field-group">
                 <label for="log-work-time-logged">
-                    Time Spent<span class="aui-icon icon-required"> required</span>
+                    {{'Time Spent' | i18n}}<span class="aui-icon icon-required"> required</span>
                 </label>
-                <input type="text" id="log-work-time-logged" name="timeSpent" class="text short-field" ng-model="worklog.timeSpent" required timespent focus-if="worklog.issueKey"/>
+                <input type="text"
+                       id="log-work-time-logged"
+                       name="timeSpent"
+                       class="text short-field"
+                       ng-model="worklog.timeSpent"
+                       required
+                       timespent
+                       focus-if="worklog.issueKey"
+                       title="{{'eg. 4h 30m' + dialogType == 'add' ? ', or 1d 2h for two entries of 8h and 2h per day' : ''}}"/>
                 <longer-one-day-warning>&gt;1d!</longer-one-day-warning>
-                <span id="log-work-time-example" class="aui-form example">(eg. 4h 30m{{dialogType == 'add' ? ', or 1d 2h for two entries of 8h and 2h per day' : ''}})</span>
-                <div ng-if="showMore" class="description">An estimate of how much time you have spent working.</div>
+                <span ng-if="worklog.issueKey">&nbsp;{{'Logged' | i18n}}&nbsp;{{timespentPretty}}</span>
             </div>
             <div ng-if="showMore" class="field-group test-datepicker">
-                <label for="log-work-date-logged">Date Started<span class="aui-icon icon-required"> required</span></label>
+                <label for="log-work-date-logged">{{'Date Started' | i18n}}<span class="aui-icon icon-required"> required</span></label>
                 <input type="date" id="log-work-date-logged" class="text medium-field" style="max-width: 100px; margin-right: 10px;"
                        ng-model="worklogDatetime.date" aui-date-picker>
                 <time-picker time="worklogDatetime.time"></time-picker>
@@ -26,7 +33,7 @@
             <ng-include ng-if="showMore" src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0"></ng-include>
 
             <div class="field-group">
-                <label for="comment">Work Description<span class="aui-icon icon-required" ng-if="workDescriptionRequired"> required</span></label>
+                <label for="comment">{{'Work Description' | i18n}}<span class="aui-icon icon-required" ng-if="workDescriptionRequired"> required</span></label>
                 <div class="wiki-edit">
                     <div class="wiki-edit-content" id="comment-wiki-edit">
                         <textarea rows="5" id="comment" cols="60" class="textarea long-field" ng-model="worklog.comment" work-labels="workLabelsList" ng-required="workDescriptionRequired"></textarea>
@@ -34,16 +41,21 @@
                     </div>
                 </div>
                 <div ng-if="showMore" class="security-level">
-                    <button class="aui-button aui-button-link security-level-drop-icon aui-icon aui-icon-small aui-dropdown2-trigger aui-style-default" aria-owns="security-level" aria-haspopup="true" ng-class="{'aui-iconfont-unlocked': !worklog.visibilityRole, 'aui-iconfont-locked': worklog.visibilityRole}">Worklog Visibility</button>
-                    <span class="current-level" ng-if="worklog.visibilityGroup || worklog.visibilityRole">Restricted to <span class="red">{{worklog.visibilityGroup || worklog.visibilityRole}}</span></span>
-                    <span class="current-level" ng-if="!(worklog.visibilityGroup || worklog.visibilityRole)">Viewable by All Users</span>
+                    <button class="aui-button aui-button-link security-level-drop-icon aui-icon aui-icon-small aui-dropdown2-trigger aui-style-default"
+                            aria-owns="security-level"
+                            aria-haspopup="true"
+                            ng-class="{'aui-iconfont-unlocked': !worklog.visibilityRole, 'aui-iconfont-locked': worklog.visibilityRole}">
+                        {{'Worklog Visibility' | i18n}}
+                    </button>
+                    <span class="current-level" ng-if="worklog.visibilityGroup || worklog.visibilityRole">{{'Restricted to' | i18n}}&nbsp;<span class="red">{{worklog.visibilityGroup || worklog.visibilityRole}}</span></span>
+                    <span class="current-level" ng-if="!(worklog.visibilityGroup || worklog.visibilityRole)">{{'Viewable by All Users' | i18n}}</span>
                     <div id="security-level" class="aui-style-default aui-dropdown2">
                         <ul class="aui-list-truncate">
-                            <li><a ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = null" class="aui-button-primary">All Users</a></li>
+                            <li><a ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = null" class="aui-button-primary">{{'All Users' | i18n}}</a></li>
                         </ul>
                         <div class="aui-dropdown2-section">
                             <div class="aui-dropdown2-heading">
-                                Groups
+                                {{'Groups' | i18n}}
                             </div>
                             <ul class="aui-list-truncate">
                                 <li ng-repeat="group in groups.items"><a ng-click="worklog.visibilityGroup = group.name" ng-bind="group.name" class="aui-button-primary"></a></li>
@@ -51,7 +63,7 @@
                         </div>
                         <div class="aui-dropdown2-section">
                             <div class="aui-dropdown2-heading">
-                                Project Roles
+                                {{'Project Roles' | i18n}}
                             </div>
                             <ul class="aui-list-truncate">
                                 <li ng-repeat="(role, uri) in roles"><a ng-click="worklog.visibilityRole = role" ng-bind="role" class="aui-button-primary"></a></li>
