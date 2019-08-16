@@ -114,7 +114,7 @@ var UserData = {name: 'noSuchUser', accountId: 'accountId-noSuchUser-accountId',
 var PropertiesConfig = {value: [{key: 'workingTimeInStatus', val: true},
     {key: 'startedTimeInStatus', val: false}]};
 var PropertiesPreferences4admin = {};
-var Configuration = {timeTrackingEnabled: true, timeTrackingConfiguration: {workingHoursPerDay: 8, workingDaysPerWeek: 5, defaultUnit: 'm'}};
+var Configuration = {timeTrackingConfiguration: {workingHoursPerDay: 8, workingDaysPerWeek: 5, defaultUnit: 'm'}};
 var Properties = {keys: [{key: 'configuration'}, {key: 'preferences4aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'}]};
 var IssueWorklog, Issue;
 
