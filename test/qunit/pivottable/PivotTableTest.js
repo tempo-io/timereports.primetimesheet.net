@@ -554,6 +554,10 @@ QUnit.test("PivotTable.getOrCreate", function() {
         QUnit.assert.ok(keys[i] == 'key1' || keys[i] == 'key2', "#getOrCreateObject() :: key check[ '" + keys[i] + "' ]");
     }
 });
+QUnit.test("DrawHelper", function() {
+    QUnit.assert.equal(DrawHelper.getFormattedTime(100 * 5 * 8 * 3600, {timeFormat: 'pretty', workingHoursPerDay: 8, workingDaysPerWeek:5}, null, 'jiraStyle'), '100w', '100w');
+    QUnit.assert.equal(DrawHelper.getFormattedTime(100 * 5 * 8 * 3600, {timeFormat: 'pretty', workingHoursPerDay: 8, workingDaysPerWeek:5}), '2y 1m', '2y 1m');
+});
 QUnit.test("TimesheetUtils", function() {
     QUnit.assert.equal(TimesheetUtils.getWeekNumber(new Date(2013, 3, 1)), 14, '#getWeekNumber() :: positive 1'); // 1 April 2013
     QUnit.assert.equal(TimesheetUtils.getWeekNumber(new Date(2014, 0, 25)), 4, '#getWeekNumber() :: positive 2'); // 25 January 2014
