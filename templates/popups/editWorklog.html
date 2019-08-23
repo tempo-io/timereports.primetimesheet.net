@@ -17,13 +17,13 @@
             <span class="fa fa-pencil-square-o"
                   ng-click="popupData.openEditWorklogDialog(wkLog.id, wkLog._issue);closePopup();"
                   title="{{'Edit worklog' | i18n}}"
-                  ng-show="popupData.canEditOwnWorklog && !popupData.cannotEditOwnWorklogIssue[popupData.rowKey.keyValue] ||
+                  ng-show="wkLog.ownWorklog ? popupData.canEditOwnWorklog && !popupData.cannotEditOwnWorklogIssue[popupData.rowKey.keyValue] :
                   popupData.canEditAllWorklog && !popupData.cannotEditAllWorklogIssue[popupData.rowKey.keyValue]">
             </span>
             <span class="fa fa-trash-o" style="color: red"
                   ng-click="popupData.openDeleteWorklogDialog(wkLog.id, wkLog._issue);closePopup();"
                   title="{{'Delete worklog' | i18n}}"
-                  ng-show="popupData.canDeleteOwnWorklog && !popupData.cannotDeleteOwnWorklogIssue[popupData.rowKey.keyValue] ||
+                  ng-show="wkLog.ownWorklog ? popupData.canDeleteOwnWorklog && !popupData.cannotDeleteOwnWorklogIssue[popupData.rowKey.keyValue] :
                   popupData.canDeleteAllWorklog && !popupData.cannotDeleteAllWorklogIssue[popupData.rowKey.keyValue]">
             </span>
         </td>
