@@ -1,6 +1,6 @@
 <div class="aui-page-header-inner">
     <div class="aui-page-header-main intro-header noprint">
-        <h1>{{'Time Reports' | i18n }}</h1>
+        <h1>{{appNameShort | i18n }}</h1>
         <ul class="subtitle">
             <li><i class="fa fa-bars" ng-click="toggleHideMenu()" title="{{(hideMenu ? 'Show Menu' : 'Hide Menu') | i18n}}"></i></li>
             <li>{{'Advanced Time Tracking' | i18n }}</li>
@@ -9,7 +9,7 @@
                 <!-- Dropdown -->
                 <div id="help" class="aui-style-default aui-dropdown2">
                     <ul class="aui-list-truncate">
-                        <li><a href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/welcome" target="_blank" title="{{'Getting started with Time Reports' | i18n}}">{{'Get Started' | i18n}}</a></li>
+                        <li><a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/welcome" target="_blank" title="{{'Getting started with ' + appName | i18n}}">{{'Get Started' | i18n}}</a></li>
                         <li><a href="https://primetimesheet.atlassian.net/wiki/spaces/KB/blog" target="_blank" title="What's New">What's New</a></li>
                     </ul>
                     <div class="aui-dropdown2-section">
@@ -41,7 +41,7 @@
                 <div id="conf" class="aui-style-default aui-dropdown2">
                     <ul class="aui-list-truncate">
                         <li><a style="color:#333" ng-click="openUserPreferencesDialog()">{{'User Preferences' | i18n }}</a></li>
-                        <li ng-show="isAdmin == true"><a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/configuration" target="_parent">{{'Configuration' | i18n }}</a></li>
+                        <li ng-show="isAdmin == true"><a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/configuration" target="_parent">{{'Configuration' | i18n }}</a></li>
                     </ul>
                 </div>
             </li>

@@ -369,6 +369,6 @@
     "welcome.content.3.5": " Les rapports peuvent être envoyés régulièrement par courrier électronique (si vous pouvez voir l'icône de courrier électronique sur la page du rapport) ou exportés à l'aide de <a href=\"https://www.primetimesheet.net/cloud/REST_endpoint.html\" target=\"_blank\">REST API</a> ou consulté sur <a href=\"https://www.primetimesheet.net/cloud/Mobile.html\" target=\"_blank\"> appareil mobile</a>.",
     "welcome.content.4": "Ressources supplémentaires",
     "welcome.content.5.1": "<a href=\"https://www.primetimesheet.net/%s/\" target=\"_blank\">Documentation</a>",
-    "welcome.content.5.2": "<a href=\"https://bitbucket.org/azhdanov/%s/issues\" target=\"_blank\">tâches</a>",
+    "welcome.content.5.2": "<a href=\"https://bitbucket.org/azhdanov/timereports/issues\" target=\"_blank\">tâches</a>",
     "welcome.content.5.3": "<a href=\"https://primetimesheet.atlassian.net/servicedesk/customer/portal/1\" target=\"_blank\"> Soumettre une demande d'assistance</a>"
 }

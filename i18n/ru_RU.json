@@ -371,6 +371,6 @@
     "welcome.content.3.5": "Отчеты можно отправлять по электронной почте регулярно (если есть пиктограмма электронной почты на странице отчета) или экспортировать с помощью <a href=\"https://www.primetimesheet.net/cloud/REST_endpoint.html\" target=\"_blank\">REST API</a> или получить доступ к нему на <a href=\"https://www.primetimesheet.net/cloud/Mobile.html\" target=\"_blank\">мобильных устройствах</a>.",
     "welcome.content.4": "Дополнительные ресурсы",
     "welcome.content.5.1": "<a href=\"https://www.primetimesheet.net/%s/\" target=\"_blank\">Документация</a>",
-    "welcome.content.5.2": "<a href=\"https://bitbucket.org/azhdanov/%s/issues\" target=\"_blank\">Открытые задачи</a>",
+    "welcome.content.5.2": "<a href=\"https://bitbucket.org/azhdanov/timereports/issues\" target=\"_blank\">Открытые задачи</a>",
     "welcome.content.5.3": "<a href=\"https://primetimesheet.atlassian.net/servicedesk/customer/portal/1\" target=\"_blank\">Создать запрос в службу поддержки</a>"
 }

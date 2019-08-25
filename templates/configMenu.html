@@ -1,6 +1,6 @@
 <div class="aui margin">
     <div style="margin-top: 24px">
-        <h4>{{ 'Time Reports Configuration' | i18n }}</h4>
+        <h4>{{appNameShort + ' Configuration' | i18n }}</h4>
     </div>
     <ul>
         <li ng-repeat="pageKey in pageKeys">
@@ -11,5 +11,5 @@
     </ul>
     <br>
     <br>
-    {{'Go to' | i18n}} <a href="{{hostBaseUrl}}/plugins/servlet/ac/timereports/timereports" target="_parent">{{'Time Reports' | i18n}}</a>
+    {{'Go to' | i18n}} <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports" target="_parent">{{appNameShort | i18n}}</a>
 </div>
