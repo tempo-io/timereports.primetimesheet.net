@@ -89,7 +89,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-class-odd="compressed ? 'rowNormal' : ''" ng-class-even="compressed ? 'rowAlternate' : ''" ng-repeat-start="row in pivotTable.sortedRows() | limitTo:issuesCount.maxResults:issuesCount.startAt" class="first">
+                <tr ng-class-odd="compressed ? 'rowNormal' : ''"
+                    ng-class-even="compressed ? 'rowAlternate' : ''"
+                    ng-repeat-start="row in pivotTable.sortedRows() | limitTo:issuesCount.maxResults:issuesCount.startAt"
+                    class="first">
                     <!-- issues block -->
                     <td class="nav issuetype" width="1%" ng-if="row.rowKey.issue">
                         <issue-type issue="row.rowKey.issue" />
@@ -144,7 +147,7 @@
                         {{row.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>
-                <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="compressed == false">
+                <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed && !row.categoryRow">
                     <td class="nav">&nbsp;</td>
                     <td class="nav">&nbsp;</td>
                     <td colspan="{{rowKeySize - 3}}" class="nav summary">

@@ -67,7 +67,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-class-odd="compressed ? 'rowNormal' : ''" ng-class-even="compressed ? 'rowAlternate' : ''" ng-repeat-start="row in pivotTable.sortedRows() | limitTo:issuesCount.maxResults:issuesCount.startAt">
+                <tr ng-class-odd="compressed ? 'rowNormal' : ''"
+                    ng-class-even="compressed ? 'rowAlternate' : ''"
+                    ng-repeat-start="row in pivotTable.sortedRows() | limitTo:issuesCount.maxResults:issuesCount.startAt">
                     <!-- TODO: rework to directive rowKwy with AngularJS 1.3: https://github.com/angular/angular.js/issues/1459 -->
                     <td class="nav first issuetype" width="1%" ng-if="row.rowKey.issue">
                         <issue-type issue="row.rowKey.issue" />
@@ -117,7 +119,7 @@
                         </span>
                     </td>
                 </tr>
-                <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed">
+                <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed && !row.categoryRow">
                     <td class="nav">&nbsp;</td>
                     <td class="nav">&nbsp;</td>
                     <td colspan="{{rowKeySize - 3}}" class="nav summary">
