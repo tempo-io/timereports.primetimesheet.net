@@ -307,6 +307,8 @@
     "description.Over Limit Color": "Farbe der markierten Arbeitsstunden über 1d.",
     "Show Details Number": "Zahl der Details anzeigen",
     "description.Show Details Number": "Details zählen und ihre Zahl neben dem Hauptwert anzeigen, z. B. um zu sehen, wie oft der Vorgang im Bericht Zeit im Status erneut geöffnet wurde.",
+    "Show Category Row": "Show Category Row",
+    "description.Show Category Row": "Show additional row with Category totals.",
 
     "Data is limited by Auditors Roles": "Aufgrund der konfigurierten Auditorenrollen sind die Daten auf eigene Arbeitsprotokolle für die folgenden Projekte beschränkt:",
     "Data is limited to Restricted Groups": "Aufgrund der konfigurierten eingeschränkten Gruppen sind die Daten auf Arbeitsprotokolle von Benutzern aus den folgenden Gruppen beschränkt:",

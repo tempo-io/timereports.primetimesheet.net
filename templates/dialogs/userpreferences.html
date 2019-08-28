@@ -225,6 +225,20 @@
         <div class="field-group">
             <span class="description">{{'description.Show Details Number' | i18n}}</span>
         </div>
+        <div class="field-group">
+            <label for="showCategoryRow">{{'Show Category Row' | i18n}}</label>
+            <input id="showCategoryRow"
+                   type="checkbox"
+                   class="checkbox"
+                   ng-model="showCategoryRow.val"
+                   ng-change="saveShowCategoryRow()">
+            <div class="aui-message aui-message-success msg-overlay" ng-show="showCategoryRowSaveSuccess">
+                <strong>{{'Show Category Row' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Show Category Row' | i18n}}</span>
+        </div>
         <div class="field-group" ng-show="problemReporter">
             <label for="onErrorIgnore">{{'Disable Problem Reporter' | i18n}}</label>
             <input id="onErrorIgnore"

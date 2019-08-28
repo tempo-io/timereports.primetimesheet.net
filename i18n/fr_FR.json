@@ -306,6 +306,8 @@
     "description.Over Limit Color": "Couleur des heures travaillées sélectionnées à partir de 1d.",
     "Show Details Number": "Afficher le nombre de détails",
     "description.Show Details Number": "Compter les détails et afficher leur nombre à côté de la valeur principale, par exemple pour voir le nombre de fois que le problème a été rouvert dans le rapport du Temps en statut.",
+    "Show Category Row": "Show Category Row",
+    "description.Show Category Row": "Show additional row with Category totals.",
 
     "Data is limited by Auditors Roles": " En raison des rôles d'auditeur configurés, les données sont limitées à leurs propres journaux de travail pour les projet(s) suivant(s): ",
     "Data is limited to Restricted Groups": "En raison des groupes restreints configurés, les données sont limitées aux journaux de travail des utilisateurs des groupe(s) suivant(s): ",

@@ -102,7 +102,8 @@ describe("timesheetControllerTest", function() {
                 disableLogWork: {},
                 workUnderLimitColor: {},
                 workOverLimitColor: {},
-                showDetailsCount: {}
+                showDetailsCount: {},
+                showCategoryRow: {}
             };
         });
         inject(function($timeout, $window, _$httpBackend_, applicationLoggingService, $rootScope) {
@@ -276,7 +277,8 @@ describe("timesheetControllerTest", function() {
                 disableLogWork: {},
                 workUnderLimitColor: {},
                 workOverLimitColor: {},
-                showDetailsCount: {}
+                showDetailsCount: {},
+                showCategoryRow: {}
             }
         });
 
@@ -341,7 +343,8 @@ describe("timesheetControllerTest", function() {
                 disableLogWork: {},
                 workUnderLimitColor: {},
                 workOverLimitColor: {},
-                showDetailsCount: {}
+                showDetailsCount: {},
+                showCategoryRow: {}
             }
         });
 
