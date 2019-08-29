@@ -215,6 +215,7 @@
     "username": "Nom d'utilisateur",
     "displayname": "Nom Affiché",
     "emailaddress": "Courrier électronique",
+    "accountid": "Account Id",
     "descriptionstatus": " Description/ Statut du travail",
     "worklogid": "Identifiant du journal de travail",
     "workcreated": "Travail crée",

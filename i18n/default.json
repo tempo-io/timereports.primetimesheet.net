@@ -215,6 +215,7 @@
     "username": "Username",
     "displayname": "Display Name",
     "emailaddress": "Email Address",
+    "accountid": "Account Id",
     "descriptionstatus": "Work Description / Status",
     "worklogid": "Worklog Id",
     "workcreated": "Work Created",

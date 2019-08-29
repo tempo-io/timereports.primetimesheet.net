@@ -215,6 +215,7 @@
     "username": "Benutzername",
     "displayname": "Den Namen anzeigen",
     "emailaddress": "E-Mail-Adresse",
+    "accountid": "Account Id",
     "descriptionstatus": "Arbeitsbeschreibung / Status",
     "worklogid": "Arbeitsprotokoll-ID",
     "workcreated": "Arbeit erstellt",
