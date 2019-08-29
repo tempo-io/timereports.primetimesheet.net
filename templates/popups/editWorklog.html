@@ -28,7 +28,7 @@
             </span>
         </td>
     </tr>
-    <tr ng-show="popupData.pivotTableType != 'Calendar' && popupData.canLogWork && !popupData.cannotLogWorkIssue[popupData.rowKey.keyValue]">
+    <tr ng-if="popupData.worklog.issueKey && popupData.canLogWork && !popupData.cannotLogWorkIssue[popupData.rowKey.keyValue]">
         <td colspan="{{popupData.colspan}}" style="border-top: 1px solid black;">
             <ng-include src="'/templates/popups/addWorklog.html'"></ng-include>
         </td>

@@ -128,15 +128,15 @@
                                      ng-if="row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue'" all-fields="allFields" />
                     </td>
                     <td ng-init="p_show=false"
-                        ng-mouseover="p_show=column.sum == 0 && (canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue] || canLogWorkForUser)"
+                        ng-mouseover="p_show=!groupByOptions.selected && column.sum == 0 && (canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue] || canLogWorkForUser)"
                         ng-mouseleave="p_show=false"
-                        ng-click="(canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue] || canLogWorkForUser) && addWorklogPopup.init(column.columnKey, row.rowKey); editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
+                        ng-click="!groupByOptions.selected && (canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue] || canLogWorkForUser) && addWorklogPopup.init(column.columnKey, row.rowKey); editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
                         class="nav border"
                         ng-class="{toDay: column.columnKey.isToday,
                         nonBusinessDay: column.columnKey.isWeekend,
-                        addWorklogPopup: column.sum == 0 && (canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue] || canLogWorkForUser),
+                        addWorklogPopup: !groupByOptions.selected && column.sum == 0 && (canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue] || canLogWorkForUser),
                         editWorklogPopup: column.sum != 0,
-                        disabled: column.sum == 0 && cannotLogWorkIssue[row.rowKey.keyValue] && !canLogWorkForUser}"
+                        disabled: column.sum == 0 && (groupByOptions.selected || cannotLogWorkIssue[row.rowKey.keyValue] && !canLogWorkForUser)}"
                         style="color: {{column.color}}"
                         title="{{column.title}}"
                         ng-repeat="column in row.columns">
@@ -178,10 +178,21 @@
                     <td class="nav" width="1%" ng-repeat="field in row.moreFields">
                         <issue-field name="field" field="data.rowKey._issue.fields[field]" issue="data.rowKey._issue" jira-config="jiraConfig" ng-if="data.rowKey._issue" once="pivotTable"  all-fields="allFields"/>
                     </td>
-                    <td class="nav border" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}" ng-repeat="column in pivotTable.sortedColumns()">
+                    <td ng-init="p_show=false"
+                        ng-mouseover="p_show=groupByOptions.selected && data.columnKey.keyValue != column.columnKey.keyValue && (canLogWork && !cannotLogWorkIssue[data.rowKey._issue.key] || canLogWorkForUser)"
+                        ng-mouseleave="p_show=false"
+                        ng-click="(groupByOptions.selected && canLogWork && !cannotLogWorkIssue[data.rowKey._issue.key] || canLogWorkForUser) && addWorklogPopup.init(column.columnKey, data.rowKey); editWorklogPopup.init(column.columnKey, data.rowKey, [data], 'addPossible');"
+                        ng-class="{toDay: column.columnKey.isToday,
+                        nonBusinessDay: column.columnKey.isWeekend,
+                        addWorklogPopup: groupByOptions.selected && data.columnKey.keyValue != column.columnKey.keyValue && (canLogWork && !cannotLogWorkIssue[data.rowKey._issue.key] || canLogWorkForUser),
+                        editWorklogPopup: groupByOptions.selected && data.columnKey.keyValue == column.columnKey.keyValue,
+                        disabled: !groupByOptions.selected || (data.columnKey.keyValue == column.columnKey.keyValue && cannotLogWorkIssue[data.rowKey._issue.key] && !canLogWorkForUser)}"
+                        class="nav border"
+                        ng-repeat="column in pivotTable.sortedColumns()">
                         <span ng-if="data.columnKey.keyValue == column.columnKey.keyValue">
                             {{data.value | prettyHours:jiraConfig}}
                         </span>
+                        <span ng-show="p_show" class="fa fa-plus" title="Log Work against this issue"></span>
                     </td>
                     <td class="nav border total">
                         &nbsp;
