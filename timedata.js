@@ -2760,7 +2760,11 @@ var translations = {
     "Nov": "Nov",
     "Dec": "Dec",
     "issue(s)" : "issue(s)",
-    "Total": "Total"
+    Total: "Total",
+    "No grouping": "No grouping",
+    "Saved Report": "Saved Report",
+    "Default Report": "Default Report",
+    "No matches found": "No matches found"
 };
 
 var processFlightData = function() {

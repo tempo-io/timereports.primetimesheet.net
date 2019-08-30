@@ -20,7 +20,7 @@
             <span ng-repeat="option in gadgetSummary">
                 <span ng-class="option.styleClass">{{option.text}}</span>
             </span>
-        <a class="fa fa-external-link-square" title="Open report page for other options and excel export" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent"></a>
+        <a class="fa fa-external-link-square" title="{{'Open report page for other options and excel export' | i18n }}" href="{{$parent.hostBaseUrl}}/plugins/servlet/ac/timereports/timereports#!{{reportParams}}" target="_parent"></a>
     </div>
 
     <aui-inline-dialog id="problem-description-popup" template="'/templates/popups/problemDescription.html'" popup-data="problemDescriptionPopup" container="'#downloadSupportData'"></aui-inline-dialog>
@@ -138,7 +138,7 @@
         </div>
     </div>
     <div ng-if="loaded && !loading && !restrictionError">
-        <button ng-if="canLogWork || canLogWorkForUser" class="aui-button aui-button-link" ng-click="addWorklogDialog()" title="Log Work against an issue">
+        <button ng-if="canLogWork || canLogWorkForUser" class="aui-button aui-button-link" ng-click="addWorklogDialog()" title="{{'Log Work against an issue' | i18n}}">
             <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
             {{'Log Work' | i18n}}
         </button>
