@@ -1,4 +1,3 @@
-jQuery = {};
 //QUnit.config.autostart = false;
 QUnit.testStart(function() {
 });
