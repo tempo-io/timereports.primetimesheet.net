@@ -4,6 +4,11 @@ if (typeof module === 'object' && module.exports) {
 AJS = window.AJS || {$: window.$, progressBars: {update: function() {}, setIndeterminate: function() {}}};
 // simulate running in atlassian-connect container
 window.AP = {
+  user: {
+    getLocale: function (cb) {
+      cb('en');
+    }
+  },
   getUser: function(callback) {
     return callback ? setTimeout(function() {
       callback({fullName: 'admin', id: 'admin', key: 'admin', accountId : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"});

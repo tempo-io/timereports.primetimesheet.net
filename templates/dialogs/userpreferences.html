@@ -255,7 +255,10 @@
         </div>
         <div class="field-group" ng-if="isTimesheet">
             <label for="sendMobileLink">{{'Link For Mobile Devices' | i18n}}</label>
-            <span data-ng-bind-html="'description.Link For Mobile Devices' | i18n | htmlSafe"></span>
+            <a href="https://timesheet-plugin.herokuapp.com/m">https://timesheet-plugin.herokuapp.com/m</a>
+        </div>
+        <div class="field-group" ng-if="isTimesheet">
+            <span class="description" data-ng-bind-html="'description.Link For Mobile Devices' | i18n | htmlSafe"></span>
         </div>
     </form>
 </div>
