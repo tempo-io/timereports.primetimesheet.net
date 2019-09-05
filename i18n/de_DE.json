@@ -300,7 +300,7 @@
     "description.Columns For Export": "Basisspalten für den Export in exportData-Dateien. Wenn nichts ausgewählt ist, werden alle bearbeitet. Die Reihenfolge ist vordefiniert",
     "description.In Progress Issues jql": "Geben Sie JQL an, um Vorgänge im Stundenzettel in der Basis-Ansicht des Benutzers und in der Zeiterfassung immer anzuzeigen, Z. B. 'zugewiesene Person = aktueller Benutzer() und Status = \"In Fortschritt\"'.",
     "description.Date Fields": "Datumsfelder für die Anfrage, kombiniert mit OR in JQL, 'erstellt oder aktualisiert' wenn nichts für die Berichte Zeitverfolgung und Zeitsaldo ausgewählt wurde",
-    "description.Link For Mobile Devices": "Den Link für Timesheet Progressive Web Application an Ihre E-Mail-Adresse senden. Siehe auch <a href=\"https://www.primetimesheet.net/cloud/Mobile.html\" target=\"_blank\">documentation</a>.",
+    "description.Link For Mobile Devices": "Siehe <a href=\"https://www.primetimesheet.net/cloud/Mobile.html\" target=\"_blank\">documentation</a>.",
     "description.Log Work For Others Groups": "Benutzer der ausgewählten Gruppen werden berechtigt sein, die Zeit im Namen von anderen Benutzern zu protokollieren.",
     "description.Reporting Day": "Fälligkeitstag (Wochenanfang)",
     "Under Limit Color": "Farbe der Minusstunden",

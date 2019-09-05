@@ -302,7 +302,7 @@
     "description.Columns For Export": "Основные колонки для экспорта в файлы exportData. Если ничего не выбрано, все колонки будут обработаны. Последовательность предопределена.",
     "description.In Progress Issues jql": "JQL для показа всегда задач в \"Табель\" в базовом обзоре самого пользователя и в \"Регистрации времени\", например 'assignee = currentUser() and status = \"In Progress\"'.",
     "description.Date Fields": "Поля даты для запроса в сочетании OR в JQL, 'создан или обновлен', если ничего не выбрано, для отчетов \"Отслеживание времени\" и \"Остаток времени\"",
-    "description.Link For Mobile Devices": "Отправьте ссылку на Progressive Web Application \"Табель\" на Вашу электронную почту. Также смотрите <a href=\"https://www.primetimesheet.net/cloud/Mobile.html\" target=\"_blank\">documentation</a>.",
+    "description.Link For Mobile Devices": "Смотрите <a href=\"https://www.primetimesheet.net/cloud/Mobile.html\" target=\"_blank\">документацию</a>.",
     "description.Log Work For Others Groups": "Пользователи из выбранных групп будут иметь возможность вести учета времени от имени других пользователей.",
     "description.Reporting Day": "День подачи отчетности (начало недели)",
     "Under Limit Color": "Цвет недоработки",
