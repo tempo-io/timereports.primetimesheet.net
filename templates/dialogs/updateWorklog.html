@@ -26,7 +26,7 @@
             <div ng-if="showMore" class="field-group test-datepicker">
                 <label for="log-work-date-logged">{{'Date Started' | i18n}}<span class="aui-icon icon-required"> required</span></label>
                 <input type="date" id="log-work-date-logged" class="text medium-field" style="max-width: 100px; margin-right: 10px;"
-                       ng-model="worklogDatetime.date" aui-date-picker>
+                       ng-model="worklogDatetime.date" aui-date-picker ng-date-changed-func="changeDate">
                 <time-picker time="worklogDatetime.time"></time-picker>
             </div>
 
