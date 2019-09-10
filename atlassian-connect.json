@@ -38,7 +38,8 @@
                 "value": "Time Reports",
                 "i18n": "Time Reports"
             },
-            "url": "/timereports.html?project.key={project.key}&v=2",
+            "url": "/timereports.html?v=2",
+            "cacheable": true,
             "key": "timereports",
             "conditions": [{
                 "condition": "user_is_logged_in"
@@ -116,6 +117,7 @@
                 "i18n": "Time Reports Configuration"
             },
             "url": "/timereports.html?configuration=true&v=2",
+            "cacheable": true,
             "key": "configuration",
             "conditions": [{
                 "condition": "user_is_logged_in"
@@ -127,13 +129,15 @@
                 "i18n": "Welcome to Time Reports"
             },
             "url": "/timereports.html?welcome=true&v=2",
+            "cacheable": true,
             "key": "welcome",
             "conditions": [{
                 "condition": "user_is_logged_in"
             }]
         },
         "jiraReports": [{
-            "url": "timereports.html?project.key={project.key}&v=2",
+            "url": "timereports.html?v=2",
+            "cacheable": true,
             "weight": 100,
             "description": {
                 "value": "Flexible view of issues time tracking data",
@@ -152,7 +156,8 @@
                 "value" : "Time Reports",
                 "i18n": "Time Reports"
             },
-            "url" : "/timereports.html?project.key={project.key}&dashboard={dashboard.id}&dashboardItem={dashboardItem.id}&v=2",
+            "url" : "/timereports.html?v=2",
+            "cacheable": true,
             "key" : "timereports-gadget",
             "description" : {
                 "value" : "Flexible view of issues time tracking data.",
@@ -172,8 +177,9 @@
             },
             "target": {
               "type": "web_panel",
-              "url": "/timereports.html?issue.key={issue.key}&issue.id={issue.id}&v=2"
+              "url": "/timereports.html?v=2"
             },
+            "cacheable": true,
             "tooltip": {
                 "value": "Log Work Done",
                 "i18n": "Log Work Done"
@@ -229,7 +235,8 @@
         ],
         "webPanels": [
           {
-            "url": "/timereports.html?issue.key={issue.key}&issue.id={issue.id}&v=2",
+            "url": "/timereports.html?v=2",
+            "cacheable": true,
             "location": "atl.jira.view.issue.left.context",
             "layout": {
               "width": "10px",
@@ -301,6 +308,7 @@
             },
             "key": "bitbucket",
             "url": "/timereports.html?dialog=bitbucket&v=2",
+            "cacheable": true,
             "location": "none",
             "context": "addon",
             "target": {
@@ -324,7 +332,8 @@
                     "value": "Log Work Done",
                     "i18n": "Log Work Done"
                 },
-                "height": "420px"
+                  "height": "300px",
+                  "width": "650px"
               }
             },
             "conditions": [{
