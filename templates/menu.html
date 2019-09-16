@@ -5,8 +5,19 @@
             <input ng-model="viewOptions.selected" aui-multi-select-picker="false" ng-value-changed-func="viewChanged" ng-options-data="viewOptions" update-event="viewUpdated" type="text"/>
         </div>
         <div class="ak-field-group" ng-hide="reportDialog && reportParamsObject.jql != undefined">
-            <label>{{ 'Filter or Project' | i18n }}</label>
-            <input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" update-event="filterOrProjectIdUpdated" type="text"/>
+            <label>{{ 'Filter or Project' | i18n }}
+                <a class="fa fa-pencil edit"
+                   href="{{hostBaseUrl}}/secure/ManageFilters.jspa"
+                   target="_blank"
+                   style="margin-left: 10px"
+                   title="{{'Manage Filters' | i18n}}"/>
+            </label>
+            <input ng-model="filterOrProjectId"
+                   aui-multi-select-picker
+                   ng-value-changed-func="filterByChanged"
+                   ng-options-data="filterByOptions"
+                   update-event="filterOrProjectIdUpdated"
+                   type="text"/>
         </div>
         <div class="ak-field-group" ng-if="showChildrenFilter">
             <label>{{'Children Filter' | i18n}}</label>

@@ -313,6 +313,12 @@ a.disabled {
   min-width: 200px;
   padding-right: 24px;
 }
+.fa.edit {
+  display: none;
+}
+.menu label:hover .edit {
+  display: inline-block;
+}
 .section-header > div:first-child {
   display: flex;
   margin-top: -2px;
