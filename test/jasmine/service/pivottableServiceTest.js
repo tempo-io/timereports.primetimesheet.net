@@ -34,7 +34,7 @@ describe('pivottableServiceTest', function () {
           compare: function (actual, expected) {
             var rowsCount = Object.keys(actual.rows).length
             return JasmineMatcherUtils.getMatcherResult(
-              rowsCount == expected,
+              rowsCount === expected,
               'PivotTable must have ' + expected + ' rows, but has ' + rowsCount,
               "PivotTable mustn't have " + expected + ' rows, but has ' + rowsCount)
           }

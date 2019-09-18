@@ -14,7 +14,7 @@ beforeEach(function () {
         compare: function (actual, expected, property) {
           var contains = false
           for (var i = 0; i < actual.length; i++) {
-            if (actual[i][property] == expected) {
+            if (actual[i][property] === expected) {
               contains = true
               break
             }
@@ -32,7 +32,7 @@ beforeEach(function () {
           var contains = true
           var missedElement = ''
           for (var i = 0; i < expected.length; i++) {
-            if ($.inArray(expected[i], actual) == -1) {
+            if ($.inArray(expected[i], actual) < 0) {
               contains = false
               missedElement = expected[i]
               break

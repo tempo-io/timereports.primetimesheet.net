@@ -74,8 +74,8 @@ QUnit.test('IssuePassedTimeByStatus', function () {
     configOptions: { workingTimeInStatus: {}, statuses: TimeStatuses } })
   for (var i in TimeData.issues) {
     var pivotEntries = pivotTable.add(TimeData.issues[i])
-    QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue == 'TIME-4' ? 3 : 1, 'pivotEntries ' + pivotEntries[0].rowKey.keyValue)
-    if (pivotEntries.length == 1) {
+    QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue === 'TIME-4' ? 3 : 1, 'pivotEntries ' + pivotEntries[0].rowKey.keyValue)
+    if (pivotEntries.length === 1) {
       QUnit.assert.equal(pivotEntries[0].worklog.comment, '2017-04-05 00:00:00 - 2017-04-12 00:00:00')
       QUnit.assert.equal(pivotEntries[0].value, 604800)
     }
@@ -90,7 +90,7 @@ QUnit.test('IssuePassedTimeByStatus', function () {
   for (var rowKey in pivotTable.rows) {
     var row = pivotTable.rows[rowKey]
     var columnKeys = Object.keys(row.columns)
-    QUnit.assert.equal(rowKey == 'TIME-4' ? 3 : 1, columnKeys.length, 'columns ' + rowKey)
+    QUnit.assert.equal(rowKey === 'TIME-4' ? 3 : 1, columnKeys.length, 'columns ' + rowKey)
     QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 1, 'column entries')
   }
 })
@@ -103,8 +103,8 @@ QUnit.test('IssuePassedTimeByStatus with Working Hours', function () {
       workingTimeInStatus: { from: 5, to: 22 } } })
   for (var i in TimeData.issues) {
     var pivotEntries = pivotTable.add(TimeData.issues[i])
-    QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue == 'TIME-4' ? 3 : 1, 'pivotEntries ' + pivotEntries[0].rowKey.keyValue)
-    if (pivotEntries.length == 1) {
+    QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue === 'TIME-4' ? 3 : 1, 'pivotEntries ' + pivotEntries[0].rowKey.keyValue)
+    if (pivotEntries.length === 1) {
       QUnit.assert.equal(pivotEntries[0].worklog.comment, '2017-04-05 05:00:00 - 2017-04-11 22:00:00')
       QUnit.assert.equal(pivotEntries[0].value, 306000)
     }
@@ -119,7 +119,7 @@ QUnit.test('IssuePassedTimeByStatus with Working Hours', function () {
   for (var rowKey in pivotTable.rows) {
     var row = pivotTable.rows[rowKey]
     var columnKeys = Object.keys(row.columns)
-    QUnit.assert.equal(rowKey == 'TIME-4' ? 3 : 1, columnKeys.length, 'columns ' + rowKey)
+    QUnit.assert.equal(rowKey === 'TIME-4' ? 3 : 1, columnKeys.length, 'columns ' + rowKey)
     QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 1, 'column entries')
   }
 })
@@ -572,7 +572,7 @@ QUnit.test('PivotTable.getOrCreate', function () {
   var keys = Object.keys(getOrCreateObject)
   QUnit.assert.equal(keys.length, 2, '#getOrCreateObject() :: length')
   for (var i in keys) {
-    QUnit.assert.ok(keys[i] == 'key1' || keys[i] == 'key2', "#getOrCreateObject() :: key check[ '" + keys[i] + "' ]")
+    QUnit.assert.ok(keys[i] === 'key1' || keys[i] === 'key2', "#getOrCreateObject() :: key check[ '" + keys[i] + "' ]")
   }
 })
 QUnit.test('DrawHelper', function () {

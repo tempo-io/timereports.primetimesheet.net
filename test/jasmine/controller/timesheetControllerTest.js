@@ -13,7 +13,7 @@ describe('timesheetControllerTest', function () {
           compare: function (actual, expected) {
             var rowsCount = Object.keys(actual.rows).length
             return JasmineMatcherUtils.getMatcherResult(
-              rowsCount == expected,
+              rowsCount === expected,
               'PivotTable must have ' + expected + ' rows, but has ' + rowsCount,
               "PivotTable mustn't have " + expected + ' rows, but has ' + rowsCount)
           }
@@ -24,7 +24,7 @@ describe('timesheetControllerTest', function () {
           compare: function (actual, expected) {
             var rowsCount = Object.keys(actual.totals).length
             return JasmineMatcherUtils.getMatcherResult(
-              rowsCount == expected,
+              rowsCount === expected,
               'PivotTable must have ' + expected + ' columns',
               "PivotTable mustn't have " + expected + ' columns')
           }
@@ -50,7 +50,7 @@ describe('timesheetControllerTest', function () {
   var checkOptions = function (scope) {
     expect(scope.groupByOptions).not.toBeNull()
     expect(scope.groupByOptions).toBeInstanceOf(TimesheetSelectOptions)
-    expect(scope.groupByOptions.options.length).toBe(scope.pivotTableType == 'TimeTracking' ? 38 : scope.pivotTableType == 'IssueWorkedTimeByUser' ? 45 : 44)
+    expect(scope.groupByOptions.options.length).toBe(scope.pivotTableType === 'TimeTracking' ? 38 : scope.pivotTableType === 'IssueWorkedTimeByUser' ? 45 : 44)
     expect(scope.groupByOptions.options).toContainInProperty('Security Level', 'label')
     expect(scope.groupByOptions.options).toContainInProperty('resolution', 'id')
     expect(scope.filterByOptions).not.toBeNull()
@@ -1178,7 +1178,7 @@ describe('timesheetControllerTest', function () {
 
     // clean reduntant issues to simulate no issues provided
     pivottableService.allIssues = pivottableService.allIssues.filter(function (issue) {
-      return issue.key != 'TIME-5' && issue.key != 'TIME-6'
+      return issue.key !== 'TIME-5' && issue.key !== 'TIME-6'
     })
     scope.dialogCloseFunction(data)
     $timeout.flush()
