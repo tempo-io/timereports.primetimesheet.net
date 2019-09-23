@@ -133,6 +133,7 @@
     "Summary ": "Sommaire",
     "for all users": "pour tous les utilisateurs",
     "for groups": "pour les groupes",
+    "exclude groups": "exclure des groupes",
     "for user": "pour l'utilisateur",
     "for": "pour",
     "project ": "projet ",
@@ -194,6 +195,7 @@
     "param.filterOrProjectId.filter" : "Filtre: %s",
     "param.childrenFilterId" : "Filtre des tâches: %s",
     "param.group" : "Groupe: %s",
+    "param.excludeGroup" : "Exclure des groupe: %s",
     "param.jql": "JQL: %s",
     "param.numOfWeeks": "Tout le temps",
 

@@ -134,6 +134,7 @@
     "Summary ": "Итоги ",
     "for all users": "по всем пользователям",
     "for groups": "по группам",
+    "exclude groups": "исключить группы",
     "for user": "по пользователю",
     "for": "по",
     "project ": "проект ",
@@ -195,6 +196,7 @@
     "param.filterOrProjectId.filter" : "Фильтр: %s",
     "param.childrenFilterId" : "Фильтр по подзадачам: %s",
     "param.group" : "Группа: %s",
+    "param.excludeGroup" : "Исключить группу: %s",
     "param.jql": "JQL: %s",
     "param.numOfWeeks": "Все время",
 
