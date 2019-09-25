@@ -56,7 +56,7 @@
                                 ng-if="'TimeEntry' != pivotTableType && subscribe && !isGadget && loggedInUser.emailAddress" ng-style="{'font-weight': currentView.jobId ? 'bold' : 'normal'}"></i>
                        </span>
                     </th>
-                    <th class="colHeaderLink moreFields" ng-repeat="field in pivotTable.moreFields">
+                    <th class="colHeaderLink moreFields" ng-repeat="field in pivotTable.moreFields track by $index">
                         <span ng-bind="moreFieldsOptions.findOption(field).label"></span>
                     </th>
                     <th class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey">
@@ -99,7 +99,7 @@
                         &nbsp;
                         <span ng-if="row.rowKey._issue">{{row.num != 1 ? 'issues' : 'issue' | i18n:{placeholders:[row.num]} }}</span>
                     </td>
-                    <td class="nav first" ng-repeat="field in row.moreFields">
+                    <td class="nav first" ng-repeat="field in row.moreFields track by $index">
                         <issue-field name="field" field="row.rowKey._issue.fields[field] || row.rowKey.issue.fields[field] || row.rowKey.field.fields[field]"
                                      issue="row.rowKey._issue || row.rowKey.issue || row.rowKey.field" jira-config="jiraConfig"
                                      ng-if="row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue'" all-fields="allFields" />
@@ -166,7 +166,7 @@
                             <issue-priority issue="data.rowKey._issue" />
                         </span>
                     </td>
-                    <td class="nav" width="1%" ng-repeat="field in pivotTable.moreFields">
+                    <td class="nav" width="1%" ng-repeat="field in pivotTable.moreFields track by $index">
                         <issue-field name="field" field="data.rowKey._issue.fields[field]" issue="data.rowKey._issue" jira-config="jiraConfig" ng-if="data.rowKey._issue" once="pivotTable" all-fields="allFields"/>
                     </td>
                     <td class="nav border" ng-repeat="column in pivotTable.sortedColumns()">
@@ -182,7 +182,7 @@
                     <td colspan="{{rowKeySize}}" class="nav total">
                         {{'Total' | i18n}}&nbsp;{{pivotTable.num != 1 ? 'issues' : 'issue' | i18n:{placeholders:[pivotTable.num]} }}
                     </td>
-                    <td class="nav total" ng-repeat="field in pivotTable.moreFields">
+                    <td class="nav total" ng-repeat="field in pivotTable.moreFields track by $index">
                         <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">

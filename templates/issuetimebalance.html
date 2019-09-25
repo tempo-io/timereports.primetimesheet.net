@@ -14,9 +14,6 @@
                 <tr class="rowHeader">
                     <th class="colHeaderLink" width="100%">
                     </th>
-                    <th class="colHeaderLink moreFields" ng-repeat="field in pivotTable.moreFields">
-                        <span ng-bind="moreFieldsOptions.findOption(field).label"></span>
-                    </th>
                     <th class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey">
                     </th>
                     <th>
