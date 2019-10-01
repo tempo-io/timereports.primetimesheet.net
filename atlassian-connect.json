@@ -4,7 +4,7 @@
     "description": "Provides miscellaneous views for Jira time tracking data",
     "enableLicensing": true,
     "vendor": {
-        "name": "Andriy Zhdanov",
+        "name": "Prime Timesheet",
         "url": "https://www.primetimesheet.net/timereports"
     },
     "baseUrl": "https://timereports.github.io/",
