@@ -234,6 +234,9 @@
     <div class="aui-message aui-message warning" ng-show="loaded && !loading && restrictedProjects">
         <strong>{{'Data is limited by Auditors Roles' | i18n}}</strong>&nbsp;{{restrictedProjects}}
     </div>
+    <div class="aui-message aui-message warning" ng-show="loaded && !loading && restrictedGroups">
+        <strong>{{'Data is limited to Restricted Groups' | i18n}}</strong>&nbsp;{{restrictedGroups}}
+    </div>
     <div ng-if="!loaded">
         <br/>
         <button class="aui-button" ng-click="execute()" ng-disabled="loading" ng-class="{disabled: loading}">
