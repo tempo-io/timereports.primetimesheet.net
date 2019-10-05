@@ -383,7 +383,7 @@
             <input id="maxFractionDigits"
                     ng-model="maxFractionDigits.val"
                     min="0" max="20"
-                    ng-change="saveMaxFractionDigits()"
+                    ng-change="configForm.$valid && saveMaxFractionDigits()"
                     type="number" class="text"
                     ng-model-options='{ debounce: 1000 }'
                     title="{{'Maximum Fraction Digits' | i18n}}"/>
@@ -487,7 +487,7 @@
                    ng-model="inProgressIssuesJql.val"
                    jql
                    ng-model-options='{ debounce: 1000 }'
-                   ng-change="saveInProgressIssuesJql(configForm)">
+                   ng-change="configForm.inProgressIssuesJql.$valid && saveInProgressIssuesJql(configForm)">
             <div class="aui-message aui-message-success msg-overlay"
                  ng-show="inProgressIssuesJqlSaveSuccess">
                 <strong>{{'In Progress Issues jql' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
