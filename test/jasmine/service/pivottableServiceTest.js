@@ -205,14 +205,14 @@ describe('pivottableServiceTest', function () {
   it('loadAllWorklogs [worklog.total > worklog.maxResults]', inject(function ($timeout, pivottableService) {
     expect(pivottableService).toBeDefined()
 
-    var generateWorklogs = function (count) {
+    var generateWorklogs = function (count, startAt, worklogsNumber) {
       var worklog = {
-        maxResults: count,
-        startAt: 0,
-        total: count,
+        maxResults: Math.min(500, worklogsNumber),
+        startAt: startAt,
+        total: worklogsNumber,
         worklogs: []
       }
-      for (var i = 0; i < count; i++) {
+      for (var i = 0; i < Math.min(count, worklogsNumber - startAt); i++) {
         worklog.worklogs.push({
           comment: 'test comment ' + i,
           created: '2013-12-05T00:00:00.000+0100',
@@ -226,10 +226,13 @@ describe('pivottableServiceTest', function () {
       return worklog
     }
 
+    var worklogsNumber = 2222
     AP.request = function (options) {
       if (options.url.match(/issue\/TIME-999\/worklog/)) {
+        var a = options.url.split('startAt=')
+        var startAt = a.length > 1 ? parseInt(a[1]) : 0
         this.getTimeoutFunc()(function () {
-          options.success(generateWorklogs(22))
+          options.success(generateWorklogs(500, startAt, worklogsNumber))
         }, 500)
       } else {
         AP.requestBak(options)
@@ -240,7 +243,7 @@ describe('pivottableServiceTest', function () {
       key: 'TIME-999',
       fields: {
         worklog: {
-          total: 22,
+          total: worklogsNumber,
           maxResults: 20
         }
       }
@@ -253,9 +256,13 @@ describe('pivottableServiceTest', function () {
 
     $timeout.flush() // $q.when
     $timeout.flush() // AP.request
+    $timeout.flush() // AP.request
+    $timeout.flush() // AP.request
+    $timeout.flush() // AP.request
+    $timeout.flush() // AP.request
 
     expect(result).toBeDefined()
-    expect(result.fields.worklog.worklogs.length).toEqual(22)
+    expect(result.fields.worklog.worklogs.length).toEqual(2222)
   }))
 
   it('loadAllChangelogs [changelog.total > changelog.maxResults]', inject(function ($timeout, pivottableService) {
