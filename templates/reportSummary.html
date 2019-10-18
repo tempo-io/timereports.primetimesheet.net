@@ -1,0 +1,41 @@
+<div class="section-header" ng-if="!isGadget">
+    <div>
+        <div ng-init="showButtons=false" ng-mouseover="showButtons=!$form.$visible" ng-mouseleave="showButtons=false">
+            <div editable-text="currentView.name" e-required onshow="$parent.$form=$form" onhide="$parent.$form=undefined" onaftersave="viewNameChanged()">
+                <h5>{{currentView.name || (pivotTableType | i18n)}}</h5>
+                <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
+            </div>
+            <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
+            <a class="overlay-icon aui-icon aui-icon-small aui-iconfont-remove dangerous remove-view" ng-click="deleteView()" ng-show="showButtons && showDeleteButton"></a>
+        </div>
+    </div>
+    <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
+                                                     remove-action="removeMenuOption(option.key, option.labelParam)"
+                                                     option="option"/>
+    </div>
+    <validation-errors errors="errors"></validation-errors>
+</div>
+<div ng-if="isGadget">
+    <span ng-repeat="option in gadgetSummary">
+        <span ng-class="option.styleClass">{{option.text}}</span>
+    </span>
+    <a class="fa fa-external-link-square" title="{{'Open report page for other options and excel export' | i18n }}" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!{{reportParams}}" target="_parent"></a>
+    <span ng-if="issueKey">
+        <a href="#issueViewConf" class="fa fa-cog aui-dropdown2-trigger x-ng-click" x-ng-click=""
+           title="{{'Configure' | i18n }}" aria-owns="issueViewConf"
+           style="margin-left: 10px; padding-right: 0px !important"/>
+        <div id="issueViewConf" class="aui-style-default aui-dropdown2">
+            <ul class="aui-list-truncate">
+                <li>
+                    <a href="https://primetimesheet.atlassian.net/wiki/spaces/KB/pages/771096577/Predefined+Views+For+Time+Entry+Issue+Panel"
+                       target="_blank"
+                       class="fa fa-question-circle" style="color: #0052CC; margin-top: 5px"
+                       title="{{'Help' | i18n}}"/>
+                </li>
+                <li ng-repeat="view in issueTimeOptions.options" ng-if="view.id != issueTimeOptions.selected">
+                    <a style="color:#333" ng-click="issueTimeViewChanged(view.id)">{{view.label}}</a>
+                </li>
+            </ul>
+        </div>
+    </span>
+</div>

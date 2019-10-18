@@ -1,31 +1,10 @@
 <div class="results-wrap">
-    <div class="section-header" ng-hide="isGadget">
-        <div>
-            <div ng-init="showButtons=false" ng-mouseover="showButtons=!$form.$visible" ng-mouseleave="showButtons=false">
-                <div editable-text="currentView.name" e-required onshow="$parent.$form=$form" onhide="$parent.$form=undefined" onaftersave="viewNameChanged()">
-                    <h5>{{currentView.name || (pivotTableType | i18n)}}</h5>
-                    <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
-                </div>
-                <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
-                <a class="overlay-icon aui-icon aui-icon-small aui-iconfont-remove dangerous remove-view" ng-click="deleteView()" ng-show="showButtons && showDeleteButton"></a>
-            </div>
-        </div>
-        <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
-                         remove-action="removeMenuOption(option.key, option.labelParam)"
-                         option="option"/>
-        </div>
-        <validation-errors errors="errors"></validation-errors>
-    </div>
-    <div ng-show="isGadget">
-        <span ng-repeat="option in gadgetSummary">
-            <span ng-class="option.styleClass">{{option.text}}</span>
-        </span>
-        <a class="fa fa-external-link-square" title="{{'Open report page for other options and excel export' | i18n }}" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!{{reportParams}}" target="_parent"></a>
-    </div>
+
+    <ng-include src="templates.reportSummary"></ng-include>
 
     <aui-inline-dialog
             id="add-worklog"
-            template="'/templates/popups/addWorklog.html'"
+            template="templates.addWorklog"
             popup-data="addWorklogPopup"
             container="'.addWorklogPopup'"
             work-description-required="workDescriptionRequired"
