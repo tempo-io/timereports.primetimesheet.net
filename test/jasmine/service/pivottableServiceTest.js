@@ -207,7 +207,7 @@ describe('pivottableServiceTest', function () {
 
     var generateWorklogs = function (count, startAt, worklogsNumber) {
       var worklog = {
-        maxResults: Math.min(500, worklogsNumber),
+        maxResults: Math.min(1000, worklogsNumber),
         startAt: startAt,
         total: worklogsNumber,
         worklogs: []
@@ -232,7 +232,7 @@ describe('pivottableServiceTest', function () {
         var a = options.url.split('startAt=')
         var startAt = a.length > 1 ? parseInt(a[1]) : 0
         this.getTimeoutFunc()(function () {
-          options.success(generateWorklogs(500, startAt, worklogsNumber))
+          options.success(generateWorklogs(1000, startAt, worklogsNumber))
         }, 500)
       } else {
         AP.requestBak(options)
@@ -255,17 +255,6 @@ describe('pivottableServiceTest', function () {
     })
 
     $timeout.flush() // $q.when
-    $timeout.flush() // AP.request
-    $timeout.flush() // AP.request
-    $timeout.flush() // AP.request
-    $timeout.flush() // AP.request
-    $timeout.flush() // AP.request
-    $timeout.flush() // AP.request
-    $timeout.flush() // AP.request
-    $timeout.flush() // AP.request
-    $timeout.flush() // AP.request
-    $timeout.flush() // AP.request
-    $timeout.flush() // AP.request
     $timeout.flush() // AP.request
 
     expect(result).toBeDefined()
@@ -1100,11 +1089,11 @@ describe('pivottableServiceTest', function () {
       pivottableService.clearWorklogCache(config).then(function () {
         var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'))
         expect(cacheExpiry).toBeNull()
-        pivottableService.getIssueWorklog('TIME-999', 10999).then(function () {
+        pivottableService.getIssueWorklog('TIME-999', 10999, worklog.total).then(function () {
           var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'))
           expect(cacheExpiry).not.toBeNull()
           expect(Object.keys(cacheExpiry).length).toEqual(1)
-          pivottableService.getIssueWorklog('TIME-999', 10999).then(function () {
+          pivottableService.getIssueWorklog('TIME-999', 10999, worklog.total).then(function () {
           })
         })
       })
@@ -1136,7 +1125,7 @@ describe('pivottableServiceTest', function () {
         var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'))
         expect(cacheExpiry).not.toBeNull()
         expect(Object.keys(cacheExpiry).length).toEqual(0)
-        pivottableService.getIssueWorklog('TIME-999', 10999).then(function () {
+        pivottableService.getIssueWorklog('TIME-999', 10999, worklog.total).then(function () {
           var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'))
           expect(cacheExpiry).not.toBeNull()
           expect(Object.keys(cacheExpiry).length).toEqual(1)
@@ -1170,7 +1159,7 @@ describe('pivottableServiceTest', function () {
         var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'))
         expect(cacheExpiry).not.toBeNull()
         expect(Object.keys(cacheExpiry).length).toEqual(0)
-        pivottableService.getIssueWorklog('TIME-999', 10999).then(function () {
+        pivottableService.getIssueWorklog('TIME-999', 10999, worklog.total).then(function () {
           var cacheExpiry = TimesheetUtils.getJson(window.localStorage.getItem('cacheExpiry'))
           expect(cacheExpiry).not.toBeNull()
           expect(Object.keys(cacheExpiry).length).toEqual(1)
