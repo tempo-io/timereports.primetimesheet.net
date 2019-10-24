@@ -381,12 +381,13 @@
         <div class="field-group">
             <label for="maxFractionDigits">{{'Maximum Fraction Digits' | i18n}}</label>
             <input id="maxFractionDigits"
-                    ng-model="maxFractionDigits.val"
-                    min="0" max="20"
-                    ng-change="configForm.$valid && saveMaxFractionDigits()"
-                    type="number" class="text"
-                    ng-model-options='{ debounce: 1000 }'
-                    title="{{'Maximum Fraction Digits' | i18n}}"/>
+                   name="maxFractionDigits"
+                   ng-model="maxFractionDigits.val"
+                   min="0" max="20"
+                   ng-change="configForm.maxFractionDigits.$valid && saveMaxFractionDigits()"
+                   type="number" class="text"
+                   ng-model-options='{ debounce: 1000 }'
+                   title="{{'Maximum Fraction Digits' | i18n}}"/>
             <div class="aui-message aui-message-success msg-overlay"
                  ng-show="maxFractionDigitsSaveSuccess">
                 <strong>{{'Maximum Fraction Digits' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
