@@ -852,6 +852,7 @@ describe('pivottableServiceTest', function () {
 
     expect(pivottableService.worklogAuthors.length).toBe(1)
     expect(pivottableService.worklogAuthors[0]).toBe(loggedInUser.accountId)
+    expect(options.username).not.toBeDefined()
   }))
 
   it('PARAMETERS: restrictedGroups 1 author', inject(function ($timeout, $log, pivottableService) {
@@ -866,6 +867,7 @@ describe('pivottableServiceTest', function () {
 
     expect(pivottableService.worklogAuthors.length).toBe(1)
     expect(pivottableService.worklogAuthors[0]).toBe(loggedInUser.accountId)
+    expect(options.username).not.toBeDefined()
   }))
 
   it('PARAMETERS: restrictedGroups and groups 1 author', inject(function ($timeout, $log, pivottableService) {
@@ -881,6 +883,22 @@ describe('pivottableServiceTest', function () {
 
     expect(pivottableService.worklogAuthors.length).toBe(1)
     expect(pivottableService.worklogAuthors[0]).toBe(loggedInUser.accountId)
+    expect(options.username).not.toBeDefined()
+  }))
+
+  it('PARAMETERS: restrictedGroups and groups own timesheet', inject(function ($timeout, $log, pivottableService) {
+    expect(pivottableService).toBeDefined()
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] } }
+    var options = { pivotTableType: 'IssueWorkedTimeByUser',
+      groups: ['group1'],
+      configOptions: { restrictedGroups: ['group3'] } }
+
+    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
+
+    $timeout.flush()
+
+    expect(pivottableService.worklogAuthors.length).toBe(0)
+    expect(options.username).toBe('aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa')
   }))
 
   it('PARAMETERS: restrictedGroups and groups 0 authors', inject(function ($timeout, $log, pivottableService) {
@@ -895,6 +913,7 @@ describe('pivottableServiceTest', function () {
     $timeout.flush()
 
     expect(pivottableService.worklogAuthors.length).toBe(0)
+    expect(options.username).toBe('noSuchUser')
   }))
 
   it('PARAMETERS: restrictedGroups 0 authors', inject(function ($timeout, $log, pivottableService) {
@@ -908,6 +927,37 @@ describe('pivottableServiceTest', function () {
     $timeout.flush()
 
     expect(pivottableService.worklogAuthors.length).toBe(0)
+    expect(options.username).toBe('aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa')
+  }))
+
+  it('PARAMETERS: restrictedGroups other user denied', inject(function ($timeout, $log, pivottableService) {
+    expect(pivottableService).toBeDefined()
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] } }
+    var options = { pivotTableType: 'Timesheet',
+      username: 'bbbb',
+      configOptions: { restrictedGroups: ['group3'] } }
+
+    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
+
+    $timeout.flush()
+
+    expect(pivottableService.worklogAuthors.length).toBe(0)
+    expect(options.username).toBe('noSuchUser')
+  }))
+
+  it('PARAMETERS: restrictedGroups other user allowed', inject(function ($timeout, $log, pivottableService) {
+    expect(pivottableService).toBeDefined()
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] } }
+    var options = { pivotTableType: 'Timesheet',
+      username: 'bbbb',
+      configOptions: { restrictedGroups: ['group1'] } }
+
+    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
+
+    $timeout.flush()
+
+    expect(pivottableService.worklogAuthors.length).toBe(0)
+    expect(options.username).toBe('bbbb')
   }))
 
   it('JQL for Date Fields for TimeBalance ["resolved"]', inject(function ($timeout, $log, pivottableService) {
