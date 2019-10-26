@@ -488,7 +488,7 @@
                    ng-model="inProgressIssuesJql.val"
                    jql
                    ng-model-options='{ debounce: 1000 }'
-                   ng-change="configForm.inProgressIssuesJql.$valid && saveInProgressIssuesJql(configForm)">
+                   ng-change="configForm.inProgressIssuesJql.$valid && saveInProgressIssuesJql()">
             <div class="aui-message aui-message-success msg-overlay"
                  ng-show="inProgressIssuesJqlSaveSuccess">
                 <strong>{{'In Progress Issues jql' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}

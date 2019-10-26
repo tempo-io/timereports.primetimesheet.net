@@ -72,10 +72,12 @@
         <div class="field-group">
             <label for="maxFractionDigits">{{'Maximum Fraction Digits' | i18n}}</label>
             <input id="maxFractionDigits"
+                   name="maxFractionDigits"
                    ng-model="maxFractionDigits.val"
                    min="0" max="20"
-                   ng-change="saveMaxFractionDigits()"
+                   ng-change="configForm.maxFractionDigits.$valid && saveMaxFractionDigits()"
                    type="number" class="text"
+                   ng-model-options='{ debounce: 1000 }'
                    title="{{'Maximum Fraction Digits' | i18n}}"
                    placeholder="{{defaults.maxFractionDigits.default}}"/>
             <div class="aui-message aui-message-success msg-overlay"
@@ -198,7 +200,7 @@
                    jql
                    ng-model-options='{ debounce: 1000 }'
                    inProgressIssuesJql
-                   ng-change="saveInProgressIssuesJql(configForm)"
+                   ng-change="configForm.inProgressIssuesJql.$valid && saveInProgressIssuesJql()"
                    placeholder="{{defaults.inProgressIssuesJql.default}}">
             <div class="aui-message aui-message-success msg-overlay"
                  ng-show="inProgressIssuesJqlSaveSuccess">
