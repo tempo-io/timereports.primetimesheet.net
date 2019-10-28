@@ -119,7 +119,7 @@
                         <span ng-if="data.worklog._issue">
                             <issue-key issue="data.worklog._issue" show-title="true" />
                         </span>
-                        <span ng-if="'TimeEntry' == pivotTableType && !cannotEditOwnWorklogIssue[data.rowKey.issue.key]"
+                        <span ng-if="'TimeEntry' == pivotTableType && data.worklog.workDate >= allowToLogFromDate && !cannotEditOwnWorklogIssue[data.rowKey.issue.key]"
                               e-style="width: 100%"
                               editable-text="data.worklog.comment"
                               onshow="$parent.$form=$form"
@@ -128,7 +128,7 @@
                             <worklog-comment worklog="data.worklog" no-comment="'< No comment >' | i18n"/>
                             <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
                         </span>
-                        <span ng-if="'TimeEntry' == pivotTableType && cannotEditOwnWorklogIssue[data.rowKey.issue.key]">
+                        <span ng-if="'TimeEntry' == pivotTableType && (data.worklog.workDate < allowToLogFromDate || cannotEditOwnWorklogIssue[data.rowKey.issue.key])">
                             <worklog-comment worklog="data.worklog"/>
                         </span>
                         <a ng-if="['TimeBalance', 'Timespent'].indexOf(pivotTableType) >= 0 && data.worklog.author.accountId" ng-title="{{data.worklog.author.displayName}}"

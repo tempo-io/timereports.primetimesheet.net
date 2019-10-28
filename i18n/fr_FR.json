@@ -175,6 +175,8 @@
     "Edit Worklog": "Éditer le Journal de travail",
     "Delete Worklog": "Supprimer le Journal de travail",
     "Today": "Aujourd'hui",
+    "This Week": "This Week",
+    "This Month": "This Month",
     "Total" : "Total",
     "issues" : "(%s tâches)",
     "issue" : "(1 tâche)",
@@ -195,7 +197,7 @@
     "param.filterOrProjectId.filter" : "Filtre: %s",
     "param.childrenFilterId" : "Filtre des tâches: %s",
     "param.group" : "Groupe: %s",
-    "param.excludeGroup" : "Exclure des groupe: %s",
+    "param.excludeGroup" : "Exclure le groupe: %s",
     "param.jql": "JQL: %s",
     "param.numOfWeeks": "Tout le temps",
 
@@ -315,6 +317,9 @@
     "description.Show Details Number": "Compter les détails et afficher leur nombre à côté de la valeur principale, par exemple pour voir le nombre de fois que le problème a été rouvert dans le rapport du Temps en statut.",
     "Show Category Row": "Afficher les catégories",
     "description.Show Category Row": "Afficher la ligne supplémentaire avec les totaux de catégorie.",
+    "Log Work Retrospectively": "Enregistrer le travail de manière rétrospective",
+    "description.Log Work Retrospectively": "Autoriser à enregistrer / modifier / supprimer des travaux dans le délai spécifié dans le passé uniquement.",
+    "earlier than Log Work Retrospectively": "La date calculée de démarrage est enregistrée avant d'enregistrement du travail configuré de manière rétrospective.",
 
     "Data is limited by Auditors Roles": " En raison des rôles d'auditeur configurés, les données sont limitées à leurs propres journaux de travail pour les projet(s) suivant(s): ",
     "Data is limited to Restricted Groups": "En raison des groupes restreints configurés, les données sont limitées aux journaux de travail des utilisateurs des groupe(s) suivant(s): ",

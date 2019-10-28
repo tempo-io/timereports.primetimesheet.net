@@ -64,11 +64,12 @@
                                 {{column.sum | prettyHours:jiraConfig}}
                             </p>
                             <p ng-if="!column.sum"
+                               style="cursor:default"
                                ng-init="p_show=false"
-                               ng-mouseover="p_show=canLogWork || canLogWorkForUser"
+                               ng-mouseover="p_show=currentDay >= allowToLogFromDate && (canLogWork || canLogWorkForUser)"
                                ng-mouseleave="p_show=false"
-                               ng-click="(canLogWork || canLogWorkForUser) && addWorklogDialog(null, null, currentDay)"
-                               ng-class="{addWorklogPopup: canLogWork || canLogWorkForUser}">
+                               ng-click="(currentDay >= allowToLogFromDate && (canLogWork || canLogWorkForUser)) && addWorklogDialog(null, null, currentDay)"
+                               ng-class="{addWorklogPopup: currentDay >= allowToLogFromDate && (canLogWork || canLogWorkForUser)}">
                                 <span ng-click="" ng-show="p_show" class="fa fa-plus"
                                       title="Log Work against this day"></span>&nbsp;
                             </p>

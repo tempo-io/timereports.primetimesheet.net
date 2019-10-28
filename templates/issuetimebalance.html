@@ -50,8 +50,10 @@
                     <td nowrap class="nav border">
                         <div ng-if="data.worklog.id">
                             <old-worklog worklog="data.worklog" edit-work="editWorklog" delete-work="deleteWorklog"
-                                     cannot-edit="!canEditAllWorklog || cannotEditAllWorklogIssue[issueKey]"
-                                     cannot-delete="!canDeleteAllWorklog || cannotDeleteAllWorklogIssue[issueKey]"
+                                     cannot-edit="data.worklog.started < allowToLogFromDate ||
+                                         (data.worklog.ownWorklog ? cannotEditOwnWorklogIssue[issueKey] : cannotEditAllWorklogIssue[issueKey])"
+                                     cannot-delete="data.worklog.started < allowToLogFromDate ||
+                                         (data.worklog.ownWorklog ? cannotDeleteOwnWorklogIssue[issueKey] : cannotDeleteAllWorklogIssue[issueKey])"
                                      ng-init="data.worklog.issueKey = issueKey"/>
                         </div>
                     </td>

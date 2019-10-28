@@ -102,7 +102,9 @@ describe('timesheetControllerTest', function () {
         workUnderLimitColor: {},
         workOverLimitColor: {},
         showDetailsCount: {},
-        showCategoryRow: {}
+        showCategoryRow: {},
+        logWorkRetrospectively: {},
+        allowToLogFromDate: {}
       }
     })
     inject(function ($timeout, $window, _$httpBackend_, applicationLoggingService, $rootScope) {

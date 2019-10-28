@@ -23,15 +23,15 @@
                 <div class="nav">
                     <span ng-if="data.worklog.id">
                         <old-worklog worklog="data.worklog" edit-work="editWorklog" delete-work="deleteWorklog"
-                                       cannot-edit="cannotEditOwnWorklogIssue[issueKey]"
-                                       cannot-delete="cannotDeleteOwnWorklogIssue[issueKey]"
+                                       cannot-edit="data.worklog.workDate < allowToLogFromDate || cannotEditOwnWorklogIssue[issueKey]"
+                                       cannot-delete="data.worklog.workDate < allowToLogFromDate || cannotDeleteOwnWorklogIssue[issueKey]"
                                        ng-init="data.worklog.issueKey = issueKey"/>
                     </span>
                     <span ng-if="!data.worklog.id">
                         <new-worklog worklog="data.worklog" log-work="startWork" entry="data" remove-cached-worklog = "removeCachedWorklog" />
                     </span>
                     &nbsp;
-                    <span ng-if="!cannotEditOwnWorklogIssue[issueKey]"
+                    <span ng-if="data.worklog.workDate >= allowToLogFromDate && !cannotEditOwnWorklogIssue[issueKey]"
                           e-style="width: 100%"
                           editable-text="data.worklog.comment"
                           onshow="$parent.$form=$form"
@@ -40,7 +40,7 @@
                         <worklog-comment worklog="data.worklog" no-comment="'< No comment >' | i18n"/>
                         <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
                     </span>
-                    <span ng-if="cannotEditOwnWorklogIssue[issueKey]">
+                    <span ng-if="data.worklog.workDate < allowToLogFromDate || cannotEditOwnWorklogIssue[issueKey]">
                         <worklog-comment worklog="data.worklog"/>
                     </span>
                 </div>

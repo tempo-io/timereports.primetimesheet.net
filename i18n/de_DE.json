@@ -175,6 +175,8 @@
     "Edit Worklog": "Arbeitsprotokoll bearbeiten",
     "Delete Worklog": "Arbeitsprotokoll löschen",
     "Today": "Heute",
+    "This Week": "Diese Woche",
+    "This Month": "Dieser Monat",
     "Total" : "Insgesamt",
     "issues" : "(%s Vorgänge)",
     "issue" : "(1 Vorgang)",
@@ -316,6 +318,9 @@
     "description.Show Details Number": "Details zählen und ihre Zahl neben dem Hauptwert anzeigen, z. B. um zu sehen, wie oft der Vorgang im Bericht Zeit im Status erneut geöffnet wurde.",
     "Show Category Row": "Kategoriezeile anzeigen",
     "description.Show Category Row": "Zusätzliche Zeile mit Kategorie-Gesamtsummen anzeigen.",
+    "Log Work Retrospectively": "Retrospektive Arbeitsprotokollierung",
+    "description.Log Work Retrospectively": "Das Protokollieren/Bearbeiten/Löschen der Arbeit nur innerhalb der bestimmten Zeit in der Vergangenheit erlauben.",
+    "earlier than Log Work Retrospectively": "Das berechnete Anfangsdatum liegt vor der Konfiguration Retrospektive Arbeitsprotokollierung.",
 
     "Data is limited by Auditors Roles": "Aufgrund der konfigurierten Auditorenrollen sind die Daten auf eigene Arbeitsprotokolle für die folgenden Projekte beschränkt:",
     "Data is limited to Restricted Groups": "Aufgrund der konfigurierten eingeschränkten Gruppen sind die Daten auf Arbeitsprotokolle von Benutzern aus den folgenden Gruppen beschränkt:",

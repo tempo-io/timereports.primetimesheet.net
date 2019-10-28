@@ -175,6 +175,8 @@
     "Edit Worklog": "Edit Worklog",
     "Delete Worklog": "Delete Worklog",
     "Today": "Today",
+    "This Week": "This Week",
+    "This Month": "This Month",
     "Total" : "Total",
     "issues" : "(%s issues)",
     "issue" : "(1 issue)",
@@ -316,6 +318,9 @@
     "description.Show Details Number": "Count details and show its number next to main value, e.g. to see number of times issue was reopened in Time In Status report.",
     "Show Category Row": "Show Category Row",
     "description.Show Category Row": "Show additional row with Category totals.",
+    "Log Work Retrospectively": "Log Work Retrospectively",
+    "description.Log Work Retrospectively": "Allow to Log/Edit/Delete Work within the specified time in the past only.",
+    "earlier than Log Work Retrospectively": "Calculated Date Started is earlier than Log Work Retrospectively configured.",
 
     "Data is limited by Auditors Roles": "Because of the Auditors Roles configured, data is limited to own worklogs for the following project(s):",
     "Data is limited to Restricted Groups": "Because of the Restricted Groups configured, data is limited to worklogs of users from the following group(s):",

@@ -17,25 +17,27 @@
             <span class="fa fa-pencil-square-o"
                   ng-click="popupData.openEditWorklogDialog(wkLog.id, wkLog._issue);closePopup();"
                   title="{{'Edit worklog' | i18n}}"
+                  ng-if="!wkLog.locked"
                   ng-show="wkLog.ownWorklog ? popupData.canEditOwnWorklog && !popupData.cannotEditOwnWorklogIssue[popupData.rowKey.keyValue] :
                   popupData.canEditAllWorklog && !popupData.cannotEditAllWorklogIssue[popupData.rowKey.keyValue]">
             </span>
             <span class="fa fa-trash-o" style="color: red"
                   ng-click="popupData.openDeleteWorklogDialog(wkLog.id, wkLog._issue);closePopup();"
                   title="{{'Delete worklog' | i18n}}"
+                  ng-if="!wkLog.locked"
                   ng-show="wkLog.ownWorklog ? popupData.canDeleteOwnWorklog && !popupData.cannotDeleteOwnWorklogIssue[popupData.rowKey.keyValue] :
                   popupData.canDeleteAllWorklog && !popupData.cannotDeleteAllWorklogIssue[popupData.rowKey.keyValue]">
             </span>
         </td>
     </tr>
-    <tr ng-if="popupData.worklog.issueKey && popupData.canLogWork && !popupData.cannotLogWorkIssue[popupData.rowKey.keyValue]">
+    <tr ng-if="!popupData.worklog.locked && popupData.worklog.issueKey && popupData.canLogWork && !popupData.cannotLogWorkIssue[popupData.rowKey.keyValue]">
         <td colspan="{{popupData.colspan}}" style="border-top: 1px solid black;">
             <ng-include src="'/templates/popups/addWorklog.html'"></ng-include>
         </td>
     </tr>
     <tr ng-show="popupData.pivotTableType == 'Calendar'">
         <td>
-            <button ng-if="popupData.canLogWork || popupData.canLogWorkForUser"
+            <button ng-if="!popupData.locked && popupData.canLogWork || popupData.canLogWorkForUser"
                     class="aui-button aui-button-link"
                     ng-click="popupData.addWorklogDialog(null, null, popupData.currentDay)"
                     title="Log Work against this day">
