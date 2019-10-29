@@ -119,7 +119,7 @@
                         style="cursor:default;color: {{column.color}}"
                         title="{{column.title}}"
                         ng-repeat="column in row.columns">
-                        {{column.sum | prettyHours:jiraConfig}}
+                        <span style="cursor:pointer">{{column.sum | prettyHours:jiraConfig}}</span>
                         <span ng-show="p_show" class="fa fa-plus" style="cursor:pointer" title="{{'Log Work against an issue' | i18n}}"></span>
                     </td>
                     <td style="color: {{row.color}}" title="{{row.title}}" class="nav border total">
@@ -169,7 +169,7 @@
                         style="cursor:default"
                         class="nav border"
                         ng-repeat="column in pivotTable.sortedColumns()">
-                        <span ng-if="data.columnKey.keyValue == column.columnKey.keyValue">
+                        <span style="cursor:pointer" ng-if="data.columnKey.keyValue == column.columnKey.keyValue">
                             {{data.value | prettyHours:jiraConfig}}
                         </span>
                         <span ng-show="p_show" class="fa fa-plus" style="cursor:pointer" title="{{'Log Work against an issue' | i18n}}"></span>
