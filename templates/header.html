@@ -32,6 +32,7 @@
                             <li><a ng-click="example({allUsers: true, groupByField: 'workeduser', loaded: true})" title="{{'Timesheet Report by All Users' | i18n}}">{{'Timesheet by Users' | i18n}}</a></li>
                             <li ng-if="epicNameField"><a ng-click="example({pivotTableType: 'Timespent', categorizeByField: 'epicNameField.id', groupByField: 'workeduser', filterOrProjectId: 'jql_0', includeEmpty: true, moreFields: 'timeestimate', loaded: true})" title="{{'Timespent Report grouped by Epic Name for Active sprints issues' | i18n}}">{{'Active Sprints Workload' | i18n}}</a></li>
                             <li><a ng-click="example({pivotTableType: 'TimeTracking', filterOrProjectId: projectKey ? 'project_' + projectKey : 'jql_8', loaded: true})" title="{{'TimeTracking Report for ' + (projectKey ? 'project' : 'Recently Updated issues') | i18n}}">{{'Project Progress' | i18n}}</a></li>
+                            <li><a ng-click="example({pivotTableType: 'IssuePassedTimeByStatus', loaded: true})" title="{{'IssuePassedTimeByStatus' | i18n}}">{{'IssuePassedTimeByStatus' | i18n}}</a></li>
                         </ul>
                     </div>
                 </div>
