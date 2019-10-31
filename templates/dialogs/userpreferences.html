@@ -214,12 +214,14 @@
             <span class="description">{{'description.In Progress Issues jql' | i18n}}</span>
         </div>
         <div class="field-group">
-            <label for="showDetailsCount">{{'Show Details Number' | i18n}}</label>
-            <input id="showDetailsCount"
-                   type="checkbox"
-                   class="checkbox"
-                   ng-model="showDetailsCount.val"
-                   ng-change="saveShowDetailsCount()">
+            <label for="select2-showDetailsCount">{{'Show Details Number' | i18n}}</label>
+            <select id="select2-showDetailsCount"
+                    class="select"
+                    title="{{'Show Details Number' | i18n}}"
+                    ng-model="showDetailsCount.val"
+                    ng-change="saveShowDetailsCount()"
+                    ng-options="item.id as item.label for item in showDetailsCountTypes">
+            </select>
             <div class="aui-message aui-message-success msg-overlay" ng-show="showDetailsCountSaveSuccess">
                 <strong>{{'Show Details Number' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
@@ -228,12 +230,14 @@
             <span class="description">{{'description.Show Details Number' | i18n}}</span>
         </div>
         <div class="field-group">
-            <label for="showCategoryRow">{{'Show Category Row' | i18n}}</label>
-            <input id="showCategoryRow"
-                   type="checkbox"
-                   class="checkbox"
-                   ng-model="showCategoryRow.val"
-                   ng-change="saveShowCategoryRow()">
+            <label for="select2-showCategoryRow">{{'Show Category Row' | i18n}}</label>
+            <select id="select2-showCategoryRow"
+                    class="select"
+                    title="{{'Show Category Row' | i18n}}"
+                    ng-model="showCategoryRow.val"
+                    ng-change="saveShowCategoryRow()"
+                    ng-options="item.id as item.label for item in showCategoryRowTypes">
+            </select>
             <div class="aui-message aui-message-success msg-overlay" ng-show="showCategoryRowSaveSuccess">
                 <strong>{{'Show Category Row' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
