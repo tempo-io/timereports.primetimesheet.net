@@ -65,7 +65,7 @@
                                 {{'Groups' | i18n}}
                             </div>
                             <ul class="aui-list-truncate">
-                                <li ng-repeat="group in groups.items"><a ng-click="worklog.visibilityGroup = group.name" ng-bind="group.name" class="aui-button-primary"></a></li>
+                                <li ng-repeat="group in groups.items"><a ng-click="worklog.visibilityRole = null; worklog.visibilityGroup = group.name" ng-bind="group.name" class="aui-button-primary"></a></li>
                             </ul>
                         </div>
                         <div class="aui-dropdown2-section">
@@ -73,7 +73,7 @@
                                 {{'Project Roles' | i18n}}
                             </div>
                             <ul class="aui-list-truncate">
-                                <li ng-repeat="(role, uri) in roles"><a ng-click="worklog.visibilityRole = role" ng-bind="role" class="aui-button-primary"></a></li>
+                                <li ng-repeat="(role, uri) in roles"><a ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = role" ng-bind="role" class="aui-button-primary"></a></li>
                             </ul>
                         </div>
                     </div>
