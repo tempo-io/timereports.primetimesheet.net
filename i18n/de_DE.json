@@ -323,6 +323,8 @@
     "Log Work Retrospectively": "Retrospektive Arbeitsprotokollierung",
     "description.Log Work Retrospectively": "Das Protokollieren/Bearbeiten/Löschen der Arbeit nur innerhalb der bestimmten Zeit in der Vergangenheit erlauben.",
     "earlier than Log Work Retrospectively": "Das berechnete Anfangsdatum liegt vor der Konfiguration Retrospektive Arbeitsprotokollierung.",
+    "Restrict Working Hours Per Day": "Restrict Working Hours Per Day",
+    "description.Restrict Working Hours Per Day": "Do not allow to Log more hours per day than Working Hours Per Day configured in Jira Time Tracking settings",
 
     "Data is limited by Auditors Roles": "Aufgrund der konfigurierten Auditorenrollen sind die Daten auf eigene Arbeitsprotokolle für die folgenden Projekte beschränkt:",
     "Data is limited to Restricted Groups": "Aufgrund der konfigurierten eingeschränkten Gruppen sind die Daten auf Arbeitsprotokolle von Benutzern aus den folgenden Gruppen beschränkt:",

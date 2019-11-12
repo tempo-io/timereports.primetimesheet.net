@@ -18,9 +18,15 @@
                        ng-model="worklog.timeSpent"
                        required
                        timespent
+                       work-per-day="{started: calculateWorklogDate(true), configOptions: configOptions, user: worklog.user || loggedInUser}"
+                       ng-model-options="{ debounce: 100 }"
                        focus-if="worklog.issueKey"
                        title="{{'eg. 4h 30m' + dialogType == 'add' ? ', or 1d 2h for two entries of 8h and 2h per day' : ''}}"/>
-                <longer-one-day-warning>&gt;1d!</longer-one-day-warning>
+                <td><longer-one-day-warning ng-if="logWorkForm.$valid">&gt;1d!</longer-one-day-warning>
+                    <span ng-show="logWorkForm.timeSpent.$error.workPerDayError" role="alert" class="red">
+                        {{logWorkForm.timeSpent.$error.workPerDayError}}
+                    </span>
+                </td>
                 <span ng-if="worklog.issueKey">&nbsp;{{'Logged' | i18n}}&nbsp;{{timespentPretty}}</span>
             </div>
             <div ng-if="showMore" class="field-group test-datepicker">

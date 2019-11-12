@@ -166,6 +166,21 @@
             <span class="description">{{'description.Disable Log Work' | i18n}}</span>
         </div>
         <div class="field-group">
+            <label for="restrictWorkPerDay">{{'Restrict Working Hours Per Day' | i18n}}</label>
+            <input id="restrictWorkPerDay"
+                   type="checkbox"
+                   class="checkbox"
+                   ng-model="restrictWorkPerDay.val"
+                   ng-change="saveRestrictWorkPerDay()">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="restrictWorkPerDaySaveSuccess">
+                <strong>{{'Restrict Working Hours Per Day' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Restrict Working Hours Per Day' | i18n}}</span>
+        </div>
+        <div class="field-group">
             <label for="select2-logWorkRetrospectively">{{'Log Work Retrospectively' | i18n}}</label>
             <select id="select2-logWorkRetrospectively"
                     class="select"
