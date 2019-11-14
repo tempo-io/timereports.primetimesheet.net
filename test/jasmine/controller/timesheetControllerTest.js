@@ -115,6 +115,7 @@ describe('timesheetControllerTest', function () {
       $window.i18nDefault = 'i18n/default.json'
       $httpBackend.whenGET($window.i18nDefault).respond(200, translations)
       $httpBackend.whenGET(/^\/api\/worklog/).respond(200, TimeData.issues)
+      $httpBackend.whenGET(/^\/canLogWork\?accountId=noSuchUser/).respond(200, true)
       applicationLoggingService.debug = function () {}
       $rootScope.license = 'active'
     })
@@ -360,7 +361,7 @@ describe('timesheetControllerTest', function () {
     expect(scope.loading).toBeFalsy()
     expect(scope.pivotTable).not.toBeNull()
 
-    expect(scope.canLogWorkForUser).toBe(false)
+    expect(scope.canLogWorkForUser).toBeUndefined()
   }))
 
   it('PARAMETERS: startDate', inject(function ($controller, pivottableService, $route, $location, $sce, $rootScope, $q, $timeout) {
