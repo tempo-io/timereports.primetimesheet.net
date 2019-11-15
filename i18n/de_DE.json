@@ -112,7 +112,7 @@
     "Resolution": "Lösung",
     "Work Description": "Arbeitsbeschreibung",
 
-    "Download worklog": "Arbeitsprotokoll herunterladen",
+    "Download": "Herunterladen",
     "Send report by email": "Senden Bericht per E-Mail",
     "From": "Von",
     "To": "Bis",
@@ -137,6 +137,7 @@
     "for groups": "für Gruppen",
     "exclude groups": "Gruppen ausschließen",
     "for user": "für Benutzer",
+    "and": "und",
     "for": "für",
     "project ": "Projekt ",
     "all projects": "alle Projekte",
@@ -325,6 +326,8 @@
     "earlier than Log Work Retrospectively": "Das berechnete Anfangsdatum liegt vor der Konfiguration Retrospektive Arbeitsprotokollierung.",
     "Restrict Working Hours Per Day": "Restrict Working Hours Per Day",
     "description.Restrict Working Hours Per Day": "Do not allow to Log more hours per day than Working Hours Per Day configured in Jira Time Tracking settings",
+    "Work logged successfully": "Work logged successfully",
+    "description.Work logged successfully": "Work entry was added successfully to the issue, but issue does not match report criteria, thus not displayed",
 
     "Data is limited by Auditors Roles": "Aufgrund der konfigurierten Auditorenrollen sind die Daten auf eigene Arbeitsprotokolle für die folgenden Projekte beschränkt:",
     "Data is limited to Restricted Groups": "Aufgrund der konfigurierten eingeschränkten Gruppen sind die Daten auf Arbeitsprotokolle von Benutzern aus den folgenden Gruppen beschränkt:",
