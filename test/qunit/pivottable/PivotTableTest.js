@@ -788,16 +788,24 @@ QUnit.test('stob', function () {
 QUnit.test('clone', function () {
   function Class (value) {
     this.value = value
-  };
+  }
   Class.prototype.getValue = function () {
     return this.value
   }
   Class.prototype.setValue = function (value) {
     this.value = value
   }
+
   var a = new Class(new Date('2020-12-20'))
+  a.cycle = a
+  a.empty = {}
+  a.deep = { empty: {}, cycle: a }
+
   var b = TimesheetUtils.clone(a)
   QUnit.assert.equal(b.getValue().getTime(), new Date('2020-12-20').getTime(), 'initial value')
   b.setValue('b')
   QUnit.assert.equal(b.getValue(), 'b', 'b')
+  QUnit.assert.equal(b.cycle, b, 'cycle')
+  QUnit.assert.notEqual(b.empty, b.deep.empty, 'similar object')
+  QUnit.assert.equal(b.deep.cycle, b, 'deep cycle')
 })
