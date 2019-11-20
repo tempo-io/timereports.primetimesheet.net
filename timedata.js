@@ -2663,8 +2663,11 @@ var TimeStatuses = {
 };
 
 var translations = {};
-jQuery.getJSON('../../i18n/default.json', function (data) {
+var $translations = new Promise(resolve => {
+  jQuery.getJSON('../../i18n/default.json', function (data) {
     angular.extend(translations, data);
+    resolve(translations)
+  })
 });
 
 var processFlightData = function() {
