@@ -185,6 +185,7 @@
     "issue" : "(1 issue)",
     "issue(s)" : "issue(s)",
     "time(s)" : "time(s)",
+    "Average" : "Average",
 
     "param.user" : "User: %s",
     "param.allUsers" : "All Users",
@@ -317,8 +318,8 @@
     "Over Limit Color": "Over Limit Color",
     "description.Under Limit Color": "Color of highlighted worked hours under 1d.",
     "description.Over Limit Color": "Color of highlighted worked hours over 1d.",
-    "Show Details Number": "Show Details' Number",
-    "description.Show Details Number": "Count details and show its number next to main value, e.g. to see number of times issue was reopened in Time In Status report.",
+    "Show Details Number": "Show Additional Info",
+    "description.Show Details Number": "Count details number and averages and show next to main value, e.g. to see number of times issue was reopened in Time In Status report.",
     "Show Category Row": "Show Category Row",
     "description.Show Category Row": "Show additional row with Category totals.",
     "Log Work Retrospectively": "Log Work Retrospectively",

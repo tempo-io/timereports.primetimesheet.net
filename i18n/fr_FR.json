@@ -185,6 +185,7 @@
     "issue" : "(1 tâche)",
     "issue(s)" : "tâche(s)",
     "time(s)" : "fois",
+    "Average" : "Moyenne",
 
     "param.user" : "Utilisateur: %s",
     "param.allUsers" : "Tous les utilisateurs",
@@ -316,8 +317,8 @@
     "Over Limit Color": "Couleur hors limit",
     "description.Under Limit Color": "Couleur des heures travaillées sélectionnées de moins de 1d.",
     "description.Over Limit Color": "Couleur des heures travaillées sélectionnées à partir de 1d.",
-    "Show Details Number": "Afficher le nombre de détails",
-    "description.Show Details Number": "Compter les détails et afficher leur nombre à côté de la valeur principale, par exemple pour voir le nombre de fois que le problème a été rouvert dans le rapport du Temps en statut.",
+    "Show Details Number": "Afficher les informations supplémentairess",
+    "description.Show Details Number": "Compter le nombre de détails et les moyennes et afficher à côté de la valeur principale, par exemple pour voir le nombre de fois que le problème a été rouvert dans le rapport du Temps en statut.",
     "Show Category Row": "Afficher les catégories",
     "description.Show Category Row": "Afficher la ligne supplémentaire avec les totaux de catégorie.",
     "Log Work Retrospectively": "Enregistrer le travail de manière rétrospective",

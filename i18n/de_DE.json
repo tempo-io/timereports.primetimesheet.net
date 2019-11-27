@@ -185,6 +185,7 @@
     "issue" : "(1 Vorgang)",
     "issue(s)" : "Vorgang (Vorgänge)",
     "time(s)" : "Zeit (Zeiten)",
+    "Average" : "Durchschnitt",
 
     "param.user" : "Benutzer: %s",
     "param.allUsers" : "Alle Benutzer",
@@ -317,8 +318,8 @@
     "Over Limit Color": "Farbe der Überstunden",
     "description.Under Limit Color": "Farbe der markierten Arbeitsstunden unter 1d.",
     "description.Over Limit Color": "Farbe der markierten Arbeitsstunden über 1d.",
-    "Show Details Number": "Zahl der Details anzeigen",
-    "description.Show Details Number": "Details zählen und ihre Zahl neben dem Hauptwert anzeigen, z. B. um zu sehen, wie oft der Vorgang im Bericht Zeit im Status erneut geöffnet wurde.",
+    "Show Details Number": "Zusätzliche Informationen anzeigen",
+    "description.Show Details Number": "Zählen Details Zahlen und Durchschnittswerte und zeigen Sie neben dem Hauptwert anzeigen, z. B. um zu sehen, wie oft der Vorgang im Bericht Zeit im Status erneut geöffnet wurde.",
     "Show Category Row": "Kategoriezeile anzeigen",
     "description.Show Category Row": "Zusätzliche Zeile mit Kategorie-Gesamtsummen anzeigen.",
     "Log Work Retrospectively": "Retrospektive Arbeitsprotokollierung",

@@ -84,18 +84,24 @@
                                      ng-if="row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue'" all-fields="allFields" />
                     </td>
                     <td class="nav first border" ng-repeat="column in pivotTable.sortedColumns()">
-                        <span>
-                            <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
-                        </span>
-                        <span class="small" ng-if="showDetailsCount" title="{{'time(s)' | i18n}}">
-                            &nbsp;{{row.columns[column.columnKey.keyValue].detailsNum}}
-                        </span>
+                        <div class="rowCenter">
+                            <span>
+                                <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
+                            </span>
+                            <span ng-if="showDetailsCount" style="margin-left: 5px">
+                                <div class="small" title="{{'time(s)' | i18n}}">{{row.columns[column.columnKey.keyValue].detailsNum}}</div>
+                                <div class="small-bottom" title="{{'Average' | i18n}}">{{row.columns[column.columnKey.keyValue].avg | prettyHours:jiraConfig:isElapsedTime}}</div>
+                            </span>
+                        </div>
                     </td>
                     <td class="nav first border total" ng-if="!hideTotalColumn">
-                        {{row.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus' && !(workingTimeInStatus.from && workingTimeInStatus.to)}}
-                        <span class="small" ng-if="showDetailsCount" title="{{'time(s)' | i18n}}">
-                            &nbsp;{{row.detailsNum}}
-                        </span>
+                        <div class="rowCenter">
+                            {{row.sum | prettyHours:jiraConfig:isElapsedTime}}
+                            <span ng-if="showDetailsCount" style="margin-left: 5px">
+                                <div class="small" title="{{'time(s)' | i18n}}">{{row.detailsNum}}</div>
+                                <div class="small-bottom" title="{{'Average' | i18n}}">{{row.avg | prettyHours:jiraConfig:isElapsedTime}}</div>
+                            </span>
+                        </div>
                     </td>
                 </tr>
                 <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed && !row.categoryRow">
@@ -165,18 +171,24 @@
                         <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
-                        <span>
-                            <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
-                        </span>
-                        <span class="small" ng-if="showDetailsCount" title="{{'time(s)' | i18n}}">
-                            &nbsp;{{column.detailsNum}}
-                        </span>
+                        <div class="rowCenter">
+                            <span>
+                                <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
+                            </span>
+                            <span ng-if="showDetailsCount" style="margin-left: 5px">
+                                <div class="small" title="{{'time(s)' | i18n}}">{{column.detailsNum}}</div>
+                                <div class="small-bottom" title="{{'Average' | i18n}}">{{column.avg | prettyHours:jiraConfig:isElapsedTime}}</div>
+                            </span>
+                        </div>
                     </td>
                     <td class="nav border total" ng-if="!hideTotalColumn">
-                        {{pivotTable.sum | prettyHours:jiraConfig:pivotTableType == 'IssuePassedTimeByStatus' && !(workingTimeInStatus.from && workingTimeInStatus.to)}}
-                        <span class="small" ng-if="showDetailsCount" title="{{'time(s)' | i18n}}">
-                            &nbsp;{{pivotTable.detailsNum}}
-                        </span>
+                        <div class="rowCenter">
+                            {{pivotTable.sum | prettyHours:jiraConfig:isElapsedTime}}
+                            <span ng-if="showDetailsCount" style="margin-left: 5px">
+                                <div class="small" title="{{'time(s)' | i18n}}">{{pivotTable.detailsNum}}</div>
+                                <div class="small-bottom" title="{{'Average' | i18n}}">{{pivotTable.avg | prettyHours:jiraConfig:isElapsedTime}}</div>
+                            </span>
+                        </div>
                     </td>
                 </tr>
                 <tr ng-show="loaded && loading">

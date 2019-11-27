@@ -480,6 +480,15 @@ table td {
     color: #333;
 }
 .small {
-    font-size: x-small;
+    font-size: xx-small;
     vertical-align: top;
+}
+.small-bottom {
+    font-size: xx-small;
+    vertical-align: bottom;
+}
+.rowCenter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
