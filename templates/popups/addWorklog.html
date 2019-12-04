@@ -36,6 +36,7 @@
                    type="text"
                    size="25"
                    ng-model="popupData.worklog.comment"
+                   work-labels="workLabelsList"
                    enter-pressed="popupData.loading || popupData.addWorklog(closePopup)"
                    ng-required="workDescriptionRequired"
                    placeholder="{{workDescriptionRequired ? '(required)' : ''}}"/>
