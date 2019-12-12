@@ -104,7 +104,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed && !row.categoryRow">
+                <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed && !row.categoryRow" ng-style="{color: data.color}">
                     <td class="nav">&nbsp;</td>
                     <td class="nav">&nbsp;</td>
                     <td colspan="{{rowKeySize - 3}}" class="nav summary">
@@ -130,7 +130,8 @@
                               editable-text="data.worklog.comment"
                               onshow="$parent.$form=$form"
                               onhide="$parent.$form=undefined"
-                              onaftersave="commentChanged(data.worklog)">
+                              onaftersave="commentChanged(data.worklog)"
+                              ng-style="{color: data.color}">
                             <worklog-comment worklog="data.worklog" no-comment="'< No comment >' | i18n"/>
                             <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
                         </span>

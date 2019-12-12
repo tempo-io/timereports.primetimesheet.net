@@ -19,7 +19,7 @@
                 <div class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
                 </div>
             </div>
-            <div ng-class-odd="'rowNormal'" ng-class-even="'rowAlternate'" ng-repeat="data in pivotTable.rows[issueKey].data">
+            <div ng-class-odd="'rowNormal'" ng-class-even="'rowAlternate'" ng-repeat="data in pivotTable.rows[issueKey].data" ng-style="{color: data.color}">
                 <div class="nav">
                     <span ng-if="data.worklog.id">
                         <old-worklog worklog="data.worklog" edit-work="editWorklog" delete-work="deleteWorklog"
@@ -36,7 +36,8 @@
                           editable-text="data.worklog.comment"
                           onshow="$parent.$form=$form"
                           onhide="$parent.$form=undefined"
-                          onaftersave="commentChanged(data.worklog)">
+                          onaftersave="commentChanged(data.worklog)"
+                          ng-style="{color: data.color}">
                         <worklog-comment worklog="data.worklog" no-comment="'< No comment >' | i18n"/>
                         <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
                     </span>
