@@ -76,7 +76,7 @@ QUnit.test('IssuePassedTimeByStatus', function () {
     var pivotEntries = pivotTable.add(TimeData.issues[i])
     QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue === 'TIME-4' ? 3 : 1, 'pivotEntries ' + pivotEntries[0].rowKey.keyValue)
     if (pivotEntries.length === 1) {
-      QUnit.assert.equal(pivotEntries[0].worklog.comment, '2017-04-05 00:00:00 - 2017-04-12 00:00:00')
+      QUnit.assert.equal(pivotEntries[0].worklog.comment, '2017-04-05 00:00:00 - 2017-04-12 00:00:00 (admin)')
       QUnit.assert.equal(pivotEntries[0].value, 604800)
     }
   }
@@ -105,7 +105,7 @@ QUnit.test('IssuePassedTimeByStatus with Working Hours', function () {
     var pivotEntries = pivotTable.add(TimeData.issues[i])
     QUnit.assert.equal(pivotEntries.length, pivotEntries[0].rowKey.keyValue === 'TIME-4' ? 3 : 1, 'pivotEntries ' + pivotEntries[0].rowKey.keyValue)
     if (pivotEntries.length === 1) {
-      QUnit.assert.equal(pivotEntries[0].worklog.comment, '2017-04-05 05:00:00 - 2017-04-11 22:00:00')
+      QUnit.assert.equal(pivotEntries[0].worklog.comment, '2017-04-05 05:00:00 - 2017-04-11 22:00:00 (admin)')
       QUnit.assert.equal(pivotEntries[0].value, 306000)
     }
   }
@@ -122,6 +122,49 @@ QUnit.test('IssuePassedTimeByStatus with Working Hours', function () {
     QUnit.assert.equal(rowKey === 'TIME-4' ? 3 : 1, columnKeys.length, 'columns ' + rowKey)
     QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 1, 'column entries')
   }
+})
+QUnit.test('getStatuses', function () {
+  var issue = { fields: { status: { id: '5' }, assignee: { displayName: 'aaaa' } },
+    changelog: { histories: [
+      { items: [{ // Open -> To Do, null -> admin
+        field: 'assignee',
+        fieldtype: 'jira',
+        fromString: null
+      }, {
+        field: 'status',
+        fieldtype: 'jira',
+        from: '1'
+      }] },
+      { items: [{ // To Do -> In Progress
+        field: 'status',
+        fieldtype: 'jira',
+        from: '2'
+      }] },
+      { items: [{ // admin -> aaaa
+        field: 'assignee',
+        fieldtype: 'jira',
+        fromString: 'admin'
+      }] },
+      { items: [{ // In Progress -> Done
+        field: 'status',
+        fieldtype: 'jira',
+        from: '3'
+      }] }
+    ] }
+  }
+  var statuses = PivotKey.getStatuses(issue, { statuses: TimeStatuses,
+    workingTimeInStatus: { from: 5, to: 22 } })
+  QUnit.assert.equal(statuses.length, 5, 'statuses')
+  QUnit.assert.equal(statuses[0].id, '1', '0 status')
+  QUnit.assert.equal(statuses[0].assignee, null, '0 assignee')
+  QUnit.assert.equal(statuses[1].id, '2', '1 status')
+  QUnit.assert.equal(statuses[1].assignee, 'admin', '1 assignee')
+  QUnit.assert.equal(statuses[2].id, '3', '2 status')
+  QUnit.assert.equal(statuses[2].assignee, 'admin', '2 assignee')
+  QUnit.assert.equal(statuses[3].id, '3', '3 status')
+  QUnit.assert.equal(statuses[3].assignee, 'aaaa', '3 assignee')
+  QUnit.assert.equal(statuses[4].id, '5', '4 status')
+  QUnit.assert.equal(statuses[4].assignee, 'aaaa', '4 assignee')
 })
 QUnit.test('TimeTracking', function () {
   var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'TimeTracking',
