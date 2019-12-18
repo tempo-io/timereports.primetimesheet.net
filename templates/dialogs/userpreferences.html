@@ -16,6 +16,23 @@
     </div>
     <form class="aui" name="configForm">
         <div class="field-group">
+            <label for="select2-reportingDay">{{'Reporting Day' | i18n}}</label>
+            <select id="select2-reportingDay"
+                    class="select"
+                    title="{{'Reporting Day' | i18n}}"
+                    ng-model="reportingDay.val"
+                    ng-change="saveReportingDay()"
+                    ng-options="item.id as item.label for item in reportingDayOptions.options">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="reportingDaySaveSuccess">
+                <strong>{{'Reporting Day' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Reporting Day' | i18n}}</span>
+        </div>
+        <div class="field-group">
             <label for="select2-weekendType">{{'Weekend Type' | i18n}}</label>
             <select id="select2-weekendType"
                     class="select"
@@ -189,6 +206,23 @@
         </div>
         <div class="field-group">
             <span class="description" ng-bind-html="'description.Date Fields' | i18n | htmlSafe"></span>
+        </div>
+        <div class="field-group">
+            <label for="select2-startedTimeInStatus">{{'Started Time In Status' | i18n}}</label>
+            <select id="select2-startedTimeInStatus"
+                    class="select"
+                    title="{{'Started Time In Status' | i18n}}"
+                    ng-model="startedTimeInStatus.val"
+                    ng-change="saveStartedTimeInStatus()"
+                    ng-options="item.id as item.label for item in startedTimeInStatusTypes">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="startedTimeInStatusSaveSuccess">
+                <strong>{{'Started Time In Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Started Time In Status' | i18n}}</span>
         </div>
         <div class="field-group">
             <label for="inProgressIssuesJql">{{'In Progress Issues jql' | i18n}}</label>

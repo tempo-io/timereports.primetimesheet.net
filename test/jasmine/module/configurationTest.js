@@ -40,7 +40,7 @@ describe('configurationModule', function () {
         expect(config['workingTimeInStatus'].val).toBe(undefined)
         expect(config['durationType'].val).toEqual('default')
         expect(config['maxFractionDigits'].val).toBe(undefined)
-        expect(config['startedTimeInStatus']).toBe(undefined)
+        expect(config['startedTimeInStatus'].val).toBe(undefined)
         done()
       }).catch(done.fail)
       $timeout.flush()
