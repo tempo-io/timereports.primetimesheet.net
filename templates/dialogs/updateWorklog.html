@@ -57,6 +57,7 @@
                     <button id="security-level-dropdown" class="aui-button aui-button-link security-level-drop-icon aui-icon aui-icon-small aui-dropdown2-trigger aui-style-default"
                             aria-owns="security-level"
                             aria-haspopup="true"
+                            ng-attr-title="{{'Worklog Visibility' | i18n}}"
                             ng-class="{'aui-iconfont-unlocked': !worklog.visibilityRole && !worklog.visibilityGroup, 'aui-iconfont-locked': worklog.visibilityRole || worklog.visibilityGroup}">
                     </button>
                     <span class="current-level" ng-if="worklog.visibilityGroup || worklog.visibilityRole">{{'Restricted to' | i18n}}&nbsp;<span class="red">{{worklog.visibilityGroup || worklog.visibilityRole}}</span></span>
