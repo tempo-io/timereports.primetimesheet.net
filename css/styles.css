@@ -324,7 +324,7 @@ a.disabled {
   margin-top: -2px;
 }
 .section-header > div > div {
-  width: 400px;
+  width: 450px;
 }
 .footer {
     color: #707070;
@@ -491,4 +491,7 @@ table td {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+.icons {
+    margin: 5px;
 }

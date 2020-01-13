@@ -1,12 +1,36 @@
 <div class="section-header" ng-if="!isGadget">
+    <aui-inline-dialog
+            id="share-view-popup"
+            template="'/templates/popups/shareView.html'"
+            popup-data="shareViewPopup"
+            container="'#share-view'"
+            persistent="true">
+    </aui-inline-dialog>
     <div>
         <div ng-init="showButtons=false" ng-mouseover="showButtons=!$form.$visible" ng-mouseleave="showButtons=false">
             <div editable-text="currentView.name" e-required onshow="$parent.$form=$form" onhide="$parent.$form=undefined" onaftersave="viewNameChanged()">
                 <h5>{{currentView.name || (pivotTableType | i18n)}}</h5>
                 <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
             </div>
-            <a class="save-view" ng-click="saveView()" ng-show="showButtons && showSaveButton">Save</a>
-            <a class="overlay-icon aui-icon aui-icon-small aui-iconfont-remove dangerous remove-view" ng-click="deleteView()" ng-show="showButtons && showDeleteButton"></a>
+            <i class="fa fa-hdd-o icons"
+               aria-hidden="true"
+               ng-click="saveView()"
+               ng-show="showButtons && showSaveButton"
+               title="{{'Save' | i18n}}">
+            </i>
+            <i class="fa fa-trash-o icons"
+               aria-hidden="true"
+               ng-click="deleteView()"
+               ng-show="showButtons && showDeleteButton"
+               title="{{'Delete' | i18n}}">
+            </i>
+            <i class="fa fa-share-alt icons"
+               id="share-view"
+               aria-hidden="true"
+               ng-click="shareViewPopup.init()"
+               ng-show="showButtons && showDeleteButton"
+               title="{{'Share' | i18n}}">
+            </i>
         </div>
     </div>
     <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"

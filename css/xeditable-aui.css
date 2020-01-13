@@ -1,11 +1,6 @@
-.save-view, .remove-view {
+.view {
     display: inline-block;
     vertical-align: bottom;
-}
-.save-view {
-    margin: 5px;
-}
-.remove-view {
     margin-bottom: 7px;
 }
 .editable-click:hover {

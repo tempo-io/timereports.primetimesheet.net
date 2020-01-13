@@ -1,0 +1,18 @@
+<div class="ak-field-group">
+    <div class="rowCenter">
+        <label>{{"User" | i18n}}</label>
+        <input ng-value="popupData.shareToUser"
+               aui-user-picker
+               ng-user-changed-func="popupData.shareToUserChange"
+               type="text"
+               style="width: 200px"/>
+        <i style="margin-left: 10px"
+           class="fa fa-share-alt"
+           aria-hidden="true"
+           ng-class="{disabled: !popupData.shareToUser}"
+           ng-click="popupData.shareToUser && popupData.shareView(popupData.shareToUser, closePopup)"
+           title="{{'Share' | i18n}}">
+        </i>
+        <a style="margin-left: 10px" ng-click="closePopup()">{{'Cancel' | i18n}}</a>
+    </div>
+</div>
