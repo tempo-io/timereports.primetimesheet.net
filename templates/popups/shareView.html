@@ -1,18 +1,19 @@
-<div class="ak-field-group">
-    <div class="rowCenter">
-        <label>{{"User" | i18n}}</label>
-        <input ng-value="popupData.shareToUser"
-               aui-user-picker
-               ng-user-changed-func="popupData.shareToUserChange"
-               type="text"
-               style="width: 200px"/>
-        <i style="margin-left: 10px"
-           class="fa fa-share-alt"
-           aria-hidden="true"
-           ng-class="{disabled: !popupData.shareToUser}"
-           ng-click="popupData.shareToUser && popupData.shareView(popupData.shareToUser, closePopup)"
-           title="{{'Share' | i18n}}">
-        </i>
-        <a style="margin-left: 10px" ng-click="closePopup()">{{'Cancel' | i18n}}</a>
-    </div>
-</div>
+<form class="aui" style="margin: 15px">
+  <div>{{'Copy report for user' | i18n}}&nbsp;&nbsp;<span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span></div>
+  <fieldset style="padding-top: 10px">
+    <label>{{"User" | i18n}}</label>
+  </fieldset>
+  <fieldset style="padding-top: 10px">
+    <input ng-value="popupData.shareToUser"
+           aui-user-picker
+           ng-user-changed-func="popupData.shareToUserChange"
+           type="text"
+           style="width: 200px"/>
+  </fieldset>
+  <div style="padding-top: 20px; text-align: right">
+      <div>
+          <input class="aui-button aui-button-primary" type="submit" ng-value="'{{'Share' | i18n}}'" ng-click="popupData.shareToUser && popupData.shareView(popupData.shareToUser, closePopup)">
+          <a style="margin-left: 10px" ng-click="closePopup()">{{'Cancel' | i18n}}</a>
+      </div>
+  </div>
+</form>
