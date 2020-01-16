@@ -8,11 +8,11 @@
            aui-user-picker
            ng-user-changed-func="popupData.shareToUserChange"
            type="text"
-           style="width: 200px"/>
+           style="width: 270px"/>
   </fieldset>
   <div style="padding-top: 20px; text-align: right">
       <div>
-          <input class="aui-button aui-button-primary" type="submit" ng-value="'{{'Share' | i18n}}'" ng-click="popupData.shareToUser && popupData.shareView(popupData.shareToUser, closePopup)">
+          <input class="aui-button aui-button-primary" type="submit" ng-value="'{{'Copy' | i18n}}'" ng-click="popupData.shareToUser && popupData.shareView(popupData.shareToUser, closePopup)">
           <a style="margin-left: 10px" ng-click="closePopup()">{{'Cancel' | i18n}}</a>
       </div>
   </div>
