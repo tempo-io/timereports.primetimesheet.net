@@ -1,0 +1,313 @@
+<!-- Dialog header -->
+<header class="aui-dialog2-header">
+    <!-- The dialog''s title -->
+    <h1 class="aui-dialog2-header-main">
+        {{'User Preferences' | i18n }}
+    </h1>
+    <!-- Close icon -->
+    <a class="aui-dialog2-header-close" ng-click="cancel()">
+        <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+    </a>
+</header>
+<!-- Main dialog content -->
+<div class="aui-dialog2-content">
+    <div class="aui-message aui-message-info" style="margin: 0">
+        {{'All changes will be saved automatically' | i18n}}
+    </div>
+    <form class="aui" name="configForm">
+        <div class="field-group">
+            <label for="select2-reportingDay">{{'Reporting Day' | i18n}}</label>
+            <select id="select2-reportingDay"
+                    class="select"
+                    title="{{'Reporting Day' | i18n}}"
+                    ng-model="reportingDay.val"
+                    ng-change="saveReportingDay()"
+                    ng-options="item.id as item.label for item in reportingDayOptions.options">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="reportingDaySaveSuccess">
+                <strong>{{'Reporting Day' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Reporting Day' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="select2-weekendType">{{'Weekend Type' | i18n}}</label>
+            <select id="select2-weekendType"
+                    class="select"
+                    title="{{'Weekend Type' | i18n}}"
+                    ng-model="weekendType.val"
+                    ng-change="saveWeekendType()"
+                    ng-options="item.id as item.label for item in allWeekendTypes">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="weekendTypeSaveSuccess">
+                <strong>{{'Weekend Type' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Weekend Type' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="workingDayStart">{{'Working Time In Status' | i18n}}</label>
+            {{'From' | i18n}}&nbsp;<input id="workingDayStart" ng-model="workingTimeInStatus.val.from" min="0" max="24"
+                                          ng-change="saveWorkingTimeInStatus()" type="number" class="text"
+                                          title="{{'Working Day Start' | i18n}}"
+                                          placeholder="{{workingTimeInStatus.val ? '' : defaults.workingTimeInStatus.defaultFrom}}"
+                                          style="max-width: 93px; "/>
+            &nbsp;{{'To' | i18n}}&nbsp;
+            <input id="workingDayEnd" ng-model="workingTimeInStatus.val.to" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
+                   type="number" class="text" title="{{'Working Day End' | i18n}}"
+                   placeholder="{{workingTimeInStatus.val ? '' : defaults.workingTimeInStatus.defaultTo}}"
+                   style="max-width: 93px;"/>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="workingTimeInStatusSaveSuccess">
+                <strong>{{'Working Time In Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Working Time In Status' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="select2-durationType">{{'Duration Type' | i18n}}</label>
+            <select id="select2-durationType"
+                    class="select"
+                    title="{{'Duration Type' | i18n}}"
+                    ng-model="durationType.val"
+                    ng-change="saveDurationType()"
+                    ng-options="item.id as item.label for item in allDurationTypes">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="durationTypeSaveSuccess">
+                <strong>{{'Duration Type' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Duration Type' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="maxFractionDigits">{{'Maximum Fraction Digits' | i18n}}</label>
+            <input id="maxFractionDigits"
+                   name="maxFractionDigits"
+                   ng-model="maxFractionDigits.val"
+                   min="0" max="20"
+                   ng-change="configForm.maxFractionDigits.$valid && saveMaxFractionDigits()"
+                   type="number" class="text"
+                   ng-model-options='{ debounce: 1000 }'
+                   title="{{'Maximum Fraction Digits' | i18n}}"
+                   placeholder="{{defaults.maxFractionDigits.default}}"/>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="maxFractionDigitsSaveSuccess">
+                <strong>{{'Maximum Fraction Digits' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Maximum Fraction Digits' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="timeTrackingColumns">{{'Time Tracking Columns' | i18n}}</label>
+            <input id="timeTrackingColumns"
+                   aui-multi-select-picker
+                   class="text"
+                   title="{{'Time Tracking Columns' | i18n}}"
+                   ng-model="timeTrackingColumns.val"
+                   ng-options-data="timeTrackingColumnsData"
+                   ng-value-changed-func="saveTimeTrackingColumns">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="timeTrackingColumnsSaveSuccess">
+                <strong>{{'Time Tracking Columns' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description" ng-bind-html="'description.Time Tracking Columns' | i18n | htmlSafe"></span>
+        </div>
+        <div class="field-group">
+            <label for="timeBalanceColumns">{{'Time Balance Columns' | i18n}}</label>
+            <input id="timeBalanceColumns"
+                   aui-multi-select-picker
+                   class="text"
+                   title="{{'Time Balance Columns' | i18n}}"
+                   ng-model="timeBalanceColumns.val"
+                   ng-options-data="timeBalanceColumnsData"
+                   ng-value-changed-func="saveTimeBalanceColumns">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="timeBalanceColumnsSaveSuccess">
+                <strong>{{'Time Balance Columns' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description" ng-bind-html="'description.Time Balance Columns' | i18n | htmlSafe"></span>
+        </div>
+        <div class="field-group">
+            <label for="timeInStatusCategories">{{'Time In Status Categories' | i18n}}</label>
+            <input id="timeInStatusCategories"
+                   aui-multi-select-picker
+                   class="text"
+                   title="{{'Time In Status Categories' | i18n}}"
+                   ng-model="timeInStatusCategories.val"
+                   ng-options-data="timeInStatusCategoriesData"
+                   ng-value-changed-func="saveTimeInStatusCategories">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="timeInStatusCategoriesSaveSuccess">
+                <strong>{{'Time In Status Categories' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description" ng-bind-html="'description.Time In Status Categories' | i18n | htmlSafe"></span>
+        </div>
+        <div class="field-group">
+            <label for="exportColumns">{{'Columns For Export' | i18n}}</label>
+            <input id="exportColumns"
+                   aui-multi-select-picker
+                   class="text"
+                   title="{{'Columns For Export' | i18n}}"
+                   ng-model="exportColumns.val"
+                   ng-options-data="exportColumnsData"
+                   ng-value-changed-func="saveExportColumns">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="exportColumnsSaveSuccess">
+                <strong>{{'Columns For Export' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description" ng-bind-html="'description.Columns For Export' | i18n | htmlSafe"></span>
+        </div>
+        <div class="field-group">
+            <label for="select2-durationTypeForExport">{{'Duration Type For Export' | i18n}}</label>
+            <select id="select2-durationTypeForExport"
+                    class="select"
+                    title="{{'Duration Type For Export' | i18n}}"
+                    ng-model="durationTypeForExport.val"
+                    ng-change="saveDurationTypeForExport()"
+                    ng-options="item.id as item.label for item in allDurationTypesForExport">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="durationTypeForExportSaveSuccess">
+                <strong>{{'Duration Type For Export' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Duration Type For Export' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="dateFields">{{'Date Fields' | i18n}}</label>
+            <input id="dateFields"
+                   aui-multi-select-picker
+                   class="text"
+                   title="{{'Date Fields' | i18n}}"
+                   ng-model="dateFields.val"
+                   ng-options-data="dateFieldsData"
+                   ng-value-changed-func="saveDateFields">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="dateFieldsSaveSuccess">
+                <strong>{{'Date Fields' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description" ng-bind-html="'description.Date Fields' | i18n | htmlSafe"></span>
+        </div>
+        <div class="field-group">
+            <label for="select2-startedTimeInStatus">{{'Started Time In Status' | i18n}}</label>
+            <select id="select2-startedTimeInStatus"
+                    class="select"
+                    title="{{'Started Time In Status' | i18n}}"
+                    ng-model="startedTimeInStatus.val"
+                    ng-change="saveStartedTimeInStatus()"
+                    ng-options="item.id as item.label for item in startedTimeInStatusTypes">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="startedTimeInStatusSaveSuccess">
+                <strong>{{'Started Time In Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Started Time In Status' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="inProgressIssuesJql">{{'In Progress Issues jql' | i18n}}</label>
+            <input name="inProgressIssuesJql"
+                   id="inProgressIssuesJql"
+                   type="text"
+                   class="text"
+                   ng-model="inProgressIssuesJql.val"
+                   jql
+                   ng-model-options='{ debounce: 1000 }'
+                   inProgressIssuesJql
+                   ng-change="configForm.inProgressIssuesJql.$valid && saveInProgressIssuesJql()"
+                   placeholder="{{defaults.inProgressIssuesJql.default}}">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="inProgressIssuesJqlSaveSuccess">
+                <strong>{{'In Progress Issues jql' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+            <div ng-show="configForm.inProgressIssuesJql.$error.jql" role="alert" class="red">
+                {{configForm.inProgressIssuesJql.$error.jqlError}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.In Progress Issues jql' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="select2-showDetailsCount">{{'Show Details Number' | i18n}}</label>
+            <select id="select2-showDetailsCount"
+                    class="select"
+                    title="{{'Show Details Number' | i18n}}"
+                    ng-model="showDetailsCount.val"
+                    ng-change="saveShowDetailsCount()"
+                    ng-options="item.id as item.label for item in showDetailsCountTypes">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay" ng-show="showDetailsCountSaveSuccess">
+                <strong>{{'Show Details Number' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Show Details Number' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="select2-showCategoryRow">{{'Show Category Row' | i18n}}</label>
+            <select id="select2-showCategoryRow"
+                    class="select"
+                    title="{{'Show Category Row' | i18n}}"
+                    ng-model="showCategoryRow.val"
+                    ng-change="saveShowCategoryRow()"
+                    ng-options="item.id as item.label for item in showCategoryRowTypes">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay" ng-show="showCategoryRowSaveSuccess">
+                <strong>{{'Show Category Row' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Show Category Row' | i18n}}</span>
+        </div>
+        <div class="field-group" ng-show="problemReporter">
+            <label for="onErrorIgnore">{{'Disable Problem Reporter' | i18n}}</label>
+            <input id="onErrorIgnore"
+                   type="checkbox"
+                   class="checkbox"
+                   ng-model="onErrorIgnore.val"
+                   ng-change="saveOnErrorIgnore()">
+            <div class="aui-message aui-message-success msg-overlay" ng-show="onErrorIgnoreSaveSuccess">
+                <strong>{{'Disable Problem Reporter' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group" ng-show="problemReporter">
+            <span class="description">{{'description.Disable Problem Reporter' | i18n}}</span>
+        </div>
+        <div class="field-group" ng-if="isTimesheet">
+            <label for="sendMobileLink">{{'Link For Mobile Devices' | i18n}}</label>
+            <a href="https://timesheet-plugin.herokuapp.com/m">https://timesheet-plugin.herokuapp.com/m</a>
+            <br/>
+            <span class="description" data-ng-bind-html="'Authorise with your Atlassian account' | i18n | htmlSafe"></span>
+            <br/>
+            <span class="description" data-ng-bind-html="'or' | i18n | htmlSafe"></span> <button type="button" class="btn btn-default" id="sendMobileLink" ng-click="sendMobileLink()" style="vertical-align: top;">{{'Send' | i18n}}</button>
+            <span class="description" data-ng-bind-html="'description.Link For Mobile Devices' | i18n | htmlSafe"></span>
+        </div>
+    </form>
+</div>
+<!-- Dialog footer -->
+<footer class="aui-dialog2-footer">
+    <!-- Actions to render on the right of the footer -->
+    <div class="aui-dialog2-footer-actions">
+        <button class="aui-button aui-button-link" ng-click="cancel()">{{'Close' | i18n}}</button>
+    </div>
+</footer>

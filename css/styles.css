@@ -495,3 +495,9 @@ table td {
 .icons {
     margin: 5px;
 }
+.msg-overlay {
+    position: absolute;
+    top: -5px;
+    left: 410px;
+    z-index: 10;
+}

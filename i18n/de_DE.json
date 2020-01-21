@@ -7,6 +7,7 @@
     "TimeEntry": "Zeiterfassung",
     "Timesheet": "Stundenzettel",
     "Timespent": "Zeitaufwand",
+    "CostReport": "Cost Report",
     "IssueWorkedTimeByUser": "Benutzer-Pivot",
     "IssueWorkedTimeByStatus": "Status-Pivot",
     "IssueWorkedTimeByLabel": "Label-Pivot",
@@ -182,6 +183,7 @@
     "This Week": "Diese Woche",
     "This Month": "Dieser Monat",
     "Total" : "Insgesamt",
+    "Cost" : "Cost",
     "issues" : "(%s Vorgänge)",
     "issue" : "(1 Vorgang)",
     "issue(s)" : "Vorgang (Vorgänge)",
@@ -213,6 +215,7 @@
     "4diff": "Abweichung",
     "5originalestimateremaining": "Ursprüngliche Schätzung der Restzeit",
     "6progress": "Fortschritt",
+    "7cost": "Cost",
 
     "1started": "Begonnen",
     "2timespent": "Verbracht",
@@ -236,6 +239,9 @@
     "Access": "Zugang",
     "Issues Hierarchy": "Vorgänge-Hierarchie",
     "User Defaults": "Benutzer-Standardeinstellungen",
+    "Hourly Rates": "Hourly Rates",
+    "Default Rate": "Default Rate",
+    "Currency": "Currency",
 
     "All changes will be saved automatically": "Alle Änderungen werden automatisch gespeichert.",
     "Auditors Groups": "Auditorengruppen",

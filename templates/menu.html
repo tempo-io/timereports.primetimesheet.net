@@ -33,7 +33,7 @@
             <label>{{'User' | i18n}}</label>
             <input ng-value="paramUserInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
         </div>
-        <div class="ak-field-group" ng-if="['Timesheet', 'Timespent', 'PieChart', 'Calendar'].indexOf(pivotTableType) >= 0"> <!-- All users because of multi user picker planned -->
+        <div class="ak-field-group" ng-if="['Timesheet', 'Timespent', 'CostReport', 'PieChart', 'Calendar'].indexOf(pivotTableType) >= 0"> <!-- All users because of multi user picker planned -->
             <label style="display: inline-block; margin: 0">{{'All Users' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)"/>
         </div>
@@ -68,7 +68,7 @@
             <label style="display: inline-block; margin: 0">{{'Show Weekends' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled" ng-change="toggleShowWeekends()" />
         </div>
-        <div class="ak-field-group" ng-if="['TimeTracking', 'TimeEntry', 'Timespent', 'TimeBalance'].indexOf(pivotTableType) < 0">
+        <div class="ak-field-group" ng-if="['TimeTracking', 'TimeEntry', 'Timespent', 'CostReport', 'TimeBalance'].indexOf(pivotTableType) < 0">
             <label>{{'Reporting Day' | i18n}}</label>
             <select class="select"
                     title="{{'Reporting Day' | i18n}}"
@@ -145,7 +145,7 @@
             <label style="display: inline-block; margin: 0">{{'Sum SubTasks' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
         </div>
-        <div class="ak-field-group" ng-if="['Timesheet', 'TimeEntry', 'Timespent', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) >= 0">
+        <div class="ak-field-group" ng-if="['Timesheet', 'TimeEntry', 'Timespent', 'CostReport', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) >= 0">
             <label style="display: inline-block; margin: 0">{{'Show Empty Issues' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!(filterOrProjectId || includeEmpty.jql)"/>
         </div>

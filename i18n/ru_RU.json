@@ -7,6 +7,7 @@
     "TimeEntry": "Ввод времени",
     "Timesheet": "Табель",
     "Timespent": "Затраченное время",
+    "CostReport": "Стоимость",
     "IssueWorkedTimeByUser": "Время по пользователю",
     "IssueWorkedTimeByStatus": "Время по статусу",
     "IssueWorkedTimeByLabel": "Время по ярлыку",
@@ -183,6 +184,7 @@
     "This Week": "На этой неделе",
     "This Month": "В этом месяце",
     "Total" : "Итого",
+    "Cost" : "Стоимость",
     "issues" : "(%s задачи)",
     "issue" : "(1 задача)",
     "issue(s)" : "задач(а)",
@@ -214,6 +216,7 @@
     "4diff": "Отклонение",
     "5originalestimateremaining": "Первоначальная оценка оставшегося времени",
     "6progress": "Прогресс",
+    "7cost": "Стоимость",
 
     "1started": "Начато",
     "2timespent": "Затрачено",
@@ -237,6 +240,9 @@
     "Access": "Доступ",
     "Issues Hierarchy": "Иерархия задач",
     "User Defaults": "Пользовательские настройки по умолчанию",
+    "Hourly Rates": "Часовые ставки",
+    "Default Rate": "Часовая ставка по-умолчанию",
+    "Currency": "Валюта",
 
     "All changes will be saved automatically": "Все изменения сохранятся автоматически.",
     "Auditors Groups": "Группы аудиторов",

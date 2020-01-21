@@ -138,13 +138,13 @@
                         <span ng-if="'TimeEntry' == pivotTableType && (data.worklog.workDate < allowToLogFromDate || cannotEditOwnWorklogIssue[data.rowKey.issue.key])">
                             <worklog-comment worklog="data.worklog"/>
                         </span>
-                        <a ng-if="['TimeBalance', 'Timespent'].indexOf(pivotTableType) >= 0 && data.worklog.author.accountId" ng-title="{{data.worklog.author.displayName}}"
+                        <a ng-if="['TimeBalance', 'Timespent', 'CostReport'].indexOf(pivotTableType) >= 0 && data.worklog.author.accountId" ng-title="{{data.worklog.author.displayName}}"
                            ng-href="{{hostBaseUrl + '/people/' + data.worklog.author.accountId}}" target="_parent">
                             <img ng-alt="{{data.worklog.author.displayName}}" class="avatar-image" style="border-radius: 50%"
                               ng-src="{{data.worklog.author.avatarUrls['16x16']}}" width="16" height="16">
                         </a>
-                        <span ng-if="['TimeBalance', 'Timespent'].indexOf(pivotTableType) >= 0" ng-bind="data.worklog.author.displayName"></span>
-                        <span ng-if="['TimeBalance', 'Timespent'].indexOf(pivotTableType) >= 0" ng-bind="data.worklog.started | date:'medium'"></span>
+                        <span ng-if="['TimeBalance', 'Timespent', 'CostReport'].indexOf(pivotTableType) >= 0" ng-bind="data.worklog.author.displayName"></span>
+                        <span ng-if="['TimeBalance', 'Timespent', 'CostReport'].indexOf(pivotTableType) >= 0" ng-bind="data.worklog.started | date:'medium'"></span>
                         <span ng-if="'TimeEntry' != pivotTableType"><worklog-comment worklog="data.worklog"/></span> <!--if worklog is present-->
                     </td>
                     <td class="nav priority" width="1%">

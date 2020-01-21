@@ -7,6 +7,7 @@
     "TimeEntry": "Time Entry",
     "Timesheet": "Timesheet",
     "Timespent": "Timespent",
+    "CostReport": "Cost Report",
     "IssueWorkedTimeByUser": "Pivot by User",
     "IssueWorkedTimeByStatus": "Pivot by Status",
     "IssueWorkedTimeByLabel": "Pivot by Label",
@@ -182,6 +183,7 @@
     "This Week": "This Week",
     "This Month": "This Month",
     "Total" : "Total",
+    "Cost" : "Cost",
     "issues" : "(%s issues)",
     "issue" : "(1 issue)",
     "issue(s)" : "issue(s)",
@@ -213,6 +215,7 @@
     "4diff": "Variance",
     "5originalestimateremaining": "Original Estimate Remaining",
     "6progress": "Progress",
+    "7cost": "Cost",
 
     "1started": "Started",
     "2timespent": "Spent",
@@ -236,6 +239,9 @@
     "Access": "Access",
     "Issues Hierarchy": "Issues Hierarchy",
     "User Defaults": "User Default Settings",
+    "Hourly Rates": "Hourly Rates",
+    "Default Rate": "Default Rate",
+    "Currency": "Currency",
 
     "All changes will be saved automatically": "All changes will be saved automatically.",
     "Auditors Groups": "Auditors Groups",
