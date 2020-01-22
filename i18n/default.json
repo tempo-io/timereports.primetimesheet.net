@@ -186,7 +186,8 @@
     "Cost" : "Cost",
     "issues" : "(%s issues)",
     "issue" : "(1 issue)",
-    "issue(s)" : "issue(s)",
+    "issue_n" : "issue",
+    "issues_n" : "issues",
     "time(s)" : "time(s)",
     "Average" : "Average",
 

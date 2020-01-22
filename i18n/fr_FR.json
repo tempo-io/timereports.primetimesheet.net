@@ -186,7 +186,8 @@
     "Cost" : "Cost",
     "issues" : "(%s tâches)",
     "issue" : "(1 tâche)",
-    "issue(s)" : "tâche(s)",
+    "issue_n" : "tâche",
+    "issues_n" : "tâches",
     "time(s)" : "fois",
     "Average" : "Moyenne",
 

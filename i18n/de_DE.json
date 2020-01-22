@@ -186,7 +186,8 @@
     "Cost" : "Cost",
     "issues" : "(%s Vorgänge)",
     "issue" : "(1 Vorgang)",
-    "issue(s)" : "Vorgang (Vorgänge)",
+    "issue_n" : "Vorgang",
+    "issues_n" : "Vorgänge",
     "time(s)" : "Zeit (Zeiten)",
     "Average" : "Durchschnitt",
 
