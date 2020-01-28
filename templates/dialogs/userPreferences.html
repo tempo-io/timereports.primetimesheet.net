@@ -295,11 +295,16 @@
         </div>
         <div class="field-group" ng-if="isTimesheet">
             <label for="sendMobileLink">{{'Link For Mobile Devices' | i18n}}</label>
-            <a href="https://timesheet-plugin.herokuapp.com/m">https://timesheet-plugin.herokuapp.com/m</a>
+            <a href="https://timesheet-plugin.herokuapp.com/m" target="_blank">https://timesheet-plugin.herokuapp.com/m</a>
             <br/>
             <span class="description" data-ng-bind-html="'Authorise with your Atlassian account' | i18n | htmlSafe"></span>
             <br/>
-            <span class="description" data-ng-bind-html="'or' | i18n | htmlSafe"></span> <button type="button" class="btn btn-default" id="sendMobileLink" ng-click="sendMobileLink()" style="vertical-align: top;">{{'Send' | i18n}}</button>
+            <span ng-if="emailAddress">
+                <span class="description" data-ng-bind-html="'or' | i18n | htmlSafe"></span>
+                <button type="button" class="btn btn-default" id="sendMobileLink" ng-click="sendMobileLink()" style="vertical-align: top;">{{'Send' | i18n}}</button>
+                <span class="description" data-ng-bind-html="'personal link to you email' | i18n | htmlSafe"></span>
+                <br/>
+            </span>
             <span class="description" data-ng-bind-html="'description.Link For Mobile Devices' | i18n | htmlSafe"></span>
         </div>
     </form>
