@@ -1,5 +1,6 @@
 <div class="aui-message aui-message-info" style="margin: 0">
-    {{'All changes will be saved automatically' | i18n}}
+    <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
+    <span data-ng-bind-html="page != 'auditLog' ? 'All changes will be saved automatically' : 'Audit Log' | i18n | htmlSafe"></span>
 </div>
 
 <form class="aui" style="width: 750px" name="configForm">
@@ -584,6 +585,23 @@
         </div>
         <div class="field-group">
             <span class="description">{{'description.Show Category Row' | i18n}}</span>
+        </div>
+    </div>
+    <div ng-show="page=='auditLog'">
+        <table cellspacing="5" cellpadding="0" border="0" style="margin-left: -5px">
+            <tr ng-repeat="log in auditLog">
+                <td nowrap>{{log.updated | date:'short'}}</td>
+                <td><a ng-title="{{authors[log.accountId].displayName}}"
+                   ng-href="{{hostBaseUrl + '/people/' + log.accountId}}" target="_parent">
+                    <img ng-alt="{{log.author.displayName}}" class="avatar-image" style="border-radius: 50%; vertical-align: middle;"
+                         ng-src="{{log.author.avatarUrls['16x16']}}" width="16" height="16">
+                </a></td>
+                <td nowrap>{{log.author.displayName}}</td>
+                <td>{{log.key}}: {{log.val}}</td>
+            </tr>
+        </table>
+        <div>
+            <span class="description">{{'description.Audit Log' | i18n:{placeholders:['2020-02-04']} }}</span>
         </div>
     </div>
 </form>

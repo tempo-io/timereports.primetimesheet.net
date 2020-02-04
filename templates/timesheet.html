@@ -210,7 +210,7 @@
                 <span class="results-count-start" ng-bind="issuesCount.startAt + 1"></span>–<span class="results-count-end" ng-bind="issuesCount.end"></span> of <span class="results-count-total" ng-bind="issuesCount.total"></span>
             </span>
             <a ng-click="loading || !loaded || refresh()" ng-disabled="loading || !loaded" ng-class="{disabled: loading || !loaded}" title="{{'Refresh' | i18n}}" class="noprint">
-                <span class="aui-icon aui-icon-small aui-iconfont-refresh-small">Refresh</span>
+                <span class="aui-icon aui-icon-small aui-iconfont-refresh-small">{{'Refresh' | i18n}}</span>
             </a>
         </div>
         <div class="pagination aui-item noprint">

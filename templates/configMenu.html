@@ -10,6 +10,10 @@
         </li>
     </ul>
     <br>
+    <a ng-click="!loading && refresh()" ng-disabled="loading" ng-class="{disabled: loading}" title="{{'Refresh' | i18n}}">
+        <span class="aui-icon aui-icon-small aui-iconfont-refresh-small">{{'Refresh' | i18n}}</span>
+    </a>
+    <br>
     <br>
     {{'Go to' | i18n}} <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports" target="_parent">{{appNameShort | i18n}}</a>
 </div>
