@@ -340,6 +340,8 @@
     "Work logged successfully": "Work logged successfully",
     "description.Work logged successfully": "Work entry was added successfully to the issue, but issue does not match report criteria, thus not displayed",
     "description.Audit Log": "Shows last 30 changes since %s",
+    "Show Total In Front": "Show Total In Front",
+    "description.Show Total In Front": "Show additional Total column In front of table, if applicable.",
 
     "Data is limited by Auditors Roles": "Because of the Auditors Roles configured, data is limited to own worklogs for the following project(s):",
     "Data is limited to Restricted Groups": "Because of the Restricted Groups configured, data is limited to worklogs of users from the following group(s):",

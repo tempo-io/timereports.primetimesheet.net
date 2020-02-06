@@ -38,6 +38,9 @@
                     <th class="colHeaderLink moreFields" ng-repeat="field in pivotTable.moreFields track by $index">
                         <span ng-bind="moreFieldsOptions.findOption(field).label"></span>
                     </th>
+                    <th ng-if="!hideTotalColumn && showTotalInFront">
+                        {{'Total' | i18n}}
+                    </th>
                     <th class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey">
                     </th>
                     <th ng-if="!hideTotalColumn">
@@ -82,6 +85,15 @@
                         <issue-field name="field" field="row.rowKey._issue.fields[field] || row.rowKey.issue.fields[field] || row.rowKey.field.fields[field]"
                                      issue="row.rowKey._issue || row.rowKey.issue || row.rowKey.field" jira-config="jiraConfig"
                                      ng-if="row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue'" all-fields="allFields" />
+                    </td>
+                    <td class="nav first border total" ng-if="!hideTotalColumn && showTotalInFront">
+                        <div class="rowCenter">
+                            {{row.sum | prettyHours:jiraConfig:isElapsedTime}}
+                            <span ng-if="showDetailsCount" style="margin-left: 5px">
+                                <div class="small" title="{{'time(s)' | i18n}}">{{row.detailsNum}}</div>
+                                <div class="small-bottom" title="{{'Average' | i18n}}">{{row.avg | prettyHours:jiraConfig:isElapsedTime}}</div>
+                            </span>
+                        </div>
                     </td>
                     <td class="nav first border" ng-repeat="column in pivotTable.sortedColumns()">
                         <div class="rowCenter">
@@ -155,6 +167,9 @@
                     <td class="nav" width="1%" ng-repeat="field in pivotTable.moreFields track by $index">
                         <issue-field name="field" field="data.rowKey._issue.fields[field]" issue="data.rowKey._issue" jira-config="jiraConfig" ng-if="data.rowKey._issue" once="pivotTable" all-fields="allFields"/>
                     </td>
+                    <td class="nav border total" ng-if="!hideTotalColumn && showTotalInFront">
+                        &nbsp;
+                    </td>
                     <td class="nav border" ng-repeat="column in pivotTable.sortedColumns()">
                         <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
                     </td>
@@ -170,6 +185,15 @@
                     </td>
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields track by $index">
                         <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
+                    </td>
+                    <td class="nav border total" ng-if="!hideTotalColumn && showTotalInFront">
+                        <div class="rowCenter">
+                            {{pivotTable.sum | prettyHours:jiraConfig:isElapsedTime}}
+                            <span ng-if="showDetailsCount" style="margin-left: 5px">
+                                <div class="small" title="{{'time(s)' | i18n}}">{{pivotTable.detailsNum}}</div>
+                                <div class="small-bottom" title="{{'Average' | i18n}}">{{pivotTable.avg | prettyHours:jiraConfig:isElapsedTime}}</div>
+                            </span>
+                        </div>
                     </td>
                     <td class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
                         <div class="rowCenter">

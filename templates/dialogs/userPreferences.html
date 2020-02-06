@@ -279,6 +279,22 @@
         <div class="field-group">
             <span class="description">{{'description.Show Category Row' | i18n}}</span>
         </div>
+        <div class="field-group">
+            <label for="select2-showTotalInFront">{{'Show Total In Front' | i18n}}</label>
+            <select id="select2-showTotalInFront"
+                    class="select"
+                    title="{{'Show Total In Front' | i18n}}"
+                    ng-model="showTotalInFront.val"
+                    ng-change="saveShowTotalInFront()"
+                    ng-options="item.id as item.label for item in showTotalInFrontTypes">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay" ng-show="showTotalInFrontSaveSuccess">
+                <strong>{{'Show Total In Front' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Show Total In Front' | i18n}}</span>
+        </div>
         <div class="field-group" ng-show="problemReporter">
             <label for="onErrorIgnore">{{'Disable Problem Reporter' | i18n}}</label>
             <input id="onErrorIgnore"

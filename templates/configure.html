@@ -586,6 +586,20 @@
         <div class="field-group">
             <span class="description">{{'description.Show Category Row' | i18n}}</span>
         </div>
+        <div class="field-group">
+            <label for="showTotalInFront">{{'Show Total In Front' | i18n}}</label>
+            <input id="showTotalInFront"
+                   type="checkbox"
+                   class="checkbox"
+                   ng-model="showTotalInFront.val"
+                   ng-change="saveShowTotalInFront()">
+            <div class="aui-message aui-message-success msg-overlay" ng-show="showTotalInFrontSaveSuccess">
+                <strong>{{'Show Total In Front' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Show Total In Front' | i18n}}</span>
+        </div>
     </div>
     <div ng-show="page=='auditLog'">
         <table cellspacing="5" cellpadding="0" border="0" style="margin-left: -5px">
