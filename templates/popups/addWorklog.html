@@ -43,9 +43,9 @@
         </td>
     </tr>
     <tr ng-if="popupData.worklog.user">
-        <td><label>{{'On Behalf of' | i18n}}</label></td>
+        <td style="text-align: right"><span class="aui-icon aui-icon-warning">Warning</span></td>
         <td colspan="2">
-            <input type="text" size="25" ng-model="popupData.worklog.user.displayName" readonly="readonly"/>
+            {{'Log work on behalf of' | i18n}}&nbsp;{{popupData.worklog.user.displayName}}
         </td>
     </tr>
 </table>
