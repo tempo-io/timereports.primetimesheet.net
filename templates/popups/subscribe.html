@@ -55,6 +55,14 @@
             </label>
         </div>
     </fieldset>
+    <fieldset>
+        <input id="csv"
+               type="checkbox"
+               ng-model="popupData.everyWeekOptions.addCsv">
+        <label for="csv">
+            {{'Add CSV attachment' | i18n}}
+        </label>
+    </fieldset>
     <div style="padding-top: 20px; text-align: right">
         <div>
             <input class="aui-button aui-button-primary" type="submit" ng-value="popupData.currentView.jobId ? '{{'Update' | i18n}}' : '{{'Subscribe' | i18n}}'" ng-disabled="subscribeForm.$invalid" ng-click="popupData.subscribe(closePopup)">
