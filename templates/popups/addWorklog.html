@@ -42,6 +42,10 @@
                    placeholder="{{workDescriptionRequired ? '(required)' : ''}}"/>
         </td>
     </tr>
+    <tr ng-if="popupData.worklog.visibilityGroup || popupData.worklog.visibilityRole">
+        <td><label>{{'Restricted to' | i18n}}</label></td>
+        <td><span class="red">{{popupData.worklog.visibilityGroup || popupData.worklog.visibilityRole}}</span></td>
+    </tr>
     <tr ng-if="popupData.worklog.user">
         <td style="text-align: right"><span class="aui-icon aui-icon-warning">Warning</span></td>
         <td colspan="2">
