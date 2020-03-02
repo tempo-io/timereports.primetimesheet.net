@@ -55,7 +55,18 @@
             </label>
         </div>
     </fieldset>
-    <fieldset>
+    <fieldset style="padding-top: 10px">
+        <label for="cc">
+            {{'CC' | i18n}}
+        </label>
+        <input id="cc"
+               ng-value="popupData.everyWeekOptions.sendToCCUsers"
+               aui-user-picker
+               multi-select="true"
+               ng-user-changed-func="popupData.ccChange"
+               type="text"/>
+    </fieldset>
+    <fieldset style="padding-top: 10px">
         <input id="csv"
                type="checkbox"
                ng-model="popupData.everyWeekOptions.addCsv">

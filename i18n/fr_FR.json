@@ -178,6 +178,7 @@
     "< No comment >": "< Sans commentaires >",
     "If Incomplete": "Si le relevé de temps n'est pas complet pour la période",
     "Add CSV attachment": "Add CSV attachment",
+    "CC": "Send copy to users",
 
     "Edit Worklog": "Éditer le Journal de travail",
     "Delete Worklog": "Supprimer le Journal de travail",

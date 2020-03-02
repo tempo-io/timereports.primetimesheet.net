@@ -178,6 +178,7 @@
     "< No comment >": "< No comment >",
     "If Incomplete": "If timesheet is not complete for the period",
     "Add CSV attachment": "Add CSV attachment",
+    "CC": "Send copy to users",
 
     "Edit Worklog": "Edit Worklog",
     "Delete Worklog": "Delete Worklog",
