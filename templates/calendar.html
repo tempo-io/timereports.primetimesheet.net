@@ -49,7 +49,7 @@
                     </td>
                     <td width="12%"
                         style="cursor:default"
-                        ng-init="currentDay=moment(row.rowKey.field.startDate).add($index,'days')"
+                        ng-init="currentDay=moment(row.rowKey.field.startDate).add(column.columnKey.keyValue,'days')"
                         ng-click="editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
                         class="nav border"
                         ng-class="{toDay: column.columnKey.isToday,
