@@ -107,7 +107,8 @@ describe('timesheetControllerTest', function () {
         logWorkRetrospectively: {},
         allowToLogFromDate: {},
         currencySymbol: {},
-        showTotalInFront: {}
+        showTotalInFront: {},
+        tempoToken: {}
       }
     })
     inject(function ($timeout, $window, _$httpBackend_, applicationLoggingService, $rootScope) {
@@ -285,7 +286,8 @@ describe('timesheetControllerTest', function () {
         showDetailsCount: {},
         showCategoryRow: {},
         currencySymbol: {},
-        showTotalInFront: {}
+        showTotalInFront: {},
+        tempoToken: {}
       }
     })
 
@@ -354,7 +356,8 @@ describe('timesheetControllerTest', function () {
         showDetailsCount: {},
         showCategoryRow: {},
         currencySymbol: {},
-        showTotalInFront: {}
+        showTotalInFront: {},
+        tempoToken: {}
       }
     })
 

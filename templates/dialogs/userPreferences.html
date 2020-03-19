@@ -310,6 +310,24 @@
             <span class="description">{{'description.Disable Problem Reporter' | i18n}}</span>
         </div>
         <div class="field-group" ng-if="isTimesheet">
+            <label for="tempoToken">{{'Tempo Token' | i18n}}</label>
+            <input name="tempoToken"
+                   id="tempoToken"
+                   type="text"
+                   class="text"
+                   ng-model="tempoToken.val"
+                   ng-change="saveTempoToken()"
+                   ng-model-options='{ debounce: 1000 }'
+                   placeholder="{{'Tempo Token' | i18n}}">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="tempoTokenSaveSuccess">
+                <strong>{{'Tempo Token' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Tempo Token' | i18n}}</span>
+        </div>
+        <div class="field-group" ng-if="isTimesheet">
             <label for="sendMobileLink">{{'Link For Mobile Devices' | i18n}}</label>
             <a href="https://timesheet-plugin.herokuapp.com/m" target="_blank">https://timesheet-plugin.herokuapp.com/m</a>
             <br/>
