@@ -358,6 +358,7 @@
     "error.startDate.afterEnd": "Дата начала позже даты окончания.",
     "error.workLabel.emptyUnique": "Ярлык работы не может быть пустым и должен быть уникальным.",
     "error.cannotLogWorkIssue": "Работа не может быть внесена в журнал по данной задаче.",
+    "error.unexpectedError": "%s",
 
     "Time Reports Configuration": "Конфигурация отчетов о времени",
     "Timesheet Configuration": "Конфигурация табеля",

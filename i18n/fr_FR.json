@@ -357,6 +357,7 @@
     "error.startDate.afterEnd": " La date de début est postérieure à la date de fin.",
     "error.workLabel.emptyUnique": "L'étiquette de travail ne doit pas être vide et unique.",
     "error.cannotLogWorkIssue": "Le travail ne peut pas être enregistré pour le tâche.",
+    "error.unexpectedError": "%s",
 
     "Time Reports Configuration": "Rapport du temps configuration",
     "Timesheet Configuration": "Relevé de temps configuration",

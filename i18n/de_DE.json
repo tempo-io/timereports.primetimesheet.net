@@ -357,6 +357,7 @@
     "error.startDate.afterEnd": "Das Anfangsdatum liegt nach dem Enddatum.",
     "error.workLabel.emptyUnique": "Das Arbeit-Label darf nicht leer und muss eindeutig sein.",
     "error.cannotLogWorkIssue": "Für diesen Vorgang kann die Arbeit nicht protokolliert werden.",
+    "error.unexpectedError": "%s",
 
     "Time Reports Configuration": "Zeitberichte-Konfiguration",
     "Timesheet Configuration": "Stundenzettel-Konfiguration",
