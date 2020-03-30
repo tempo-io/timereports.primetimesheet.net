@@ -30,8 +30,8 @@ window.AP = {
       }
   },
   events: {
-      onPublic: function() {
-      }
+      onPublic: _ => {},
+      on: _ => {}
   },
   request: function(options) {
     this.getTimeoutFunc()(function() {
