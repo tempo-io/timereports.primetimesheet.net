@@ -186,6 +186,8 @@
     "This Week": "This Week",
     "This Month": "This Month",
     "Total" : "Total",
+    "Suggested Total" : "Suggested Total",
+    "Log Suggested" : "Log Suggested",
     "Cost" : "Cost",
     "issues" : "(%s tâches)",
     "issue" : "(1 tâche)",

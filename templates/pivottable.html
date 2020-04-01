@@ -137,7 +137,10 @@
                         <span ng-if="data.worklog._issue">
                             <issue-key issue="data.worklog._issue" show-title="true" />
                         </span>
-                        <span ng-if="'TimeEntry' == pivotTableType && data.worklog.workDate >= allowToLogFromDate && !cannotEditOwnWorklogIssue[data.rowKey.issue.key]"
+                        <span ng-if="'TimeEntry' == pivotTableType &&
+                                    !data.worklog.transient &&
+                                    data.worklog.workDate >= allowToLogFromDate &&
+                                    !cannotEditOwnWorklogIssue[data.rowKey.issue.key]"
                               e-style="width: 100%"
                               editable-text="data.worklog.comment"
                               onshow="$parent.$form=$form"
@@ -147,7 +150,10 @@
                             <worklog-comment worklog="data.worklog" no-comment="'< No comment >' | i18n"/>
                             <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
                         </span>
-                        <span ng-if="'TimeEntry' == pivotTableType && (data.worklog.workDate < allowToLogFromDate || cannotEditOwnWorklogIssue[data.rowKey.issue.key])">
+                        <span ng-if="'TimeEntry' == pivotTableType &&
+                                    (data.worklog.transient ||
+                                      data.worklog.workDate < allowToLogFromDate ||
+                                      cannotEditOwnWorklogIssue[data.rowKey.issue.key])">
                             <worklog-comment worklog="data.worklog"/>
                         </span>
                         <a ng-if="['TimeBalance', 'Timespent', 'CostReport'].indexOf(pivotTableType) >= 0 && data.worklog.author.accountId" ng-title="{{data.worklog.author.displayName}}"
@@ -216,6 +222,30 @@
                         </div>
                     </td>
                 </tr>
+                <!-- suggested total block -->
+                <tr class="rowFooter" ng-if="pivotTable.suggestedNum" ng-hide="pivotTableType == 'TimeEntry' && (loading || !loaded || !pivotTable)">
+                    <td colspan="{{rowKeySize}}" class="nav total borderTopTotal">
+                        {{'Suggested Total' | i18n}}&nbsp;{{pivotTable.suggestedNum != 1 ? 'issues' : 'issue' | i18n:{placeholders:[pivotTable.suggestedNum]} }}
+                    </td>
+                    <td class="nav total borderTopTotal" ng-repeat="field in pivotTable.moreFields track by $index">
+                    </td>
+                    <td class="nav border total borderTopTotal" ng-if="!hideTotalColumn && showTotalInFront">
+                    </td>
+                    <td class="nav border total borderTopTotal">
+                    </td>
+                    <td class="nav border total borderTopTotal">
+                        {{pivotTable.suggestedTotal | prettyHours:jiraConfig:isElapsedTime}}
+                    </td>
+                    <td class="nav border total borderTopTotal">
+                        <i class="fa fa-check-square"
+                           ng-click="!disableSuggested && logSuggested()"
+                           ng-disabled="disableSuggested"
+                           ng-class="{disabled: disableSuggested}"
+                           title="{{'Log Suggested' | i18n}}"></i>
+                    </td>
+                    <td class="nav border total borderTopTotal" ng-if="!hideTotalColumn">
+                    </td>
+                </tr>
                 <tr ng-show="loaded && loading">
                     <td colspan="{{rowKeySize + 1}}">
                         <loading/>
@@ -242,7 +272,7 @@
         </div>
     </div>
     <div ng-if="canLogWork && loaded && !loading && isStartDateToday">
-        <label for="log-work-issue">
+        <label for="worklog-issue">
             <span class="aui-icon aui-icon-small aui-iconfont-add">Start Work</span>
         </label>
         <input type="text" class="text" id="worklog-issue" ng-model="worklog.issueKey" aui-issue-picker="worklog.issue" ng-change="startWork(true)">
