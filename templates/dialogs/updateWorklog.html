@@ -40,7 +40,7 @@
                        aui-date-picker
                        ng-date-changed-func="changeDate">
                 <lock-period-error>&lt;&nbsp;{{allowToLogFromDate | date:'yyyy-MM-dd'}}&nbsp;!&nbsp;</lock-period-error>
-                <time-picker time="worklogDatetime.time"></time-picker>
+                <time-picker time="worklogDatetime.time" ng-model-options='{ debounce: 1000 }'></time-picker>
             </div>
 
             <ng-include ng-if="showMore" src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0"></ng-include>
