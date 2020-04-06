@@ -87,6 +87,37 @@
         <div class="field-group">
             <span class="description">{{'description.Projects With Time Entry Panel' | i18n}}</span>
         </div>
+        <div class="field-group">
+            <label for="worklogVisibilityGroup">{{'Worklog Visibility Group' | i18n}}</label>
+            <input id="worklogVisibilityGroup"
+                   aui-group-picker
+                   type="text"
+                   ng-model="worklogVisibilityGroup.val"
+                   ng-group-changed-func="saveWorklogVisibilityGroup">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="worklogVisibilityGroupSaveSuccess">
+                <strong>{{'Worklog Visibility Group' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Worklog Visibility Group' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <label for="worklogVisibilityRole">{{'Worklog Visibility Role' | i18n}}</label>
+            <input id="worklogVisibilityRole"
+                   aui-multi-select-picker
+                   type="text"
+                   ng-model="worklogVisibilityRole.val"
+                   ng-options-data="projectsRoles"
+                   ng-value-changed-func="saveWorklogVisibilityRole">
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="worklogVisibilityRoleSaveSuccess">
+                <strong>{{'Worklog Visibility Role' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Worklog Visibility Role' | i18n}}</span>
+        </div>
     </div>
     <div ng-show="page=='hierarchy'">
         <div class="field-group">
@@ -218,37 +249,6 @@
         </div>
         <div class="field-group">
             <span class="description" data-ng-bind-html="'description.Preserve Started Time' | i18n | htmlSafe"></span>
-        </div>
-        <div class="field-group">
-            <label for="worklogVisibilityGroup">{{'Worklog Visibility Group' | i18n}}</label>
-            <input id="worklogVisibilityGroup"
-                   aui-group-picker
-                   type="text"
-                   ng-model="worklogVisibilityGroup.val"
-                   ng-group-changed-func="saveWorklogVisibilityGroup">
-            <div class="aui-message aui-message-success msg-overlay"
-                 ng-show="worklogVisibilityGroupSaveSuccess">
-                <strong>{{'Worklog Visibility Group' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
-            </div>
-        </div>
-        <div class="field-group">
-            <span class="description">{{'description.Worklog Visibility Group' | i18n}}</span>
-        </div>
-        <div class="field-group">
-            <label for="worklogVisibilityRole">{{'Worklog Visibility Role' | i18n}}</label>
-            <input id="worklogVisibilityRole"
-                   aui-multi-select-picker
-                   type="text"
-                   ng-model="worklogVisibilityRole.val"
-                   ng-options-data="projectsRoles"
-                   ng-value-changed-func="saveWorklogVisibilityRole">
-            <div class="aui-message aui-message-success msg-overlay"
-                 ng-show="worklogVisibilityRoleSaveSuccess">
-                <strong>{{'Worklog Visibility Role' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
-            </div>
-        </div>
-        <div class="field-group">
-            <span class="description">{{'description.Worklog Visibility Role' | i18n}}</span>
         </div>
         <div class="field-group">
             <label for="workLabels">{{'Work Labels' | i18n}}</label>
