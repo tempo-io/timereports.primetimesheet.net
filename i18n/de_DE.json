@@ -421,6 +421,6 @@
     "welcome.content.3.5": "Berichte können regelmäßig per E-Mail verschickt (wenn es das E-Mail-Symbol auf der Berichtsseite gibt) oder mithilfe <a href=\"https://www.primetimesheet.net/cloud/REST_endpoint.html\" target=\"_blank\">REST API</a> exportiert oder unter <a href=\"https://www.primetimesheet.net/cloud/Mobile.html\" target=\"_blank\">mobile devices</a> abgerufen werden.",
     "welcome.content.4": "Weitere Ressourcen",
     "welcome.content.5.1": "<a href=\"https://www.primetimesheet.net/%s/\" target=\"_blank\">Dokumentation</a>",
-    "welcome.content.5.2": "<a href=\"https://bitbucket.org/azhdanov/timereports/issues\" target=\"_blank\">Vorgänge</a>",
+    "welcome.content.5.2": "<a href=\"https://bitbucket.org/tempo-io/cloudtimesheet/issues\" target=\"_blank\">Vorgänge</a>",
     "welcome.content.5.3": "<a href=\"https://primetimesheet.atlassian.net/servicedesk/customer/portal/1\" target=\"_blank\">Support-Anfrage stellen</a>"
 }
