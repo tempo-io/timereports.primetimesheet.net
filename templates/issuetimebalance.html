@@ -30,7 +30,7 @@
                         <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
                     </td>
                     <td class="nav first border total">
-                        <span><i title="{{'Log Work' | i18n}}" class="fa fa-pencil-square-o" ng-click="addWorklogDialog(null, issueKey)" ng-hide="!canLogWork || cannotLogWorkIssue[issueKey]"></i></span>
+                        <span><i title="{{'Log Work' | i18n}}" class="fa fa-edit" ng-click="addWorklogDialog(null, issueKey)" ng-hide="!canLogWork || cannotLogWorkIssue[issueKey]"></i></span>
                     </td>
                 </tr>
                 <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed">

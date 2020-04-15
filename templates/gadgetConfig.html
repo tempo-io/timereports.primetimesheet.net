@@ -14,8 +14,8 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group">
-      <label>{{ (isMonthView ? 'Number of Months' : 'Number of Weeks') | i18n}}</label>
+    <div class="field-group" ng-if="pivotTableType != 'TimeEntry' &&  viewByOptions.selected != 'day'">
+      <label>{{ (viewByOptions.selected == 'month' ? 'Number of Months' : 'Number of Weeks') | i18n}}</label>
       <input ng-model="numOfWeeks.value"
              class="text"
              type="number"
@@ -31,7 +31,7 @@
       <label >{{'Start Date' | i18n}}</label>
       <input ng-model="startDate.value" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="select"/>
     </div>
-    <div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
+    <div class="field-group" ng-if="pivotTableType != 'TimeEntry' &&  viewByOptions.selected != 'day'">
       <label>{{'End Date' | i18n}}</label>
       <input ng-model="endDate.value" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
     </div>
@@ -148,8 +148,14 @@
       <input class="checkbox" type="checkbox" ng-model="showDetails.enabled" ng-change="showDetailsChange(showDetails.enabled)" />
     </div>
     <div class="field-group" ng-if="['TimeEntry', 'IssueTime', 'Calendar'].indexOf(pivotTableType) < 0">
-      <label>{{'Month View' | i18n}}</label>
-      <input class="checkbox" type="checkbox" ng-model="monthView.enabled" ng-change="monthViewChanged(monthView.enabled)" />
+      <label>{{'View By' | i18n}}</label>
+      <select class="select"
+              title="{{'View By' | i18n}}"
+              ng-model="viewByOptions.selected"
+              ng-options="item.id as item.label for item in viewByOptions.options"
+              ng-change="monthViewChanged()"
+              aui-select2>
+      </select>
     </div>
     <div class="field-group" ng-if="pivotTableType == 'Timesheet'">
       <label>{{'Sum By' | i18n}}</label>

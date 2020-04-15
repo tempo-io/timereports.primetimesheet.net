@@ -6,7 +6,7 @@
         </div>
         <div class="ak-field-group" ng-hide="reportDialog && reportParamsObject.jql != undefined">
             <label>{{ 'Filter or Project' | i18n }}
-                <a class="fa fa-pencil edit"
+                <a class="fa fa-edit edit"
                    href="{{hostBaseUrl}}/secure/ManageFilters.jspa"
                    target="_blank"
                    style="margin-left: 10px"
@@ -59,7 +59,7 @@
             <input ng-model="startDate.value" type="date" aui-date-picker ng-date-changed-func="startChangeDate"
                    class="select" ng-class="{inactive: startDate.calculated}"/>
         </div>
-        <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry'">
+        <div class="ak-field-group" ng-if="!isDayView">
             <label>{{'End Date' | i18n}}</label>
             <input ng-model="endDate.value" type="date" aui-date-picker ng-date-changed-func="endChangeDate"
                    class="select" ng-class="{inactive: endDate.calculated}"/>

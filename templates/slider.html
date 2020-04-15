@@ -8,17 +8,17 @@
               title="{{isDayView ? 'Current Day' : isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
               class="fa fa-step-backward"></span>
     </div>
-    <div id="slider-today" ng-if="!isDayView && pivotTableType != 'Calendar'">
-        <span ng-click="weekSumChange()" ng-if="pivotTableType == 'Timesheet'"
-              title="{{sumTitle | i18n}}" ng-class="sumClass"></span>
+    <div id="slider-today" ng-if="['TimeEntry', 'IssueTime', 'Calendar'].indexOf(pivotTableType) < 0">
+        <span ng-click="isDayView || weekSumChange()" ng-if="pivotTableType == 'Timesheet'"
+              title="{{sumTitle | i18n}}" ng-class="sumClass" ng-disabled="isDayView"></span>
         <span ng-if="!hidePrevNext"
-              title="{{'Switch to ' + (isMonthView ? 'Week View' : 'Month View') | i18n}}"
-              class="fa {{isMonthView ? 'fa-calendar' : 'fa-calendar-o'}}" ng-click="toggleMonthView()"></span>
+              title="{{'Switch to ' + (isMonthView ? 'Day View' : isDayView ? 'Week View' : 'Month View') | i18n}}"
+              class="fa {{isMonthView ? 'fa-calendar-day' : isDayView ? 'fa-calendar-week' : 'fa-calendar'}}" ng-click="toggleMonthView()"></span>
         <span ng-if="!hideDetails"
               title="{{(compressed ? 'Show Details' : 'Hide Details') | i18n}}"
               class="fa {{compressed ? 'fa-expand' : 'fa-compress'}}" ng-click="toggleShowDetails()"></span>
     </div>
-    <div id="slider-today" ng-if="isDayView">
+    <div id="slider-today" ng-if="['TimeEntry', 'IssueTime'].indexOf(pivotTableType) >= 0">
         {{startDate.value | date:'EEE, MMM d'}}
     </div>
 

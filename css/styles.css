@@ -280,14 +280,14 @@ a.disabled {
 .pagination {
   float: right;
 }
-[ng-click]:not(.disabled):not(.inactive):not(.aui-button-primary),
+[ng-click]:not(.disabled):not(.inactive):not(.aui-button-primary):not([disabled]),
 [data-ng-click]:not(.disabled),
 [x-ng-click]:not(.disabled) {
     color: #0052CC;
     cursor: pointer;
 }
-[ng-click]:not(.disabled):not(.inactive):not(.aui-button-primary):hover,
-[data-ng-click]:not(.disabled):hover,
+[ng-click]:not(.disabled):not(.inactive):not(.aui-button-primary):hover:not([disabled]):hover,
+[data-ng-click]:not(.disabled):hover:,
 [x-ng-click]:not(.disabled):hover {
     color: #0065FF;
     cursor: pointer;

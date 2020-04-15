@@ -14,14 +14,14 @@
             <span title="{{wkLog.comment.length > 25 ? wkLog.comment : ''}}">{{wkLog.comment | limitTo:25}}</span>
         </td>
         <td nowrap>
-            <span class="fa fa-pencil-square-o"
+            <span class="fa fa-edit"
                   ng-click="popupData.openEditWorklogDialog(wkLog.id, wkLog._issue);closePopup();"
                   title="{{'Edit worklog' | i18n}}"
                   ng-if="!wkLog.locked"
                   ng-show="wkLog.ownWorklog ? popupData.canEditOwnWorklog && !popupData.cannotEditOwnWorklogIssue[popupData.rowKey.keyValue] :
                   popupData.canEditAllWorklog && !popupData.cannotEditAllWorklogIssue[popupData.rowKey.keyValue]">
             </span>
-            <span class="fa fa-trash-o" style="color: red"
+            <span class="fa fa-trash" style="color: red"
                   ng-click="popupData.openDeleteWorklogDialog(wkLog.id, wkLog._issue);closePopup();"
                   title="{{'Delete worklog' | i18n}}"
                   ng-if="!wkLog.locked"
