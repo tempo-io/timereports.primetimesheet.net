@@ -45,7 +45,7 @@
                     <ul class="aui-list-truncate">
                         <li><a style="color:#333" ng-click="openUserPreferencesDialog()">{{'User Preferences' | i18n }}</a></li>
                         <li ng-if="isAdmin == true"><a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/configuration" target="_parent">{{'Configuration' | i18n }}</a></li>
-                        <li><a ng-if="pivotTableType == 'CostReport' && userInAuditorsGroups" style="color:#333" ng-click="openHourlyRatesDialog()">{{'Hourly Rates' | i18n }}</a></li>
+                        <li><a ng-if="pivotTableType == 'CostReport' && userIsAccountant" style="color:#333" ng-click="openHourlyRatesDialog()">{{'Hourly Rates' | i18n }}</a></li>
                     </ul>
                 </div>
             </li>

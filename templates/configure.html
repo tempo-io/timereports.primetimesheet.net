@@ -33,6 +33,17 @@
             <span class="description" data-ng-bind-html="'description.Auditors Roles' | i18n | htmlSafe"></span>
         </div>
         <div class="field-group">
+            <label for="select2-accountantsGroups">{{'Accountants Groups' | i18n}}</label>
+            <input id="select2-accountantsGroups" ng-model="accountantsGroups.val" aui-group-picker ng-group-changed-func="saveAccountantsGroups" type="text" title="{{'Accountants Groups' | i18n}}"/>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="accountantsGroupsSaveSuccess">
+                <strong>{{'Accountants Groups' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Accountants Groups' | i18n}}</span>
+        </div>
+        <div class="field-group">
             <label for="select2-restrictedGroups">{{'Restricted Groups' | i18n}}</label>
             <input id="select2-restrictedGroups" ng-model="restrictedGroups.val" aui-group-picker ng-group-changed-func="saveRestrictedGroups" type="text" title="{{'Restricted Groups' | i18n}}"/>
             <div class="aui-message aui-message-success msg-overlay"

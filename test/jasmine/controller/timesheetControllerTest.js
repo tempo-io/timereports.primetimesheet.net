@@ -108,7 +108,8 @@ describe('timesheetControllerTest', function () {
         allowToLogFromDate: {},
         currencySymbol: {},
         showTotalInFront: {},
-        tempoToken: {}
+        tempoToken: {},
+        accountantsGroups: {}
       }
     })
     inject(function ($timeout, $window, _$httpBackend_, applicationLoggingService, $rootScope) {
@@ -287,7 +288,8 @@ describe('timesheetControllerTest', function () {
         showCategoryRow: {},
         currencySymbol: {},
         showTotalInFront: {},
-        tempoToken: {}
+        tempoToken: {},
+        accountantsGroups: {}
       }
     })
 
@@ -357,7 +359,8 @@ describe('timesheetControllerTest', function () {
         showCategoryRow: {},
         currencySymbol: {},
         showTotalInFront: {},
-        tempoToken: {}
+        tempoToken: {},
+        accountantsGroups: {}
       }
     })
 
