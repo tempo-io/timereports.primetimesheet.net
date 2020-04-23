@@ -20,18 +20,19 @@ window.AP = {
     }) : {"atlassianAccountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa"}; // for pivottableJob
   },
   getLocation: function(callback) {
-      setTimeout(function() {
-          callback("https://timereports.atlassian.net/timereports?project.id=10000&project.key=DEMO");
-      });
+    setTimeout(function() {
+        callback("https://timereports.atlassian.net/timereports?project.id=10000&project.key=DEMO");
+    });
   },
   context: {
-      getContext: function(cb) {
-          cb({});
-      }
+    getContext: function(cb) {
+      cb({});
+    }
   },
   events: {
-      onPublic: _ => {},
-      on: _ => {}
+    onPublic: _ => {},
+    on: _ => {},
+    offAll: _ => {}
   },
   request: function(options) {
     this.getTimeoutFunc()(function() {
