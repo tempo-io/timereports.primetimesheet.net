@@ -357,6 +357,7 @@
 
     "Data is limited by Auditors Roles": "Aufgrund der konfigurierten Auditorenrollen sind die Daten auf eigene Arbeitsprotokolle für die folgenden Projekte beschränkt:",
     "Data is limited to Restricted Groups": "Aufgrund der konfigurierten eingeschränkten Gruppen sind die Daten auf Arbeitsprotokolle von Benutzern aus den folgenden Gruppen beschränkt:",
+    "Users list is restricted to Restricted Groups": "Because of the Restricted Groups configured, users list is restricted to the following group(s):",
     "Denied": "Abgelehnt",
     "error.restriction.auditorsGroups": "Sie gehören zu keiner der konfigurierten Auditorengruppen. Bitte wählen Sie sich im Benutzerfeld aus, um eigene Arbeitsprotokolle anzusehen.",
     "error.restriction.licenseError": "Lizenz ist nicht aktiviert.",

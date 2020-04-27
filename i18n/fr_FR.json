@@ -357,6 +357,7 @@
 
     "Data is limited by Auditors Roles": " En raison des rôles d'auditeur configurés, les données sont limitées à leurs propres journaux de travail pour les projet(s) suivant(s): ",
     "Data is limited to Restricted Groups": "En raison des groupes restreints configurés, les données sont limitées aux journaux de travail des utilisateurs des groupe(s) suivant(s): ",
+    "Users list is restricted to Restricted Groups": "Because of the Restricted Groups configured, users list is restricted to the following group(s):",
     "Denied": "Nié",
     "error.restriction.auditorsGroups": " Vous ne faites partie d'aucun groupe d'auditeurs configuré. Veuillez vous sélectionner dans le champ Utilisateur pour afficher vos propres journaux de travail.",
     "error.restriction.licenseError": "Licence n'est pas active.",

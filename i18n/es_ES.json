@@ -356,6 +356,7 @@
 
     "Data is limited by Auditors Roles": "Debido a los roles de auditores configurados, los datos se limitan a propios registros de trabajo para los siguientes proyecto(s).:",
     "Data is limited to Restricted Groups": "Debido a los Grupos restringidos configurados, los datos se limitan a los registros de trabajo de los usuarios de los siguientes grupo(s).:",
+    "Users list is restricted to Restricted Groups": "Because of the Restricted Groups configured, users list is restricted to the following group(s):",
     "Denied": "Rechazado",
     "error.restriction.auditorsGroups": "Ud.no está configurado en el Grupo de auditores.  Encuentre a sí mismo en el campo de Usuarios para ver sus propios registros de trabajo.",
     "error.restriction.licenseError": "La licencia no está activada.",

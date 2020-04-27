@@ -76,6 +76,9 @@
                    style="max-width: 70px;margin:5px;"/>
             <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
         </div>
+        <div class="aui-message aui-message warning" ng-show="restrictedGroups">
+            <strong>{{'Users list is restricted to Restricted Groups' | i18n}}</strong>&nbsp;{{restrictedGroups}}
+        </div>
     </form>
 </div>
 <!-- Dialog footer -->

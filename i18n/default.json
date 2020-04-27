@@ -357,6 +357,7 @@
 
     "Data is limited by Auditors Roles": "Because of the Auditors Roles configured, data is limited to own worklogs for the following project(s):",
     "Data is limited to Restricted Groups": "Because of the Restricted Groups configured, data is limited to worklogs of users from the following group(s):",
+    "Users list is restricted to Restricted Groups": "Because of the Restricted Groups configured, users list is restricted to the following group(s):",
     "Denied": "Denied",
     "error.restriction.auditorsGroups": "You are not in any Auditors Groups configured. Please select yourself in User field to see own worklogs.",
     "error.restriction.licenseError": "License is not Active.",
