@@ -22,6 +22,7 @@ require([
   'app/services/viewService',
   'app/services/validationService',
   'app/services/flightRecorderService',
+  'app/services/trackingService',
   'app/directives/DrawHelper',
   'app/directives/timesheetDirectives',
   'app/filters/timesheetFilters',
