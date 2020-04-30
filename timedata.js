@@ -1,6 +1,8 @@
 if (typeof module === 'object' && module.exports) {
     var window = {};
 }
+var Avo
+var bowser
 AJS = window.AJS || {$: window.$, progressBars: {update: function() {}, setIndeterminate: function() {}}};
 // simulate running in atlassian-connect container
 window.AP = {
