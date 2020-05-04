@@ -10,6 +10,7 @@ require([
   'bower_components/moment-timezone/builds/moment-timezone-with-data-2012-2022',
   'bower_components/angular-xeditable/dist/js/xeditable',
   'bower_components/ng-focus-if/focusIf',
+  'bower_components/ua-parser-js/src/ua-parser.js',
   'timesheetUtils',
   'app/modules/configuration',
   'app/modules/directives',

@@ -1,8 +1,7 @@
 if (typeof module === 'object' && module.exports) {
     var window = {};
 }
-var Avo
-var bowser
+window.Avo = { initAvo: _ => {} }
 AJS = window.AJS || {$: window.$, progressBars: {update: function() {}, setIndeterminate: function() {}}};
 // simulate running in atlassian-connect container
 window.AP = {
@@ -85,6 +84,12 @@ window.AP = {
           var issueNumber = parseInt(m[1]);
           var result = issueNumber < 5 ? TimeData.issues[4 - issueNumber] : TimeData.issues[issueNumber - 1];
           options.success(angular.copy(result));
+      } else if (m = options.url.match(/\/addons\/timereports$/)) {
+        options.success({})
+      } else if (m = options.url.match(/\/serverInfo$/)) {
+        options.success({baseUrl: 'https://timereports.atlassian.net'})
+      } else {
+        console.log(options.url)
       }
     }, this.$timeoutDelay);
   },

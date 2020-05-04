@@ -852,3 +852,10 @@ QUnit.test('clone', function () {
   QUnit.assert.notEqual(b.empty, b.deep.empty, 'similar object')
   QUnit.assert.equal(b.deep.cycle, b, 'deep cycle')
 })
+QUnit.test('Detect.js', function () {
+  const ua = new UAParser('Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 10.0; WOW64; Trident/7.0; Microsoft Outlook 16.0.11929; Microsoft Outlook 16.0.11929)')
+  QUnit.assert.equal(ua.getBrowser().name, 'IE', 'Browser')
+  QUnit.assert.equal(ua.getBrowser().version, '10.0', 'Browser Version')
+  QUnit.assert.equal(ua.getOS().name, 'Windows', 'OS')
+  QUnit.assert.equal(ua.getOS().version, '10', 'OS Version')
+})

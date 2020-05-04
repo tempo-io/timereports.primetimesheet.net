@@ -7,6 +7,7 @@ require.config({
 require([
   'lib/jquery.base64',
   'bower_components/moment-timezone/builds/moment-timezone-with-data-2012-2022',
+  'bower_components/ua-parser-js/src/ua-parser.js',
   'timesheetUtils',
   'app/directives/DrawHelper',
   'app/pivottable/PivotKey',
