@@ -600,6 +600,10 @@ QUnit.test('TimesheetUtils.convertDate', function () {
   QUnit.assert.equal(date.getDate(), 25, 'Moscow 2014 day of month')
   date = TimesheetUtils.convertDate('2015-02-24T20:00:00.000+0000', 'Europe/Moscow')
   QUnit.assert.equal(date.getDate(), 24, 'Moscow 2015 day of month')
+  date = TimesheetUtils.convertDate('2020-03-31T02:00:00.000+1100', 'Australia/Sydney')
+  QUnit.assert.equal(date.getDate(), 31, 'Sydney 2020 day of month')
+  date = TimesheetUtils.convertDate('2020-03-31T02:00:00.000+1100', 'Europe/Kiev')
+  QUnit.assert.equal(date.getDate(), 30, 'Sydney 2020 day of month in Kyiv')
 })
 QUnit.test('Calculated endDate', function () {
   var date = TimesheetUtils.getLastDayOfTheMonth(TimesheetUtils.addMonths(moment('2018-01-31'), 1))
