@@ -93,6 +93,8 @@
                     ng-model="categorizeByOptions.selected"
                     ng-options="item.id as item.label for item in categorizeByOptions.options"
                     ng-change="categorizeByChanged()"
+                    ng-class="{inactive: !groupByOptions.selected}"
+                    ng-disabled="!groupByOptions.selected"
                     aui-select2>
             </select>
         </div>

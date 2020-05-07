@@ -90,6 +90,8 @@
               ng-model="categorizeByOptions.selected"
               ng-options="item.id as item.label for item in categorizeByOptions.options"
               ng-change="categorizeByChanged()"
+              ng-class="{inactive: !groupByOptions.selected}"
+              ng-disabled="!groupByOptions.selected"
               aui-select2>
       </select>
     </div>
@@ -143,7 +145,7 @@
       <label>{{'Show Weekends' | i18n}}</label>
       <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled"/>
     </div>
-    <div class="field-group" ng-if="['PieChart', 'Calendar'].indexOf(pivotTableType) < 0">
+    <div class="field-group" ng-if="['PieChart', 'Calendar', 'TimeEntry'].indexOf(pivotTableType) < 0">
       <label>{{'Show Details' | i18n}}</label>
       <input class="checkbox" type="checkbox" ng-model="showDetails.enabled" ng-change="showDetailsChange(showDetails.enabled)" />
     </div>
