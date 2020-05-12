@@ -444,6 +444,7 @@ QUnit.test('Html Export TimeTracking', function (assert) {
         '1timeoriginalestimate', '2esttimeremaining', '3timespent', '4diff',
         '5originalestimateremaining', '6progress'],
       translations: translations,
+      configOptions: {},
       jiraConfig: { timeFormat: '' } })
   })
   $html.then(html => {
@@ -476,6 +477,7 @@ QUnit.test('Html Export TimeTracking Grouped by Assignee', function (assert) {
         '1timeoriginalestimate', '2esttimeremaining', '3timespent', '4diff',
         '5originalestimateremaining', '6progress'],
       translations: translations,
+      configOptions: {},
       jiraConfig: { timeFormat: '' } })
   })
   $html.then(html => {

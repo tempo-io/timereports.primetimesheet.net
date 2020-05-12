@@ -224,6 +224,7 @@
     "4diff": "Variance",
     "5originalestimateremaining": "Estimation initiale du temps restante",
     "6progress": "Progrès",
+    "62rate" : "Hourly Rate",
     "7cost": "Cost",
 
     "1started": "Mis en route",
@@ -250,6 +251,7 @@
     "User Defaults": "Paramètre d'utilisateur par défaut",
     "Audit Log": "Audit Log",
     "Hourly Rates": "Hourly Rates",
+    "Hourly Rate": "Hourly Rate",
     "Default Rate": "Default Rate",
     "Currency": "Currency",
 

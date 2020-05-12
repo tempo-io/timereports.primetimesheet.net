@@ -224,6 +224,7 @@
     "4diff": "Variance",
     "5originalestimateremaining": "Original Estimate Remaining",
     "6progress": "Progress",
+    "62rate": "Hourly Rate",
     "7cost": "Cost",
 
     "1started": "Started",
@@ -250,6 +251,7 @@
     "User Defaults": "User Default Settings",
     "Audit Log": "Audit Log",
     "Hourly Rates": "Hourly Rates",
+    "Hourly Rate": "Hourly Rate",
     "Default Rate": "Default Rate",
     "Currency": "Currency",
 

@@ -224,6 +224,7 @@
     "4diff": "Abweichung",
     "5originalestimateremaining": "Ursprüngliche Schätzung der Restzeit",
     "6progress": "Fortschritt",
+    "62rate" : "Hourly Rate",
     "7cost": "Cost",
 
     "1started": "Begonnen",
@@ -250,6 +251,7 @@
     "User Defaults": "Benutzer-Standardeinstellungen",
     "Audit Log": "Audit Log",
     "Hourly Rates": "Hourly Rates",
+    "Hourly Rate": "Hourly Rate",
     "Default Rate": "Default Rate",
     "Currency": "Currency",
 

@@ -223,6 +223,7 @@
     "4diff": "Desviación",
     "5originalestimateremaining": "Estimación original del tiempo pendiente",
     "6progress": "El Progreso",
+    "62rate" : "Tarifa por hora",
     "7cost": "El Costo",
 
     "1started": "Iniciado",
@@ -249,6 +250,7 @@
     "User Defaults": "Configuración predeterminada del usuario",
     "Audit Log": "Registro de auditoría",
     "Hourly Rates": "Tarifas por hora",
+    "Hourly Rate": "Tarifa por hora",
     "Default Rate": "Tasa de incumplimientos",
     "Currency": "Moneda",
 
