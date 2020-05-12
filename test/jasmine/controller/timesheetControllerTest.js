@@ -111,6 +111,8 @@ describe('timesheetControllerTest', function () {
         tempoToken: {},
         accountantsGroups: {}
       }
+    }).factory('trackingService', function () {
+      return { track: () => {} }
     })
     inject(function ($timeout, $window, _$httpBackend_, applicationLoggingService, $rootScope) {
       AP.$timeout = $timeout
