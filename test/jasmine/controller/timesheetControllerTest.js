@@ -112,7 +112,10 @@ describe('timesheetControllerTest', function () {
         accountantsGroups: {}
       }
     }).factory('trackingService', function () {
-      return { track: () => {} }
+      return {
+        track: () => {},
+        trackViewedReport: () => {}
+      }
     })
     inject(function ($timeout, $window, _$httpBackend_, applicationLoggingService, $rootScope) {
       AP.$timeout = $timeout
