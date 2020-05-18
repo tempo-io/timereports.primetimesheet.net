@@ -114,7 +114,9 @@ describe('timesheetControllerTest', function () {
     }).factory('trackingService', function () {
       return {
         track: () => {},
-        trackViewedReport: () => {}
+        trackViewedReport: () => {},
+        trackModifiedDisplay: () => {},
+        trackNavigated: () => {}
       }
     })
     inject(function ($timeout, $window, _$httpBackend_, applicationLoggingService, $rootScope) {
