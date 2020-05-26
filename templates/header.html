@@ -9,7 +9,7 @@
                 <!-- Dropdown -->
                 <div id="help" class="aui-style-default aui-dropdown2">
                     <ul class="aui-list-truncate">
-                        <li><a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/welcome" target="_blank" title="{{'Getting started with ' + appName | i18n}}">{{'Get Started' | i18n}}</a></li>
+                        <li><a ng-click="navigated(null,'Welcome Page')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/welcome" target="_blank" title="{{'Getting started with ' + appName | i18n}}">{{'Get Started' | i18n}}</a></li>
                         <li><a href="https://primetimesheet.atlassian.net/wiki/spaces/KB/blog" target="_blank" title="What's New">What's New</a></li>
                         <li><a href="https://primetimesheet.atlassian.net/servicedesk/customer/portals" target="_blank" title="Help Center">Help Center</a></li>
                     </ul>
@@ -44,7 +44,7 @@
                 <div id="conf" class="aui-style-default aui-dropdown2">
                     <ul class="aui-list-truncate">
                         <li><a style="color:#333" ng-click="openUserPreferencesDialog()">{{'User Preferences' | i18n }}</a></li>
-                        <li ng-if="isAdmin == true"><a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/configuration" target="_parent">{{'Configuration' | i18n }}</a></li>
+                        <li ng-if="isAdmin == true"><a ng-click="navigated(null,'Configuration Page')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/configuration" target="_parent">{{'Configuration' | i18n }}</a></li>
                         <li><a ng-if="pivotTableType == 'CostReport' && userIsAccountant" style="color:#333" ng-click="openHourlyRatesDialog()">{{'Hourly Rates' | i18n }}</a></li>
                     </ul>
                 </div>

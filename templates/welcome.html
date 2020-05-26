@@ -9,45 +9,45 @@
     </p>
     <ul>
       <li>
-          <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=TimeEntry" target="_blank" ng-bind="'TimeEntry' | i18n">Time Entry</a>
+          <a ng-click="navigated('TimeEntry')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=TimeEntry" target="_blank" ng-bind="'TimeEntry' | i18n">Time Entry</a>
           <span data-ng-bind-html="'welcome.content.2.0' | i18n | htmlSafe"></span>
       </li>
         <li>
-            <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=Timesheet" target="_blank" ng-bind="'Timesheet' | i18n">Timesheet</a>
+            <a ng-click="navigated('Timesheet')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=Timesheet" target="_blank" ng-bind="'Timesheet' | i18n">Timesheet</a>
             <span data-ng-bind-html="'welcome.content.2.1' | i18n | htmlSafe"></span>
         </li>
         <li>
-            <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=Timespent" target="_blank" ng-bind="'Timespent' | i18n">Timespent</a>
+            <a ng-click="navigated('Timespent')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=Timespent" target="_blank" ng-bind="'Timespent' | i18n">Timespent</a>
             <span data-ng-bind-html="'welcome.content.2.1.1' | i18n | htmlSafe"></span>
         </li>
         <li>
-            <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=IssueWorkedTimeByUser" target="_blank" ng-bind="'IssueWorkedTimeByUser' | i18n">Pivot by User</a>
+            <a ng-click="navigated('IssueWorkedTimeByUser')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=IssueWorkedTimeByUser" target="_blank" ng-bind="'IssueWorkedTimeByUser' | i18n">Pivot by User</a>
             <span data-ng-bind-html="'welcome.content.2.2' | i18n | htmlSafe"></span>
         </li>
         <li>
-            <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=IssueWorkedTimeByStatus" target="_blank" ng-bind="'IssueWorkedTimeByStatus' | i18n">Pivot by Status</a>
+            <a ng-click="navigated('Timesheet')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=IssueWorkedTimeByStatus" target="_blank" ng-bind="'IssueWorkedTimeByStatus' | i18n">Pivot by Status</a>
             <span data-ng-bind-html="'welcome.content.2.3' | i18n | htmlSafe"></span>
-            <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/configuration" target="_blank">{{'Configuration' | i18n}}</a>.
+            <a ng-click="navigated(null,'Configuration Page')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/configuration" target="_blank">{{'Configuration' | i18n}}</a>.
         </li>
         <li>
-            <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=TimeTracking" target="_blank" ng-bind="'TimeTracking' | i18n">Time Tracking</a>
+            <a ng-click="navigated('TimeTracking')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=TimeTracking" target="_blank" ng-bind="'TimeTracking' | i18n">Time Tracking</a>
             <span data-ng-bind-html="'welcome.content.2.4' | i18n | htmlSafe"></span>
         </li>
         <li>
-            <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=PieChart" target="_blank" ng-bind="'PieChart' | i18n">Pie Chart</a>
+            <a ng-click="navigated('PieChart')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=PieChart" target="_blank" ng-bind="'PieChart' | i18n">Pie Chart</a>
             <span data-ng-bind-html="'welcome.content.2.5' | i18n | htmlSafe"></span>
         </li>
         <li>
-            <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=IssuePassedTimeByStatus" target="_blank" ng-bind="'IssuePassedTimeByStatus' | i18n">Time in Status</a>
+            <a ng-click="navigated('IssuePassedTimeByStatus')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=IssuePassedTimeByStatus" target="_blank" ng-bind="'IssuePassedTimeByStatus' | i18n">Time in Status</a>
             <span data-ng-bind-html="'welcome.content.2.6' | i18n | htmlSafe"></span>
-            <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/configuration" target="_blank">{{'Configuration' | i18n}}</a>.
+            <a ng-click="navigated(null,'Configuration Page')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/configuration" target="_blank">{{'Configuration' | i18n}}</a>.
         </li>
         <li>
-            <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=TimeBalance" target="_blank" ng-bind="'TimeBalance' | i18n">Time Balance</a>
+            <a ng-click="navigated('TimeBalance')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=TimeBalance" target="_blank" ng-bind="'TimeBalance' | i18n">Time Balance</a>
             <span data-ng-bind-html="'welcome.content.2.6.1' | i18n | htmlSafe"></span>
         </li>
         <li>
-            <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=CostReport" target="_blank" ng-bind="'CostReport' | i18n"></a>
+            <a ng-click="navigated('CostReport')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=CostReport" target="_blank" ng-bind="'CostReport' | i18n"></a>
             <span data-ng-bind-html="'welcome.content.2.7' | i18n | htmlSafe"></span>
         </li>
     </ul>
@@ -56,7 +56,7 @@
     </p>
     <p>
         <span data-ng-bind-html="'welcome.content.3.1' | i18n | htmlSafe"></span>
-        <a href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/configuration" target="_blank">{{'Configuration' | i18n}}</a>.
+        <a ng-click="navigated(null,'Configuration Page')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/configuration" target="_blank">{{'Configuration' | i18n}}</a>.
     </p>
     <p>
         <span data-ng-bind-html="'welcome.content.3.2' | i18n | htmlSafe"></span>
