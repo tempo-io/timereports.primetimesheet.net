@@ -255,6 +255,8 @@
     "Hourly Rate": "Часовая ставка",
     "Default Rate": "Часовая ставка по-умолчанию",
     "Currency": "Валюта",
+    "Project": "Проект",
+    "Any Project": "Любой проект",
 
     "All changes will be saved automatically": "Все изменения сохранятся автоматически.",
     "Auditors Groups": "Группы аудиторов",

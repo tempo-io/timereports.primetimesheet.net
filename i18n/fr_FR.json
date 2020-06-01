@@ -254,6 +254,8 @@
     "Hourly Rate": "Hourly Rate",
     "Default Rate": "Default Rate",
     "Currency": "Currency",
+    "Project": "Projet",
+    "Any Project": "Tout projet",
 
     "All changes will be saved automatically": "Toutes les modifications seront enregistrées automatiquement.",
     "Auditors Groups": "Groupes d'auditeurs",
