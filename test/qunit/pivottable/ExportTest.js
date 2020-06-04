@@ -240,7 +240,7 @@ QUnit.test('Csv Export Custom Columns In Days', function (assert) {
 QUnit.test('Html Export Timesheet', function (assert) {
   var done = assert.async()
   var htmlView = new HtmlView(TimeData.issues)
-  QUnit.assert.equal(typeof htmlView, 'object', 'excelView')
+  QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'Timesheet',
       startDate: '2014-02-24',
@@ -268,7 +268,7 @@ QUnit.test('Html Export Timesheet', function (assert) {
 QUnit.test('Html Export Timesheet Compressed', function (assert) {
   var done = assert.async()
   var htmlView = new HtmlView(TimeData.issues)
-  QUnit.assert.equal(typeof htmlView, 'object', 'excelView')
+  QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'Timesheet',
       compressed: true,
@@ -297,7 +297,7 @@ QUnit.test('Html Export Timesheet Compressed', function (assert) {
 QUnit.test('Html Export IssueWorkedTimeByLabel Compressed', function (assert) {
   var done = assert.async()
   var htmlView = new HtmlView(TimeData.issues)
-  QUnit.assert.equal(typeof htmlView, 'object', 'excelView')
+  QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'IssueWorkedTimeByLabel',
       compressed: true,
@@ -326,7 +326,7 @@ QUnit.test('Html Export IssueWorkedTimeByLabel Compressed', function (assert) {
 QUnit.test('Html Export Timesheet Grouped by Worked User More Fields', function (assert) {
   var done = assert.async()
   var htmlView = new HtmlView(TimeData.issues)
-  QUnit.assert.equal(typeof htmlView, 'object', 'excelView')
+  QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var moreFieldsOptions = new TimesheetSelectOptions(TimesheetGeneralOption, [])
   moreFieldsOptions.addOption('Assignee', 'assignee')
   moreFieldsOptions.addOption('Time Spent', 'timespent')
@@ -364,7 +364,7 @@ QUnit.test('Html Export Timesheet Grouped by Worked User More Fields', function 
 QUnit.test('Html Export Timesheet More Fields', function (assert) {
   var done = assert.async()
   var htmlView = new HtmlView(TimeData.issues)
-  QUnit.assert.equal(typeof htmlView, 'object', 'excelView')
+  QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var moreFieldsOptions = new TimesheetSelectOptions(TimesheetGeneralOption, [])
   moreFieldsOptions.addOption('Assignee', 'assignee')
   moreFieldsOptions.addOption('Time Spent', 'timespent')
@@ -397,7 +397,7 @@ QUnit.test('Html Export Timesheet More Fields', function (assert) {
 QUnit.test('Html Export Pivot by User Grouped by Issue Itself More Fields', function (assert) {
   var done = assert.async()
   var htmlView = new HtmlView(TimeData.issues)
-  QUnit.assert.equal(typeof htmlView, 'object', 'excelView')
+  QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var moreFieldsOptions = new TimesheetSelectOptions(TimesheetGeneralOption, [])
   moreFieldsOptions.addOption('Assignee', 'assignee')
   moreFieldsOptions.addOption('Time Spent', 'timespent')
@@ -434,7 +434,7 @@ QUnit.test('Html Export Pivot by User Grouped by Issue Itself More Fields', func
 QUnit.test('Html Export TimeTracking', function (assert) {
   var done = assert.async()
   var htmlView = new HtmlView(TimeData.issues)
-  QUnit.assert.equal(typeof htmlView, 'object', 'excelView')
+  QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'TimeTracking',
       startDate: '2014-02-24',
@@ -465,7 +465,7 @@ QUnit.test('Html Export TimeTracking', function (assert) {
 QUnit.test('Html Export TimeTracking Grouped by Assignee', function (assert) {
   var done = assert.async()
   var htmlView = new HtmlView(TimeData.issues)
-  QUnit.assert.equal(typeof htmlView, 'object', 'excelView')
+  QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'TimeTracking',
       groupByField: 'assignee',
@@ -492,6 +492,37 @@ QUnit.test('Html Export TimeTracking Grouped by Assignee', function (assert) {
     var total = lines.slice(/* 14*8 + 10 */ 122, 129).map(s => s.trim()).join('')
     QUnit.assert.equal(total, "<th class='nav border total' colspan=6>Total (6 issues)</th><th class='nav border total'>73.78h</th><th class='nav border total'>33h</th><th class='nav border total'>48h</th><th class='nav border total'>-7.22h</th><th class='nav border total'>25.78h</th><th class='nav border total'>59%</th>", 'total')
     QUnit.assert.equal(lines.length, 14 * 9 + 5 + 1 /* new line at end of file */, 'lines')
+    done()
+  })
+})
+QUnit.test('Pdf Export Cost Report', function (assert) {
+  var done = assert.async()
+  var pdfView = new PdfView(TimeData.issues)
+  QUnit.assert.equal(typeof pdfView, 'object', 'pdfView')
+  var $pdf = $translations.then(translations => {
+    return pdfView.generate({ pivotTableType: 'CostReport',
+      startDate: '2014-02-24',
+      reportingDay: 1,
+      moreFields: [],
+      translations: translations,
+      hourlyRates: {
+        'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa': { '': { '': 10 } }
+      },
+      configOptions: {},
+      jiraConfig: { timeFormat: '' } })
+  })
+  $pdf.then(pdf => {
+    QUnit.assert.equal(typeof pdf, 'object', 'pdf')
+    var lines = pdf.content[4].table.body
+    QUnit.assert.equal(lines.length, 20, 'lines')
+    var header = lines.shift().join(',')
+    QUnit.assert.equal(header, 'Summary,Work Description,Time Spent,Hourly Rate,Cost', 'header')
+    var row1 = lines.shift().map(s => typeof s === 'object' ? s.text : s).join(',')
+    QUnit.assert.equal(row1, 'Hocus Focus Problem,,11h,20,110', 'row1')
+    var row2 = lines.shift().map(s => typeof s === 'object' ? s.text : s).join(',')
+    QUnit.assert.equal(row2, ',test 7,3h,10,30', 'row2')
+    var total = lines.pop().map(s => typeof s === 'object' ? s.text : s).join(',')
+    QUnit.assert.equal(total, 'Total,,,,480', 'total')
     done()
   })
 })

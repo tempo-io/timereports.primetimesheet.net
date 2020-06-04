@@ -211,6 +211,58 @@
         </form>
     </div>
 </script>
+<script type="text/ng-template" id="invoice-dialog-template">
+    <!-- Dialog header -->
+    <header class="aui-dialog2-header">
+        <h1 class="aui-dialog2-header-main">
+            {{'Invoice Template' | i18n }}
+        </h1>
+        <a class="aui-dialog2-header-close" ng-click="cancel()">
+            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
+        </a>
+    </header>
+    <!-- Main dialog content -->
+    <div class="aui-dialog2-content">
+        <form class="aui" name="hourlyRatesForm">
+            <div class="rowCenter">
+                <textarea rows="5" cols="200" class="textarea full-width-field" ng-model="invoice.header" ng-change="invoiceChanged()"></textarea>
+            </div>
+            <table id="issuetable" cellspacing="0" cellpadding="3" border="0" width="100%" width="100%">
+                <thead>
+                    <tr class="rowHeader">
+                        <th class="colHeaderLink" width="100%">
+                            {{'Summary' | i18n}}
+                        </th>
+                        <th>
+                            {{'3timespent' | i18n}}
+                        </th>
+                        <th ng-if="!hideTotalColumn">
+                            {{'62rate' | i18n}}
+                        </th>
+                        <th ng-if="!hideTotalColumn">
+                            {{'7cost' | i18n}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="rowNormal">
+                          <td colspan="4">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="rowCenter">
+                <textarea rows="5" cols="200" class="textarea full-width-field" ng-model="invoice.footer" ng-change="invoiceChanged()"></textarea>
+            </div>
+        </form>
+    </div>
+    <!-- Dialog footer -->
+    <footer class="aui-dialog2-footer">
+        <div class="aui-dialog2-footer-actions">
+            <button class="aui-button aui-button-default" ng-click="save(true)">{{'Save' | i18n}}</button>
+        </div>
+    </footer>
+</script>
+
 <div class="footer margin noprint" ng-if="!isGadget">
     <ng-include src="'/templates/footer.html'"></ng-include>
 </div>
