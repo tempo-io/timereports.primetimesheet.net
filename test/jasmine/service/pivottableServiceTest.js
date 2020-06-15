@@ -250,7 +250,7 @@ describe('pivottableServiceTest', function () {
     }
     var result
 
-    pivottableService.loadAllWorklogs(issue, null, { configOptions: {} }).promise.then(function (_issue) {
+    pivottableService.loadAllWorklogs(issue, null, { configOptions: {} }).then(function (_issue) {
       result = _issue
     })
 
