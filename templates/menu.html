@@ -29,6 +29,17 @@
                     aui-select2>
             </select>
         </div>
+        <div class="ak-field-group" ng-if="['Timesheet', 'IssueWorkedTimeByUser', 'IssueWorkedTimeByStatus', 'IssueWorkedTimeByLabel',
+          'Timespent', 'CostReport', 'Calendar'].indexOf(pivotTableType) >= 0">
+            <label>{{'Work #label or Comment First Word' | i18n}}</label>
+            <input ng-model="worklogFilter"
+                   aui-multi-select-picker
+                   tags="true"
+                   ng-value-changed-func="worklogFilterChanged"
+                   ng-options-data="workLabelsFilterOptions"
+                   update-event="worklogFilterUpdated"
+                   type="text"/>
+        </div>
         <div class="ak-field-group" ng-if="['TimeEntry', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) < 0">
             <label>{{'User' | i18n}}</label>
             <input ng-value="paramUserInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>

@@ -550,7 +550,7 @@ describe('pivottableServiceTest', function () {
 
     var result
 
-    pivottableService.checkIfMatches({}, {}).then(function (matches) {
+    pivottableService.checkIfMatches({}, { configOptions: {} }).then(function (matches) {
       result = matches
     })
     $timeout.flush()
@@ -564,7 +564,7 @@ describe('pivottableServiceTest', function () {
   it('checkIfMatches [projects only]', inject(function ($timeout, pivottableService) {
     expect(pivottableService).toBeDefined()
 
-    var result1; var result2; var options = { filterOrProjectId: 'project_DEMO' }
+    var result1; var result2; var options = { filterOrProjectId: 'project_DEMO', configOptions: {} }
 
     pivottableService.checkIfMatches({ fields: { project: { key: 'DEMO' } } }, options).then(function (matches) {
       result1 = matches
@@ -609,7 +609,7 @@ describe('pivottableServiceTest', function () {
       }, 500)
     }
 
-    var result1; var result2; var result3; var options = { filterOrProjectId: 'filter_10000' }
+    var result1; var result2; var result3; var options = { filterOrProjectId: 'filter_10000', configOptions: {} }
 
     pivottableService.checkIfMatches({ id: '10000' }, options).then(function (matches) {
       result1 = matches
@@ -638,7 +638,7 @@ describe('pivottableServiceTest', function () {
 
     // test reset state
     pivottableService.matches = null
-    options = { filterOrProjectId: 'project_DEMO' }
+    options = { filterOrProjectId: 'project_DEMO', configOptions: {} }
 
     pivottableService.checkIfMatches({ fields: { project: { key: 'DEMO' } } }, options).then(function (matches) {
       result3 = matches

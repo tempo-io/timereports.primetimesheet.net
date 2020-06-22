@@ -7,7 +7,6 @@
     <div class="field-group">
       <label>{{ 'Report' | i18n }}:</label>
       <select class="select"
-              title="database select"
               ng-model="pivotTableTypeOptions.selected"
               ng-options="item.id as item.label for item in pivotTableTypeOptions.options"
               ng-change="pivotTableTypeChanged()"
@@ -58,6 +57,16 @@
               ng-change="childrenFilterChanged()"
               aui-select2>
       </select>
+    </div>
+    <div class="field-group" ng-if="['Timesheet', 'IssueWorkedTimeByUser', 'IssueWorkedTimeByStatus', 'IssueWorkedTimeByLabel',
+          'Timespent', 'CostReport', 'Calendar'].indexOf(pivotTableType) >= 0">
+      <label>{{'Work #label or Comment First Word' | i18n}}</label>
+      <input ng-model="worklogFilter"
+             aui-multi-select-picker
+             tags="true"
+             ng-value-changed-func="worklogFilterChanged"
+             ng-options-data="workLabelsFilterOptions"
+             type="text"/>
     </div>
     <div class="field-group" ng-if="['TimeEntry', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) < 0">
       <label>{{'User' | i18n}}</label>
