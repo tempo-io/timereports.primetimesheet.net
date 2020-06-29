@@ -9,19 +9,21 @@
             </legend>
             <div class="field-group">
                 <label for="log-work-time-logged">
-                    {{'Time Spent' | i18n}}<span class="aui-icon icon-required"> required</span>
+                    {{worklog.endDate ? 'Hours Per Day' : 'Time Spent' | i18n}}<span class="aui-icon icon-required"> required</span>
                 </label>
                 <input type="text"
                        id="log-work-time-logged"
                        name="timeSpent"
-                       class="text short-field"
+                       class="text medium-field"
+                       style="max-width: 100px;"
                        ng-model="worklog.timeSpent"
                        required
                        timespent
                        work-per-day="{started: calculateWorklogDate(true), configOptions: configOptions, user: worklog.user || loggedInUser}"
                        ng-model-options="{ debounce: 100 }"
                        focus-if="worklog.issueKey"
-                       title="{{'eg. 4h 30m' + dialogType == 'add' ? ', or 1d 2h for two entries of 8h and 2h per day' : ''}}"/>
+                       placeholder="{{'1.5h or 1:30' | i18n}}"
+                       title="{{'eg. 4h 30m' + (dialogType == 'add' && !worklog.endDate ? ', or 1d 2h for two entries of 8h and 2h per day' : '') | i18n}}"/>
                 <td><longer-one-day-warning ng-if="logWorkForm.$valid">&gt;1d!</longer-one-day-warning>
                     <span ng-show="logWorkForm.timeSpent.$error.workPerDayError" role="alert" class="red">
                         {{logWorkForm.timeSpent.$error.workPerDayError}}
@@ -35,12 +37,23 @@
                        id="log-work-date-logged"
                        name="log-work-date-logged"
                        class="text medium-field"
-                       style="max-width: 100px; margin-right: 10px;"
+                       style="max-width: 100px; margin-right: 5px;"
                        ng-model="worklogDatetime.date"
                        aui-date-picker
                        ng-date-changed-func="changeDate">
                 <lock-period-error>&lt;&nbsp;{{allowToLogFromDate | date:'yyyy-MM-dd'}}&nbsp;!&nbsp;</lock-period-error>
                 <time-picker time="worklogDatetime.time" ng-model-options='{ debounce: 1000 }'></time-picker>
+                <a style="margin-left: 5px;" ng-if="!worklog.endDate && !worklog.id" ng-click="changeEndDate()">{{'Set Date Ended' | i18n}}</a>
+                <span style="margin: 0 5px 0 5px;" ng-if="worklog.endDate">{{'Ended' | i18n}}</span>
+                <input type="date"
+                       name="endDate"
+                       ng-if="worklog.endDate"
+                       class="text medium-field"
+                       style="max-width: 100px;"
+                       ng-model="worklog.endDate"
+                       aui-date-picker
+                       ng-date-changed-func="changeEndDate">
+                <a style="margin-left:2px;" ng-if="worklog.endDate" ng-click="removeEndDate()">X</a>
             </div>
 
             <ng-include ng-if="showMore" src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0"></ng-include>
