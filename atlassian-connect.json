@@ -364,7 +364,8 @@
             "ru-RU": "/i18n/descriptor_ru.json",
             "fr-FR": "/i18n/descriptor_fr.json",
             "de-DE": "/i18n/descriptor_de.json",
-            "es-ES": "/i18n/descriptor_es.json"
+            "es-ES": "/i18n/descriptor_es.json",
+            "pt-PT": "/i18n/descriptor_pt.json"
         }
     },
     "scopes": [
