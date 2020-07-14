@@ -40,6 +40,16 @@
                    update-event="worklogFilterUpdated"
                    type="text"/>
         </div>
+        <div class="ak-field-group" ng-if="tempoToken && ['Timesheet', 'IssueWorkedTimeByUser', 'IssueWorkedTimeByStatus', 'IssueWorkedTimeByLabel',
+          'Timespent', 'CostReport', 'Calendar'].indexOf(pivotTableType) >= 0">
+            <label>{{'Billable' | i18n}}</label>
+            <select class="select"
+                    ng-model="billableFilterOptions.selected"
+                    ng-options="item.id as item.label for item in billableFilterOptions.options"
+                    ng-change="billableFilterChanged()"
+                    aui-select2>
+            </select>
+        </div>
         <div class="ak-field-group" ng-if="['TimeEntry', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) < 0">
             <label>{{'User' | i18n}}</label>
             <input ng-value="paramUserInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
