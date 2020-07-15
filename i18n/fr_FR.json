@@ -371,6 +371,8 @@
     "description.Show Total In Front": "Show additional Total column In front of table, if applicable.",
     "Tempo Token": "Tempo Token",
     "description.Tempo Token": "Tempo API Integration Token. (Reporting only available if set.)",
+    "Rows per Page": "Rows per Page",
+    "description.Rows per Page": "Number of rows per report page (50 if not set).",
 
     "Data is limited by Auditors Roles": " En raison des rôles d'auditeur configurés, les données sont limitées à leurs propres journaux de travail pour les projet(s) suivant(s): ",
     "Data is limited to Restricted Groups": "En raison des groupes restreints configurés, les données sont limitées aux journaux de travail des utilisateurs des groupe(s) suivant(s): ",

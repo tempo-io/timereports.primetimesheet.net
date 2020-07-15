@@ -109,6 +109,7 @@ describe('timesheetControllerTest', function () {
         currencySymbol: {},
         showTotalInFront: {},
         tempoToken: {},
+        rowsPerPage: {},
         accountantsGroups: {}
       }
     }).factory('trackingService', function () {
@@ -296,6 +297,7 @@ describe('timesheetControllerTest', function () {
         currencySymbol: {},
         showTotalInFront: {},
         tempoToken: {},
+        rowsPerPage: {},
         accountantsGroups: {}
       }
     })
@@ -367,6 +369,7 @@ describe('timesheetControllerTest', function () {
         currencySymbol: {},
         showTotalInFront: {},
         tempoToken: {},
+        rowsPerPage: {},
         accountantsGroups: {}
       }
     })

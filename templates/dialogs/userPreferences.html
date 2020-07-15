@@ -295,19 +295,24 @@
         <div class="field-group">
             <span class="description">{{'description.Show Total In Front' | i18n}}</span>
         </div>
-        <div class="field-group" ng-show="problemReporter">
-            <label for="onErrorIgnore">{{'Disable Problem Reporter' | i18n}}</label>
-            <input id="onErrorIgnore"
-                   type="checkbox"
-                   class="checkbox"
-                   ng-model="onErrorIgnore.val"
-                   ng-change="saveOnErrorIgnore()">
-            <div class="aui-message aui-message-success msg-overlay" ng-show="onErrorIgnoreSaveSuccess">
-                <strong>{{'Disable Problem Reporter' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+        <div class="field-group">
+            <label for="rowsPerPage">{{'Rows per Page' | i18n}}</label>
+            <input id="rowsPerPage"
+                   name="rowsPerPage"
+                   ng-model="rowsPerPage.val"
+                   min="0"
+                   ng-change="configForm.rowsPerPage.$valid && saveRowsPerPage()"
+                   type="number" class="text"
+                   ng-model-options='{ debounce: 1000 }'
+                   title="{{'Rows per Page' | i18n}}"
+                   placeholder="{{defaults.rowsPerPage.default}}"/>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="rowsPerPageSaveSuccess">
+                <strong>{{'Rows per Page' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
-        <div class="field-group" ng-show="problemReporter">
-            <span class="description">{{'description.Disable Problem Reporter' | i18n}}</span>
+        <div class="field-group">
+            <span class="description">{{'description.Rows per Page' | i18n}}</span>
         </div>
         <div class="field-group" ng-if="isTimesheet">
             <label for="tempoToken">{{'Tempo Token' | i18n}}</label>
@@ -340,6 +345,20 @@
                 <br/>
             </span>
             <span class="description" data-ng-bind-html="'description.Link For Mobile Devices' | i18n | htmlSafe"></span>
+        </div>
+        <div class="field-group" ng-show="problemReporter">
+            <label for="onErrorIgnore">{{'Disable Problem Reporter' | i18n}}</label>
+            <input id="onErrorIgnore"
+                   type="checkbox"
+                   class="checkbox"
+                   ng-model="onErrorIgnore.val"
+                   ng-change="saveOnErrorIgnore()">
+            <div class="aui-message aui-message-success msg-overlay" ng-show="onErrorIgnoreSaveSuccess">
+                <strong>{{'Disable Problem Reporter' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group" ng-show="problemReporter">
+            <span class="description">{{'description.Disable Problem Reporter' | i18n}}</span>
         </div>
     </form>
 </div>

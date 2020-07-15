@@ -345,7 +345,7 @@
     "description.Time Tracking Columns": "Essas colunas serão mostradas no Relatório de Controle de Horas e exportadas para arquivos. A ordem das colunas será a mesma. Observe que, se nada for selecionado, todas as colunas com ordem padrão serão mostradas.",
     "description.Time Balance Columns": "Essas colunas serão mostradas no Relatório de Balanço de Horas e exportadas para arquivos. A ordem das colunas será a mesma. Observe que, se nada for selecionado, todas as colunas com ordem padrão serão mostradas",
     "description.Columns For Export": "Colunas básicas para exportação nos arquivos exportData. Se nada for selecionado, tudo será processado. A ordem é predefinida.",
-    "description.In Progress Issues jql": "Especifique o JQL para sempre mostrar problemas no Quadro de Horários na visualização básica do usuário e na Entrada de Tempo, por exemplo. 'cessionário = usuário atual () e estado = \"Em Progresso\"'.",
+    "description.In Progress Issues jql": "Especifique o JQL para sempre mostrar problemas no Quadro de Horários na visualização básica do usuário e na Entrada de Tempo, por exemplo 'assignee = currentUser() and status = \"In Progress\"'.",
     "description.Date Fields": "Campos de data para consulta, combinados com OR no JQL, 'criados ou atualizados' se nada selecionado para os relatórios de Controle de Tempo e Equilíbrio de Tempo",
     "personal link to you email": "ligação individual para seu e-mail.",
     "description.Link For Mobile Devices": "Ver também <a href=\"https://www.primetimesheet.net/cloud/Mobile.html\" target=\"_blank\">documentação</a>.",
@@ -371,6 +371,8 @@
     "description.Show Total In Front": "Mostrar coluna adicional Total na frente da tabela, se aplicável.",
     "Tempo Token": "Tempo Token",
     "description.Tempo Token": "Token de Integração da API do Tempo. (Relatórios disponíveis apenas se definido.)",
+    "Rows per Page": "Rows per Page",
+    "description.Rows per Page": "Number of rows per report page (50 if not set).",
 
     "Data is limited by Auditors Roles": "Por causa das Funções de Auditores configuradas, os dados são limitados aos registos de trabalho próprios para os seguinte(s) projeto(s):",
     "Data is limited to Restricted Groups": "Por causa de Grupos Restritos configurados, os dados são limitados aos registos de trabalho dos usuários dos seguinte(s) grupo(s):",
