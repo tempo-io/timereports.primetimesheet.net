@@ -155,6 +155,14 @@
                         <span ng-if="data.worklog._issue">
                             <issue-key issue="data.worklog._issue" show-title="true" />
                         </span>
+                        <span ng-if="!paramUserInfo && groupByOptions.selected != 'workeduser'">
+                            <a ng-if="data.worklog.author.accountId" ng-title="{{data.worklog.author.displayName}}"
+                               ng-href="{{hostBaseUrl + '/people/' + data.worklog.author.accountId}}" target="_parent">
+                                <img ng-alt="{{data.worklog.author.displayName}}" class="avatar-image" style="border-radius: 50%"
+                                     ng-src="{{data.worklog.author.avatarUrls['16x16']}}" width="16" height="16">
+                            </a>
+                            <span ng-bind="data.worklog.author.displayName"></span>
+                        </span>
                         <worklog-comment worklog="data.worklog"/>
                     </td>
                     <td class="nav priority" width="1%">
