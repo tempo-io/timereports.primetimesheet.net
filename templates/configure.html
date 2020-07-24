@@ -321,6 +321,24 @@
         <div class="field-group">
             <span class="description">{{'description.Over Limit Color' | i18n}}</span>
         </div>
+        <div class="field-group">
+            <label for="limitPrecision">{{'Limit Precision' | i18n}}</label>
+            <input id="limitPrecision"
+                   name="limitPrecision"
+                   ng-model="limitPrecision.val"
+                   min="0"
+                   ng-change="configForm.limitPrecision.$valid && saveLimitPrecision()"
+                   type="number" class="text short-field align-top"
+                   ng-model-options='{ debounce: 1000 }'
+                   title="{{'Limit Precision' | i18n}}"/>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="limitPrecisionSaveSuccess">
+                <strong>{{'Limit Precision' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Limit Precision' | i18n}}</span>
+        </div>
         <div class="field-group" ng-show="cacheWorklog">
             <label for="cacheWorklog">{{'Cache Worklog' | i18n}}</label>
             <input id="cacheWorklog"
