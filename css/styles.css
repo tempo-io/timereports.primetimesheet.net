@@ -15,7 +15,13 @@ header {
 @media (min-width: 1400px) {
   #placeholder {
     height: 500px;
-    width: 950px;
+    width: 1050px;
+  }
+}
+@media (min-width: 1600px) {
+  #placeholder {
+    height: 600px;
+    width: 1300px;
   }
 }
 @media print {
