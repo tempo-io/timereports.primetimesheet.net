@@ -401,11 +401,19 @@
         </div>
         <div class="field-group">
             <label for="workingDayStart">{{'Working Time In Status' | i18n}}</label>
-            {{'From' | i18n}}&nbsp;<input id="workingDayStart" ng-model="workingTimeInStatus.val.from" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
-                                          type="number" class="text" title="{{'Working Day Start' | i18n}}" style="max-width: 70px;" ng-model-options='{ debounce: 1000 }'/>
+            {{'From' | i18n}}&nbsp;
+            <input id="workingDayStart" ng-model="workingTimeInStatus.val.from" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
+                   type="number" class="text" title="{{'Working Day Start' | i18n}}" style="max-width: 50px;" ng-model-options='{ debounce: 1000 }'/>
             &nbsp;{{'To' | i18n}}&nbsp;
             <input id="workingDayEnd" ng-model="workingTimeInStatus.val.to" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
-                   type="number" class="text" title="{{'Working Day End' | i18n}}" style="max-width: 70px;" ng-model-options='{ debounce: 1000 }'/>
+                   type="number" class="text" style="max-width: 50px;" ng-model-options='{ debounce: 1000 }'/>
+            &nbsp;{{'Break Time' | i18n}}
+            {{'From' | i18n}}&nbsp;
+            <input id="workingDayBreakStart" ng-model="workingTimeInStatus.val.breakFrom" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
+                   type="number" class="text" style="max-width: 50px;" ng-model-options='{ debounce: 1000 }'/>
+            &nbsp;{{'To' | i18n}}&nbsp;
+            <input id="workingDayBreakEnd" ng-model="workingTimeInStatus.val.breakTo" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
+                   type="number" class="text" title="{{'Working Day End' | i18n}}" style="max-width: 50px;" ng-model-options='{ debounce: 1000 }'/>
             <div class="aui-message aui-message-success msg-overlay"
                  ng-show="workingTimeInStatusSaveSuccess">
                 <strong>{{'Working Time In Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
