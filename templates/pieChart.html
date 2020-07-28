@@ -15,8 +15,10 @@
         <div ng-show="loaded && loading">
             <loading/>
         </div>
-        <div id="placeholder" pie-chart ng-model="pivotTable"></div>
-        <div id="legend" style="float: right"></div>
+        <div style="white-space: nowrap;">
+            <div id="placeholder" pie-chart ng-model="pivotTable" style="display: inline-block"></div>
+            <div id="legend" style="display: inline-block; vertical-align: top"></div>
+        </div>
         <div class="aui-message aui-message warning" ng-show="loaded && !loading && restrictedProjects">
             <strong>{{'Data is limited by Auditors Roles' | i18n}}</strong>&nbsp;{{restrictedProjects}}
         </div>
