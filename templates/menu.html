@@ -50,9 +50,14 @@
                     aui-select2>
             </select>
         </div>
-        <div class="ak-field-group" ng-if="['TimeEntry', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) < 0">
+        <div class="ak-field-group" ng-if="['TimeEntry'].indexOf(pivotTableType) < 0">
             <label>{{'User' | i18n}}</label>
-            <input ng-value="paramUserInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
+            <input ng-value="paramUsersInfo"
+                   multi-select="true"
+                   aui-user-picker
+                   ng-user-changed-func="userChange"
+                   update-event="paramUsersInfoUpdated"
+                   type="text"/>
         </div>
         <div class="ak-field-group" ng-if="['Timesheet', 'Timespent', 'CostReport', 'PieChart', 'Calendar'].indexOf(pivotTableType) >= 0"> <!-- All users because of multi user picker planned -->
             <label style="display: inline-block; margin: 0">{{'All Users' | i18n}}</label>

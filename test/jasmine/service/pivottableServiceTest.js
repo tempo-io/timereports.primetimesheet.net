@@ -89,6 +89,23 @@ describe('pivottableServiceTest', function () {
     expect(pivotTable.sum).toEqual(46800)
   }))
 
+  it('Timesheet multiple users', inject(function ($timeout, pivottableService) {
+    expect(pivottableService).toBeDefined()
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
+    var options = { pivotTableType: 'Timesheet', user: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa,noSuchUser', endDate: '2014-03-06', configOptions: {} }
+    var pivotTable
+    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {
+      pivotTable = _pivotTable
+    })
+    $timeout.flush()
+    expect(pivotTable).toBeDefined()
+    expect(pivotTable).toHaveRowsNumber(3)
+    expect(pivotTable.rows['TIME-3'].sum).toEqual(21600)
+    expect(pivotTable.rows['TIME-5'].sum).toEqual(18000)
+    expect(pivotTable.rows['TIME-6'].sum).toEqual(7200)
+    expect(pivotTable.sum).toEqual(46800)
+  }))
+
   it('IssueWorkedTimeByUser', inject(function ($timeout, pivottableService) {
     expect(pivottableService).toBeDefined()
     var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }

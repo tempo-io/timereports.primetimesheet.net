@@ -158,7 +158,7 @@
                             <worklog-comment worklog="data.worklog"/>
                         </span>
                         <span ng-if="['TimeBalance', 'Timespent', 'CostReport'].indexOf(pivotTableType) >= 0 &&
-                            !paramUserInfo && groupByOptions.selected != 'workeduser'">
+                            (!paramUsersInfo || paramUsersInfo.length > 1) && groupByOptions.selected != 'workeduser'">
                             <a ng-if="data.worklog.author.accountId" ng-title="{{data.worklog.author.displayName}}"
                                ng-href="{{hostBaseUrl + '/people/' + data.worklog.author.accountId}}" target="_parent">
                                 <img ng-alt="{{data.worklog.author.displayName}}" class="avatar-image" style="border-radius: 50%"

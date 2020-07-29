@@ -78,9 +78,9 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="['TimeEntry', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) < 0">
+    <div class="field-group" ng-if="['TimeEntry'].indexOf(pivotTableType) < 0">
       <label>{{'User' | i18n}}</label>
-      <input ng-value="userInfo" aui-user-picker ng-user-changed-func="userChange" type="text"/>
+      <input ng-value="userInfo" aui-user-picker multi-select="true" ng-user-changed-func="userChange" type="text"/>
     </div>
     <div class="field-group" ng-if="['Timesheet', 'Timespent', 'CostReport', 'PieChart', 'Calendar'].indexOf(pivotTableType) >= 0">
       <label>{{'All Users' | i18n}}</label>

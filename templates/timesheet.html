@@ -155,7 +155,7 @@
                         <span ng-if="data.worklog._issue">
                             <issue-key issue="data.worklog._issue" show-title="true" />
                         </span>
-                        <span ng-if="!paramUserInfo && groupByOptions.selected != 'workeduser'">
+                        <span ng-if="(!paramUsersInfo || paramUsersInfo.length > 1) && groupByOptions.selected != 'workeduser'">
                             <a ng-if="data.worklog.author.accountId" ng-title="{{data.worklog.author.displayName}}"
                                ng-href="{{hostBaseUrl + '/people/' + data.worklog.author.accountId}}" target="_parent">
                                 <img ng-alt="{{data.worklog.author.displayName}}" class="avatar-image" style="border-radius: 50%"
