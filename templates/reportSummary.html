@@ -34,7 +34,7 @@
         </div>
     </div>
     <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
-                                                     remove-action="removeMenuOption(option.key, option.labelParam)"
+                                                     remove-action="removeMenuOption(option.key, option.labelParam, option.labelParamUnique)"
                                                      option="option"/>
     </div>
     <validation-errors errors="errors" error-messages="errorMessages"></validation-errors>
