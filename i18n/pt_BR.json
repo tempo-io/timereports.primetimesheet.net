@@ -116,6 +116,7 @@
     "Status": "Estado",
     "Resolution": "Resolução",
     "Work Description": "Descrição do Trabalho",
+    "Assignee": "Responsável",
 
     "Download": "Baixar",
     "Send report by email": "Enviar relatório por e-mail",
@@ -251,6 +252,7 @@
     "emailaddress": "Endereço de e-mail",
     "accountid": "Identificador da Conta",
     "descriptionstatus": "Descrição do Trabalho / Estado",
+    "descriptionstatusassignee": "Descrição do Trabalho / Estado (Responsável)",
     "worklogid": "Id de Registro de Trabalho",
     "workcreated": "Trabalho Criado",
 

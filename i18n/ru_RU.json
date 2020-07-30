@@ -117,6 +117,7 @@
     "Status": "Статус",
     "Resolution": "Заключение",
     "Work Description": "Описание работы",
+    "Assignee": "Исполнитель",
 
     "Download": "Загрузить",
     "Send report by email": "Отправить отчет по электронной почте",
@@ -252,6 +253,7 @@
     "emailaddress": "Адрес электронной почты",
     "accountid": "Идентификатор учетной записи",
     "descriptionstatus": "Описание работ / Статус",
+    "descriptionstatusassignee": "Описание работ / Статус (Исполнитель)",
     "worklogid": "Идентификатор журнала учета работ",
     "workcreated": "Дата создания",
 

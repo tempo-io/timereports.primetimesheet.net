@@ -116,6 +116,7 @@
     "Status": "Statut",
     "Resolution": "Résolution",
     "Work Description": "Description de Travail",
+    "Assignee": "Responsable",
 
     "Download": "Télécharger",
     "Send report by email": "Envoyer le Rapport par email",
@@ -251,6 +252,7 @@
     "emailaddress": "Courrier électronique",
     "accountid": "Account Id",
     "descriptionstatus": " Description/ Statut du travail",
+    "descriptionstatusassignee": " Description/ Statut du travail (Responsable)",
     "worklogid": "Identifiant du journal de travail",
     "workcreated": "Travail crée",
 

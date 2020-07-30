@@ -116,6 +116,7 @@
     "Status": "Status",
     "Resolution": "Resolution",
     "Work Description": "Work Description",
+    "Assignee": "Assignee",
 
     "Download": "Download",
     "Send report by email": "Send report by email",
@@ -251,6 +252,7 @@
     "emailaddress": "Email Address",
     "accountid": "Account Id",
     "descriptionstatus": "Work Description / Status",
+    "descriptionstatusassignee": "Work Description / Status (Assignee)",
     "worklogid": "Worklog Id",
     "workcreated": "Work Created",
 

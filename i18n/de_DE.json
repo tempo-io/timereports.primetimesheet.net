@@ -116,6 +116,7 @@
     "Status": "Status",
     "Resolution": "Lösung",
     "Work Description": "Arbeitsbeschreibung",
+    "Assignee": "Zugewiesene",
 
     "Download": "Herunterladen",
     "Send report by email": "Senden Bericht per E-Mail",
@@ -251,6 +252,7 @@
     "emailaddress": "E-Mail-Adresse",
     "accountid": "Konto-ID",
     "descriptionstatus": "Arbeitsbeschreibung / Status",
+    "descriptionstatusassignee": "Arbeitsbeschreibung / Status (Zugewiesene Person)",
     "worklogid": "Arbeitsprotokoll-ID",
     "workcreated": "Arbeit erstellt",
 
