@@ -19,6 +19,7 @@
                        ng-model="worklog.timeSpent"
                        required
                        timespent
+                       limited="worklog.endDate"
                        work-per-day="{started: calculateWorklogDate(true), configOptions: configOptions, user: worklog.user || loggedInUser}"
                        ng-model-options="{ debounce: 100 }"
                        focus-if="worklog.issueKey"
