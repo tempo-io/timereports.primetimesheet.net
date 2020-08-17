@@ -589,7 +589,7 @@ QUnit.test('Timespent', function () {
 })
 QUnit.test('TimesheetUtils.convertDate', function () {
   // default
-  var date = TimesheetUtils.convertDate('2014-02-24T23:00:00.000')
+  var date = TimesheetUtils.convertDate('2014-02-24T23:00:00.000', 'Europe/Moscow') // Tempo
   QUnit.assert.equal(date.getDate(), 24, 'default day of month')
   // specify author timezone
   date = TimesheetUtils.convertDate('2014-06-24T22:00:00.000+0000', 'Europe/Berlin')
