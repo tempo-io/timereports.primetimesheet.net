@@ -111,7 +111,7 @@
                                      issue="row.rowKey._issue || row.rowKey.issue || row.rowKey.field" jira-config="jiraConfig"
                                      ng-if="row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue'" all-fields="allFields" />
                     </td>
-                    <td ng-if="showTotalInFront" style="color: {{row.color}}" title="{{row.title}}" class="nav border total">
+                    <td ng-if="showTotalInFront" ng-style="{'color': row.color}" title="{{row.title}}" class="nav border total">
                         {{row.sum | prettyHours:jiraConfig}}
                     </td>
                     <td ng-init="p_show=false"
@@ -124,13 +124,14 @@
                         addWorklogPopup: !groupByOptions.selected && column.sum == 0 && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && (canLogWork && !cannotLogWorkIssue[row.rowKey.keyValue] || canLogWorkForUser),
                         editWorklogPopup: column.sum != 0,
                         disabled: column.sum == 0 && (groupByOptions.selected || cannotLogWorkIssue[row.rowKey.keyValue] && !canLogWorkForUser)}"
-                        style="cursor:default;color: {{column.color}}"
+                        style="cursor:default"
+                        ng-style="{'color': column.color}"
                         title="{{column.title}}"
                         ng-repeat="column in row.columns">
                         <span style="cursor:pointer">{{column.sum | prettyHours:jiraConfig}}</span>
                         <span ng-show="p_show" class="fa fa-plus" style="cursor:pointer" title="{{'Log Work against an issue' | i18n}}"></span>
                     </td>
-                    <td style="color: {{row.color}}" title="{{row.title}}" class="nav border total">
+                    <td ng-style="{'color': row.color}" title="{{row.title}}" class="nav border total">
                         {{row.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>
@@ -206,13 +207,13 @@
                     <td class="nav total" ng-repeat="field in pivotTable.moreFields track by $index">
                         <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
                     </td>
-                    <td ng-if="showTotalInFront" style="color: {{pivotTable.color}}" title="{{pivotTable.title}}" class="nav border total">
+                    <td ng-if="showTotalInFront" ng-style="{'color': pivotTable.color}" title="{{pivotTable.title}}" class="nav border total">
                         {{pivotTable.sum | prettyHours:jiraConfig}}
                     </td>
-                    <td style="color: {{column.color}}" title="{{column.title}}" class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
+                    <td ng-style="{'color': column.color}" title="{{column.title}}" class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
                         {{column.sum | prettyHours:jiraConfig}}
                     </td>
-                    <td style="color: {{pivotTable.color}}" title="{{pivotTable.title}}" class="nav border total">
+                    <td ng-style="{'color': pivotTable.color}" title="{{pivotTable.title}}" class="nav border total">
                         {{pivotTable.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>

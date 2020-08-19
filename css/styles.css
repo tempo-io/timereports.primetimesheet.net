@@ -151,7 +151,7 @@ th {
     border-top: 1px solid #BBBBBB;
 }
 .rowAlternate {
-    background-color: #F5FAFF;
+    background-color: #F7FAFF;
 }
 .rowNormal {
 }
@@ -203,7 +203,7 @@ th {
     border-bottom: 1px solid #BBBBBB;
 }
 .rowFooter {
-    background-color: #E0F0FF;
+    background-color: #DEEBFF;
 }
 .businessDay {
 }
@@ -215,7 +215,7 @@ th {
 .workedDay {
 }
 .toDay {
-    background-color: #e3feeb;
+    background-color: #E3FCEF;
 }
 th.holidayDayOfWeek {
     color: #D04437;
@@ -223,7 +223,7 @@ th.holidayDayOfWeek {
 #slider-wrapper {
     position: relative;
     height: 21px;
-    background-color: #E0F0FF;
+    background-color: #DEEBFF;
     border: 1px solid #C2D9EF;
 }
 #slider-prev {

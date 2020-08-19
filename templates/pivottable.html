@@ -96,7 +96,7 @@
                             </span>
                         </div>
                     </td>
-                    <td class="nav first border" ng-repeat="column in pivotTable.sortedColumns()">
+                    <td class="nav first border" ng-repeat="column in pivotTable.sortedColumns()" ng-style="{'background-color': row.columns[column.columnKey.keyValue].backgroundColor}">
                         <div class="rowCenter">
                             <span>
                                 <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
