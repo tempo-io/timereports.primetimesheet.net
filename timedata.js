@@ -209,6 +209,7 @@ var TimeData = { "expand" : "schema,names",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
               },
+            "customfield_11207":{"id":2,"value":"Prime Timesheet s.r.o."},
             "resolution" : null,
             "resolutiondate" : null,
             "status" : { "description" : "The issue is open and ready for the assignee to start work on it.",

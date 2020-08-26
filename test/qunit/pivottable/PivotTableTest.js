@@ -781,6 +781,24 @@ QUnit.test('Timesheet: group by workeduser', function () {
   QUnit.assert.ok(TimesheetUtils.sameDay(new Date(parseInt(totalKeys[1])), new Date(2014, 1, 25)), 'totalKey')
   QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 2, 'column entries')
 })
+QUnit.test('Timespent: group by Account', function () {
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timespent', groupByField: 'customfield_11207', startDate: '2014-02-24', reportingDay: 1, configOptions: {} })
+  for (var i in TimeData.issues) {
+    var issue = TimeData.issues[i]
+    var pivotEntries = pivotTable.add(issue)
+    QUnit.assert.equal(pivotEntries.length, 2, 'pivotEntries ' + issue.key)
+  }
+  var totalKeys = Object.keys(pivotTable.totals)
+  QUnit.assert.equal(totalKeys.length, 1, 'totals')
+  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 172800, 'total value 1')
+  var rowKeys = Object.keys(pivotTable.rows)
+  QUnit.assert.equal(rowKeys.length, 2, 'rows')
+  QUnit.assert.equal(rowKeys[0], 'Prime Timesheet s.r.o.', 'rowKey')
+  QUnit.assert.equal(rowKeys[1], '&nbsp;', 'rowKey')
+  var row = pivotTable.rows[rowKeys[0]]
+  QUnit.assert.equal(typeof row.rowKey, 'object', 'typeof row.key')
+  QUnit.assert.equal(row.sum, 7200, 'typeof row.key')
+})
 QUnit.test('Calendar', function () {
   var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Calendar',
     startDate: '2014-02-24',
