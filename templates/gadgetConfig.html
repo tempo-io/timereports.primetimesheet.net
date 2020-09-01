@@ -82,6 +82,10 @@
       <label>{{'User' | i18n}}</label>
       <input ng-value="userInfo" aui-user-picker multi-select="true" ng-user-changed-func="userChange" type="text"/>
     </div>
+    <div class="field-group" ng-if="['Timesheet', 'Timespent', 'CostReport', 'PieChart', 'Calendar'].indexOf(pivotTableType) >= 0">
+      <label>{{'All Users' | i18n}}</label>
+      <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)" />
+    </div>
     <div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
       <label>{{'Groups' | i18n}}</label>
       <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>

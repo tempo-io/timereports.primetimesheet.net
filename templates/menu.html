@@ -59,6 +59,10 @@
                    update-event="paramUsersInfoUpdated"
                    type="text"/>
         </div>
+        <div class="ak-field-group" ng-if="['Timesheet', 'Timespent', 'CostReport', 'PieChart', 'Calendar'].indexOf(pivotTableType) >= 0"> <!-- All users because of multi user picker planned -->
+            <label style="display: inline-block; margin: 0">{{'All Users' | i18n}}</label>
+            <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)"/>
+        </div>
         <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry'">
             <label>{{'Groups' | i18n}}</label>
             <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" update-event="groupUpdated" type="text"/>
