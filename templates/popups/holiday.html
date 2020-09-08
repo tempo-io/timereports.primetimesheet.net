@@ -1,0 +1,17 @@
+<form class="aui" style="margin: 15px">
+   <div><span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span></div>
+   <div class="rowCenter" style="justify-content: space-between;">
+      <span>
+          <input id="fixed" type="checkbox" class="checkbox" ng-model="popupData.fixed">
+          <label for="fixed">{{'Fixed' | i18n}}</label>
+      </span>
+      <span>
+          <input
+                  class="aui-button aui-button-primary"
+                  type="submit"
+                  ng-value="'{{'Save' | i18n}}'"
+                  ng-click="popupData.save(closePopup)">
+          <a style="margin-left: 10px" ng-click="closePopup()">{{'Cancel' | i18n}}</a>
+      </span>
+  </div>
+</form>

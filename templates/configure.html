@@ -4,6 +4,13 @@
 </div>
 
 <form class="aui" style="width: 750px" name="configForm">
+    <aui-inline-dialog
+            id="holiday-popup"
+            template="'/templates/popups/holiday.html'"
+            popup-data="holidayPopup"
+            init-fn="initHolidayPopupDialog(params)"
+            container="'.holidayPopup'">
+    </aui-inline-dialog>
     <div ng-show="page=='access'">
         <div class="field-group">
             <label for="select2-auditorGroups">{{'Auditors Groups' | i18n}}</label>
@@ -656,6 +663,9 @@
         <div class="field-group">
             <span class="description">{{'description.Rows per Page' | i18n}}</span>
         </div>
+    </div>
+    <div ng-show="page=='holidays'">
+        <div id="calendar"></div>
     </div>
     <div ng-show="page=='auditLog'">
         <table cellspacing="5" cellpadding="0" border="0" style="margin-left: -5px">

@@ -106,6 +106,26 @@ describe('pivottableServiceTest', function () {
     expect(pivotTable.sum).toEqual(46800)
   }))
 
+  it('Timesheet holidays', inject(function ($timeout, pivottableService) {
+    expect(pivottableService).toBeDefined()
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
+    var holiday = '2014-03-03' // Monday
+    var options = {
+      pivotTableType: 'Timesheet',
+      user: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa,noSuchUser',
+      endDate: '2014-03-06',
+      configOptions: { holidays: [holiday] }
+    }
+    var pivotTable
+    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {
+      pivotTable = _pivotTable
+    })
+    $timeout.flush()
+    expect(pivotTable).toBeDefined()
+    expect(pivotTable).toHaveRowsNumber(3)
+    expect(pivotTable.totals[moment(holiday).valueOf()].columnKey.isWeekend).toEqual(true)
+  }))
+
   it('IssueWorkedTimeByUser', inject(function ($timeout, pivottableService) {
     expect(pivottableService).toBeDefined()
     var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }

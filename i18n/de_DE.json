@@ -439,5 +439,7 @@
     "welcome.content.4": "Weitere Ressourcen",
     "welcome.content.5.1": "<a href=\"https:\/\/www.primetimesheet.net\/%s\/\" target=\"_blank\">Dokumentation<\/a>",
     "welcome.content.5.2": "<a href=\"https:\/\/bitbucket.org\/tempo-io\/cloudtimesheet\/issues\" target=\"_blank\">Vorgänge<\/a>",
-    "welcome.content.5.3": "<a href=\"https:\/\/tempo-io.atlassian.net\/servicedesk\/customer\/portal\/6\/group\/31\" target=\"_blank\">Support-Anfrage stellen<\/a>"
+    "welcome.content.5.3": "<a href=\"https:\/\/tempo-io.atlassian.net\/servicedesk\/customer\/portal\/6\/group\/31\" target=\"_blank\">Support-Anfrage stellen<\/a>",
+    "Fixed": "Fixed",
+    "Holidays": "Holidays"
 }
