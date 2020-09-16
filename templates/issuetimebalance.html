@@ -14,7 +14,7 @@
                 <tr class="rowHeader">
                     <th class="colHeaderLink" width="100%">
                     </th>
-                    <th class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey">
+                    <th class="colHeaderLink" ng-repeat="column in pivotTable._sortedColumns" column-key="column.columnKey">
                     </th>
                     <th>
                         &nbsp;
@@ -22,11 +22,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-class-odd="compressed ? 'rowNormal' : ''" ng-class-even="compressed ? 'rowAlternate' : ''" ng-repeat-start="row in pivotTable.sortedRows() | limitTo:issuesCount.maxResults:issuesCount.startAt">
+                <tr ng-class-odd="compressed ? 'rowNormal' : ''" ng-class-even="compressed ? 'rowAlternate' : ''" ng-repeat-start="row in pivotTable._sortedRows | limitTo:issuesCount.maxResults:issuesCount.startAt">
                     <td class="nav first <summary></summary>" width="1%">
                         &nbsp;
                     </td>
-                    <td class="nav first border" ng-repeat="column in pivotTable.sortedColumns()">
+                    <td class="nav first border" ng-repeat="column in pivotTable._sortedColumns">
                         <pivot-cell key="column.columnKey" columns="row.columns" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
                     </td>
                     <td class="nav first border total">
@@ -44,7 +44,7 @@
                         <span ng-bind="data.worklog.started | date:'medium'"></span>
                         {{data.worklog.comment}}
                     </td>
-                    <td class="nav border" ng-repeat="column in pivotTable.sortedColumns()">
+                    <td class="nav border" ng-repeat="column in pivotTable._sortedColumns">
                         <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
                     </td>
                     <td nowrap class="nav border">
@@ -60,7 +60,7 @@
                 </tr>
                 <tr ng-repeat-end ng-hide="true"></tr>
                 <tr ng-show="loaded && loading">
-                    <td colspan="{{pivotTable.sortedColumns().length + 2}}">
+                    <td colspan="{{pivotTable._sortedColumns.length + 2}}">
                         <loading/>
                     </td>
                 </tr>

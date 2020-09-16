@@ -31,7 +31,7 @@
                     </th>
                     <th class="colHeaderLink"
                         ng-class="{nonBusinessDay: column.columnKey.isWeekend}"
-                        ng-repeat="column in pivotTable.sortedColumns()"
+                        ng-repeat="column in pivotTable._sortedColumns"
                         column-key="column.columnKey">
                     </th>
                     <th>
@@ -40,7 +40,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat-start="row in pivotTable.sortedRows() | limitTo:issuesCount.maxResults:issuesCount.startAt">
+                <tr ng-repeat-start="row in pivotTable._sortedRows | limitTo:issuesCount.maxResults:issuesCount.startAt">
                     <td class="nav first" width="8%" nowrap>
                         {{'Week' | i18n}}&nbsp;{{row.rowKey.field.weekNumber}}
                         <!--May 19
@@ -85,7 +85,7 @@
                     <td class="nav total">
                         {{'Total' | i18n}}
                     </td>
-                    <td class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
+                    <td class="nav border total" ng-repeat="column in pivotTable._sortedColumns">
                         <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav border total">

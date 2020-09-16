@@ -16,7 +16,7 @@
                 <div class="colHeaderLink">
                     <pivottable-slider />
                 </div>
-                <div class="colHeaderLink" ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
+                <div class="colHeaderLink" ng-repeat="column in pivotTable._sortedColumns" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
                 </div>
             </div>
             <div ng-class-odd="'rowNormal'" ng-class-even="'rowAlternate'" ng-repeat="data in pivotTable.rows[issueKey].data" ng-style="{color: data.color}">

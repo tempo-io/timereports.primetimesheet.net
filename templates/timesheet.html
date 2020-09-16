@@ -65,7 +65,7 @@
                     <th ng-if="showTotalInFront">
                         <br/>{{'Total' | i18n}}
                     </th>
-                    <th ng-repeat="column in pivotTable.sortedColumns()" column-key="column.columnKey" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}">
+                    <th ng-repeat="column in pivotTable._sortedColumns" column-key="column.columnKey" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}">
                     </th>
                     <th>
                         <br/>{{'Total' | i18n}}
@@ -75,7 +75,7 @@
             <tbody>
                 <tr ng-class-odd="compressed ? 'rowNormal' : ''"
                     ng-class-even="compressed ? 'rowAlternate' : ''"
-                    ng-repeat-start="row in pivotTable.sortedRows() | limitTo:issuesCount.maxResults:issuesCount.startAt"
+                    ng-repeat-start="row in pivotTable._sortedRows | limitTo:issuesCount.maxResults:issuesCount.startAt"
                     class="first">
                     <!-- issues block -->
                     <td class="nav issuetype" width="1%" ng-if="row.rowKey.issue">
@@ -188,7 +188,7 @@
                         disabled: !groupByOptions.selected || (data.columnKey.keyValue == column.columnKey.keyValue && cannotLogWorkIssue[data.rowKey._issue.key] && !canLogWorkForUser)}"
                         style="cursor:default"
                         class="nav border"
-                        ng-repeat="column in pivotTable.sortedColumns()">
+                        ng-repeat="column in pivotTable._sortedColumns">
                         <span style="cursor:pointer" ng-if="data.columnKey.keyValue == column.columnKey.keyValue">
                             {{data.value | prettyHours:jiraConfig}}
                         </span>
@@ -210,7 +210,7 @@
                     <td ng-if="showTotalInFront" ng-style="{'color': pivotTable.color}" title="{{pivotTable.title}}" class="nav border total">
                         {{pivotTable.sum | prettyHours:jiraConfig}}
                     </td>
-                    <td ng-style="{'color': column.color}" title="{{column.title}}" class="nav border total" ng-repeat="column in pivotTable.sortedColumns()">
+                    <td ng-style="{'color': column.color}" title="{{column.title}}" class="nav border total" ng-repeat="column in pivotTable._sortedColumns">
                         {{column.sum | prettyHours:jiraConfig}}
                     </td>
                     <td ng-style="{'color': pivotTable.color}" title="{{pivotTable.title}}" class="nav border total">
