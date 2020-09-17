@@ -20,6 +20,7 @@
             work-labels-list="workLabelsList"
             jira-config="jiraConfig">
     </aui-inline-dialog>
+    <aui-inline-dialog id="import-popup" template="'/templates/popups/import.html'" popup-data="importPopup" container="'#export-dropdown'" persistent="true" no-bind="true" init-fn="initImportPopupDialog(params)"></aui-inline-dialog>
     <aui-inline-dialog id="subscribe-popup" template="templates.subscribe" popup-data="subscribePopup" container="'#subscribe'" persistent="true"></aui-inline-dialog>
     <aui-inline-dialog id="user-hover" template="'/templates/popups/userHover.html'" popup-data="userHoverPopup" container="'.userHoverPopup'" on-hover="true"></aui-inline-dialog>
 
@@ -45,13 +46,14 @@
                             </button>
                         </span>
                         <span class="noprint">
-                            <i href="#export" id="export-dropdown" aria-owns="export" aria-haspopup="true" style="padding-left: 10px" class="fa fa-file-excel aui-dropdown2-trigger x-ng-click"  x-ng-click="" title="{{'Download' | i18n}}" ng-hide="loading || restrictionError"></i>
+                            <i href="#export" id="export-dropdown" aria-owns="export" aria-haspopup="true" style="padding-left: 10px" class="fa fa-file-excel aui-dropdown2-trigger x-ng-click"  x-ng-click="" title="{{'Export/Import' | i18n}}" ng-hide="loading || restrictionError"></i>
                             <!-- Dropdown -->
                             <div id="export" class="aui-style-default aui-dropdown2">
                                 <ul class="aui-list-truncate">
                                     <li><a x-ng-click="excelView('xls')">exportData.xls (html)</a></li>
                                     <li><a x-ng-click="excelView('csv')">exportData.csv</a></li>
                                     <li><a x-ng-click="excelView('html')">exportView.xls (html)</a></li>
+                                    <li><a x-ng-click="importPopup.init()">importTimesheet.csv</a></li>
                                 </ul>
                             </div>
                             <i id="subscribe"

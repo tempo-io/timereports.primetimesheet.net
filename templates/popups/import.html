@@ -1,0 +1,22 @@
+<form class="aui" style="margin: 15px">
+  <div>{{'Import Timesheet CSV' | i18n}}&nbsp;&nbsp;<span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span></div>
+  <fieldset style="padding-top: 10px">
+    <label for="file">{{"File" | i18n}}</label>
+    <input id="file"
+           type="file"
+           accept="text/csv"
+           file-on-change="popupData.handleFiles(files)"/>
+    <div>{{popupData.message}}</div>
+  </fieldset>
+  <div style="padding-top: 20px; text-align: right">
+      <div>
+          <input class="aui-button aui-button-primary"
+            type="submit"
+            ng-value="'{{'Create' | i18n}}'"
+            ng-click="popupData.import(closePopup)"
+            ng-disabled="!popupData.worklogs.length || popupData.loading"
+            ng-class="{disabled: !popupData.worklogs.length || popupData.loading}">
+          <a style="margin-left: 10px" ng-click="closePopup()">{{'Cancel' | i18n}}</a>
+      </div>
+  </div>
+</form>

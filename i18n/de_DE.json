@@ -441,5 +441,11 @@
     "welcome.content.5.2": "<a href=\"https:\/\/bitbucket.org\/tempo-io\/cloudtimesheet\/issues\" target=\"_blank\">Vorgänge<\/a>",
     "welcome.content.5.3": "<a href=\"https:\/\/tempo-io.atlassian.net\/servicedesk\/customer\/portal\/6\/group\/31\" target=\"_blank\">Support-Anfrage stellen<\/a>",
     "Fixed": "Fixed",
-    "Holidays": "Holidays"
+    "Holidays": "Holidays",
+    "Export/Import": "Export/Import",
+    "Import Timesheet CSV": "Import Timesheet CSV",
+    "File": "File",
+    "Worklogs to be created": "Worklogs to be created: ",
+    "File size limit exceeded (1M)": "File size limit exceeded (1M)",
+    "Create": "Create"
 }
