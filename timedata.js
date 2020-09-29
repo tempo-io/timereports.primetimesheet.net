@@ -38,7 +38,9 @@ window.AP = {
   request: function(options) {
     this.getTimeoutFunc()(function() {
       var m;
-      if (options.url.match(/search/)) {
+      if (options.url.match(/\/project\/search/)) {
+        options.success(ProjectsData);
+      } else if (options.url.match(/search/)) {
         options.success(angular.copy(TimeData));
       } else if (options.url.match(/\/user\/picker/)) {
         options.success(userPickerData);
@@ -50,8 +52,6 @@ window.AP = {
         options.success(UserData);
       } else if (options.url.match(/\/filter/)) {
         options.success(FiltersData);
-      } else if (options.url.match(/\/project/)) {
-        options.success(ProjectsData);
       } else if (options.url.match(/\/field/)) {
         options.success(FieldsData);
       } else if (options.url.match(/\/groups\/picker/)) {
@@ -1860,21 +1860,24 @@ var FiltersData = [
       }
    }
 ];
-var ProjectsData = [
+var ProjectsData = {
+  isLast: true,
+  values: [
     {
-        avatarUrls: {
-            "16x16": "http://localhost:2990/jira/secure/projectavatar?size=xsmall&pid=10000&avatarId=10400",
-            "24x24": "http://localhost:2990/jira/secure/projectavatar?size=small&pid=10000&avatarId=10400",
-            "32x32": "http://localhost:2990/jira/secure/projectavatar?size=medium&pid=10000&avatarId=10400",
-            "48x48": "http://localhost:2990/jira/secure/projectavatar?pid=10000&avatarId=10400"
-        },
-        expand: "description,lead,url,projectKeys",
-        id: "10000",
-        key: "DEMO",
-        name: "Demonstration Project",
-        self: "http://localhost:2990/jira/rest/api/2/project/10000"
+      avatarUrls: {
+        "16x16": "http://localhost:2990/jira/secure/projectavatar?size=xsmall&pid=10000&avatarId=10400",
+        "24x24": "http://localhost:2990/jira/secure/projectavatar?size=small&pid=10000&avatarId=10400",
+        "32x32": "http://localhost:2990/jira/secure/projectavatar?size=medium&pid=10000&avatarId=10400",
+        "48x48": "http://localhost:2990/jira/secure/projectavatar?pid=10000&avatarId=10400"
+      },
+      expand: "description,lead,url,projectKeys",
+      id: "10000",
+      key: "DEMO",
+      name: "Demonstration Project",
+      self: "http://localhost:2990/jira/rest/api/2/project/10000"
     }
-];
+  ]
+};
 // https://docs.atlassian.com/jira/REST/6.2/#d2e131
 // http://localhost:2990/jira/rest/api/latest/field
 var FieldsData=[

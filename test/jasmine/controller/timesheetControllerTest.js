@@ -182,7 +182,7 @@ describe('timesheetControllerTest', function () {
       configurationService: {
         getProjects: function () {
           var deferred = $q.defer()
-          deferred.resolve(ProjectsData)
+          deferred.resolve(ProjectsData.values)
           return deferred.promise
         },
         getDefaultTimeTrackingColumns: function () {
@@ -626,7 +626,7 @@ describe('timesheetControllerTest', function () {
       configurationService: {
         getProjects: function () {
           var deferred = $q.defer()
-          deferred.resolve(ProjectsData)
+          deferred.resolve(ProjectsData.values)
           return deferred.promise
         },
         getDefaultTimeTrackingColumns: function () {
