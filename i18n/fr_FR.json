@@ -422,7 +422,7 @@
     "welcome.content.1": " pour Jira Cloud étend ses moyens de suivi du temps intégrés à Jira pour les rapports suivants:",
     "welcome.content.2.0": " fournit un moyen pratique d'enregistrer les heures travaillées en temps réel, c'est-à-dire démarrer, arrêter, reprendre le chronomètre, consigner le travail effectué ou modifier les enregistrements précédents.",
     "welcome.content.2.1": " fournit le moyen le plus complet d'analyser la charge de travail des utilisateurs. Il y a une fiche classique par jour. Aussi avec de nombreuses options de rapport, il est possible d'obtenir quelques variantes du rapport..",
-    "welcome.content.2.1.1": " fournit un moyen simple d'analyser la charge de travail. Il possède une fiche classique avec une colonne \/Temps passé\/. Aussi avec de nombreuses options de rapport, il est possible d'obtenir quelques variantes du rapport.",
+    "welcome.content.2.1.1": " fournit un moyen simple d'analyser la charge de travail. Il possède une fiche classique avec une colonne \/Temps passé\/. Aussi avec de nombreuses options de rapport, il est possible d'obtenir quelques variantes du rapport. With Pivot by Field option it spreads out time spent by column with field value at the moment of worklog started.",
     "welcome.content.2.2": " affiche un résumé des heures travaillées pour le projet pour une certaine période, les colonnes correspondent aux utilisateurs du projet (ressources) et les lignes correspondent aux problèmes du projet (tâches).",
     "welcome.content.2.3": " affiche le temps travaillé sur les tâches dans chaque statut. Ce rapport répartit le nombre d'heures travaillées entre les statuts, depuis le début du travail. Il peut être modifié pour ne pas répartir les heures travaillées, mais utiliser uniquement l'heure de début du travail en définissant les options Temps de travail dans État + Heure de début dans État dans ",
     "welcome.content.2.4": " affiche le temps estimé par rapport au temps réel passé par numéro (pas de journal de travail).",
@@ -442,10 +442,11 @@
     "welcome.content.5.3": "<a href=\"https:\/\/tempo-io.atlassian.net\/servicedesk\/customer\/portal\/6\/group\/31\" target=\"_blank\"> Soumettre une demande d'assistance<\/a>",
     "Fixed": "Fixed",
     "Holidays": "Holidays",
-    "Export/Import": "Export/Import",
+    "Export\/Import": "Export\/Import",
     "Import Timesheet CSV": "Import Timesheet CSV",
     "File": "File",
     "Worklogs to be created": "Worklogs to be created: ",
     "File size limit exceeded (1M)": "File size limit exceeded (1M)",
-    "Create": "Create"
+    "Create": "Create",
+    "Pivot by Field": "Pivot by Field"
 }

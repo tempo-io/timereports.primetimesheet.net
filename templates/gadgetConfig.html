@@ -13,6 +13,15 @@
               aui-select2>
       </select>
     </div>
+    <div class="field-group" ng-if="pivotTableType == 'Timespent'">
+      <label>{{'Pivot by Field' | i18n}}</label>
+      <select class="select"
+              ng-model="pivotByFieldOptions.selected"
+              ng-options="item.id as item.label for item in pivotByFieldOptions.options"
+              ng-change="pivotByFieldChanged()"
+              aui-select2>
+      </select>
+    </div>
     <div class="field-group" ng-if="pivotTableType != 'TimeEntry' &&  viewByOptions.selected != 'day'">
       <label>{{ (viewByOptions.selected == 'month' ? 'Number of Months' : 'Number of Weeks') | i18n}}</label>
       <input ng-model="numOfWeeks.value"
@@ -192,7 +201,8 @@
       <label>{{'Sum SubTasks' | i18n}}</label>
       <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
     </div>
-    <div class="field-group" ng-if="['Timesheet', 'TimeEntry', 'Timespent', 'CostReport', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) >= 0">
+    <div class="field-group" ng-if="['Timesheet', 'TimeEntry', 'CostReport', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) >= 0 ||
+    (pivotTableType == 'Timespent' && !pivotByField)">
       <label>{{'Show Empty Issues' | i18n}}</label>
       <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!filterOrProjectId" />
     </div>

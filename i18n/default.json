@@ -422,7 +422,7 @@
     "welcome.content.1": " for Jira Cloud extends built-in Jira timetracking means with next Reports:",
     "welcome.content.2.0": " provides convenient way to record worked hours in real time, i.e. start, stop, resume timer, log worked done or edit previous records.",
     "welcome.content.2.1": " provides the most extensive means to analyze users' workload. It has classical sheet view by day. Also with numerous report Options it is possible to get few variants of the report.",
-    "welcome.content.2.1.1": " provides simple mean to analyze workload. It has classical sheet view with only Time Spent column. Also with numerous report Options it is possible to get few variants of the report.",
+    "welcome.content.2.1.1": " provides simple mean to analyze workload. It has classical sheet view with only Time Spent column. Also with numerous report Options it is possible to get few variants of the report. With Pivot by Field option it spreads out time spent by column with field value at the moment of worklog started.",
     "welcome.content.2.2": " displays a summary of worked hours for project for certain period, where columns are project users (resources) and rows are project issues (tasks).",
     "welcome.content.2.3": " displays time worked on issues in each issue status. This report spreads worked hours across statuses issue had starting from work started time. It may be changed not to spread worked hours, but use only work started time, by setting Working Time In Status + Started Time In Status options in ",
     "welcome.content.2.4": " displays Estimated Time vs Actual Time Spent per issue (no worklog).",
@@ -442,10 +442,11 @@
     "welcome.content.5.3": "<a href=\"https:\/\/tempo-io.atlassian.net\/servicedesk\/customer\/portal\/6\/group\/31\" target=\"_blank\">Submit a support request<\/a>",
     "Fixed": "Fixed",
     "Holidays": "Holidays",
-    "Export/Import": "Export/Import",
+    "Export\/Import": "Export\/Import",
     "Import Timesheet CSV": "Import Timesheet CSV",
     "File": "File",
     "Worklogs to be created": "Worklogs to be created: ",
     "File size limit exceeded (1M)": "File size limit exceeded (1M)",
-    "Create": "Create"
+    "Create": "Create",
+    "Pivot by Field": "Pivot by Field"
 }

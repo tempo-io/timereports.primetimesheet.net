@@ -422,7 +422,7 @@
     "welcome.content.1": " para Jira Cloud se extienden los medios de seguimiento de tiempo en Jira con los siguientes informes:",
     "welcome.content.2.0": " proporciona una forma conveniente de registrar las horas empleadas en tiempo real, es decir, iniciar, detener, reanudar el temporizador, registrar el trabajo realizado o editar los registros anteriores",
     "welcome.content.2.1": " proporciona los medios más extensos para analizar la carga de trabajo de los usuarios.Tiene vista de una hoja clásica, cotidiana. Además, con las numerosas opciones del informe es posible obtener algunas variantes del mismo.",
-    "welcome.content.2.1.1": " proporciona un medio simple para analizar la carga de trabajo. Tiene  vista de una hoja clásica con sólo una columna de \"Tiempo elaborado\". Además, con las numerosas opciones del informe es posible obtener algunas variantes del mismo.",
+    "welcome.content.2.1.1": " proporciona un medio simple para analizar la carga de trabajo. Tiene  vista de una hoja clásica con sólo una columna de \"Tiempo elaborado\". Además, con las numerosas opciones del informe es posible obtener algunas variantes del mismo. With Pivot by Field option it spreads out time spent by column with field value at the moment of worklog started.",
     "welcome.content.2.2": " muestra un resumen del tiempo empleado en el proyecto durante un período determinado, en el que las columnas son los usuarios del proyecto (recursos) y las filas son las incidencias del proyecto (tareas).",
     "welcome.content.2.3": " muestra el tiempo empleado para el trabajo en las tareas en cada estado de la tarea. Este informe distribuye las horas elaboradas entre los estados a partir de los cuáles ha empezado la tarea desde la hora de inicio del trabajo.Es posible cambiarlo para no distribuyir las horas de trabajo sino utilizar solo el tiempo de inicio de trabajo, con ayuda de ajustes de las opciones Tiempo de Trabajo en el Estado + Tiempo de Inicio de Trabajo en Estado, en ",
     "welcome.content.2.4": " muestra el Tiempo Estimado vs.Tiempo Real Empleado para la tarea (sin registro de trabajo).",
@@ -442,10 +442,11 @@
     "welcome.content.5.3": "<a href=\"https:\/\/tempo-io.atlassian.net\/servicedesk\/customer\/portal\/6\/group\/31\" target=\"_blank\">Enviar una silicitud de soporte<\/a>",
     "Fixed": "Fixed",
     "Holidays": "Holidays",
-    "Export/Import": "Export/Import",
+    "Export\/Import": "Export\/Import",
     "Import Timesheet CSV": "Import Timesheet CSV",
     "File": "File",
     "Worklogs to be created": "Worklogs to be created: ",
     "File size limit exceeded (1M)": "File size limit exceeded (1M)",
-    "Create": "Create"
+    "Create": "Create",
+    "Pivot by Field": "Pivot by Field"
 }

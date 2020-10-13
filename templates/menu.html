@@ -4,6 +4,15 @@
             <label>{{ 'Report' | i18n }}</label>
             <input ng-model="viewOptions.selected" aui-multi-select-picker="false" ng-value-changed-func="viewChanged" ng-options-data="viewOptions" update-event="viewUpdated" type="text"/>
         </div>
+        <div class="ak-field-group" ng-if="pivotTableType == 'Timespent'">
+            <label>{{'Pivot by Field' | i18n}}</label>
+            <select class="select"
+                    ng-model="pivotByFieldOptions.selected"
+                    ng-options="item.id as item.label for item in pivotByFieldOptions.options"
+                    ng-change="pivotByFieldChanged()"
+                    aui-select2>
+            </select>
+        </div>
         <div class="ak-field-group" ng-hide="reportDialog && reportParamsObject.jql != undefined">
             <label>{{ 'Filter or Project' | i18n }}
                 <a class="fa fa-edit edit"
@@ -173,7 +182,8 @@
             <label style="display: inline-block; margin: 0">{{'Sum SubTasks' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
         </div>
-        <div class="ak-field-group" ng-if="['Timesheet', 'TimeEntry', 'Timespent', 'CostReport', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) >= 0">
+        <div class="ak-field-group" ng-if="['Timesheet', 'TimeEntry', 'CostReport', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) >= 0 ||
+        (pivotTableType == 'Timespent' && !pivotByField)">
             <label style="display: inline-block; margin: 0">{{'Show Empty Issues' | i18n}}</label>
             <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!(filterOrProjectId || includeEmpty.jql)"/>
         </div>

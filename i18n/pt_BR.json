@@ -422,7 +422,7 @@
     "welcome.content.1": "para Jira Cloud amplia os meios de rastreamento de tempo Jira com Relatórios seguintes:",
     "welcome.content.2.0": "fornece uma maneira conveniente de registrar as horas trabalhadas em tempo real, ou seja, iniciar, parar, retomar o cronômetro, registrar o trabalho realizado ou editar registros anteriores.",
     "welcome.content.2.1": "fornece os meios mais abrangentes para analisar a carga de trabalho dos usuários. Tem uma visão clássica da chapa durante o dia. Também com inúmeras opções de relatório, é possível obter algumas variantes do relatório.",
-    "welcome.content.2.1.1": "fornece um meio simples para analisar a carga de trabalho. Tem uma visão clássica da chapa clássica com apenas a coluna de Tempo Gasto. Também com várias opções de relatório, é possível obter algumas variantes do relatório.",
+    "welcome.content.2.1.1": "fornece um meio simples para analisar a carga de trabalho. Tem uma visão clássica da chapa clássica com apenas a coluna de Tempo Gasto. Também com várias opções de relatório, é possível obter algumas variantes do relatório. With Pivot by Field option it spreads out time spent by column with field value at the moment of worklog started.",
     "welcome.content.2.2": "exibe um resumo das horas trabalhadas para o projeto por determinado período, em que colunas são usuários do projeto (recursos) e linhas são problemas do projeto (tarefas).",
     "welcome.content.2.3": "exibe o tempo trabalhado nos problemas em cada estado do problema. Este relatório espalha as horas trabalhadas entre os problemas de estado que começaram a partir da hora de início do trabalho. Pode ser alterado para não distribuir as horas trabalhadas, mas use apenas a hora de início do trabalho, definindo as opções Tempo de Trabalho em Estado + Tempo Iniciado Em Estado",
     "welcome.content.2.4": "exibe Tempo Estimado vs Tempo Real Gasto por problema (sem registro de trabalho).",
@@ -442,10 +442,11 @@
     "welcome.content.5.3": "<a href=\"https:\/\/tempo-io.atlassian.net\/servicedesk\/customer\/portal\/6\/group\/31\" target=\"_blank\">Enviar uma solicitação de suporte<\/a>",
     "Fixed": "Fixed",
     "Holidays": "Holidays",
-    "Export/Import": "Export/Import",
+    "Export\/Import": "Export\/Import",
     "Import Timesheet CSV": "Import Timesheet CSV",
     "File": "File",
     "Worklogs to be created": "Worklogs to be created: ",
     "File size limit exceeded (1M)": "File size limit exceeded (1M)",
-    "Create": "Create"
+    "Create": "Create",
+    "Pivot by Field": "Pivot by Field"
 }
