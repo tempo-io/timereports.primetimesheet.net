@@ -227,9 +227,9 @@
                     </td>
                 </tr>
                 <!-- suggested total block -->
-                <tr class="rowFooter" ng-if="pivotTable.suggestedNum" ng-hide="pivotTableType == 'TimeEntry' && (loading || !loaded || !pivotTable)">
+                <tr class="rowFooter" ng-if="pivotTable.suggestedNum" ng-hide="loading || !loaded || !pivotTable">
                     <td colspan="{{rowKeySize}}" class="nav total borderTopTotal">
-                        {{'Suggested Total' | i18n}}&nbsp;{{pivotTable.suggestedNum != 1 ? 'issues' : 'issue' | i18n:{placeholders:[pivotTable.suggestedNum]} }}
+                        {{'Suggested Total' | i18n}}&nbsp;{{pivotTable.suggestedNum}}
                     </td>
                     <td class="nav total borderTopTotal" ng-repeat="field in pivotTable.moreFields track by $index">
                     </td>
@@ -242,10 +242,36 @@
                     </td>
                     <td class="nav border total borderTopTotal">
                         <i class="fa fa-check-square"
+                           ng-if="pivotTable.suggestedNum"
                            ng-click="!disableSuggested && logSuggested()"
                            ng-disabled="disableSuggested"
                            ng-class="{disabled: disableSuggested}"
-                           title="{{'Log Suggested' | i18n}}"></i>
+                           title="{{'Save' | i18n}}"></i>
+                    </td>
+                    <td class="nav border total borderTopTotal" ng-if="!hideTotalColumn">
+                    </td>
+                </tr>
+                <!-- suggested total block -->
+                <tr class="rowFooter" ng-if="pivotTable.unsavedNum" ng-hide="loading || !loaded || !pivotTable">
+                    <td colspan="{{rowKeySize}}" class="nav total borderTopTotal">
+                        {{'Unsaved Total' | i18n}}&nbsp;{{pivotTable.unsavedNum}}
+                    </td>
+                    <td class="nav total borderTopTotal" ng-repeat="field in pivotTable.moreFields track by $index">
+                    </td>
+                    <td class="nav border total borderTopTotal" ng-if="!hideTotalColumn && showTotalInFront">
+                    </td>
+                    <td class="nav border total borderTopTotal">
+                    </td>
+                    <td class="nav border total borderTopTotal">
+                        {{pivotTable.unsavedTotal | prettyHours:jiraConfig:isElapsedTime}}
+                    </td>
+                    <td class="nav border total borderTopTotal">
+                        <i class="fa fa-check-square"
+                           ng-if="pivotTable.unsavedTotal"
+                           ng-click="!disableSuggested && logSuggested('unsaved')"
+                           ng-disabled="disableSuggested"
+                           ng-class="{disabled: disableSuggested}"
+                           title="{{'Save' | i18n}}"></i>
                     </td>
                     <td class="nav border total borderTopTotal" ng-if="!hideTotalColumn">
                     </td>

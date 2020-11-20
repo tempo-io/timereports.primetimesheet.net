@@ -449,5 +449,6 @@
     "File size limit exceeded (1M)": "File size limit exceeded (1M)",
     "Create": "Create",
     "Pivot by Field": "Pivot by Field",
-    "Start\/Pause Work": "Start\/Pause Work"
+    "Start\/Pause Work": "Start\/Pause Work",
+    "Unsaved Total": "Unsaved Total"
 }
