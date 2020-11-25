@@ -1,4 +1,4 @@
-<table cellpadding="0" border="0" cellspacing="5" width="100%">
+<table cellpadding="0" border="0" cellspacing="5">
     <tr ng-repeat="wkLog in popupData.worklogs">
         <td ng-if="wkLog._issueInfo || wkLog._authorInfo">
             <span ng-if="wkLog._issueInfo"><issue-key issue="wkLog._issueInfo"/></span>
@@ -7,7 +7,7 @@
                 ng-href="#!/?pivotTableType=Timesheet&user={{wkLog._authorInfo.accountId}}&group=&groupByField="
                 ng-if="wkLog._authorInfo" ng-bind="wkLog._authorInfo.displayName || wkLog._authorInfo.name"/>
         </td>
-        <td width="1%">
+        <td>
             {{wkLog.timeSpentSeconds | prettyHours:jiraConfig}}
         </td>
         <td>
@@ -32,7 +32,7 @@
     </tr>
     <tr ng-if="!popupData.worklog.locked && popupData.worklog.issueKey && popupData.canLogWork && !popupData.cannotLogWorkIssue[popupData.rowKey.keyValue]">
         <td colspan="{{popupData.colspan}}" style="border-top: 1px solid black;">
-            <ng-include src="'/templates/popups/addWorklog.html'"></ng-include>
+            <ng-include src="popupData.addWorklogTemplate"></ng-include>
         </td>
     </tr>
     <tr ng-show="popupData.pivotTableType == 'Calendar'">
