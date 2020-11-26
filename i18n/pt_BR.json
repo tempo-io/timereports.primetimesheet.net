@@ -326,7 +326,7 @@
     "description.User Groups With Time Entry Panel": "Os usuários dos grupos selecionados poderão usar o painel de entrada de tempo para registrar as horas trabalhadas em tempo real. Nota, Lógica OR é usada para configurações relacionadas (Grupos do Painel de Registro de Tempo e Projetos do Painel de Registro de Tempo).",
     "description.Projects With Time Entry Panel": "As problemas dos projetos selecionados terão um Painel de Registro de Tempo para registrar as horas trabalhadas em tempo real. Nota, Lógica OR é usada para configurações relacionadas (Grupos do Painel de Registro de Tempo e Projetos do Painel de Registro de Tempo).",
     "description.Work Labels": "Lista editável de rótulos que pode ser usado no comentário do registo de trabalho como hashtags, para agrupar.",
-    "description.Disable Log Work": "Se ativado, o trabalho de registro ou a atualização de entradas nos relatórios não será possível para ninguém.",
+    "description.Disable Log Work": "Logging work or updating entries in the reports will not be possible for selected options.",
     "description.Work Description Required": "Exigir Descrição do Trabalho ao adicionar ou atualizar o registo de trabalho.",
     "description.Cache Worklog": "Se ativado, use o armazenamento local para problemas com mais de 20 registos de trabalho. Os registros de trabalho adicionados no último minuto em qualquer outro lugar estarão ausentes no relatório.",
     "description.REST": "Obter CHAVE para carregar registo de trabalho no formato JSON em <a target=\"_blank\" href=\"https:\/\/timesheet-plugin.herokuapp.com\/api\/1\/worklog\">https:\/\/timesheet-plugin.herokuapp.com\/api\/1\/worklog<\/a> com cabeçalho HTTP \"Authorization: Apikey KEY.\" Ver também <a href=\"https:\/\/www.primetimesheet.net\/cloud\/rest.html\" target=\"_blank\">terminal de REST<\/a>.",
@@ -450,5 +450,10 @@
     "Create": "Create",
     "Pivot by Field": "Pivot by Field",
     "Start\/Pause Work": "Start\/Pause Work",
-    "Unsaved Total": "Unsaved Total"
+    "Unsaved Total": "Unsaved Total",
+    "Disable Log Work for Projects": "Disable Log Work for Projects",
+    "Disable Log Work for Groups": "Disable Log Work for Groups",
+    "At all": "At all",
+    "for Projects": "for Projects",
+    "for Groups": "for Groups"
 }

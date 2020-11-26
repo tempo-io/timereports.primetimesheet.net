@@ -326,7 +326,7 @@
     "description.User Groups With Time Entry Panel": "Users of the selected groups will be able to use Time Entry issue panel to record worked hours in real time. Note, OR logic is used for related settings (Time Entry Issue Panel Groups and Time Entry Issue Panel Projects).",
     "description.Projects With Time Entry Panel": "Issues of the selected projects will have Time Entry issue panel to record worked hours in real time. Note, OR logic is used for related settings (Time Entry Issue Panel Groups and Time Entry Issue Panel Projects).",
     "description.Work Labels": "Editable list of labels that can be used in worklog comment as hashtags, for grouping.",
-    "description.Disable Log Work": "If enabled, logging work or updating entries in the reports will not be possible for anyone.",
+    "description.Disable Log Work": "Logging work or updating entries in the reports will not be possible for selected options.",
     "description.Work Description Required": "Require Work Description when adding or updating worklog.",
     "description.Cache Worklog": "If enabled, use local Storage for issues with more than 20 worklogs. Worklogs added last minute anywhere else will be missing in report.",
     "description.REST": "Get KEY to load worklog in JSON format from <a target=\"_blank\" href=\"https:\/\/timesheet-plugin.herokuapp.com\/api\/1\/worklog\">https:\/\/timesheet-plugin.herokuapp.com\/api\/1\/worklog<\/a> with HTTP Header \"Authorization: Apikey KEY.\" See also <a href=\"https:\/\/www.primetimesheet.net\/cloud\/rest.html\" target=\"_blank\">REST endpoint<\/a>.",
@@ -450,5 +450,10 @@
     "Create": "Create",
     "Pivot by Field": "Pivot by Field",
     "Start\/Pause Work": "Start\/Pause Work",
-    "Unsaved Total": "Unsaved Total"
+    "Unsaved Total": "Unsaved Total",
+    "Disable Log Work for Projects": "Disable Log Work for Projects",
+    "Disable Log Work for Groups": "Disable Log Work for Groups",
+    "At all": "At all",
+    "for Projects": "for Projects",
+    "for Groups": "for Groups"
 }

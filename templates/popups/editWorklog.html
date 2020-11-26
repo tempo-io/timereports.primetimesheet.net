@@ -30,7 +30,7 @@
             </span>
         </td>
     </tr>
-    <tr ng-if="!popupData.worklog.locked && popupData.worklog.issueKey && popupData.canLogWork && !popupData.cannotLogWorkIssue[popupData.rowKey.keyValue]">
+    <tr ng-if="!popupData.worklog.locked && popupData.worklog.issueKey && (popupData.canLogWork || popupData.canLogWorkForUser) && !popupData.cannotLogWorkIssue[popupData.rowKey.keyValue]">
         <td colspan="{{popupData.colspan}}" style="border-top: 1px solid black;">
             <ng-include src="popupData.addWorklogTemplate"></ng-include>
         </td>

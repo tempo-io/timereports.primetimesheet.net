@@ -326,7 +326,7 @@
     "description.User Groups With Time Entry Panel": "Los usuarios de los grupos seleccionados podrán usar el panel de tareas de entrada de tiempo para registrar las horas empleadas en el tiempo real.Tenga en cuenta que la puerta lógica OR se utiliza para configuraciones relacionadas con (Grupos de tareas con el panel de entrada de tiempo y Proyectos con el panel de entrada de tiempo)",
     "description.Projects With Time Entry Panel": "Las tareas de los proyectos seleccionados tendrán un panel de registro de tiempo para registrar las horas trabajadas en tiempo real. Tenga en cuenta que la puerta lógica OR se utiliza para configuraciones relacionadas con (Grupos de tareas con el panel de entrada de tiempo y Proyectos con el panel de entrada de tiempo).",
     "description.Work Labels": "Lista editable de etiquetas que se pueden usar en comentarios de registros de trabajo como hashtags, para agrupar.",
-    "description.Disable Log Work": " Si la opción está activada, no será posible para nadie registrar trabajo o actualizar los informes de entrada.",
+    "description.Disable Log Work": "Logging work or updating entries in the reports will not be possible for selected options.",
     "description.Work Description Required": "Se requiere una descripción del trabajo cuando se agrega o se actualiza el trabajo.",
     "description.Cache Worklog": "Si la opción está activada, se utiliza el almacenamiento local para las tareas de más de 20 registros de trabajo. Los registros de trabajo que han sido agregados en el último momento o en cualquier otro lugar,estarán ausentes en el informe.",
     "description.REST": "Obtener CLAVE para registrar el trabajo en el formato  de JSON desde <a target=\"_blank\" href=\"https:\/\/timesheet-plugin.herokuapp.com\/api\/1\/worklog\">https:\/\/timesheet-plugin.herokuapp.com\/api\/1\/worklog<\/a> with HTTP Cabecera \"Authorización: Apikey CLAVE.\" Véase también <a href=\"https:\/\/www.primetimesheet.net\/cloud\/rest.html\" target=\"_blank\">REST endpoint<\/a>.",
@@ -450,5 +450,10 @@
     "Create": "Create",
     "Pivot by Field": "Pivot by Field",
     "Start\/Pause Work": "Start\/Pause Work",
-    "Unsaved Total": "Unsaved Total"
+    "Unsaved Total": "Unsaved Total",
+    "Disable Log Work for Projects": "Disable Log Work for Projects",
+    "Disable Log Work for Groups": "Disable Log Work for Groups",
+    "At all": "At all",
+    "for Projects": "for Projects",
+    "for Groups": "for Groups"
 }
