@@ -455,5 +455,6 @@
     "Disable Log Work for Groups": "Disable Log Work for Groups",
     "At all": "At all",
     "for Projects": "for Projects",
-    "for Groups": "for Groups"
+    "for Groups": "for Groups",
+    "Log Work disabled for this issue": "Log Work disabled for this issue"
 }
