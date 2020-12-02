@@ -286,14 +286,14 @@ a.disabled {
 .pagination {
   float: right;
 }
-[ng-click]:not(.disabled):not(.inactive):not(.aui-button-primary):not([disabled]),
+[ng-click]:not(.disabled):not(.inactive):not(.aui-button-primary):not([disabled]):not(.edit),
 [data-ng-click]:not(.disabled),
 [x-ng-click]:not(.disabled) {
     color: #0052CC;
     cursor: pointer;
 }
 [ng-click]:not(.disabled):not(.inactive):not(.aui-button-primary):hover:not([disabled]):hover,
-[data-ng-click]:not(.disabled):hover:,
+[data-ng-click]:not(.disabled):hover,
 [x-ng-click]:not(.disabled):hover {
     color: #0065FF;
     cursor: pointer;
@@ -324,8 +324,15 @@ a.disabled {
 }
 .fa.edit {
   display: none;
+  color: #999999;
+}
+.fa.edit:hover {
+  color: #0065FF;
 }
 .menu label:hover .edit {
+  display: inline-block;
+}
+div.options:hover .edit {
   display: inline-block;
 }
 .section-header > div:first-child {
@@ -395,9 +402,6 @@ form.aui .field-group .description a, .align-top {
 .formTitleDescription {
     font-size: 13px;
     line-height: 40px;
-}
-.summary .grey {
-    color: #999999
 }
 #slider-today .month:before {
     position: relative;

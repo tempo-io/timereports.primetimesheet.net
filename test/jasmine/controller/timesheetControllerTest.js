@@ -69,7 +69,7 @@ describe('timesheetControllerTest', function () {
     module('configuration')
     module('timesheetApp')
     angular.module('timesheetApp').service('flightRecorder', function () {
-      this.writeParams = this.setEnabled = function () {
+      this.cookie = this.writeParams = this.setEnabled = function () {
       }
     }).factory('userConfiguration', function () {
       return {

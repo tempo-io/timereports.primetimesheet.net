@@ -33,9 +33,17 @@
             </i>
         </div>
     </div>
-    <div>{{'Options' | i18n}}:&nbsp;<selected-option ng-repeat="option in selectedOptionLabels"
+    <div class="options">{{'Options' | i18n}}:&nbsp;
+        <span>
+            <selected-option ng-repeat="option in selectedOptionLabels"
                                                      remove-action="removeMenuOption(option.key, option.labelParam, option.labelParamUnique)"
                                                      option="option"/>
+        </span>
+        <i class="fa fa-anchor edit"
+           ng-if="showMakeDefault"
+           ng-click="saveDefaultReport()"
+           title="{{'Make Default' | i18n}}">
+        </i>
     </div>
     <validation-errors errors="errors" error-messages="errorMessages"></validation-errors>
 </div>
