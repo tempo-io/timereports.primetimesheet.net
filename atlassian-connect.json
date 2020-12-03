@@ -212,7 +212,8 @@
             "contentPresentConditions": [{
               "condition": "user_is_logged_in"
             }],
-            "key": "timeentry-issue-content"
+            "key": "timeentry-issue-content",
+            "jiraNativeAppsEnabled": true
         }
         ],
         "jiraIssueTabPanels": [
