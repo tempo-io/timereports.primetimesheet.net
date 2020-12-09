@@ -50,9 +50,36 @@
                             <!-- Dropdown -->
                             <div id="export" class="aui-style-default aui-dropdown2">
                                 <ul class="aui-list-truncate">
-                                    <li><a x-ng-click="excelView('xls')">exportData.xls (html)</a></li>
-                                    <li><a x-ng-click="excelView('csv')">exportData.csv</a></li>
-                                    <li><a x-ng-click="excelView('html')">exportView.xls (html)</a></li>
+                                    <li class="copyLink">
+                                        <div class="rowCenter">
+                                            <a x-ng-click="excelView('xls')">exportData.xls (html)</a>
+                                            <i class="fa fa-link edit"
+                                               ng-click=""
+                                               copy-to-clipboard="export=xls"
+                                               title="{{'Copy Link' | i18n}}">
+                                            </i>
+                                        </div>
+                                    </li>
+                                    <li class="copyLink">
+                                        <div class="rowCenter">
+                                            <a x-ng-click="excelView('csv')">exportData.csv</a>
+                                            <i class="fa fa-link edit"
+                                               ng-click=""
+                                               copy-to-clipboard="export=csv"
+                                               title="{{'Copy Link' | i18n}}">
+                                            </i>
+                                        </div>
+                                    </li>
+                                    <li class="copyLink">
+                                        <div class="rowCenter">
+                                            <a x-ng-click="excelView('html')">exportView.xls (html)</a>
+                                            <i class="fa fa-link edit"
+                                               ng-click=""
+                                               copy-to-clipboard="export=html"
+                                               title="{{'Copy Link' | i18n}}">
+                                            </i>
+                                        </div>
+                                    </li>
                                     <li><a x-ng-click="importPopup.init()">importTimesheet.csv</a></li>
                                 </ul>
                             </div>

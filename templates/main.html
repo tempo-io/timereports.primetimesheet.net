@@ -94,8 +94,14 @@
     <!-- Dialog header -->
     <header class="aui-dialog2-header">
         <!-- The dialog''s title -->
-        <h1 class="aui-dialog2-header-main">
+        <h1 class="aui-dialog2-header-main copyLink">
             {{dialogType == 'add' ? 'Log Work Done' : 'Edit Work Log' | i18n}}
+            <i class="fa fa-link edit"
+               ng-if="dialogType == 'add'"
+               ng-click=""
+               copy-to-clipboard="logWork=true"
+               title="{{'Copy Link' | i18n}}">
+            </i>
         </h1>
         <!-- Close icon -->
         <a class="aui-dialog2-header-close" ng-click="cancel()">

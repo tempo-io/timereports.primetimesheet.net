@@ -335,6 +335,13 @@ a.disabled {
 div.options:hover .edit {
   display: inline-block;
 }
+.copyLink a {
+  margin-right: 20px;
+}
+.copyLink:hover .edit {
+  display: inline-block;
+  margin-left: -20px;
+}
 .section-header > div:first-child {
   display: flex;
   margin-top: -2px;
