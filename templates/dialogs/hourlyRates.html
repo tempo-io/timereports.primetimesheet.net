@@ -14,7 +14,7 @@
     <form class="aui" name="hourlyRatesForm">
         <div class="rowCenter">
             <input style="width: 235px;margin-right:5px;"
-                    ng-value="paramUserInfo"
+                   ng-value="paramUserInfo"
                    aui-user-picker
                    ng-user-changed-func="hourlyRatesForm.hourlyRate.$valid && userChange"
                    type="text"/>
@@ -34,10 +34,9 @@
                    class="text"
                    title="{{'Hourly Rate' | i18n}}"
                    style="max-width: 70px;margin-right:5px;"
-                   enter-pressed="hourlyRate && addHourlyRate(paramUserInfo, startDate, project, hourlyRate)"/>
+                   enter-pressed="addHourlyRate(paramUserInfo, startDate, project, hourlyRate)"/>
             <span class="fa fa-plus-square"
-                  ng-class="{disabled: !hourlyRate}"
-                  ng-click="hourlyRate && addHourlyRate(paramUserInfo, startDate, project, hourlyRate)">
+                  ng-click="addHourlyRate(paramUserInfo, startDate, project, hourlyRate)">
 
             </span>
         </div>
@@ -60,10 +59,9 @@
                            class="text"
                            title="{{'Hourly Rate' | i18n}}"
                            style="max-width: 70px;margin-right:5px;"
-                           enter-pressed="hourlyRateUsers[accountId] && addHourlyRate(users[accountId], startDateUsers[accountId], projectUsers[accountId], hourlyRateUsers[accountId])"/>
+                           enter-pressed="addHourlyRate(users[accountId], startDateUsers[accountId], projectUsers[accountId], hourlyRateUsers[accountId])"/>
                     <span class="fa fa-plus-square"
-                          ng-class="{disabled: !hourlyRateUsers[accountId]}"
-                          ng-click="hourlyRateUsers[accountId] && addHourlyRate(users[accountId], startDateUsers[accountId], projectUsers[accountId], hourlyRateUsers[accountId])">
+                          ng-click="addHourlyRate(users[accountId], startDateUsers[accountId], projectUsers[accountId], hourlyRateUsers[accountId])">
                     </span>
                 </div>
                 <div ng-repeat="(startDate, projectRates) in rates">
