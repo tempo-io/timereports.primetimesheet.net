@@ -67,6 +67,7 @@
                 <li ng-repeat="view in issueTimeOptions.options" ng-if="view.id != issueTimeOptions.selected">
                     <a style="color:#333" ng-click="issueTimeViewChanged(view.id)">{{view.label}}</a>
                 </li>
+                <a ng-if="isEpic" title="{{'Open report page for other options and excel export' | i18n }}" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!jql=parentEpic%3D{{issueKey}}" target="_parent">parentEpic={{issueKey}}</a>
             </ul>
         </div>
     </span>
