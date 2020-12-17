@@ -30,7 +30,6 @@
                    name="hourlyRate"
                    ng-model="hourlyRate"
                    type="number"
-                   min="0"
                    class="text"
                    title="{{'Hourly Rate' | i18n}}"
                    style="max-width: 70px;margin-right:5px;"
@@ -55,7 +54,6 @@
                            name="hourlyRateUsers[accountId]"
                            ng-model="hourlyRateUsers[accountId]"
                            type="number"
-                           min="0"
                            class="text"
                            title="{{'Hourly Rate' | i18n}}"
                            style="max-width: 70px;margin-right:5px;"
@@ -75,7 +73,6 @@
                                ng-model-options='{ debounce: 1000 }'
                                ng-change="hourlyRatesForm['userHourlyRate{{accountId + startDate + project}}'].$valid
                                 && addHourlyRate(users[accountId], startDate, project, hourlyRate)"
-                               min="0"
                                type="number"
                                class="text"
                                style="max-width: 70px;margin-right:5px;"/>
