@@ -276,36 +276,6 @@
             }
         ],
         "webItems" : [{
-            "key": "timereports-search",
-            "location": "jira.navigator.pluggable.items",
-            "weight": 9999,
-            "name": {
-                "value": "Time Reports",
-                "i18n": "Time Reports"
-            },
-            "tooltip": {
-                "value": "Time Reports",
-                "i18n": "Time Reports"
-            },
-            "icon": {
-                "width": 16,
-                "height": 16,
-                "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDY0IDEwMjQiPjxwYXRoIGQ9Ik01MzIgMTAyNGMtNjkuMzM0IDAtMTM1LjU4My0xMy41ODMtMTk4Ljc1LTQwLjc1UzIxNS42NjcgOTE5LjY2NyAxNzAgODc0IDg3LjkxNyA3NzMuOTE3IDYwLjc1IDcxMC43NSAyMCA1ODEuMzM0IDIwIDUxMnMxMy41ODMtMTM1LjU4MyA0MC43NS0xOTguNzVTMTI0LjMzMyAxOTUuNjY3IDE3MCAxNTAgMjcwLjA4MyA2Ny45MTcgMzMzLjI1IDQwLjc1IDQ2Mi42NjYgMCA1MzIgMHMxMzUuNTgzIDEzLjU4MyAxOTguNzUgNDAuNzVTODQ4LjMzMyAxMDQuMzMzIDg5NCAxNTBzODIuMDgzIDEwMC4wODMgMTA5LjI1IDE2My4yNVMxMDQ0IDQ0Mi42NjYgMTA0NCA1MTJzLTEzLjU4MyAxMzUuNTgzLTQwLjc1IDE5OC43NVM5MzkuNjY3IDgyOC4zMzMgODk0IDg3NHMtMTAwLjA4MyA4Mi4wODMtMTYzLjI1IDEwOS4yNVM2MDEuMzM0IDEwMjQgNTMyIDEwMjR6bTAtOTI1Yy01NiAwLTEwOS41IDEwLjkxNy0xNjAuNSAzMi43NXMtOTQuOTE2IDUxLjE2Ni0xMzEuNzUgODgtNjYuMTY3IDgwLjc1LTg4IDEzMS43NVMxMTkgNDU2IDExOSA1MTJzMTAuOTE3IDEwOS41IDMyLjc1IDE2MC41IDUxLjE2NiA5NC45MTYgODggMTMxLjc1IDgwLjc1IDY2LjE2NyAxMzEuNzUgODhTNDc2IDkyNSA1MzIgOTI1czEwOS41LTEwLjkxNyAxNjAuNS0zMi43NSA5NC45MTYtNTEuMTY2IDEzMS43NS04OCA2Ni4xNjctODAuNzUgODgtMTMxLjc1Uzk0NSA1NjggOTQ1IDUxMnMtMTAuOTE3LTEwOS41LTMyLjc1LTE2MC41LTUxLjE2Ni05NC45MTYtODgtMTMxLjc1LTgwLjc1LTY2LjE2Ny0xMzEuNzUtODhTNTg4IDk5IDUzMiA5OXptNDYgNDExbDEyNC0xMThzNDEuNTI0IDUuNTg2IDU4Ljc4IDI0Ljg3MkM3NzcuNTE2IDQzNS41NzcgNzc2IDQ3MCA3NzYgNDcwTDU3OC4xODUgNjY0LjIzOWwtNDYuMDc1IDM4LjhMNDY4IDY2NlYyNTZzMjYuMTM1LTIxLjQ4OSA1NS45NDctMjAuOTg0QzU1My4xMjggMjM1LjUxMSA1NzggMjU4IDU3OCAyNTh2MjUyeiIgZmlsbD0iIzM0NDU2MyIvPjwvc3ZnPgoK"
-            },
-            "cacheable": true,
-            "context": "addon",
-            "url": "/timereports.html?dialog=timereports&v=2",
-            "target": {
-                "type": "dialog",
-                "options": {
-                    "header": {
-                        "value": "Time Reports",
-                        "i18n": "Time Reports"
-                    },
-                    "width": "320px"
-                }
-            }
-        }, {
             "name": {
                 "value": "Report Problem",
                 "i18n": "Report Problem"
