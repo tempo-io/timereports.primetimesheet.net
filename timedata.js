@@ -120,6 +120,10 @@ window.AP = {
     },
     require: function(what, callback) {
       throw new Error("Not implemented: " + what);
+    },
+    jira: {
+      initJQLEditor: function() {
+      }
     }
 };
 

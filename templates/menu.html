@@ -15,6 +15,11 @@
         </div>
         <div class="ak-field-group" ng-hide="reportDialog && reportParamsObject.jql != undefined">
             <label>{{ 'Filter or Project' | i18n }}
+                <a class="fa fa-filter"
+                   ng-class="{edit:!jql}"
+                   ng-click="openJqlEditor()"
+                   style="margin-left: 10px"
+                   title="JQL"/>
                 <a class="fa fa-edit edit"
                    href="{{hostBaseUrl}}/secure/ManageFilters.jspa"
                    target="_blank"
