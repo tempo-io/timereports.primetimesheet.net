@@ -102,7 +102,7 @@
                         <issue-priority issue="row.rowKey.issue" />
                     </td>
                     <td class="nav first" width="1%" ng-if="row.rowKey.field" nowrap>
-                        <issue-field field="row.rowKey.project" ng-if="row.rowKey.project" jira-config="jiraConfig" />
+                        <issue-field field="row.rowKey.project" ng-if="row.rowKey.project && (row.rowKey.keyName=='categoryrow' || !showCategoryRow)" jira-config="jiraConfig" />
                     </td>
                     <td class="nav first" colspan="4" ng-if="row.rowKey.field" nowrap>
                         <span><issue-field field="row.rowKey.field" name='row.rowKey.keyName' jira-config="jiraConfig" /></span>
