@@ -135,12 +135,20 @@
     </div>
     <div class="field-group" ng-if="['Calendar'].indexOf(pivotTableType) < 0 && !groupByOptions.selected && !categorizeByOptions.selected">
       <label>{{'Order By Field' | i18n}}</label>
-      <select class="select"
-              ng-model="orderByOptions.selected"
-              ng-options="item.id as item.label for item in orderByOptions.options"
-              ng-change="orderByChanged()"
-              aui-select2>
-      </select>
+      <div class="rowCenter">
+        <select class="select"
+                ng-model="orderByOptions.selected"
+                ng-options="item.id as item.label for item in orderByOptions.options"
+                ng-change="orderByChanged()"
+                aui-select2>
+        </select>
+        <i style="margin-left: 5px"
+           class="fas"
+           ng-class="{'fa-sort-amount-down-alt':$parent.orderDirection==1,'fa-sort-amount-up':$parent.orderDirection==-1}"
+           ng-if="orderByOptions.selected"
+           ng-click="orderDirectionChanged()">
+        </i>
+      </div>
     </div>
     <div class="field-group" ng-if="pivotTableType == 'TimeTracking'">
       <label>{{'Columns' | i18n}}</label>

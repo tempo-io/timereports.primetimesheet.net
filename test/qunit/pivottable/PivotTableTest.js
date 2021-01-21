@@ -288,7 +288,8 @@ QUnit.test('TimeTrackingRowComparator', function () {
   var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'TimeTracking',
     timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
       '3timespent', '4diff', '5originalestimateremaining', '6progress'],
-    orderByField: 'priority' })
+    orderByField: 'priority',
+    orderDirection: 1 })
   for (var i in TimeData.issues) {
     var pivotEntries = pivotTable.add(TimeData.issues[i])
     QUnit.assert.equal(pivotEntries.length, 1, 'pivotEntries')
@@ -302,11 +303,37 @@ QUnit.test('TimeTrackingRowComparator', function () {
   QUnit.assert.equal(sortedRows[4].rowKey.keyValue, 'TIME-5', 'row5')
   QUnit.assert.equal(sortedRows[5].rowKey.keyValue, 'TIME-6', 'row6')
 })
+QUnit.test('TimeTrackingRowComparator reverse', function () {
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'TimeTracking',
+    timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
+      '3timespent', '4diff', '5originalestimateremaining', '6progress'],
+    orderByField: 'status',
+    orderDirection: -1 })
+  for (var i in TimeData.issues) {
+    var pivotEntries = pivotTable.add(TimeData.issues[i])
+    QUnit.assert.equal(pivotEntries.length, 1, 'pivotEntries')
+  }
+  var sortedRows = pivotTable.sortedRows()
+  QUnit.assert.equal(sortedRows.length, 6, 'sortedRows')
+  QUnit.assert.equal(sortedRows[0].rowKey.keyValue, 'TIME-2', 'row1')
+  QUnit.assert.equal(sortedRows[0].rowKey.issue.fields.status.name, 'Open', 'status1')
+  QUnit.assert.equal(sortedRows[1].rowKey.keyValue, 'TIME-1', 'row2')
+  QUnit.assert.equal(sortedRows[1].rowKey.issue.fields.status.name, 'Open', 'status2')
+  QUnit.assert.equal(sortedRows[2].rowKey.keyValue, 'TIME-6', 'row3')
+  QUnit.assert.equal(sortedRows[2].rowKey.issue.fields.status.name, 'Open', 'status3')
+  QUnit.assert.equal(sortedRows[3].rowKey.keyValue, 'TIME-3', 'row4')
+  QUnit.assert.equal(sortedRows[3].rowKey.issue.fields.status.name, 'In Progress', 'status4')
+  QUnit.assert.equal(sortedRows[4].rowKey.keyValue, 'TIME-5', 'row5')
+  QUnit.assert.equal(sortedRows[4].rowKey.issue.fields.status.name, 'In Progress', 'status5')
+  QUnit.assert.equal(sortedRows[5].rowKey.keyValue, 'TIME-4', 'row6')
+  QUnit.assert.equal(sortedRows[5].rowKey.issue.fields.status.name, 'Done', 'status6')
+})
 QUnit.test('TimeTrackingRowComparator assignee', function () {
   var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'TimeTracking',
     timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining',
       '3timespent', '4diff', '5originalestimateremaining', '6progress'],
-    orderByField: 'assignee' })
+    orderByField: 'assignee',
+    orderDirection: 1 })
   for (var i in TimeData.issues) {
     var issue = angular.copy(TimeData.issues[i])
     issue.fields.assignee.displayName += (5 - i) // reverse order

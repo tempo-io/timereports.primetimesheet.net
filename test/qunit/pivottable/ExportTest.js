@@ -343,7 +343,8 @@ QUnit.test('Html Export Timesheet Grouped by Worked User More Fields', function 
       translations: translations,
       configOptions: {},
       jiraConfig: { timeFormat: '' },
-      moreFieldsOptions: moreFieldsOptions })
+      moreFieldsOptions: moreFieldsOptions,
+      orderDirection: 1 })
   })
   $html.then(html => {
     QUnit.assert.equal(typeof html, 'string', 'html')
@@ -478,7 +479,8 @@ QUnit.test('Html Export TimeTracking Grouped by Assignee', function (assert) {
         '5originalestimateremaining', '6progress'],
       translations: translations,
       configOptions: {},
-      jiraConfig: { timeFormat: '' } })
+      jiraConfig: { timeFormat: '' },
+      orderDirection: 1 })
   })
   $html.then(html => {
     QUnit.assert.equal(typeof html, 'string', 'html')

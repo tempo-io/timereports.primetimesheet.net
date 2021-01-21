@@ -459,5 +459,7 @@
     "Log Work disabled for this issue": "Log Work disabled for this issue",
     "Make Default": "Make Default",
     "Copy Link": "Copy Link",
-    "Link Copied": "Link Copied"
+    "Link Copied": "Link Copied",
+    "ordered by": "ordered by",
+    "DESC": "DESC"
 }
