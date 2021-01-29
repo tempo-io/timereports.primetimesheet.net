@@ -432,7 +432,7 @@ describe('pivottableServiceTest', function () {
     expect($timeout.flush).toThrow()
   }))
 
-  // test filterWorklogs fills in worklogAuthors
+  // test filterWorklogs fills in authors
   it('filterWorklogs', inject(function ($timeout, $q, $log, pivottableService) {
     expect(pivottableService).toBeDefined()
 
@@ -478,13 +478,13 @@ describe('pivottableServiceTest', function () {
     $timeout.flush()
     $log.assertEmpty()
 
-    expect(pivottableService.worklogAuthors).toContain('aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa')
-    expect(pivottableService.worklogAuthors).not.toContain('accountId-test-accountId')
+    expect(pivottableService.authors).toContain('aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa')
+    expect(pivottableService.authors).not.toContain('accountId-test-accountId')
     expect(getTestUserInfoByNameCalled).toBeTruthy()
     expect($timeout.flush).toThrow()
   }))
 
-  // test filterChangelogs fills in changelogAuthors
+  // test filterChangelogs fills in authors
   it('filterChangelogs', inject(function ($timeout, $q, $log, pivottableService) {
     expect(pivottableService).toBeDefined()
 
@@ -530,8 +530,8 @@ describe('pivottableServiceTest', function () {
     $timeout.flush()
     $log.assertEmpty()
 
-    expect(pivottableService.changelogAuthors).toContain('aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa')
-    expect(pivottableService.changelogAuthors).not.toContain('accountId-test-accountId')
+    expect(pivottableService.authors).toContain('aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa')
+    expect(pivottableService.authors).not.toContain('accountId-test-accountId')
     expect(getTestUserInfoByNameCalled).toBeTruthy()
     expect($timeout.flush).toThrow()
   }))
@@ -861,8 +861,8 @@ describe('pivottableServiceTest', function () {
 
     $timeout.flush()
 
-    expect(pivottableService.worklogAuthors.length).toBe(0)
-    expect(options.worklogAuthors).not.toBeNull()
+    expect(pivottableService.authors.length).toBe(0)
+    expect(options.authors).not.toBeNull()
   }))
 
   it('PARAMETERS: no restrictedGroups  no auditorsGroups', inject(function ($timeout, $log, pivottableService) {
@@ -875,7 +875,7 @@ describe('pivottableServiceTest', function () {
 
     $timeout.flush()
 
-    expect(pivottableService.worklogAuthors.length).toBe(0)
+    expect(pivottableService.authors.length).toBe(0)
   }))
 
   it('PARAMETERS: restrictedGroups auditorsGroups', inject(function ($timeout, $log, pivottableService) {
@@ -888,8 +888,8 @@ describe('pivottableServiceTest', function () {
 
     $timeout.flush()
 
-    expect(pivottableService.worklogAuthors.length).toBe(1)
-    expect(pivottableService.worklogAuthors[0]).toBe(loggedInUser.accountId)
+    expect(pivottableService.authors.length).toBe(1)
+    expect(pivottableService.authors[0]).toBe(loggedInUser.accountId)
     expect(options.username).not.toBeDefined()
   }))
 
@@ -903,8 +903,8 @@ describe('pivottableServiceTest', function () {
 
     $timeout.flush()
 
-    expect(pivottableService.worklogAuthors.length).toBe(1)
-    expect(pivottableService.worklogAuthors[0]).toBe(loggedInUser.accountId)
+    expect(pivottableService.authors.length).toBe(1)
+    expect(pivottableService.authors[0]).toBe(loggedInUser.accountId)
     expect(options.username).not.toBeDefined()
   }))
 
@@ -919,8 +919,8 @@ describe('pivottableServiceTest', function () {
 
     $timeout.flush()
 
-    expect(pivottableService.worklogAuthors.length).toBe(1)
-    expect(pivottableService.worklogAuthors[0]).toBe(loggedInUser.accountId)
+    expect(pivottableService.authors.length).toBe(1)
+    expect(pivottableService.authors[0]).toBe(loggedInUser.accountId)
     expect(options.username).not.toBeDefined()
   }))
 
@@ -935,7 +935,7 @@ describe('pivottableServiceTest', function () {
 
     $timeout.flush()
 
-    expect(pivottableService.worklogAuthors.length).toBe(0)
+    expect(pivottableService.authors.length).toBe(0)
     expect(options.username).toBe('aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa')
   }))
 
@@ -950,7 +950,7 @@ describe('pivottableServiceTest', function () {
 
     $timeout.flush()
 
-    expect(pivottableService.worklogAuthors.length).toBe(0)
+    expect(pivottableService.authors.length).toBe(0)
     expect(options.username).toBe('noSuchUser')
   }))
 
@@ -964,7 +964,7 @@ describe('pivottableServiceTest', function () {
 
     $timeout.flush()
 
-    expect(pivottableService.worklogAuthors.length).toBe(0)
+    expect(pivottableService.authors.length).toBe(0)
     expect(options.username).toBe('aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa')
   }))
 
@@ -979,7 +979,7 @@ describe('pivottableServiceTest', function () {
 
     $timeout.flush()
 
-    expect(pivottableService.worklogAuthors.length).toBe(0)
+    expect(pivottableService.authors.length).toBe(0)
     expect(options.username).toBe('noSuchUser')
   }))
 
@@ -994,7 +994,7 @@ describe('pivottableServiceTest', function () {
 
     $timeout.flush()
 
-    expect(pivottableService.worklogAuthors.length).toBe(0)
+    expect(pivottableService.authors.length).toBe(0)
     expect(options.username).toBe('bbbb')
   }))
 

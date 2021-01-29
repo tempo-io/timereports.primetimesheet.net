@@ -397,7 +397,7 @@ QUnit.test('TimeBalance5Columns', function () {
   testTimeBalanceCommonCase(pivotTable, 2, 'TIME-4,TIME-6', 4)
 })
 QUnit.test('TimeBalance5Columns extended data group=jira-administrators', function () {
-  var pivotTable = PivotTableFactory.createPivotTable({ changelogAuthors: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa',
+  var pivotTable = PivotTableFactory.createPivotTable({ authors: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa',
     startDate: '2013-12-04',
     endDate: '2017-04-10',
     pivotTableType: 'TimeBalance',
