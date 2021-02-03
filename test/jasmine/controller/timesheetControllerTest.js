@@ -94,6 +94,7 @@ describe('timesheetControllerTest', function () {
         workingTimeInStatus: { val: { from: 9, to: 17 } },
         startedTimeInStatus: { val: false },
         inProgressIssuesJql: {},
+        inProgressIssuesJqlLogOnly: {},
         timeBalanceColumns: { val: ['3timespent', '12estimate', '4diff', '1timeoriginalestimate', '6progress'] },
         timeTrackingColumns: { val: ['1timeoriginalestimate', '2esttimeremaining',
           '3timespent', '4diff', '5originalestimateremaining', '6progress'] },
@@ -287,6 +288,7 @@ describe('timesheetControllerTest', function () {
         workingTimeInStatus: { val: { from: 9, to: 17 } },
         startedTimeInStatus: { val: false },
         inProgressIssuesJql: {},
+        inProgressIssuesJqlLogOnly: {},
         timeBalanceColumns: { val: ['3timespent', '12estimate', '4diff', '1timeoriginalestimate', '6progress'] },
         timeTrackingColumns: {
           val: ['1timeoriginalestimate', '2esttimeremaining', '3timespent', '4diff', '5originalestimateremaining', '6progress']
@@ -363,6 +365,7 @@ describe('timesheetControllerTest', function () {
         workingTimeInStatus: { val: { from: 9, to: 17 } },
         startedTimeInStatus: { val: false },
         inProgressIssuesJql: {},
+        inProgressIssuesJqlLogOnly: {},
         timeBalanceColumns: { val: ['3timespent', '12estimate', '4diff', '1timeoriginalestimate', '6progress'] },
         timeTrackingColumns: {
           val: ['1timeoriginalestimate', '2esttimeremaining', '3timespent', '4diff', '5originalestimateremaining', '6progress']

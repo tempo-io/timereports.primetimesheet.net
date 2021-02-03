@@ -617,18 +617,38 @@
         </div>
         <div class="field-group">
             <label for="inProgressIssuesJql">{{'In Progress Issues jql' | i18n}}</label>
-            <input name="inProgressIssuesJql"
-                   id="inProgressIssuesJql"
-                   type="text"
-                   class="text"
-                   ng-model="inProgressIssuesJql.val"
-                   jql
-                   ng-model-options='{ debounce: 1000 }'
-                   ng-change="configForm.inProgressIssuesJql.$valid && saveInProgressIssuesJql()">
-            <div class="aui-message aui-message-success msg-overlay"
-                 ng-show="inProgressIssuesJqlSaveSuccess">
-                <strong>{{'In Progress Issues jql' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
-            </div>
+            <table>
+                <tr>
+                    <td width="50%">
+                        <input name="inProgressIssuesJql"
+                               id="inProgressIssuesJql"
+                               type="text"
+                               class="text"
+                               ng-model="inProgressIssuesJql.val"
+                               jql
+                               ng-model-options='{ debounce: 1000 }'
+                               ng-change="configForm.inProgressIssuesJql.$valid && saveInProgressIssuesJql()">
+                        <div class="aui-message aui-message-success msg-overlay"
+                             ng-show="inProgressIssuesJqlSaveSuccess">
+                            <strong>{{'In Progress Issues jql' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+                        </div>
+                    </td>
+                    <td>
+                        <input id="inProgressIssuesJqlLogOnly"
+                               type="checkbox"
+                               class="checkbox"
+                               ng-model="inProgressIssuesJqlLogOnly.val"
+                               ng-change="saveInProgressIssuesJqlLogOnly()">
+                        <div class="aui-message aui-message-success msg-overlay"
+                             ng-show="inProgressIssuesJqlLogOnlySaveSuccess">
+                            <strong>{{'Do not allow to Log Work on other issues' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+                        </div>
+                    </td>
+                    <td>
+                        {{'Do not allow to Log Work on other issues' | i18n}}
+                    </td>
+                </tr>
+            </table>
             <div ng-show="configForm.inProgressIssuesJql.$error.jql" role="alert" class="red">
                 {{configForm.inProgressIssuesJql.$error.jqlError}}
             </div>
