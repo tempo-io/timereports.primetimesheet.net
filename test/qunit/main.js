@@ -21,7 +21,8 @@ require([
   'app/pivottable/CsvView',
   'app/pivottable/ExcelView',
   'app/pivottable/HtmlView',
-  'app/template/TimesheetMenu'
+  'app/template/TimesheetMenu',
+  'app/template/GadgetSummary'
 ], function () {
   QUnit.start()
 }
