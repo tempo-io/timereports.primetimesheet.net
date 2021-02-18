@@ -144,15 +144,21 @@
                         {{row.sum | prettyHours:jiraConfig}}
                     </td>
                     <td ng-init="p_show=false"
-                        ng-mouseover="p_show=!groupByOptions.selected && column.sum == 0 && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[row.rowKey.keyValue])"
+                        ng-mouseover="p_show=column.sum == 0 && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate &&
+                          ((!groupByOptions.selected && (canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[row.rowKey.keyValue]) ||
+                            (groupByOptions.selected == 'workeduser' && canLogWorkForWorkedUser[row.rowKey.field.accountId]))"
                         ng-mouseleave="p_show=false"
-                        ng-click="!groupByOptions.selected && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[row.rowKey.keyValue]) && addWorklogPopup.init(column.columnKey, row.rowKey); editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
+                        ng-click="(column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && !cannotLogWorkIssue[row.rowKey.keyValue] &&
+                          ((!groupByOptions.selected && (canLogWork || canLogWorkForUser) && addWorklogPopup.init(column.columnKey, row.rowKey)) ||
+                            (column.sum == 0 && groupByOptions.selected == 'workeduser' && canLogWorkForWorkedUser[row.rowKey.field.accountId] &&
+                             addWorklogDialog(null, null, column.columnKey.date, row.rowKey.field)));
+                            editWorklogPopup.init(column.columnKey, row.rowKey, row.data)"
                         class="nav border"
                         ng-class="{toDay: column.columnKey.isToday,
-                        nonBusinessDay: column.columnKey.isWeekend,
-                        addWorklogPopup: !groupByOptions.selected && column.sum == 0 && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[row.rowKey.keyValue]),
-                        editWorklogPopup: column.sum != 0,
-                        disabled: column.sum == 0 && (groupByOptions.selected || cannotLogWorkIssue[row.rowKey.keyValue] || (!canLogWork && !canLogWorkForUser))}"
+                          nonBusinessDay: column.columnKey.isWeekend,
+                          addWorklogPopup: !groupByOptions.selected && column.sum == 0 && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[row.rowKey.keyValue]),
+                          editWorklogPopup: column.sum != 0,
+                          disabled: column.sum == 0 && (groupByOptions.selected || cannotLogWorkIssue[row.rowKey.keyValue] || (!canLogWork && !canLogWorkForUser)) && (groupByOptions.selected != 'workeduser' || !canLogWorkForWorkedUser[row.rowKey.field.accountId])}"
                         style="cursor:default"
                         ng-style="{'color': column.color}"
                         title="{{column.title}}"
@@ -207,14 +213,14 @@
                         &nbsp;
                     </td>
                     <td ng-init="p_show=false"
-                        ng-mouseover="p_show=groupByOptions.selected && data.columnKey.keyValue != column.columnKey.keyValue && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[data.rowKey._issue.key])"
+                        ng-mouseover="p_show=groupByOptions.selected && data.columnKey.keyValue != column.columnKey.keyValue && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser || canLogWorkForWorkedUser[row.rowKey.field.accountId]) && !cannotLogWorkIssue[data.rowKey._issue.key])"
                         ng-mouseleave="p_show=false"
-                        ng-click="groupByOptions.selected && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[data.rowKey._issue.key]) && addWorklogPopup.init(column.columnKey, data.rowKey); editWorklogPopup.init(column.columnKey, data.rowKey, [data], 'addPossible');"
+                        ng-click="groupByOptions.selected && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser || canLogWorkForWorkedUser[row.rowKey.field.accountId]) && !cannotLogWorkIssue[data.rowKey._issue.key]) && addWorklogPopup.init(column.columnKey, data.rowKey); editWorklogPopup.init(column.columnKey, data.rowKey, [data], 'addPossible');"
                         ng-class="{toDay: column.columnKey.isToday,
                         nonBusinessDay: column.columnKey.isWeekend,
-                        addWorklogPopup: groupByOptions.selected && data.columnKey.keyValue != column.columnKey.keyValue && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[data.rowKey._issue.key]),
-                        editWorklogPopup: groupByOptions.selected && data.columnKey.keyValue == column.columnKey.keyValue && ((canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[data.rowKey._issue.key]),
-                        disabled: !groupByOptions.selected || (data.columnKey.keyValue == column.columnKey.keyValue && cannotLogWorkIssue[data.rowKey._issue.key] || (!canLogWork && !canLogWorkForUser))}"
+                        addWorklogPopup: groupByOptions.selected && data.columnKey.keyValue != column.columnKey.keyValue && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser || canLogWorkForWorkedUser[row.rowKey.field.accountId]) && !cannotLogWorkIssue[data.rowKey._issue.key]),
+                        editWorklogPopup: groupByOptions.selected && data.columnKey.keyValue == column.columnKey.keyValue && ((canLogWork || canLogWorkForUser || canLogWorkForWorkedUser[row.rowKey.field.accountId]) && !cannotLogWorkIssue[data.rowKey._issue.key]),
+                        disabled: !groupByOptions.selected || (data.columnKey.keyValue == column.columnKey.keyValue && cannotLogWorkIssue[data.rowKey._issue.key] || (!canLogWork && !canLogWorkForUser && !canLogWorkForWorkedUser[row.rowKey.field.accountId]))}"
                         style="cursor:default"
                         class="nav border"
                         ng-repeat="column in pivotTable._sortedColumns">
