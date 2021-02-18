@@ -37,9 +37,10 @@
     </tr>
     <tr ng-show="popupData.pivotTableType == 'Calendar' || (popupData.pivotTableType == 'Timesheet' && popupData.rowKey.keyName == 'workeduser')">
         <td>
-            <button ng-if="!popupData.locked && (popupData.canLogWork || popupData.canLogWorkForUser || popupData.canLogWorkForWorkedUser[popupData.rowKey.field.accountId])"
+            <button ng-if="!popupData.locked && (popupData.canLogWork || popupData.canLogWorkForUser ||
+                            (popupData.pivotTableType == 'Timesheet' && popupData.rowKey.keyName == 'workeduser' && popupData.canLogWorkForWorkedUser[popupData.rowKey.field.accountId]))"
                     class="aui-button aui-button-link"
-                    ng-click="popupData.addWorklogDialog(null, null, popupData.currentDay, popupData.rowKey.field)"
+                    ng-click="popupData.addWorklogDialog(null, null, popupData.currentDay, popupData.pivotTableType == 'Timesheet' && popupData.rowKey.keyName == 'workeduser' && popupData.rowKey.field)"
                     title="Log Work against this day">
                 <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
                 {{'Log Work' | i18n}}
