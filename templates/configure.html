@@ -174,13 +174,13 @@
         </div>
         <div class="field-group" ng-show="parentIssueTypes">
             <label for="select2-parentIssueType">{{'Parent Issue Type' | i18n}}</label>
-            <select id="select2-parentIssueType"
-                    class="select"
+            <input id="select2-parentIssueType"
+                    aui-multi-select-picker
                     title="{{'Parent Issue Type' | i18n}}"
                     ng-model="parentIssueType.val"
-                    ng-change="saveParentIssueType()"
-                    ng-options="item.id as item.name for item in parentIssueTypes">
-            </select>
+                    ng-value-changed-func="saveParentIssueType"
+                    ng-options-data="parentIssueTypesData">
+            </input>
             <div class="aui-message aui-message-success msg-overlay"
                  ng-show="parentIssueTypeSaveSuccess">
                 <strong>{{'Parent Issue Type' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
