@@ -654,18 +654,18 @@ QUnit.test('DrawHelper', function () {
   QUnit.assert.equal(DrawHelper.getFormattedTime(100 * 5 * 8 * 3600, { timeFormat: 'pretty', workingHoursPerDay: 8, workingDaysPerWeek: 5 }), '2y 1m', '2y 1m')
 })
 QUnit.test('TimesheetUtils', function () {
-  QUnit.assert.equal(TimesheetUtils.getWeekNumber(new Date(2013, 3, 1)), 14, '#getWeekNumber() :: positive 1') // 1 April 2013
-  QUnit.assert.equal(TimesheetUtils.getWeekNumber(new Date(2014, 0, 25)), 4, '#getWeekNumber() :: positive 2') // 25 January 2014
+  QUnit.assert.equal(TimesheetUtils.getWeekNumber(new Date(2013, 3, 1), {}), 14, '#getWeekNumber() :: positive 1') // 1 April 2013
+  QUnit.assert.equal(TimesheetUtils.getWeekNumber(new Date(2021, 1, 23), { useIsoWeek: true }), 8, '#getWeekNumber() :: positive 2') // 23 February 2021 Iso Week
 
-  QUnit.assert.equal(TimesheetUtils.getNormalizedWeekNumber(new Date(2014, 0, 25)), '04', '#getNormalizedWeekNumber() :: positive 1') // 25 January 2014
-  QUnit.assert.equal(TimesheetUtils.getNormalizedWeekNumber(new Date(2013, 3, 1)), '14', '#getNormalizedWeekNumber() :: positive 2') // 1 April 2013
+  QUnit.assert.equal(TimesheetUtils.getNormalizedWeekNumber(new Date(2014, 0, 25), {}), '04', '#getNormalizedWeekNumber() :: positive 1') // 25 January 2014
+  QUnit.assert.equal(TimesheetUtils.getNormalizedWeekNumber(new Date(2013, 3, 1), { useIsoWeek: true }), '14', '#getNormalizedWeekNumber() :: positive 2') // 1 April 2013
 
   var datesForWeek = TimesheetUtils.getDatesForWeek({ startDate: new Date(2014, 1, 27), endDate: new Date(2014, 2, 3) }) // 27 February 2014 - 03 March 2014
   QUnit.assert.equal(datesForWeek.length, 5, 'getDatesForWeek length')
   QUnit.assert.ok(TimesheetUtils.sameDay(datesForWeek[0].date, new Date(2014, 1, 27)), '#getDatesForWeek() :: thursday')
   QUnit.assert.ok(TimesheetUtils.sameDay(datesForWeek[1].date, new Date(2014, 1, 28)), '#getDatesForWeek() :: friday')
   QUnit.assert.ok(TimesheetUtils.sameDay(datesForWeek[4].date, new Date(2014, 2, 3)), '#getDatesForWeek() :: monday')
-  var weeksForMonth = TimesheetUtils.getWeeksForMonth({ startDate: new Date(2014, 1, 26), endDate: new Date(2014, 2, 5), reportingDay: 1 }) // 26 February 2014 - 05 March 2014
+  var weeksForMonth = TimesheetUtils.getWeeksForMonth({ startDate: new Date(2014, 1, 26), endDate: new Date(2014, 2, 5), reportingDay: 1 }, {}) // 26 February 2014 - 05 March 2014
   QUnit.assert.equal(weeksForMonth.length, 2, 'getWeeksForMonth length')
   QUnit.assert.ok(TimesheetUtils.sameDay(weeksForMonth[0].date, new Date(2014, 1, 24)), '#getWeeksForMonth() :: first week date')
   QUnit.assert.equal(weeksForMonth[0].week, 'Week 09', '#getWeeksForMonth() :: first week number')

@@ -462,5 +462,7 @@
     "Link Copied": "Link Copied",
     "ordered by": "ordered by",
     "DESC": "DESC",
-    "Do not allow to Log Work on other issues": "Do not allow to Log Work on other issues"
+    "Do not allow to Log Work on other issues": "Do not allow to Log Work on other issues",
+    "Use ISO Week": "Use ISO Week",
+    "description.Use ISO Week": "Use ISO 8601 week-numbering and first day of week."
 }

@@ -128,8 +128,8 @@ window.AP = {
 };
 
 var UserData = {name: 'noSuchUser', accountId: 'accountId-noSuchUser-accountId', groups: {items: [{name: 'noGroup'}]}};
-var PropertiesConfig = {value: [{key: 'workingTimeInStatus', val: true},
-    {key: 'startedTimeInStatus', val: false}]};
+var PropertiesConfig = {value: {'workingTimeInStatus': true,
+    startedTimeInStatus: false}};
 var PropertiesPreferences4admin = {};
 var Configuration = {timeTrackingConfiguration: {workingHoursPerDay: 8, workingDaysPerWeek: 5, defaultUnit: 'm'}};
 var Properties = {keys: [{key: 'configuration'}, {key: 'preferences4aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa'}]};

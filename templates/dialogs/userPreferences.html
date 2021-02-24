@@ -50,6 +50,23 @@
             <span class="description">{{'description.Weekend Type' | i18n}}</span>
         </div>
         <div class="field-group">
+            <label for="useIsoWeek">{{'Use ISO Week' | i18n}}</label>
+            <select id="useIsoWeek"
+                    class="select"
+                    title="{{'Use ISO Week' | i18n}}"
+                    ng-model="useIsoWeek.val"
+                    ng-change="saveUseIsoWeek()"
+                    ng-options="item.id as item.label for item in useIsoWeekTypes">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay"
+                 ng-show="useIsoWeekSaveSuccess">
+                <strong>{{'Use ISO Week' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Use ISO Week' | i18n}}</span>
+        </div>
+        <div class="field-group">
             <label for="workingDayStart">{{'Working Time In Status' | i18n}}</label>
             {{'From' | i18n}}&nbsp;
             <input id="workingDayStart" ng-model="workingTimeInStatus.val.from" min="0" max="24"
