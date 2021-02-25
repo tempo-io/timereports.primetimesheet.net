@@ -7,8 +7,8 @@
     </div>
     <div class="form-body" class="aui">
         <div ng-show="!loggedInUser.emailAddress" class="field-group">
-            <label for="email">Email</label>
-            <input id="email" type="text" class="text" maxlength="40" ng-model="email">
+            <label for="email">Email <span class="aui-icon icon-required"></span><span class="content">required</span></label>
+            <input id="email" type="email" class="text" maxlength="40" ng-model="email" required>
         </div>
         <div ng-show="!loggedInUser.emailAddress" class="field-group">
             <span class="description">If you’d like to receive response, please, specify your email address.</span>
@@ -21,10 +21,10 @@
         </div>
         <fieldset>
             <div class="field-group">
-                <label for="issue-content">Problem Description</label>
+                <label for="issue-content">Problem Description <span class="aui-icon icon-required"></span><span class="content">required</span></label>
                 <div class="wiki-edit">
                     <div class="wiki-edit-content" id="comment-wiki-edit">
-                        <textarea rows="{{loggedInUser.emailAddress ? 8 : 5}}" cols="60" class="textarea long-field"  id="issue-content" ng-model="content" ng-change="changeContent(content)"></textarea>
+                        <textarea rows="{{loggedInUser.emailAddress ? 8 : 5}}" cols="60" class="textarea long-field"  id="issue-content" ng-model="content" ng-change="changeContent(content)" required></textarea>
                         <div class="content-inner"></div>
                     </div>
                 </div>
