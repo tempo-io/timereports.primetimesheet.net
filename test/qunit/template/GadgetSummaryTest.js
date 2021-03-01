@@ -20,7 +20,7 @@ QUnit.test('GadgetSummaryUser', function (assert) {
     }
     var user = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', displayName: 'test' }
     var options = { pivotTableType: 'IssueWorkedTimeByUser', paramUsersInfo: [user], configOptions: {} }
-    var gadgetSummary = new GadgetSummary(GadgetSummary.getSelectedOptionLabels(routeParams, options), user, options.pivotTableType, translations).getSummaryItems()
+    var gadgetSummary = new GadgetSummary(GadgetSummary.getSelectedOptionLabels(routeParams, options, translations), user, options.pivotTableType, translations).getSummaryItems()
     QUnit.assert.equal(gadgetSummary.map(o => o.text).join(' '), 'Summary  for user(s) test and all projects from 2021-01-01 to 2021-01-31', 'GadgetSummaryUser')
     done()
   })
