@@ -53,7 +53,7 @@
     </span>
     <a class="fa fa-external-link-square-alt" title="{{'Open report page for other options and excel export' | i18n }}" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!{{reportParams}}" target="_parent"></a>
     <i class="fa fa-anchor edit"
-       ng-if="showMakeDefault"
+       ng-if="pivotTableType!='IssueTime' && showMakeDefault"
        ng-click="saveDefaultReport()"
        title="{{'Make Default' | i18n}}">
     </i>
