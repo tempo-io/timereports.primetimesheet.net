@@ -329,6 +329,22 @@
             <span class="description">{{'description.Show Total In Front' | i18n}}</span>
         </div>
         <div class="field-group">
+            <label for="select2-newTimeEntry">{{'New Time Entry' | i18n}}</label>
+            <select id="select2-newTimeEntry"
+                    class="select"
+                    title="{{'New Time Entry' | i18n}}"
+                    ng-model="newTimeEntry.val"
+                    ng-change="saveNewTimeEntry()"
+                    ng-options="item.id as item.label for item in newTimeEntryTypes">
+            </select>
+            <div class="aui-message aui-message-success msg-overlay" ng-show="newTimeEntrySaveSuccess">
+                <strong>{{'New Time Entry' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.New Time Entry' | i18n}}</span>
+        </div>
+        <div class="field-group">
             <label for="rowsPerPage">{{'Rows per Page' | i18n}}</label>
             <input id="rowsPerPage"
                    name="rowsPerPage"

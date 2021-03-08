@@ -114,6 +114,7 @@ describe('timesheetControllerTest', function () {
         allowToLogFromDate: {},
         currencySymbol: {},
         showTotalInFront: {},
+        newTimeEntry: {},
         tempoToken: {},
         rowsPerPage: {},
         accountantsGroups: {}
@@ -308,6 +309,7 @@ describe('timesheetControllerTest', function () {
         showCategoryRow: {},
         currencySymbol: {},
         showTotalInFront: {},
+        newTimeEntry: {},
         tempoToken: {},
         rowsPerPage: {},
         accountantsGroups: {}
@@ -385,6 +387,7 @@ describe('timesheetControllerTest', function () {
         showCategoryRow: {},
         currencySymbol: {},
         showTotalInFront: {},
+        newTimeEntry: {},
         tempoToken: {},
         rowsPerPage: {},
         accountantsGroups: {}

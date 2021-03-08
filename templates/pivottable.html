@@ -144,7 +144,11 @@
                         </div>
                     </td>
                 </tr>
-                <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed && !row.categoryRow" ng-style="{color: data.color}">
+                <tr ng-if="!timeEntryData && !compressed && !row.categoryRow"
+                    ng-class-odd="'rowAlternate'"
+                    ng-class-even="'rowNormal'"
+                    ng-repeat="data in row.data"
+                    ng-style="{color: data.color}">
                     <td class="nav">&nbsp;</td>
                     <td class="nav">&nbsp;</td>
                     <td colspan="{{rowKeySize - 3}}" class="nav summary">
@@ -215,6 +219,70 @@
                     </td>
                 </tr>
                 <tr ng-repeat-end ng-hide="true"></tr>
+                <tr ng-if="timeEntryData"
+                    ng-class="'rowAlternate'"
+                    ng-repeat="data in timeEntryData">
+                    <td class="nav first issuetype" width="1%">
+                        <issue-type issue="data.rowKey.issue" />
+                    </td>
+                    <td class="nav first issuekey" width="1%" nowrap>
+                        <issue-key issue="data.rowKey.issue" />
+                    </td>
+                    <td colspan="{{rowKeySize - 3}}" class="nav summary">
+                        <span ng-if="data.rowKey._issue && (data.rowKey._issue.key != data.rowKey.issue.key)">
+                            <span ng-if="data.rowKey._issue">
+                                <issue-type issue="data.rowKey._issue" />
+                            </span>
+                            <span ng-if="data.rowKey._issue.fields.parent && data.rowKey._issue.fields.parent.key != data.rowKey._issue.key">
+                                <issue-key issue="data.rowKey._issue.fields.parent" show-title="true" class="parentIssue" />
+                            </span>
+                            <span ng-if="data.rowKey._issue">
+                                <issue-key issue="data.rowKey._issue" />
+                            </span>
+                            <span ng-if="data.rowKey._issue">
+                                <issue-summary issue="data.rowKey._issue" />
+                            </span>
+                        </span>
+                        <span ng-if="data.worklog._issue">
+                            <issue-key issue="data.worklog._issue" show-title="true" />
+                        </span>
+                        <span ng-if="'TimeEntry' == pivotTableType &&
+                                    !data.worklog.transient &&
+                                    data.worklog.workDate >= allowToLogFromDate &&
+                                    !cannotEditOwnWorklogIssue[data.rowKey.issue.key]"
+                              e-style="width: 100%"
+                              editable-text="data.worklog.comment"
+                              onshow="$parent.$form=$form"
+                              onhide="$parent.$form=undefined"
+                              onaftersave="commentChanged(data.worklog)"
+                              ng-style="{color: data.color}">
+                            <worklog-comment worklog="data.worklog" no-comment="'< No comment >' | i18n"/>
+                            <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
+                        </span>
+                        <span ng-if="data.worklog.transient ||
+                                      data.worklog.workDate < allowToLogFromDate ||
+                                      cannotEditOwnWorklogIssue[data.rowKey.issue.key]">
+                            <worklog-comment worklog="data.worklog"/>
+                        </span>
+                    </td>
+                    <td class="nav priority" width="1%">
+                        <span ng-if="data.rowKey._issue">
+                            <issue-priority issue="data.rowKey._issue" />
+                        </span>
+                    </td>
+                    <td class="nav" width="1%" ng-repeat="field in pivotTable.moreFields track by $index">
+                        <issue-field name="field" field="data.rowKey._issue.fields[field]" issue="data.rowKey._issue" jira-config="jiraConfig" ng-if="data.rowKey._issue" once="pivotTable" all-fields="allFields"/>
+                    </td>
+                    <td class="nav border total" ng-if="!hideTotalColumn && showTotalInFront">
+                        &nbsp;
+                    </td>
+                    <td class="nav border" ng-repeat="column in pivotTable._sortedColumns">
+                        <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
+                    </td>
+                    <td class="nav border total" ng-if="!hideTotalColumn">
+                        &nbsp;
+                    </td>
+                </tr>
                 <!-- total block -->
                 <tr class="rowFooter" ng-hide="loading || !loaded || !pivotTable">
                     <td colspan="{{rowKeySize}}" class="nav total">

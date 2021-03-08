@@ -714,6 +714,20 @@
             <span class="description">{{'description.Show Total In Front' | i18n}}</span>
         </div>
         <div class="field-group">
+            <label for="newTimeEntry">{{'New Time Entry' | i18n}}</label>
+            <input id="newTimeEntry"
+                   type="checkbox"
+                   class="checkbox"
+                   ng-model="newTimeEntry.val"
+                   ng-change="saveNewTimeEntry()">
+            <div class="aui-message aui-message-success msg-overlay" ng-show="newTimeEntrySaveSuccess">
+                <strong>{{'New Time Entry' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.New Time Entry' | i18n}}</span>
+        </div>
+        <div class="field-group">
             <label for="rowsPerPage">{{'Rows per Page' | i18n}}</label>
             <input id="rowsPerPage"
                    name="rowsPerPage"
