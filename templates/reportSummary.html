@@ -60,14 +60,14 @@
     <span ng-if="issueKey">
         <a href="#issueViewConf" id="issueViewConf-dropdown" class="fa fa-cog aui-dropdown2-trigger x-ng-click" x-ng-click=""
            title="{{'Configure' | i18n }}" aria-owns="issueViewConf"
-           style="margin-left: 10px; padding-right: 0px !important"/>
+           style="margin-left: 10px; padding-right: 0px !important"></a>
         <div id="issueViewConf" class="aui-style-default aui-dropdown2">
             <ul class="aui-list-truncate">
                 <li>
                     <a href="https://primetimesheet.atlassian.net/wiki/spaces/KB/pages/771096577/Predefined+Views+For+Time+Entry+Issue+Panel"
                        target="_blank"
                        class="fa fa-question-circle" style="color: #0052CC; margin-top: 5px"
-                       title="{{'Help' | i18n}}"/>
+                       title="{{'Help' | i18n}}"></a>
                 </li>
                 <li ng-repeat="view in issueTimeOptions.options" ng-if="view.id != issueTimeOptions.selected">
                     <a style="color:#333" ng-click="issueTimeViewChanged(view.id)">{{view.label}}</a>
