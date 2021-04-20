@@ -850,9 +850,12 @@ QUnit.test('Calendar', function () {
 })
 QUnit.test('PivotTabe rows order', function () {
   var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'IssueWorkedTimeByUser' })
+  PivotKey.Issue.getDataComparatorBak = PivotKey.Issue.getDataComparator
+  delete PivotKey.Issue.getDataComparator
   pivotTable.rows = { 'DEMO-1000': 4, 'DEMO-1': 1, 'DEMO-100': 3, 'ZZ-1': 5, 'DEMO-2': 2 }
   var sortedRows = pivotTable.sortedRows()
   QUnit.assert.equal(sortedRows.join(''), '12345', 'rows order')
+  PivotKey.Issue.getDataComparator = PivotKey.Issue.getDataComparatorBak
 })
 QUnit.test('isDate', function () {
   QUnit.assert.equal(TimesheetUtils.isDate('Phase 2'), false, 'Phase 2')
