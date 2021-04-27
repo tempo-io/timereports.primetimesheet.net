@@ -57,9 +57,9 @@
                            title="{{'Hourly Rate' | i18n}}"
                            style="max-width: 70px;margin-right:5px;"
                            select-on-focus
-                           enter-pressed="addHourlyRate(users[accountId] || accountId, startDateUsers[accountId], projectUsers[accountId], hourlyRateUsers[accountId])"/>
+                           enter-pressed="addHourlyRate(users[accountId] || accountId.substring(6), startDateUsers[accountId], projectUsers[accountId], hourlyRateUsers[accountId])"/>
                     <span class="fa fa-plus-square"
-                          ng-click="addHourlyRate(users[accountId] || accountId, startDateUsers[accountId], projectUsers[accountId], hourlyRateUsers[accountId])">
+                          ng-click="addHourlyRate(users[accountId] || accountId.substring(6), startDateUsers[accountId], projectUsers[accountId], hourlyRateUsers[accountId])">
                     </span>
                 </div>
                 <div ng-repeat="(startDate, projectRates) in rates">
@@ -72,7 +72,7 @@
                                ng-model="hourlyRate"
                                ng-model-options='{ debounce: 1000 }'
                                ng-change="hourlyRatesForm['userHourlyRate{{accountId + startDate + project}}'].$valid
-                                && addHourlyRate(users[accountId] || accountId, startDate, project, hourlyRate)"
+                                && addHourlyRate(users[accountId] || accountId.substring(6), startDate, project, hourlyRate)"
                                type="number"
                                class="text"
                                select-on-focus
