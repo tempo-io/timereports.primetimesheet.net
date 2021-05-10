@@ -83,6 +83,16 @@
             </div>
         </div>
         <div class="rowCenter">
+            <div style="display: inline-block;width: 247px;margin-left: 3px;">{{'Hide Rate Column' | i18n}}</div>
+            <input type="checkbox"
+                   class="checkbox"
+                   ng-model="hideRateColumn.val"
+                   ng-model-options='{ debounce: 1000 }'
+                   ng-change="saveHideRateColumn()"
+                   select-on-focus
+                   style="max-width: 70px;margin:5px;"/>
+        </div>
+        <div class="rowCenter">
             <div style="display: inline-block;width: 247px;margin-left: 3px;">{{'Currency' | i18n}}</div>
             <input type="text"
                    class="text"

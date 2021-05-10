@@ -467,5 +467,6 @@
     "description.Use ISO Week": "Use ISO 8601 week-numbering and first day of week.",
     "New Time Entry": "New Time Entry",
     "description.New Time Entry": "New Time Entry View contains issues at the top, worklogs (sorted by Started) at the bottom.",
-    "Monthly on": "Monthly on"
+    "Monthly on": "Monthly on",
+    "Hide Rate Column": "Hide Rate Column"    
 }
