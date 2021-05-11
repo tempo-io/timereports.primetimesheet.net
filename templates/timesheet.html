@@ -138,7 +138,12 @@
                     <td class="nav" ng-repeat="field in row.moreFields track by $index">
                         <issue-field name="field" field="row.rowKey._issue.fields[field] || row.rowKey.issue.fields[field] || row.rowKey.field.fields[field]"
                                      issue="row.rowKey._issue || row.rowKey.issue || row.rowKey.field" jira-config="jiraConfig"
-                                     ng-if="row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue'" all-fields="allFields" />
+                                     ng-if="(row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue') &&
+                                            (field != 'projectcategory' ||
+                                             !groupByOptions.selected ||
+                                             (categorizeByOptions.selected == 'project' && row.rowKey.keyName == 'categoryrow') ||
+                                             (groupByOptions.selected == 'project' && row.rowKey.keyName == 'project'))"
+                                     all-fields="allFields" />
                     </td>
                     <td ng-if="showTotalInFront" ng-style="{'color': row.color}" title="{{row.title}}" class="nav border total">
                         {{row.sum | prettyHours:jiraConfig}}
@@ -207,7 +212,14 @@
                         </span>
                     </td>
                     <td class="nav" width="1%" ng-repeat="field in row.moreFields track by $index">
-                        <issue-field name="field" field="data.rowKey._issue.fields[field]" issue="data.rowKey._issue" jira-config="jiraConfig" ng-if="data.rowKey._issue" once="pivotTable"  all-fields="allFields"/>
+                        <issue-field name="field"
+                                     field="data.rowKey._issue.fields[field]"
+                                     issue="data.rowKey._issue"
+                                     jira-config="jiraConfig"
+                                     ng-if="data.rowKey._issue && (field != 'projectcategory' ||
+                                             (categorizeByOptions.selected != 'project' && groupByOptions.selected != 'project'))"
+                                     once="pivotTable"
+                                     all-fields="allFields"/>
                     </td>
                     <td ng-if="showTotalInFront" class="nav border total">
                         &nbsp;
