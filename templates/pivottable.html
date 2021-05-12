@@ -80,7 +80,7 @@
                 <tr ng-class-odd="compressed ? 'rowNormal' : ''"
                     ng-class-even="compressed ? 'rowAlternate' : ''"
                     ng-repeat-start="row in pivotTable._sortedRows | limitTo:issuesCount.maxResults:issuesCount.startAt"
-                    class="first">
+                    ng-class="{first: row.rowKey.keyName == 'categoryrow' || !compressed}">
                     <!-- TODO: rework to directive rowKwy with AngularJS 1.3: https://github.com/angular/angular.js/issues/1459 -->
                     <td class="nav issuetype" width="1%" ng-if="row.rowKey.issue">
                         <issue-type issue="row.rowKey.issue" />
