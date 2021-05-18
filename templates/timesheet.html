@@ -139,7 +139,7 @@
                         <issue-field name="field" field="row.rowKey._issue.fields[field] || row.rowKey.issue.fields[field] || row.rowKey.field.fields[field]"
                                      issue="row.rowKey._issue || row.rowKey.issue || row.rowKey.field" jira-config="jiraConfig"
                                      ng-if="(row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue') &&
-                                            (field != 'projectcategory' ||
+                                            (field.indexOf('project') < 0 ||
                                              !groupByOptions.selected ||
                                              (categorizeByOptions.selected == 'project' && row.rowKey.keyName == 'categoryrow') ||
                                              (groupByOptions.selected == 'project' && row.rowKey.keyName == 'project'))"
@@ -216,7 +216,7 @@
                                      field="data.rowKey._issue.fields[field]"
                                      issue="data.rowKey._issue"
                                      jira-config="jiraConfig"
-                                     ng-if="data.rowKey._issue && (field != 'projectcategory' ||
+                                     ng-if="data.rowKey._issue && (field.indexOf('project') < 0 ||
                                              (categorizeByOptions.selected != 'project' && groupByOptions.selected != 'project'))"
                                      once="pivotTable"
                                      all-fields="allFields"/>
