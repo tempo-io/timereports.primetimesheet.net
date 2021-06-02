@@ -435,7 +435,7 @@
     "welcome.content.3.2": "Bitte beachten Sie, dass Zeitberichte den Menüpunkt Systemnavigationsleiste und Projektnavigationsleiste haben. Er wird für die Mitglieder der Benutzergruppen angezeigt, die in den Optionen Auditorengruppen oder Benutzergruppen mit Zeiterfassungsfeld ausgewählt wurden, oder für Projekte, die in der Option Projekte mit Zeiterfassungsfeld ausgewählt wurden, wenn diese konfiguriert ist. Es ist auch möglich, einen Quick Link mit <a href=\"https:\/\/confluence.atlassian.com\/jira\/creating-links-in-the-application-navigator-346948276.html\" target=\"_blank\">Application Navigator<\/a> hinzuzufügen. Der Link kann außerdem so eingestellt werden, dass er nur für die angegebenen Gruppen sichtbar ist.",
     "welcome.content.3.3": "Zeitberichte können zum <a href=\"%s\/secure\/admin\/EditDefaultDashboard!default.jspa\" target=\"_blank\">Jira dashboard<\/a> hinzugefügt werden, wodurch Sie den Überblick über Ihre Auslastung oder die Ihres Teams täglich behalten können. Siehe auch <a href=\"https:\/\/confluence.atlassian.com\/adminjiracloud\/configuring-the-default-dashboard-776636251.html\" target=\"_blank\"> Jira Documentation<\/a>.",
     "welcome.content.3.4": "Zeitberichte, die den Daten (Arbeitsprotokoll) zugrunde liegen, können auch in Excel oder CSV auf der Berichtsseite exportiert werden.",
-    "welcome.content.3.5": "Berichte können regelmäßig per E-Mail verschickt (wenn es das E-Mail-Symbol auf der Berichtsseite gibt) oder mithilfe <a href=\"https:\/\/www.primetimesheet.net\/cloud\/REST_endpoint.html\" target=\"_blank\">REST API<\/a> exportiert oder unter <a href=\"https:\/\/www.primetimesheet.net\/cloud\/Mobile.html\" target=\"_blank\">mobile devices<\/a> abgerufen werden.",
+    "welcome.content.3.5": "Berichte können regelmäßig per E-Mail verschickt (wenn es das E-Mail-Symbol auf der Berichtsseite gibt) oder mithilfe <a href=\"https:\/\/www.primetimesheet.net\/cloud\/REST_endpoint.html\" target=\"_blank\">REST API<\/a>.",
     "welcome.content.4": "Weitere Ressourcen",
     "welcome.content.5.1": "<a href=\"https:\/\/www.primetimesheet.net\/%s\/\" target=\"_blank\">Dokumentation<\/a>",
     "welcome.content.5.2": "<a href=\"https:\/\/bitbucket.org\/tempo-io\/cloudtimesheet\/issues\" target=\"_blank\">Vorgänge<\/a>",
@@ -468,5 +468,5 @@
     "New Time Entry": "New Time Entry",
     "description.New Time Entry": "New Time Entry View contains issues at the top, worklogs (sorted by Started) at the bottom.",
     "Monthly on": "Monthly on",
-    "Hide Rate Column": "Hide Rate Column"    
+    "Hide Rate Column": "Hide Rate Column"
 }
