@@ -142,7 +142,8 @@
                                             (field.indexOf('project') < 0 ||
                                              !groupByOptions.selected ||
                                              (categorizeByOptions.selected == 'project' && row.rowKey.keyName == 'categoryrow') ||
-                                             (groupByOptions.selected == 'project' && row.rowKey.keyName == 'project'))"
+                                             (groupByOptions.selected == 'project' && row.rowKey.keyName == 'project') ||
+                                             groupByOptions.selected === 'issue')"
                                      all-fields="allFields" />
                     </td>
                     <td ng-if="showTotalInFront" ng-style="{'color': row.color}" title="{{row.title}}" class="nav border total">
