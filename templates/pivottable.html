@@ -116,7 +116,7 @@
                                      ng-if="(row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue') &&
                                             (field.indexOf('project') < 0 ||
                                              !groupByOptions.selected ||
-                                             (categorizeByOptions.selected == 'project' && row.rowKey.keyName == 'categoryrow') ||
+                                             (['project', 'issue'].indexOf(categorizeByOptions.selected) >= 0 && row.rowKey.keyName == 'categoryrow') ||
                                              (groupByOptions.selected == 'project' && row.rowKey.keyName == 'project') ||
                                              groupByOptions.selected === 'issue')"
                                      all-fields="allFields" />
