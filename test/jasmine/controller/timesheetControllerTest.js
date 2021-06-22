@@ -572,7 +572,7 @@ describe('timesheetControllerTest', function () {
     $controller('TimesheetController', {
       $scope: scope,
       $route: $route,
-      timesheetParams: { startDate: '2014-02-24', endDate: '2014-02-25', groupByField: 'customfield_10008', loaded: true },
+      timesheetParams: { startDate: '2014-02-24', endDate: '2014-02-25', groupByField: 'customfield_10008', loaded: true, sumSubTasks: ['parent'] },
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
@@ -738,7 +738,7 @@ describe('timesheetControllerTest', function () {
     $controller('TimesheetController', {
       $scope: scope,
       $route: $route,
-      timesheetParams: { sumSubTasks: true, startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance', loaded: true },
+      timesheetParams: { sumSubTasks: ['parent'], startDate: '2013-12-04', endDate: '2017-04-10', pivotTableType: 'TimeBalance', loaded: true },
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
@@ -789,7 +789,7 @@ describe('timesheetControllerTest', function () {
     $controller('TimesheetController', {
       $scope: scope,
       $route: $route,
-      timesheetParams: { sumSubTasks: true, startDate: '2014-02-24', numOfWeeks: 1, pivotTableType: 'IssuePassedTimeByResolution', loaded: true },
+      timesheetParams: { sumSubTasks: ['parent'], startDate: '2014-02-24', numOfWeeks: 1, pivotTableType: 'IssuePassedTimeByResolution', loaded: true },
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
@@ -820,7 +820,7 @@ describe('timesheetControllerTest', function () {
     $controller('TimesheetController', {
       $scope: scope,
       $route: $route,
-      timesheetParams: { sumSubTasks: true, startDate: '2014-02-24', numOfWeeks: 1, pivotTableType: 'IssuePassedTimeByStatus', loaded: true },
+      timesheetParams: { sumSubTasks: ['parent'], startDate: '2014-02-24', numOfWeeks: 1, pivotTableType: 'IssuePassedTimeByStatus', loaded: true },
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
@@ -1134,7 +1134,7 @@ describe('timesheetControllerTest', function () {
     $controller('TimesheetController', {
       $scope: scope,
       $route: $route,
-      timesheetParams: { sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-25', loaded: true },
+      timesheetParams: { sumSubTasks: ['parent'], startDate: '2014-02-24', endDate: '2014-02-25', loaded: true },
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
@@ -1187,7 +1187,7 @@ describe('timesheetControllerTest', function () {
     $controller('TimesheetController', {
       $scope: scope,
       $route: $route,
-      timesheetParams: { sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-25', loaded: true },
+      timesheetParams: { sumSubTasks: ['parent'], startDate: '2014-02-24', endDate: '2014-02-25', loaded: true },
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
@@ -1244,7 +1244,7 @@ describe('timesheetControllerTest', function () {
     $controller('TimesheetController', {
       $scope: scope,
       $route: $route,
-      timesheetParams: { sumSubTasks: true, startDate: '2014-02-24', endDate: '2014-02-24', loaded: true },
+      timesheetParams: { sumSubTasks: ['parent'], startDate: '2014-02-24', endDate: '2014-02-24', loaded: true },
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
@@ -1295,7 +1295,7 @@ describe('timesheetControllerTest', function () {
     $controller('TimesheetController', {
       $scope: scope,
       $route: $route,
-      timesheetParams: { sumSubTasks: true, startDate: '2017-10-03', endDate: '2017-10-03', loaded: true },
+      timesheetParams: { sumSubTasks: ['parent'], startDate: '2017-10-03', endDate: '2017-10-03', loaded: true },
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
@@ -1346,7 +1346,7 @@ describe('timesheetControllerTest', function () {
     $controller('TimesheetController', {
       $scope: scope,
       $route: $route,
-      timesheetParams: { moreFields: ['timespent'], includeEmpty: true, sumSubTasks: true, startDate: '2017-10-03', endDate: '2017-10-03', loaded: true },
+      timesheetParams: { moreFields: ['timespent'], includeEmpty: true, sumSubTasks: ['parent'], startDate: '2017-10-03', endDate: '2017-10-03', loaded: true },
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,

@@ -206,8 +206,13 @@
       </select>
     </div>
     <div class="field-group" ng-if="['Calendar'].indexOf(pivotTableType) < 0">
-      <label>{{'Sum SubTasks' | i18n}}</label>
-      <input class="checkbox" type="checkbox" ng-model="sumSubTasks.enabled" ng-change="sumSubTasksChange(sumSubTasks.enabled)" />
+        <label>{{'Sum SubTasks' | i18n}}</label>
+        <input aui-multi-select-picker
+               class="text"
+               title="{{'Sum SubTasks' | i18n}}"
+               ng-model="sumSubTasks"
+               ng-options-data="sumSubTasksOptions"
+               ng-value-changed-func="sumSubTasksChange">
     </div>
     <div class="field-group" ng-if="['Timesheet', 'TimeEntry', 'CostReport', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) >= 0 ||
     (pivotTableType == 'Timespent' && !pivotByField)">
