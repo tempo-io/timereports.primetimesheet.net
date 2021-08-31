@@ -36,6 +36,7 @@
         <div class="field-group" ng-if="includeSupportData.options">
             <label for="include-support-data">Include Support Data</label>
             <input class="checkbox" type="checkbox" id="include-support-data" ng-model="includeSupportData.enabled"/>
+            <a ng-click="download()" ng-if="includeSupportData.enabled">{{'Download' | i18n}}</a>
         </div>
         <div  ng-if="includeSupportData.options" class="field-group">
             <span class="description">Enable this option if you'd like to provide recorded responses from Jira to let support replay the report</span>
