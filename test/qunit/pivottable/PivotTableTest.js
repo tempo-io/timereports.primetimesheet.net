@@ -911,3 +911,8 @@ QUnit.test('Detect.js', function () {
   QUnit.assert.equal(ua.getOS().name, 'Windows', 'OS')
   QUnit.assert.equal(ua.getOS().version, '10', 'OS Version')
 })
+QUnit.test('GroupComparator', function () {
+  var array = ['Test', 'Test Category', 'Test:Project1', 'Test:Project2', 'Test Category:Project3']
+  array.sort(PivotKey.GroupByField.comparator)
+  QUnit.assert.equal(array.join(','), 'Test,Test:Project1,Test:Project2,Test Category,Test Category:Project3', 'Keys')
+})
