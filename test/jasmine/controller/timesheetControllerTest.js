@@ -50,7 +50,7 @@ describe('timesheetControllerTest', function () {
   var checkOptions = function (scope) {
     expect(scope.groupByOptions).not.toBeNull()
     expect(scope.groupByOptions).toBeInstanceOf(TimesheetSelectOptions)
-    expect(scope.groupByOptions.options.length).toBe(scope.pivotTableType === 'TimeTracking' ? 40 : scope.pivotTableType === 'IssueWorkedTimeByUser' ? 47 : 46)
+    expect(scope.groupByOptions.options.length).toBe(scope.pivotTableType === 'TimeTracking' ? 41 : scope.pivotTableType === 'IssueWorkedTimeByUser' ? 48 : 47)
     expect(scope.groupByOptions.options).toContainInProperty('Security Level', 'label')
     expect(scope.groupByOptions.options).toContainInProperty('resolution', 'id')
     expect(scope.filterByOptions).not.toBeNull()
