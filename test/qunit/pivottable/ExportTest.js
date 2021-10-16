@@ -334,8 +334,14 @@ QUnit.test('Html Export Timesheet Grouped by Worked User More Fields', function 
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'Timesheet',
       categorizeByField: 'assignee',
+      categorizeByFieldObject: {
+        id: 'assignee'
+      },
       categorizeByFieldOption: { label: 'Assignee' },
       groupByField: 'workeduser',
+      groupByFieldObject: {
+        id: 'workeduser'
+      },
       groupByFieldOption: { label: 'Worked User' },
       startDate: '2014-02-24',
       reportingDay: 1,
@@ -470,6 +476,9 @@ QUnit.test('Html Export TimeTracking Grouped by Assignee', function (assert) {
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'TimeTracking',
       groupByField: 'assignee',
+      groupByFieldObject: {
+        id: 'assignee'
+      },
       groupByFieldOption: { label: 'Assignee' },
       startDate: '2014-02-24',
       reportingDay: 1,
