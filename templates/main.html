@@ -1,3 +1,14 @@
+<div class="banner-home" ng-if="!isGadget && !hideBannerNewUI">
+    <i class="icon-image info"></i> 
+    <span class="text">
+        {{ 'BannerMessage' | i18n }} <a target='_blank' href="https://help.tempo.io/timesheet-reports-and-gadgets/en/timesheet-reports-and-gadgets-for-jira-cloud/differences-between-legacy-design-and-new-design.html">{{ 'Here' | i18n}}</a>.
+    </span>
+    <i class="icon-image remove"
+       ng-click="removeBannerNewUI()"
+       title="Remove Message">
+    </i>
+</div>
+
 <div ng-if="!isGadget" class="header margin">
     <ng-include src="templates.header"></ng-include>
     <aui-inline-dialog id="on-error" template="'/templates/popups/onError.html'" init-fn="initOnErrorPopup(params)"/>

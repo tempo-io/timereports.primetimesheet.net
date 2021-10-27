@@ -531,3 +531,44 @@ table td {
     transform-origin: top right;
     text-align: right !important;
 }
+
+.banner-home {
+    display: flex;
+    padding-bottom: 1.25rem;
+    padding-top: 1.25rem;
+    border-radius: 0.275rem;
+    background-color: #0052CC;
+    width: 100%;
+}
+
+.banner-home .text {
+    width: 100%;
+    margin-right: 15%;
+    color:white;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.banner-home .text a {
+    color: white !important;
+    text-decoration: underline;
+}
+
+.icon-image {
+    width: 0px;
+    padding: 0.75rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px;
+}
+
+.icon-image.remove {
+    background-image: url(../images/icon-remove.png);
+}
+
+.icon-image.info {
+    background-image: url(../images/icon-info.png);
+}

@@ -468,5 +468,8 @@
     "New Time Entry": "New Time Entry",
     "description.New Time Entry": "New Time Entry View contains issues at the top, worklogs (sorted by Started) at the bottom.",
     "Monthly on": "Monthly on",
-    "Hide Rate Column": "Hide Rate Column"
+    "Hide Rate Column": "Hide Rate Column",
+    "BannerMessage" : "¡Próximamente, en breve, pronto! Interfaz de usuario nueva y mejorada para Timesheet Reports and Gadgets y Timesheet Reports. Puedes comprobarlo",
+    "Here" : "AQUÍ",
+    "Learn more new UI" : "Más información sobre la nueva interfaz de usuario"
 }
