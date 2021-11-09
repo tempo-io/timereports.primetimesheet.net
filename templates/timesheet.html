@@ -21,83 +21,70 @@
             jira-config="jiraConfig">
     </aui-inline-dialog>
     <aui-inline-dialog id="import-popup" template="'/templates/popups/import.html'" popup-data="importPopup" container="'#export-dropdown'" persistent="true" no-bind="true" init-fn="initImportPopupDialog(params)"></aui-inline-dialog>
-    <aui-inline-dialog id="subscribe-popup" template="templates.subscribe" popup-data="subscribePopup" container="'#subscribe'" persistent="true"></aui-inline-dialog>
     <aui-inline-dialog id="user-hover" template="'/templates/popups/userHover.html'" popup-data="userHoverPopup" container="'.userHoverPopup'" on-hover="true"></aui-inline-dialog>
 
-    <div class="pagingtable">
-
-        <div class="aui-message aui-message-error" ng-show="restrictionError != null">
-            <p class="title">
-                <strong>{{'Denied' | i18n}}</strong>
-            </p>
-            <p>{{restrictionError.msgKey | i18n}}</p>
-            <p ng-if="restrictionError.msg" ng-bind-html="restrictionError.msg"></p>
-        </div>
-
-        <table id="issuetable" cellspacing="0" cellpadding="3" border="0" ng-show="restrictionError == null">
+    <div class="w-100-p overflow-x-auto">
+        <restriction-error></restriction-error>
+        <table id="issuetable" cellspacing="0" cellpadding="3" border="0" ng-show="restrictionError == null" style="width: 100%;">
             <thead>
-                <tr class="rowHeader">
-                    <th class="colHeaderLink" colspan="{{rowKeySize}}">
-                        <span><pivottable-slider /></span>
-                        <span ng-if="loaded && !loading && !restrictionError" class="noprint">
-                            <button ng-if="canLogWork || canLogWorkForUser" class="aui-button aui-button-link button-compact" ng-click="addWorklogDialog()" title="{{'Log Work against an issue' | i18n}}">
-                                <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
-                                {{'Log Work' | i18n}}
-                            </button>
-                        </span>
-                        <span class="noprint">
-                            <i href="#export" id="export-dropdown" aria-owns="export" aria-haspopup="true" style="padding-left: 10px" class="fa fa-file-excel aui-dropdown2-trigger x-ng-click"  x-ng-click="" title="{{'Export/Import' | i18n}}" ng-hide="loading || restrictionError"></i>
-                            <!-- Dropdown -->
-                            <div id="export" class="aui-style-default aui-dropdown2">
-                                <ul class="aui-list-truncate">
-                                    <li class="copyLink">
-                                        <div class="rowCenter">
-                                            <a x-ng-click="excelView('xls')">exportData.xls (html)</a>
-                                            <i class="fa fa-link edit"
-                                               ng-click=""
-                                               copy-to-clipboard="export=xls"
-                                               title="{{'Copy Link' | i18n}}">
-                                            </i>
-                                        </div>
-                                    </li>
-                                    <li class="copyLink">
-                                        <div class="rowCenter">
-                                            <a x-ng-click="excelView('csv')">exportData.csv</a>
-                                            <i class="fa fa-link edit"
-                                               ng-click=""
-                                               copy-to-clipboard="export=csv"
-                                               title="{{'Copy Link' | i18n}}">
-                                            </i>
-                                        </div>
-                                    </li>
-                                    <li class="copyLink">
-                                        <div class="rowCenter">
-                                            <a x-ng-click="excelView('html')">exportView.xls (html)</a>
-                                            <i class="fa fa-link edit"
-                                               ng-click=""
-                                               copy-to-clipboard="export=html"
-                                               title="{{'Copy Link' | i18n}}">
-                                            </i>
-                                        </div>
-                                    </li>
-                                    <li><a x-ng-click="importPopup.init()">importTimesheet.csv</a></li>
-                                </ul>
-                            </div>
-                            <i id="subscribe"
-                                class="fa fa-envelope"  ng-click="subscribePopup.init()" title="{{'Subscribe' | i18n}}"
-                                ng-if="subscribe && !isGadget" ng-style="{'font-weight': currentView.jobId ? 'bold' : 'normal'}"></i>
+                <tr>
+                    <td class="w-3"></td>
+                    <th class="p-0 align-top h-8" colspan="{{rowKeySize}}">
+                        <span class="flex pt-2">
+                            <button-add-worklog class="mt-3"></button-add-worklog>
+                            <pivottable-slider />
                         </span>
                     </th>
                     <th class="colHeaderLink moreFields" ng-repeat="field in pivotTable.moreFields track by $index">
-                        <span ng-bind="moreFieldsOptions.findOption(field).label"></span>
                     </th>
-                    <th ng-if="showTotalInFront">
-                        <br/>{{'Total' | i18n}}
+                    <th ng-if="showTotalInFront" class="text-center bg-white borderL">
+                        <span class="font-semibold text-text-color-1">
+                            <br/><br/>{{'Total' | i18n}}
+                        </span>
                     </th>
-                    <th ng-repeat="column in pivotTable._sortedColumns" column-key="column.columnKey" ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}">
+                    <th ng-if="pivotTable._sortedColumns && pivotTable._sortedColumns.length > 0"
+                        colspan="{{month.colspan}}"
+                        ng-repeat="month in pivotTable.months"
+                        ng-class="{ 'borderL' : month.firstColumn }"
+                        class="align-middle">
+                        <span class="ml-2 font-semibold text-text-color-1">{{month.monthName}}</span>
                     </th>
-                    <th>
-                        <br/>{{'Total' | i18n}}
+                    <th ng-if="!pivotTable.months || pivotTable.months.length == 0"
+                        ng-repeat="column in pivotTable._sortedColumns"
+                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend,  borderL:  column.columnKey.isFirstColumn}"
+                        class="h-10 borderWeek">
+                    </th>
+                    <th class="text-center stickyCell bg-white" ng-if="pivotTable.num > 0" width="8%">
+                        <span class="font-semibold text-text-color-1">
+                            <br/><br/>{{'Total' | i18n}}
+                        </span>
+                    </th>
+                </tr>
+                <tr class="rowHeader" ng-if="loaded && pivotTable && (pivotTable.num > 0 || (pivotTable._sortedRows && pivotTable._sortedRows.length > 0))">
+                    <th class="w-4 nav"></th>
+                    <th colspan="2" class="pl-2.5 align-bottom text-text-color-1-important font-medium-important">Key</th>
+                    <th colspan="2" class="pl-0 align-bottom text-text-color-1-important font-medium-important">Issue</th>
+                    <th class="pl-1 align-bottom text-text-color-1-important font-medium-important">Priority</th>
+
+                    <th class="text-center align-middle border-l-clear" ng-repeat="field in pivotTable.moreFields track by $index">
+                        <table class="w-full ng-scope">
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">
+                                        <span ng-bind="moreFieldsOptions.findOption(field).label"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </th>
+                    <th ng-if="showTotalInFront" class="borderL">
+                    </th>
+                    <th ng-repeat="column in pivotTable._sortedColumns"
+                        column-key="column.columnKey"
+                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend,  borderL:  column.columnKey.isFirstColumn}"
+                        class="h-10 borderWeek text-center">
+                    </th>
+                    <th class="text-center stickyCell bg-white" ng-if="pivotTable.num > 0" width="8%">
                     </th>
                 </tr>
             </thead>
@@ -105,15 +92,17 @@
                 <tr ng-class-odd="compressed ? 'rowNormal' : ''"
                     ng-class-even="compressed ? 'rowAlternate' : ''"
                     ng-repeat-start="row in pivotTable._sortedRows | limitTo:issuesCount.maxResults:issuesCount.startAt"
+                    ng-init="firstRow = $first"
                     ng-class="{first: row.rowKey.keyName == 'categoryrow' || !compressed}">
                     <!-- issues block -->
-                    <td class="nav issuetype" width="1%" ng-if="row.rowKey.issue">
+                    <td class="w-4 nav"></td>
+                    <td class="nav issuetype print:w-5-p" width="2%" ng-if="row.rowKey.issue">
                         <issue-type issue="row.rowKey.issue" />
                     </td>
-                    <td class="nav issuekey" width="1%" ng-if="row.rowKey.issue" nowrap>
+                    <td class="nav issuekeyp" width="2%" ng-if="row.rowKey.issue" nowrap>
                         <issue-key issue="row.rowKey.issue" />
                     </td>
-                    <td class="nav summary" colspan="2" ng-if="row.rowKey.issue">
+                    <td class="nav summary print:w-12-p w-18-p" colspan="2" ng-if="row.rowKey.issue">
                         <span ng-if="row.rowKey.issue.fields.parent">
                             <issue-key issue="row.rowKey.issue.fields.parent" show-title="true" class="parentIssue" />
                         </span>
@@ -124,7 +113,7 @@
                             <issue-summary issue="row.rowKey.issue" />
                         </span>
                     </td>
-                    <td class="nav priority" width="1%" ng-if="row.rowKey.issue">
+                    <td class="nav priority" width="2%" ng-if="row.rowKey.issue">
                         <issue-priority issue="row.rowKey.issue" />
                     </td>
                     <td class="nav" width="1%" ng-if="row.rowKey.field" nowrap>
@@ -135,36 +124,38 @@
                         &nbsp;
                         <span ng-if="row.rowKey._issue && showDetailsCount">{{row.num != 1 ? 'issues' : 'issue' | i18n:{placeholders:[row.num]} }}</span>
                     </td>
-                    <td class="nav" ng-repeat="field in row.moreFields track by $index">
+                    <td class="nav text-center border-l-clear" ng-repeat="field in row.moreFields track by $index">
                         <issue-field name="field" field="row.rowKey._issue.fields[field] || row.rowKey.issue.fields[field] || row.rowKey.field.fields[field]"
-                                     issue="row.rowKey._issue || row.rowKey.issue || row.rowKey.field" jira-config="jiraConfig"
-                                     ng-if="(row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue') &&
+                                    issue="row.rowKey._issue || row.rowKey.issue || row.rowKey.field" jira-config="jiraConfig"
+                                    ng-if="(row.rowKey._issue || row.rowKey.issue || row.rowKey.keyName == 'issue') &&
                                             (field.indexOf('project') < 0 ||
-                                             !groupByOptions.selected ||
-                                             (['project', 'issue'].indexOf(categorizeByOptions.selected) >= 0 && row.rowKey.keyName == 'categoryrow') ||
-                                             (groupByOptions.selected == 'project' && row.rowKey.keyName == 'project') ||
-                                             groupByOptions.selected === 'issue')"
-                                     all-fields="allFields" />
+                                            !groupByOptions.selected ||
+                                            (['project', 'issue'].indexOf(categorizeByOptions.selected) >= 0 && row.rowKey.keyName == 'categoryrow') ||
+                                            (groupByOptions.selected == 'project' && row.rowKey.keyName == 'project') ||
+                                            groupByOptions.selected === 'issue')"
+                                    all-fields="allFields" />
                     </td>
-                    <td ng-if="showTotalInFront" ng-style="{'color': row.color}" title="{{row.title}}" class="nav border total">
+                    <td ng-if="showTotalInFront" ng-style="{'color': row.color}" title="{{row.title}}" class="borderL text-center nav border total text-center">
                         {{row.sum | prettyHours:jiraConfig}}
                     </td>
                     <td ng-init="p_show=false"
                         ng-mouseover="p_show=column.sum == 0 && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate &&
-                          ((!groupByOptions.selected && (canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[row.rowKey.keyValue]) ||
+                        ((!groupByOptions.selected && (canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[row.rowKey.keyValue]) ||
                             (groupByOptions.selected == 'workeduser' && canLogWorkForWorkedUser[row.rowKey.field.accountId]))"
                         ng-mouseleave="p_show=false"
                         ng-click="(column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && !cannotLogWorkIssue[row.rowKey.keyValue] &&
-                          ((!groupByOptions.selected && (canLogWork || canLogWorkForUser) && addWorklogPopup.init(column.columnKey, row.rowKey)) ||
+                        ((!groupByOptions.selected && (canLogWork || canLogWorkForUser) && addWorklogPopup.init(column.columnKey, row.rowKey)) ||
                             (column.sum == 0 && groupByOptions.selected == 'workeduser' && canLogWorkForWorkedUser[row.rowKey.field.accountId] &&
-                             addWorklogDialog(null, null, column.columnKey.date, row.rowKey.field)));
+                            addWorklogDialog(null, null, column.columnKey.date, row.rowKey.field)));
                             editWorklogPopup.init(column.columnKey, row.rowKey, row.data)"
-                        class="nav border"
+                        class="nav borderWeekDays text-center"
                         ng-class="{toDay: column.columnKey.isToday,
-                          nonBusinessDay: column.columnKey.isWeekend,
-                          addWorklogPopup: !groupByOptions.selected && column.sum == 0 && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[row.rowKey.keyValue]),
-                          editWorklogPopup: column.sum != 0,
-                          disabled: column.sum == 0 && (groupByOptions.selected || cannotLogWorkIssue[row.rowKey.keyValue] || (!canLogWork && !canLogWorkForUser)) && (groupByOptions.selected != 'workeduser' || !canLogWorkForWorkedUser[row.rowKey.field.accountId])}"
+                        todayBorder: column.columnKey.isToday && firstRow,
+                        nonBusinessDay: column.columnKey.isWeekend,
+                        addWorklogPopup: !groupByOptions.selected && column.sum == 0 && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[row.rowKey.keyValue]),
+                        editWorklogPopup: column.sum != 0,
+                        disabled: column.sum == 0 && (groupByOptions.selected || cannotLogWorkIssue[row.rowKey.keyValue] || (!canLogWork && !canLogWorkForUser)) && (groupByOptions.selected != 'workeduser' || !canLogWorkForWorkedUser[row.rowKey.field.accountId]),
+                        borderL:  column.columnKey.isFirstColumn}"
                         style="cursor:default"
                         ng-style="{'color': column.color}"
                         title="{{column.title}}"
@@ -172,11 +163,16 @@
                         <span style="cursor:pointer">{{column.sum | prettyHours:jiraConfig}}</span>
                         <span ng-show="p_show" class="fa fa-plus" style="cursor:pointer" title="{{'Log Work against an issue' | i18n}}"></span>
                     </td>
-                    <td ng-style="{'color': row.color}" title="{{row.title}}" class="nav border total">
+                    <td ng-style="{'color': row.color}"
+                        title="{{row.title}}"
+                        class="nav total text-center stickyCell"
+                        ng-class-odd="'bg-white'"
+                        ng-class-even="compressed ? 'rowAlternate' : 'bg-white'">
                         {{row.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>
                 <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed && !row.categoryRow">
+                    <td class="nav">&nbsp;</td>
                     <td class="nav">&nbsp;</td>
                     <td class="nav">&nbsp;</td>
                     <td colspan="{{rowKeySize - 3}}" class="nav summary">
@@ -199,9 +195,9 @@
                         </span>
                         <span ng-if="(!paramUsersInfo || paramUsersInfo.length > 1) && groupByOptions.selected != 'workeduser'">
                             <a ng-if="data.worklog.author.accountId" ng-title="{{data.worklog.author.displayName}}"
-                               ng-href="{{hostBaseUrl + '/people/' + data.worklog.author.accountId}}" target="_parent">
+                            ng-href="{{hostBaseUrl + '/people/' + data.worklog.author.accountId}}" target="_parent">
                                 <img ng-alt="{{data.worklog.author.displayName}}" class="avatar-image" style="border-radius: 50%"
-                                     ng-src="{{data.worklog.author.avatarUrls['16x16']}}" width="16" height="16">
+                                    ng-src="{{data.worklog.author.avatarUrls['16x16']}}" width="16" height="16">
                             </a>
                             <span ng-bind="data.worklog.author.displayName"></span>
                         </span>
@@ -212,17 +208,19 @@
                             <issue-priority issue="data.rowKey._issue" />
                         </span>
                     </td>
-                    <td class="nav" width="1%" ng-repeat="field in row.moreFields track by $index">
+                    <td class="nav border-l-clear" width="1%" ng-repeat="field in row.moreFields track by $index">
                         <issue-field name="field"
-                                     field="data.rowKey._issue.fields[field]"
-                                     issue="data.rowKey._issue"
-                                     jira-config="jiraConfig"
-                                     ng-if="data.rowKey._issue && (field.indexOf('project') < 0 ||
-                                             (categorizeByOptions.selected != 'project' && groupByOptions.selected != 'project'))"
-                                     once="pivotTable"
-                                     all-fields="allFields"/>
+                                    field="data.rowKey._issue.fields[field]"
+                                    issue="data.rowKey._issue"
+                                    jira-config="jiraConfig"
+                                    ng-if="data.rowKey._issue && (field.indexOf('project') < 0 ||
+                                            (categorizeByOptions.selected != 'project' && groupByOptions.selected != 'project'))"
+                                    once="pivotTable"
+                                    all-fields="allFields"/>
                     </td>
-                    <td ng-if="showTotalInFront" class="nav border total">
+                    <td ng-if="showTotalInFront"
+                        class="nav borderWeekDays total"
+                        ng-class-odd="'rowAlternate'" ng-class-even="'bg-white'" >
                         &nbsp;
                     </td>
                     <td ng-init="p_show=false"
@@ -233,39 +231,43 @@
                         nonBusinessDay: column.columnKey.isWeekend,
                         addWorklogPopup: groupByOptions.selected && data.columnKey.keyValue != column.columnKey.keyValue && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser || canLogWorkForWorkedUser[row.rowKey.field.accountId]) && !cannotLogWorkIssue[data.rowKey._issue.key]),
                         editWorklogPopup: groupByOptions.selected && data.columnKey.keyValue == column.columnKey.keyValue && ((canLogWork || canLogWorkForUser || canLogWorkForWorkedUser[row.rowKey.field.accountId]) && !cannotLogWorkIssue[data.rowKey._issue.key]),
-                        disabled: !groupByOptions.selected || (data.columnKey.keyValue == column.columnKey.keyValue && cannotLogWorkIssue[data.rowKey._issue.key] || (!canLogWork && !canLogWorkForUser && !canLogWorkForWorkedUser[row.rowKey.field.accountId]))}"
+                        disabled: !groupByOptions.selected || (data.columnKey.keyValue == column.columnKey.keyValue && cannotLogWorkIssue[data.rowKey._issue.key] || (!canLogWork && !canLogWorkForUser && !canLogWorkForWorkedUser[row.rowKey.field.accountId])),
+                        borderL:  column.columnKey.isFirstColumn}"
                         style="cursor:default"
-                        class="nav border"
+                        class="nav borderWeekDays text-center"
                         ng-repeat="column in pivotTable._sortedColumns">
                         <span style="cursor:pointer" ng-if="data.columnKey.keyValue == column.columnKey.keyValue">
                             {{data.value | prettyHours:jiraConfig}}
                         </span>
                         <span ng-show="p_show" class="fa fa-plus" style="cursor:pointer" title="{{'Log Work against an issue' | i18n}}"></span>
                     </td>
-                    <td class="nav border total">
+                    <td class="nav borderWeekDays total stickyCell"
+                        ng-class-odd="'rowAlternate'" ng-class-even="'bg-white'" >
                         &nbsp;
                     </td>
                 </tr>
                 <tr ng-repeat-end ng-hide="true" ng-class="{details: compressed == false}"></tr>
                 <!-- total block -->
-                <tr class="rowFooter" ng-hide="loading || !loaded || !pivotTable">
-                    <td colspan="{{rowKeySize}}" class="nav total">
+                <tr ng-hide="loading || !loaded || !pivotTable" class="bg-secondary-color-clarity-4 font-semibold">
+                    <td class="nav">&nbsp;</td>
+                    <td colspan="{{rowKeySize}}" class="nav">
                         {{'Total' | i18n}}&nbsp;{{pivotTable.num != 1 ? 'issues' : 'issue' | i18n:{placeholders:[pivotTable.num]} }}
                     </td>
-                    <td class="nav total" ng-repeat="field in pivotTable.moreFields track by $index">
+                    <td class="nav text-center border-l-clear" ng-repeat="field in pivotTable.moreFields track by $index">
                         <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
                     </td>
-                    <td ng-if="showTotalInFront" ng-style="{'color': pivotTable.color}" title="{{pivotTable.title}}" class="nav border total">
+                    <td ng-if="showTotalInFront" ng-style="{'color': pivotTable.color}" title="{{pivotTable.title}}" class="borderL text-center nav borderWeekDays">
                         {{pivotTable.sum | prettyHours:jiraConfig}}
                     </td>
-                    <td ng-style="{'color': column.color}" title="{{column.title}}" class="nav border total" ng-repeat="column in pivotTable._sortedColumns">
+                    <td ng-style="{'color': column.color}" title="{{column.title}}" class="nav borderWeekDays text-center" ng-repeat="column in pivotTable._sortedColumns" ng-class="{borderL:  column.columnKey.isFirstColumn}">
                         {{column.sum | prettyHours:jiraConfig}}
                     </td>
-                    <td ng-style="{'color': pivotTable.color}" title="{{pivotTable.title}}" class="nav border total">
+                    <td ng-style="{'color': pivotTable.color}" title="{{pivotTable.title}}" class="nav stickyCell bg-secondary-color-clarity-4 text-center">
                         {{pivotTable.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>
                 <tr ng-show="loaded && loading">
+                    <td>&nbsp;</td>
                     <td colspan="{{rowKeySize + 1}}">
                         <loading/>
                     </td>
@@ -273,40 +275,13 @@
             </tbody>
         </table>
     </div>
-    <div class="count-pagination aui-group" ng-hide="!loaded || loading || restrictionError || !pivotTable">
-        <div class="aui-item">
-            <span class="results-count-text" ng-if="issuesCount.end">
-                <span class="results-count-start" ng-bind="issuesCount.startAt + 1"></span>–<span class="results-count-end" ng-bind="issuesCount.end"></span> of <span class="results-count-total" ng-bind="issuesCount.total"></span>
-            </span>
-            <a ng-click="loading || !loaded || refresh()" ng-disabled="loading || !loaded" ng-class="{disabled: loading || !loaded}" title="{{'Refresh' | i18n}}" class="noprint">
-                <i class="fa fa-sync" ng-title="'Refresh' | i18n"></i>
-            </a>
-        </div>
-        <div class="pagination aui-item noprint">
-            <ol class="aui-nav aui-nav-pagination">
-                <li class="aui-nav-previous"><a ng-show="issuesCount.startAt > 0" ng-click="setStartAt(issuesCount.startAt - issuesCount.maxResults)">Prev</a><span ng-show="issuesCount.startAt <= 0 && issuesCount.total">Prev</span></li>
-                <li ng-class="{'aui-nav-selected': issuesCount.startAt == startAt}" ng-repeat="p in pages" ng-init="startAt = issuesCount.maxResults * p" style="padding: 0"><a ng-click="setStartAt(startAt)" style="padding: 3px">{{p + 1}}</a></li>
-                <li class="aui-nav-next" ng-init="isNext = issuesCount.startAt + issuesCount.maxResults < issuesCount.total"><a ng-show="issuesCount.startAt + issuesCount.maxResults < issuesCount.total" ng-click="setStartAt(issuesCount.startAt + issuesCount.maxResults)" style="padding: 3px">Next</a><span ng-show="issuesCount.startAt + issuesCount.maxResults >= issuesCount.total && issuesCount.total">Next</span></li>
-            </ol>
-        </div>
-    </div>
-    <div ng-if="loaded && !loading && !restrictionError" class="noprint">
-        <button ng-if="canLogWork || canLogWorkForUser" class="aui-button aui-button-link" ng-click="addWorklogDialog()" title="{{'Log Work against an issue' | i18n}}">
-            <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
-            {{'Log Work' | i18n}}
-        </button>
-    </div>
-    <div class="aui-message aui-message warning" ng-show="loaded && !loading && restrictedProjects">
-        <strong>{{'Data is limited by Auditors Roles' | i18n}}</strong>&nbsp;{{restrictedProjects}}
-    </div>
-    <div class="aui-message aui-message warning" ng-show="loaded && !loading && restrictedGroups">
-        <strong>{{'Data is limited to Restricted Groups' | i18n}}</strong>&nbsp;{{restrictedGroups}}
-    </div>
-    <div ng-if="!loaded">
-        <br/>
-        <button class="aui-button" ng-click="execute()" ng-disabled="loading" ng-class="{disabled: loading}">
-            <span class="aui-icon aui-icon-small aui-iconfont-view"></span>
-            {{'View Report' | i18n}}
-        </button>
-    </div>
+    <pagination></pagination>
+
+    <button-add-worklog class="mt-5 ml-4"></button-add-worklog>
+
+    <data-limit-auditors-roles></data-limit-auditors-roles>
+
+    <data-limit-restricted-groups></data-limit-restricted-groups>
+
+    <empty-values></empty-values>
 </div>

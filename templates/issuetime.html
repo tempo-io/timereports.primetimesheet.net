@@ -1,6 +1,47 @@
 <div class="results-wrap issuetime">
+    <div class="options pb-2 pl-2">
+        <span ng-repeat="option in gadgetSummary">
+            <span ng-class="option.styleClass">{{option.text}}</span>
+        </span>
 
-    <ng-include src="templates.reportSummary"></ng-include>
+        <a title="{{'Open report page for other options and excel export' | i18n }}"
+            href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!{{reportParams}}"
+            target="_parent"
+            class="ml-1 w-0 p-2 bg-19 bg-no-repeat bg-center"
+            style="background-image: url('../images/icon-expand.png')">
+        </a>
+
+        <a href="#issueViewConf"
+            id="issueViewConf-dropdown"
+            class="aui-dropdown2-trigger x-ng-click"
+            x-ng-click=""
+            title="{{'Configure' | i18n }}"
+            aria-owns="issueViewConf"
+            style="margin-left: 10px; padding-right: 0px !important">
+            <i class="w-0 p-2 bg-24 bg-no-repeat bg-center"            
+                style="background-image: url('../images/icon-config.png')">
+            </i>
+        </a>
+
+        <div id="issueViewConf" class="aui-style-default aui-dropdown2">
+            <ul class="aui-list-truncate">
+                <li>
+                    <a href="https://primetimesheet.atlassian.net/wiki/spaces/KB/pages/771096577/Predefined+Views+For+Time+Entry+Issue+Panel"
+                        target="_blank"
+                        style="margin-top: 5px"
+                        title="{{'Help' | i18n}}">
+                        <i class="w-0 p-4 bg-20 bg-no-repeat bg-center"            
+                        style="background-image: url('../images/icon-question-blue.png')">
+                        </i>
+                    </a>
+                </li>
+                <li ng-repeat="view in issueTimeOptions.options" ng-if="view.id != issueTimeOptions.selected">
+                    <a style="color:#333" ng-click="issueTimeViewChanged(view.id)">{{view.label}}</a>
+                </li>
+                <a ng-if="isEpic" title="{{'Open report page for other options and excel export' | i18n }}" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!jql=parentEpic%3D{{issueKey}}&sumSubTasks=true" target="_parent">parentEpic={{issueKey}}</a>
+            </ul>
+        </div>
+    </div>
 
     <div class="pagingtable">
 
@@ -13,22 +54,66 @@
 
         <div class="issuetable" ng-show="restrictionError == null">
             <div class="rowHeader">
-                <div class="colHeaderLink">
-                    <pivottable-slider />
+                <div class="colHeaderLink pb-4-important">
+                    <div id="slider-wrapper-issue" class="noprint flex h-8 pl-1">
+                        <div class="border-solid border border-text-divider-color-3 inline-flex rounded">
+                            <div ng-if="!hidePrevNext" class="sm:mr-10 mr-20 mt-1">
+                                <span ng-click="changeWeek(isMonthView || isDayView ? -1 : -7)"
+                                    title="{{isDayView ? 'Previous Day' : isMonthView ? 'Previous Month' : 'Previous Week' | i18n}}"
+                                    class="w-0 p-3 bg-24 bg-no-repeat bg-center"
+                                    style="background-image: url('../images/icon-arrow-right.png')">
+                                </span>
+                                <span ng-show="showPrevToday"
+                                    ng-click="moveToday()"
+                                    title="{{isDayView ? 'Current Day' : isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
+                                    class="fa fa-step-backward">
+                                </span>
+                            </div>
+
+                            <div class="mt-1 text-text-color-3">
+                                {{startDate.value | date:'EEE, MMM d'}}
+                            </div>
+
+                            <div ng-if="!hidePrevNext" class="sm:ml-10 ml-20 mt-1">
+                                <span ng-click="changeWeek(isMonthView || isDayView ? 1 : 7)"
+                                    title="{{isDayView ? 'Next Day' : isMonthView ? 'Next Month' : 'Next Week' | i18n}}"
+                                    class="w-0 p-3 bg-24 bg-no-repeat bg-center"
+                                    style="background-image: url('../images/icon-arrow-left.png')">
+                                </span>
+
+                                <span ng-show="showNextToday"
+                                    ng-click="moveToday()"
+                                    title="{{isDayView ? 'Current Day' : isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
+                                    class="fa fa-step-forward">
+                                </span>
+                            </div>   
+                        </div>
+                    </div>
                 </div>
-                <div class="colHeaderLink" ng-repeat="column in pivotTable._sortedColumns" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
+                <div class="colHeaderLink font-semibold text-text-color-1 pr-8 pl-2 pb-4-important" ng-repeat="column in pivotTable._sortedColumns" column-key="column.columnKey" ng-class="{toDay : column.columnKey.isToday}">
                 </div>
             </div>
             <div ng-class-odd="'rowNormal'" ng-class-even="'rowAlternate'" ng-repeat="data in pivotTable.rows[issueKey].data" ng-style="{color: data.color}">
-                <div class="nav">
-                    <span ng-if="data.worklog.id">
-                        <old-worklog worklog="data.worklog" edit-work="editWorklog" delete-work="deleteWorklog"
-                                       cannot-edit="data.worklog.workDate < allowToLogFromDate || cannotEditOwnWorklogIssue[issueKey]"
-                                       cannot-delete="data.worklog.workDate < allowToLogFromDate || cannotDeleteOwnWorklogIssue[issueKey]"
-                                       ng-init="data.worklog.issueKey = issueKey"/>
+                <div class="nav borderWeekDays">
+                    <span ng-if="data.worklog.id" class="float-right p-2">
+                        <i class="w-0 p-4 bg-24 bg-no-repeat bg-center"
+                            ng-if="!(data.worklog.workDate < allowToLogFromDate || cannotEditOwnWorklogIssue[issueKey])"
+                            ng-click="editWorklog(data.worklog)"
+                            style="background-image: url('../images/icon-edit-gray.png')"
+                            ng-init="data.worklog.issueKey = issueKey"
+                            title="{{'Edit Worklog' | i18n}}">
+                        </i>
+                        <i class="w-0 p-4 bg-24 bg-no-repeat bg-center"
+                            ng-if="!(data.worklog.workDate < allowToLogFromDate || cannotDeleteOwnWorklogIssue[issueKey])"
+                            ng-click="deleteWorklog(data.worklog)"
+                            ng-init="data.worklog.issueKey = issueKey"
+                            style="background-image: url('../images/icon-trash-gray.png')"
+                            title="{{'Delete Worklog' | i18n}}">
+                        </i>
                     </span>
+
                     <span ng-if="!data.worklog.id">
-                        <new-worklog worklog="data.worklog" log-work="startWork" entry="data" remove-cached-worklog = "removeCachedWorklog" />
+                        <new-worklog-issue worklog="data.worklog" class="float-right p-2" log-work="startWork" entry="data" remove-cached-worklog = "removeCachedWorklog" />
                     </span>
                     &nbsp;
                     <span ng-if="data.worklog.workDate >= allowToLogFromDate && !cannotEditOwnWorklogIssue[issueKey]"
@@ -42,24 +127,35 @@
                         <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
                     </span>
                     <span ng-if="data.worklog.workDate < allowToLogFromDate || cannotEditOwnWorklogIssue[issueKey]">
-                        <worklog-comment worklog="data.worklog"/>
+                        <worklog-comment worklog="data.worklog" class="text-text-color-3"/>
                     </span>
                 </div>
-                <div class="nav border nowrap">
+                <div class="nav borderWeekDays font-semibold nowrap pl-3-important align-middle	">
                     {{data.values['1started'] | time:'short'}}
                 </div>
-                <div class="nav border nowrap">
+                <div class="nav borderWeekDays font-semibold nowrap pl-3-important align-middle	">
                     {{data.values['2timespent'] | prettyHours:jiraConfig}}
                 </div>
             </div>
         </div>
     </div>
+    <p class="font-semibold pl-2 mb-4" ng-if="!pivotTable.rows[issueKey].data">        
+        {{'No logged time' | i18n}}
+    </p>
     <button ng-if="canLogWork && loaded && !loading && isStartDateToday" class="aui-button aui-button-link" ng-init="worklog = {issueKey: issueKey, started: 1}" ng-click="startWork(true)">
-        <span><i class="fa fa-play"></i></span>
-        {{'Start Work' | i18n}}
+        <i class="w-0 p-3 bg-24 bg-no-repeat bg-center m-1"
+           style="background-image: url('../images/icon-play-circle.png')">
+        </i>
+        <span class="text-secondary-color font-semibold">
+            {{'Start Work' | i18n}}
+        </span>        
     </button>
     <button ng-if="canLogWork && loaded && !loading" class="aui-button aui-button-link" ng-click="addWorklogDialog(null, issueKey)">
-        <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
-        {{'Log Work' | i18n}}
+        <i class="w-0 p-3 bg-24 bg-no-repeat bg-center m-1"
+           style="background-image: url('../images/icon-add-circle.png')">
+        </i>
+        <span class="text-secondary-color font-semibold">
+            {{'Log Time' | i18n}}
+        </span>        
     </button>
 </div>

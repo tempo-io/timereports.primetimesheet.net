@@ -1,19 +1,10 @@
-<div class="aui margin">
-    <div style="margin-top: 24px">
-        <h4>{{appNameShort + ' Configuration' | i18n }}</h4>
-    </div>
-    <ul>
+<div>    
+    <ul class="p-0">
         <li ng-repeat="pageKey in pageKeys">
-            <div class="ak-field-group">
-              <a ng-click="activePage(pageKey)" ng-class="{disabled: pageKey==page}" >{{ pages[pageKey] | i18n }}</a>
+            <div class="pl-3 pt-3 pb-3 text-left rounded-md mb-3 font-bold" ng-class="{'bg-secondary-color-clarity-5': pageKey==page}">
+              <a ng-click="activePage(pageKey)" ng-class="{'text-secondary-color': pageKey==page, 'text-text-color-3': pageKey!=page}">{{ pages[pageKey] | i18n }}</a>
             </div>
         </li>
     </ul>
-    <br>
-    <a ng-click="!loading && refresh()" ng-disabled="loading" ng-class="{disabled: loading}" title="{{'Refresh' | i18n}}">
-        <i class="fa fa-sync" ng-title="'Refresh' | i18n"></i>
-    </a>
-    <br>
-    <br>
-    {{'Go to' | i18n}} <a ng-click="navigated(null,'Report Overview')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports" target="_parent">{{appNameShort | i18n}}</a>
+    <br>    
 </div>

@@ -1,106 +1,132 @@
-        <div class="field-group" ng-if="['IssueTime', 'IssueTimeBalance'].indexOf(pivotTableType) < 0 && showMore">
-            <label for="log-work-issue">
-                {{'Issue Key' | i18n}}&nbsp;<span class="aui-icon icon-required"></span><span class="content">required</span>
-            </label>
-            <input type="text" class="text long-field" id="log-work-issue" name="log-work-issue" ng-model="worklog.issueKey" log-work-permission aui-issue-picker ng-disabled="dialogType != 'add'" required focus-if="!worklog.issueKey">
+<div ng-if="['IssueTime', 'IssueTimeBalance'].indexOf(pivotTableType) < 0 && showMore" class="issue-key-area">
+    <label for="log-work-issue">
+        {{'Issue Key' | i18n}}*&nbsp;                
+    </label>
+    <input type="text" class="text issue-key-field" id="log-work-issue" name="log-work-issue" ng-model="worklog.issueKey" log-work-permission aui-issue-picker ng-disabled="dialogType != 'add'" required focus-if="!worklog.issueKey">
+</div>
+<legend>
+    <span>{{'Time entry' | i18n}}</span>
+</legend>
+<div class="line-fields ak-field-group">
+    <label for="log-work-time-logged">
+        {{worklog.endDate ? 'Hours Per Day' : 'Time Spent' | i18n}}*                    
+    </label>
+    <input type="text"
+            id="log-work-time-logged"
+            name="timeSpent"
+            class="text-field medium-field"
+            style="max-width: 100px; margin-left: -5px;"
+            ng-model="worklog.timeSpent"
+            required
+            timespent
+            limited="worklog.endDate"
+            work-per-day="{started: calculateWorklogDate(true), configOptions: configOptions, user: worklog.user || loggedInUser}"
+            ng-model-options="{ debounce: 100 }"
+            focus-if="worklog.issueKey"
+            placeholder="{{'1.5h or 1:30' | i18n}}"
+            title="{{'eg. 4h 30m' + (dialogType == 'add' && !worklog.endDate ? ', or 1d 2h for two entries of 8h and 2h per day' : '') | i18n}}"/>
+    <td><longer-one-day-warning ng-if="logWorkForm.$valid">&gt;1d!</longer-one-day-warning>
+        <span ng-show="logWorkForm.timeSpent.$error.workPerDayError" role="alert" class="red">
+            {{logWorkForm.timeSpent.$error.workPerDayError}}
+        </span>
+    </td>
+    <span ng-if="worklog.issueKey" class="text-xs text-text-color-3 font-semibold">
+        &nbsp;{{'Logged' | i18n}}&nbsp;{{timespentPretty}}
+    </span>
+</div>
+<div ng-if="showMore" class="line-fields ak-field-group test-datepicker">
+    <label for="log-work-date-logged">{{'Date Started' | i18n}}</label>
+    <input type="date"
+            id="log-work-date-logged"
+            name="log-work-date-logged"
+            class="text-field input-date medium-field"
+            ng-model="worklogDatetime.date"
+            aui-date-picker
+            ng-date-changed-func="changeDate">
+    <lock-period-error>&lt;&nbsp;{{allowToLogFromDate | date:'yyyy-MM-dd'}}&nbsp;!&nbsp;</lock-period-error>
+    <time-picker time="worklogDatetime.time" ng-model-options='{ debounce: 1000 }'></time-picker>
+    <a  class="ml-1 text-secondary-color"
+        ng-if="!worklog.endDate && !worklog.id"
+        ng-click="changeEndDate()">
+        {{'Set Date Ended' | i18n}}
+    </a>
+</div>
+
+<div ng-if="worklog.endDate" class="line-fields ak-field-group">
+    <label for="endDate">{{'Ended' | i18n}}</label>
+    <input type="date"
+            name="endDate"
+            ng-if="worklog.endDate"
+            class="text-field input-date medium-field"
+            ng-model="worklog.endDate"
+            aui-date-picker
+            ng-date-changed-func="changeEndDate">
+    <a class="ml-4 w-0 p-3 bg-24 bg-no-repeat bg-center"
+       style="background-image: url('../images/icon-remove.png')"
+       ng-if="worklog.endDate"
+       ng-click="removeEndDate()">
+    </a>
+</div>
+
+<ng-include ng-if="showMore" src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0" class="log-work"></ng-include>
+
+<div class="line-fields">
+    <label for="comment" class="align-top">
+        {{'Work Description' | i18n}}
+        <span ng-if="workDescriptionRequired">*</span>
+    </label>
+    <div class="wiki-edit inline-block">
+        <div class="wiki-edit-content" id="comment-wiki-edit">
+            <textarea rows="5" id="comment" cols="60" class="textarea long-field ml-5px" ng-model="worklog.comment" work-labels="workLabelsList" ng-required="workDescriptionRequired"></textarea>
+            <div class="content-inner"></div>
         </div>
-            <legend>
-                <span>{{'Time entry' | i18n}}</span>
-            </legend>
-            <div class="field-group">
-                <label for="log-work-time-logged">
-                    {{worklog.endDate ? 'Hours Per Day' : 'Time Spent' | i18n}}<span class="aui-icon icon-required"> required</span>
-                </label>
-                <input type="text"
-                       id="log-work-time-logged"
-                       name="timeSpent"
-                       class="text medium-field"
-                       style="max-width: 100px;"
-                       ng-model="worklog.timeSpent"
-                       required
-                       timespent
-                       limited="worklog.endDate"
-                       work-per-day="{started: calculateWorklogDate(true), configOptions: configOptions, user: worklog.user || loggedInUser}"
-                       ng-model-options="{ debounce: 100 }"
-                       focus-if="worklog.issueKey"
-                       placeholder="{{'1.5h or 1:30' | i18n}}"
-                       title="{{'eg. 4h 30m' + (dialogType == 'add' && !worklog.endDate ? ', or 1d 2h for two entries of 8h and 2h per day' : '') | i18n}}"/>
-                <td><longer-one-day-warning ng-if="logWorkForm.$valid">&gt;1d!</longer-one-day-warning>
-                    <span ng-show="logWorkForm.timeSpent.$error.workPerDayError" role="alert" class="red">
-                        {{logWorkForm.timeSpent.$error.workPerDayError}}
-                    </span>
-                </td>
-                <span ng-if="worklog.issueKey">&nbsp;{{'Logged' | i18n}}&nbsp;{{timespentPretty}}</span>
-            </div>
-            <div ng-if="showMore" class="field-group test-datepicker">
-                <label for="log-work-date-logged">{{'Date Started' | i18n}}<span class="aui-icon icon-required"> required</span></label>
-                <input type="date"
-                       id="log-work-date-logged"
-                       name="log-work-date-logged"
-                       class="text medium-field"
-                       style="max-width: 100px; margin-right: 5px;"
-                       ng-model="worklogDatetime.date"
-                       aui-date-picker
-                       ng-date-changed-func="changeDate">
-                <lock-period-error>&lt;&nbsp;{{allowToLogFromDate | date:'yyyy-MM-dd'}}&nbsp;!&nbsp;</lock-period-error>
-                <time-picker time="worklogDatetime.time" ng-model-options='{ debounce: 1000 }'></time-picker>
-                <a style="margin-left: 5px;" ng-if="!worklog.endDate && !worklog.id" ng-click="changeEndDate()">{{'Set Date Ended' | i18n}}</a>
-                <span style="margin: 0 5px 0 5px;" ng-if="worklog.endDate">{{'Ended' | i18n}}</span>
-                <input type="date"
-                       name="endDate"
-                       ng-if="worklog.endDate"
-                       class="text medium-field"
-                       style="max-width: 100px;"
-                       ng-model="worklog.endDate"
-                       aui-date-picker
-                       ng-date-changed-func="changeEndDate">
-                <a style="margin-left:2px;" ng-if="worklog.endDate" ng-click="removeEndDate()">X</a>
-            </div>
-
-            <ng-include ng-if="showMore" src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0"></ng-include>
-
-            <div class="field-group">
-                <label for="comment">{{'Work Description' | i18n}}<span class="aui-icon icon-required" ng-if="workDescriptionRequired"> required</span></label>
-                <div class="wiki-edit">
-                    <div class="wiki-edit-content" id="comment-wiki-edit">
-                        <textarea rows="5" id="comment" cols="60" class="textarea long-field" ng-model="worklog.comment" work-labels="workLabelsList" ng-required="workDescriptionRequired"></textarea>
-                        <div class="content-inner"></div>
-                    </div>
+    </div>
+    <div ng-if="showMore" class="security-level mr-37 pt-4 pb-4 issue-work-buttons">
+        <button id="security-level-dropdown"
+                class="button-padlock aui-dropdown2-trigger aui-style-default"
+                aria-owns="security-level"
+                aria-haspopup="true"
+                ng-attr-title="{{'Worklog Visibility' | i18n}}"
+                ng-class="{'button-unlocked': !worklog.visibilityRole && !worklog.visibilityGroup, 'button-locked': worklog.visibilityRole || worklog.visibilityGroup}">
+        </button>
+        <span class="current-level ml-4 text-text-color-3"
+              style="vertical-align: super;"
+              ng-if="worklog.visibilityGroup || worklog.visibilityRole">
+            {{'Restricted to' | i18n}}&nbsp;
+            <span class="red">
+                {{worklog.visibilityGroup || worklog.visibilityRole}}
+            </span>
+        </span>
+        <span class="current-level ml-4 text-text-color-3"
+              style="vertical-align: super;"
+              ng-if="!(worklog.visibilityGroup || worklog.visibilityRole)">
+              {{'Viewable by All Users' | i18n}}
+        </span>
+        <div id="security-level" class="aui-style-default aui-dropdown2">
+            <ul class="aui-list-truncate">
+                <li><a ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = null" class="aui-button-primary">{{'All Users' | i18n}}</a></li>
+            </ul>
+            <div class="aui-dropdown2-section">
+                <div class="aui-dropdown2-heading">
+                    {{'Groups' | i18n}}
                 </div>
-                <div ng-if="showMore" class="security-level">
-                    <button id="security-level-dropdown" class="aui-button aui-button-link security-level-drop-icon aui-icon aui-icon-small aui-dropdown2-trigger aui-style-default"
-                            aria-owns="security-level"
-                            aria-haspopup="true"
-                            ng-attr-title="{{'Worklog Visibility' | i18n}}"
-                            ng-class="{'aui-iconfont-unlocked': !worklog.visibilityRole && !worklog.visibilityGroup, 'aui-iconfont-locked': worklog.visibilityRole || worklog.visibilityGroup}">
-                    </button>
-                    <span class="current-level" ng-if="worklog.visibilityGroup || worklog.visibilityRole">{{'Restricted to' | i18n}}&nbsp;<span class="red">{{worklog.visibilityGroup || worklog.visibilityRole}}</span></span>
-                    <span class="current-level" ng-if="!(worklog.visibilityGroup || worklog.visibilityRole)">{{'Viewable by All Users' | i18n}}</span>
-                    <div id="security-level" class="aui-style-default aui-dropdown2">
-                        <ul class="aui-list-truncate">
-                            <li><a ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = null" class="aui-button-primary">{{'All Users' | i18n}}</a></li>
-                        </ul>
-                        <div class="aui-dropdown2-section">
-                            <div class="aui-dropdown2-heading">
-                                {{'Groups' | i18n}}
-                            </div>
-                            <ul class="aui-list-truncate">
-                                <li ng-repeat="group in groups.items"><a ng-click="worklog.visibilityRole = null; worklog.visibilityGroup = group.name" ng-bind="group.name" class="aui-button-primary"></a></li>
-                            </ul>
-                        </div>
-                        <div class="aui-dropdown2-section">
-                            <div class="aui-dropdown2-heading">
-                                {{'Project Roles' | i18n}}
-                            </div>
-                            <ul class="aui-list-truncate">
-                                <li ng-repeat="(role, uri) in roles"><a ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = role" ng-bind="role" class="aui-button-primary"></a></li>
-                            </ul>
-                        </div>
-                    </div>
+                <ul class="aui-list-truncate">
+                    <li ng-repeat="group in groups.items"><a ng-click="worklog.visibilityRole = null; worklog.visibilityGroup = group.name" ng-bind="group.name" class="aui-button-primary"></a></li>
+                </ul>
+            </div>
+            <div class="aui-dropdown2-section">
+                <div class="aui-dropdown2-heading">
+                    {{'Project Roles' | i18n}}
                 </div>
-                <resize ng-if="!showMore"/>
+                <ul class="aui-list-truncate">
+                    <li ng-repeat="(role, uri) in roles"><a ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = role" ng-bind="role" class="aui-button-primary"></a></li>
+                </ul>
             </div>
-            <div class="field-group" ng-if="worklog.user">
-                <span class="aui-icon aui-icon-warning">Warning</span>
-                {{'Log work on behalf of' | i18n}}&nbsp;{{worklog.user.displayName}}
-            </div>
+        </div>
+    </div>
+    <resize ng-if="!showMore"/>
+</div>
+<div ng-if="worklog.user">
+    <span class="aui-icon aui-icon-warning">Warning</span>
+    {{'Log work on behalf of' | i18n}}&nbsp;{{worklog.user.displayName}}
+</div>

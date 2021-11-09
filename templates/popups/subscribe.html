@@ -1,84 +1,118 @@
-<form class="aui" name="subscribeForm" style="margin: 15px">
-    <div>{{'Send report by email' | i18n}}&nbsp;<span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span></div>
-    <fieldset style="padding-top: 10px">
-        <label>
-            {{'Now' | i18n}}
-        </label>
-        <a style="float: right" class="aui-button" ng-click="popupData.send(closePopup)" ng-disabled="popupData.loading" ng-class="{disabled: popupData.loading}">{{'Send' | i18n}}</a>
-    </fieldset>
-    <fieldset style="padding-top: 10px; margin-top: 10px; border-top: 1px solid #cccccc;">
-        <label>
-            {{'Periodically' | i18n}}
-        </label>
-    </fieldset>
-    <fieldset style="padding-top: 10px">
-        <select id="every-week-on" class="select" style="min-width: 137px"
-                title="{{'Email' | i18n}}"
-                ng-model="popupData.everyWeekOptions.selected"
-                ng-options="item.id as item.label for item in popupData.everyWeekOptions.options"
-                aui-select2
-                reqired>
-        </select>
-    </fieldset>
-    <fieldset style="padding-top: 10px">
-        <label>
-            {{'At' | i18n}}
-        </label>
-        <span style="display: block">
-            <select class="select short-field"
-                ng-model="popupData.everyWeekOptions.hour"
-                ng-options="item for item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]"
-                style="max-width: 50px; padding-top: 3px"
-                required>
-            </select>
-            <select class="select short-field"
-                ng-model="popupData.everyWeekOptions.minute"
-                ng-options="item for item in [0, 15, 30, 45]"
-                style="max-width: 50px; padding-top: 3px"
-                required>
-            </select>
-            <select class="select short-field"
-                ng-model="popupData.everyWeekOptions.period"
-                ng-options="item for item in ['am', 'pm']"
-                style="max-width: 60px; padding-top: 3px"
-                required>
-            </select>
-        </span>
-    </fieldset>
-    <fieldset>
-        <div ng-if="popupData.currentUser && ['Timesheet', 'Timespent'].indexOf(popupData.pivotTableType) >= 0">
-            <input id="period-check"
-                   type="checkbox"
-                   ng-model="popupData.everyWeekOptions.ifIncomplete">
-            <label for="period-check">
-                {{'If Incomplete' | i18n}}
+
+<div class="aui-dialog2-content">
+    <form class="aui" name="subscribeForm" style="margin: 15px">
+        <h3 class="font-bold border-b border-gray-200 pb-8">
+            {{'Send report by email' | i18n}}&nbsp;
+            <span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span>
+        </h3>
+        <div class="pt-7 pb-8">   
+            <div class="pt-3 pb-3 rounded bg-text-divider-color-5 text-center w-full">
+                <a class="text-text-color-3"
+                   ng-click="popupData.send(closePopup)"
+                   ng-disabled="popupData.loading"
+                   ng-class="{disabled: popupData.loading}">
+                    {{'Send' | i18n}} {{'Now' | i18n}}
+                </a>
+            </div>
+        </div>
+        <div style="padding-top: 1.5rem;" class="border-t border-gray-200 ">
+            <label class="font-medium text-text-color-1-important text-xs">
+                {{'Periodically' | i18n}}
             </label>
         </div>
-    </fieldset>
-    <fieldset style="padding-top: 10px">
-        <label for="cc">
-            {{'CC' | i18n}}
-        </label>
-        <input id="cc"
-               ng-value="popupData.everyWeekOptions.sendToCCUsers"
-               aui-user-picker
-               multi-select="true"
-               ng-user-changed-func="popupData.ccChange"
-               type="text"/>
-    </fieldset>
-    <fieldset style="padding-top: 10px">
-        <input id="csv"
-               type="checkbox"
-               ng-model="popupData.everyWeekOptions.addCsv">
-        <label for="csv">
-            {{'Add CSV attachment' | i18n}}
-        </label>
-    </fieldset>
-    <div style="padding-top: 20px; text-align: right">
-        <div>
-            <input class="aui-button aui-button-primary" type="submit" ng-value="popupData.currentView.jobId ? '{{'Update' | i18n}}' : '{{'Subscribe' | i18n}}'" ng-disabled="subscribeForm.$invalid" ng-click="popupData.subscribe(closePopup)">
-            <a ng-if="popupData.currentView.jobId" style="margin-left: 10px" class="aui-button" ng-click="popupData.unsubscribe(closePopup)">{{'Unsubscribe' | i18n}}</a>
-            <a style="margin-left: 10px" ng-click="closePopup()">{{'Cancel' | i18n}}</a>
+        <div style="padding-top: 0.5rem;" class="periodically">
+            <select id="every-week-on" class="select" style="max-width: 137px; max-width: 20rem;"
+                    title="{{'Email' | i18n}}"
+                    ng-model="popupData.everyWeekOptions.selected"
+                    ng-options="item.id as item.label for item in popupData.everyWeekOptions.options"
+                    aui-select2
+                    reqired>
+            </select>
         </div>
-    </div>
-</form>
+        <div style="padding-top: 1.5rem;">
+            <label class="font-medium text-text-color-1-important text-xs">
+                {{'At' | i18n}}
+            </label>
+            <span style="display: block" class="field-group send-mail">
+                <select class="common p-0.5	"
+                    ng-model="popupData.everyWeekOptions.hour"
+                    ng-options="item for item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]"
+                    style="max-width: 70px;"
+                    required>
+                </select>
+                <b class="ml-2">:</b>
+                <select class="common p-0.5 ml-2"
+                    ng-model="popupData.everyWeekOptions.minute"
+                    ng-options="item for item in [0, 15, 30, 45]"
+                    style="max-width: 70px;"
+                    required>
+                </select>
+                <select class="common p-0.5	uppercase ml-3"
+                    ng-model="popupData.everyWeekOptions.period"
+                    ng-options="item for item in ['am', 'pm']"
+                    style="max-width: 70px;"
+                    required>
+                </select>
+            </span>
+        </div>
+        <div class="mt-4">
+            <div ng-if="popupData.currentUser && ['Timesheet', 'Timespent'].indexOf(popupData.pivotTableType) >= 0">
+                <input id="period-check"
+                    class="checkbox"
+                    type="checkbox"
+                    ng-model="popupData.everyWeekOptions.ifIncomplete">
+                <label for="period-check" class="ml-3 font-normal text-text-color-1-important text-xs">
+                    {{'If Incomplete' | i18n}}
+                </label>
+            </div>
+        </div>
+        <div style="padding-top: 1.5rem" class="cc-mail">
+            <label for="cc" class="font-medium text-text-color-1-important text-xs">
+                {{'CC' | i18n}}
+            </label>
+            <input id="cc"
+                ng-value="popupData.everyWeekOptions.sendToCCUsers"
+                aui-user-picker
+                multi-select="true"
+                ng-user-changed-func="popupData.ccChange"
+                type="text"/>
+        </div>
+        <div style="padding-top: 1.5rem">
+            <input id="csv"
+                class="checkbox"
+                type="checkbox"
+                ng-model="popupData.everyWeekOptions.addCsv">
+            <label for="csv" class="ml-3 font-normal text-text-color-1-important text-xs">
+                {{'Add CSV attachment' | i18n}}
+            </label>
+        </div>
+        <div style="padding-top: 2rem;">
+            <div>
+                <input class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 rounded text-text-white font-bold"
+                       type="submit"
+                       ng-class="{ 
+                            'mr-2px' : popupData.currentView.jobId,
+                            'mr-3' : !popupData.currentView.jobId
+                       }"
+                       ng-value="popupData.currentView.jobId ? '{{'Update' | i18n}}' : '{{'Subscribe' | i18n}}'"
+                       ng-disabled="subscribeForm.$invalid"
+                       ng-click="popupData.subscribe(closePopup)">
+
+                <button ng-if="popupData.currentView.jobId"
+                        ng-class="{ 
+                            'mr-2px' : popupData.currentView.jobId,
+                            'mr-3' : !popupData.currentView.jobId
+                        }"
+                        class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3 bg-text-divider-color-5"
+                        ng-click="popupData.unsubscribe(closePopup)">
+                    {{'Unsubscribe' | i18n}}
+                </button>
+
+                <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                   ng-click="closePopup()">
+                    {{'Cancel' | i18n}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

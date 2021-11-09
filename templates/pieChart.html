@@ -2,31 +2,34 @@
 
     <ng-include src="templates.reportSummary"></ng-include>
 
-    <div class="pagingtable">
+    <div class="bg-secondary-color-clarity-4 pt-5 pb-5"
+         ng-if="loaded && (!pivotTable || pivotTable.num === 0)">
+        <i class="w-0 p-3 bg-24 bg-no-repeat bg-center mr-4 ml-4"
+            style="background-image: url('../images/info-icon.png')">
+        </i>
+        <span class="font-bold-light">No Report Found</span>
+    </div>
 
-        <div class="aui-message aui-message-error" ng-show="restrictionError != null">
-            <p class="title">
-                <strong>{{'Denied' | i18n}}</strong>
-            </p>
-            <p>{{restrictionError.msgKey | i18n}}</p>
-            <p ng-if="restrictionError.msg" ng-bind-html="restrictionError.msg"></p>
-        </div>
+    <div class="pagingtable w-100" ng-class="{'overflow-x-auto' : isGadget}">
+
+        <restriction-error></restriction-error>
 
         <div ng-show="loaded && loading">
             <loading/>
         </div>
-        <div style="white-space: nowrap;">
+        <div style="white-space: nowrap;" ng-if="loaded">
+            <span id="empty-space-chart" ng-if="loaded && (!pivotTable || pivotTable.num === 0)"></span>
             <div id="placeholder" pie-chart ng-model="pivotTable" style="display: inline-block"></div>
             <div id="legend" style="display: inline-block; vertical-align: top"></div>
         </div>
-        <div class="aui-message aui-message warning" ng-show="loaded && !loading && restrictedProjects">
-            <strong>{{'Data is limited by Auditors Roles' | i18n}}</strong>&nbsp;{{restrictedProjects}}
-        </div>
+
+        <data-limit-auditors-roles></data-limit-auditors-roles>
+        
         <div ng-if="!loaded">
             <br/>
-            <button class="aui-button" ng-click="execute()" ng-disabled="loading" ng-class="{disabled: loading}">
-                <span class="aui-icon aui-icon-small aui-iconfont-view"></span>
-                {{'View Report' | i18n}}
+            <img src='../images/no-results.png' class="h-full w-60 ml-38-p"></img>
+            <button class="ml-42-p bg-secondary-color p-3 rounded text-text-white font-bold" ng-click="execute()" ng-disabled="loading" ng-class="{disabled: loading}">
+                {{'Generete Report' | i18n}}
             </button>
         </div>
 

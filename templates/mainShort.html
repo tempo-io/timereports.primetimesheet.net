@@ -1,8 +1,35 @@
-<div class="main">
-    <div class="menu" ng-if="templates.menu && !isWelcome">
+<div class="mt-6 ml-11 mb-6 w-7/12 text-xl ng-scope">
+  <h4>{{appNameShort + ' Configuration' | i18n }}</h4>
+</div>
+
+<div class="mt-8 mb-5 w-72 text-right font-bold">
+  <a 
+     ng-click="!loading && refresh()"
+     class="mr-4 text-secondary-color font-bold"
+     ng-disabled="loading"
+     ng-class="{disabled: loading}"
+     title="{{'Refresh' | i18n}}">
+
+      <i class="w-0 p-3 bg-24 bg-no-repeat bg-center m-1"
+         style="background-image: url('../images/refresh-icon.png')">
+      </i>
+      {{ 'Refresh' | i18n }}
+  </a>
+  {{'Go to' | i18n}}
+  <a 
+    ng-click="navigated(null,'Report Overview')"
+    class="text-secondary-color font-bold"
+    href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports"
+    target="_parent">
+      {{appNameShort | i18n}}
+    </a>
+</div>
+
+<div class="main">    
+    <div class="min-w-280 pr-6 pl-9 border-r border-gray-200" ng-if="templates.menu && !isWelcome">
         <ng-include src="templates.menu"></ng-include>
     </div>
-    <div class="content">
+    <div ng-class="{ 'height-reports': !isGadget }">
         <ng-include src="contentTemplate()"></ng-include>
     </div>
 </div>

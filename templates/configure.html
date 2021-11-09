@@ -1,6 +1,8 @@
-<div class="aui-message aui-message-info" style="margin: 0">
-    <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
-    <span data-ng-bind-html="page != 'auditLog' ? 'All changes will be saved automatically' : 'Audit Log' | i18n | htmlSafe"></span>
+<div class="ml-6 bg-secondary-color-clarity-4 pt-5 pb-5 rounded-md">
+    <i class="w-0 p-3 bg-24 bg-no-repeat bg-center mr-4 ml-4"
+        style="background-image: url('../images/info-icon.png')">
+    </i>
+    <span class="font-bold-light" data-ng-bind-html="page != 'auditLog' ? 'All changes will be saved automatically' : 'Audit Log' | i18n | htmlSafe"></span>
 </div>
 
 <form class="aui" style="width: 750px" name="configForm">
@@ -141,7 +143,7 @@
         <div class="field-group">
             <label for="select2-compositionIssueLink">{{'Composition Issue Link' | i18n}}</label>
             <select id="select2-compositionIssueLink"
-                    class="select"
+                    class="common"
                     title="{{'Composition Issue Link' | i18n}}"
                     ng-model="compositionIssueLink.val"
                     ng-change="saveCompositionIssueLink()"
@@ -158,7 +160,7 @@
         <!--div class="field-group" ng-show="parentIssueFields">
             <label for="select2-parentIssueField">{{'Parent Issue Field' | i18n}}</label>
             <select id="select2-parentIssueField"
-                    class="select"
+                    class="common"
                     title="{{'Parent Issue Field' | i18n}}"
                     ng-model="parentIssueField.val"
                     ng-change="saveParentIssueField()"
@@ -192,50 +194,50 @@
     </div>
     <div ng-show="page=='general'">
         <div class="field-group">
-          <label for="disableLogWork">{{'Disable Log Work' | i18n}}</label>
-          <table>
-            <tr>
-              <td>{{'At all' | i18n}}</td>
-              <td colspan="3">
-                <input id="disableLogWork"
-                       type="checkbox"
-                       class="checkbox"
-                       ng-model="disableLogWork.val"
-                       ng-change="saveDisableLogWork()">
-                <div class="aui-message aui-message-success msg-overlay"
-                     ng-show="disableLogWorkSaveSuccess">
-                    <strong>{{'Disable Log Work' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>{{'for Projects' | i18n}}</td>
-              <td>
-                <input style="width: 220px"
-                       aui-multi-select-picker
-                       title="{{'Projects' | i18n}}"
-                       ng-model="disableLogWorkProjects.val"
-                       ng-options-data="disableLogWorkProjectsData"
-                       ng-value-changed-func="saveDisableLogWorkProjects">
-                <div class="aui-message aui-message-success msg-overlay"
-                     ng-show="disableLogWorkProjectsSaveSuccess">
-                    <strong>{{'Disable Log Work for Projects' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
-                </div>
-              </td>
-              <td>{{'for Groups' | i18n}}</td>
-              <td>
-                <input style="width: 220px"
-                       aui-group-picker
-                       title="{{'Groups' | i18n}}"
-                       ng-model="disableLogWorkGroups.val"
-                       ng-change="saveDisableLogWorkGroups()">
-                <div class="aui-message aui-message-success msg-overlay"
-                     ng-show="disableLogWorkGroupsSaveSuccess">
-                    <strong>{{'Disable Log Work for Groups' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
-                </div>
-              </td>
-            </tr>
-          </table>
+            <label for="disableLogWork">{{'Disable Log Work' | i18n}}</label>
+            <input id="disableLogWork"
+                 type="checkbox"
+                 class="apple-switch m-0.5"
+                 ng-model="disableLogWork.val"
+                 ng-change="saveDisableLogWork()">
+            <div class="aui-message aui-message-success msg-overlay"
+                  ng-show="disableLogWorkSaveSuccess">
+                <strong>{{'Disable Log Work' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'description.Disable Log Work Entirely' | i18n}}</span>
+        </div>
+        <div class="field-group">
+            <table>
+                <tr>
+                  <td><span class="ml-1-important">{{'for Projects' | i18n}}</span></td>
+                  <td>
+                    <input class="short-select2"
+                           aui-multi-select-picker
+                           title="{{'Projects' | i18n}}"
+                           ng-model="disableLogWorkProjects.val"
+                           ng-options-data="disableLogWorkProjectsData"
+                           ng-value-changed-func="saveDisableLogWorkProjects">
+                    <div class="aui-message aui-message-success msg-overlay"
+                         ng-show="disableLogWorkProjectsSaveSuccess">
+                        <strong>{{'Disable Log Work for Projects' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+                    </div>
+                  </td>
+                  <td><span class="m-0-important">{{'for Groups' | i18n}}</span></td>
+                  <td>
+                    <input class="short-select2"
+                           aui-group-picker
+                           title="{{'Groups' | i18n}}"
+                           ng-model="disableLogWorkGroups.val"
+                           ng-change="saveDisableLogWorkGroups()">
+                    <div class="aui-message aui-message-success msg-overlay"
+                         ng-show="disableLogWorkGroupsSaveSuccess">
+                        <strong>{{'Disable Log Work for Groups' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+                    </div>
+                  </td>
+                </tr>
+            </table>
         </div>
         <div class="field-group">
             <span class="description">{{'description.Disable Log Work' | i18n}}</span>
@@ -244,7 +246,7 @@
             <label for="restrictWorkPerDay">{{'Restrict Working Hours Per Day' | i18n}}</label>
             <input id="restrictWorkPerDay"
                    type="checkbox"
-                   class="checkbox"
+                   class="apple-switch"
                    ng-model="restrictWorkPerDay.val"
                    ng-change="saveRestrictWorkPerDay()">
             <div class="aui-message aui-message-success msg-overlay"
@@ -258,7 +260,7 @@
         <div class="field-group">
             <label for="select2-logWorkRetrospectively">{{'Log Work Retrospectively' | i18n}}</label>
             <select id="select2-logWorkRetrospectively"
-                    class="select"
+                    class="common"
                     title="{{'Log Work Retrospectively' | i18n}}"
                     ng-model="logWorkRetrospectively.val"
                     ng-change="saveLogWorkRetrospectively()"
@@ -276,7 +278,7 @@
             <label for="workDescriptionRequired">{{'Work Description Required' | i18n}}</label>
             <input id="workDescriptionRequired"
                    type="checkbox"
-                   class="checkbox"
+                   class="apple-switch"
                    ng-model="workDescriptionRequired.val"
                    ng-change="saveWorkDescriptionRequired()">
             <div class="aui-message aui-message-success msg-overlay"
@@ -291,7 +293,7 @@
             <label for="preserveStartedTimeSaveSuccess">{{'Preserve Started Time' | i18n}}</label>
             <input id="preserveStartedTimeSaveSuccess"
                    type="checkbox"
-                   class="checkbox"
+                   class="apple-switch"
                    ng-model="preserveStartedTime.val"
                    ng-change="savePreserveStartedTime()">
             <div class="aui-message aui-message-success msg-overlay"
@@ -303,15 +305,21 @@
             <span class="description" data-ng-bind-html="'description.Preserve Started Time' | i18n | htmlSafe"></span>
         </div>
         <div class="field-group">
-            <label for="workLabels">{{'Work Labels' | i18n}}</label>
-            <div style="margin-bottom: 3px;">
-                <span ng-repeat="label in workLabels.val" class="aui-label aui-label-closeable">
-                    {{label}}
-                    <span ng-click="removeWorkLabel($index)" class="aui-icon aui-icon-close"></span>
-                </span>
+            <label for="workLabels">{{'Work Labels' | i18n}}</label>                            
+            <div class="input-tag">
+                <div class="select2-container select2-container-multi aui-select2-container">
+                    <ul class="select2-choices">
+                        <li class="select2-search-choice" ng-repeat="label in workLabels.val">
+                            <div>{{label}}</div>
+                            <a ng-click="removeWorkLabel($index)" class="select2-search-choice-close" tabindex="-1"></a>
+                        </li>
+                        <li class="select2-search-field">
+                            <input class="select2-input" id="workLabels" ng-init="newWorkLabel=''" ng-model="newWorkLabel" title="{{'New Work Label' | i18n}}" enter-pressed="addWorkLabel(newWorkLabel);newWorkLabel='';" style="background-color: white !important;"/>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <input id="workLabels" ng-init="newWorkLabel=''" ng-model="newWorkLabel" class="text" title="{{'New Work Label' | i18n}}" enter-pressed="addWorkLabel(newWorkLabel);newWorkLabel='';"/>
-            <span class="fa fa-plus-square newWorkLabel" ng-click="addWorkLabel(newWorkLabel);newWorkLabel='';"></span>
+
             <div class="aui-message aui-message-success msg-overlay"
                  ng-show="workLabelsSaveSuccess">
                 <strong>{{'Work Labels' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
@@ -333,7 +341,7 @@
                    ng-model="workUnderLimitColor.val"
                    ng-model-options='{ debounce: 1000 }'
                    ng-change="saveWorkUnderLimitColor()"
-                   class="text short-field align-top"
+                   class="text-field single align-top w-24"
                    title="{{'Under Limit Color' | i18n}}"/>
             <div class="aui-message aui-message-success msg-overlay"
                  ng-show="workUnderLimitColorSaveSuccess">
@@ -352,7 +360,7 @@
                    ng-model="workOverLimitColor.val"
                    ng-model-options='{ debounce: 1000 }'
                    ng-change="saveWorkOverLimitColor()"
-                   class="text short-field align-top"
+                   class="text-field single align-top w-24"
                    title="{{'Over Limit Color' | i18n}}"/>
             <div class="aui-message aui-message-success msg-overlay"
                  ng-show="workOverLimitColorSaveSuccess">
@@ -369,7 +377,8 @@
                    ng-model="limitPrecision.val"
                    min="0"
                    ng-change="configForm.limitPrecision.$valid && saveLimitPrecision()"
-                   type="number" class="text short-field align-top"
+                   type="number"
+                   class="text-field single align-top w-36"
                    ng-model-options='{ debounce: 1000 }'
                    title="{{'Limit Precision' | i18n}}"/>
             <div class="aui-message aui-message-success msg-overlay"
@@ -384,7 +393,7 @@
             <label for="cacheWorklog">{{'Cache Worklog' | i18n}}</label>
             <input id="cacheWorklog"
                    type="checkbox"
-                   class="checkbox"
+                   class="apple-switch"
                    ng-model="cacheWorklog.val"
                    ng-change="saveCacheWorklog()">
             <div class="aui-message aui-message-success msg-overlay"
@@ -399,7 +408,14 @@
         </div>
         <div class="field-group" ng-if="isTimesheet">
             <label for="getApiKey">{{'REST' | i18n}}</label>
-            <button type="button" class="btn btn-default" id="getApiKey" ng-click="getApiKey()" ng-class="{disabled: !isTimesheet}">{{'Get Key' | i18n}}</button>
+            <button 
+                type="button"
+                class="btn btn-default py-2 px-4 bg-text-divider-color-4 rounded	text-text-color-3"
+                id="getApiKey"
+                ng-click="getApiKey()"
+                ng-class="{disabled: !isTimesheet}">
+                    {{'Get Key' | i18n}}
+            </button>
         </div>
         <div class="field-group" ng-if="isTimesheet">
             <span class="description" data-ng-bind-html="'description.REST' | i18n | htmlSafe"></span>
@@ -409,7 +425,7 @@
         <div class="field-group">
             <label for="select2-reportingDay">{{'Reporting Day' | i18n}}</label>
             <select id="select2-reportingDay"
-                    class="select"
+                    class="common"
                     title="{{'Reporting Day' | i18n}}"
                     ng-model="reportingDay.val"
                     ng-change="saveReportingDay()"
@@ -426,7 +442,7 @@
         <div class="field-group">
             <label for="select2-weekendType">{{'Weekend Type' | i18n}}</label>
             <select id="select2-weekendType"
-                    class="select"
+                    class="common"
                     title="{{'Weekend Type' | i18n}}"
                     ng-model="weekendType.val"
                     ng-change="saveWeekendType()"
@@ -444,7 +460,7 @@
             <label for="useIsoWeek">{{'Use ISO Week' | i18n}}</label>
             <input id="useIsoWeek"
                    type="checkbox"
-                   class="checkbox"
+                   class="apple-switch"
                    ng-model="useIsoWeek.val"
                    ng-change="saveUseIsoWeek()">
             <div class="aui-message aui-message-success msg-overlay"
@@ -457,19 +473,19 @@
         </div>
         <div class="field-group">
             <label for="workingDayStart">{{'Working Time In Status' | i18n}}</label>
-            {{'From' | i18n}}&nbsp;
+            <span class="m-0-important">{{'From' | i18n}}&nbsp;</span>
             <input id="workingDayStart" ng-model="workingTimeInStatus.val.from" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
-                   type="number" class="text" title="{{'Working Day Start' | i18n}}" style="max-width: 50px;" ng-model-options='{ debounce: 1000 }'/>
-            &nbsp;{{'To' | i18n}}&nbsp;
+                   type="number" class="text-field single" title="{{'Working Day Start' | i18n}}" style="width: 50px;" ng-model-options='{ debounce: 1000 }'/>
+            <span class="m-0-important">&nbsp;{{'To' | i18n}}&nbsp;</span>
             <input id="workingDayEnd" ng-model="workingTimeInStatus.val.to" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
-                   type="number" class="text" style="max-width: 50px;" ng-model-options='{ debounce: 1000 }'/>
-            &nbsp;{{'Break Time' | i18n}}
-            {{'From' | i18n}}&nbsp;
+                   type="number" class="text-field single" style="width: 50px;" ng-model-options='{ debounce: 1000 }'/>
+            <span class="m-0-important">&nbsp;{{'Break Time' | i18n}}</span>
+            <span class="m-0-important">{{'From' | i18n}}&nbsp;</span>
             <input id="workingDayBreakStart" ng-model="workingTimeInStatus.val.breakFrom" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
-                   type="number" class="text" style="max-width: 50px;" ng-model-options='{ debounce: 1000 }'/>
-            &nbsp;{{'To' | i18n}}&nbsp;
+                   type="number" class="text-field single" style="width: 50px;" ng-model-options='{ debounce: 1000 }'/>
+            <span class="m-0-important">&nbsp;{{'To' | i18n}}&nbsp;</span>
             <input id="workingDayBreakEnd" ng-model="workingTimeInStatus.val.breakTo" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
-                   type="number" class="text" title="{{'Working Day End' | i18n}}" style="max-width: 50px;" ng-model-options='{ debounce: 1000 }'/>
+                   type="number" class="text-field single" title="{{'Working Day End' | i18n}}" style="width: 50px;" ng-model-options='{ debounce: 1000 }'/>
             <div class="aui-message aui-message-success msg-overlay"
                  ng-show="workingTimeInStatusSaveSuccess">
                 <strong>{{'Working Time In Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
@@ -481,7 +497,7 @@
         <div class="field-group">
             <label for="select2-durationType">{{'Duration Type' | i18n}}</label>
             <select id="select2-durationType"
-                    class="select"
+                    class="common"
                     title="{{'Duration Type' | i18n}}"
                     ng-model="durationType.val"
                     ng-change="saveDurationType()"
@@ -502,7 +518,7 @@
                    ng-model="maxFractionDigits.val"
                    min="0" max="20"
                    ng-change="configForm.maxFractionDigits.$valid && saveMaxFractionDigits()"
-                   type="number" class="text"
+                   type="number" class="text-field common"
                    ng-model-options='{ debounce: 1000 }'
                    title="{{'Maximum Fraction Digits' | i18n}}"/>
             <div class="aui-message aui-message-success msg-overlay"
@@ -584,7 +600,7 @@
         <div class="field-group">
             <label for="select2-durationTypeForExport">{{'Duration Type For Export' | i18n}}</label>
             <select id="select2-durationTypeForExport"
-                    class="select"
+                    class="common"
                     title="{{'Duration Type For Export' | i18n}}"
                     ng-model="durationTypeForExport.val"
                     ng-change="saveDurationTypeForExport()"
@@ -619,7 +635,7 @@
             <label for="startedTimeInStatus">{{'Started Time In Status' | i18n}}</label>
             <input id="startedTimeInStatus"
                    type="checkbox"
-                   class="checkbox"
+                   class="apple-switch"
                    ng-model="startedTimeInStatus.val"
                    ng-change="saveStartedTimeInStatus()">
             <div class="aui-message aui-message-success msg-overlay"
@@ -638,7 +654,7 @@
                         <input name="inProgressIssuesJql"
                                id="inProgressIssuesJql"
                                type="text"
-                               class="text"
+                               class="text-field single w-72"
                                ng-model="inProgressIssuesJql.val"
                                jql
                                ng-model-options='{ debounce: 1000 }'
@@ -651,7 +667,7 @@
                     <td>
                         <input id="inProgressIssuesJqlLogOnly"
                                type="checkbox"
-                               class="checkbox"
+                               class="apple-switch"
                                ng-model="inProgressIssuesJqlLogOnly.val"
                                ng-change="saveInProgressIssuesJqlLogOnly()">
                         <div class="aui-message aui-message-success msg-overlay"
@@ -660,7 +676,7 @@
                         </div>
                     </td>
                     <td>
-                        {{'Do not allow to Log Work on other issues' | i18n}}
+                        <span class="m-0-important">{{'Do not allow to Log Work on other issues' | i18n}}</span>
                     </td>
                 </tr>
             </table>
@@ -675,7 +691,7 @@
             <label for="showDetailsCount">{{'Show Details Number' | i18n}}</label>
             <input id="showDetailsCount"
                    type="checkbox"
-                   class="checkbox"
+                   class="apple-switch"
                    ng-model="showDetailsCount.val"
                    ng-change="saveShowDetailsCount()">
             <div class="aui-message aui-message-success msg-overlay" ng-show="showDetailsCountSaveSuccess">
@@ -689,7 +705,7 @@
             <label for="showCategoryRow">{{'Show Category Row' | i18n}}</label>
             <input id="showCategoryRow"
                    type="checkbox"
-                   class="checkbox"
+                   class="apple-switch"
                    ng-model="showCategoryRow.val"
                    ng-change="saveShowCategoryRow()">
             <div class="aui-message aui-message-success msg-overlay" ng-show="showCategoryRowSaveSuccess">
@@ -703,7 +719,7 @@
             <label for="showTotalInFront">{{'Show Total In Front' | i18n}}</label>
             <input id="showTotalInFront"
                    type="checkbox"
-                   class="checkbox"
+                   class="apple-switch"
                    ng-model="showTotalInFront.val"
                    ng-change="saveShowTotalInFront()">
             <div class="aui-message aui-message-success msg-overlay" ng-show="showTotalInFrontSaveSuccess">
@@ -717,7 +733,7 @@
             <label for="newTimeEntry">{{'New Time Entry' | i18n}}</label>
             <input id="newTimeEntry"
                    type="checkbox"
-                   class="checkbox"
+                   class="apple-switch"
                    ng-model="newTimeEntry.val"
                    ng-change="saveNewTimeEntry()">
             <div class="aui-message aui-message-success msg-overlay" ng-show="newTimeEntrySaveSuccess">
@@ -734,7 +750,7 @@
                    ng-model="rowsPerPage.val"
                    min="0"
                    ng-change="configForm.rowsPerPage.$valid && saveRowsPerPage()"
-                   type="number" class="text"
+                   type="number" class="text-field common"
                    ng-model-options='{ debounce: 1000 }'
                    title="{{'Rows per Page' | i18n}}"
                    placeholder="{{defaults.rowsPerPage.default}}"/>
@@ -751,19 +767,19 @@
         <div id="calendar"></div>
     </div>
     <div ng-show="page=='auditLog'">
-        <table cellspacing="5" cellpadding="0" border="0" style="margin-left: -5px">
-            <tr ng-repeat="log in auditLog">
-                <td nowrap>{{log.updated | date:'short'}}</td>
-                <td><a ng-title="{{authors[log.accountId].displayName}}"
+        <table cellspacing="5" cellpadding="0" border="0" class="ml-5 font-light text-text-color-3 text-sm">
+            <tr ng-repeat="log in auditLog" class="h-9">
+                <td nowrap class="w-36">{{log.updated | date:'short'}}</td>
+                <td class="w-8"><a ng-title="{{authors[log.accountId].displayName}}"
                    ng-href="{{hostBaseUrl + '/people/' + log.accountId}}" target="_parent">
-                    <img ng-alt="{{log.author.displayName}}" class="avatar-image" style="border-radius: 50%; vertical-align: middle;"
-                         ng-src="{{log.author.avatarUrls['16x16']}}" width="16" height="16">
+                    <img ng-alt="{{log.author.displayName}}" class="avatar-image""
+                         ng-src="{{log.author.avatarUrls['16x16']}}" width="21" height="21">
                 </a></td>
                 <td nowrap>{{log.author.displayName}}</td>
                 <td>{{log.key}}: {{log.val}}</td>
             </tr>
         </table>
-        <div>
+        <div class="ml-5 mt-5 font-light text-text-color-3 text-sm">
             <span class="description">{{'description.Audit Log' | i18n:{placeholders:['2020-02-04']} }}</span>
         </div>
     </div>

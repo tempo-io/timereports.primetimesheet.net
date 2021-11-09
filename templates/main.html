@@ -1,16 +1,4 @@
-<div class="banner-home" ng-if="!isGadget && !hideBannerNewUI">
-    <i class="icon-image info"></i> 
-    <span class="text">
-        {{ 'BannerMessage' | i18n }} <a target='_blank' href="https://help.tempo.io/timesheet-reports-and-gadgets/en/timesheet-reports-and-gadgets-for-jira-cloud/differences-between-legacy-design-and-new-design.html">{{ 'Here' | i18n}}</a>.
-    </span>
-    <i class="icon-image remove"
-       ng-click="removeBannerNewUI()"
-       title="Remove Message">
-    </i>
-</div>
-
-<div ng-if="!isGadget" class="header margin">
-    <ng-include src="templates.header"></ng-include>
+<div ng-if="!isGadget">
     <aui-inline-dialog id="on-error" template="'/templates/popups/onError.html'" init-fn="initOnErrorPopup(params)"/>
 </div>
 
@@ -43,11 +31,11 @@
     <modal-like-dialog controller="'WorklogDialogController'" data="worklogDialogData"/>
 </div>
 
-<div ng-if="!showGadgetConfiguration && !gadgetDialog" class="main margin">
-  <div class="menu noprint" ng-if="!isGadget && !hideMenu">
+<div ng-if="!showGadgetConfiguration && !gadgetDialog" class="main w-full">
+    <div class="pl-4 pr-4 pb-4 bg-backgroung-color-3 noprint border-r border-gray-200 w-60" ng-if="!isGadget && !hideMenu">
     <ng-include src="templates.menu"></ng-include>
   </div>
-  <div class="content">
+  <div class="content overflow-hidden" ng-class="{ 'height-reports': !isGadget }">
     <ng-include src="contentTemplate()"></ng-include>
   </div>
 </div>
@@ -103,9 +91,9 @@
 </script>
 <script type="text/ng-template" id="worklog-dialog-template">
     <!-- Dialog header -->
-    <header class="aui-dialog2-header">
+    <header class="aui-dialog2-header log-hours">
         <!-- The dialog''s title -->
-        <h1 class="aui-dialog2-header-main copyLinkHeader">
+        <h3 class="aui-dialog2-header-main copyLinkHeader font-bold border-b border-gray-200">
             {{dialogType == 'add' ? 'Log Work Done' : 'Edit Work Log' | i18n}}
             <i class="fa fa-link edit"
                ng-if="dialogType == 'add'"
@@ -113,57 +101,65 @@
                copy-to-clipboard="logWork=true"
                title="{{'Copy Link' | i18n}}">
             </i>
-        </h1>
+        </h3>
         <!-- Close icon -->
         <a class="aui-dialog2-header-close" ng-click="cancel()">
             <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">{{'Close' | i18n}}</span>
         </a>
     </header>
     <!-- Main dialog content -->
-    <div class="aui-dialog2-content">
+    <div class="aui-dialog2-content log-hours">
         <form class="aui" name="logWorkForm">
-            <ng-include src="'/templates/dialogs/updateWorklog.html'"></ng-include>
+            <ng-include class="log-work dialog" src="'/templates/dialogs/updateWorklog.html'"></ng-include>
         </form>
     </div>
     <!-- Dialog footer -->
-    <footer class="aui-dialog2-footer">
+    <footer class="aui-dialog2-footer log-hours">
         <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
         <!-- Actions to render on the right of the footer -->
         <div class="aui-dialog2-footer-actions">
-            <button class="aui-button submit"
+            <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
                     ng-click="save()"
                     ng-disabled="logWorkForm.$invalid || loading"
                     ng-class="{disabled: logWorkForm.$invalid || loading}">
-                {{'Save' | i18n}}
+                {{'Log Time' | i18n}}
             </button>
-            <button class="aui-button aui-button-link" ng-click="cancel()">{{'Cancel' | i18n}}</button>
+            <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                    ng-click="cancel()">
+                {{'Cancel' | i18n}}
+            </button>
         </div>
     </footer>
 </script>
 <script type="text/ng-template" id="worklog-gadget-dialog-template">
     <!-- Dialog header -->
-    <h1 class="aui-dialog2-header-main" style="padding: 0 4px" ng-if="!standaloneDialog">
+    <span class="font-bold text-xl" ng-if="!standaloneDialog">
         {{dialogType == 'add' ? 'Log Work Done' : 'Edit Work Log' | i18n}}
-    </h1>
+    </span>
     <!-- Main dialog content -->
     <div>
         <form class="aui" name="logWorkForm">
             <form-invalid ng-if="standaloneDialog"></form-invalid>
-            <ng-include src="'/templates/dialogs/updateWorklog.html'"></ng-include>
-            <div class="buttons-container" ng-if="!showMore">
+            <ng-include class="log-work" src="'/templates/dialogs/updateWorklog.html'"></ng-include>
+            <div ng-if="!showMore" class="mr-37 issue-work-buttons">
                 <div class="buttons">
-                    <button class="aui-button aui-button-link" ng-click="toggleShowMore()">({{'more options' | i18n}})</button>
+                    <button class="aui-button aui-button-link" ng-click="toggleShowMore()">
+                        {{'more options' | i18n}}
+                    </button>
                 </div>
             </div>
-            <div class="buttons-container" ng-if="!standaloneDialog">
+            <div ng-if="!standaloneDialog" class="mr-37 pb-6 issue-work-buttons">
                 <div class="buttons">
-                    <button class="aui-button submit"
+                    <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
                             ng-click="save()"
                             ng-disabled="logWorkForm.$invalid || loading"
                             ng-class="{disabled: logWorkForm.$invalid || loading}">
-                        {{'Save' | i18n}}
+                        {{'Log Time' | i18n}}
                     </button>
-                    <button class="aui-button aui-button-link" ng-click="cancel()">{{'Cancel' | i18n}}</button>
+                    <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                            ng-click="cancel()">
+                        {{'Cancel' | i18n}}
+                    </button>
                     <span class="fa fa-spinner fa-spin" ng-show="loading" style="margin: 0 50px;"></span>
                 </div>
             </div>
@@ -173,113 +169,112 @@
 </script>
 <script type="text/ng-template" id="delete-worklog-dialog-template">
     <!-- Dialog header -->
-    <header class="aui-dialog2-header">
+    <header class="aui-dialog2-header log-hours">
         <!-- The dialog''s title -->
-        <h1 class="aui-dialog2-header-main">
+        <h3 class="aui-dialog2-header-main copyLinkHeader font-bold border-b border-gray-200">
             {{'Delete Work Log' | i18n}}
-        </h1>
+        </h3>
         <!-- Close icon -->
         <a class="aui-dialog2-header-close" ng-click="cancel()">
             <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">{{'Close' | i18n}}</span>
         </a>
     </header>
     <!-- Main dialog content -->
-    <div class="aui-dialog2-content">
+    <div class="aui-dialog2-content log-hours">
         <form class="aui" name="deleteWorkForm">
             <ng-include src="'/templates/dialogs/deleteWorklog.html'"></ng-include>
         </form>
     </div>
-    <!-- Dialog footer -->
-    <footer class="aui-dialog2-footer">
-        <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
+
+    <footer class="aui-dialog2-footer log-hours">
         <!-- Actions to render on the right of the footer -->
         <div class="aui-dialog2-footer-actions">
-            <button class="aui-button submit"
+            <span class="fa fa-spinner fa-spin" ng-show="loading" style="margin: 0 50px;"></span>
+            <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
                     ng-click="delete()"
                     ng-disabled="deleteWorkForm.$invalid || loading"
                     ng-class="{disabled: deleteWorkForm.$invalid || loading}">
                 {{'Delete' | i18n}}
             </button>
-            <button class="aui-button aui-button-link" ng-click="cancel()">{{'Cancel' | i18n}}</button>
-         </div>
+            <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                    ng-click="cancel()">
+                {{'Cancel' | i18n}}
+            </button>
+        </div>
     </footer>
 </script>
 <script type="text/ng-template" id="delete-worklog-gadget-dialog-template">
     <!-- Dialog header -->
-    <h1 class="aui-dialog2-header-main" style="padding: 0 4px">
+    <span class="font-bold text-xl" style="padding: 0 4px">
         {{'Delete Work Log' | i18n}}
-    </h1>
+    </span>
     <!-- Main dialog content -->
     <div class="aui-dialog2-content">
         <form class="aui" name="deleteWorkForm">
             <ng-include src="'/templates/dialogs/deleteWorklog.html'"></ng-include>
-            <div class="buttons-container">
+            <div class="mr-37 pb-6 mt-5 issue-work-buttons">
                 <div class="buttons">
-                    <button class="aui-button submit"
+                    <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
                             ng-click="delete()"
                             ng-disabled="deleteWorkForm.$invalid || loading"
                             ng-class="{disabled: deleteWorkForm.$invalid || loading}">
                         {{'Delete' | i18n}}
                     </button>
-                    <button class="aui-button aui-button-link" ng-click="cancel()">{{'Cancel' | i18n}}</button>
+                    <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                            ng-click="cancel()">
+                        {{'Cancel' | i18n}}
+                    </button>
                     <span class="fa fa-spinner fa-spin" ng-show="loading" style="margin: 0 50px;"></span>
                 </div>
             </div>
         </form>
     </div>
 </script>
-<script type="text/ng-template" id="invoice-dialog-template">
-    <!-- Dialog header -->
-    <header class="aui-dialog2-header">
-        <h1 class="aui-dialog2-header-main">
-            {{'Invoice Template' | i18n }}
-        </h1>
-        <a class="aui-dialog2-header-close" ng-click="cancel()">
-            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
-        </a>
-    </header>
+<script type="text/ng-template" id="invoice-dialog-template">    
     <!-- Main dialog content -->
     <div class="aui-dialog2-content">
+        <!-- Dialog header -->
+        <h3 class="font-bold pb-8 pt-6 display-flex border-b border-gray-200">
+            {{'Invoice Template' | i18n }}
+        </h3>
         <form class="aui" name="hourlyRatesForm">
-            <div class="rowCenter">
-                <textarea rows="5" cols="200" class="textarea full-width-field" ng-model="invoice.header" ng-change="invoiceChanged()"></textarea>
+            <div class="rowCenter mt-10">
+                <label class="w-40 mb-16 text-xs text-text-color-1-important">Header</label>
+                <textarea 
+                    rows="5"
+                    cols="200"
+                    class="border-solid border rounded border-text-divider-color-3 w-30rem"
+                    ng-model="invoice.header"
+                    ng-change="invoiceChanged()">
+                </textarea>
             </div>
-            <table id="issuetable" cellspacing="0" cellpadding="3" border="0" width="100%" width="100%">
-                <thead>
-                    <tr class="rowHeader">
-                        <th class="colHeaderLink" width="100%">
-                            {{'Summary' | i18n}}
-                        </th>
-                        <th>
-                            {{'3timespent' | i18n}}
-                        </th>
-                        <th ng-if="!hideTotalColumn">
-                            {{'62rate' | i18n}}
-                        </th>
-                        <th ng-if="!hideTotalColumn">
-                            {{'7cost' | i18n}}
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="rowNormal">
-                          <td colspan="4">&nbsp;</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="rowCenter">
-                <textarea rows="5" cols="200" class="textarea full-width-field" ng-model="invoice.footer" ng-change="invoiceChanged()"></textarea>
+        <div class="rowCenter mt-5 pb-5">
+                <label  class="w-40 mb-16 text-xs text-text-color-1-important">Footer</label>
+                <textarea
+                    rows="5"
+                    cols="200"
+                    class="border-solid border rounded border-text-divider-color-3 w-30rem"
+                    ng-model="invoice.footer"
+                    ng-change="invoiceChanged()">
+                </textarea>
             </div>
         </form>
     </div>
     <!-- Dialog footer -->
-    <footer class="aui-dialog2-footer">
-        <div class="aui-dialog2-footer-actions">
-            <button class="aui-button aui-button-default" ng-click="save(true)">{{'Save' | i18n}}</button>
+    <footer class="aui-dialog2-footer big">
+        <div class="aui-dialog2-footer-actions">            
+            <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
+                    ng-click="save(true)">
+                {{'Save' | i18n}}
+            </button>
+            <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                      ng-click="cancel()">
+                {{'Cancel' | i18n}}
+            </button>
         </div>
     </footer>
 </script>
 
-<div class="footer margin noprint" ng-if="!isGadget">
+<div class="footer noprint" ng-if="!isGadget">
     <ng-include src="'/templates/footer.html'"></ng-include>
 </div>

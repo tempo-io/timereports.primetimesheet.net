@@ -18,29 +18,25 @@
 }
 /*! AUI Label */
 .aui-label {
-  background: #f4f5f7;
-  /*border: 1px solid #cccccc;*/
-  border-radius: 3px;
-  /* 3.01 for IE10 */
-  color: #333333;
+  background-color: var(--text-divider-color-4);
+  border-width: 0;
+  border-radius: 10px;
+  box-shadow: none;
+  color: var(--text-color-3);
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: normal;
   line-height: 1;
-  padding: 2px 4px;
-  margin: 0 5px 0 0;
+  padding: 5px 29px 5px 10px;
+  position: relative;
+  margin-bottom: 6px;
+  margin-top: 6px;
+  margin-right: 6px;
   text-align: left;
   text-decoration: none;
 }
 .aui-label:not(.inactive):hover {
   background: #ebecf0;
-}
-span.icon-close > svg {
-  color: #333333;
-  padding: 2px 0 2px 6px;
-}
-span.icon-close:not(.inactive):hover > svg {
-  color: #bf2600;
 }
 /* Need the split hover to trigger border on parent while split label/X are hovered */
 .aui-label.aui-label-closeable.aui-label-split:hover,
@@ -633,23 +629,6 @@ Version: 3.4.4 Timestamp: Thu Oct 24 13:23:11 PDT 2013
 .select2-drop.select2-drop-above.select2-drop-active {
   border-top: 1px solid #5897fb;
 }
-.select2-container .select2-choice .select2-arrow {
-  display: inline-block;
-  width: 18px;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  border-left: 1px solid #aaa;
-  border-radius: 0 4px 4px 0;
-  background-clip: padding-box;
-  background: #ccc;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #cccccc), color-stop(0.6, #eeeeee));
-  background-image: -webkit-linear-gradient(center bottom, #cccccc 0%, #eeeeee 60%);
-  background-image: -moz-linear-gradient(center bottom, #cccccc 0%, #eeeeee 60%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc', GradientType=0);
-  background-image: linear-gradient(top, #cccccc 0%, #eeeeee 60%);
-}
 .select2-container .select2-choice .select2-arrow b {
   display: block;
   width: 100%;
@@ -696,13 +675,7 @@ Version: 3.4.4 Timestamp: Thu Oct 24 13:23:11 PDT 2013
   background: url('select2-spinner.gif') no-repeat 100%, -moz-linear-gradient(center bottom, #ffffff 85%, #eeeeee 99%);
   background: url('select2-spinner.gif') no-repeat 100%, linear-gradient(top, #ffffff 85%, #eeeeee 99%);
 }
-.select2-container-active .select2-choice,
-.select2-container-active .select2-choices {
-  border: 1px solid #5897fb;
-  outline: none;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
+
 .select2-dropdown-open .select2-choice {
   border-bottom-color: transparent;
   -webkit-box-shadow: 0 1px 0 #fff inset;
@@ -716,16 +689,7 @@ Version: 3.4.4 Timestamp: Thu Oct 24 13:23:11 PDT 2013
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
   background-image: linear-gradient(top, #ffffff 0%, #eeeeee 50%);
 }
-.select2-dropdown-open.select2-drop-above .select2-choice,
-.select2-dropdown-open.select2-drop-above .select2-choices {
-  border: 1px solid #5897fb;
-  border-top-color: transparent;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(0.5, #eeeeee));
-  background-image: -webkit-linear-gradient(center top, #ffffff 0%, #eeeeee 50%);
-  background-image: -moz-linear-gradient(center top, #ffffff 0%, #eeeeee 50%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
-  background-image: linear-gradient(bottom, #ffffff 0%, #eeeeee 50%);
-}
+
 .select2-dropdown-open .select2-choice .select2-arrow {
   background: transparent;
   border-left: none;
@@ -834,18 +798,18 @@ disabled look for disabled choices in the results dropdown
 }
 /* disabled styles */
 .select2-container.select2-container-disabled .select2-choice {
-  background-color: #f4f4f4;
-  background-image: none;
-  border: 1px solid #ddd;
-  cursor: default;
+  background-color: #f4f4f4 !important;
+  background-image: none !important;
+  border: 1px solid #ddd !important;
+  cursor: default !important;
 }
 .select2-container.select2-container-disabled .select2-choice .select2-arrow {
-  background-color: #f4f4f4;
-  background-image: none;
-  border-left: 0;
+  background-color: #f4f4f4 !important;
+  background-image: none !important;
+  border-left: 0 !important;
 }
 .select2-container.select2-container-disabled .select2-choice abbr {
-  display: none;
+  display: none !important;
 }
 /* multiselect */
 .select2-container-multi .select2-choices {
@@ -919,15 +883,14 @@ disabled look for disabled choices in the results dropdown
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  background-color: #e4e4e4;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#f4f4f4', GradientType=0);
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eeeeee));
-  background-image: -webkit-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
-  background-image: -moz-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
-  background-image: linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
 }
 .select2-container-multi .select2-choices .select2-search-choice .select2-chosen {
   cursor: default;
+}
+.select2-choices {
+  background-color: white !important;
+  border: 1px solid var(--text-divider-color-2-dark) !important;
 }
 .select2-container-multi .select2-choices .select2-search-choice-focus {
   background: #d4d4d4;
@@ -1149,29 +1112,28 @@ disabled look for disabled choices in the results dropdown
 .aui-select2-container.select2-container a.select2-choice:active {
   text-decoration: none;
 }
-.aui-select2-container.select2-container .select2-choice:after {
-  border: 4px solid transparent;
-  content: "";
-  height: 0;
-  left: 100%;
-  /* "left" + "margin-left" required because of webkit not working properly with "right" */
-  margin-left: -18px;
-  margin-top: -2px;
-  opacity: 0.8;
-  position: absolute;
-  top: 50%;
-  width: 0;
+.issue-key-area .aui-select2-container.select2-container .select2-choice:after {  
+  left: 92% !important;
 }
-.aui-select2-container.select2-container .select2-choice:after {
-  border-top-color: #333333;
+.periodically .aui-select2-container.select2-container .select2-choice:after {  
+  left: 90% !important;
+}
+.user-hourly-rate .aui-select2-container.select2-container .select2-choice:after {  
+  left: 90% !important;
+}
+.aui-select2-container.select2-container .select2-choice:after {  
+  background: url(/images/icon-arrow-down.png) no-repeat right;
+  content: '';
+  left: 85%;
+  position: absolute;
+  top: 19%;
+  width: 24px;
+  height: 24px;
+  background-size: 24px;
 }
 .aui-select2-container.select2-container .select2-choice:hover:after,
 .aui-select2-container.select2-container .select2-choice.active:after {
   opacity: 1;
-}
-.aui-select2-container.select2-container .select2-choice:after {
-  margin-top: 0;
-  top: 12px;
 }
 /* Set the default text color to inherit.
    NOTE: this class is only marked as !important because Select2 marks the same
@@ -1190,9 +1152,9 @@ disabled look for disabled choices in the results dropdown
 .aui-select2-container .select2-choices .select2-search-field input {
   font-family: inherit;
   font-size: 14px;
-  height: 1.4285714285714em;
+  height: 2.4285714285714em;
   /* 20px - using ems so the fields increase in line with user specified font-sizes */
-  line-height: 1.4285714285714;
+  line-height: 1.75rem;
   margin: 0;
   padding: 0;
 }
@@ -1204,18 +1166,17 @@ disabled look for disabled choices in the results dropdown
   height: auto;
 }
 .aui-select2-container .select2-choices .select2-search-choice {
-  background: #f5f5f5;
+  background-color: var(--text-divider-color-4);
   /*border: 1px solid #cccccc;*/
   border-width: 0;
-  border-radius: 3.01px;
-  /* 3.01 for IE10 */
+  border-radius: 10px;
   box-shadow: none;
-  color: #333333;
+  color: var(--text-color-3);
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: normal;
   line-height: 1;
-  padding: 1px 18px 1px 5px;
+  padding: 5px 33px 5px 10px;
   position: relative;
   margin: 1px 5px 1px 0;
   text-align: left;
@@ -1238,8 +1199,8 @@ disabled look for disabled choices in the results dropdown
   height: 8px;
   left: auto;
   position: absolute;
-  right: 5px;
-  top: 4px;
+  right: 10px;
+  top: 8px;
   width: 8px;
 }
 /* Clear select2's overrides for retina displays */
@@ -1247,8 +1208,8 @@ disabled look for disabled choices in the results dropdown
   .aui-select2-container.select2-container .select2-search-choice-close,
   .aui-select2-container.select2-container .select2-choice abbr {
     /* !important to ensure that the select2 hover state doesn't modify the background position */
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAKUlEQVQI12NgYFj0nwEKwKxF/9P+Q4TgLAgDIQEVQuJiCKBpwWoosrUAzbg31XT4p6QAAAAASUVORK5CYII=') 0 0 no-repeat !important;
-    background-size: 8px !important;
+    background: url('/images/icon-remove.png') no-repeat center !important;
+    background-size: 10px !important;
   }
 }
 /* In order to beat out select2's overrides, the aui-button style had to be copied in below.
@@ -1256,14 +1217,13 @@ disabled look for disabled choices in the results dropdown
    element consistent.*/
 .aui-select2-container.select2-container .select2-choice,
 form.aui .aui-select2-container.select2-container .select2-choices,
-form.aui input.select,
 .aui-select2-container.select2-container a.select2-choice,
 .aui-select2-container.select2-container .select2-choice:visited {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: #fafbfc;
-  border: 1px solid #f4f5f7;
-  border-radius: 5px;
+  background: white;
+  border: 1px solid var(--text-divider-color-2-dark) !important;
+  border-radius: 3px;
   color: inherit;
   cursor: pointer;
   display: inline-block;
@@ -1272,7 +1232,7 @@ form.aui input.select,
   font-size: inherit;
   font-variant: normal;
   font-weight: normal;
-  height: 2.1428571428571em;
+  height: 35px;
   /* 30px - using ems so the fields increase in line with user specified font-sizes */
   line-height: 1.4285714285714;
   margin: 0;
@@ -1291,7 +1251,6 @@ form.aui input.select,
 }
 .aui-select2-container.select2-container .select2-choice:active,
 form.aui .aui-select2-container.select2-container.select2-container-active .select2-choices,
-form.aui input.select.active,
 .aui-select2-container.select2-container.select2-dropdown-open .select2-choice {
   background-image: none;
   filter: none;
@@ -2302,4 +2261,49 @@ form.aui .password[data-aui-notification-success] {
 .aui-select2-container.select2-container .select2-choice:hover {
   background-color: #EBECF0;
   border-color: #DFE1E6;
+}
+
+/* It was done to don't break the send email box */
+.contents {
+  display: block !important;
+}
+
+.aui-nav-pagination {
+  margin: 0 !important;
+}
+
+.aui-nav-pagination > li > a {
+  padding: 6px !important;
+}
+
+.aui-lozenge-error.aui-lozenge-subtle {
+  font-size: 14px;
+  font-weight: 600;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.aui-dialog2-header, .aui-dialog2-footer {
+  background: white !important;
+}
+
+.aui-dialog2-header.log-hours, .aui-dialog2-header.no-border {
+  border-bottom: none;
+}
+
+.aui-dialog2-content.log-hours{
+  overflow: hidden !important;
+}
+
+.aui-dialog2-footer.log-hours {
+  border-top: none;
+  padding-bottom: 60px;
+}
+.cc-mail .aui-select2-container.select2-container-multi {
+  max-width: 320px !important;
+}
+.aui-dialog2-footer.big {
+  height: 60px !important;
 }

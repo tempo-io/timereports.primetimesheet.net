@@ -1,56 +1,70 @@
 <form class="aui" name="logWorkForm">
-<table cellpadding="0" border="0" ng-style="{'border-spacing': popupData.worklogs ? '0 5px' : '5px'}">
-    <tr>
-        <td colspan="2">
-            {{'Log Work for' | i18n}} {{popupData.worklog.date | date:'dd/MMM/yy'}}
-        </td>
-        <td>
-            <span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span>
-        </td>
-    </tr>
-    <tr>
-        <td><label>{{'Spent' | i18n}}</label></td>
-        <td>
-            <input type="text"
-                   name="timeSpent"
-                   size="8"
-                   ng-model="popupData.worklog.timeSpent"
-                   enter-pressed="popupData.addWorklog(closePopup)"
-                   auto-focus="true"
-                   required
-                   timespent
-                   work-per-day="{started: popupData.worklog.date, configOptions: popupData.configOptions, user: popupData.worklog.user || popupData.loggedInUser}"
-                   ng-model-options='{ debounce: 100 }'/>
-        </td>
-        <td><longer-one-day-warning ng-if="logWorkForm.$valid">&gt;1d!</longer-one-day-warning>
-          <span ng-show="logWorkForm.timeSpent.$error.workPerDayError" role="alert" class="red">
-            {{logWorkForm.timeSpent.$error.workPerDayError}}
-          </span>
-          (<a ng-click="popupData.openMoreOptionDialog();closePopup();">{{'more options' | i18n}}</a>)
-        </td>
-    </tr>
-    <tr>
-        <td><label>{{'Comment' | i18n}}</label></td>
-        <td colspan="2">
-            <input class="error"
-                   type="text"
-                   size="25"
-                   ng-model="popupData.worklog.comment"
-                   work-labels="workLabelsList"
-                   enter-pressed="popupData.loading || popupData.addWorklog(closePopup)"
-                   ng-required="workDescriptionRequired"
-                   placeholder="{{workDescriptionRequired ? '(required)' : ''}}"/>
-        </td>
-    </tr>
-    <tr ng-if="popupData.worklog.visibilityGroup || popupData.worklog.visibilityRole">
-        <td><label>{{'Restricted to' | i18n}}</label></td>
-        <td><span class="red">{{popupData.worklog.visibilityGroup || popupData.worklog.visibilityRole}}</span></td>
-    </tr>
-    <tr ng-if="popupData.worklog.user">
-        <td style="text-align: right"><span class="aui-icon aui-icon-warning">Warning</span></td>
-        <td colspan="2">
-            {{'Log work on behalf of' | i18n}}&nbsp;{{popupData.worklog.user.displayName}}
-        </td>
-    </tr>
-</table>
+    <table cellpadding="0" border="0" ng-style="{'border-spacing': popupData.worklogs ? '0 5px' : '5px'}">
+        <tr>
+            <td colspan="2" class="font-bold">
+                {{'Log Work for' | i18n}} {{popupData.worklog.date | date:'dd/MMM/yy'}}
+            </td>
+            <td>
+                <span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label class="font-medium text-text-color-1-important text-xs">{{'Spent' | i18n}}</label></td>
+            <td>
+                <input type="text"
+                    name="timeSpent"
+                    size="8"
+                    ng-model="popupData.worklog.timeSpent"
+                    auto-focus="true"
+                    required
+                    timespent
+                    class="w-14 normal-text-field"
+                    work-per-day="{started: popupData.worklog.date, configOptions: popupData.configOptions, user: popupData.worklog.user || popupData.loggedInUser}"
+                    ng-model-options='{ debounce: 100 }'/>
+            </td>
+            <td><longer-one-day-warning ng-if="logWorkForm.$valid">&gt;1d!</longer-one-day-warning>
+                <span ng-show="logWorkForm.timeSpent.$error.workPerDayError" role="alert" class="red">
+                    {{logWorkForm.timeSpent.$error.workPerDayError}}
+                </span>
+                <a ng-click="popupData.openMoreOptionDialog();closePopup();" class="text-secondary-color">
+                {{'more options' | i18n}}
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td><label class="font-medium text-text-color-1-important text-xs">{{'Comment' | i18n}}</label></td>
+            <td colspan="2">
+                <input class="error normal-text-field"
+                    type="text"
+                    size="25"
+                    ng-model="popupData.worklog.comment"
+                    work-labels="workLabelsList"
+                    ng-required="workDescriptionRequired"
+                    placeholder="{{workDescriptionRequired ? '(required)' : ''}}"/>
+            </td>
+        </tr>
+        <tr ng-if="popupData.worklog.visibilityGroup || popupData.worklog.visibilityRole">
+            <td><label class="font-medium text-text-color-1-important text-xs">{{'Restricted to' | i18n}}</label></td>
+            <td><span class="red">{{popupData.worklog.visibilityGroup || popupData.worklog.visibilityRole}}</span></td>
+        </tr>
+        <tr ng-if="popupData.worklog.user">
+            <td style="text-align: right"><span class="aui-icon aui-icon-warning">Warning</span></td>
+            <td colspan="2">
+                {{'Log work on behalf of' | i18n}}&nbsp;{{popupData.worklog.user.displayName}}
+            </td>
+        </tr>
+    </table>
+
+    <div class="pt-4 pb-2 text-right pr-1">
+        <div>
+            <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
+                    ng-click="popupData.addWorklog(closePopup)">
+                {{'Save' | i18n}}
+            </button>
+            <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                      ng-click="closePopup()">
+                {{'Cancel' | i18n}}
+            </button>
+        </div>
+    </div>
 </form>

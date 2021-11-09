@@ -1,17 +1,20 @@
-<fieldset class="group">
-    <legend>
-        <span>{{'Remaining Estimate' | i18n}}</span>
-    </legend>
-    <div>
-        <input type="text"
-               class="text short-field"
-               ng-model="worklog.estimateValue"
-               id="adjust-estimate-new-value"
-               timespent
-               zeroable="true"
-               placeholder="{{estimatePlaceholder}}"
-               title="{{'eg. 4h 30m' | i18n}}">
-        &nbsp;
-        <a ng-if="worklog.issueKey" ng-click="worklog.estimateValue=timeestimatePretty">{{'Use current' | i18n}}&nbsp;{{timeestimatePretty}}</a>
-    </div>
-</fieldset>
+<div class="line-fields ak-field-group">
+    <label for="remain-estimate">{{'Remaining Estimate' | i18n}}</label>
+    <input type="text"
+            id="remain-estimate"
+            style="max-width: 100px"
+            name="remain-estimate"
+            class="text-field medium-field"
+            ng-model="worklog.estimateValue"
+            id="adjust-estimate-new-value"
+            timespent
+            zeroable="true"
+            placeholder="{{estimatePlaceholder}}"
+            title="{{'eg. 4h 30m' | i18n}}">
+    &nbsp;
+    <a ng-if="worklog.issueKey"
+       class="ml-1 text-secondary-color"
+       ng-click="worklog.estimateValue=timeestimatePretty">
+        {{'Use current' | i18n}}&nbsp;{{timeestimatePretty}}
+    </a>
+</div>

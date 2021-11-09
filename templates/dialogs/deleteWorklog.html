@@ -1,5 +1,10 @@
-    <div class="aui-message info">
-        {{'Are you sure you want to delete this worklog?' | i18n}}
+    <div class="ml-3 bg-secondary-color-clarity-4 pt-5 pb-5 rounded-md">
+        <i class="w-0 p-3 bg-24 bg-no-repeat bg-center mr-4 ml-4"
+            style="background-image: url('../images/info-icon.png')">
+        </i>
+        <span class="font-bold-light">{{'Are you sure you want to delete this worklog?' | i18n}}</span>
     </div>
 
-    <ng-include src="'/templates/dialogs/remainingEstimate.html'" ng-init="increaseBy=true"></ng-include>
+    <div class="log-work">
+        <ng-include src="'/templates/dialogs/remainingEstimate.html'" ng-init="increaseBy=true"></ng-include>
+    </div>

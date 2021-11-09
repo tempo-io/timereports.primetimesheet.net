@@ -1,36 +1,49 @@
-<form class="aui" name="SubmitIssueForm">
+<style>
+    .ac-content {
+        top: -20px;
+    }
+</style>
+
+<header class="aui-dialog2-header no-border">
+    <!-- The dialog''s title -->
+    <h2 class="aui-dialog2-header-main font-bold border-b border-gray-200">
+        {{'Contact support' | i18n }}
+    </h2>
+</header>
+
+<form class="aui bitbucket" name="SubmitIssueForm">
     <form-invalid/>
     <div class="field-group">
-        <p>Send email to support team{{ loggedInUser.emailAddress ? ' as ' + loggedInUser.displayName + ' <' + loggedInUser.emailAddress + '>' : ''}}.
-            <br>See <a href="https://www.primetimesheet.net/{{sitePrimeTimesheet}}/support.html" target="_blank">Support page</a> for other options. <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
-        </p>
+        <span>Send email to support team{{ loggedInUser.emailAddress ? ' as ' + loggedInUser.displayName + ' <' + loggedInUser.emailAddress + '>' : ''}}.
+            <br>See <a href="https://tempo-io.atlassian.net/servicedesk/customer/portal/6/group/31" target="_blank">Support page</a> for other options. <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
+        </span>
     </div>
     <div class="form-body" class="aui">
         <div ng-show="!loggedInUser.emailAddress" class="field-group">
-            <label for="email">Email <span class="aui-icon icon-required"></span><span class="content">required</span></label>
-            <input id="email" type="email" class="text" maxlength="40" ng-model="email" required>
+            <label for="email">Email*</label>
+            <input id="email" type="email" class="text-field single w-96" maxlength="40" ng-model="email" required>
         </div>
         <div ng-show="!loggedInUser.emailAddress" class="field-group">
             <span class="description">If you’d like to receive response, please, specify your email address.</span>
         </div>
         <div class="field-group">
             <label for="issue-title">
-                Title <span class="aui-icon icon-required"></span><span class="content">required</span>
+                Title*
             </label>
-            <input type="text" id="issue-title" class="text long-field ui-autocomplete-input" maxlength="150" id="issue-title" ng-model="title" autocomplete="off" required>
+            <input type="text" id="issue-title" class="text-field single w-96 ui-autocomplete-input" maxlength="150" id="issue-title" ng-model="title" autocomplete="off" required>
         </div>
         <fieldset>
             <div class="field-group">
-                <label for="issue-content">Problem Description <span class="aui-icon icon-required"></span><span class="content">required</span></label>
+                <label for="issue-content">Problem Description*</label>
                 <div class="wiki-edit">
                     <div class="wiki-edit-content" id="comment-wiki-edit">
-                        <textarea rows="{{loggedInUser.emailAddress ? 8 : 5}}" cols="60" class="textarea long-field"  id="issue-content" ng-model="content" ng-change="changeContent(content)" required></textarea>
+                        <textarea rows="{{loggedInUser.emailAddress ? 8 : 5}}" cols="60" class="textarea"  id="issue-content" ng-model="content" ng-change="changeContent(content)" required></textarea>
                         <div class="content-inner"></div>
                     </div>
                 </div>
             </div>
             <div class="field-group">
-                <span class="description">Describe what you've been doing when the problem occurred (keep exception trace if available)</span>
+                <span class="description">Describe what you've been doing when the problem occurred(keep exception trace if available)</span>
             </div>
         </fieldset>
         <div class="field-group" ng-if="includeSupportData.options">

@@ -83,7 +83,7 @@ describe('timesheet directive', function () {
 
   it('selectedOption', inject(function ($httpBackend) {
     $httpBackend.when('GET', 'i18n/default.json').respond(200, {
-      lab: 'My label value is %s'
+      lab: 'My label value is'
     })
 
     var closeFuncSpy = jasmine.createSpy('closeFuncSpy')
@@ -98,7 +98,7 @@ describe('timesheet directive', function () {
     var element = prepareJQueryElement(
       '<selected-option option="option" remove-action="doWithOption(\'OPT\')"/>')
 
-    expect(element).toContainText('My label value is PAR')
+    expect(element).toContainText('PAR')
     expect(element).toContainElement('span.aui-label')
 
     expect(closeFuncSpy).not.toHaveBeenCalled()

@@ -1,34 +1,70 @@
-<div id="slider-wrapper" class="noprint">
-    <div id="slider-prev" ng-if="!hidePrevNext">
+<div id="slider-wrapper"
+	 class="noprint flex h-10"
+	 ng-class="{
+		 'md:max-w-sm-2 sm:max-w-xs-2': ['TimeBalance', 'TimeTracking', 'TimeEntry'].indexOf(pivotTableType) >= 0,
+		 'md:max-w-xs-2 sm:max-w-xs-2': ['TimeBalance', 'TimeTracking', 'TimeEntry'].indexOf(pivotTableType) < 0,
+		 'mt-3': pivotTableType !== 'Calendar',
+		 'ml-45-p': pivotTableType === 'Calendar' && !isGadget
+		}">
+    <div ng-if="!hidePrevNext" class="mr-2.5 mt-1.5">
         <span ng-click="changeWeek(isMonthView || isDayView ? -1 : -7)"
               title="{{isDayView ? 'Previous Day' : isMonthView ? 'Previous Month' : 'Previous Week' | i18n}}"
-              class="fa fa-backward"></span>
+              class="w-0 p-3 bg-24 bg-no-repeat bg-center"
+			  style="background-image: url('../images/icon-arrow-right.png')">
+		</span>
         <span ng-show="showPrevToday"
               ng-click="moveToday()"
               title="{{isDayView ? 'Current Day' : isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
-              class="fa fa-step-backward"></span>
-    </div>
-    <div id="slider-today" ng-if="['TimeEntry', 'IssueTime', 'Calendar'].indexOf(pivotTableType) < 0">
-        <span ng-click="isDayView || weekSumChange()" ng-if="pivotTableType == 'Timesheet'"
-              title="{{sumTitle | i18n}}" ng-class="sumClass" ng-disabled="isDayView"></span>
-        <span ng-if="!hidePrevNext"
-              title="{{'Switch to ' + (isMonthView ? 'Day View' : isDayView ? 'Week View' : 'Month View') | i18n}}"
-              class="fa {{isMonthView ? 'fa-calendar-day' : isDayView ? 'fa-calendar-week' : 'fa-calendar'}}" ng-click="toggleMonthView()"></span>
-        <span ng-if="!hideDetails"
-              title="{{(compressed ? 'Show Details' : 'Hide Details') | i18n}}"
-              class="fa {{compressed ? 'fa-expand' : 'fa-compress'}}" ng-click="toggleShowDetails()"></span>
-    </div>
-    <div id="slider-today" ng-if="['TimeEntry', 'IssueTime'].indexOf(pivotTableType) >= 0">
-        {{startDate.value | date:'EEE, MMM d'}}
+              class="fa fa-step-backward">
+		</span>
     </div>
 
-    <div id="slider-next" ng-if="!hidePrevNext">
+	<div ng-if="!hidePrevNext" class="mr-2.5 mt-1.5">
+		<span ng-click="changeWeek(isMonthView || isDayView ? 1 : 7)"
+              title="{{isDayView ? 'Next Day' : isMonthView ? 'Next Month' : 'Next Week' | i18n}}"
+              class="w-0 p-3 bg-24 bg-no-repeat bg-center"
+			  style="background-image: url('../images/icon-arrow-left.png')">
+		</span>
+
         <span ng-show="showNextToday"
               ng-click="moveToday()"
               title="{{isDayView ? 'Current Day' : isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
-              class="fa fa-step-forward"></span>
-        <span ng-click="changeWeek(isMonthView || isDayView ? 1 : 7)"
-              title="{{isDayView ? 'Next Day' : isMonthView ? 'Next Month' : 'Next Week' | i18n}}"
-              class="fa fa-forward"></span>
+              class="fa fa-step-forward">
+		</span>
+    </div>
+
+    <div ng-if="['TimeEntry', 'IssueTime', 'Calendar'].indexOf(pivotTableType) < 0">
+
+		<select class="common week-sum view-option w-60 text-text-color-3 mr-3 font-normal text-sm h-8 rounded-md hover:bg-text-divider-color-4"
+				ng-disabled="isDayView"
+				ng-if="pivotTableType == 'Timesheet'"
+				ng-model="sum"
+				id="week-sum"
+				title="{{'Sum worked hours by day/week/month' | i18n}}"
+				ng-change="isDayView || weekSumChange(sum)">
+			<option value="day">{{'Daily worked hours' | i18n}}</option>			
+			<option value="week"> {{'Week worked hours' | i18n }}</option>
+			<option value="month" ng-disabled="view === 'week'"> {{'Month worked hours' | i18n }}</option>
+		</select>
+
+		<select class="common toggle-month view-option w-24 text-text-color-3 mr-3 font-normal text-sm h-8 rounded-md hover:bg-text-divider-color-4"
+				ng-model="view"
+				title="{{'Switch to Day/Week/Month View' | i18n}}"
+				ng-change="toggleMonthView(view)">
+			<option value="day">{{'Day' | i18n}}</option>
+			<option value="week">{{'Week' | i18n}}</option>
+			<option value="month">{{'Month' | i18n}}</option>
+		</select>
+
+		<span ng-if ="!hideDetails"class="text-text-color-3 font-normal text-sm">{{'Details' | i18n }}</span>
+		<input type="checkbox"
+			   ng-if="!hideDetails"
+			   class="apple-switch m-0-important"
+			   ng-model="compressedCheckbox"
+			   ng-change="toggleShowDetails(compressed)">
+    </div>
+
+    <div ng-if="['TimeEntry', 'IssueTime'].indexOf(pivotTableType) >= 0" class="mt-1.5 ml-4">
+        {{startDate.value | date:'EEE, MMM d'}}
     </div>
 </div>

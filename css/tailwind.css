@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary-color-clarity-4: #C9A1FF;
+    --primary-color-clarity-1: #9240FF;
+    --secondary-color: #4A61FE;
+    --secondary-color-dark-1: #172EFE;
+    --secondary-color-dark-2: #0B1FC4;
+    --secondary-color-dark-3: #020D84;
+    --secondary-color-clarity-1: #6F82FE;
+    --secondary-color-clarity-2: #94A1FE;
+    --secondary-color-clarity-3: #B8C1FF;
+    --secondary-color-clarity-4: #E6E9FF;
+    --secondary-color-clarity-5: #EEF0FF;
+    --text-color-1: #0D0E18;
+    --text-color-2: #212537;
+    --text-color-2-1: #4A5370;
+    --text-color-3: #495271;
+    --text-color-4: #767FA4;
+    --text-color-5: #757EA3;
+    --text-white : white;
+    --text-divider-color-1: #9199B5;
+    --text-divider-color-2: #ADB3C9;
+    --text-divider-color-2-dark: #adb3c9c2;
+    --text-divider-color-3: #ADB3C9;
+    --text-divider-color-4: #E5E6EE;
+    --text-divider-color-5: #E4E5ED;
+    --backgroung-color-1: #F6F8FE;
+    --backgroung-color-2: #F6F8FE;
+    --backgroung-color-3: #F6F8FE;
+    --backgroung-color-4: #F9F7F2;
+    --backgroung-color-5: #F6F7FF;
+    --backgroung-color-6: #F4EDFF;
+    --backgroung-color-7: #F6F7FF;
+    --bg-today: #F2E8FF;
+    --top-today: #5B2CDB;
+    --bar-green: #7FDF63;
+    --bar-yellow: #FFAF4F;
+    --bar-red: #FF5747;
+    --bar-blank: #E9ECFF;
+}
+
+/* correction for problems with tailwind on the old layout */
+svg {
+    display: inline !important;
+}
+
+svg, ::before, ::after {
+    box-sizing: initial !important;
+}
+
+.text-text-color-1-important { color: var(--text-color-1) !important; }
+.font-medium-important { font-weight: 500 !important; }
+.pl-3-important { padding-left: 0.75rem !important; }
+.pb-4-important { padding-bottom: 1rem !important; }
+
+/* width */
+.w-3-p { width: 3%; }
+.w-4-p { width: 4%; }
+.w-9-p { width: 9%; }
+.w-10-p { width: 10%; }
+.w-12-p { width: 12%; }
+.w-18-p { width: 18%; }
+.w-20-p { width: 20%; }
+.w-30-p { width: 30%; }
+.w-52-p { width: 52%; }
+.w-60-p { width: 60%; }
+.w-83-p { width: 83%; }
+.w-92-p { width: 92%; }
+.w-100-p { width: 100%; }
+
+.w-75 { width: 24.7rem; }
+.w-30rem { width: 30rem; }
+
+/* margin-left */
+.ml-1-p { margin-left: 1%; }
+.ml-2-p { margin-left: 2%; }
+.ml-3-p { margin-left: 3%; }
+.ml-4-p { margin-left: 4%; }
+.ml-12-p { margin-left: 12%; }
+.ml-15-p { margin-left: 15%; }
+.ml-21-p { margin-left: 21%; }
+.ml-22-p { margin-left: 22%; }
+.ml-38-p { margin-left: 38%; }
+.ml-42-p { margin-left: 42%; }
+.ml-45-p { margin-left: 45%; }
+.ml-50-p { margin-left: 50%; }
+.ml-55-p { margin-left: 55%; }
+.ml-57-p { margin-left: 57%; }
+.ml-60-p { margin-left: 60%; }
+.ml-70-p { margin-left: 70%; }
+.ml-72-p { margin-left: 72%; }
+.ml-75-p { margin-left: 75%; }
+
+.ml-5px {  margin-left: 5px; }
+
+.mr-37 { margin-left: 9.6rem }
+.mr-11-p { margin-right: 11%; }
+.mr-15-p { margin-right: 15%; }
+
+/* margin top  */
+.mt-20-p { margin-top: 20%; }
+
+/* margin right */
+.mr-2px { margin-right: 2px; }
+
+/* background */
+.bg-20 { background-size: 20px; }
+.bg-24 { background-size: 24px; }
+.bg-19 { background-size: 19px; }
+
+.bg-bar-yellow { background-color: var(--bar-yellow); }
+.bg-bar-red { background-color: var(--bar-red); }
+.bg-bar-blank { background-color: var(--bar-blank); }
+.bg-bar-green { background-color: var(--bar-green); }
+
+@layer utilities {
+    @variants responsive {
+        .max-w-xs-2 { max-width: 22.5rem; }
+        .max-w-sm-2 { max-width: 26rem; }
+        .w-5-p { width: 5%; }
+        .w-7-p { width: 7%; }
+        .w-12-p { width: 12%; }
+        .w-40-p { width: 40%; }
+    }
+  }

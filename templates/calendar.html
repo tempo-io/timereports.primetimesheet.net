@@ -6,6 +6,7 @@
     <aui-inline-dialog id="user-hover" template="'/templates/popups/userHover.html'" popup-data="userHoverPopup" container="'.userHoverPopup'" on-hover="true"></aui-inline-dialog>
     <aui-inline-dialog
             id="edit-worklog"
+            thin-box="true"
             template="templates.editWorklog"
             popup-data="editWorklogPopup"
             container="'.editWorklogPopup'"
@@ -13,54 +14,61 @@
             jira-config="jiraConfig">
     </aui-inline-dialog>
 
-    <div class="pagingtable">
+    <div class="pagingtable w-100 overflow-x-auto">
 
-        <div class="aui-message aui-message-error" ng-show="restrictionError != null">
-            <p class="title">
-                <strong>{{'Denied' | i18n}}</strong>
-            </p>
-            <p>{{restrictionError.msgKey | i18n}}</p>
-            <p ng-if="restrictionError.msg" ng-bind-html="restrictionError.msg"></p>
-        </div>
+        <restriction-error></restriction-error>
 
-        <table id="issuetable" cellspacing="0" cellpadding="3" border="0" width="100%" ng-show="restrictionError == null">
+        <table id="issuetable" class="calendarTable" cellspacing="0" cellpadding="3" border="0" width="100%" ng-show="restrictionError == null" ng-class="{ 'pt-3' : isGadget }">
             <thead>
-                <tr class="rowHeader">
-                    <th class="colHeaderLink">
+                <tr class="rowHeader" ng-if="loaded && pivotTable && (pivotTable.num > 0 || (pivotTable._sortedRows && pivotTable._sortedRows.length > 0))">
+                    <th class="colHeaderLink w-12-p">
                         <span><pivottable-slider class="calendar"/></span>
                     </th>
-                    <th class="colHeaderLink"
-                        ng-class="{nonBusinessDay: column.columnKey.isWeekend}"
+                    <th class="colHeaderLink uppercase text-center w-9-p"
+                        ng-class="{
+                                    nonBusinessDay: column.columnKey.isWeekend,
+                                    'border-l-clear': $index == 0
+                                }"
                         ng-repeat="column in pivotTable._sortedColumns"
-                        column-key="column.columnKey">
+                        column-key="column.columnKey.order = $index; column.columnKey">
                     </th>
-                    <th>
-                        {{'Total' | i18n}}
+                    <th class="border-l-clear stickyCell bg-white">
+                        <table class="w-full">
+                            <tr>
+                                <td class="text-center">
+                                    <span class="font-semibold text-text-color-1">
+                                        {{'Total' | i18n}}
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat-start="row in pivotTable._sortedRows | limitTo:issuesCount.maxResults:issuesCount.startAt">
-                    <td class="nav first" width="8%" nowrap>
-                        {{'Week' | i18n}}&nbsp;{{row.rowKey.field.weekNumber}}
-                        <!--May 19
-                        <br>
-                        {{moment(row.rowKey.field.startDate).format('MMMM YY')}}-->
+                <tr ng-repeat-start="row in pivotTable._sortedRows | limitTo:issuesCount.maxResults:issuesCount.startAt"
+                    ng-class-odd="'rowAlternate'"
+                    ng-class-even="'rowNormal'">
+                    <td class="nav first align-baseline" width="8%" nowrap>
+                        <span ng-class="{'mr-11-p float-right' : !isGadget }" class="print:ml-0">
+                            {{'Week' | i18n}}&nbsp;{{row.rowKey.field.weekNumber}}
+                        </span>
                     </td>
-                    <td width="12%"
+                    <td
                         style="cursor:default"
                         ng-init="currentDay=moment(row.rowKey.field.startDate).add(column.columnKey.keyValue,'days')"
                         ng-click="editWorklogPopup.init(column.columnKey, row.rowKey, row.data);"
                         class="nav border"
                         ng-class="{toDay: column.columnKey.isToday,
-                        nonBusinessDay: column.columnKey.isWeekend,
-                        editWorklogPopup: column.sum != 0}"
+                                   todayBorder: column.columnKey.isToday,
+                                   nonBusinessDay: column.columnKey.isWeekend,
+                                   editWorklogPopup: column.sum != 0}"
                         ng-repeat="column in row.columns">
                         <div ng-class="{invisible: currentDay.toDate() > endDate.value || currentDay.toDate() < startDate.value}">
-                            <p class="day-of-month">
+                            <p class="text-right text-text-color-3">
                                 {{currentDay.format('DD')}}
                             </p>
-                            <p ng-if="column.sum" style="cursor:pointer">
+                            <p ng-if="column.sum" style="cursor:pointer" class="text-right">
                                 {{column.sum | prettyHours:jiraConfig}}
                             </p>
                             <p ng-if="!column.sum"
@@ -75,20 +83,23 @@
                             </p>
                         </div>
                     </td>
-                    <td class="nav first border total" width="8%">
+                    <td class="nav first border total text-center stickyCell" width="8%"
+                        ng-class-odd="'rowAlternate'" ng-class-even="'bg-white'">
                         {{row.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>
                 <tr ng-repeat-end ng-hide="true"></tr>
                 <!-- total block -->
-                <tr class="rowFooter" ng-hide="loading || !loaded || !pivotTable">
+                <tr class="rowFooter bg-secondary-color-clarity-4 font-semibold" ng-hide="loading || !loaded || !pivotTable">
                     <td class="nav total">
-                        {{'Total' | i18n}}
+                        <span ng-class="{ 'mr-15-p float-right': !isGadget }">
+                            {{'Total' | i18n}}
+                        </span>
                     </td>
-                    <td class="nav border total" ng-repeat="column in pivotTable._sortedColumns">
+                    <td class="nav border total text-right" ng-repeat="column in pivotTable._sortedColumns">
                         <pivot-cell key="column.columnKey" columns="pivotTable.totals" jira-config="jiraConfig"/>
                     </td>
-                    <td class="nav border total">
+                    <td class="nav border total text-center stickyCell bg-secondary-color-clarity-4">
                         {{pivotTable.sum | prettyHours:jiraConfig}}
                     </td>
                 </tr>
@@ -100,40 +111,14 @@
             </tbody>
         </table>
     </div>
-    <div class="count-pagination aui-group" ng-hide="!loaded || loading || restrictionError || !pivotTable">
-        <div class="aui-item">
-            <span class="results-count-text" ng-if="issuesCount.end">
-                <span class="results-count-start" ng-bind="issuesCount.startAt + 1"></span>–<span class="results-count-end" ng-bind="issuesCount.end"></span> of <span class="results-count-total" ng-bind="issuesCount.total"></span>
-            </span>
-            <a ng-click="loading || !loaded || refresh()" ng-disabled="loading || !loaded" ng-class="{disabled: loading || !loaded}" title="{{'Refresh' | i18n}}">
-                <i class="fa fa-sync" ng-title="'Refresh' | i18n"></i>
-            </a>
-        </div>
-        <div class="pagination aui-item">
-            <ol class="aui-nav aui-nav-pagination">
-                <li class="aui-nav-previous"><a ng-show="issuesCount.startAt > 0" ng-click="setStartAt(issuesCount.startAt - issuesCount.maxResults)">Prev</a><span ng-show="issuesCount.startAt <= 0 && issuesCount.total">Prev</span></li>
-                <li ng-class="{'aui-nav-selected': issuesCount.startAt == startAt}" ng-repeat="p in pages" ng-init="startAt = issuesCount.maxResults * p" style="padding: 0"><a ng-click="setStartAt(startAt)" style="padding: 3px">{{p + 1}}</a></li>
-                <li class="aui-nav-next" ng-init="isNext = issuesCount.startAt + issuesCount.maxResults < issuesCount.total"><a ng-show="issuesCount.startAt + issuesCount.maxResults < issuesCount.total" ng-click="setStartAt(issuesCount.startAt + issuesCount.maxResults)" style="padding: 3px">Next</a><span ng-show="issuesCount.startAt + issuesCount.maxResults >= issuesCount.total && issuesCount.total">Next</span></li>
-            </ol>
-        </div>
-    </div>
-    <div ng-if="loaded && !loading && !restrictionError">
-        <button ng-if="canLogWork || canLogWorkForUser" class="aui-button aui-button-link" ng-click="addWorklogDialog()" title="{{'Log Work against an issue' | i18n}}">
-            <span class="aui-icon aui-icon-small aui-iconfont-add"></span>
-            {{'Log Work' | i18n}}
-        </button>
-    </div>
-    <div class="aui-message aui-message warning" ng-show="loaded && !loading && restrictedProjects">
-        <strong>{{'Data is limited by Auditors Roles' | i18n}}</strong>&nbsp;{{restrictedProjects}}
-    </div>
-    <div class="aui-message aui-message warning" ng-show="loaded && !loading && restrictedGroups">
-        <strong>{{'Data is limited to Restricted Groups' | i18n}}</strong>&nbsp;{{restrictedGroups}}
-    </div>
-    <div ng-if="!loaded">
-        <br/>
-        <button class="aui-button" ng-click="execute()" ng-disabled="loading" ng-class="{disabled: loading}">
-            <span class="aui-icon aui-icon-small aui-iconfont-view"></span>
-            {{'View Report' | i18n}}
-        </button>
-    </div>
+
+    <pagination></pagination>
+
+    <button-add-worklog class="mt-5 ml-4"></button-add-worklog>
+
+    <data-limit-auditors-roles></data-limit-auditors-roles>
+
+    <data-limit-restricted-groups></data-limit-restricted-groups>
+    
+    <empty-values></empty-values>
 </div>

@@ -1,10 +1,10 @@
 <div id="config" ng-controller="GadgetController">
-  <form class="aui">
-    <div class="field-group">
+  <form class="aui form-gadget">
+    <div class="ak-field-group">
       <label>{{ 'Title' | i18n}}</label>
-      <input ng-model="title" class="text"/>
+      <input ng-model="title" class="text-field"/>
     </div>
-    <div class="field-group">
+    <div class="ak-field-group">
       <label>{{ 'Report' | i18n }}:</label>
       <select class="select"
               ng-model="pivotTableTypeOptions.selected"
@@ -13,7 +13,7 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="pivotTableType == 'Timespent'">
+    <div class="ak-field-group" ng-if="pivotTableType == 'Timespent'">
       <label>{{'Pivot by Field' | i18n}}</label>
       <select class="select"
               ng-model="pivotByFieldOptions.selected"
@@ -22,28 +22,28 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="pivotTableType != 'TimeEntry' &&  viewByOptions.selected != 'day'">
+    <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry' &&  viewByOptions.selected != 'day'">
       <label>{{ (viewByOptions.selected == 'month' ? 'Number of Months' : 'Number of Weeks') | i18n}}</label>
       <input ng-model="numOfWeeks.value"
-             class="text"
+             class="text-field"
              type="number"
              min="1" max="12"
              ng-change="numOfWeeksChange(numOfWeeks.value)"
              ng-disabled="!startDate.calculated && !endDate.calculated"/>
     </div>
-    <div class="field-group">
+    <div class="ak-field-group">
       <label>{{ 'Offset' | i18n}}</label>
-      <input ng-model="offset" class="text" type="number" ng-change="offsetChange(offset)" ng-disabled="!startDate.calculated || !endDate.calculated"/>
+      <input ng-model="offset" class="text-field" type="number" ng-change="offsetChange(offset)" ng-disabled="!startDate.calculated || !endDate.calculated"/>
     </div>
-    <div class="field-group">
+    <div class="ak-field-group">
       <label >{{'Start Date' | i18n}}</label>
-      <input ng-model="startDate.value" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="select"/>
+      <input ng-model="startDate.value" type="date" aui-date-picker ng-date-changed-func="startChangeDate" class="text-field input-date"/>
     </div>
-    <div class="field-group" ng-if="pivotTableType != 'TimeEntry' &&  viewByOptions.selected != 'day'">
+    <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry' &&  viewByOptions.selected != 'day'">
       <label>{{'End Date' | i18n}}</label>
-      <input ng-model="endDate.value" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="select"/>
+      <input ng-model="endDate.value" type="date" aui-date-picker ng-date-changed-func="endChangeDate" class="text-field input-date"/>
     </div>
-    <div class="field-group" ng-if="['TimeTracking', 'TimeEntry', 'Timespent', 'CostReport', 'TimeBalance'].indexOf(pivotTableType) < 0">
+    <div class="ak-field-group" ng-if="['TimeTracking', 'TimeEntry', 'Timespent', 'CostReport', 'TimeBalance'].indexOf(pivotTableType) < 0">
       <label>{{'Reporting Day' | i18n}}</label>
       <select class="select"
               title="{{'Reporting Day' | i18n}}"
@@ -53,11 +53,11 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group">
+    <div class="ak-field-group">
       <label>{{ 'Filter or Project' | i18n }}:</label>
       <input ng-model="filterOrProjectId" aui-multi-select-picker ng-value-changed-func="filterByChanged" ng-options-data="filterByOptions" type="text"/>
     </div>
-    <div class="field-group" ng-if="showChildrenFilter">
+    <div class="ak-field-group" ng-if="showChildrenFilter">
       <label>{{'Children Filter' | i18n}}:</label>
       <select class="select"
               title="{{'Children Filter' | i18n}}"
@@ -67,7 +67,7 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="['Timesheet', 'IssueWorkedTimeByUser', 'IssueWorkedTimeByStatus', 'IssueWorkedTimeByLabel',
+    <div class="ak-field-group" ng-if="['Timesheet', 'IssueWorkedTimeByUser', 'IssueWorkedTimeByStatus', 'IssueWorkedTimeByLabel',
           'Timespent', 'CostReport', 'Calendar'].indexOf(pivotTableType) >= 0">
       <label>{{'Work #label or Comment First Word' | i18n}}</label>
       <input ng-model="worklogFilter"
@@ -77,7 +77,7 @@
              ng-options-data="workLabelsFilterOptions"
              type="text"/>
     </div>
-    <div class="field-group" ng-if="$parent.tempoToken && ['Timesheet', 'IssueWorkedTimeByUser', 'IssueWorkedTimeByStatus', 'IssueWorkedTimeByLabel',
+    <div class="ak-field-group" ng-if="$parent.tempoToken && ['Timesheet', 'IssueWorkedTimeByUser', 'IssueWorkedTimeByStatus', 'IssueWorkedTimeByLabel',
           'Timespent', 'CostReport', 'Calendar'].indexOf(pivotTableType) >= 0">
       <label>{{'Billable' | i18n}}</label>
       <select class="select"
@@ -87,23 +87,23 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="['TimeEntry'].indexOf(pivotTableType) < 0">
+    <div class="ak-field-group" ng-if="['TimeEntry'].indexOf(pivotTableType) < 0">
       <label>{{'User' | i18n}}</label>
       <input ng-value="userInfo" aui-user-picker multi-select="true" ng-user-changed-func="userChange" type="text"/>
     </div>
-    <div class="field-group" ng-if="['Timesheet', 'Timespent', 'CostReport', 'PieChart', 'Calendar'].indexOf(pivotTableType) >= 0">
-      <label>{{'All Users' | i18n}}</label>
+    <div ng-if="['Timesheet', 'Timespent', 'CostReport', 'PieChart', 'Calendar'].indexOf(pivotTableType) >= 0">
       <input class="checkbox" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)" />
+      <label>{{'All Users' | i18n}}</label>      
     </div>
-    <div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
+    <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry'">
       <label>{{'Groups' | i18n}}</label>
       <input ng-model="group" aui-group-picker ng-group-changed-func="groupChange" type="text"/>
     </div>
-    <div class="field-group" ng-if="pivotTableType != 'TimeEntry'">
+    <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry'">
       <label>{{'Exclude Groups' | i18n}}</label>
       <input ng-model="excludeGroup" aui-group-picker ng-group-changed-func="excludeGroupChange" type="text"/>
     </div>
-    <div class="field-group" ng-if="['TimeEntry', 'Calendar'].indexOf(pivotTableType) < 0">
+    <div class="ak-field-group" ng-if="['TimeEntry', 'Calendar'].indexOf(pivotTableType) < 0">
       <label>{{'Group By Field' | i18n}}</label>
       <select class="select"
               ng-model="groupByOptions.selected"
@@ -112,7 +112,7 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="['TimeEntry', 'Calendar'].indexOf(pivotTableType) < 0">
+    <div class="ak-field-group" ng-if="['TimeEntry', 'Calendar'].indexOf(pivotTableType) < 0">
       <label>{{'Categorize By Field' | i18n}}</label>
       <select class="select"
               ng-model="categorizeByOptions.selected"
@@ -123,7 +123,7 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="['PieChart', 'Calendar'].indexOf(pivotTableType) < 0">
+    <div class="ak-field-group" ng-if="['PieChart', 'Calendar'].indexOf(pivotTableType) < 0">
       <label>{{'Additional Fields' | i18n}}</label>
       <select class="select"
               multiple="true"
@@ -133,7 +133,7 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="['Calendar'].indexOf(pivotTableType) < 0 && !groupByOptions.selected && !categorizeByOptions.selected">
+    <div class="ak-field-group" ng-if="['Calendar'].indexOf(pivotTableType) < 0 && !groupByOptions.selected && !categorizeByOptions.selected">
       <label>{{'Order By Field' | i18n}}</label>
       <div class="rowCenter">
         <select class="select"
@@ -150,7 +150,7 @@
         </i>
       </div>
     </div>
-    <div class="field-group" ng-if="pivotTableType == 'TimeTracking'">
+    <div class="ak-field-group" ng-if="pivotTableType == 'TimeTracking'">
       <label>{{'Columns' | i18n}}</label>
       <input aui-multi-select-picker
              class="text"
@@ -159,7 +159,7 @@
              ng-options-data="timeTrackingColumnsData"
              ng-value-changed-func="timeTrackingColumnsChanged">
     </div>
-    <div class="field-group" ng-if="pivotTableType == 'TimeBalance'">
+    <div class="ak-field-group" ng-if="pivotTableType == 'TimeBalance'">
       <label>{{'Columns' | i18n}}</label>
       <input aui-multi-select-picker
              class="text"
@@ -168,7 +168,7 @@
              ng-options-data="timeBalanceColumnsData"
              ng-value-changed-func="timeBalanceColumnsChanged">
     </div>
-    <div class="field-group" ng-if="pivotTableType == 'IssuePassedTimeByStatus'">
+    <div class="ak-field-group" ng-if="pivotTableType == 'IssuePassedTimeByStatus'">
       <label>{{'Status Categories' | i18n}}</label>
       <input aui-multi-select-picker
              class="text"
@@ -176,16 +176,8 @@
              ng-model="timeInStatusCategories"
              ng-options-data="timeInStatusCategoriesData"
              ng-value-changed-func="timeInStatusCategoriesChanged">
-    </div>
-    <div class="field-group" ng-if="['Timesheet', 'Calendar'].indexOf(pivotTableType) >= 0">
-      <label>{{'Show Weekends' | i18n}}</label>
-      <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled"/>
-    </div>
-    <div class="field-group" ng-if="['PieChart', 'Calendar', 'TimeEntry'].indexOf(pivotTableType) < 0">
-      <label>{{'Show Details' | i18n}}</label>
-      <input class="checkbox" type="checkbox" ng-model="showDetails.enabled" ng-change="showDetailsChange(showDetails.enabled)" />
-    </div>
-    <div class="field-group" ng-if="['TimeEntry', 'IssueTime', 'Calendar'].indexOf(pivotTableType) < 0">
+    </div>    
+    <div class="ak-field-group" ng-if="['TimeEntry', 'IssueTime', 'Calendar'].indexOf(pivotTableType) < 0">
       <label>{{'View By' | i18n}}</label>
       <select class="select"
               title="{{'View By' | i18n}}"
@@ -195,7 +187,7 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="pivotTableType == 'Timesheet'">
+    <div class="ak-field-group" ng-if="pivotTableType == 'Timesheet'">
       <label>{{'Sum By' | i18n}}</label>
       <select class="select"
               title="{{'Sum By' | i18n}}"
@@ -205,7 +197,7 @@
               aui-select2>
       </select>
     </div>
-    <div class="field-group" ng-if="['Calendar'].indexOf(pivotTableType) < 0">
+    <div class="ak-field-group" ng-if="['Calendar'].indexOf(pivotTableType) < 0">
         <label>{{'Sum SubTasks' | i18n}}</label>
         <input aui-multi-select-picker
                class="text"
@@ -214,19 +206,33 @@
                ng-options-data="sumSubTasksOptions"
                ng-value-changed-func="sumSubTasksChange">
     </div>
-    <div class="field-group" ng-if="['Timesheet', 'TimeEntry', 'CostReport', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) >= 0 ||
-    (pivotTableType == 'Timespent' && !pivotByField)">
-      <label>{{'Show Empty Issues' | i18n}}</label>
-      <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!filterOrProjectId" />
+    <div class="checkbox-group" ng-if="['Timesheet', 'Calendar'].indexOf(pivotTableType) >= 0">      
+      <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled"/>
+      <label>{{'Show Weekends' | i18n}}</label>
     </div>
-    <div class="buttons-container">
+    <div class="checkbox-group" ng-if="['PieChart', 'Calendar', 'TimeEntry'].indexOf(pivotTableType) < 0">      
+      <input class="checkbox" type="checkbox" ng-model="showDetails.enabled" ng-change="showDetailsChange(showDetails.enabled)" />
+      <label>{{'Show Details' | i18n}}</label>
+    </div>
+    <div class="checkbox-group" ng-if="['Timesheet', 'TimeEntry', 'CostReport', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) >= 0 ||
+    (pivotTableType == 'Timespent' && !pivotByField)">      
+      <input class="checkbox" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!filterOrProjectId" />
+      <label>{{'Show Empty Issues' | i18n}}</label>
+    </div>
+    <div class="buttons-container border-t border-b border-gray-200">
       <div class="buttons">
-        <button class="aui-button aui-button-primary" ng-click="saveGadgetConfig()">Save</button>
-        <button class="aui-button aui-button-link" ng-click="cancelGadgetConfigSaving()">Cancel</button>
+        <button class="px-5 py-2 bg-secondary-color rounded text-text-white font-medium text-xs mr-4"
+                ng-click="saveGadgetConfig()">
+            Save
+        </button>
+        <button class="text-text-color-3"
+                ng-click="cancelGadgetConfigSaving()">
+                Cancel
+        </button>
       </div>
     </div>
   </form>
 </div>
-<div class="footer">
+<div class="footer footer-gadget">
   <ng-include src="'/templates/footer.html'"></ng-include>
 </div>

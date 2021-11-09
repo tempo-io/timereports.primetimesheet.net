@@ -6,74 +6,245 @@
             container="'#share-view'"
             persistent="true">
     </aui-inline-dialog>
-    <div>
-        <div ng-init="showButtons=false" ng-mouseover="showButtons=!$form.$visible" ng-mouseleave="showButtons=false">
+    <div class="print:border-0 border-b border-gray-200 pb-4 mb-3">                
+        <div ng-init="showButtons=false" ng-mouseover="showButtons=!$form.$visible" ng-mouseleave="showButtons=false" class="ml-6">
+            <i class="w-0 p-3 mr-4 bg-24 bg-no-repeat bg-center noprint"
+               ng-click="toggleHideMenu()"
+               title="Show Menu"
+               ng-if="hideMenu"
+               style="background-image: url('../images/icon-navburguer.png'); padding-top: 8px">
+            </i>
             <div editable-text="currentView.name" e-required onshow="$parent.$form=$form" onhide="$parent.$form=undefined" onaftersave="viewNameChanged()">
-                <h5>{{currentView.name || (pivotTableType | i18n)}}</h5>
+                <h5 class="text-xl"><b class="font-semibold">{{currentView.name || (pivotTableType | i18n)}}</b></h5>
                 <span class="overlay-icon aui-icon aui-icon-small aui-iconfont-edit"></span>
             </div>
-            <i class="fa fa-hdd icons"
-               aria-hidden="true"
-               ng-click="saveView()"
-               ng-show="showButtons && showSaveButton"
-               title="{{'Save' | i18n}}">
-            </i>
-            <i class="fa fa-trash icons"
-               aria-hidden="true"
-               ng-click="deleteView()"
-               ng-show="showButtons && showDeleteButton"
-               title="{{'Delete' | i18n}}">
-            </i>
-            <i class="fa fa-share-alt icons"
-               id="share-view"
-               aria-hidden="true"
-               ng-click="shareViewPopup.init()"
-               ng-show="showButtons && showDeleteButton"
-               title="{{'Copy' | i18n}}">
-            </i>
-        </div>
+            <span class="noprint">
+                <i class="fa fa-hdd icons"
+                aria-hidden="true"
+                ng-click="saveView()"
+                ng-show="showButtons && showSaveButton"
+                title="{{'Save' | i18n}}">
+                </i>
+                <i class="fa fa-trash icons"
+                aria-hidden="true"
+                ng-click="deleteView()"
+                ng-show="showButtons && showDeleteButton"
+                title="{{'Delete' | i18n}}">
+                </i>
+                <i class="fa fa-share-alt icons"
+                id="share-view"
+                aria-hidden="true"
+                ng-click="shareViewPopup.init()"
+                ng-show="showButtons && showDeleteButton"
+                title="{{'Copy' | i18n}}">
+                </i>
+
+                <ul class="inline list-none m-0 p-0 absolute right-8">
+                    <li class="inline-block mr-2 hover:bg-text-divider-color-4 p-1 rounded" ng-if="showSubscribe">                    
+                        <i id="subscribe"
+                        class="aui-dropdown2-trigger x-ng-click w-0 p-3 bg-24 bg-no-repeat bg-center tip"
+                        style="background-image: url('../images/icon-mail.png')"
+                        ng-click="modalSendEmail()"
+                        ng-if="subscribe && !isGadget">
+                        <span>{{'Subscribe' | i18n}}</span>
+                        </i>
+                    </li>
+                    <li class="inline-block mr-2 hover:bg-text-divider-color-4 p-1 rounded" ng-if="showExport">
+                        <i id="export-dropdown"
+                        href="#export"
+                        aria-owns="export"
+                        aria-haspopup="true"
+                        class="aui-dropdown2-trigger x-ng-click w-0 p-3 bg-24 bg-no-repeat bg-center tip"
+                        style="background-image: url('../images/icon-export.png')"
+                        x-ng-click=""
+                        ng-hide="loading || restrictionError">
+                        <span>{{'Export/Import' | i18n}}</span>
+                        </i>
+                        <!-- Dropdown -->
+                        <div id="export" class="aui-style-default aui-dropdown2">
+                            <ul class="aui-list-truncate">
+                                <li class="copyLink">
+                                    <div class="rowCenter">
+                                        <a x-ng-click="excelView('xls')">exportData.xls (html)</a>
+                                        <i class="fa fa-link edit"
+                                            ng-click=""
+                                            copy-to-clipboard="export=xls"
+                                            title="{{'Copy Link' | i18n}}">
+                                        </i>
+                                    </div>
+                                </li>
+                                <li class="copyLink">
+                                    <div class="rowCenter">
+                                        <a x-ng-click="excelView('csv')">exportData.csv</a>
+                                        <i class="fa fa-link edit"
+                                            ng-click=""
+                                            copy-to-clipboard="export=csv"
+                                            title="{{'Copy Link' | i18n}}">
+                                        </i>
+                                    </div>
+                                </li>
+                                <li class="copyLink">
+                                    <div class="rowCenter">
+                                        <a x-ng-click="excelView('html')">exportView.xls (html)</a>
+                                        <i class="fa fa-link edit"
+                                            ng-click=""
+                                            copy-to-clipboard="export=html"
+                                            title="{{'Copy Link' | i18n}}">
+                                        </i>
+                                    </div>
+                                </li>
+                                <li ng-if="'Timesheet' == pivotTableType"><a x-ng-click="importPopup.init()">importTimesheet.csv</a></li>
+                                <li ng-if="'CostReport' == pivotTableType"><a x-ng-click="openInvoiceDialog()">invoice.pdf (pdf)</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="inline-block mr-2 hover:bg-text-divider-color-4 p-1 rounded">
+                        <a id="print"
+                            class="w-0 p-4 bg-24 bg-no-repeat bg-center tip"
+                            style="background-image: url('../images/icon-print.png')"
+                            href="#"
+                            onclick="print()">
+                            <span class="noprint">{{'Print' | i18n}}</span>
+                        </a>
+                    </li>
+                    <li class="inline-block mr-2 hover:bg-text-divider-color-4 p-1 rounded">
+                        <i href="#help"
+                        id="help-dropdown"
+                        class="aui-dropdown2-trigger x-ng-click w-0 p-3 bg-24 bg-no-repeat bg-center tip"
+                        style="background-image: url('../images/icon-question.png')"
+                        x-ng-click=""
+                        aria-owns="help">
+                        <span>{{'Help' | i18n}}</span>
+                        </i>
+                        <!-- Dropdown -->
+                        <div id="help" class="aui-style-default aui-dropdown2">
+                            <ul class="aui-list-truncate">
+                                <li><a ng-click="navigated(null,'Welcome Page')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/welcome" target="_blank" title="{{'Getting started with ' + appName | i18n}}">{{'Get Started' | i18n}}</a></li>
+                                <li><a href="https://primetimesheet.atlassian.net/wiki/spaces/KB/blog" target="_blank" title="What's New">What's New</a></li>
+                                <li><a href="https://tempo-io.atlassian.net/servicedesk/customer/portal/6/group/31" target="_blank" title="Help Center">Help Center</a></li>
+                            </ul>
+                            <div class="aui-dropdown2-section">
+                                <div class="aui-dropdown2-heading">
+                                    How To
+                                </div>
+                                <ul class="aui-list-truncate">
+                                    <li><a href="https://primetimesheet.atlassian.net/servicedesk/customer/kb/view/327709" target="_blank" title="How to display the timesheet table by user and date?">Timesheet by Users</a></li>
+                                    <li><a href="https://primetimesheet.atlassian.net/servicedesk/customer/kb/view/327700" target="_blank" title="How to sum hours for Epic?">Timesheet by Epics</a></li>
+                                    <li><a href="https://primetimesheet.atlassian.net/servicedesk/customer/kb/view/327696" target="_blank" title="How to see issue Summary (title) in case of Group by option?">Detailed View</a></li>
+                                    <li><a href="https://primetimesheet.atlassian.net/servicedesk/customer/kb/view/327724" target="_blank" title="Is there a way to persist the query parameters?">Persist report parameters</a></li>
+                                    <li><a href="https://primetimesheet.atlassian.net/servicedesk/customer/kb/view/327717" target="_blank" title="All How-to articles">...</a></li>
+                                </ul>
+                            </div>
+                            <div class="aui-dropdown2-section">
+                                <div class="aui-dropdown2-heading">
+                                    {{'Examples' | i18n}}
+                                </div>
+                                <ul class="aui-list-truncate">
+                                    <li><a ng-click="example({allUsers: true, groupByField: 'workeduser', loaded: true})" title="{{'Timesheet Report by All Users' | i18n}}">{{'Timesheet by Users' | i18n}}</a></li>
+                                    <li ng-if="epicNameField"><a ng-click="example({pivotTableType: 'Timespent', categorizeByField: 'epicNameField.id', groupByField: 'workeduser', filterOrProjectId: 'jql_0', includeEmpty: true, moreFields: 'timeestimate', loaded: true})" title="{{'Timespent Report grouped by Epic Name for Active sprints issues' | i18n}}">{{'Active Sprints Workload' | i18n}}</a></li>
+                                    <li><a ng-click="example({pivotTableType: 'TimeTracking', filterOrProjectId: projectKey ? 'project_' + projectKey : 'jql_8', loaded: true})" title="{{'TimeTracking Report for ' + (projectKey ? 'project' : 'Recently Updated issues') | i18n}}">{{'Project Progress' | i18n}}</a></li>
+                                    <li><a ng-click="example({pivotTableType: 'IssuePassedTimeByStatus', loaded: true})" title="{{'IssuePassedTimeByStatus' | i18n}}">{{'IssuePassedTimeByStatus' | i18n}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="inline-block mr-2 hover:bg-text-divider-color-4 p-1 rounded">
+                        <i href="#conf"
+                        class="aui-dropdown2-trigger x-ng-click w-0 p-1 bg-24 bg-no-repeat bg-center tip"
+                        style="background-image: url('../images/icon-config.png')"
+                        x-ng-click=""
+                        aria-owns="conf">
+                        <span>{{'Configure' | i18n}}</span>
+                        </i>
+                        <div id="conf" class="aui-style-default aui-dropdown2">
+                            <ul class="aui-list-truncate">
+                                <li><a style="color:#333" ng-click="openUserPreferencesDialog()">{{'User Preferences' | i18n }}</a></li>
+                                <li ng-if="isAdmin == true"><a style="color:#333" ng-click="navigated(null,'Configuration Page')" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/configuration" target="_parent">{{'Configuration' | i18n }}</a></li>
+                                <li><a ng-if="pivotTableType == 'CostReport' && userIsAccountant" style="color:#333" ng-click="openHourlyRatesDialog()">{{'Hourly Rates' | i18n }}</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="inline-block mr-2 hover:bg-text-divider-color-4 p-1 rounded" ng-if="!licenseStatus.isActive" ng-bind-html="licenseStatus.message"></li>
+                </ul>
+            </span>
+        </div>        
     </div>
-    <div class="options">{{'Options' | i18n}}:&nbsp;
+    <div class="border-b border-gray-200 pb-2 options">
+        <span class="ml-6 text-sm print:font-normal font-semibold print:border-0 border-r border-gray-200 pr-4">
+            <span class="text-text-color-1 noprint">{{'FilterApplied' | i18n}}&nbsp;</span>
+            <span class="text-text-color-1 print">{{'Options' | i18n}}&nbsp;</span>
+            <span>
+                <selected-option ng-repeat="option in selectedOptionLabels | filter: filterOptions"
+                                                        remove-action="removeMenuOption(option.key, option.labelParam, option.labelParamUnique)"
+                                                        option="option"/>
+            </span>
+        </span>
+        <span>
+            <a class="ml-4 font-normal text-text-color-4 noprint" ng-click="clearAllFiltersTimesheet()">{{'ClearAll' | i18n}}</a>
+        </span>
+        <span>
+            <i class="fa fa-anchor edit ml-4"
+            ng-if="showMakeDefault"
+            ng-click="saveDefaultReport()"
+            title="{{'Make Default' | i18n}}">
+            </i>
+        </span>
+    </div>
+    <validation-errors ng-if="errors && errors.length > 0" errors="errors" error-messages="errorMessages"></validation-errors>
+</div>
+
+<div ng-if="isGadget" class="options pb-4 border-b border-gray-200">
+    <span class="text-sm font-semibold border-r border-gray-200 pr-4">
         <span>
             <selected-option ng-repeat="option in selectedOptionLabels"
-                                                     remove-action="removeMenuOption(option.key, option.labelParam, option.labelParamUnique)"
-                                                     option="option"/>
+                             remove-action="removeMenuOption(option.key, option.labelParam, option.labelParamUnique)"
+                             option="option"/>
         </span>
-        <i class="fa fa-anchor edit"
-           ng-if="showMakeDefault"
-           ng-click="saveDefaultReport()"
-           title="{{'Make Default' | i18n}}">
-        </i>
-    </div>
-    <validation-errors errors="errors" error-messages="errorMessages"></validation-errors>
-</div>
-<div ng-if="isGadget" class="options">
-    <span ng-repeat="option in gadgetSummary">
-        <span ng-class="option.styleClass">{{option.text}}</span>
     </span>
-    <a class="fa fa-external-link-square-alt" title="{{'Open report page for other options and excel export' | i18n }}" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!{{reportParams}}" target="_parent"></a>
-    <i class="fa fa-anchor edit"
+    <span>
+        <a class="ml-4 font-normal text-text-color-4 noprint" ng-click="clearAllFiltersTimesheet()">{{'ClearAll' | i18n}}</a>
+    </span>
+    <a title="{{'Open report page for other options and excel export' | i18n }}"
+        href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!{{reportParams}}"
+        target="_parent"
+        class="ml-3 w-0 p-3 bg-19 bg-no-repeat bg-center"
+        style="background-image: url('../images/icon-expand.png')">
+    </a>    
+    <a href="#issueViewConf"
+        id="issueViewConf-dropdown"
+        ng-if="issueKey"
+        class="aui-dropdown2-trigger x-ng-click"
+        x-ng-click=""
+        title="{{'Configure' | i18n }}"
+        aria-owns="issueViewConf"
+        style="margin-left: 10px; padding-right: 0px !important">
+        <i class="w-0 p-4 bg-24 bg-no-repeat bg-center"
+            style="background-image: url('../images/icon-config.png')">
+        </i>
+    </a>
+
+    <i class="fa fa-anchor ml-4"
        ng-if="pivotTableType!='IssueTime' && showMakeDefault"
        ng-click="saveDefaultReport()"
        title="{{'Make Default' | i18n}}">
     </i>
-    <span ng-if="issueKey">
-        <a href="#issueViewConf" id="issueViewConf-dropdown" class="fa fa-cog aui-dropdown2-trigger x-ng-click" x-ng-click=""
-           title="{{'Configure' | i18n }}" aria-owns="issueViewConf"
-           style="margin-left: 10px; padding-right: 0px !important"></a>
-        <div id="issueViewConf" class="aui-style-default aui-dropdown2">
-            <ul class="aui-list-truncate">
-                <li>
-                    <a href="https://primetimesheet.atlassian.net/wiki/spaces/KB/pages/771096577/Predefined+Views+For+Time+Entry+Issue+Panel"
-                       target="_blank"
-                       class="fa fa-question-circle" style="color: #0052CC; margin-top: 5px"
-                       title="{{'Help' | i18n}}"></a>
-                </li>
-                <li ng-repeat="view in issueTimeOptions.options" ng-if="view.id != issueTimeOptions.selected">
-                    <a style="color:#333" ng-click="issueTimeViewChanged(view.id)">{{view.label}}</a>
-                </li>
-                <a ng-if="isEpic" title="{{'Open report page for other options and excel export' | i18n }}" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!jql=parentEpic%3D{{issueKey}}&sumSubTasks=true" target="_parent">parentEpic={{issueKey}}</a>
-            </ul>
-        </div>
-    </span>
+
+    <div id="issueViewConf" class="aui-style-default aui-dropdown2">
+        <ul class="aui-list-truncate">
+            <li>
+                <a href="https://primetimesheet.atlassian.net/wiki/spaces/KB/pages/771096577/Predefined+Views+For+Time+Entry+Issue+Panel"
+                    target="_blank"
+                    style="margin-top: 5px"
+                    title="{{'Help' | i18n}}">
+                    <i class="w-0 p-4 bg-20 bg-no-repeat bg-center"
+                    style="background-image: url('../images/icon-question-blue.png')">
+                    </i>
+                </a>
+            </li>
+            <li ng-repeat="view in issueTimeOptions.options" ng-if="view.id != issueTimeOptions.selected">
+                <a style="color:#333" ng-click="issueTimeViewChanged(view.id)">{{view.label}}</a>
+            </li>
+            <a ng-if="isEpic" title="{{'Open report page for other options and excel export' | i18n }}" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!jql=parentEpic%3D{{issueKey}}&sumSubTasks=true" target="_parent">parentEpic={{issueKey}}</a>
+        </ul>
+    </div>
 </div>

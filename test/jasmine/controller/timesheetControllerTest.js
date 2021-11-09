@@ -944,7 +944,7 @@ describe('timesheetControllerTest', function () {
     $timeout.flush(200) // init
     expect(scope.loading).toBe(1)
 
-    scope.weekSumChange()
+    scope.weekSumChange('week')
     expect(scope.loading).toBe(2) // no concurrent execute!
 
     $httpBackend.flush()

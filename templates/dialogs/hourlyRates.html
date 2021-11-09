@@ -1,27 +1,58 @@
-<!-- Dialog header -->
-<header class="aui-dialog2-header">
-    <!-- The dialog''s title -->
-    <h1 class="aui-dialog2-header-main">
-        {{'Hourly Rates' | i18n }}
-    </h1>
-    <!-- Close icon -->
-    <a class="aui-dialog2-header-close" ng-click="cancel()">
-        <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Close</span>
-    </a>
-</header>
+
 <!-- Main dialog content -->
 <div class="aui-dialog2-content">
+    <!-- The dialog''s title -->
+    <h3 class="font-bold pb-8 pt-6 display-flex border-b border-gray-200">
+        {{'Hourly Rates' | i18n }}
+    </h3>
+
+    <div class="mt-6 bg-secondary-color-clarity-4 pt-5 pb-5 rounded-md">
+        <i class="w-0 p-3 bg-24 bg-no-repeat bg-center mr-4 ml-4"
+            style="background-image: url('../images/info-icon.png')">
+        </i>
+        <span class="font-bold-light" data-ng-bind-html="page != 'auditLog' ? 'All changes will be saved automatically' : 'Audit Log' | i18n | htmlSafe"></span>
+    </div>
+    
     <form class="aui" name="hourlyRatesForm">
         <div class="rowCenter">
-            <input style="width: 250px;margin-right:5px;"
+            <label class="inline-block w-56 label-hourly-rate">{{'Currency' | i18n}}</label>
+            <input type="text"
+                   class="text"
+                   ng-model="currencySymbol.val"
+                   ng-model-options='{ debounce: 1000 }'
+                   ng-change="saveCurrencySymbol()"
+                   select-on-focus
+                   style="max-width: 70px"/>
+            <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
+        </div>
+        <div class="rowCenter">
+            <div class="inline-block w-56"></div>            
+            <input type="checkbox"
+                   class="checkbox mr-3 mt-3 mb-3"
+                   ng-model="hideRateColumn.val"
+                   ng-model-options='{ debounce: 1000 }'
+                   ng-change="saveHideRateColumn()"
+                   select-on-focus
+                   style="max-width: 70px;"/>
+            <label class="label-hourly-rate font-normal">{{'Hide Rate Column' | i18n}}</label>
+        </div>            
+        <div class="rowCenter mb-3 user-hourly-rate">
+            <div class="inline-block w-56 label-hourly-rate">{{'Add New Rate' | i18n}}</div>
+            <input class="mr-1.5"
                    ng-value="paramGroupUserInfo"
                    aui-group-user-picker
+                   style="max-width: 364px;"
                    ng-group-user-changed-func="hourlyRatesForm.hourlyRate.$valid && groupUserChange"
                    type="text"/>
-            <input ng-model="startDate" type="date" aui-date-picker class="select" style="width: 155px;margin-right:5px;"/>
+        </div>
+        <div class="rowCenter">
+            <div class="inline-block w-56"></div>
+            <input ng-model="startDate"
+                   type="date"
+                   aui-date-picker
+                   class="field-group-hourly-rate mr-1.5 input-date"/>
             <select id="select2-project"
-                    class="select"
-                    style="width: 250px;margin-right:5px;"
+                    class="field-group-hourly-rate common w-52 mr-1.5"
                     title="{{'Project' | i18n}}"
                     ng-model="project"
                     ng-options="item.id as item.label for item in allProjects">
@@ -30,43 +61,66 @@
                    name="hourlyRate"
                    ng-model="hourlyRate"
                    type="number"
-                   class="text"
+                   class="w-14 field-group-hourly-rate text-field"
                    title="{{'Hourly Rate' | i18n}}"
-                   style="max-width: 70px;margin-right:5px;"
                    select-on-focus
                    enter-pressed="addHourlyRate(paramGroupUserInfo, startDate, project, hourlyRate)"/>
-            <span class="fa fa-plus-square"
-                  ng-click="addHourlyRate(paramGroupUserInfo, startDate, project, hourlyRate)">
 
-            </span>
+            <i class="w-0 p-3 bg-24 bg-no-repeat bg-center m-1"
+               ng-click="addHourlyRate(paramGroupUserInfo, startDate, project, hourlyRate)"
+               style="background-image: url('../images/icon-add-circle-purple.png')">
+            </i>
         </div>
-        <div>
+
+        <div class="border-t border-gray-200 pt-5 mt-5">
+            <label class="inline-block w-56 label-hourly-rate">{{'Existing Rates' | i18n}}</label>
             <div ng-repeat="(accountId, rates) in hourlyRates">
-                <div class="rowCenter" style="margin-top: 3px;">
-                    <div style="width: 247px;margin-left: 3px;margin-right:5px;">{{users[accountId].displayName || accountId.substring(6) || ('Default Rate' | i18n)}}</div>
-                    <input ng-model="startDateUsers[accountId]" type="date" aui-date-picker class="select" style="width: 155px;margin-right:5px;"/>
-                    <select class="select"
-                            title="{{'Project' | i18n}}"
-                            style="width: 250px;margin-right:5px;"
+                <div class="rowCenter mb-3 user-hourly-rate">
+                    <div class="inline-block w-56"></div>
+                    <input class="mr-1.5"
+                           disabled
+                           ng-value="users[accountId]"
+                           aui-group-user-picker
+                           style="max-width: 364px;"
+                           ng-group-user-changed-func="hourlyRatesForm.hourlyRate.$valid && groupUserChange"
+                           type="text"/>
+                </div>
+                <div class="rowCenter">
+                    <div class="inline-block w-56"></div>
+                    <input ng-model="startDateUsers[accountId]"
+                           type="date"
+                           aui-date-picker
+                           class="field-group-hourly-rate mr-1.5 input-date"/>
+                    <select class="field-group-hourly-rate common w-52 mr-1.5"
+                            title="{{'Project' | i18n}}"                            
                             ng-model="projectUsers[accountId]"
                             ng-options="item.id as item.label for item in allProjects">
                     </select>
                     <input ng-model="hourlyRateUsers[accountId]"
                            type="number"
-                           class="text"
+                           class="w-14 field-group-hourly-rate text-field"
                            title="{{'Hourly Rate' | i18n}}"
-                           style="max-width: 70px;margin-right:5px;"
                            select-on-focus
                            enter-pressed="addHourlyRate(users[accountId] || accountId.substring(6), startDateUsers[accountId], projectUsers[accountId], hourlyRateUsers[accountId])"/>
-                    <span class="fa fa-plus-square"
-                          ng-click="addHourlyRate(users[accountId] || accountId.substring(6), startDateUsers[accountId], projectUsers[accountId], hourlyRateUsers[accountId])">
-                    </span>
+                    <i class="w-0 p-3 bg-24 bg-no-repeat bg-center m-1"
+                       ng-click="addHourlyRate(users[accountId] || accountId.substring(6), startDateUsers[accountId], projectUsers[accountId], hourlyRateUsers[accountId])"
+                       style="background-image: url('../images/icon-add-circle-purple.png')">
+                    </i>
                 </div>
-                <div ng-repeat="(startDate, projectRates) in rates">
-                    <div class="rowCenter" ng-repeat="(project, hourlyRate) in projectRates" style="margin-top: 3px;">
-                        <div style="width: 247px;margin-left: 3px;margin-right:5px;"></div>
-                        <div style="width: 155px;margin-right:5px;">{{startDate || '1970-01-01'}}</div>
-                        <div style="width: 250px;margin-right:5px;">{{projectLabel[project]}}</div>
+                <div ng-repeat="(startDate, projectRates) in rates" class="mb-4">
+                    <div class="rowCenter" ng-repeat="(project, hourlyRate) in projectRates">
+                        <div class="inline-block w-56"></div>
+                        <input ng-model="startDate"
+                               type="text"
+                               disabled
+                               class="field-group-hourly-rate mr-1.5 input-date mt-4"/>
+                        <select class="field-group-hourly-rate common w-52 mr-1.5 mt-4"
+                                title="{{'Project' | i18n}}"                            
+                                ng-model="project"
+                                disabled
+                                ng-options="item.id as item.label for item in allProjects">
+                        </select>
+
                         <input id="userHourlyRate{{accountId + startDate + project}}"
                                name="userHourlyRate{{accountId + startDate + project}}"
                                ng-model="hourlyRate"
@@ -74,44 +128,31 @@
                                ng-change="hourlyRatesForm['userHourlyRate{{accountId + startDate + project}}'].$valid
                                 && addHourlyRate(users[accountId] || accountId.substring(6), startDate, project, hourlyRate)"
                                type="number"
-                               class="text"
-                               select-on-focus
-                               style="max-width: 70px;margin-right:5px;"/>
-                        <i class="fa fa-trash" ng-click="removeHourlyRate(accountId, startDate, project)"></i>
+                               class="w-14 field-group-hourly-rate text-field mt-4"
+                               select-on-focus/>
+
+                        <i class="w-0 p-3 bg-24 bg-no-repeat bg-center m-1 mt-5"
+                           ng-click="removeHourlyRate(accountId, startDate, project)"
+                           style="background-image: url('../images/icon-trash.png')">
+                        </i>
+                    </i>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="rowCenter">
-            <div style="display: inline-block;width: 247px;margin-left: 3px;">{{'Hide Rate Column' | i18n}}</div>
-            <input type="checkbox"
-                   class="checkbox"
-                   ng-model="hideRateColumn.val"
-                   ng-model-options='{ debounce: 1000 }'
-                   ng-change="saveHideRateColumn()"
-                   select-on-focus
-                   style="max-width: 70px;margin:5px;"/>
-        </div>
-        <div class="rowCenter">
-            <div style="display: inline-block;width: 247px;margin-left: 3px;">{{'Currency' | i18n}}</div>
-            <input type="text"
-                   class="text"
-                   ng-model="currencySymbol.val"
-                   ng-model-options='{ debounce: 1000 }'
-                   ng-change="saveCurrencySymbol()"
-                   select-on-focus
-                   style="max-width: 70px;margin:5px;"/>
-            <span class="fa fa-spinner fa-spin" ng-show="loading"></span>
-        </div>
+
         <div class="aui-message aui-message warning" ng-show="restrictedGroups">
             <strong>{{'Users list is restricted to Restricted Groups' | i18n}}</strong>&nbsp;{{restrictedGroups}}
         </div>
     </form>
 </div>
 <!-- Dialog footer -->
-<footer class="aui-dialog2-footer">
+<footer class="aui-dialog2-footer big">
     <!-- Actions to render on the right of the footer -->
     <div class="aui-dialog2-footer-actions">
-        <button class="aui-button aui-button-link" ng-click="cancel()">{{'Close' | i18n}}</button>
+        <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                ng-click="cancel()">
+            {{'Close' | i18n}}
+        </button>
     </div>
 </footer>

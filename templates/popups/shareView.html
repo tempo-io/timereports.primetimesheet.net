@@ -1,19 +1,25 @@
 <form class="aui" style="margin: 15px">
   <div>{{'Copy report to user' | i18n}}&nbsp;&nbsp;<span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span></div>
-  <fieldset style="padding-top: 10px">
-    <label>{{"User" | i18n}}</label>
-  </fieldset>
-  <fieldset style="padding-top: 10px">
+  <div class="pt-4">
+    <label class="font-semibold text-text-color-1">{{"User" | i18n}}</label>
+  </div>
+  <div class="pt-4">
     <input ng-value="popupData.shareToUser"
            aui-user-picker
            ng-user-changed-func="popupData.shareToUserChange"
            type="text"
-           style="width: 270px"/>
+           style="width: 260px"/>
   </fieldset>
-  <div style="padding-top: 20px; text-align: right">
+  <div class="pt-4 text-right w-64">
       <div>
-          <input class="aui-button aui-button-primary" type="submit" ng-value="'{{'Copy' | i18n}}'" ng-click="popupData.shareToUser && popupData.shareView(popupData.shareToUser, closePopup)">
-          <a style="margin-left: 10px" ng-click="closePopup()">{{'Cancel' | i18n}}</a>
+          <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
+                  ng-click="popupData.shareToUser && popupData.shareView(popupData.shareToUser, closePopup)">
+                {{'Copy' | i18n}}
+            </button>
+          <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                    ng-click="closePopup()">
+                {{'Cancel' | i18n}}
+            </button>
       </div>
   </div>
 </form>
