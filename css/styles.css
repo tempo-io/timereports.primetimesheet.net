@@ -169,7 +169,7 @@ tr ~ .first > .nav{
     width: 70px;
 }
 .is-gadget #slider-wrapper, .is-gadget #slider-wrapper-issue {
-    width: 580px;
+    width: 550px;
 }
 .is-gadget .calendar #slider-wrapper {
     width: 70px;
@@ -917,8 +917,8 @@ button.text-text-white:hover {
         white-space: pre;
     }
 
-    .is-gadget #slider-wrapper-issue {
-        width: 230px;
+    .is-gadget #slider-wrapper, .is-gadget #slider-wrapper-issue {
+        width: 325px;
     }
 }
 
