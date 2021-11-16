@@ -194,8 +194,10 @@
                             <issue-key issue="data.worklog._issue" show-title="true" />
                         </span>
                         <span ng-if="(!paramUsersInfo || paramUsersInfo.length > 1) && groupByOptions.selected != 'workeduser'">
-                            <a ng-if="data.worklog.author.accountId" ng-title="{{data.worklog.author.displayName}}"
-                            ng-href="{{hostBaseUrl + '/people/' + data.worklog.author.accountId}}" target="_parent">
+                            <a ng-if="data.worklog.author.accountId"
+                               ng-title="{{data.worklog.author.displayName}}"
+                               ng-href="{{hostBaseUrl + '/people/' + data.worklog.author.accountId}}"
+                               target="_parent">
                                 <img ng-alt="{{data.worklog.author.displayName}}" class="avatar-image inline-flex" style="border-radius: 50%"
                                     ng-src="{{data.worklog.author.avatarUrls['16x16']}}" width="16" height="16">
                             </a>
@@ -203,7 +205,7 @@
                         </span>
                         <worklog-comment worklog="data.worklog"/>
                     </td>
-                    <td class="nav priority" width="1%">
+                    <td class="nav priority" width="5%">
                         <span ng-if="data.rowKey._issue">
                             <issue-priority issue="data.rowKey._issue" />
                         </span>
@@ -219,7 +221,7 @@
                                     all-fields="allFields"/>
                     </td>
                     <td ng-if="showTotalInFront"
-                        class="nav borderWeekDays total"
+                        class="nav borderL total"
                         ng-class-odd="'rowAlternate'" ng-class-even="'bg-white'" >
                         &nbsp;
                     </td>
