@@ -2307,3 +2307,39 @@ form.aui .password[data-aui-notification-success] {
 .aui-dialog2-footer.big {
   height: 60px !important;
 }
+
+.aui-datepicker-dialog .ui-datepicker .ui-datepicker-calendar .ui-datepicker-current-day a {
+  background: var(--secondary-color);
+}
+
+.aui-datepicker-dialog .ui-datepicker .ui-datepicker-prev span, .aui-datepicker-dialog .ui-datepicker .ui-datepicker-next span {
+  color: black;
+}
+
+.ui-datepicker-inline .ui-datepicker-prev.ui-corner-all {
+  margin-left: 30px;
+  font-size: 13px;
+}
+
+.ui-datepicker-inline .ui-datepicker-next.ui-corner-all {
+  margin-right: 30px;
+  font-size: 13px;
+}
+
+.ui-datepicker-title .ui-datepicker-month, .ui-datepicker-title .ui-datepicker-year {
+  font-size: 13px;
+}
+
+.aui-datepicker-dialog .ui-datepicker .ui-datepicker-header {
+  padding-bottom: 18px;
+}
+
+.ui-datepicker-calendar thead th span{
+  color: var(--text-color-5);
+  font-weight: 500;
+  font-size: 10px;
+}
+
+.aui-datepicker-dialog .ui-datepicker .ui-datepicker-calendar td a {
+  color: var(--secondary-color);
+}
