@@ -74,6 +74,8 @@ svg, ::before, ::after {
 .w-75 { width: 24.7rem; }
 .w-30rem { width: 30rem; }
 
+.w-70-px { width: 70px;}
+
 /* margin-left */
 .ml-1-p { margin-left: 1%; }
 .ml-2-p { margin-left: 2%; }

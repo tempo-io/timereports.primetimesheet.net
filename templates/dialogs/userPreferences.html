@@ -79,32 +79,28 @@
                 <input id="workingDayStart" ng-model="workingTimeInStatus.val.from" min="0" max="24"
                     ng-change="saveWorkingTimeInStatus()"
                     type="number"
-                    class="text-field single"
+                    class="text-field single w-70-px"
                     title="{{'Working Day Start' | i18n}}"
-                    placeholder="{{workingTimeInStatus.val && workingTimeInStatus.val.from ? '' : defaults.workingTimeInStatus.defaultFrom}}"
-                    style="max-width: 50px; "/>
+                    placeholder="{{workingTimeInStatus.val && workingTimeInStatus.val.from ? '' : defaults.workingTimeInStatus.defaultFrom}}"/>
                 <span class="m-0-important">&nbsp;{{'To' | i18n}}&nbsp;</span>
                 <input id="workingDayEnd" ng-model="workingTimeInStatus.val.to" min="0" max="24"
                     ng-change="saveWorkingTimeInStatus()"
                     type="number"
-                    class="text-field single"
+                    class="text-field single w-70-px"
                     title="{{'Working Day End' | i18n}}"
-                    placeholder="{{workingTimeInStatus.val && workingTimeInStatus.val.to ? '' : defaults.workingTimeInStatus.defaultTo}}"
-                    style="max-width: 50px;"/>
+                    placeholder="{{workingTimeInStatus.val && workingTimeInStatus.val.to ? '' : defaults.workingTimeInStatus.defaultTo}}"/>
                 <span class="m-0-important">&nbsp;{{'Break Time' | i18n}}{{'From' | i18n}}&nbsp;</span>
                 <input id="workingDayBreakStart" ng-model="workingTimeInStatus.val.breakFrom" min="0" max="24"
                     ng-change="saveWorkingTimeInStatus()"
                     type="number"
-                    class="text-field single"
-                    placeholder="{{workingTimeInStatus.val && workingTimeInStatus.val.breakFrom ? '' : defaults.workingTimeInStatus.defaultBreakFrom}}"
-                    style="max-width: 50px; "/>
+                    class="text-field single w-70-px"
+                    placeholder="{{workingTimeInStatus.val && workingTimeInStatus.val.breakFrom ? '' : defaults.workingTimeInStatus.defaultBreakFrom}}"/>
                 <span class="m-0-important">&nbsp;{{'To' | i18n}}&nbsp;</span>
                 <input id="workingDayBreakEnd" ng-model="workingTimeInStatus.val.breakTo" min="0" max="24"
                     ng-change="saveWorkingTimeInStatus()"
                     type="number"
-                    class="text-field single"
-                    placeholder="{{workingTimeInStatus.val && workingTimeInStatus.val.breakTo ? '' : defaults.workingTimeInStatus.defaultBreakTo}}"
-                    style="max-width: 50px;"/>
+                    class="text-field single w-70-px"
+                    placeholder="{{workingTimeInStatus.val && workingTimeInStatus.val.breakTo ? '' : defaults.workingTimeInStatus.defaultBreakTo}}"/>
                 <div class="aui-message aui-message-success msg-overlay user-preference"
                     ng-show="workingTimeInStatusSaveSuccess">
                     <strong>{{'Working Time In Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
