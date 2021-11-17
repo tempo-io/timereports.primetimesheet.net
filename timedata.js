@@ -40,6 +40,8 @@ window.AP = {
       var m;
       if (options.url.match(/\/project\/search/)) {
         options.success(ProjectsData);
+      } else if (options.url.match(/\/user\/permission\/search/)) {
+        options.success([UserAdminData]);
       } else if (options.url.match(/search/)) {
         options.success(angular.copy(TimeData));
       } else if (options.url.match(/\/user\/picker/)) {
@@ -1798,6 +1800,7 @@ var UserAdminData = {
    },
    "displayName":"admin",
    "active":true,
+   "accountType":"atlassian",
    "timeZone":"Europe/Moscow",
    "groups":{
       "size":3,

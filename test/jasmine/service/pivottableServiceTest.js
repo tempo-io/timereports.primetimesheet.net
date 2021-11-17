@@ -1010,6 +1010,26 @@ describe('pivottableServiceTest', function () {
     expect(options.username).toBe('bbbb')
   }))
 
+  it('Empty Users', inject(function ($timeout, $log, pivottableService) {
+    expect(pivottableService).toBeDefined()
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] } }
+    var options = { pivotTableType: 'Timesheet',
+      username: 'bbbb',
+      filterOrProjectId: 'project_DEMO',
+      includeEmpty: true,
+      groupByField: 'workeduser',
+      configOptions: { },
+      sumSubTasks: [] }
+
+    var pivotTable
+    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {
+      pivotTable = _pivotTable
+    })
+    $timeout.flush()
+    expect(pivotTable).toBeDefined()
+    expect(pivotTable).toHaveRowsNumber(1)
+  }))
+
   it('JQL for Date Fields for TimeBalance ["resolved"]', inject(function ($timeout, $log, pivottableService) {
     expect(pivottableService).toBeDefined()
     var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
