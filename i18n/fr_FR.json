@@ -474,5 +474,12 @@
     "No logged time": "Pas de temps enregistré. Assurez-vous de suivre votre temps.",
     "Add New Rate": "Ajouter un nouveau tarif",
     "Existing Rates": "Tarifs existants",
-    "Learn more new UI" : "En savoir plus sur la nouvelle interface utilisateur"
+    "Learn more new UI" : "En savoir plus sur la nouvelle interface utilisateur",
+    "feedback matters" : "Vos commentaires sont importants",
+    "Success": "Succès",
+    "rate new UI": "Veuillez évaluer le nouveau design",
+    "Thanks feedback": "Merci pour votre avis",
+    "Submit": "Soumettre",
+    "Done": "Terminé",
+    "Comment here": "Commente ici"
 }

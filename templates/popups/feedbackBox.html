@@ -1,0 +1,85 @@
+<info-box>
+    <a class="aui-dialog2-header-close float-right" ng-click="closeFeedbackButton()">
+        <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">{{'Close' | i18n}}</span>
+    </a>
+    <br>
+    <label class="font-semibold	block text-center" ng-if="!feedbackSubmited">
+        {{'feedback matters' | i18n}}<br>
+        {{'rate new UI' | i18n}}
+    </label>
+
+    <label class="font-semibold	block text-center" ng-if="feedbackSubmited">
+        <span class="text-2xl">{{'Success' | i18n}}!</span><br>
+        {{'Thanks feedback' | i18n}}
+    </label>
+    
+    <div class="stars rate" ng-if="!feedbackSubmited">
+        <a ng-click="selectStarFeedback(1)" title="awful" ng-class="{ 'star-fill' : rateFeedback >= 1 }">★</a>
+        <a ng-click="selectStarFeedback(2)" title="ok" ng-class="{ 'star-fill' : rateFeedback >= 2 }">★</a>
+        <a ng-click="selectStarFeedback(3)" title="good" ng-class="{ 'star-fill' : rateFeedback >= 3 }">★</a>
+        <a ng-click="selectStarFeedback(4)" title="great" ng-class="{ 'star-fill' : rateFeedback >= 4 }">★</a>
+        <a ng-click="selectStarFeedback(5)" title="awesome" ng-class="{ 'star-fill' : rateFeedback == 5 }">★</a>
+    </div><br>
+        
+    <div class="mt-16 text-center h-24" ng-if="!feedbackSubmited && (rateFeedback == 0 || rateFeedback > 3)">
+        <i class="w-0 p-20 bg-100 bg-no-repeat bg-center"
+        style="background-image: url('../images/icon-tempo.png')">
+        </i>
+    </div>
+
+    <div class="mt-5 text-center h-24" ng-if="feedbackSubmited">        
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="50" fill="#63BA3C"/>
+            <path d="M29.5918 50.5051L41.8367 62.6263L68.3673 36.3636" stroke="white" stroke-width="8"/>
+        </svg>                       
+    </div>
+    
+    <form class="aui m-0-important" name="feedbackForm">
+        <textarea
+            rows="5"
+            cols="60"
+            class="textarea long-field ml-5px"
+            ng-model="feedbackComment"
+            ng-change="plusFeedbackLength(feedbackComment)"
+            ng-class="{ 'border-red-50' : feedbackCommentLength > feedbackCommentSize }"
+            ng-show="rateFeedback > 0 && rateFeedback <= 3"
+            ng-if="!feedbackSubmited"
+            placeholder="{{'Comment here' | i18n}}..."
+            required>
+        </textarea>
+        
+        <!-- if the selected star is less then 4, should type comment -->
+        <div ng-show="rateFeedback > 0 && rateFeedback < 4" ng-if="!feedbackSubmited">
+
+            <span class="float-left font-semibold text-xs text-text-color-1-important">
+                Max {{ feedbackCommentSize }} characters
+            </span>
+            
+            <span class="float-right font-semibold text-xs text-text-color-1" ng-class="{ 'text-red-500' : feedbackCommentLength > feedbackCommentSize}">
+                {{ feedbackCommentSize - feedbackCommentLength }}
+            </span>
+            <br>
+            <br>
+        </div>        
+
+        <div class="text-center">
+            <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 rounded text-text-white font-bold"
+                    ng-disabled="rateFeedback === 0 ||
+                                ((
+                                    feedbackForm.$invalid ||
+                                    feedbackComment.length > feedbackCommentSize
+                                ) && rateFeedback < 4)"
+                    ng-if="!feedbackSubmited"
+                    ng-click="submitFeedback()">
+                {{'Submit' | i18n}}
+            </button>
+
+            <button class="mt-12 bg-secondary-color pt-2 pb-2 pr-4 pl-4 rounded text-text-white font-bold"
+                    ng-if="feedbackSubmited"
+                    ng-click="closeFeedback()">
+                {{'Done' | i18n}}
+            </button>
+        </div>
+    </form>
+    
+</info-box>

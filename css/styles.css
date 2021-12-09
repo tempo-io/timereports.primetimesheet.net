@@ -1188,3 +1188,111 @@ form.bitbucket label {
 form.bitbucket span {
     margin-left: 20px;
 }
+
+.info-box-sizes {
+    height: 354px;
+    width: 330px;
+}
+
+.top-info-box {
+    top: 18%;
+}
+
+@media (min-width: 1400px) {
+    .top-info-box {        
+        top: 18%;
+    }
+}
+
+@media (min-width: 1500px) {
+    .top-info-box {
+        top: 20%;
+    }
+}
+
+@media (min-width: 1600px) {
+    .top-info-box {
+        top: 23%;
+    }
+}
+
+@media (min-width: 1700px) {
+    .top-info-box {
+        top: 26%;
+    }
+}
+
+@media (min-width: 1800px) {
+    .top-info-box {
+        top: 29%;
+    }
+}
+
+@media (min-width: 1900px) {
+    .top-info-box {
+        top: 33%;
+    }
+}
+
+@media (min-width: 2000px) {
+    .top-info-box {
+        top: 38%;
+    }
+}
+
+.stars {
+    display: inline-block;
+    font-size: 33px;
+    font-weight: 100;
+    position: relative;
+    margin-left: 50px;
+    margin-top: 5px;
+}
+
+.stars:BEFORE {
+    position:absolute;
+    overflow:hidden;
+    z-index:1;
+    left:0px;
+    top:0px;
+    color: var(--secondary-color);    
+}
+
+.stars:AFTER {
+    content:"★ ★ ★ ★ ★";
+    position:relative;
+    color:#C8CBDB;
+}
+
+.stars.rate:AFTER {
+    position:absolute;
+    left:0px;
+}
+
+.stars.rate > A {
+    color:transparent;
+    text-decoration:none;
+    position:relative;
+    z-index:2;
+}
+
+.stars.rate:HOVER:BEFORE,
+.stars.rate:HOVER:AFTER {
+    display:none;
+}
+
+.stars.rate:HOVER > A {
+    color: var(--secondary-color);
+}
+
+.stars.rate:HOVER > A:HOVER {
+    color: var(--secondary-color);
+}
+
+.stars.rate >A:HOVER ~ A {
+    color:#C8CBDB;
+}
+
+.star-fill {
+    color: var(--secondary-color) !important;
+}

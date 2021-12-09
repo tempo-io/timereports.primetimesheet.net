@@ -234,6 +234,7 @@ describe('timesheetControllerTest', function () {
       }
     }
 
+    $httpBackend.expectGET('/api/feedback/').respond(200, {})
     $timeout.flush()
     expect(scope.loading).toBeDefined()
     $httpBackend.flush()

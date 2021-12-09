@@ -98,6 +98,7 @@ svg, ::before, ::after {
 
 .ml-5px {  margin-left: 5px; }
 
+/* margin right */
 .mr-37 { margin-left: 9.6rem }
 .mr-11-p { margin-right: 11%; }
 .mr-15-p { margin-right: 15%; }
@@ -109,14 +110,22 @@ svg, ::before, ::after {
 .mr-2px { margin-right: 2px; }
 
 /* background */
+.bg-19 { background-size: 19px; }
 .bg-20 { background-size: 20px; }
 .bg-24 { background-size: 24px; }
-.bg-19 { background-size: 19px; }
+.bg-100 { background-size: 100px; }
 
 .bg-bar-yellow { background-color: var(--bar-yellow); }
 .bg-bar-red { background-color: var(--bar-red); }
 .bg-bar-blank { background-color: var(--bar-blank); }
 .bg-bar-green { background-color: var(--bar-green); }
+
+/* positions */
+.right-3-p { right: 3% }
+
+.shadow-3xl { box-shadow: 1px 1px 5px 1px #888888; }
+
+.border-red-50 { border-color: red !important }
 
 @layer utilities {
     @variants responsive {

@@ -275,6 +275,10 @@
     </footer>
 </script>
 
+<div ng-if="!isGadget && showBoxFeedback" id="feedbackBox">
+    <ng-include src="'/templates/popups/feedbackBox.html'"></ng-include>
+</div>
+
 <div class="footer noprint" ng-if="!isGadget">
     <ng-include src="'/templates/footer.html'"></ng-include>
 </div>
