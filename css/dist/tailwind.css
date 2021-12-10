@@ -1511,6 +1511,10 @@ video {
   border-color: var(--text-color-2);
 }
 
+.divide-text-color-2-1 > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--text-color-2-1);
+}
+
 .divide-text-color-3 > :not([hidden]) ~ :not([hidden]) {
   border-color: var(--text-color-3);
 }
@@ -1878,6 +1882,10 @@ video {
   background-color: var(--text-color-2);
 }
 
+.bg-text-color-2-1 {
+  background-color: var(--text-color-2-1);
+}
+
 .bg-text-color-3 {
   background-color: var(--text-color-3);
 }
@@ -2062,6 +2070,10 @@ video {
 
 .group:hover .group-hover\:bg-text-color-2 {
   background-color: var(--text-color-2);
+}
+
+.group:hover .group-hover\:bg-text-color-2-1 {
+  background-color: var(--text-color-2-1);
 }
 
 .group:hover .group-hover\:bg-text-color-3 {
@@ -2250,6 +2262,10 @@ video {
   background-color: var(--text-color-2);
 }
 
+.focus-within\:bg-text-color-2-1:focus-within {
+  background-color: var(--text-color-2-1);
+}
+
 .focus-within\:bg-text-color-3:focus-within {
   background-color: var(--text-color-3);
 }
@@ -2436,6 +2452,10 @@ video {
   background-color: var(--text-color-2);
 }
 
+.hover\:bg-text-color-2-1:hover {
+  background-color: var(--text-color-2-1);
+}
+
 .hover\:bg-text-color-3:hover {
   background-color: var(--text-color-3);
 }
@@ -2620,6 +2640,10 @@ video {
 
 .focus\:bg-text-color-2:focus {
   background-color: var(--text-color-2);
+}
+
+.focus\:bg-text-color-2-1:focus {
+  background-color: var(--text-color-2-1);
 }
 
 .focus\:bg-text-color-3:focus {
@@ -2857,6 +2881,11 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
 
+.from-text-color-2-1 {
+  --tw-gradient-from: var(--text-color-2-1);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+}
+
 .from-text-color-3 {
   --tw-gradient-from: var(--text-color-3);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
@@ -3064,6 +3093,10 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
 
+.via-text-color-2-1 {
+  --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+}
+
 .via-text-color-3 {
   --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
@@ -3238,6 +3271,10 @@ video {
 
 .to-text-color-2 {
   --tw-gradient-to: var(--text-color-2);
+}
+
+.to-text-color-2-1 {
+  --tw-gradient-to: var(--text-color-2-1);
 }
 
 .to-text-color-3 {
@@ -3426,6 +3463,11 @@ video {
 
 .hover\:from-text-color-2:hover {
   --tw-gradient-from: var(--text-color-2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+}
+
+.hover\:from-text-color-2-1:hover {
+  --tw-gradient-from: var(--text-color-2-1);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
 
@@ -3636,6 +3678,10 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
 
+.hover\:via-text-color-2-1:hover {
+  --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+}
+
 .hover\:via-text-color-3:hover {
   --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
@@ -3810,6 +3856,10 @@ video {
 
 .hover\:to-text-color-2:hover {
   --tw-gradient-to: var(--text-color-2);
+}
+
+.hover\:to-text-color-2-1:hover {
+  --tw-gradient-to: var(--text-color-2-1);
 }
 
 .hover\:to-text-color-3:hover {
@@ -3998,6 +4048,11 @@ video {
 
 .focus\:from-text-color-2:focus {
   --tw-gradient-from: var(--text-color-2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+}
+
+.focus\:from-text-color-2-1:focus {
+  --tw-gradient-from: var(--text-color-2-1);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
 
@@ -4208,6 +4263,10 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
 
+.focus\:via-text-color-2-1:focus {
+  --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+}
+
 .focus\:via-text-color-3:focus {
   --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
 }
@@ -4382,6 +4441,10 @@ video {
 
 .focus\:to-text-color-2:focus {
   --tw-gradient-to: var(--text-color-2);
+}
+
+.focus\:to-text-color-2-1:focus {
+  --tw-gradient-to: var(--text-color-2-1);
 }
 
 .focus\:to-text-color-3:focus {
@@ -4940,6 +5003,10 @@ video {
   border-color: var(--text-color-2);
 }
 
+.border-text-color-2-1 {
+  border-color: var(--text-color-2-1);
+}
+
 .border-text-color-3 {
   border-color: var(--text-color-3);
 }
@@ -5124,6 +5191,10 @@ video {
 
 .group:hover .group-hover\:border-text-color-2 {
   border-color: var(--text-color-2);
+}
+
+.group:hover .group-hover\:border-text-color-2-1 {
+  border-color: var(--text-color-2-1);
 }
 
 .group:hover .group-hover\:border-text-color-3 {
@@ -5312,6 +5383,10 @@ video {
   border-color: var(--text-color-2);
 }
 
+.focus-within\:border-text-color-2-1:focus-within {
+  border-color: var(--text-color-2-1);
+}
+
 .focus-within\:border-text-color-3:focus-within {
   border-color: var(--text-color-3);
 }
@@ -5498,6 +5573,10 @@ video {
   border-color: var(--text-color-2);
 }
 
+.hover\:border-text-color-2-1:hover {
+  border-color: var(--text-color-2-1);
+}
+
 .hover\:border-text-color-3:hover {
   border-color: var(--text-color-3);
 }
@@ -5682,6 +5761,10 @@ video {
 
 .focus\:border-text-color-2:focus {
   border-color: var(--text-color-2);
+}
+
+.focus\:border-text-color-2-1:focus {
+  border-color: var(--text-color-2-1);
 }
 
 .focus\:border-text-color-3:focus {
@@ -11428,6 +11511,10 @@ video {
   color: var(--text-color-2);
 }
 
+.placeholder-text-color-2-1::placeholder {
+  color: var(--text-color-2-1);
+}
+
 .placeholder-text-color-3::placeholder {
   color: var(--text-color-3);
 }
@@ -11612,6 +11699,10 @@ video {
 
 .focus\:placeholder-text-color-2:focus::placeholder {
   color: var(--text-color-2);
+}
+
+.focus\:placeholder-text-color-2-1:focus::placeholder {
+  color: var(--text-color-2-1);
 }
 
 .focus\:placeholder-text-color-3:focus::placeholder {
@@ -15102,6 +15193,10 @@ video {
   --tw-ring-offset-color: var(--text-color-2);
 }
 
+.ring-offset-text-color-2-1 {
+  --tw-ring-offset-color: var(--text-color-2-1);
+}
+
 .ring-offset-text-color-3 {
   --tw-ring-offset-color: var(--text-color-3);
 }
@@ -15278,6 +15373,10 @@ video {
   --tw-ring-offset-color: var(--text-color-2);
 }
 
+.focus-within\:ring-offset-text-color-2-1:focus-within {
+  --tw-ring-offset-color: var(--text-color-2-1);
+}
+
 .focus-within\:ring-offset-text-color-3:focus-within {
   --tw-ring-offset-color: var(--text-color-3);
 }
@@ -15452,6 +15551,10 @@ video {
 
 .focus\:ring-offset-text-color-2:focus {
   --tw-ring-offset-color: var(--text-color-2);
+}
+
+.focus\:ring-offset-text-color-2-1:focus {
+  --tw-ring-offset-color: var(--text-color-2-1);
 }
 
 .focus\:ring-offset-text-color-3:focus {
@@ -15690,6 +15793,10 @@ video {
   --tw-ring-color: var(--text-color-2);
 }
 
+.ring-text-color-2-1 {
+  --tw-ring-color: var(--text-color-2-1);
+}
+
 .ring-text-color-3 {
   --tw-ring-color: var(--text-color-3);
 }
@@ -15876,6 +15983,10 @@ video {
   --tw-ring-color: var(--text-color-2);
 }
 
+.focus-within\:ring-text-color-2-1:focus-within {
+  --tw-ring-color: var(--text-color-2-1);
+}
+
 .focus-within\:ring-text-color-3:focus-within {
   --tw-ring-color: var(--text-color-3);
 }
@@ -16060,6 +16171,10 @@ video {
 
 .focus\:ring-text-color-2:focus {
   --tw-ring-color: var(--text-color-2);
+}
+
+.focus\:ring-text-color-2-1:focus {
+  --tw-ring-color: var(--text-color-2-1);
 }
 
 .focus\:ring-text-color-3:focus {
@@ -16472,6 +16587,10 @@ video {
   color: var(--text-color-2);
 }
 
+.text-text-color-2-1 {
+  color: var(--text-color-2-1);
+}
+
 .text-text-color-3 {
   color: var(--text-color-3);
 }
@@ -16656,6 +16775,10 @@ video {
 
 .group:hover .group-hover\:text-text-color-2 {
   color: var(--text-color-2);
+}
+
+.group:hover .group-hover\:text-text-color-2-1 {
+  color: var(--text-color-2-1);
 }
 
 .group:hover .group-hover\:text-text-color-3 {
@@ -16844,6 +16967,10 @@ video {
   color: var(--text-color-2);
 }
 
+.focus-within\:text-text-color-2-1:focus-within {
+  color: var(--text-color-2-1);
+}
+
 .focus-within\:text-text-color-3:focus-within {
   color: var(--text-color-3);
 }
@@ -17030,6 +17157,10 @@ video {
   color: var(--text-color-2);
 }
 
+.hover\:text-text-color-2-1:hover {
+  color: var(--text-color-2-1);
+}
+
 .hover\:text-text-color-3:hover {
   color: var(--text-color-3);
 }
@@ -17214,6 +17345,10 @@ video {
 
 .focus\:text-text-color-2:focus {
   color: var(--text-color-2);
+}
+
+.focus\:text-text-color-2-1:focus {
+  color: var(--text-color-2-1);
 }
 
 .focus\:text-text-color-3:focus {
@@ -22867,6 +23002,7 @@ video {
   --backgroung-color-5: #F6F7FF;
   --backgroung-color-6: #F4EDFF;
   --backgroung-color-7: #F6F7FF;
+  --background-file: #F9FAFE;
   --bg-today: #F2E8FF;
   --top-today: #5B2CDB;
   --bar-green: #7FDF63;
@@ -24037,6 +24173,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .xl\:divide-text-color-2-1 > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--text-color-2-1);
+  }
+
   .xl\:divide-text-color-3 > :not([hidden]) ~ :not([hidden]) {
     border-color: var(--text-color-3);
   }
@@ -24404,6 +24544,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .xl\:bg-text-color-2-1 {
+    background-color: var(--text-color-2-1);
+  }
+
   .xl\:bg-text-color-3 {
     background-color: var(--text-color-3);
   }
@@ -24588,6 +24732,10 @@ svg, ::before, ::after {
 
   .group:hover .xl\:group-hover\:bg-text-color-2 {
     background-color: var(--text-color-2);
+  }
+
+  .group:hover .xl\:group-hover\:bg-text-color-2-1 {
+    background-color: var(--text-color-2-1);
   }
 
   .group:hover .xl\:group-hover\:bg-text-color-3 {
@@ -24776,6 +24924,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .xl\:focus-within\:bg-text-color-2-1:focus-within {
+    background-color: var(--text-color-2-1);
+  }
+
   .xl\:focus-within\:bg-text-color-3:focus-within {
     background-color: var(--text-color-3);
   }
@@ -24962,6 +25114,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .xl\:hover\:bg-text-color-2-1:hover {
+    background-color: var(--text-color-2-1);
+  }
+
   .xl\:hover\:bg-text-color-3:hover {
     background-color: var(--text-color-3);
   }
@@ -25146,6 +25302,10 @@ svg, ::before, ::after {
 
   .xl\:focus\:bg-text-color-2:focus {
     background-color: var(--text-color-2);
+  }
+
+  .xl\:focus\:bg-text-color-2-1:focus {
+    background-color: var(--text-color-2-1);
   }
 
   .xl\:focus\:bg-text-color-3:focus {
@@ -25383,6 +25543,11 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .xl\:from-text-color-2-1 {
+    --tw-gradient-from: var(--text-color-2-1);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .xl\:from-text-color-3 {
     --tw-gradient-from: var(--text-color-3);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
@@ -25590,6 +25755,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .xl\:via-text-color-2-1 {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .xl\:via-text-color-3 {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -25764,6 +25933,10 @@ svg, ::before, ::after {
 
   .xl\:to-text-color-2 {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .xl\:to-text-color-2-1 {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .xl\:to-text-color-3 {
@@ -25952,6 +26125,11 @@ svg, ::before, ::after {
 
   .xl\:hover\:from-text-color-2:hover {
     --tw-gradient-from: var(--text-color-2);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
+  .xl\:hover\:from-text-color-2-1:hover {
+    --tw-gradient-from: var(--text-color-2-1);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
@@ -26162,6 +26340,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .xl\:hover\:via-text-color-2-1:hover {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .xl\:hover\:via-text-color-3:hover {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -26336,6 +26518,10 @@ svg, ::before, ::after {
 
   .xl\:hover\:to-text-color-2:hover {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .xl\:hover\:to-text-color-2-1:hover {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .xl\:hover\:to-text-color-3:hover {
@@ -26524,6 +26710,11 @@ svg, ::before, ::after {
 
   .xl\:focus\:from-text-color-2:focus {
     --tw-gradient-from: var(--text-color-2);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
+  .xl\:focus\:from-text-color-2-1:focus {
+    --tw-gradient-from: var(--text-color-2-1);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
@@ -26734,6 +26925,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .xl\:focus\:via-text-color-2-1:focus {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .xl\:focus\:via-text-color-3:focus {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -26908,6 +27103,10 @@ svg, ::before, ::after {
 
   .xl\:focus\:to-text-color-2:focus {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .xl\:focus\:to-text-color-2-1:focus {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .xl\:focus\:to-text-color-3:focus {
@@ -27466,6 +27665,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .xl\:border-text-color-2-1 {
+    border-color: var(--text-color-2-1);
+  }
+
   .xl\:border-text-color-3 {
     border-color: var(--text-color-3);
   }
@@ -27650,6 +27853,10 @@ svg, ::before, ::after {
 
   .group:hover .xl\:group-hover\:border-text-color-2 {
     border-color: var(--text-color-2);
+  }
+
+  .group:hover .xl\:group-hover\:border-text-color-2-1 {
+    border-color: var(--text-color-2-1);
   }
 
   .group:hover .xl\:group-hover\:border-text-color-3 {
@@ -27838,6 +28045,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .xl\:focus-within\:border-text-color-2-1:focus-within {
+    border-color: var(--text-color-2-1);
+  }
+
   .xl\:focus-within\:border-text-color-3:focus-within {
     border-color: var(--text-color-3);
   }
@@ -28024,6 +28235,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .xl\:hover\:border-text-color-2-1:hover {
+    border-color: var(--text-color-2-1);
+  }
+
   .xl\:hover\:border-text-color-3:hover {
     border-color: var(--text-color-3);
   }
@@ -28208,6 +28423,10 @@ svg, ::before, ::after {
 
   .xl\:focus\:border-text-color-2:focus {
     border-color: var(--text-color-2);
+  }
+
+  .xl\:focus\:border-text-color-2-1:focus {
+    border-color: var(--text-color-2-1);
   }
 
   .xl\:focus\:border-text-color-3:focus {
@@ -33954,6 +34173,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .xl\:placeholder-text-color-2-1::placeholder {
+    color: var(--text-color-2-1);
+  }
+
   .xl\:placeholder-text-color-3::placeholder {
     color: var(--text-color-3);
   }
@@ -34138,6 +34361,10 @@ svg, ::before, ::after {
 
   .xl\:focus\:placeholder-text-color-2:focus::placeholder {
     color: var(--text-color-2);
+  }
+
+  .xl\:focus\:placeholder-text-color-2-1:focus::placeholder {
+    color: var(--text-color-2-1);
   }
 
   .xl\:focus\:placeholder-text-color-3:focus::placeholder {
@@ -37615,6 +37842,10 @@ svg, ::before, ::after {
     --tw-ring-offset-color: var(--text-color-2);
   }
 
+  .xl\:ring-offset-text-color-2-1 {
+    --tw-ring-offset-color: var(--text-color-2-1);
+  }
+
   .xl\:ring-offset-text-color-3 {
     --tw-ring-offset-color: var(--text-color-3);
   }
@@ -37791,6 +38022,10 @@ svg, ::before, ::after {
     --tw-ring-offset-color: var(--text-color-2);
   }
 
+  .xl\:focus-within\:ring-offset-text-color-2-1:focus-within {
+    --tw-ring-offset-color: var(--text-color-2-1);
+  }
+
   .xl\:focus-within\:ring-offset-text-color-3:focus-within {
     --tw-ring-offset-color: var(--text-color-3);
   }
@@ -37965,6 +38200,10 @@ svg, ::before, ::after {
 
   .xl\:focus\:ring-offset-text-color-2:focus {
     --tw-ring-offset-color: var(--text-color-2);
+  }
+
+  .xl\:focus\:ring-offset-text-color-2-1:focus {
+    --tw-ring-offset-color: var(--text-color-2-1);
   }
 
   .xl\:focus\:ring-offset-text-color-3:focus {
@@ -38203,6 +38442,10 @@ svg, ::before, ::after {
     --tw-ring-color: var(--text-color-2);
   }
 
+  .xl\:ring-text-color-2-1 {
+    --tw-ring-color: var(--text-color-2-1);
+  }
+
   .xl\:ring-text-color-3 {
     --tw-ring-color: var(--text-color-3);
   }
@@ -38389,6 +38632,10 @@ svg, ::before, ::after {
     --tw-ring-color: var(--text-color-2);
   }
 
+  .xl\:focus-within\:ring-text-color-2-1:focus-within {
+    --tw-ring-color: var(--text-color-2-1);
+  }
+
   .xl\:focus-within\:ring-text-color-3:focus-within {
     --tw-ring-color: var(--text-color-3);
   }
@@ -38573,6 +38820,10 @@ svg, ::before, ::after {
 
   .xl\:focus\:ring-text-color-2:focus {
     --tw-ring-color: var(--text-color-2);
+  }
+
+  .xl\:focus\:ring-text-color-2-1:focus {
+    --tw-ring-color: var(--text-color-2-1);
   }
 
   .xl\:focus\:ring-text-color-3:focus {
@@ -38985,6 +39236,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .xl\:text-text-color-2-1 {
+    color: var(--text-color-2-1);
+  }
+
   .xl\:text-text-color-3 {
     color: var(--text-color-3);
   }
@@ -39169,6 +39424,10 @@ svg, ::before, ::after {
 
   .group:hover .xl\:group-hover\:text-text-color-2 {
     color: var(--text-color-2);
+  }
+
+  .group:hover .xl\:group-hover\:text-text-color-2-1 {
+    color: var(--text-color-2-1);
   }
 
   .group:hover .xl\:group-hover\:text-text-color-3 {
@@ -39357,6 +39616,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .xl\:focus-within\:text-text-color-2-1:focus-within {
+    color: var(--text-color-2-1);
+  }
+
   .xl\:focus-within\:text-text-color-3:focus-within {
     color: var(--text-color-3);
   }
@@ -39543,6 +39806,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .xl\:hover\:text-text-color-2-1:hover {
+    color: var(--text-color-2-1);
+  }
+
   .xl\:hover\:text-text-color-3:hover {
     color: var(--text-color-3);
   }
@@ -39727,6 +39994,10 @@ svg, ::before, ::after {
 
   .xl\:focus\:text-text-color-2:focus {
     color: var(--text-color-2);
+  }
+
+  .xl\:focus\:text-text-color-2-1:focus {
+    color: var(--text-color-2-1);
   }
 
   .xl\:focus\:text-text-color-3:focus {
@@ -46199,6 +46470,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .lg\:divide-text-color-2-1 > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--text-color-2-1);
+  }
+
   .lg\:divide-text-color-3 > :not([hidden]) ~ :not([hidden]) {
     border-color: var(--text-color-3);
   }
@@ -46566,6 +46841,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .lg\:bg-text-color-2-1 {
+    background-color: var(--text-color-2-1);
+  }
+
   .lg\:bg-text-color-3 {
     background-color: var(--text-color-3);
   }
@@ -46750,6 +47029,10 @@ svg, ::before, ::after {
 
   .group:hover .lg\:group-hover\:bg-text-color-2 {
     background-color: var(--text-color-2);
+  }
+
+  .group:hover .lg\:group-hover\:bg-text-color-2-1 {
+    background-color: var(--text-color-2-1);
   }
 
   .group:hover .lg\:group-hover\:bg-text-color-3 {
@@ -46938,6 +47221,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .lg\:focus-within\:bg-text-color-2-1:focus-within {
+    background-color: var(--text-color-2-1);
+  }
+
   .lg\:focus-within\:bg-text-color-3:focus-within {
     background-color: var(--text-color-3);
   }
@@ -47124,6 +47411,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .lg\:hover\:bg-text-color-2-1:hover {
+    background-color: var(--text-color-2-1);
+  }
+
   .lg\:hover\:bg-text-color-3:hover {
     background-color: var(--text-color-3);
   }
@@ -47308,6 +47599,10 @@ svg, ::before, ::after {
 
   .lg\:focus\:bg-text-color-2:focus {
     background-color: var(--text-color-2);
+  }
+
+  .lg\:focus\:bg-text-color-2-1:focus {
+    background-color: var(--text-color-2-1);
   }
 
   .lg\:focus\:bg-text-color-3:focus {
@@ -47545,6 +47840,11 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .lg\:from-text-color-2-1 {
+    --tw-gradient-from: var(--text-color-2-1);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .lg\:from-text-color-3 {
     --tw-gradient-from: var(--text-color-3);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
@@ -47752,6 +48052,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .lg\:via-text-color-2-1 {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .lg\:via-text-color-3 {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -47926,6 +48230,10 @@ svg, ::before, ::after {
 
   .lg\:to-text-color-2 {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .lg\:to-text-color-2-1 {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .lg\:to-text-color-3 {
@@ -48114,6 +48422,11 @@ svg, ::before, ::after {
 
   .lg\:hover\:from-text-color-2:hover {
     --tw-gradient-from: var(--text-color-2);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
+  .lg\:hover\:from-text-color-2-1:hover {
+    --tw-gradient-from: var(--text-color-2-1);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
@@ -48324,6 +48637,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .lg\:hover\:via-text-color-2-1:hover {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .lg\:hover\:via-text-color-3:hover {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -48498,6 +48815,10 @@ svg, ::before, ::after {
 
   .lg\:hover\:to-text-color-2:hover {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .lg\:hover\:to-text-color-2-1:hover {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .lg\:hover\:to-text-color-3:hover {
@@ -48686,6 +49007,11 @@ svg, ::before, ::after {
 
   .lg\:focus\:from-text-color-2:focus {
     --tw-gradient-from: var(--text-color-2);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
+  .lg\:focus\:from-text-color-2-1:focus {
+    --tw-gradient-from: var(--text-color-2-1);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
@@ -48896,6 +49222,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .lg\:focus\:via-text-color-2-1:focus {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .lg\:focus\:via-text-color-3:focus {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -49070,6 +49400,10 @@ svg, ::before, ::after {
 
   .lg\:focus\:to-text-color-2:focus {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .lg\:focus\:to-text-color-2-1:focus {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .lg\:focus\:to-text-color-3:focus {
@@ -49628,6 +49962,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .lg\:border-text-color-2-1 {
+    border-color: var(--text-color-2-1);
+  }
+
   .lg\:border-text-color-3 {
     border-color: var(--text-color-3);
   }
@@ -49812,6 +50150,10 @@ svg, ::before, ::after {
 
   .group:hover .lg\:group-hover\:border-text-color-2 {
     border-color: var(--text-color-2);
+  }
+
+  .group:hover .lg\:group-hover\:border-text-color-2-1 {
+    border-color: var(--text-color-2-1);
   }
 
   .group:hover .lg\:group-hover\:border-text-color-3 {
@@ -50000,6 +50342,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .lg\:focus-within\:border-text-color-2-1:focus-within {
+    border-color: var(--text-color-2-1);
+  }
+
   .lg\:focus-within\:border-text-color-3:focus-within {
     border-color: var(--text-color-3);
   }
@@ -50186,6 +50532,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .lg\:hover\:border-text-color-2-1:hover {
+    border-color: var(--text-color-2-1);
+  }
+
   .lg\:hover\:border-text-color-3:hover {
     border-color: var(--text-color-3);
   }
@@ -50370,6 +50720,10 @@ svg, ::before, ::after {
 
   .lg\:focus\:border-text-color-2:focus {
     border-color: var(--text-color-2);
+  }
+
+  .lg\:focus\:border-text-color-2-1:focus {
+    border-color: var(--text-color-2-1);
   }
 
   .lg\:focus\:border-text-color-3:focus {
@@ -56116,6 +56470,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .lg\:placeholder-text-color-2-1::placeholder {
+    color: var(--text-color-2-1);
+  }
+
   .lg\:placeholder-text-color-3::placeholder {
     color: var(--text-color-3);
   }
@@ -56300,6 +56658,10 @@ svg, ::before, ::after {
 
   .lg\:focus\:placeholder-text-color-2:focus::placeholder {
     color: var(--text-color-2);
+  }
+
+  .lg\:focus\:placeholder-text-color-2-1:focus::placeholder {
+    color: var(--text-color-2-1);
   }
 
   .lg\:focus\:placeholder-text-color-3:focus::placeholder {
@@ -59777,6 +60139,10 @@ svg, ::before, ::after {
     --tw-ring-offset-color: var(--text-color-2);
   }
 
+  .lg\:ring-offset-text-color-2-1 {
+    --tw-ring-offset-color: var(--text-color-2-1);
+  }
+
   .lg\:ring-offset-text-color-3 {
     --tw-ring-offset-color: var(--text-color-3);
   }
@@ -59953,6 +60319,10 @@ svg, ::before, ::after {
     --tw-ring-offset-color: var(--text-color-2);
   }
 
+  .lg\:focus-within\:ring-offset-text-color-2-1:focus-within {
+    --tw-ring-offset-color: var(--text-color-2-1);
+  }
+
   .lg\:focus-within\:ring-offset-text-color-3:focus-within {
     --tw-ring-offset-color: var(--text-color-3);
   }
@@ -60127,6 +60497,10 @@ svg, ::before, ::after {
 
   .lg\:focus\:ring-offset-text-color-2:focus {
     --tw-ring-offset-color: var(--text-color-2);
+  }
+
+  .lg\:focus\:ring-offset-text-color-2-1:focus {
+    --tw-ring-offset-color: var(--text-color-2-1);
   }
 
   .lg\:focus\:ring-offset-text-color-3:focus {
@@ -60365,6 +60739,10 @@ svg, ::before, ::after {
     --tw-ring-color: var(--text-color-2);
   }
 
+  .lg\:ring-text-color-2-1 {
+    --tw-ring-color: var(--text-color-2-1);
+  }
+
   .lg\:ring-text-color-3 {
     --tw-ring-color: var(--text-color-3);
   }
@@ -60551,6 +60929,10 @@ svg, ::before, ::after {
     --tw-ring-color: var(--text-color-2);
   }
 
+  .lg\:focus-within\:ring-text-color-2-1:focus-within {
+    --tw-ring-color: var(--text-color-2-1);
+  }
+
   .lg\:focus-within\:ring-text-color-3:focus-within {
     --tw-ring-color: var(--text-color-3);
   }
@@ -60735,6 +61117,10 @@ svg, ::before, ::after {
 
   .lg\:focus\:ring-text-color-2:focus {
     --tw-ring-color: var(--text-color-2);
+  }
+
+  .lg\:focus\:ring-text-color-2-1:focus {
+    --tw-ring-color: var(--text-color-2-1);
   }
 
   .lg\:focus\:ring-text-color-3:focus {
@@ -61147,6 +61533,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .lg\:text-text-color-2-1 {
+    color: var(--text-color-2-1);
+  }
+
   .lg\:text-text-color-3 {
     color: var(--text-color-3);
   }
@@ -61331,6 +61721,10 @@ svg, ::before, ::after {
 
   .group:hover .lg\:group-hover\:text-text-color-2 {
     color: var(--text-color-2);
+  }
+
+  .group:hover .lg\:group-hover\:text-text-color-2-1 {
+    color: var(--text-color-2-1);
   }
 
   .group:hover .lg\:group-hover\:text-text-color-3 {
@@ -61519,6 +61913,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .lg\:focus-within\:text-text-color-2-1:focus-within {
+    color: var(--text-color-2-1);
+  }
+
   .lg\:focus-within\:text-text-color-3:focus-within {
     color: var(--text-color-3);
   }
@@ -61705,6 +62103,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .lg\:hover\:text-text-color-2-1:hover {
+    color: var(--text-color-2-1);
+  }
+
   .lg\:hover\:text-text-color-3:hover {
     color: var(--text-color-3);
   }
@@ -61889,6 +62291,10 @@ svg, ::before, ::after {
 
   .lg\:focus\:text-text-color-2:focus {
     color: var(--text-color-2);
+  }
+
+  .lg\:focus\:text-text-color-2-1:focus {
+    color: var(--text-color-2-1);
   }
 
   .lg\:focus\:text-text-color-3:focus {
@@ -68361,6 +68767,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .md\:divide-text-color-2-1 > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--text-color-2-1);
+  }
+
   .md\:divide-text-color-3 > :not([hidden]) ~ :not([hidden]) {
     border-color: var(--text-color-3);
   }
@@ -68728,6 +69138,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .md\:bg-text-color-2-1 {
+    background-color: var(--text-color-2-1);
+  }
+
   .md\:bg-text-color-3 {
     background-color: var(--text-color-3);
   }
@@ -68912,6 +69326,10 @@ svg, ::before, ::after {
 
   .group:hover .md\:group-hover\:bg-text-color-2 {
     background-color: var(--text-color-2);
+  }
+
+  .group:hover .md\:group-hover\:bg-text-color-2-1 {
+    background-color: var(--text-color-2-1);
   }
 
   .group:hover .md\:group-hover\:bg-text-color-3 {
@@ -69100,6 +69518,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .md\:focus-within\:bg-text-color-2-1:focus-within {
+    background-color: var(--text-color-2-1);
+  }
+
   .md\:focus-within\:bg-text-color-3:focus-within {
     background-color: var(--text-color-3);
   }
@@ -69286,6 +69708,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .md\:hover\:bg-text-color-2-1:hover {
+    background-color: var(--text-color-2-1);
+  }
+
   .md\:hover\:bg-text-color-3:hover {
     background-color: var(--text-color-3);
   }
@@ -69470,6 +69896,10 @@ svg, ::before, ::after {
 
   .md\:focus\:bg-text-color-2:focus {
     background-color: var(--text-color-2);
+  }
+
+  .md\:focus\:bg-text-color-2-1:focus {
+    background-color: var(--text-color-2-1);
   }
 
   .md\:focus\:bg-text-color-3:focus {
@@ -69707,6 +70137,11 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .md\:from-text-color-2-1 {
+    --tw-gradient-from: var(--text-color-2-1);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .md\:from-text-color-3 {
     --tw-gradient-from: var(--text-color-3);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
@@ -69914,6 +70349,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .md\:via-text-color-2-1 {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .md\:via-text-color-3 {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -70088,6 +70527,10 @@ svg, ::before, ::after {
 
   .md\:to-text-color-2 {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .md\:to-text-color-2-1 {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .md\:to-text-color-3 {
@@ -70276,6 +70719,11 @@ svg, ::before, ::after {
 
   .md\:hover\:from-text-color-2:hover {
     --tw-gradient-from: var(--text-color-2);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
+  .md\:hover\:from-text-color-2-1:hover {
+    --tw-gradient-from: var(--text-color-2-1);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
@@ -70486,6 +70934,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .md\:hover\:via-text-color-2-1:hover {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .md\:hover\:via-text-color-3:hover {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -70660,6 +71112,10 @@ svg, ::before, ::after {
 
   .md\:hover\:to-text-color-2:hover {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .md\:hover\:to-text-color-2-1:hover {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .md\:hover\:to-text-color-3:hover {
@@ -70848,6 +71304,11 @@ svg, ::before, ::after {
 
   .md\:focus\:from-text-color-2:focus {
     --tw-gradient-from: var(--text-color-2);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
+  .md\:focus\:from-text-color-2-1:focus {
+    --tw-gradient-from: var(--text-color-2-1);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
@@ -71058,6 +71519,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .md\:focus\:via-text-color-2-1:focus {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .md\:focus\:via-text-color-3:focus {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -71232,6 +71697,10 @@ svg, ::before, ::after {
 
   .md\:focus\:to-text-color-2:focus {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .md\:focus\:to-text-color-2-1:focus {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .md\:focus\:to-text-color-3:focus {
@@ -71790,6 +72259,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .md\:border-text-color-2-1 {
+    border-color: var(--text-color-2-1);
+  }
+
   .md\:border-text-color-3 {
     border-color: var(--text-color-3);
   }
@@ -71974,6 +72447,10 @@ svg, ::before, ::after {
 
   .group:hover .md\:group-hover\:border-text-color-2 {
     border-color: var(--text-color-2);
+  }
+
+  .group:hover .md\:group-hover\:border-text-color-2-1 {
+    border-color: var(--text-color-2-1);
   }
 
   .group:hover .md\:group-hover\:border-text-color-3 {
@@ -72162,6 +72639,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .md\:focus-within\:border-text-color-2-1:focus-within {
+    border-color: var(--text-color-2-1);
+  }
+
   .md\:focus-within\:border-text-color-3:focus-within {
     border-color: var(--text-color-3);
   }
@@ -72348,6 +72829,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .md\:hover\:border-text-color-2-1:hover {
+    border-color: var(--text-color-2-1);
+  }
+
   .md\:hover\:border-text-color-3:hover {
     border-color: var(--text-color-3);
   }
@@ -72532,6 +73017,10 @@ svg, ::before, ::after {
 
   .md\:focus\:border-text-color-2:focus {
     border-color: var(--text-color-2);
+  }
+
+  .md\:focus\:border-text-color-2-1:focus {
+    border-color: var(--text-color-2-1);
   }
 
   .md\:focus\:border-text-color-3:focus {
@@ -78278,6 +78767,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .md\:placeholder-text-color-2-1::placeholder {
+    color: var(--text-color-2-1);
+  }
+
   .md\:placeholder-text-color-3::placeholder {
     color: var(--text-color-3);
   }
@@ -78462,6 +78955,10 @@ svg, ::before, ::after {
 
   .md\:focus\:placeholder-text-color-2:focus::placeholder {
     color: var(--text-color-2);
+  }
+
+  .md\:focus\:placeholder-text-color-2-1:focus::placeholder {
+    color: var(--text-color-2-1);
   }
 
   .md\:focus\:placeholder-text-color-3:focus::placeholder {
@@ -81939,6 +82436,10 @@ svg, ::before, ::after {
     --tw-ring-offset-color: var(--text-color-2);
   }
 
+  .md\:ring-offset-text-color-2-1 {
+    --tw-ring-offset-color: var(--text-color-2-1);
+  }
+
   .md\:ring-offset-text-color-3 {
     --tw-ring-offset-color: var(--text-color-3);
   }
@@ -82115,6 +82616,10 @@ svg, ::before, ::after {
     --tw-ring-offset-color: var(--text-color-2);
   }
 
+  .md\:focus-within\:ring-offset-text-color-2-1:focus-within {
+    --tw-ring-offset-color: var(--text-color-2-1);
+  }
+
   .md\:focus-within\:ring-offset-text-color-3:focus-within {
     --tw-ring-offset-color: var(--text-color-3);
   }
@@ -82289,6 +82794,10 @@ svg, ::before, ::after {
 
   .md\:focus\:ring-offset-text-color-2:focus {
     --tw-ring-offset-color: var(--text-color-2);
+  }
+
+  .md\:focus\:ring-offset-text-color-2-1:focus {
+    --tw-ring-offset-color: var(--text-color-2-1);
   }
 
   .md\:focus\:ring-offset-text-color-3:focus {
@@ -82527,6 +83036,10 @@ svg, ::before, ::after {
     --tw-ring-color: var(--text-color-2);
   }
 
+  .md\:ring-text-color-2-1 {
+    --tw-ring-color: var(--text-color-2-1);
+  }
+
   .md\:ring-text-color-3 {
     --tw-ring-color: var(--text-color-3);
   }
@@ -82713,6 +83226,10 @@ svg, ::before, ::after {
     --tw-ring-color: var(--text-color-2);
   }
 
+  .md\:focus-within\:ring-text-color-2-1:focus-within {
+    --tw-ring-color: var(--text-color-2-1);
+  }
+
   .md\:focus-within\:ring-text-color-3:focus-within {
     --tw-ring-color: var(--text-color-3);
   }
@@ -82897,6 +83414,10 @@ svg, ::before, ::after {
 
   .md\:focus\:ring-text-color-2:focus {
     --tw-ring-color: var(--text-color-2);
+  }
+
+  .md\:focus\:ring-text-color-2-1:focus {
+    --tw-ring-color: var(--text-color-2-1);
   }
 
   .md\:focus\:ring-text-color-3:focus {
@@ -83309,6 +83830,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .md\:text-text-color-2-1 {
+    color: var(--text-color-2-1);
+  }
+
   .md\:text-text-color-3 {
     color: var(--text-color-3);
   }
@@ -83493,6 +84018,10 @@ svg, ::before, ::after {
 
   .group:hover .md\:group-hover\:text-text-color-2 {
     color: var(--text-color-2);
+  }
+
+  .group:hover .md\:group-hover\:text-text-color-2-1 {
+    color: var(--text-color-2-1);
   }
 
   .group:hover .md\:group-hover\:text-text-color-3 {
@@ -83681,6 +84210,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .md\:focus-within\:text-text-color-2-1:focus-within {
+    color: var(--text-color-2-1);
+  }
+
   .md\:focus-within\:text-text-color-3:focus-within {
     color: var(--text-color-3);
   }
@@ -83867,6 +84400,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .md\:hover\:text-text-color-2-1:hover {
+    color: var(--text-color-2-1);
+  }
+
   .md\:hover\:text-text-color-3:hover {
     color: var(--text-color-3);
   }
@@ -84051,6 +84588,10 @@ svg, ::before, ::after {
 
   .md\:focus\:text-text-color-2:focus {
     color: var(--text-color-2);
+  }
+
+  .md\:focus\:text-text-color-2-1:focus {
+    color: var(--text-color-2-1);
   }
 
   .md\:focus\:text-text-color-3:focus {
@@ -90523,6 +91064,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .sm\:divide-text-color-2-1 > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--text-color-2-1);
+  }
+
   .sm\:divide-text-color-3 > :not([hidden]) ~ :not([hidden]) {
     border-color: var(--text-color-3);
   }
@@ -90890,6 +91435,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .sm\:bg-text-color-2-1 {
+    background-color: var(--text-color-2-1);
+  }
+
   .sm\:bg-text-color-3 {
     background-color: var(--text-color-3);
   }
@@ -91074,6 +91623,10 @@ svg, ::before, ::after {
 
   .group:hover .sm\:group-hover\:bg-text-color-2 {
     background-color: var(--text-color-2);
+  }
+
+  .group:hover .sm\:group-hover\:bg-text-color-2-1 {
+    background-color: var(--text-color-2-1);
   }
 
   .group:hover .sm\:group-hover\:bg-text-color-3 {
@@ -91262,6 +91815,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .sm\:focus-within\:bg-text-color-2-1:focus-within {
+    background-color: var(--text-color-2-1);
+  }
+
   .sm\:focus-within\:bg-text-color-3:focus-within {
     background-color: var(--text-color-3);
   }
@@ -91448,6 +92005,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .sm\:hover\:bg-text-color-2-1:hover {
+    background-color: var(--text-color-2-1);
+  }
+
   .sm\:hover\:bg-text-color-3:hover {
     background-color: var(--text-color-3);
   }
@@ -91632,6 +92193,10 @@ svg, ::before, ::after {
 
   .sm\:focus\:bg-text-color-2:focus {
     background-color: var(--text-color-2);
+  }
+
+  .sm\:focus\:bg-text-color-2-1:focus {
+    background-color: var(--text-color-2-1);
   }
 
   .sm\:focus\:bg-text-color-3:focus {
@@ -91869,6 +92434,11 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .sm\:from-text-color-2-1 {
+    --tw-gradient-from: var(--text-color-2-1);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .sm\:from-text-color-3 {
     --tw-gradient-from: var(--text-color-3);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
@@ -92076,6 +92646,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .sm\:via-text-color-2-1 {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .sm\:via-text-color-3 {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -92250,6 +92824,10 @@ svg, ::before, ::after {
 
   .sm\:to-text-color-2 {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .sm\:to-text-color-2-1 {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .sm\:to-text-color-3 {
@@ -92438,6 +93016,11 @@ svg, ::before, ::after {
 
   .sm\:hover\:from-text-color-2:hover {
     --tw-gradient-from: var(--text-color-2);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
+  .sm\:hover\:from-text-color-2-1:hover {
+    --tw-gradient-from: var(--text-color-2-1);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
@@ -92648,6 +93231,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .sm\:hover\:via-text-color-2-1:hover {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .sm\:hover\:via-text-color-3:hover {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -92822,6 +93409,10 @@ svg, ::before, ::after {
 
   .sm\:hover\:to-text-color-2:hover {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .sm\:hover\:to-text-color-2-1:hover {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .sm\:hover\:to-text-color-3:hover {
@@ -93010,6 +93601,11 @@ svg, ::before, ::after {
 
   .sm\:focus\:from-text-color-2:focus {
     --tw-gradient-from: var(--text-color-2);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
+  .sm\:focus\:from-text-color-2-1:focus {
+    --tw-gradient-from: var(--text-color-2-1);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
@@ -93220,6 +93816,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .sm\:focus\:via-text-color-2-1:focus {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .sm\:focus\:via-text-color-3:focus {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -93394,6 +93994,10 @@ svg, ::before, ::after {
 
   .sm\:focus\:to-text-color-2:focus {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .sm\:focus\:to-text-color-2-1:focus {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .sm\:focus\:to-text-color-3:focus {
@@ -93952,6 +94556,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .sm\:border-text-color-2-1 {
+    border-color: var(--text-color-2-1);
+  }
+
   .sm\:border-text-color-3 {
     border-color: var(--text-color-3);
   }
@@ -94136,6 +94744,10 @@ svg, ::before, ::after {
 
   .group:hover .sm\:group-hover\:border-text-color-2 {
     border-color: var(--text-color-2);
+  }
+
+  .group:hover .sm\:group-hover\:border-text-color-2-1 {
+    border-color: var(--text-color-2-1);
   }
 
   .group:hover .sm\:group-hover\:border-text-color-3 {
@@ -94324,6 +94936,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .sm\:focus-within\:border-text-color-2-1:focus-within {
+    border-color: var(--text-color-2-1);
+  }
+
   .sm\:focus-within\:border-text-color-3:focus-within {
     border-color: var(--text-color-3);
   }
@@ -94510,6 +95126,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .sm\:hover\:border-text-color-2-1:hover {
+    border-color: var(--text-color-2-1);
+  }
+
   .sm\:hover\:border-text-color-3:hover {
     border-color: var(--text-color-3);
   }
@@ -94694,6 +95314,10 @@ svg, ::before, ::after {
 
   .sm\:focus\:border-text-color-2:focus {
     border-color: var(--text-color-2);
+  }
+
+  .sm\:focus\:border-text-color-2-1:focus {
+    border-color: var(--text-color-2-1);
   }
 
   .sm\:focus\:border-text-color-3:focus {
@@ -100440,6 +101064,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .sm\:placeholder-text-color-2-1::placeholder {
+    color: var(--text-color-2-1);
+  }
+
   .sm\:placeholder-text-color-3::placeholder {
     color: var(--text-color-3);
   }
@@ -100624,6 +101252,10 @@ svg, ::before, ::after {
 
   .sm\:focus\:placeholder-text-color-2:focus::placeholder {
     color: var(--text-color-2);
+  }
+
+  .sm\:focus\:placeholder-text-color-2-1:focus::placeholder {
+    color: var(--text-color-2-1);
   }
 
   .sm\:focus\:placeholder-text-color-3:focus::placeholder {
@@ -104101,6 +104733,10 @@ svg, ::before, ::after {
     --tw-ring-offset-color: var(--text-color-2);
   }
 
+  .sm\:ring-offset-text-color-2-1 {
+    --tw-ring-offset-color: var(--text-color-2-1);
+  }
+
   .sm\:ring-offset-text-color-3 {
     --tw-ring-offset-color: var(--text-color-3);
   }
@@ -104277,6 +104913,10 @@ svg, ::before, ::after {
     --tw-ring-offset-color: var(--text-color-2);
   }
 
+  .sm\:focus-within\:ring-offset-text-color-2-1:focus-within {
+    --tw-ring-offset-color: var(--text-color-2-1);
+  }
+
   .sm\:focus-within\:ring-offset-text-color-3:focus-within {
     --tw-ring-offset-color: var(--text-color-3);
   }
@@ -104451,6 +105091,10 @@ svg, ::before, ::after {
 
   .sm\:focus\:ring-offset-text-color-2:focus {
     --tw-ring-offset-color: var(--text-color-2);
+  }
+
+  .sm\:focus\:ring-offset-text-color-2-1:focus {
+    --tw-ring-offset-color: var(--text-color-2-1);
   }
 
   .sm\:focus\:ring-offset-text-color-3:focus {
@@ -104689,6 +105333,10 @@ svg, ::before, ::after {
     --tw-ring-color: var(--text-color-2);
   }
 
+  .sm\:ring-text-color-2-1 {
+    --tw-ring-color: var(--text-color-2-1);
+  }
+
   .sm\:ring-text-color-3 {
     --tw-ring-color: var(--text-color-3);
   }
@@ -104875,6 +105523,10 @@ svg, ::before, ::after {
     --tw-ring-color: var(--text-color-2);
   }
 
+  .sm\:focus-within\:ring-text-color-2-1:focus-within {
+    --tw-ring-color: var(--text-color-2-1);
+  }
+
   .sm\:focus-within\:ring-text-color-3:focus-within {
     --tw-ring-color: var(--text-color-3);
   }
@@ -105059,6 +105711,10 @@ svg, ::before, ::after {
 
   .sm\:focus\:ring-text-color-2:focus {
     --tw-ring-color: var(--text-color-2);
+  }
+
+  .sm\:focus\:ring-text-color-2-1:focus {
+    --tw-ring-color: var(--text-color-2-1);
   }
 
   .sm\:focus\:ring-text-color-3:focus {
@@ -105471,6 +106127,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .sm\:text-text-color-2-1 {
+    color: var(--text-color-2-1);
+  }
+
   .sm\:text-text-color-3 {
     color: var(--text-color-3);
   }
@@ -105655,6 +106315,10 @@ svg, ::before, ::after {
 
   .group:hover .sm\:group-hover\:text-text-color-2 {
     color: var(--text-color-2);
+  }
+
+  .group:hover .sm\:group-hover\:text-text-color-2-1 {
+    color: var(--text-color-2-1);
   }
 
   .group:hover .sm\:group-hover\:text-text-color-3 {
@@ -105843,6 +106507,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .sm\:focus-within\:text-text-color-2-1:focus-within {
+    color: var(--text-color-2-1);
+  }
+
   .sm\:focus-within\:text-text-color-3:focus-within {
     color: var(--text-color-3);
   }
@@ -106029,6 +106697,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .sm\:hover\:text-text-color-2-1:hover {
+    color: var(--text-color-2-1);
+  }
+
   .sm\:hover\:text-text-color-3:hover {
     color: var(--text-color-3);
   }
@@ -106213,6 +106885,10 @@ svg, ::before, ::after {
 
   .sm\:focus\:text-text-color-2:focus {
     color: var(--text-color-2);
+  }
+
+  .sm\:focus\:text-text-color-2-1:focus {
+    color: var(--text-color-2-1);
   }
 
   .sm\:focus\:text-text-color-3:focus {
@@ -112685,6 +113361,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .print\:divide-text-color-2-1 > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--text-color-2-1);
+  }
+
   .print\:divide-text-color-3 > :not([hidden]) ~ :not([hidden]) {
     border-color: var(--text-color-3);
   }
@@ -113052,6 +113732,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .print\:bg-text-color-2-1 {
+    background-color: var(--text-color-2-1);
+  }
+
   .print\:bg-text-color-3 {
     background-color: var(--text-color-3);
   }
@@ -113236,6 +113920,10 @@ svg, ::before, ::after {
 
   .group:hover .print\:group-hover\:bg-text-color-2 {
     background-color: var(--text-color-2);
+  }
+
+  .group:hover .print\:group-hover\:bg-text-color-2-1 {
+    background-color: var(--text-color-2-1);
   }
 
   .group:hover .print\:group-hover\:bg-text-color-3 {
@@ -113424,6 +114112,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .print\:focus-within\:bg-text-color-2-1:focus-within {
+    background-color: var(--text-color-2-1);
+  }
+
   .print\:focus-within\:bg-text-color-3:focus-within {
     background-color: var(--text-color-3);
   }
@@ -113610,6 +114302,10 @@ svg, ::before, ::after {
     background-color: var(--text-color-2);
   }
 
+  .print\:hover\:bg-text-color-2-1:hover {
+    background-color: var(--text-color-2-1);
+  }
+
   .print\:hover\:bg-text-color-3:hover {
     background-color: var(--text-color-3);
   }
@@ -113794,6 +114490,10 @@ svg, ::before, ::after {
 
   .print\:focus\:bg-text-color-2:focus {
     background-color: var(--text-color-2);
+  }
+
+  .print\:focus\:bg-text-color-2-1:focus {
+    background-color: var(--text-color-2-1);
   }
 
   .print\:focus\:bg-text-color-3:focus {
@@ -114031,6 +114731,11 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .print\:from-text-color-2-1 {
+    --tw-gradient-from: var(--text-color-2-1);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .print\:from-text-color-3 {
     --tw-gradient-from: var(--text-color-3);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
@@ -114238,6 +114943,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .print\:via-text-color-2-1 {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .print\:via-text-color-3 {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -114412,6 +115121,10 @@ svg, ::before, ::after {
 
   .print\:to-text-color-2 {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .print\:to-text-color-2-1 {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .print\:to-text-color-3 {
@@ -114600,6 +115313,11 @@ svg, ::before, ::after {
 
   .print\:hover\:from-text-color-2:hover {
     --tw-gradient-from: var(--text-color-2);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
+  .print\:hover\:from-text-color-2-1:hover {
+    --tw-gradient-from: var(--text-color-2-1);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
@@ -114810,6 +115528,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .print\:hover\:via-text-color-2-1:hover {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .print\:hover\:via-text-color-3:hover {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -114984,6 +115706,10 @@ svg, ::before, ::after {
 
   .print\:hover\:to-text-color-2:hover {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .print\:hover\:to-text-color-2-1:hover {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .print\:hover\:to-text-color-3:hover {
@@ -115172,6 +115898,11 @@ svg, ::before, ::after {
 
   .print\:focus\:from-text-color-2:focus {
     --tw-gradient-from: var(--text-color-2);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
+  .print\:focus\:from-text-color-2-1:focus {
+    --tw-gradient-from: var(--text-color-2-1);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
@@ -115382,6 +116113,10 @@ svg, ::before, ::after {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
 
+  .print\:focus\:via-text-color-2-1:focus {
+    --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-2-1), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  }
+
   .print\:focus\:via-text-color-3:focus {
     --tw-gradient-stops: var(--tw-gradient-from), var(--text-color-3), var(--tw-gradient-to, rgba(255, 255, 255, 0));
   }
@@ -115556,6 +116291,10 @@ svg, ::before, ::after {
 
   .print\:focus\:to-text-color-2:focus {
     --tw-gradient-to: var(--text-color-2);
+  }
+
+  .print\:focus\:to-text-color-2-1:focus {
+    --tw-gradient-to: var(--text-color-2-1);
   }
 
   .print\:focus\:to-text-color-3:focus {
@@ -116114,6 +116853,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .print\:border-text-color-2-1 {
+    border-color: var(--text-color-2-1);
+  }
+
   .print\:border-text-color-3 {
     border-color: var(--text-color-3);
   }
@@ -116298,6 +117041,10 @@ svg, ::before, ::after {
 
   .group:hover .print\:group-hover\:border-text-color-2 {
     border-color: var(--text-color-2);
+  }
+
+  .group:hover .print\:group-hover\:border-text-color-2-1 {
+    border-color: var(--text-color-2-1);
   }
 
   .group:hover .print\:group-hover\:border-text-color-3 {
@@ -116486,6 +117233,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .print\:focus-within\:border-text-color-2-1:focus-within {
+    border-color: var(--text-color-2-1);
+  }
+
   .print\:focus-within\:border-text-color-3:focus-within {
     border-color: var(--text-color-3);
   }
@@ -116672,6 +117423,10 @@ svg, ::before, ::after {
     border-color: var(--text-color-2);
   }
 
+  .print\:hover\:border-text-color-2-1:hover {
+    border-color: var(--text-color-2-1);
+  }
+
   .print\:hover\:border-text-color-3:hover {
     border-color: var(--text-color-3);
   }
@@ -116856,6 +117611,10 @@ svg, ::before, ::after {
 
   .print\:focus\:border-text-color-2:focus {
     border-color: var(--text-color-2);
+  }
+
+  .print\:focus\:border-text-color-2-1:focus {
+    border-color: var(--text-color-2-1);
   }
 
   .print\:focus\:border-text-color-3:focus {
@@ -122602,6 +123361,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .print\:placeholder-text-color-2-1::placeholder {
+    color: var(--text-color-2-1);
+  }
+
   .print\:placeholder-text-color-3::placeholder {
     color: var(--text-color-3);
   }
@@ -122786,6 +123549,10 @@ svg, ::before, ::after {
 
   .print\:focus\:placeholder-text-color-2:focus::placeholder {
     color: var(--text-color-2);
+  }
+
+  .print\:focus\:placeholder-text-color-2-1:focus::placeholder {
+    color: var(--text-color-2-1);
   }
 
   .print\:focus\:placeholder-text-color-3:focus::placeholder {
@@ -126263,6 +127030,10 @@ svg, ::before, ::after {
     --tw-ring-offset-color: var(--text-color-2);
   }
 
+  .print\:ring-offset-text-color-2-1 {
+    --tw-ring-offset-color: var(--text-color-2-1);
+  }
+
   .print\:ring-offset-text-color-3 {
     --tw-ring-offset-color: var(--text-color-3);
   }
@@ -126439,6 +127210,10 @@ svg, ::before, ::after {
     --tw-ring-offset-color: var(--text-color-2);
   }
 
+  .print\:focus-within\:ring-offset-text-color-2-1:focus-within {
+    --tw-ring-offset-color: var(--text-color-2-1);
+  }
+
   .print\:focus-within\:ring-offset-text-color-3:focus-within {
     --tw-ring-offset-color: var(--text-color-3);
   }
@@ -126613,6 +127388,10 @@ svg, ::before, ::after {
 
   .print\:focus\:ring-offset-text-color-2:focus {
     --tw-ring-offset-color: var(--text-color-2);
+  }
+
+  .print\:focus\:ring-offset-text-color-2-1:focus {
+    --tw-ring-offset-color: var(--text-color-2-1);
   }
 
   .print\:focus\:ring-offset-text-color-3:focus {
@@ -126851,6 +127630,10 @@ svg, ::before, ::after {
     --tw-ring-color: var(--text-color-2);
   }
 
+  .print\:ring-text-color-2-1 {
+    --tw-ring-color: var(--text-color-2-1);
+  }
+
   .print\:ring-text-color-3 {
     --tw-ring-color: var(--text-color-3);
   }
@@ -127037,6 +127820,10 @@ svg, ::before, ::after {
     --tw-ring-color: var(--text-color-2);
   }
 
+  .print\:focus-within\:ring-text-color-2-1:focus-within {
+    --tw-ring-color: var(--text-color-2-1);
+  }
+
   .print\:focus-within\:ring-text-color-3:focus-within {
     --tw-ring-color: var(--text-color-3);
   }
@@ -127221,6 +128008,10 @@ svg, ::before, ::after {
 
   .print\:focus\:ring-text-color-2:focus {
     --tw-ring-color: var(--text-color-2);
+  }
+
+  .print\:focus\:ring-text-color-2-1:focus {
+    --tw-ring-color: var(--text-color-2-1);
   }
 
   .print\:focus\:ring-text-color-3:focus {
@@ -127633,6 +128424,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .print\:text-text-color-2-1 {
+    color: var(--text-color-2-1);
+  }
+
   .print\:text-text-color-3 {
     color: var(--text-color-3);
   }
@@ -127817,6 +128612,10 @@ svg, ::before, ::after {
 
   .group:hover .print\:group-hover\:text-text-color-2 {
     color: var(--text-color-2);
+  }
+
+  .group:hover .print\:group-hover\:text-text-color-2-1 {
+    color: var(--text-color-2-1);
   }
 
   .group:hover .print\:group-hover\:text-text-color-3 {
@@ -128005,6 +128804,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .print\:focus-within\:text-text-color-2-1:focus-within {
+    color: var(--text-color-2-1);
+  }
+
   .print\:focus-within\:text-text-color-3:focus-within {
     color: var(--text-color-3);
   }
@@ -128191,6 +128994,10 @@ svg, ::before, ::after {
     color: var(--text-color-2);
   }
 
+  .print\:hover\:text-text-color-2-1:hover {
+    color: var(--text-color-2-1);
+  }
+
   .print\:hover\:text-text-color-3:hover {
     color: var(--text-color-3);
   }
@@ -128375,6 +129182,10 @@ svg, ::before, ::after {
 
   .print\:focus\:text-text-color-2:focus {
     color: var(--text-color-2);
+  }
+
+  .print\:focus\:text-text-color-2-1:focus {
+    color: var(--text-color-2-1);
   }
 
   .print\:focus\:text-text-color-3:focus {

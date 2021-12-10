@@ -40,7 +40,8 @@
                 </i>
 
                 <ul class="inline list-none m-0 p-0 absolute right-8">
-                    <li class="inline-block mr-2 hover:bg-text-divider-color-4 p-1 rounded" ng-if="showSubscribe">                    
+                    <li class="inline-block mr-10" id="import-popup-box"></li>
+                    <li class="inline-block mr-2 hover:bg-text-divider-color-4 p-1 rounded" ng-if="showSubscribe">
                         <i id="subscribe"
                         class="aui-dropdown2-trigger x-ng-click w-0 p-3 bg-24 bg-no-repeat bg-center tip"
                         style="background-image: url('../images/icon-mail.png')"
@@ -50,53 +51,7 @@
                         </i>
                     </li>
                     <li class="inline-block mr-2 hover:bg-text-divider-color-4 p-1 rounded" ng-if="showExport">
-                        <i id="export-dropdown"
-                        href="#export"
-                        aria-owns="export"
-                        aria-haspopup="true"
-                        class="aui-dropdown2-trigger x-ng-click w-0 p-3 bg-24 bg-no-repeat bg-center tip"
-                        style="background-image: url('../images/icon-export.png')"
-                        x-ng-click=""
-                        ng-hide="loading || restrictionError">
-                        <span>{{'Export/Import' | i18n}}</span>
-                        </i>
-                        <!-- Dropdown -->
-                        <div id="export" class="aui-style-default aui-dropdown2">
-                            <ul class="aui-list-truncate">
-                                <li class="copyLink">
-                                    <div class="rowCenter">
-                                        <a x-ng-click="excelView('xls')">exportData.xls (html)</a>
-                                        <i class="fa fa-link edit"
-                                            ng-click=""
-                                            copy-to-clipboard="export=xls"
-                                            title="{{'Copy Link' | i18n}}">
-                                        </i>
-                                    </div>
-                                </li>
-                                <li class="copyLink">
-                                    <div class="rowCenter">
-                                        <a x-ng-click="excelView('csv')">exportData.csv</a>
-                                        <i class="fa fa-link edit"
-                                            ng-click=""
-                                            copy-to-clipboard="export=csv"
-                                            title="{{'Copy Link' | i18n}}">
-                                        </i>
-                                    </div>
-                                </li>
-                                <li class="copyLink">
-                                    <div class="rowCenter">
-                                        <a x-ng-click="excelView('html')">exportView.xls (html)</a>
-                                        <i class="fa fa-link edit"
-                                            ng-click=""
-                                            copy-to-clipboard="export=html"
-                                            title="{{'Copy Link' | i18n}}">
-                                        </i>
-                                    </div>
-                                </li>
-                                <li ng-if="'Timesheet' == pivotTableType"><a x-ng-click="importPopup.init()">importTimesheet.csv</a></li>
-                                <li ng-if="'CostReport' == pivotTableType"><a x-ng-click="openInvoiceDialog()">invoice.pdf (pdf)</a></li>
-                            </ul>
-                        </div>
+                        <import-export></import-export>
                     </li>
                     <li class="inline-block mr-2 hover:bg-text-divider-color-4 p-1 rounded">
                         <a id="print"
@@ -228,6 +183,10 @@
        ng-click="saveDefaultReport()"
        title="{{'Make Default' | i18n}}">
     </i>
+
+    <i id="import-popup-box"></i>
+
+    <import-export></import-export>
 
     <div id="issueViewConf" class="aui-style-default aui-dropdown2">
         <ul class="aui-list-truncate">

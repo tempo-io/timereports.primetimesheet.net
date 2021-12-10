@@ -1296,3 +1296,16 @@ form.bitbucket span {
 .star-fill {
     color: var(--secondary-color) !important;
 }
+
+::-webkit-file-upload-button {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    color: var(--text-color-1);
+    background-color: var(--background-file);
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 0.375rem;
+    border: 1px solid #80808029;
+}

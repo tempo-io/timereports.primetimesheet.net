@@ -1,22 +1,44 @@
 <form class="aui" style="margin: 15px">
-  <div>{{'Import Timesheet CSV' | i18n}}&nbsp;&nbsp;<span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span></div>
+  <div class="text-text-color-1 font-semibold	">
+    {{'Import Timesheet CSV' | i18n}}
+    &nbsp;&nbsp;
+    <span class="fa fa-spinner fa-spin" ng-show="popupData.loading"></span>
+  </div>
   <fieldset style="padding-top: 10px">
-    <label for="file">{{"File" | i18n}}</label><a href="https://primetimesheet.atlassian.net/wiki/spaces/KB/blog/2020/09/17/1509785601/Import+Worklogs" target="_blank" class="fa fa-question-circle" title="Import Worklogs" style="padding-left: 5px"></a>
+    <span class="text-text-color-2-1">{{"File" | i18n}}</span>
+
+    <a href="https://primetimesheet.atlassian.net/wiki/spaces/KB/blog/2020/09/17/1509785601/Import+Worklogs"
+       target="_blank">
+      <i title="Import Worklogs"
+        class="x-ng-click ml-1 mr-3 w-0 p-3 bg-24 bg-no-repeat bg-center tip"
+        style="background-image: url('../images/icon-question.png')"
+        x-ng-click=""
+        aria-owns="help">
+      </i>
+    </a>
+
     <input id="file"
            type="file"
+           class="import-file w-52"
            accept="text/csv"
            file-on-change="popupData.handleFiles(files)"/>
-    <div>{{popupData.message}}</div>
+    <div class="text-text-color-2-1">{{popupData.message}}</div>
   </fieldset>
   <div style="padding-top: 20px; text-align: right">
       <div>
-          <input class="aui-button aui-button-primary"
+          <button
             type="submit"
-            ng-value="'{{'Create' | i18n}}'"
+            class="bg-secondary-color pt-2 pb-2 pr-3 pl-3 mr-3 rounded text-text-white font-bold"
             ng-click="popupData.import(closePopup)"
             ng-disabled="!popupData.worklogs.length || popupData.loading"
             ng-class="{disabled: !popupData.worklogs.length || popupData.loading}">
-          <a style="margin-left: 10px" ng-click="closePopup()">{{'Cancel' | i18n}}</a>
+            {{'Create' | i18n}}
+          </button>
+
+          <button class="pt-2 pb-2 pr-3 pl-3 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                  ng-click="closePopup()">
+                {{'Cancel' | i18n}}
+          </button>
       </div>
   </div>
 </form>
