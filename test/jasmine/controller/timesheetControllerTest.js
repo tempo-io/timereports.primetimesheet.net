@@ -159,7 +159,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -215,7 +217,9 @@ describe('timesheetControllerTest', function () {
         }
       },
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     AP.request = function (options) {
@@ -271,6 +275,8 @@ describe('timesheetControllerTest', function () {
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'teamA' }, { name: 'noGroup' }] } },
       projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: '',
       userConfiguration: {
         maxFractionDigits: {},
         compositionIssueLink: {},
@@ -352,6 +358,8 @@ describe('timesheetControllerTest', function () {
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'teamA' }] } },
       projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: '',
       userConfiguration: {
         maxFractionDigits: {},
         compositionIssueLink: {},
@@ -423,7 +431,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -453,7 +463,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -489,7 +501,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -520,7 +534,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -551,7 +567,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -581,7 +599,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -613,7 +633,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -664,7 +686,9 @@ describe('timesheetControllerTest', function () {
         }
       },
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -715,7 +739,9 @@ describe('timesheetControllerTest', function () {
         }
       },
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -766,7 +792,9 @@ describe('timesheetControllerTest', function () {
         }
       },
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -798,7 +826,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -829,7 +859,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -861,7 +893,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -911,7 +945,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] } },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -942,7 +978,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush(200) // init
@@ -977,7 +1015,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: {},
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -1012,7 +1052,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: {},
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -1063,7 +1105,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: {},
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -1106,7 +1150,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: {},
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -1143,7 +1189,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: {},
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -1196,7 +1244,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: {},
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -1253,7 +1303,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: {},
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -1304,7 +1356,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: {},
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     $timeout.flush()
@@ -1355,7 +1409,9 @@ describe('timesheetControllerTest', function () {
       $sce: $sce,
       pivottableService: pivottableService,
       loggedInUser: {},
-      projectKey: 'TIME'
+      projectKey: 'TIME',
+      jql: undefined,
+      externalFilter: ''
     })
 
     var checkCommon = function () {
