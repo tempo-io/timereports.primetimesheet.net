@@ -18,7 +18,7 @@
             title="{{'Configure' | i18n }}"
             aria-owns="issueViewConf"
             style="margin-left: 10px; padding-right: 0px !important">
-            <i class="w-0 p-2 bg-24 bg-no-repeat bg-center"            
+            <i class="w-0 p-2 bg-24 bg-no-repeat bg-center"
                 style="background-image: url('../images/icon-config.png')">
             </i>
         </a>
@@ -30,7 +30,7 @@
                         target="_blank"
                         style="margin-top: 5px"
                         title="{{'Help' | i18n}}">
-                        <i class="w-0 p-4 bg-20 bg-no-repeat bg-center"            
+                        <i class="w-0 p-4 bg-20 bg-no-repeat bg-center"
                         style="background-image: url('../images/icon-question-blue.png')">
                         </i>
                     </a>
@@ -38,6 +38,7 @@
                 <li ng-repeat="view in issueTimeOptions.options" ng-if="view.id != issueTimeOptions.selected">
                     <a style="color:#333" ng-click="issueTimeViewChanged(view.id)">{{view.label}}</a>
                 </li>
+                <a title="{{'Open report page for other options and excel export' | i18n }}" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!jql=key%3D{{issueKey}}&sumSubTasks=true&showDetails=true" target="_parent">key={{issueKey}}</a>
                 <a ng-if="isEpic" title="{{'Open report page for other options and excel export' | i18n }}" href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!jql=parentEpic%3D{{issueKey}}&sumSubTasks=true" target="_parent">parentEpic={{issueKey}}</a>
             </ul>
         </div>
@@ -86,7 +87,7 @@
                                     title="{{isDayView ? 'Current Day' : isMonthView ? 'Current Month' : 'Current Week' | i18n}}"
                                     class="fa fa-step-forward">
                                 </span>
-                            </div>   
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -139,7 +140,7 @@
             </div>
         </div>
     </div>
-    <p class="font-semibold pl-2 mb-4" ng-if="!pivotTable.rows[issueKey].data">        
+    <p class="font-semibold pl-2 mb-4" ng-if="!pivotTable.rows[issueKey].data">
         {{'No logged time' | i18n}}
     </p>
     <button ng-if="canLogWork && loaded && !loading && isStartDateToday" class="aui-button aui-button-link" ng-init="worklog = {issueKey: issueKey, started: 1}" ng-click="startWork(true)">
@@ -148,7 +149,7 @@
         </i>
         <span class="text-secondary-color font-semibold">
             {{'Start Work' | i18n}}
-        </span>        
+        </span>
     </button>
     <button ng-if="canLogWork && loaded && !loading" class="aui-button aui-button-link" ng-click="addWorklogDialog(null, issueKey)">
         <i class="w-0 p-3 bg-24 bg-no-repeat bg-center m-1"
@@ -156,6 +157,6 @@
         </i>
         <span class="text-secondary-color font-semibold">
             {{'Log Time' | i18n}}
-        </span>        
+        </span>
     </button>
 </div>
