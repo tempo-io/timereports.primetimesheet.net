@@ -170,7 +170,7 @@ var TimeData = { "expand" : "schema,names",
                 "id" : "1",
                 "name" : "Bug",
                 "self" : "http://localhost:2990/jira/rest/api/2/issuetype/1",
-                "subtask" : false
+                "subtask" : true
               },
             "labels" : [  ],
             "priority" : { "iconUrl" : "http://localhost:2990/jira/images/icons/priority_major.gif",
@@ -1182,7 +1182,7 @@ var TimeData = { "expand" : "schema,names",
                     "id" : "1",
                     "name" : "Bug",
                     "self" : "http://localhost:2990/jira/rest/api/2/issuetype/1",
-                    "subtask" : false
+                    "subtask" : true
                 },
                 "labels" : [  ],
                 "priority" : { "iconUrl" : "http://localhost:2990/jira/images/icons/priority_major.gif",
