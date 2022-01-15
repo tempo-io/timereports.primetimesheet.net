@@ -24,7 +24,7 @@
                     <th colspan="2" class="pl-2.5 align-bottom text-text-color-1-important font-medium-important">Key</th>
                     <th colspan="2" class="pl-0 align-bottom text-text-color-1-important font-medium-important">Issue</th>
                     <th class="pl-1 align-bottom text-text-color-1-important font-medium-important">Priority</th>
-                    
+
                     <th class="colHeaderLink text-center align-middle border-l-clear" ng-repeat="field in pivotTable.moreFields track by $index">
                         <table class="w-full ng-scope">
                             <tbody>
@@ -36,7 +36,7 @@
                             </tbody>
                         </table>
                     </th>
-                    <th ng-if="!hideTotalColumn && showTotalInFron" class="border">
+                    <th ng-if="!hideTotalColumn && showTotalInFront" class="border">
                         <table class="w-full">
                             <tr>
                                 <td><span></span></td>
@@ -148,7 +148,7 @@
                     <td class="nav border text-center"
                         ng-repeat="column in pivotTable._sortedColumns"
                         ng-style="{'background-color': row.columns[column.columnKey.keyValue].backgroundColor}"
-                        ng-class="{ 
+                        ng-class="{
                             'stickyCell' : column.columnKey.keyValue == '6progress'
                         }">
                         <div>
@@ -250,7 +250,7 @@
                     </td>
                     <td class="nav border text-center"
                         ng-repeat="column in pivotTable._sortedColumns"
-                        ng-class="{ 
+                        ng-class="{
                             'stickyCell backgroung-color-5' : column.columnKey.keyValue == '6progress'
                         }">
                         <pivot-cell key="column.columnKey" columns="data.values" jira-config="jiraConfig" edit-work="editWorklog" delete-work="deleteWorklog" log-work="pivotTableType == 'TimeEntry' ? startWork : false" remove-cached-worklog = "removeCachedWorklog" />
@@ -344,7 +344,7 @@
                         </div>
                     </td>
                     <td class="nav border total text-center bg-secondary-color-clarity-4"
-                        ng-repeat="column in pivotTable._sortedColumns"                        
+                        ng-repeat="column in pivotTable._sortedColumns"
                         ng-class="{ 'stickyCell' : column.columnKey.keyValue == '6progress' }">
                         <div>
                             <span>
@@ -389,7 +389,7 @@
                            ng-disabled="disableSuggested"
                            ng-class="{disabled: disableSuggested}"
                            title="{{'Save' | i18n}}"
-                           style="background-image: url('../images/icon-check-pure.png')"> 
+                           style="background-image: url('../images/icon-check-pure.png')">
                         </i>
                     </td>
                     <td class="nav border total borderTopTotal" ng-if="!hideTotalColumn">
