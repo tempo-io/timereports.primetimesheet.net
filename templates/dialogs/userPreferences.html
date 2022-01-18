@@ -10,7 +10,7 @@
     </a>
 </header>
 <!-- Main dialog content -->
-<div class="aui-dialog2-content">    
+<div class="aui-dialog2-content">
     <div class="ml-6 bg-secondary-color-clarity-4 pt-5 pb-5 rounded-md">
         <i class="w-0 p-3 bg-24 bg-no-repeat bg-center mr-4 ml-4"
             style="background-image: url('../images/info-icon.png')">
@@ -109,7 +109,7 @@
             <div class="field-group">
                 <span class="description">{{'description.Working Time In Status' | i18n}}</span>
             </div>
-            
+
             <div class="field-group">
                 <label for="select2-durationType">{{'Duration Type' | i18n}}</label>
                 <select id="select2-durationType"
@@ -127,7 +127,7 @@
             <div class="field-group">
                 <span class="description">{{'description.Duration Type' | i18n}}</span>
             </div>
-            
+
             <div class="field-group">
                 <label for="maxFractionDigits">{{'Maximum Fraction Digits' | i18n}}</label>
                 <input id="maxFractionDigits"
@@ -240,7 +240,7 @@
             <div class="field-group">
                 <span class="description">{{'description.Duration Type For Export' | i18n}}</span>
             </div>
-            
+
             <div class="field-group">
                 <label for="dateFields">{{'Date Fields' | i18n}}</label>
                 <input id="dateFields"
@@ -276,7 +276,9 @@
             <div class="field-group">
                 <span class="description">{{'description.Started Time In Status' | i18n}}</span>
             </div>
+        </div>
 
+        <div ng-if="page === 3">
             <div class="field-group">
                 <label for="inProgressIssuesJql">{{'In Progress Issues jql' | i18n}}</label>
                 <input name="inProgressIssuesJql"
@@ -300,9 +302,20 @@
             <div class="field-group">
                 <span class="description">{{'description.In Progress Issues jql' | i18n}}</span>
             </div>
-        </div>
-        
-        <div ng-if="page === 3">
+            <div class="field-group" ng-if="logSuggestedWork">
+                <label for="logSuggestedWork">{{'Log Suggested Work' | i18n}}</label>
+                <input id="logSuggestedWork"
+                    type="checkbox"
+                    class="checkbox"
+                    ng-model="logSuggestedWork.val"
+                    ng-change="saveLogSuggestedWork()">
+                <div class="aui-message aui-message-success msg-overlay user-preference" ng-if="logSuggestedWorkSaveSuccess">
+                    <strong>{{'Log Suggested Work' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+                </div>
+            </div>
+            <div class="field-group" ng-if="logSuggestedWork">
+                <span class="description" data-ng-bind-html="'description.Log Suggested Work' | i18n | htmlSafe"/>
+            </div>
             <div class="field-group">
                 <label for="select2-showDetailsCount">{{'Show Details Number' | i18n}}</label>
                 <select id="select2-showDetailsCount"
@@ -438,7 +451,7 @@
                 </span>
                 </li>
                 <li ng-repeat="p in pages" class="ml-1 p-3">
-                    <a ng-click="setPage(p)" 
+                    <a ng-click="setPage(p)"
                         ng-class="{'text-secondary-color font-bold': page === p, 'text-secondary-color': page !== p}"
                         style="padding: 3px">
                         {{ p }}
