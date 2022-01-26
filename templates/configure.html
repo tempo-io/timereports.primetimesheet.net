@@ -447,9 +447,8 @@
                     ng-change="saveReportingDay()"
                     ng-options="item.id as item.label for item in reportingDayOptions.options">
             </select>
-            <div class="aui-message aui-message-success msg-overlay"
-                 ng-show="reportingDaySaveSuccess">
-                <strong>{{'Reporting Day' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            <div class="aui-message aui-message-success cp-l-76"
+                    ng-show="reportingDaySaveSuccess">
             </div>
         </div>
         <div class="field-group">
@@ -464,9 +463,8 @@
                     ng-change="saveWeekendType()"
                     ng-options="item.id as item.label for item in allWeekendTypes">
             </select>
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-76"
                  ng-show="weekendTypeSaveSuccess">
-                <strong>{{'Weekend Type' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
@@ -479,9 +477,8 @@
                    class="apple-switch"
                    ng-model="useIsoWeek.val"
                    ng-change="saveUseIsoWeek()">
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-35"
                  ng-show="useIsoWeekSaveSuccess">
-                <strong>{{'Use ISO Week' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
@@ -502,9 +499,8 @@
             <span class="m-0-important">&nbsp;{{'To' | i18n}}&nbsp;</span>
             <input id="workingDayBreakEnd" ng-model="workingTimeInStatus.val.breakTo" min="0" max="24" ng-change="saveWorkingTimeInStatus()"
                    type="number" class="text-field single" title="{{'Working Day End' | i18n}}" style="width: 50px;" ng-model-options='{ debounce: 1000 }'/>
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-83"
                  ng-show="workingTimeInStatusSaveSuccess">
-                <strong>{{'Working Time In Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
@@ -519,9 +515,8 @@
                     ng-change="saveDurationType()"
                     ng-options="item.id as item.label for item in allDurationTypes">
             </select>
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-76"
                  ng-show="durationTypeSaveSuccess">
-                <strong>{{'Duration Type' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
@@ -537,9 +532,8 @@
                    type="number" class="text-field common"
                    ng-model-options='{ debounce: 1000 }'
                    title="{{'Maximum Fraction Digits' | i18n}}"/>
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-76"
                  ng-show="maxFractionDigitsSaveSuccess">
-                <strong>{{'Maximum Fraction Digits' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
@@ -554,9 +548,8 @@
                    ng-model="timeTrackingColumns.val"
                    ng-options-data="timeTrackingColumnsData"
                    ng-value-changed-func="saveTimeTrackingColumns">
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-76"
                  ng-show="timeTrackingColumnsSaveSuccess">
-                <strong>{{'Time Tracking Columns' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
@@ -571,9 +564,8 @@
                    ng-model="timeBalanceColumns.val"
                    ng-options-data="timeBalanceColumnsData"
                    ng-value-changed-func="saveTimeBalanceColumns">
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-76"
                  ng-show="timeBalanceColumnsSaveSuccess">
-                <strong>{{'Time Balance Columns' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
@@ -588,9 +580,8 @@
                    ng-model="timeInStatusCategories.val"
                    ng-options-data="timeInStatusCategoriesData"
                    ng-value-changed-func="saveTimeInStatusCategories">
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-76"
                  ng-show="timeInStatusCategoriesSaveSuccess">
-                <strong>{{'Time In Status Categories' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
@@ -605,9 +596,8 @@
                    ng-model="exportColumns.val"
                    ng-options-data="exportColumnsData"
                    ng-value-changed-func="saveExportColumns">
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-76"
                  ng-show="exportColumnsSaveSuccess">
-                <strong>{{'Columns For Export' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
@@ -622,9 +612,8 @@
                     ng-change="saveDurationTypeForExport()"
                     ng-options="item.id as item.label for item in allDurationTypesForExport">
             </select>
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-76"
                  ng-show="durationTypeForExportSaveSuccess">
-                <strong>{{'Duration Type For Export' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
@@ -639,9 +628,8 @@
                    ng-model="dateFields.val"
                    ng-options-data="dateFieldsData"
                    ng-value-changed-func="saveDateFields">
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-76"
                  ng-show="dateFieldsSaveSuccess">
-                <strong>{{'Date Fields' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
@@ -654,55 +642,50 @@
                    class="apple-switch"
                    ng-model="startedTimeInStatus.val"
                    ng-change="saveStartedTimeInStatus()">
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-35"
                  ng-show="startedTimeInStatusSaveSuccess">
-                <strong>{{'Started Time In Status' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">
             <span class="description">{{'description.Started Time In Status' | i18n}}</span>
         </div>
+
         <div class="field-group">
             <label for="inProgressIssuesJql">{{'In Progress Issues jql' | i18n}}</label>
-            <table>
-                <tr>
-                    <td width="50%">
-                        <input name="inProgressIssuesJql"
-                               id="inProgressIssuesJql"
-                               type="text"
-                               class="text-field single w-72"
-                               ng-model="inProgressIssuesJql.val"
-                               jql
-                               ng-model-options='{ debounce: 1000 }'
-                               ng-change="configForm.inProgressIssuesJql.$valid && saveInProgressIssuesJql()">
-                        <div class="aui-message aui-message-success msg-overlay"
-                             ng-show="inProgressIssuesJqlSaveSuccess">
-                            <strong>{{'In Progress Issues jql' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
-                        </div>
-                    </td>
-                    <td>
-                        <input id="inProgressIssuesJqlLogOnly"
-                               type="checkbox"
-                               class="apple-switch"
-                               ng-model="inProgressIssuesJqlLogOnly.val"
-                               ng-change="saveInProgressIssuesJqlLogOnly()">
-                        <div class="aui-message aui-message-success msg-overlay"
-                             ng-show="inProgressIssuesJqlLogOnlySaveSuccess">
-                            <strong>{{'Do not allow to Log Work on other issues' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
-                        </div>
-                    </td>
-                    <td>
-                        <span class="m-0-important">{{'Do not allow to Log Work on other issues' | i18n}}</span>
-                    </td>
-                </tr>
-            </table>
+                <input name="inProgressIssuesJql"
+                        id="inProgressIssuesJql"
+                        type="text"
+                        class="text-field single w-24-e"
+                        ng-model="inProgressIssuesJql.val"
+                        jql
+                        ng-model-options='{ debounce: 1000 }'
+                        ng-change="configForm.inProgressIssuesJql.$valid && saveInProgressIssuesJql()">
+                <div class="aui-message aui-message-success cp-l-76"
+                        ng-show="inProgressIssuesJqlSaveSuccess">
+                </div>
             <div ng-show="configForm.inProgressIssuesJql.$error.jql" role="alert" class="red">
                 {{configForm.inProgressIssuesJql.$error.jqlError}}
             </div>
         </div>
+
         <div class="field-group">
             <span class="description">{{'description.In Progress Issues jql' | i18n}}</span>
         </div>
+        <div class="field-group">
+            <label for="startedTimeInStatus">{{'Log Work on other issues' | i18n}}</label>
+            <input id="inProgressIssuesJqlLogOnly"
+                            type="checkbox"
+                            class="apple-switch"
+                            ng-model="inProgressIssuesJqlLogOnly.val"
+                            ng-change="saveInProgressIssuesJqlLogOnly()">
+            <div class="aui-message aui-message-success cp-l-35"
+                ng-show="inProgressIssuesJqlLogOnlySaveSuccess">
+            </div>
+        </div>
+        <div class="field-group">
+            <span class="description">{{'Do not allow to Log Work on other issues' | i18n}}</span>
+        </div>
+
         <div class="field-group">
             <label for="showDetailsCount">{{'Show Details Number' | i18n}}</label>
             <input id="showDetailsCount"
@@ -710,8 +693,7 @@
                    class="apple-switch"
                    ng-model="showDetailsCount.val"
                    ng-change="saveShowDetailsCount()">
-            <div class="aui-message aui-message-success msg-overlay" ng-show="showDetailsCountSaveSuccess">
-                <strong>{{'Show Details Number' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            <div class="aui-message aui-message-success cp-l-35" ng-show="showDetailsCountSaveSuccess">
             </div>
         </div>
         <div class="field-group">
@@ -724,8 +706,7 @@
                    class="apple-switch"
                    ng-model="showCategoryRow.val"
                    ng-change="saveShowCategoryRow()">
-            <div class="aui-message aui-message-success msg-overlay" ng-show="showCategoryRowSaveSuccess">
-                <strong>{{'Show Category Row' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            <div class="aui-message aui-message-success cp-l-35" ng-show="showCategoryRowSaveSuccess">
             </div>
         </div>
         <div class="field-group">
@@ -738,8 +719,7 @@
                    class="apple-switch"
                    ng-model="showTotalInFront.val"
                    ng-change="saveShowTotalInFront()">
-            <div class="aui-message aui-message-success msg-overlay" ng-show="showTotalInFrontSaveSuccess">
-                <strong>{{'Show Total In Front' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            <div class="aui-message aui-message-success cp-l-35" ng-show="showTotalInFrontSaveSuccess">
             </div>
         </div>
         <div class="field-group">
@@ -752,8 +732,7 @@
                    class="apple-switch"
                    ng-model="newTimeEntry.val"
                    ng-change="saveNewTimeEntry()">
-            <div class="aui-message aui-message-success msg-overlay" ng-show="newTimeEntrySaveSuccess">
-                <strong>{{'New Time Entry' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+            <div class="aui-message aui-message-success cp-l-35" ng-show="newTimeEntrySaveSuccess">
             </div>
         </div>
         <div class="field-group">
@@ -770,9 +749,8 @@
                    ng-model-options='{ debounce: 1000 }'
                    title="{{'Rows per Page' | i18n}}"
                    placeholder="{{defaults.rowsPerPage.default}}"/>
-            <div class="aui-message aui-message-success msg-overlay"
+            <div class="aui-message aui-message-success cp-l-76"
                  ng-show="rowsPerPageSaveSuccess">
-                <strong>{{'Rows per Page' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
             </div>
         </div>
         <div class="field-group">

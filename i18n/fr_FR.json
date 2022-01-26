@@ -475,6 +475,7 @@
     "ordered by": "ordonner par",
     "DESC": "DESC",
     "Do not allow to Log Work on other issues": "Ne pas permettre d'entrer du temps sur les autres demandes",
+    "Log Work on other issues" : "Entrée du temps sur les autres demandes",
     "Use ISO Week": "Utiliser la semaine ISO",
     "description.Use ISO Week": "Utiliser la norme ISO 8601 pour la numérotation de semaine et le premier jour de la semaine.",
     "New Time Entry": "Nouvelle entrée de temps",

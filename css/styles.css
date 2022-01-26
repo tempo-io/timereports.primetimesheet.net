@@ -565,11 +565,11 @@ select.common {
     }
 }
 .aui-message.success, .aui-message-success {
-    border-color: #2F8714 !important;
+    border-color: #4B61FE !important;
 }
 
 .aui-message-success:before {
-    background-color: #2F8714 !important;
+    background-color: #4B61FE !important;
 }
 
 .input-tag {
@@ -1309,3 +1309,46 @@ form.bitbucket span {
     border-radius: 0.375rem;
     border: 1px solid #80808029;
 }
+
+/* Timesheet Configuration - User Default Settings */
+.aui-message.aui-message-success {
+    width: 0px;
+    height: 40px;
+    margin: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    line-height: 0px;
+}
+
+.cp-l-76 {
+    position: absolute;
+    left: 76%;
+    bottom: 4px;
+}
+
+.cp-l-35 {
+    z-index: 10;
+    position: absolute;
+    left: 35%;
+    bottom: 4px;
+}
+
+.cp-l-83 {
+    z-index: 10;
+    position: absolute;
+    left: 83%;
+    bottom: 4px;
+}
+
+.cp-l-92 {
+    z-index: 10;
+    position: absolute;
+    left: 92%;
+    bottom: 4px;
+}
+
+.w-24-e {
+    width: 24em !important;
+}
+
+/* User Default Settings */
