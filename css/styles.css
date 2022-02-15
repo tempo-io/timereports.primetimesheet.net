@@ -10,19 +10,49 @@ header {
 
 .print { display: none;}
 @media print {
-    .print {display: initial;}
+    .print {
+        display: initial;
+    }
+
     body {
         -webkit-print-color-adjust: exact;
         color-adjust: exact;
     }
+
     .noprint {
         display: none !important;
     }
+
     .height-reports {
         min-height: 0px !important;
     }
-    .aui-label { background-color: white;}
-    #legend { margin-top: 200px; }
+
+    .aui-label { 
+        background-color: white;
+    }
+
+    #legend { 
+        margin-top: 200px;
+    }
+
+    .td-issue-txt {
+        line-height: 1.1;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    #issuetable th span {
+        line-height: 1.1;
+        position: relative;
+        bottom: 10px;
+    }
+
+    #issuetable td {
+        line-height: 1.1;
+        padding: 2px 4px 2px 0px;
+        -webkit-border-vertical-spacing: 0;
+    }
 }
 .height-reports {
     min-height: 960px;
@@ -1352,3 +1382,12 @@ form.bitbucket span {
 }
 
 /* User Default Settings */
+.posl-25-p {
+    position: relative;
+    left: 25%;
+}
+
+.posl-30-p {
+    position: relative;
+    left: 30%;
+}
