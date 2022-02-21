@@ -37,11 +37,6 @@
                     </th>
                     <th class="colHeaderLink moreFields" ng-repeat="field in pivotTable.moreFields track by $index">
                     </th>
-                    <th ng-if="showTotalInFront" class="text-center bg-white borderL">
-                        <span class="font-semibold text-text-color-1">
-                            <br/><br/>{{'Total' | i18n}}
-                        </span>
-                    </th>
                     <th ng-if="pivotTable._sortedColumns && pivotTable._sortedColumns.length > 0"
                         colspan="{{month.colspan}}"
                         ng-repeat="month in pivotTable.months"
@@ -76,8 +71,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </th>
-                    <th ng-if="showTotalInFront" class="borderL">
                     </th>
                     <th ng-repeat="column in pivotTable._sortedColumns"
                         column-key="column.columnKey"
@@ -134,9 +127,6 @@
                                             (groupByOptions.selected == 'project' && row.rowKey.keyName == 'project') ||
                                             groupByOptions.selected === 'issue')"
                                     all-fields="allFields" />
-                    </td>
-                    <td ng-if="showTotalInFront" ng-style="{'color': row.color}" title="{{row.title}}" class="borderL text-center nav border total text-center">
-                        {{row.sum | prettyHours:jiraConfig}}
                     </td>
                     <td ng-init="p_show=false"
                         ng-mouseover="p_show=column.sum == 0 && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate &&
@@ -220,11 +210,6 @@
                                     once="pivotTable"
                                     all-fields="allFields"/>
                     </td>
-                    <td ng-if="showTotalInFront"
-                        class="nav borderL total"
-                        ng-class-odd="'rowAlternate'" ng-class-even="'bg-white'" >
-                        &nbsp;
-                    </td>
                     <td ng-init="p_show=false"
                         ng-mouseover="p_show=groupByOptions.selected && data.columnKey.keyValue != column.columnKey.keyValue && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser || canLogWorkForWorkedUser[row.rowKey.field.accountId]) && !cannotLogWorkIssue[data.rowKey._issue.key])"
                         ng-mouseleave="p_show=false"
@@ -257,9 +242,6 @@
                     </td>
                     <td class="nav text-center border-l-clear" ng-repeat="field in pivotTable.moreFields track by $index">
                         <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
-                    </td>
-                    <td ng-if="showTotalInFront" ng-style="{'color': pivotTable.color}" title="{{pivotTable.title}}" class="borderL text-center nav borderWeekDays">
-                        {{pivotTable.sum | prettyHours:jiraConfig}}
                     </td>
                     <td ng-style="{'color': column.color}" title="{{column.title}}" class="nav borderWeekDays text-center" ng-repeat="column in pivotTable._sortedColumns" ng-class="{borderL:  column.columnKey.isFirstColumn}">
                         {{column.sum | prettyHours:jiraConfig}}
