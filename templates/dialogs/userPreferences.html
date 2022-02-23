@@ -303,6 +303,20 @@
                 <span class="description" data-ng-bind-html="'description.Log Suggested Work' | i18n | htmlSafe"/>
             </div>
             <div class="field-group">
+                <label for="liveUpdate">{{'Live Update' | i18n}}</label>
+                <input id="liveUpdate"
+                    type="checkbox"
+                    class="checkbox"
+                    ng-model="liveUpdate.val"
+                    ng-change="saveLiveUpdate()">
+                <div class="aui-message aui-message-success msg-overlay user-preference" ng-if="liveUpdateSaveSuccess">
+                    <strong>{{'Live Update' | i18n}}</strong>&nbsp;{{'saved successfully' | i18n}}
+                </div>
+            </div>
+            <div class="field-group">
+                <span class="description" data-ng-bind-html="'description.Live Update' | i18n | htmlSafe"/>
+            </div>
+            <div class="field-group">
                 <label for="select2-showDetailsCount">{{'Show Details Number' | i18n}}</label>
                 <select id="select2-showDetailsCount"
                         class="common"
