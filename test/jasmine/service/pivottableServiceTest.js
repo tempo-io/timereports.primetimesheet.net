@@ -833,7 +833,7 @@ describe('pivottableServiceTest', function () {
       if (options.url.match(/search/)) {
         this.getTimeoutFunc()(function () {
           requestCalled = true
-          expect(options.url).toContain('jql=(worklogAuthor%20in%20membersOf(%22group1%22)%20or%20worklogAuthor%20in%20membersOf(%22group2%22))')
+          expect(options.url).toContain('jql=(worklogAuthor%20in%20(membersOf(%22group1%22))%20or%20worklogAuthor%20in%20(membersOf(%22group2%22)))')
           options.success(angular.copy(TimeData))
         }, 500)
       } else {
