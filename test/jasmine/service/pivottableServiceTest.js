@@ -45,8 +45,8 @@ describe('pivottableServiceTest', function () {
 
   it('Timesheet', inject(function ($timeout, pivottableService) {
     expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
-    var options = { pivotTableType: 'Timesheet', startDate: '2014-02-24', configOptions: {}, reportingDay: 1, sumSubTasks: [] }
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' }
+    var options = { loggedInUser, pivotTableType: 'Timesheet', startDate: '2014-02-24', configOptions: {}, reportingDay: 1, sumSubTasks: [] }
     var pivotTable
     pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {
       pivotTable = _pivotTable
@@ -60,8 +60,8 @@ describe('pivottableServiceTest', function () {
     $httpBackend.whenGET(/\/restricted\/TIME/).respond(200, true)
 
     expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'restrictedUser' }
-    var options = { pivotTableType: 'Timesheet', startDate: '2014-02-24', configOptions: { auditorsRoles: 'Administrators' }, reportingDay: 1, sumSubTasks: [] }
+    var loggedInUser = { accountId: 'restrictedUser', timeZone: 'Europe/Moscow' }
+    var options = { loggedInUser, pivotTableType: 'Timesheet', startDate: '2014-02-24', configOptions: { auditorsRoles: 'Administrators' }, reportingDay: 1, sumSubTasks: [] }
     var pivotTable
     pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {
       pivotTable = _pivotTable
@@ -74,8 +74,8 @@ describe('pivottableServiceTest', function () {
 
   it('Timesheet [endDate, w/out startDate]', inject(function ($timeout, pivottableService) {
     expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
-    var options = { pivotTableType: 'Timesheet', endDate: '2014-03-06', configOptions: {}, sumSubTasks: [] }
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' }
+    var options = { loggedInUser, pivotTableType: 'Timesheet', endDate: '2014-03-06', configOptions: {}, sumSubTasks: [] }
     var pivotTable
     pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {
       pivotTable = _pivotTable
@@ -91,8 +91,8 @@ describe('pivottableServiceTest', function () {
 
   it('Timesheet multiple users', inject(function ($timeout, pivottableService) {
     expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
-    var options = { pivotTableType: 'Timesheet', user: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa,noSuchUser', endDate: '2014-03-06', configOptions: {}, sumSubTasks: [] }
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' }
+    var options = { loggedInUser, pivotTableType: 'Timesheet', user: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa,noSuchUser', endDate: '2014-03-06', configOptions: {}, sumSubTasks: [] }
     var pivotTable
     pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {
       pivotTable = _pivotTable
@@ -108,9 +108,10 @@ describe('pivottableServiceTest', function () {
 
   it('Timesheet holidays', inject(function ($timeout, pivottableService) {
     expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' }
     var holiday = '2014-03-03' // Monday
     var options = {
+      loggedInUser,
       pivotTableType: 'Timesheet',
       user: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa,noSuchUser',
       endDate: '2014-03-06',
@@ -129,8 +130,8 @@ describe('pivottableServiceTest', function () {
 
   it('IssueWorkedTimeByUser', inject(function ($timeout, pivottableService) {
     expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
-    var options = { pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, sumSubTasks: [] }
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' }
+    var options = { loggedInUser, pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, sumSubTasks: [] }
     var pivotTable
     pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {
       pivotTable = _pivotTable
@@ -145,8 +146,9 @@ describe('pivottableServiceTest', function () {
 
   it('IssueWorkedTimeByUser_sumSubTasks', inject(function ($timeout, pivottableService) {
     expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' }
     var options = {
+      loggedInUser,
       pivotTableType: 'IssueWorkedTimeByUser',
       configOptions: {
         parentIssueField: 'customfield_10007',
@@ -786,8 +788,9 @@ describe('pivottableServiceTest', function () {
 
   it('Parent issue not in search result, DB on Jira Cloud over rest', inject(function ($timeout, pivottableService) {
     expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' }
     var options = { pivotTableType: 'IssueWorkedTimeByUser',
+      loggedInUser,
       configOptions: {},
       sumSubTasks: ['parent'] }
 
@@ -820,8 +823,9 @@ describe('pivottableServiceTest', function () {
 
   it('PARAMETERS: groups, DB on Jira Cloud over rest', inject(function ($timeout, $log, pivottableService) {
     expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] } }
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] }, timeZone: 'Europe/Moscow' }
     var options = { pivotTableType: 'IssueWorkedTimeByUser',
+      loggedInUser,
       groups: ['group1', 'group2'],
       moreFields: ['customfield_10008'],
       configOptions: {},
@@ -1012,8 +1016,9 @@ describe('pivottableServiceTest', function () {
 
   it('Empty Users', inject(function ($timeout, $log, pivottableService) {
     expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] } }
+    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] }, timeZone: 'Europe/Moscow' }
     var options = { pivotTableType: 'Timesheet',
+      loggedInUser,
       username: 'bbbb',
       filterOrProjectId: 'project_DEMO',
       includeEmpty: true,

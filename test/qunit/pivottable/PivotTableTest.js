@@ -11,7 +11,7 @@ QUnit.testSkip = function () {
   })
 }
 QUnit.test('IssueWorkedTimeByUser', function () {
-  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'IssueWorkedTimeByUser', configOptions: {} })
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'IssueWorkedTimeByUser', configOptions: {}, loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
   for (var i in TimeData.issues) {
     var pivotEntries = pivotTable.add(TimeData.issues[i])
     QUnit.assert.equal(pivotEntries.length, 2, 'pivotEntries')
@@ -31,7 +31,7 @@ QUnit.test('IssueWorkedTimeByUser', function () {
   }
 })
 QUnit.test('IssueWorkedTimeByStatus', function () {
-  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'IssueWorkedTimeByStatus', configOptions: { workingTimeInStatus: {}, statuses: TimeStatuses } })
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'IssueWorkedTimeByStatus', configOptions: { workingTimeInStatus: {}, statuses: TimeStatuses }, loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
   for (var i in TimeData.issues) {
     var pivotEntries = pivotTable.add(TimeData.issues[i])
     QUnit.assert.equal(pivotEntries.length, 2, 'pivotEntries')
@@ -51,7 +51,7 @@ QUnit.test('IssueWorkedTimeByStatus', function () {
   }
 })
 QUnit.test('IssueWorkedTimeByLabel', function () {
-  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'IssueWorkedTimeByLabel', configOptions: {} })
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'IssueWorkedTimeByLabel', configOptions: {}, loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
   for (var i in TimeData.issues) {
     var pivotEntries = pivotTable.add(TimeData.issues[i])
     QUnit.assert.equal(pivotEntries.length, 2, 'pivotEntries')
@@ -502,7 +502,7 @@ QUnit.test('TimeBalance5Columns filter user=user extended data', function () {
 })
 // see also timeData.js#CookieUtils for locked time frame
 QUnit.test('Timesheet', function () {
-  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1, configOptions: {} })
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timesheet', startDate: '2014-02-24', reportingDay: 1, configOptions: {}, loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
   for (var i in TimeData.issues) {
     var issue = TimeData.issues[i]
     var pivotEntries = pivotTable.add(issue)
@@ -534,7 +534,7 @@ QUnit.test('Timesheet', function () {
   QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 1, 'column entries')
 })
 QUnit.test('Timesheet sum by week', function () {
-  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timesheet', sum: 'week', startDate: '2014-02-24', reportingDay: 1, configOptions: {} })
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timesheet', sum: 'week', startDate: '2014-02-24', reportingDay: 1, configOptions: {}, loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
   for (var i in TimeData.issues) {
     var issue = TimeData.issues[i]
     var pivotEntries = pivotTable.add(issue)
@@ -562,7 +562,7 @@ QUnit.test('Timesheet sum by week', function () {
   QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 2, 'column entries')
 })
 QUnit.test('Timesheet sum by month', function () {
-  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timesheet', sum: 'month', startDate: '2014-02-24', reportingDay: 1, configOptions: {} })
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timesheet', sum: 'month', startDate: '2014-02-24', reportingDay: 1, configOptions: {}, loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
   for (var i in TimeData.issues) {
     var issue = TimeData.issues[i]
     var pivotEntries = pivotTable.add(issue)
@@ -594,7 +594,7 @@ QUnit.test('Timesheet sum by month', function () {
   QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 2, 'column entries')
 })
 QUnit.test('Timespent', function () {
-  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timespent', startDate: '2014-02-24', reportingDay: 1, configOptions: {} })
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timespent', startDate: '2014-02-24', reportingDay: 1, configOptions: {}, loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
   for (var i in TimeData.issues) {
     var issue = TimeData.issues[i]
     var pivotEntries = pivotTable.add(issue)
@@ -629,7 +629,7 @@ QUnit.test('TimesheetUtils.convertDate', function () {
   QUnit.assert.equal(date.getDate(), 24, 'Moscow 2015 day of month')
   date = TimesheetUtils.convertDate('2020-03-31T02:00:00.000+1100', 'Australia/Sydney')
   QUnit.assert.equal(date.getDate(), 31, 'Sydney 2020 day of month')
-  date = TimesheetUtils.convertDate('2020-03-31T02:00:00.000+1100', 'Europe/Kiev')
+  date = TimesheetUtils.convertDate('2020-03-31T02:00:00.000+1100', 'Europe/Moscow')
   QUnit.assert.equal(date.getDate(), 30, 'Sydney 2020 day of month in Kyiv')
 })
 QUnit.test('Calculated endDate', function () {
@@ -758,7 +758,7 @@ QUnit.test('TimesheetUtils.validateParams', function () {
   QUnit.assert.equal(err.join(','), 'Unknown PivotTableType: NotExists,Unknown filterOrProjectId: lalala,numOfWeeks should be Integer,reportingDay should be -1..6,offset should be Integer,startDate should be date in YYYY-MM-DD format,sum should be in ["day", "week", "month"],view should be in ["day", "week", "month"]', 'all')
 })
 QUnit.test('Timesheet: 2 level grouping', function () {
-  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timesheet', categorizeByField: 'issuetype', groupByField: 'reporter', moreFields: ['timespent'], startDate: '2014-02-24', reportingDay: 1, configOptions: {} })
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timesheet', categorizeByField: 'issuetype', groupByField: 'reporter', moreFields: ['timespent'], startDate: '2014-02-24', reportingDay: 1, configOptions: {}, loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
   for (var i in TimeData.issues) {
     var issue = TimeData.issues[i]
     var pivotEntries = pivotTable.add(issue)
@@ -784,7 +784,7 @@ QUnit.test('Timesheet: 2 level grouping', function () {
   QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 2, 'column entries')
 })
 QUnit.test('Timesheet: group by workeduser', function () {
-  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timesheet', categorizeByField: 'project', groupByField: 'workeduser', startDate: '2014-02-24', reportingDay: 1, configOptions: {} })
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timesheet', categorizeByField: 'project', groupByField: 'workeduser', startDate: '2014-02-24', reportingDay: 1, configOptions: {}, loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
   for (var i in TimeData.issues) {
     var issue = TimeData.issues[i]
     var pivotEntries = pivotTable.add(issue)
@@ -809,7 +809,7 @@ QUnit.test('Timesheet: group by workeduser', function () {
   QUnit.assert.equal(row.columns[columnKeys[0]].entries.length, 2, 'column entries')
 })
 QUnit.test('Timespent: group by Account', function () {
-  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timespent', groupByField: 'customfield_11207', startDate: '2014-02-24', reportingDay: 1, configOptions: {} })
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timespent', groupByField: 'customfield_11207', startDate: '2014-02-24', reportingDay: 1, configOptions: {}, loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
   for (var i in TimeData.issues) {
     var issue = TimeData.issues[i]
     var pivotEntries = pivotTable.add(issue)
@@ -831,7 +831,7 @@ QUnit.test('Calendar', function () {
     startDate: '2014-02-24',
     reportingDay: 1,
     configOptions: { preserveStartedTime: true },
-    loggedInUser: { timeZone: 'Europe/Kiev' } })
+    loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
   for (var i in TimeData.issues) {
     var issue = TimeData.issues[i]
     var pivotEntries = pivotTable.add(issue)

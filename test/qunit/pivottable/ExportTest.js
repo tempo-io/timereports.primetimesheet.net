@@ -4,6 +4,7 @@ QUnit.test('Excel Export', function (assert) {
   QUnit.assert.equal(typeof excelView, 'object', 'excelView')
   var $excel = $translations.then(translations => {
     return excelView.generate({ pivotTableType: 'Timesheet',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       startDate: '2014-02-24',
       reportingDay: 1,
       moreFields: [],
@@ -32,6 +33,7 @@ QUnit.test('Excel Export in Days', function (assert) {
   QUnit.assert.equal(typeof excelView, 'object', 'excelView')
   var $excel = $translations.then(translations => {
     return excelView.generate({ pivotTableType: 'Timesheet',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       startDate: '2014-02-24',
       reportingDay: 1,
       moreFields: [],
@@ -118,6 +120,7 @@ QUnit.test('Csv Export', function (assert) {
   QUnit.assert.equal(typeof csvView, 'object', 'csvView')
   var $csv = $translations.then(translations => {
     return csvView.generate({ pivotTableType: 'Timesheet',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       startDate: '2014-02-24',
       reportingDay: 1,
       moreFields: [],
@@ -194,6 +197,7 @@ QUnit.test('Csv Export Custom Columns', function (assert) {
   QUnit.assert.equal(typeof csvView, 'object', 'csvView')
   var $csv = $translations.then(translations => {
     return csvView.generate({ pivotTableType: 'Timesheet',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       startDate: '2014-02-24',
       reportingDay: 1,
       moreFields: [],
@@ -219,6 +223,7 @@ QUnit.test('Csv Export Custom Columns In Days', function (assert) {
   QUnit.assert.equal(typeof csvView, 'object', 'csvView')
   var $csv = $translations.then(translations => {
     return csvView.generate({ pivotTableType: 'Timesheet',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       startDate: '2014-02-24',
       reportingDay: 1,
       moreFields: [],
@@ -243,6 +248,7 @@ QUnit.test('Html Export Timesheet', function (assert) {
   QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'Timesheet',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       startDate: '2014-02-24',
       reportingDay: 1,
       moreFields: [],
@@ -271,6 +277,7 @@ QUnit.test('Html Export Timesheet Compressed', function (assert) {
   QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'Timesheet',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       compressed: true,
       startDate: '2014-02-24',
       reportingDay: 1,
@@ -300,6 +307,7 @@ QUnit.test('Html Export IssueWorkedTimeByLabel Compressed', function (assert) {
   QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'IssueWorkedTimeByLabel',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       compressed: true,
       startDate: '2014-02-24',
       reportingDay: 1,
@@ -333,6 +341,7 @@ QUnit.test('Html Export Timesheet Grouped by Worked User More Fields', function 
   moreFieldsOptions.addOption('Estimate', 'timetrackingestimate')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'Timesheet',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       categorizeByField: 'assignee',
       categorizeByFieldObject: {
         id: 'assignee'
@@ -378,6 +387,7 @@ QUnit.test('Html Export Timesheet More Fields', function (assert) {
   moreFieldsOptions.addOption('Estimate', 'timetrackingestimate')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'Timesheet',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       startDate: '2014-02-24',
       reportingDay: 1,
       moreFields: ['assignee', 'timespent', 'timetrackingestimate'],
@@ -411,6 +421,7 @@ QUnit.test('Html Export Pivot by User Grouped by Issue Itself More Fields', func
   moreFieldsOptions.addOption('Estimate', 'timetrackingestimate')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'IssueWorkedTimeByUser',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       groupByField: 'issue',
       groupByFieldOption: { label: 'Issue itself' },
       startDate: '2014-02-24',
@@ -444,6 +455,7 @@ QUnit.test('Html Export TimeTracking', function (assert) {
   QUnit.assert.equal(typeof htmlView, 'object', 'htmlView')
   var $html = $translations.then(translations => {
     return htmlView.generate({ pivotTableType: 'TimeTracking',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       startDate: '2014-02-24',
       reportingDay: 1,
       moreFields: [],
@@ -512,6 +524,7 @@ QUnit.test('Pdf Export Cost Report', function (assert) {
   QUnit.assert.equal(typeof pdfView, 'object', 'pdfView')
   var $pdf = $translations.then(translations => {
     return pdfView.generate({ pivotTableType: 'CostReport',
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       startDate: '2014-02-24',
       reportingDay: 1,
       moreFields: [],

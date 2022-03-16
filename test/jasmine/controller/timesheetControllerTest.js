@@ -158,7 +158,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -430,7 +430,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -462,7 +462,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -500,7 +500,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -533,7 +533,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -566,7 +566,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -598,7 +598,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -632,7 +632,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -685,7 +685,7 @@ describe('timesheetControllerTest', function () {
           return []
         }
       },
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -738,7 +738,7 @@ describe('timesheetControllerTest', function () {
           return []
         }
       },
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -791,7 +791,7 @@ describe('timesheetControllerTest', function () {
           return []
         }
       },
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -825,7 +825,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -858,7 +858,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -892,7 +892,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
@@ -977,7 +977,7 @@ describe('timesheetControllerTest', function () {
       $location: $location,
       $sce: $sce,
       pivottableService: pivottableService,
-      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' },
+      loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' },
       projectKey: 'TIME',
       jql: undefined,
       externalFilter: ''
