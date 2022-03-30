@@ -224,7 +224,7 @@
                         class="nav borderWeekDays text-center"
                         ng-repeat="column in pivotTable._sortedColumns">
                         <span style="cursor:pointer" ng-if="data.columnKey.keyValue == column.columnKey.keyValue">
-                            {{data.value | prettyHours:jiraConfig}}
+                            {{data.value | prettyHours:jiraConfig:false:'zeroable'}}
                         </span>
                         <span ng-show="p_show" class="fa fa-plus" style="cursor:pointer" title="{{'Log Work against an issue' | i18n}}"></span>
                     </td>
