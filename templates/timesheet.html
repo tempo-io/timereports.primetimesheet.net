@@ -40,13 +40,12 @@
                     <th ng-if="pivotTable._sortedColumns && pivotTable._sortedColumns.length > 0"
                         colspan="{{month.colspan}}"
                         ng-repeat="month in pivotTable.months"
-                        ng-class="{ 'borderL' : month.firstColumn }"
                         class="align-middle">
                         <span class="ml-2 font-semibold text-text-color-1">{{month.monthName}}</span>
                     </th>
                     <th ng-if="!pivotTable.months || pivotTable.months.length == 0"
                         ng-repeat="column in pivotTable._sortedColumns"
-                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend,  borderL:  column.columnKey.isFirstColumn}"
+                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}"
                         class="h-10 borderWeek">
                     </th>
                     <th class="text-center stickyCell bg-white" ng-if="pivotTable.num > 0" width="8%">
@@ -74,7 +73,7 @@
                     </th>
                     <th ng-repeat="column in pivotTable._sortedColumns"
                         column-key="column.columnKey"
-                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend,  borderL:  column.columnKey.isFirstColumn}"
+                        ng-class="{toDay: column.columnKey.isToday, nonBusinessDay: column.columnKey.isWeekend}"
                         class="h-10 borderWeek text-center">
                     </th>
                     <th class="text-center stickyCell bg-white" ng-if="pivotTable.num > 0" width="8%">
@@ -144,8 +143,7 @@
                         nonBusinessDay: column.columnKey.isWeekend,
                         addWorklogPopup: !groupByOptions.selected && column.sum == 0 && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser) && !cannotLogWorkIssue[row.rowKey.keyValue]),
                         editWorklogPopup: column.sum != 0,
-                        disabled: column.sum == 0 && (groupByOptions.selected || cannotLogWorkIssue[row.rowKey.keyValue] || (!canLogWork && !canLogWorkForUser)) && (groupByOptions.selected != 'workeduser' || !canLogWorkForWorkedUser[row.rowKey.field.accountId]),
-                        borderL:  column.columnKey.isFirstColumn}"
+                        disabled: column.sum == 0 && (groupByOptions.selected || cannotLogWorkIssue[row.rowKey.keyValue] || (!canLogWork && !canLogWorkForUser)) && (groupByOptions.selected != 'workeduser' || !canLogWorkForWorkedUser[row.rowKey.field.accountId])}"
                         style="cursor:default"
                         ng-style="{'color': column.color}"
                         title="{{column.title}}"
@@ -218,8 +216,7 @@
                         nonBusinessDay: column.columnKey.isWeekend,
                         addWorklogPopup: groupByOptions.selected && data.columnKey.keyValue != column.columnKey.keyValue && (column.columnKey.date || column.columnKey.startDate) >= allowToLogFromDate && ((canLogWork || canLogWorkForUser || canLogWorkForWorkedUser[row.rowKey.field.accountId]) && !cannotLogWorkIssue[data.rowKey._issue.key]),
                         editWorklogPopup: groupByOptions.selected && data.columnKey.keyValue == column.columnKey.keyValue && ((canLogWork || canLogWorkForUser || canLogWorkForWorkedUser[row.rowKey.field.accountId]) && !cannotLogWorkIssue[data.rowKey._issue.key]),
-                        disabled: !groupByOptions.selected || (data.columnKey.keyValue == column.columnKey.keyValue && cannotLogWorkIssue[data.rowKey._issue.key] || (!canLogWork && !canLogWorkForUser && !canLogWorkForWorkedUser[row.rowKey.field.accountId])),
-                        borderL:  column.columnKey.isFirstColumn}"
+                        disabled: !groupByOptions.selected || (data.columnKey.keyValue == column.columnKey.keyValue && cannotLogWorkIssue[data.rowKey._issue.key] || (!canLogWork && !canLogWorkForUser && !canLogWorkForWorkedUser[row.rowKey.field.accountId]))}"
                         style="cursor:default"
                         class="nav borderWeekDays text-center"
                         ng-repeat="column in pivotTable._sortedColumns">
@@ -243,7 +240,7 @@
                     <td class="nav text-center border-l-clear" ng-repeat="field in pivotTable.moreFields track by $index">
                         <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
                     </td>
-                    <td ng-style="{'color': column.color}" title="{{column.title}}" class="nav borderWeekDays text-center" ng-repeat="column in pivotTable._sortedColumns" ng-class="{borderL:  column.columnKey.isFirstColumn}">
+                    <td ng-style="{'color': column.color}" title="{{column.title}}" class="nav borderWeekDays text-center" ng-repeat="column in pivotTable._sortedColumns">
                         {{column.sum | prettyHours:jiraConfig}}
                     </td>
                     <td ng-style="{'color': pivotTable.color}" title="{{pivotTable.title}}" class="nav stickyCell bg-secondary-color-clarity-4 text-center">

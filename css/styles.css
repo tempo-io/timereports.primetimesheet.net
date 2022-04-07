@@ -27,7 +27,7 @@ header {
         min-height: 0px !important;
     }
 
-    .aui-label { 
+    .aui-label {
         background-color: white;
     }
 
@@ -503,7 +503,7 @@ table td {
 }
 
 .user-preference-form .field-group label {
-    font-weight: 700;    
+    font-weight: 700;
 }
 
 .user-preference-form .field-group span {
@@ -541,11 +541,8 @@ table td {
     text-transform: uppercase;
 }
 
-.borderL {
-    border-left: 1px solid #80808029 !important;
-}
 .border-l-clear {
-    border-left: 1px solid #ddd;    
+    border-left: 1px solid #ddd;
 }
 .align-super {
     vertical-align: super;
@@ -670,7 +667,7 @@ select.common {
 a.tip, i.tip {
     position: relative;
 }
-  
+
 a.tip span, i.tip span {
     display: none;
     position: absolute;
@@ -687,7 +684,7 @@ a.tip span, i.tip span {
     font-style: normal;
     font-size: 11px;
 }
-  
+
 a.tip span:before, i.tip span:before {
     content: '';
     display: block;
@@ -700,12 +697,12 @@ a.tip span:before, i.tip span:before {
     left: 10px;
     top: -5px;
 }
-  
+
 a:hover.tip, i:hover.tip {
     font-size: 99%;
     /* this is just for IE */
 }
-  
+
 a:hover.tip span, i:hover.tip span {
     display: block;
 }
@@ -808,7 +805,7 @@ button.text-text-white:hover {
     margin-bottom: 30px !important;
 }
 
-.calendar .calendar-header .year-neighbor2 , .calendar .calendar-header .year-neighbor{        
+.calendar .calendar-header .year-neighbor2 , .calendar .calendar-header .year-neighbor{
     opacity: 1 !important;
     color: var(--text-color-4);
 }
@@ -854,7 +851,7 @@ button.text-text-white:hover {
     height: 38px !important;
     text-indent: 5px;
 }
-  
+
 .ak-field-group .aui-select2-container .select2-choice .select2-chosen {
     margin-top: 4px;
     color: var(--text-color-3) !important;
@@ -907,11 +904,11 @@ button.text-text-white:hover {
 .borderWeek {
     border-left: 0;
     border-top: 0;
-    border-right: 1px solid #80808029;
+    border-left: 1px solid #80808029;
 }
 
 .borderWeekDays {
-    border-right: 1px solid #ddd;
+    border-left: 1px solid #80808029;
 }
 
 .stickyCell {
@@ -978,7 +975,7 @@ button.text-text-white:hover {
     max-width: 310px !important;
 }
 
-.form-gadget { 
+.form-gadget {
     margin-left: 0.5rem !important
 }
 
@@ -989,10 +986,10 @@ button.text-text-white:hover {
 }
 
 .form-gadget .checkbox-group {
-    padding: 18px 0 0 0;    
+    padding: 18px 0 0 0;
 }
 
-.form-gadget .checkbox-group label { 
+.form-gadget .checkbox-group label {
     vertical-align: bottom;
     margin-left: 5px;
 }
@@ -1028,7 +1025,7 @@ button.text-text-white:hover {
     margin-left: 530px;
 }
 
-.pieLabelBackground {  
+.pieLabelBackground {
     height: 35px !important;
     border: 1px solid var(--text-divider-color-2-dark);
     border-radius: 5px;
@@ -1088,12 +1085,12 @@ button.text-text-white:hover {
       width: 700px;
       border-right: 1px solid var(--text-divider-color-2-dark);
     }
-  
+
     #empty-space-chart {
       margin-left: 730px;
     }
 }
-  
+
 @media (min-width: 1600px) {
     #placeholder {
         height: 600px;
@@ -1120,11 +1117,11 @@ button.text-text-white:hover {
 }
 
 td.break-line {
-    white-space: -o-pre-wrap; 
+    white-space: -o-pre-wrap;
     word-wrap: break-word;
-    white-space: pre-wrap; 
-    white-space: -moz-pre-wrap; 
-    white-space: -pre-wrap; 
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
 }
 
 .pie-first-column {
@@ -1254,7 +1251,7 @@ form.bitbucket span {
 }
 
 @media (min-width: 1400px) {
-    .top-info-box {        
+    .top-info-box {
         top: 18%;
     }
 }
@@ -1310,7 +1307,7 @@ form.bitbucket span {
     z-index:1;
     left:0px;
     top:0px;
-    color: var(--secondary-color);    
+    color: var(--secondary-color);
 }
 
 .stars:AFTER {
