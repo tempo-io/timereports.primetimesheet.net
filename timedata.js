@@ -1431,7 +1431,7 @@ var TimeDataTIME_7 = {
         "customfield_10007": "",
         "customfield_10004": 2.0,
         "creator": {
-            "self": "https://avelytchenko.atlassian.net/rest/api/2/user?username=user",
+            "self": "https://timereports.atlassian.net/rest/api/2/user?username=user",
             "name": "user",
             "key": "user",
             "emailAddress": "user@ukr.net",
