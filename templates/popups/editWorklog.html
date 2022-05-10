@@ -18,7 +18,7 @@
         <td nowrap class="float-right">
             <span class="w-0 p-2 ml-2 mr-2 bg-24 bg-no-repeat bg-center"
                   style="background-image: url('../images/icon-pen.png')"
-                  ng-click="popupData.openEditWorklogDialog(wkLog.id, wkLog._issue);closePopup();"
+                  ng-click="popupData.openEditWorklogDialog(wkLog);closePopup();"
                   title="{{'Edit worklog' | i18n}}"
                   ng-if="!wkLog.locked"
                   ng-show="wkLog.ownWorklog ? popupData.canEditOwnWorklog && !popupData.cannotEditOwnWorklogIssue[popupData.rowKey.keyValue] :
@@ -26,7 +26,7 @@
             </span>
             <span class="w-0 p-2 mr-2 bg-24 bg-no-repeat bg-center"
                   style="background-image: url('../images/icon-trash-gray.png')"
-                  ng-click="popupData.openDeleteWorklogDialog(wkLog.id, wkLog._issue);closePopup();"
+                  ng-click="popupData.openDeleteWorklogDialog(wkLog);closePopup();"
                   title="{{'Delete worklog' | i18n}}"
                   ng-if="!wkLog.locked"
                   ng-show="wkLog.ownWorklog ? popupData.canDeleteOwnWorklog && !popupData.cannotDeleteOwnWorklogIssue[popupData.rowKey.keyValue] :

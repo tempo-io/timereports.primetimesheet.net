@@ -1,6 +1,6 @@
 <div ng-if="['IssueTime', 'IssueTimeBalance'].indexOf(pivotTableType) < 0 && showMore" class="issue-key-area">
     <label for="log-work-issue">
-        {{'Issue Key' | i18n}}*&nbsp;                
+        {{'Issue Key' | i18n}}*&nbsp;
     </label>
     <input type="text" class="text issue-key-field" id="log-work-issue" name="log-work-issue" ng-model="worklog.issueKey" log-work-permission aui-issue-picker ng-disabled="dialogType != 'add'" required focus-if="!worklog.issueKey">
 </div>
@@ -9,7 +9,7 @@
 </legend>
 <div class="line-fields ak-field-group">
     <label for="log-work-time-logged">
-        {{worklog.endDate ? 'Hours Per Day' : 'Time Spent' | i18n}}*                    
+        {{worklog.endDate ? 'Hours Per Day' : 'Time Spent' | i18n}}*
     </label>
     <input type="text"
             id="log-work-time-logged"
@@ -68,7 +68,7 @@
     </a>
 </div>
 
-<ng-include ng-if="showMore" src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0" class="log-work"></ng-include>
+<ng-include ng-if="showMore && !tempoToken" src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0" class="log-work"></ng-include>
 
 <div class="line-fields">
     <label for="comment" class="align-top">
@@ -81,7 +81,7 @@
             <div class="content-inner"></div>
         </div>
     </div>
-    <div ng-if="showMore" class="security-level mr-37 pt-4 pb-4 issue-work-buttons">
+    <div ng-if="showMore && !tempoToken" class="security-level mr-37 pt-4 pb-4 issue-work-buttons">
         <button id="security-level-dropdown"
                 class="button-padlock aui-dropdown2-trigger aui-style-default"
                 aria-owns="security-level"
