@@ -56,7 +56,7 @@
         </div>
         <div class="ak-field-group" ng-if="['Timesheet', 'IssueWorkedTimeByUser', 'IssueWorkedTimeByStatus', 'IssueWorkedTimeByLabel',
           'Timespent', 'CostReport', 'Calendar'].indexOf(pivotTableType) >= 0">
-            <label>{{'Work #label or Comment First Word' | i18n}}</label>
+            <label>{{('Work #label' + (tempoToken ? ', @Attribute' : '') + ' or Comment First Word') | i18n}}</label>
             <input ng-model="worklogFilter"
                    aui-multi-select-picker
                    tags="true"
@@ -86,7 +86,7 @@
         </div>
         <div class="p-0 ak-field-group" ng-if="['Timesheet', 'Timespent', 'CostReport', 'PieChart', 'Calendar'].indexOf(pivotTableType) >= 0"> <!-- All users because of multi user picker planned -->
             <input class="checkbox mr-2" type="checkbox" ng-model="allUsers.enabled" ng-change="allUsersChange(allUsers.enabled)"/>
-            <label style="display: inline-block; margin: 0">{{'All Users' | i18n}}</label>            
+            <label style="display: inline-block; margin: 0">{{'All Users' | i18n}}</label>
         </div>
         <div class="ak-field-group" ng-if="pivotTableType != 'TimeEntry'">
             <label>{{'Groups' | i18n}}</label>
@@ -115,7 +115,7 @@
             <input ng-model="endDate.value" id="endDate" type="date" aui-date-picker ng-date-changed-func="endChangeDate"
                    class="text-field input-date" ng-class="{inactive: endDate.calculated}"/>
         </div>
-        <div class="ak-field-group" ng-if="['Timesheet', 'Calendar'].indexOf(pivotTableType) >= 0">            
+        <div class="ak-field-group" ng-if="['Timesheet', 'Calendar'].indexOf(pivotTableType) >= 0">
             <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled" ng-change="toggleShowWeekends()" />
             <label style="display: inline-block; margin: 0">{{'Show Weekends' | i18n}}</label>
         </div>
@@ -214,7 +214,7 @@
         <div class="ak-field-group" ng-if="['Timesheet', 'TimeEntry', 'CostReport', 'IssueWorkedTimeByUser'].indexOf(pivotTableType) >= 0 ||
         (pivotTableType == 'Timespent' && !pivotByField)">
             <input class="checkbox mr-2" type="checkbox" ng-model="includeEmpty.enabled" ng-change="includeEmptyChange(includeEmpty.enabled)" ng-disabled="!(filterOrProjectId || includeEmpty.jql)"/>
-            <label style="display: inline-block; margin: 0">{{'Show Empty Issues' | i18n}}</label>            
+            <label style="display: inline-block; margin: 0">{{'Show Empty Issues' | i18n}}</label>
         </div>
 
         <!--div class="ak-field-group" ng-if="!reportDialog">
