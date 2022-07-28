@@ -10,7 +10,7 @@ QUnit.test('Excel Export', function (assert) {
       moreFields: [],
       translations: translations,
       configOptions: { exportColumns: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus'] },
-      jiraConfig: {} })
+      jiraConfig: { locale: 'en_US' } })
   })
   $excel.then(excel => {
     QUnit.assert.equal(typeof excel, 'string', 'excel')
@@ -39,7 +39,7 @@ QUnit.test('Excel Export in Days', function (assert) {
       moreFields: [],
       translations: translations,
       configOptions: { exportColumns: [], durationTypeForExport: 'd' },
-      jiraConfig: {} })
+      jiraConfig: { locale: 'en_US' } })
   })
   $excel.then(excel => {
     QUnit.assert.equal(typeof excel, 'string', 'excel')
@@ -70,7 +70,7 @@ QUnit.test('Excel Export TimeTracking', function (assert) {
         'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus'] },
       timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining', '3timespent', '4diff',
         '5originalestimateremaining', '6progress'],
-      jiraConfig: {} })
+      jiraConfig: { locale: 'en_US' } })
   })
   $excel.then(excel => {
     QUnit.assert.equal(typeof excel, 'string', 'html')
@@ -99,7 +99,7 @@ QUnit.test('Excel Export TimeBalance', function (assert) {
         'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus'] },
       timeBalanceColumns: ['1timeoriginalestimate', '2esttimeremaining', '3timespent', '4diff',
         '5originalestimateremaining', '6progress'],
-      jiraConfig: {} })
+      jiraConfig: { locale: 'en_US' } })
   })
   $excel.then(excel => {
     QUnit.assert.equal(typeof excel, 'string', 'html')
@@ -126,7 +126,7 @@ QUnit.test('Csv Export', function (assert) {
       moreFields: [],
       translations: translations,
       configOptions: { exportColumns: ['project', 'issuetype', 'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus'] },
-      jiraConfig: {} })
+      jiraConfig: { locale: 'en_US' } })
   })
   $csv.then(csv => {
     QUnit.assert.equal(typeof csv, 'string', 'csv')
@@ -153,7 +153,7 @@ QUnit.test('Csv Export TimeTracking', function (assert) {
         'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus'] },
       timeTrackingColumns: ['1timeoriginalestimate', '2esttimeremaining', '3timespent', '4diff',
         '5originalestimateremaining', '6progress'],
-      jiraConfig: {} })
+      jiraConfig: { locale: 'en_US' } })
   })
   $csv.then(csv => {
     QUnit.assert.equal(typeof csv, 'string', 'csv')
@@ -179,7 +179,7 @@ QUnit.test('Csv Export TimeBalance', function (assert) {
         'key', 'summary', 'priority', 'datestarted', 'displayname', 'descriptionstatus'] },
       timeBalanceColumns: ['1timeoriginalestimate', '2esttimeremaining', '3timespent', '4diff',
         '5originalestimateremaining', '6progress'],
-      jiraConfig: {} })
+      jiraConfig: { locale: 'en_US' } })
   })
   $csv.then(csv => {
     QUnit.assert.equal(typeof csv, 'string', 'csv')
@@ -203,7 +203,7 @@ QUnit.test('Csv Export Custom Columns', function (assert) {
       moreFields: [],
       translations: translations,
       configOptions: { exportColumns: ['key', 'descriptionstatus'] },
-      jiraConfig: {} })
+      jiraConfig: { locale: 'en_US' } })
   })
   $csv.then(csv => {
     QUnit.assert.equal(typeof csv, 'string', 'csv')
@@ -229,7 +229,7 @@ QUnit.test('Csv Export Custom Columns In Days', function (assert) {
       moreFields: [],
       translations: translations,
       configOptions: { exportColumns: ['key', 'descriptionstatus'], durationTypeForExport: 'd' },
-      jiraConfig: {} })
+      jiraConfig: { locale: 'en_US' } })
   })
   $csv.then(csv => {
     QUnit.assert.equal(typeof csv, 'string', 'csv')

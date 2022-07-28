@@ -18,7 +18,7 @@ describe('timesheet filters', function () {
     expect(func('1', { timeFormat: 'pretty', workingHoursPerDay: 7.5, workingDaysPerWeek: 5 })).toBe('0m')
     expect(func('3600', { timeFormat: 'h', workingHoursPerDay: 7.5, workingDaysPerWeek: 5, locale: 'en_US' })).toBe('1h')
     expect(func('3600', { timeFormat: 'm', workingHoursPerDay: 7.5, workingDaysPerWeek: 5, locale: 'en_US' })).toBe('60m')
-    expect(func('' + 3600 * 4, { timeFormat: 'd', workingHoursPerDay: 8, workingDaysPerWeek: 5 })).toBe('0.5d')
+    expect(func('' + 3600 * 4, { timeFormat: 'd', workingHoursPerDay: 8, workingDaysPerWeek: 5, locale: 'en_US' })).toBe('0.5d')
     expect(func('')).toBe('')
     expect(func(null)).toBe('')
     expect(func('wrong number')).toBe('')
