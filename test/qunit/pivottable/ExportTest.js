@@ -254,7 +254,7 @@ QUnit.test('Html Export Timesheet', function (assert) {
       moreFields: [],
       translations: translations,
       configOptions: {},
-      jiraConfig: { timeFormat: '' } })
+      jiraConfig: { timeFormat: '', locale: 'en_US' } })
   })
   $html.then(html => {
     QUnit.assert.equal(typeof html, 'string', 'html')
@@ -284,7 +284,7 @@ QUnit.test('Html Export Timesheet Compressed', function (assert) {
       moreFields: [],
       translations: translations,
       configOptions: {},
-      jiraConfig: { timeFormat: '' } })
+      jiraConfig: { timeFormat: '', locale: 'en_US' } })
   })
   $html.then(html => {
     QUnit.assert.equal(typeof html, 'string', 'html')
@@ -314,7 +314,7 @@ QUnit.test('Html Export IssueWorkedTimeByLabel Compressed', function (assert) {
       moreFields: [],
       translations: translations,
       configOptions: {},
-      jiraConfig: { timeFormat: '' } })
+      jiraConfig: { timeFormat: '', locale: 'en_US' } })
   })
   $html.then(html => {
     QUnit.assert.equal(typeof html, 'string', 'html')
@@ -357,7 +357,7 @@ QUnit.test('Html Export Timesheet Grouped by Worked User More Fields', function 
       moreFields: ['timespent', 'timetrackingestimate'],
       translations: translations,
       configOptions: {},
-      jiraConfig: { timeFormat: '' },
+      jiraConfig: { timeFormat: '', locale: 'en_US' },
       moreFieldsOptions: moreFieldsOptions,
       orderDirection: 1 })
   })
@@ -393,7 +393,7 @@ QUnit.test('Html Export Timesheet More Fields', function (assert) {
       moreFields: ['assignee', 'timespent', 'timetrackingestimate'],
       translations: translations,
       configOptions: {},
-      jiraConfig: { timeFormat: '' },
+      jiraConfig: { timeFormat: '', locale: 'en_US' },
       moreFieldsOptions: moreFieldsOptions })
   })
   $html.then(html => {
@@ -429,7 +429,7 @@ QUnit.test('Html Export Pivot by User Grouped by Issue Itself More Fields', func
       moreFields: ['assignee', 'timespent', 'timetrackingestimate'],
       translations: translations,
       configOptions: {},
-      jiraConfig: { timeFormat: '' },
+      jiraConfig: { timeFormat: '', locale: 'en_US' },
       moreFieldsOptions: moreFieldsOptions })
   })
   $html.then(html => {
@@ -464,7 +464,7 @@ QUnit.test('Html Export TimeTracking', function (assert) {
         '5originalestimateremaining', '6progress'],
       translations: translations,
       configOptions: {},
-      jiraConfig: { timeFormat: '' } })
+      jiraConfig: { timeFormat: '', locale: 'en_US' } })
   })
   $html.then(html => {
     QUnit.assert.equal(typeof html, 'string', 'html')
@@ -500,7 +500,7 @@ QUnit.test('Html Export TimeTracking Grouped by Assignee', function (assert) {
         '5originalestimateremaining', '6progress'],
       translations: translations,
       configOptions: {},
-      jiraConfig: { timeFormat: '' },
+      jiraConfig: { timeFormat: '', locale: 'en_US' },
       orderDirection: 1 })
   })
   $html.then(html => {
@@ -533,7 +533,7 @@ QUnit.test('Pdf Export Cost Report', function (assert) {
         'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa': { '': { '': 10 } }
       },
       configOptions: {},
-      jiraConfig: { timeFormat: '' } })
+      jiraConfig: { timeFormat: '', locale: 'en_US' } })
   })
   $pdf.then(pdf => {
     QUnit.assert.equal(typeof pdf, 'object', 'pdf')
