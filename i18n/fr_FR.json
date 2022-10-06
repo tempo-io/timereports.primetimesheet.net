@@ -485,6 +485,7 @@
     "description.Use ISO Week": "Utiliser la norme ISO 8601 pour la numérotation de semaine et le premier jour de la semaine.",
     "New Time Entry": "Nouvelle entrée de temps",
     "description.New Time Entry": "La vue nouvelle entrée de temps contient les demandes en haut, journaux de travail (trié par date démarrée) en bas.",
+    "End of Month": "Fin du mois",
     "Monthly on": "Mensuel sur",
     "Hide Rate Column": "Cacher la colonne taux",
     "No logged time": "Pas de temps enregistré. Assurez-vous de suivre votre temps.",
