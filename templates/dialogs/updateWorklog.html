@@ -47,7 +47,8 @@
     <time-picker time="worklogDatetime.time" ng-model-options='{ debounce: 1000 }'></time-picker>
     <a  class="ml-1 text-secondary-color"
         ng-if="!worklog.endDate && !worklog.id"
-        ng-click="changeEndDate()">
+        ng-click="changeEndDate()"
+        href="#">
         {{'Set Date Ended' | i18n}}
     </a>
 </div>
@@ -64,7 +65,8 @@
     <a class="ml-4 w-0 p-3 bg-24 bg-no-repeat bg-center"
        style="background-image: url('../images/icon-remove.png')"
        ng-if="worklog.endDate"
-       ng-click="removeEndDate()">
+       ng-click="removeEndDate()"
+       href="#">
     </a>
 </div>
 
