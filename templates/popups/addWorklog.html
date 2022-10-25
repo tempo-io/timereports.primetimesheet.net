@@ -26,9 +26,9 @@
                 <span ng-show="logWorkForm.timeSpent.$error.workPerDayError" role="alert" class="red">
                     {{logWorkForm.timeSpent.$error.workPerDayError}}
                 </span>
-                <a ng-click="popupData.openMoreOptionDialog();closePopup()" class="text-secondary-color" href="#">
+                <button ng-click="popupData.openMoreOptionDialog();closePopup()" class="text-secondary-color">
                 {{'more options' | i18n}}
-                </a>
+                </button>
             </td>
         </tr>
         <tr>

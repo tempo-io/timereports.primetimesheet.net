@@ -11,10 +11,9 @@
             placeholder="{{estimatePlaceholder}}"
             title="{{'eg. 4h 30m' | i18n}}">
     &nbsp;
-    <a ng-if="worklog.issueKey"
+    <button ng-if="worklog.issueKey"
        class="ml-1 text-secondary-color"
-       ng-click="worklog.estimateValue=timeestimatePretty"
-       href="#">
+       ng-click="worklog.estimateValue=timeestimatePretty">
         {{'Use current' | i18n}}&nbsp;{{timeestimatePretty}}
-    </a>
+    </button>
 </div>

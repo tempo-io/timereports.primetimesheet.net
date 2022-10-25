@@ -45,12 +45,11 @@
             ng-date-changed-func="changeDate">
     <lock-period-error>&lt;&nbsp;{{allowToLogFromDate | date:'yyyy-MM-dd'}}&nbsp;!&nbsp;</lock-period-error>
     <time-picker time="worklogDatetime.time" ng-model-options='{ debounce: 1000 }'></time-picker>
-    <a  class="ml-1 text-secondary-color"
+    <button  class="ml-1 text-secondary-color"
         ng-if="!worklog.endDate && !worklog.id"
-        ng-click="changeEndDate()"
-        href="#">
+        ng-click="changeEndDate()">
         {{'Set Date Ended' | i18n}}
-    </a>
+    </button>
 </div>
 
 <div ng-if="worklog.endDate" class="line-fields ak-field-group">
@@ -62,12 +61,11 @@
             ng-model="worklog.endDate"
             aui-date-picker
             ng-date-changed-func="changeEndDate">
-    <a class="ml-4 w-0 p-3 bg-24 bg-no-repeat bg-center"
+    <button class="ml-4 w-0 p-3 bg-24 bg-no-repeat bg-center"
        style="background-image: url('../images/icon-remove.png')"
        ng-if="worklog.endDate"
-       ng-click="removeEndDate()"
-       href="#">
-    </a>
+       ng-click="removeEndDate()">
+    </button>
 </div>
 
 <ng-include ng-if="showMore && !tempoToken" src="'/templates/dialogs/remainingEstimate.html'" ng-init="reduceBy = ['add', 'create'].indexOf(dialogType) >= 0" class="log-work"></ng-include>
@@ -106,14 +104,14 @@
         </span>
         <div id="security-level" class="aui-style-default aui-dropdown2">
             <ul class="aui-list-truncate">
-                <li><a ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = null" class="aui-button-primary">{{'All Users' | i18n}}</a></li>
+                <li><button ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = null" class="aui-button-primary">{{'All Users' | i18n}}</button§></li>
             </ul>
             <div class="aui-dropdown2-section">
                 <div class="aui-dropdown2-heading">
                     {{'Groups' | i18n}}
                 </div>
                 <ul class="aui-list-truncate">
-                    <li ng-repeat="group in groups.items"><a ng-click="worklog.visibilityRole = null; worklog.visibilityGroup = group.name" ng-bind="group.name" class="aui-button-primary"></a></li>
+                    <li ng-repeat="group in groups.items"><button ng-click="worklog.visibilityRole = null; worklog.visibilityGroup = group.name" ng-bind="group.name" class="aui-button-primary"></button></li>
                 </ul>
             </div>
             <div class="aui-dropdown2-section">
@@ -121,7 +119,7 @@
                     {{'Project Roles' | i18n}}
                 </div>
                 <ul class="aui-list-truncate">
-                    <li ng-repeat="(role, uri) in roles"><a ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = role" ng-bind="role" class="aui-button-primary"></a></li>
+                    <li ng-repeat="(role, uri) in roles"><button ng-click="worklog.visibilityGroup = null; worklog.visibilityRole = role" ng-bind="role" class="aui-button-primary"></button></li>
                 </ul>
             </div>
         </div>

@@ -4,7 +4,7 @@
             <span ng-if="wkLog._issueInfo">
                 <issue-key issue="wkLog._issueInfo" black-style="true"/>
             </span>
-            <a ng-class="{inactive: !wkLog._authorInfo.active}"
+            <button ng-class="{inactive: !wkLog._authorInfo.active}"
                 title="{{wkLog._authorInfo.emailAddress}}"
                 ng-href="#!/?pivotTableType=Timesheet&user={{wkLog._authorInfo.accountId}}&group=&groupByField="
                 ng-if="wkLog._authorInfo" ng-bind="wkLog._authorInfo.displayName || wkLog._authorInfo.name"/>
@@ -16,22 +16,22 @@
             <span title="{{wkLog.comment.length > 25 ? wkLog.comment : ''}}">{{wkLog.comment | limitTo:25}}</span>
         </td>
         <td nowrap class="float-right">
-            <span class="w-0 p-2 ml-2 mr-2 bg-24 bg-no-repeat bg-center"
+            <button class="w-0 p-2 ml-2 mr-2 bg-24 bg-no-repeat bg-center"
                   style="background-image: url('../images/icon-pen.png')"
                   ng-click="popupData.openEditWorklogDialog(wkLog);closePopup();"
                   title="{{'Edit worklog' | i18n}}"
                   ng-if="!wkLog.locked"
                   ng-show="wkLog.ownWorklog ? popupData.canEditOwnWorklog && !popupData.cannotEditOwnWorklogIssue[popupData.rowKey.keyValue] :
                   popupData.canEditAllWorklog && !popupData.cannotEditAllWorklogIssue[popupData.rowKey.keyValue]">
-            </span>
-            <span class="w-0 p-2 mr-2 bg-24 bg-no-repeat bg-center"
+            </button>
+            <button class="w-0 p-2 mr-2 bg-24 bg-no-repeat bg-center"
                   style="background-image: url('../images/icon-trash-gray.png')"
                   ng-click="popupData.openDeleteWorklogDialog(wkLog);closePopup();"
                   title="{{'Delete worklog' | i18n}}"
                   ng-if="!wkLog.locked"
                   ng-show="wkLog.ownWorklog ? popupData.canDeleteOwnWorklog && !popupData.cannotDeleteOwnWorklogIssue[popupData.rowKey.keyValue] :
                   popupData.canDeleteAllWorklog && !popupData.cannotDeleteAllWorklogIssue[popupData.rowKey.keyValue]">
-            </span>
+            </button>
         </td>
     </tr>
     <tr ng-if="!popupData.worklog.locked && popupData.worklog.issueKey && (popupData.canLogWork || popupData.canLogWorkForUser) && !popupData.cannotLogWorkIssue[popupData.rowKey.keyValue]">
