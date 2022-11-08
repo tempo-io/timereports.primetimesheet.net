@@ -7,7 +7,8 @@
             <button ng-class="{inactive: !wkLog._authorInfo.active}"
                 title="{{wkLog._authorInfo.emailAddress}}"
                 ng-href="#!/?pivotTableType=Timesheet&user={{wkLog._authorInfo.accountId}}&group=&groupByField="
-                ng-if="wkLog._authorInfo" ng-bind="wkLog._authorInfo.displayName || wkLog._authorInfo.name"/>
+                ng-if="wkLog._authorInfo" ng-bind="wkLog._authorInfo.displayName || wkLog._authorInfo.name"
+                type="button"/>
         </td>
         <td class="text-secondary-color">
             {{wkLog.timeSpentSeconds | prettyHours:jiraConfig}}
@@ -22,7 +23,8 @@
                   title="{{'Edit worklog' | i18n}}"
                   ng-if="!wkLog.locked"
                   ng-show="wkLog.ownWorklog ? popupData.canEditOwnWorklog && !popupData.cannotEditOwnWorklogIssue[popupData.rowKey.keyValue] :
-                  popupData.canEditAllWorklog && !popupData.cannotEditAllWorklogIssue[popupData.rowKey.keyValue]">
+                  popupData.canEditAllWorklog && !popupData.cannotEditAllWorklogIssue[popupData.rowKey.keyValue]"
+                  type="button">
             </button>
             <button class="w-0 p-2 mr-2 bg-24 bg-no-repeat bg-center"
                   style="background-image: url('../images/icon-trash-gray.png')"
@@ -30,7 +32,8 @@
                   title="{{'Delete worklog' | i18n}}"
                   ng-if="!wkLog.locked"
                   ng-show="wkLog.ownWorklog ? popupData.canDeleteOwnWorklog && !popupData.cannotDeleteOwnWorklogIssue[popupData.rowKey.keyValue] :
-                  popupData.canDeleteAllWorklog && !popupData.cannotDeleteAllWorklogIssue[popupData.rowKey.keyValue]">
+                  popupData.canDeleteAllWorklog && !popupData.cannotDeleteAllWorklogIssue[popupData.rowKey.keyValue]"
+                  type="button">
             </button>
         </td>
     </tr>
@@ -45,7 +48,8 @@
                             (popupData.pivotTableType == 'Timesheet' && popupData.rowKey.keyName == 'workeduser' && popupData.canLogWorkForWorkedUser[popupData.rowKey.field.accountId]))"
                     class="aui-button aui-button-link"
                     ng-click="popupData.addWorklogDialog(null, null, popupData.currentDay, popupData.pivotTableType == 'Timesheet' && popupData.rowKey.keyName == 'workeduser' && popupData.rowKey.field)"
-                    title="Log Work against this day">
+                    title="Log Work against this day"
+                    type="button">
 
                 <i class="w-0 p-2 bg-24 bg-no-repeat bg-center"
                     style="background-image: url('../../images/icon-plus.png')">

@@ -26,7 +26,7 @@
                 <span ng-show="logWorkForm.timeSpent.$error.workPerDayError" role="alert" class="red">
                     {{logWorkForm.timeSpent.$error.workPerDayError}}
                 </span>
-                <button ng-click="popupData.openMoreOptionDialog();closePopup()" class="text-secondary-color">
+                <button ng-click="popupData.openMoreOptionDialog();closePopup()" class="text-secondary-color" type="button">
                 {{'more options' | i18n}}
                 </button>
             </td>
@@ -60,7 +60,8 @@
             <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
                     ng-disabled="logWorkForm.$invalid || loading"
                     ng-class="{disabled: logWorkForm.$invalid || loading}"
-                    ng-click="popupData.addWorklog(closePopup)">
+                    ng-click="popupData.addWorklog(closePopup)"
+                    type="submit">
                 {{'Save' | i18n}}
             </button>
             <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
