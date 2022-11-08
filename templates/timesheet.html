@@ -169,8 +169,9 @@
                                 <li class="rowCenter">
                                     <a class="w-48 p-2 mr-2 bg-24 bg-no-repeat bg-right"
                                         style="background-image: url('../images/icon-trash-gray.png')"
-                                        x-ng-click="deleteWork(row)"
-                                        ng-bind="'Delete worklogs' | i18n">
+                                        x-ng-click="deleteWork(row)">
+                                        {{'Delete worklogs' | i18n}}
+                                    </a>
                                     </a>
                                 </li>
                             </ul>
