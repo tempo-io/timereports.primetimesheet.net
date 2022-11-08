@@ -300,7 +300,7 @@
                     <td colspan="{{rowKeySize}}" class="nav total">
                         {{'Total' | i18n}}&nbsp;{{pivotTable.num != 1 ? 'issues' : 'issue' | i18n:{placeholders:[pivotTable.num]} }}
                     </td>
-                    <td class="nav total border-l-clear" ng-repeat="field in pivotTable.moreFields track by $index">
+                    <td class="nav total border-l-clear text-center" ng-repeat="field in pivotTable.moreFields track by $index">
                         <issue-field name="field" field="pivotTable.fieldTotals[field]" issue="{fields: pivotTable.fieldTotals}" jira-config="jiraConfig"/>
                     </td>
                     <td class="nav border total text-center bg-secondary-color-clarity-4"

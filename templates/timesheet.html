@@ -156,7 +156,25 @@
                         class="nav total text-center stickyCell"
                         ng-class-odd="'bg-white'"
                         ng-class-even="compressed ? 'rowAlternate' : 'bg-white'">
-                        {{row.sum | prettyHours:jiraConfig}}
+                        <span id="total-dropdown"
+                          title="{{'Delete worklogs' | i18n}}"
+                          href="#total-{{$index}}"
+                          aria-owns="total-{{$index}}"
+                          aria-haspopup="true"
+                          class="aui-dropdown2-trigger x-ng-click w-0 p-3 bg-24 bg-no-repeat bg-center tip"
+                          x-ng-click="">{{row.sum | prettyHours:jiraConfig}}
+                        </span>
+                        <div id="total-{{$index}}" class="aui-style-default aui-dropdown2">
+                            <ul class="aui-list-truncate">
+                                <li class="rowCenter">
+                                    <a class="w-48 p-2 mr-2 bg-24 bg-no-repeat bg-right"
+                                        style="background-image: url('../images/icon-trash-gray.png')"
+                                        x-ng-click="deleteWork(row)"
+                                        ng-bind="'Delete worklogs' | i18n">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </td>
                 </tr>
                 <tr ng-class-odd="'rowAlternate'" ng-class-even="'rowNormal'" ng-repeat="data in row.data" ng-if="!compressed && !row.categoryRow">

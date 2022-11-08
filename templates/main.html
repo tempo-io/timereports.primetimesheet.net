@@ -28,7 +28,7 @@
 </div>
 
 <div style="margin: 0" ng-if="gadgetDialog" >
-    <modal-like-dialog controller="'WorklogDialogController'" data="worklogDialogData"/>
+    <modal-like-dialog controller="worklogDialogData.controller" data="worklogDialogData"/>
 </div>
 
 <div ng-if="!showGadgetConfiguration && !gadgetDialog" class="main w-full">
@@ -230,7 +230,70 @@
         </form>
     </div>
 </script>
-<script type="text/ng-template" id="invoice-dialog-template">    
+<script type="text/ng-template" id="delete-work-dialog-template">
+    <!-- Dialog header -->
+    <header class="aui-dialog2-header log-hours">
+        <!-- The dialog''s title -->
+        <h3 class="aui-dialog2-header-main copyLinkHeader font-bold border-b border-gray-200">
+            {{'Delete Work Logs' | i18n}}
+        </h3>
+        <!-- Close icon -->
+        <a class="aui-dialog2-header-close" ng-click="cancel()">
+            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">{{'Close' | i18n}}</span>
+        </a>
+    </header>
+    <!-- Main dialog content -->
+    <div class="aui-dialog2-content log-hours">
+        <form class="aui" name="deleteWorkForm">
+            <ng-include src="'/templates/dialogs/deleteWork.html'"></ng-include>
+        </form>
+    </div>
+
+    <footer class="aui-dialog2-footer log-hours">
+        <!-- Actions to render on the right of the footer -->
+        <div class="aui-dialog2-footer-actions">
+            <span class="fa fa-spinner fa-spin" ng-show="loading" style="margin: 0 50px;"></span>
+            <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
+                    ng-click="delete()"
+                    ng-disabled="deleteWorkForm.$invalid || loading"
+                    ng-class="{disabled: deleteWorkForm.$invalid || loading}">
+                {{'Delete' | i18n}}
+            </button>
+            <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                    ng-click="cancel()">
+                {{'Cancel' | i18n}}
+            </button>
+        </div>
+    </footer>
+</script>
+<script type="text/ng-template" id="delete-work-gadget-dialog-template">
+    <!-- Dialog header -->
+    <span class="font-bold text-xl" style="padding: 0 4px">
+        {{'Delete Work Logs' | i18n}}
+    </span>
+    <!-- Main dialog content -->
+    <div class="aui-dialog2-content">
+        <form class="aui" name="deleteWorkForm">
+            <ng-include src="'/templates/dialogs/deleteWork.html'"></ng-include>
+            <div class="mr-37 pb-6 mt-5 issue-work-buttons">
+                <div class="buttons">
+                    <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
+                            ng-click="delete()"
+                            ng-disabled="deleteWorkForm.$invalid || loading"
+                            ng-class="{disabled: deleteWorkForm.$invalid || loading}">
+                        {{'Delete' | i18n}}
+                    </button>
+                    <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
+                            ng-click="cancel()">
+                        {{'Cancel' | i18n}}
+                    </button>
+                    <span class="fa fa-spinner fa-spin" ng-show="loading" style="margin: 0 50px;"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+<script type="text/ng-template" id="invoice-dialog-template">
     <!-- Main dialog content -->
     <div class="aui-dialog2-content">
         <!-- Dialog header -->
@@ -240,7 +303,7 @@
         <form class="aui" name="hourlyRatesForm">
             <div class="rowCenter mt-10">
                 <label class="w-40 mb-16 text-xs text-text-color-1-important">Header</label>
-                <textarea 
+                <textarea
                     rows="5"
                     cols="200"
                     class="border-solid border rounded border-text-divider-color-3 w-30rem"
@@ -262,7 +325,7 @@
     </div>
     <!-- Dialog footer -->
     <footer class="aui-dialog2-footer big">
-        <div class="aui-dialog2-footer-actions">            
+        <div class="aui-dialog2-footer-actions">
             <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
                     ng-click="save(true)">
                 {{'Save' | i18n}}

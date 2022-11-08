@@ -1,0 +1,29 @@
+<div class="ml-3 bg-secondary-color-clarity-4 pt-5 pb-5 rounded-md">
+    <i class="w-0 p-3 bg-24 bg-no-repeat bg-center mr-4 ml-4"
+        style="background-image: url('../images/info-icon.png')">
+    </i>
+    <span class="font-bold-light">{{'Are you sure you want to delete these worklogs?' | i18n}}</span>
+</div>
+
+<table cellpadding="0" border="0" cellspacing="5">
+    <tr ng-repeat="wkLog in worklogs">
+        <td ng-if="wkLog._issueInfo || wkLog._authorInfo">
+            <span ng-if="wkLog._issueInfo">
+                <issue-key issue="wkLog._issueInfo" black-style="true"/>
+            </span>
+            <a ng-class="{inactive: !wkLog._authorInfo.active}"
+                title="{{wkLog._authorInfo.emailAddress}}"
+                ng-href="#!/?pivotTableType=Timesheet&user={{wkLog._authorInfo.accountId}}&group=&groupByField="
+                ng-if="wkLog._authorInfo" ng-bind="wkLog._authorInfo.displayName || wkLog._authorInfo.name"/>
+        </td>
+        <td class="text-secondary-color">
+            {{wkLog.timeSpentSeconds | prettyHours:jiraConfig}}
+        </td>
+        <td>
+            <worklog-comment worklog="wkLog" no-comment="'< No comment >' | i18n"/>
+        </td>
+        <td>
+            <span ng-bind="wkLog.on | htmlSafe"></span>
+        </td>
+    </tr>
+</table>
