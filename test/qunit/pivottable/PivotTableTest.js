@@ -826,6 +826,26 @@ QUnit.test('Timespent: group by Account', function () {
   QUnit.assert.equal(typeof row.rowKey, 'object', 'typeof row.key')
   QUnit.assert.equal(row.sum, 7200, 'typeof row.key')
 })
+QUnit.test('Timespent: Pivot by Assignee', function () {
+  var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Timespent', pivotByField: 'assignee', startDate: '2014-02-24', reportingDay: 1, configOptions: {}, loggedInUser: { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' } })
+  for (var i in TimeData.issues) {
+    var issue = TimeData.issues[i]
+    var pivotEntries = pivotTable.add(issue)
+    QUnit.assert.equal(pivotEntries.length, 2, 'pivotEntries ' + issue.key)
+  }
+  var totalKeys = Object.keys(pivotTable.totals)
+  QUnit.assert.equal(totalKeys.length, 1, 'totals')
+  QUnit.assert.equal(pivotTable.totals[totalKeys[0]].sum, 172800, 'total value 1')
+  var rowKeys = Object.keys(pivotTable.rows)
+  QUnit.assert.equal(rowKeys.length, 6, 'rows')
+  QUnit.assert.equal(rowKeys[0], 'TIME-4', 'rowKey')
+  QUnit.assert.equal(rowKeys[1], 'TIME-3', 'rowKey')
+  var row = pivotTable.rows[rowKeys[0]]
+  QUnit.assert.equal(typeof row.rowKey, 'object', 'typeof row.key')
+  QUnit.assert.equal(row.sum, 7200, 'typeof row.key')
+  var columnKeys = Object.keys(row.columns)
+  QUnit.assert.equal(columnKeys.length, 1, 'columns')
+})
 QUnit.test('Calendar', function () {
   var pivotTable = PivotTableFactory.createPivotTable({ pivotTableType: 'Calendar',
     startDate: '2014-02-24',

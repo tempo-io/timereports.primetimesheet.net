@@ -8,6 +8,9 @@ window.AP = {
   user: {
     getLocale: function (cb) {
       cb('en');
+    },
+    getTimeZone: cb => {
+      cb('Europe/Moscow')
     }
   },
   getUser: function(callback) {
@@ -2741,18 +2744,128 @@ var processFlightData = function() {
     }
 };
 
+// USER MOCKS
+const ASSIGNEE_MOCK = {
+  self: 'https://fake-domain.atlassian.net/rest/api/2/user?accountId=1234abcd',
+  accountId: '1234abcd',
+  avatarUrls: {
+    '48x48':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/FU-5.png',
+    '24x24':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/FU-5.png',
+    '16x16':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/FU-5.png',
+    '32x32':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/FU-5.png'
+  },
+  displayName: 'Fake User',
+  active: true,
+  timeZone: 'America/Sao_Paulo',
+  accountType: 'atlassian'
+}
+const ASSIGNEE_MOCK_2 = {
+  self: 'https://fake-domain.atlassian.net/rest/api/2/user?accountId=5678efgh',
+  accountId: '5678efgh',
+  avatarUrls: {
+    '48x48':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/FU-5.png',
+    '24x24':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/FU-5.png',
+    '16x16':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/FU-5.png',
+    '32x32':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/FU-5.png'
+  },
+  displayName: 'Fake User 2',
+  active: true,
+  timeZone: 'America/Sao_Paulo',
+  accountType: 'atlassian'
+}
+const ASSIGNEE_MOCK_3 = {
+  self: 'https://fake-domain.atlassian.net/rest/api/2/user?accountId=qwert0000',
+  accountId: 'qwert0000',
+  avatarUrls: {
+    '48x48':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/UF-5.png',
+    '24x24':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/UF-5.png',
+    '16x16':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/UF-5.png',
+    '32x32':
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/initials/UF-5.png'
+  },
+  displayName: 'User Falsy',
+  active: true,
+  timeZone: 'America/Sao_Paulo',
+  accountType: 'atlassian'
+}
+
+// CHANGELOG MOCKS
+const HISTORY_ITEM_MOCK = {
+  field: 'assignee',
+  fieldtype: 'jira',
+  fieldId: 'assignee',
+  from: ASSIGNEE_MOCK.accountId,
+  fromString: ASSIGNEE_MOCK.displayName,
+  to: ASSIGNEE_MOCK_2.accountId,
+  toString: ASSIGNEE_MOCK_2.displayName,
+  tmpFromAccountId: ASSIGNEE_MOCK.accountId,
+  tmpToAccountId: ASSIGNEE_MOCK_2.accountId
+}
+const HISTORY_ITEM_MOCK_2 = {
+  field: 'assignee',
+  fieldtype: 'jira',
+  fieldId: 'assignee',
+  from: ASSIGNEE_MOCK_2.accountId,
+  fromString: ASSIGNEE_MOCK_2.displayName,
+  to: ASSIGNEE_MOCK_3.accountId,
+  toString: ASSIGNEE_MOCK_3.displayName,
+  tmpFromAccountId: ASSIGNEE_MOCK_2.accountId,
+  tmpToAccountId: ASSIGNEE_MOCK_3.accountId
+}
+const HISTORY_MOCK = {
+  id: '10082',
+  author: ASSIGNEE_MOCK_2,
+  created: new Date(),
+  items: [HISTORY_ITEM_MOCK]
+}
+const HISTORY_MOCK_2 = {
+  id: '10083',
+  author: ASSIGNEE_MOCK,
+  created: new Date(),
+  items: [HISTORY_ITEM_MOCK_2]
+}
+
+// GLOBAL MOCKS OBJECT
+const Mocks = {
+  users: {
+    ASSIGNEE_MOCK,
+    ASSIGNEE_MOCK_2,
+    ASSIGNEE_MOCK_3
+  },
+  histories: {
+    HISTORY_MOCK,
+    HISTORY_MOCK_2
+  },
+  historyItems: {
+    HISTORY_ITEM_MOCK,
+    HISTORY_ITEM_MOCK_2
+  }
+}
+
 //$.getScript("/flightRecorderData.js", processFlightData);
 
 if (typeof module === 'object' && module.exports) {
     module.exports = {
-        TimeData: TimeData,
-        UserAdminData: UserAdminData,
-        ProjectsData: ProjectsData,
-        FieldsData: FieldsData,
-        WorklogData: WorklogData,
-        Configuration:Configuration,
-        Properties:Properties,
-        PropertiesConfig:PropertiesConfig,
-        PropertiesPreferences4admin:PropertiesPreferences4admin
+        TimeData,
+        UserAdminData,
+        ProjectsData,
+        FieldsData,
+        WorklogData,
+        Configuration,
+        Properties,
+        PropertiesConfig,
+        PropertiesPreferences4admin,
+        Mocks
     };
 }
