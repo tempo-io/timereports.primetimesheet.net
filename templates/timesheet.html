@@ -200,7 +200,7 @@
                         <span ng-if="data.worklog._issue">
                             <issue-key issue="data.worklog._issue" show-title="true" />
                         </span>
-                        <span ng-if="(!paramUsersInfo || paramUsersInfo.length > 1) && groupByOptions.selected != 'workeduser'">
+                        <span ng-if="(!paramUsersInfo || group || paramUsersInfo.length > 1) && groupByOptions.selected != 'workeduser'">
                             <a ng-if="data.worklog.author.accountId"
                                ng-title="{{data.worklog.author.displayName}}"
                                ng-href="{{hostBaseUrl + '/people/' + data.worklog.author.accountId}}"
