@@ -14,7 +14,7 @@
             {{wkLog.timeSpentSeconds | prettyHours:jiraConfig}}
         </td>
         <td>
-            <worklog-comment worklog="wkLog" limit="25"/>
+            <span title="{{wkLog.comment.length > 25 ? wkLog.comment : ''}}">{{wkLog.comment | limitTo:25}}</span>
         </td>
         <td nowrap class="float-right">
             <button class="w-0 p-2 ml-2 mr-2 bg-24 bg-no-repeat bg-center"
