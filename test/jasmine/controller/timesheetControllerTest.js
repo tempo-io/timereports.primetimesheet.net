@@ -1127,7 +1127,7 @@ describe('timesheetControllerTest', function () {
       worklog: TimeDataTIME_7.worklog.worklogs[0]
     }
     AP.request = function (options) {
-      if (options.url.match(/rest\/api\/2\/issue\/TIME-7/)) {
+      if (options.url.match(/rest\/api\/3\/issue\/TIME-7/)) {
         options.success(angular.copy(TimeDataTIME_7))
       } else {
         AP.requestBak(options)
@@ -1215,7 +1215,7 @@ describe('timesheetControllerTest', function () {
         timeSpentSeconds: 3600 }
     }
     AP.request = function (options) {
-      if (options.url.match(/rest\/api\/2\/issue\/TIME-6/)) {
+      if (options.url.match(/rest\/api\/3\/issue\/TIME-6/)) {
         var issue6 = angular.copy(TimeData.issues[5])
         issue6.worklog.maxResults++
         issue6.worklog.total++
@@ -1270,7 +1270,7 @@ describe('timesheetControllerTest', function () {
         timeSpentSeconds: 3600 }
     }
     AP.request = function (options) {
-      if (options.url.match(/rest\/api\/2\/issue\/TIME-6/)) {
+      if (options.url.match(/rest\/api\/3\/issue\/TIME-6/)) {
         var issue6 = angular.copy(TimeData.issues[5])
         issue6.worklog.maxResults++
         issue6.worklog.total++
@@ -1381,7 +1381,7 @@ describe('timesheetControllerTest', function () {
         timeSpentSeconds: 3600 }
     }
     AP.request = function (options) {
-      if (options.url.match(/rest\/api\/2\/issue\/TIME-7/)) {
+      if (options.url.match(/rest\/api\/3\/issue\/TIME-7/)) {
         var issue7 = angular.copy(TimeDataTIME_7)
         issue7.worklog.maxResults++
         issue7.worklog.total++
