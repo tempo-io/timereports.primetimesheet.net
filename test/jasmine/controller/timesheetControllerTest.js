@@ -1088,6 +1088,8 @@ describe('timesheetControllerTest', function () {
     }
     scope.dialogCloseFunction(data)
     $timeout.flush()
+    expect(scope.loading).toBeDefined()
+    expect(scope.loading).toBeFalsy()
     expect(scope.pivotTable).toHaveRowsNumber(4)
     expect(scope.pivotTable).toHaveColumnsNumber(2)
     expect(scope.pivotTable.sum).toBe(79200 - 5 * 3600 + 1 * 3600)
