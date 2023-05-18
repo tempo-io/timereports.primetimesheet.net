@@ -1040,7 +1040,6 @@ describe('pivottableServiceTest', function () {
     var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] }, timeZone: 'Europe/Moscow' }
     var options = { pivotTableType: 'Timesheet',
       loggedInUser,
-      username: 'bbbb',
       filterOrProjectId: 'project_DEMO',
       includeEmpty: true,
       groupByField: 'workeduser',
