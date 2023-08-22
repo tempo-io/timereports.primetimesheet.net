@@ -1,4 +1,3 @@
-var feedbackUrl = '/api/feedback'
 describe('timesheetControllerTest', function () {
   // wait for async loading required modules
   false && beforeAll(function (done) {
@@ -239,7 +238,6 @@ describe('timesheetControllerTest', function () {
       }
     }
 
-    $httpBackend.expectGET(feedbackUrl + '/aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa').respond(200, {})
     $timeout.flush()
     expect(scope.loading).toBeDefined()
     $httpBackend.flush()
