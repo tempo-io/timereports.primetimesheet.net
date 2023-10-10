@@ -21,7 +21,7 @@
     "Number of Months": "Anzahl der Monate",
     "Number of Days": "Anzahl der Tage:",
     "Offset": "Verschiebung:",
-    "Filter or Project": "Filtern oder projizieren",
+    "Filter or Project": "Lieblingsfilter oder Projekt",
     "Manage Filters": "Filter verwalten",
     "Children Filter": "Unteraufgaben-Filter",
     "Saved Filter": "Gespeicherter Filter",
@@ -517,8 +517,5 @@
     "field.timetrackingvariance": "Abweichung",
     "field.timetrackingoriginalestimate": "Ursprüngliche verbleibende Schätzung",
     "field.storypointsprogress": "Story Points Fortschritt",
-    "field.workedweek": "Arbeitswoche",
-    "Starred": "Markiertes",
-    "Others": "Andere",
-    "Predefined": "Vordefinierte"
+    "field.workedweek": "Arbeitswoche"
 }

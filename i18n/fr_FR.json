@@ -519,8 +519,5 @@
     "field.timetrackingvariance": "Variance",
     "field.timetrackingoriginalestimateremaining": "Estimation originale restante",
     "field.storypointsprogress": "Progression des points d'histoire",
-    "field.workedweek": "Semaine de travail",
-    "Starred": "Favoris",
-    "Others": "Autres",
-    "Predefined": "Prédéfinis"
+    "field.workedweek": "Semaine de travail"
 }

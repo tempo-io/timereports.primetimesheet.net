@@ -22,7 +22,7 @@
     "Number of Months": "Number of Months",
     "Number of Days": "Number of Days:",
     "Offset": "Offset:",
-    "Filter or Project": "Filter or Project",
+    "Filter or Project": "Starred Filter or Project",
     "Manage Filters": "Manage Filters",
     "Children Filter": "Children Filter",
     "Saved Filter": "Saved Filter",
@@ -519,8 +519,5 @@
     "field.timetrackingvariance": "Variance",
     "field.timetrackingoriginalestimateremaining": "Original Estimate Remaining",
     "field.storypointsprogress": "Story Points Progress",
-    "field.workedweek": "Worked Week",
-    "Starred": "Starred",
-    "Others": "Others",
-    "Predefined": "Predefined"
+    "field.workedweek": "Worked Week"
 }

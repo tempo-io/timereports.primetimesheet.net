@@ -22,9 +22,9 @@
     "Number of Months": "Número de Meses",
     "Number of Days": "Número de Dias:",
     "Offset": "Deslocamento:",
-    "Filter or Project": "Filtros ou projetos",
+    "Filter or Project": "Filtro con estralla ou Projeto",
     "Manage Filters": "Gerir Filtros",
-    "Children Filter": "Filtros filhos",
+    "Children Filter": "Filtro de Crianças",
     "Saved Filter": "Filtro Salvo",
     "Options": "Opções",
     "FilterApplied": "Filtro Aplicado",
@@ -519,8 +519,5 @@
     "field.timetrackingvariance": "Variância",
     "field.timetrackingoriginalestimateremaining": "Estimativa restante original",
     "field.storypointsprogress": "Progresso dos pontos de história",
-    "field.workedweek": "Semana do trabalho",
-    "Starred": "Favoritos",
-    "Others": "Outros",
-    "Predefined": "Predefinido"
+    "field.workedweek": "Semana do trabalho"
 }
