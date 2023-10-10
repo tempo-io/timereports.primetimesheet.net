@@ -141,7 +141,7 @@ var Properties = {keys: [{key: 'configuration'}, {key: 'preferences4aaaa:aaaaaaa
 var IssueWorklog, Issue;
 
 // https://docs.atlassian.com/jira/REST/6.2/#d2e2438
-// http://localhost:2990/jira/rest/api/2/search
+// http://localhost:2990/jira/rest/api/3/search
 var TimeData = { "expand" : "schema,names",
     "issues" : [ { "expand" : "editmeta,renderedFields,transitions,changelog,operations,worklog",
         "fields" : { "aggregateprogress" : { "percent" : 100,
@@ -159,7 +159,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "components" : [  ],
             "created" : "2013-02-27T18:02:37.000+0100",
@@ -172,14 +172,14 @@ var TimeData = { "expand" : "schema,names",
                 "iconUrl" : "http://localhost:2990/jira/images/icons/bug.gif",
                 "id" : "1",
                 "name" : "Bug",
-                "self" : "http://localhost:2990/jira/rest/api/2/issuetype/1",
+                "self" : "http://localhost:2990/jira/rest/api/3/issuetype/1",
                 "subtask" : true
               },
             "labels" : [  ],
             "priority" : { "iconUrl" : "http://localhost:2990/jira/images/icons/priority_major.gif",
                 "id" : "3",
                 "name" : "Major",
-                "self" : "http://localhost:2990/jira/rest/api/2/priority/3"
+                "self" : "http://localhost:2990/jira/rest/api/3/priority/3"
               },
             "progress" : { "percent" : 100,
                 "progress" : 7200,
@@ -192,7 +192,7 @@ var TimeData = { "expand" : "schema,names",
                 "id" : "10000",
                 "key" : "TIME",
                 "name" : "Timeship",
-                "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
+                "self" : "http://localhost:2990/jira/rest/api/3/project/TIME"
               },
             "reporter": {
                 "timeZone": "Europe/Kiev",
@@ -204,7 +204,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "creator": {
                 "timeZone": "America/Los_Angeles",
@@ -216,7 +216,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "customfield_11207":{"id":2,"value":"Prime Timesheet s.r.o."},
             "resolution" : null,
@@ -225,7 +225,7 @@ var TimeData = { "expand" : "schema,names",
                 "iconUrl" : "http://localhost:2990/jira/images/icons/status_open.gif",
                 "id" : "5",
                 "name" : "Done",
-                "self" : "http://localhost:2990/jira/rest/api/2/status/5"
+                "self" : "http://localhost:2990/jira/rest/api/3/status/5"
               },
             "subtasks" : [  ],
             "summary" : "Mega problem",
@@ -235,18 +235,18 @@ var TimeData = { "expand" : "schema,names",
             "updated" : "2013-03-27T18:03:48.000+0100",
             "versions" : [  ],
             "votes" : { "hasVoted" : false,
-                "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-4/votes",
+                "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-4/votes",
                 "votes" : 0
               },
             "watches" : { "isWatching" : false,
-                "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-4/watchers",
+                "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-4/watchers",
                 "watchCount" : 0
               },
             "workratio" : -1
           },
         "id" : "10003",
         "key" : "TIME-4",
-        "self" : "http://localhost:2990/jira/rest/api/2/issue/10003",
+        "self" : "http://localhost:2990/jira/rest/api/3/issue/10003",
         "worklog" : { "maxResults" : 2,
             "startAt" : 0,
             "total" : 3,
@@ -259,12 +259,12 @@ var TimeData = { "expand" : "schema,names",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "comment" : "test 1",
                   "created" : "2013-12-05T00:00:00.000+0100",
                   "id" : "10000",
-                  "self" : "http://localhost:2990/jira/rest/api/2/issue/10003/worklog/10000",
+                  "self" : "http://localhost:2990/jira/rest/api/3/issue/10003/worklog/10000",
                   "started" : "2014-02-24T18:03:48.589+0100",
                   "timeSpent" : "1h",
                   "timeSpentSeconds" : 3600,
@@ -276,7 +276,7 @@ var TimeData = { "expand" : "schema,names",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:48.589+0100"
                 },
@@ -289,12 +289,12 @@ var TimeData = { "expand" : "schema,names",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "comment" : "test 2",
                   "created" : "2013-02-25T00:00:00.000+0100",
                   "id" : "10001",
-                  "self" : "http://localhost:2990/jira/rest/api/2/issue/10003/worklog/10001",
+                  "self" : "http://localhost:2990/jira/rest/api/3/issue/10003/worklog/10001",
                   "started" : "2014-02-25T18:03:48.762+0100",
                   "timeSpent" : "1h",
                   "timeSpentSeconds" : 3600,
@@ -306,7 +306,7 @@ var TimeData = { "expand" : "schema,names",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:48.762+0100"
                 }
@@ -320,7 +320,7 @@ var TimeData = { "expand" : "schema,names",
                    {
                       "id":"10010",
                       "author":{
-                         "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
+                         "self":"https://timesheet-report-dev.jira-dev.com/rest/api/3/user?username=admin",
                          "name":"admin",
                          "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                          "emailAddress":"azhdanov@gmail.com",
@@ -355,7 +355,7 @@ var TimeData = { "expand" : "schema,names",
                    {
                       "id":"10011",
                       "author":{
-                         "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
+                         "self":"https://timesheet-report-dev.jira-dev.com/rest/api/3/user?username=admin",
                          "name":"admin",
                          "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                          "emailAddress":"azhdanov@gmail.com",
@@ -396,7 +396,7 @@ var TimeData = { "expand" : "schema,names",
                    {
                       "id":"10012",
                       "author":{
-                         "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
+                         "self":"https://timesheet-report-dev.jira-dev.com/rest/api/3/user?username=admin",
                          "name":"admin",
                          "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                          "emailAddress":"azhdanov@gmail.com",
@@ -431,7 +431,7 @@ var TimeData = { "expand" : "schema,names",
                    {
                       "id":"10013",
                       "author":{
-                         "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
+                         "self":"https://timesheet-report-dev.jira-dev.com/rest/api/3/user?username=admin",
                          "name":"admin",
                          "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                          "emailAddress":"azhdanov@gmail.com",
@@ -482,7 +482,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "components" : [  ],
             "created" : "2013-02-27T18:02:37.000+0100",
@@ -495,7 +495,7 @@ var TimeData = { "expand" : "schema,names",
                 "iconUrl" : "http://localhost:2990/jira/images/icons/bug.gif",
                 "id" : "1",
                 "name" : "Bug",
-                "self" : "http://localhost:2990/jira/rest/api/2/issuetype/1",
+                "self" : "http://localhost:2990/jira/rest/api/3/issuetype/1",
                 "subtask" : false,
                 "hierarchyLevel": 0
               },
@@ -503,7 +503,7 @@ var TimeData = { "expand" : "schema,names",
             "priority" : { "iconUrl" : "http://localhost:2990/jira/images/icons/priority_high.gif",
                 "id" : "2",
                 "name" : "High",
-                "self" : "http://localhost:2990/jira/rest/api/2/priority/2"
+                "self" : "http://localhost:2990/jira/rest/api/3/priority/2"
               },
             "progress" : { "percent" : 100,
                 "progress" : 36000,
@@ -515,7 +515,7 @@ var TimeData = { "expand" : "schema,names",
                 "id" : "10000",
                 "key" : "TIME",
                 "name" : "Timeship",
-                "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
+                "self" : "http://localhost:2990/jira/rest/api/3/project/TIME"
               },
             "reporter": {
                 "timeZone": "Europe/Kiev",
@@ -527,7 +527,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "creator": {
                 "timeZone": "America/Los_Angeles",
@@ -539,7 +539,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "resolution" : null,
             "resolutiondate" : null,
@@ -547,7 +547,7 @@ var TimeData = { "expand" : "schema,names",
                 "iconUrl" : "http://localhost:2990/jira/images/icons/status_open.gif",
                 "id" : "3",
                 "name" : "In Progress",
-                "self" : "http://localhost:2990/jira/rest/api/2/status/3"
+                "self" : "http://localhost:2990/jira/rest/api/3/status/3"
               },
             "subtasks" : [  ],
             "summary" : "Hindenbug",
@@ -557,18 +557,18 @@ var TimeData = { "expand" : "schema,names",
             "updated" : "2013-02-27T18:03:49.000+0100",
             "versions" : [  ],
             "votes" : { "hasVoted" : false,
-                "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-3/votes",
+                "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-3/votes",
                 "votes" : 0
               },
             "watches" : { "isWatching" : false,
-                "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-3/watchers",
+                "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-3/watchers",
                 "watchCount" : 0
               },
             "workratio" : -1
           },
         "id" : "10002",
         "key" : "TIME-3",
-        "self" : "http://localhost:2990/jira/rest/api/2/issue/10002",
+        "self" : "http://localhost:2990/jira/rest/api/3/issue/10002",
         "worklog" : { "maxResults" : 2,
             "startAt" : 0,
             "total" : 2,
@@ -581,12 +581,12 @@ var TimeData = { "expand" : "schema,names",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "comment" : "test 3",
                   "created" : "2013-02-27T18:03:48.891+0100",
                   "id" : "10002",
-                  "self" : "http://localhost:2990/jira/rest/api/2/issue/10002/worklog/10002",
+                  "self" : "http://localhost:2990/jira/rest/api/3/issue/10002/worklog/10002",
                   "started" : "2014-02-28T00:00:00.000+0100",
                   "timeSpent" : "6h",
                   "timeSpentSeconds" : 21600,
@@ -598,7 +598,7 @@ var TimeData = { "expand" : "schema,names",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:48.891+0100"
                 },
@@ -611,12 +611,12 @@ var TimeData = { "expand" : "schema,names",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "comment" : "test 4",
                   "created" : "2013-12-02T00:00:00.000+0100",
                   "id" : "10003",
-                  "self" : "http://localhost:2990/jira/rest/api/2/issue/10002/worklog/10003",
+                  "self" : "http://localhost:2990/jira/rest/api/3/issue/10002/worklog/10003",
                   "started" : "2014-02-24T23:03:49.037+0000",
                   "timeSpent" : "4h",
                   "timeSpentSeconds" : 14400,
@@ -628,7 +628,7 @@ var TimeData = { "expand" : "schema,names",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:49.037+0100"
                 }
@@ -651,7 +651,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "components" : [  ],
             "customfield_10008" : "Test Epic",
@@ -672,14 +672,14 @@ var TimeData = { "expand" : "schema,names",
                 "iconUrl" : "http://localhost:2990/jira/images/icons/bug.gif",
                 "id" : "1",
                 "name" : "Bug",
-                "self" : "http://localhost:2990/jira/rest/api/2/issuetype/1",
+                "self" : "http://localhost:2990/jira/rest/api/3/issuetype/1",
                 "subtask" : false
               },
             "labels" : [  ],
             "priority" : { "iconUrl" : "http://localhost:2990/jira/images/icons/priority_major.gif",
                 "id" : "3",
                 "name" : "Major",
-                "self" : "http://localhost:2990/jira/rest/api/2/priority/3"
+                "self" : "http://localhost:2990/jira/rest/api/3/priority/3"
               },
             "progress" : { "percent" : 100,
                 "progress" : 46800,
@@ -691,7 +691,7 @@ var TimeData = { "expand" : "schema,names",
                 "id" : "10000",
                 "key" : "TIME",
                 "name" : "Timeship",
-                "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
+                "self" : "http://localhost:2990/jira/rest/api/3/project/TIME"
               },
             "reporter": {
                 "timeZone": "Europe/Kiev",
@@ -703,7 +703,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "creator": {
                 "timeZone": "America/Los_Angeles",
@@ -715,7 +715,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "resolution" : null,
             "resolutiondate" : null,
@@ -723,7 +723,7 @@ var TimeData = { "expand" : "schema,names",
                 "iconUrl" : "http://localhost:2990/jira/images/icons/status_open.gif",
                 "id" : "1",
                 "name" : "Open",
-                "self" : "http://localhost:2990/jira/rest/api/2/status/1"
+                "self" : "http://localhost:2990/jira/rest/api/3/status/1"
               },
             "subtasks" : [  ],
             "summary" : "Loch Ness Monster Bug",
@@ -733,18 +733,18 @@ var TimeData = { "expand" : "schema,names",
             "updated" : "2013-02-27T18:03:49.000+0100",
             "versions" : [  ],
             "votes" : { "hasVoted" : false,
-                "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-2/votes",
+                "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-2/votes",
                 "votes" : 0
               },
             "watches" : { "isWatching" : false,
-                "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-2/watchers",
+                "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-2/watchers",
                 "watchCount" : 0
               },
             "workratio" : -1
           },
         "id" : "10001",
         "key" : "TIME-2",
-        "self" : "http://localhost:2990/jira/rest/api/2/issue/10001",
+        "self" : "http://localhost:2990/jira/rest/api/3/issue/10001",
         "worklog" : { "maxResults" : 2,
             "startAt" : 0,
             "total" : 2,
@@ -757,12 +757,12 @@ var TimeData = { "expand" : "schema,names",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "comment" : "test 5 #tag5",
                   "created" : "2013-02-17T00:00:00.000+0100",
                   "id" : "10004",
-                  "self" : "http://localhost:2990/jira/rest/api/2/issue/10001/worklog/10004",
+                  "self" : "http://localhost:2990/jira/rest/api/3/issue/10001/worklog/10004",
                   "started" : "2014-02-25T18:03:49.225+0100",
                   "timeSpent" : "5h",
                   "timeSpentSeconds" : 18000,
@@ -774,7 +774,7 @@ var TimeData = { "expand" : "schema,names",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:49.225+0100"
                 },
@@ -787,12 +787,12 @@ var TimeData = { "expand" : "schema,names",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "comment" : "test 6",
                   "created" : "2013-02-26T00:00:00.000+0100",
                   "id" : "10005",
-                  "self" : "http://localhost:2990/jira/rest/api/2/issue/10001/worklog/10005",
+                  "self" : "http://localhost:2990/jira/rest/api/3/issue/10001/worklog/10005",
                   "started" : "2014-02-27T18:05:49.376+0100",
                   "timeSpent" : "1d",
                   "timeSpentSeconds" : 28800,
@@ -804,7 +804,7 @@ var TimeData = { "expand" : "schema,names",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:49.376+0100"
                 }
@@ -827,7 +827,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "components" : [  ],
             "created" : "2013-02-27T18:02:37.000+0100",
@@ -847,14 +847,14 @@ var TimeData = { "expand" : "schema,names",
                 "iconUrl" : "http://localhost:2990/jira/images/icons/bug.gif",
                 "id" : "1",
                 "name" : "Bug",
-                "self" : "http://localhost:2990/jira/rest/api/2/issuetype/1",
+                "self" : "http://localhost:2990/jira/rest/api/3/issuetype/1",
                 "subtask" : false
               },
             "labels" : [ ],
             "priority" : { "iconUrl" : "http://localhost:2990/jira/images/icons/priority_major.gif",
                 "id" : "3",
                 "name" : "Major",
-                "self" : "http://localhost:2990/jira/rest/api/2/priority/3"
+                "self" : "http://localhost:2990/jira/rest/api/3/priority/3"
               },
             "progress" : { "percent" : 100,
                 "progress" : 39600,
@@ -866,7 +866,7 @@ var TimeData = { "expand" : "schema,names",
                 "id" : "10000",
                 "key" : "TIME",
                 "name" : "Timeship",
-                "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
+                "self" : "http://localhost:2990/jira/rest/api/3/project/TIME"
               },
             "reporter": {
                 "timeZone": "Europe/Kiev",
@@ -878,7 +878,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "creator": {
                 "timeZone": "America/Los_Angeles",
@@ -890,7 +890,7 @@ var TimeData = { "expand" : "schema,names",
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "resolution" : null,
             "resolutiondate" : null,
@@ -898,7 +898,7 @@ var TimeData = { "expand" : "schema,names",
                 "iconUrl" : "http://localhost:2990/jira/images/icons/status_open.gif",
                 "id" : "1",
                 "name" : "Open",
-                "self" : "http://localhost:2990/jira/rest/api/2/status/1"
+                "self" : "http://localhost:2990/jira/rest/api/3/status/1"
               },
             "subtasks" : [  ],
             "summary" : "Hocus Focus Problem",
@@ -908,18 +908,18 @@ var TimeData = { "expand" : "schema,names",
             "updated" : "2013-02-27T18:03:49.000+0100",
             "versions" : [  ],
             "votes" : { "hasVoted" : false,
-                "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-1/votes",
+                "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-1/votes",
                 "votes" : 0
               },
             "watches" : { "isWatching" : false,
-                "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-1/watchers",
+                "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-1/watchers",
                 "watchCount" : 0
               },
             "workratio" : -1
           },
         "id" : "10000",
         "key" : "TIME-1",
-        "self" : "http://localhost:2990/jira/rest/api/2/issue/10000",
+        "self" : "http://localhost:2990/jira/rest/api/3/issue/10000",
         "worklog" : { "maxResults" : 2,
             "startAt" : 0,
             "total" : 2,
@@ -932,12 +932,12 @@ var TimeData = { "expand" : "schema,names",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "comment" : "test 7",
                   "created" : "2013-02-18T00:00:00.000+0100",
                   "id" : "10006",
-                  "self" : "http://localhost:2990/jira/rest/api/2/issue/10000/worklog/10006",
+                  "self" : "http://localhost:2990/jira/rest/api/3/issue/10000/worklog/10006",
                   "started" : "2014-02-25T18:03:49.536+0100",
                   "timeSpent" : "3h",
                   "timeSpentSeconds" : 10800,
@@ -949,7 +949,7 @@ var TimeData = { "expand" : "schema,names",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "updated" : "2014-01-27T18:03:49.536+0100"
                 },
@@ -962,12 +962,12 @@ var TimeData = { "expand" : "schema,names",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                       "timeZone": "Europe/Moscow",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "comment" : "test 8 #tag8",
                   "created" : "2013-02-27T18:03:49.685+0100",
                   "id" : "10007",
-                  "self" : "http://localhost:2990/jira/rest/api/2/issue/10000/worklog/10007",
+                  "self" : "http://localhost:2990/jira/rest/api/3/issue/10000/worklog/10007",
                   "started" : "2014-02-24T00:00:00.000+0100",
                   "timeSpent" : "1d",
                   "timeSpentSeconds" : 28800,
@@ -979,7 +979,7 @@ var TimeData = { "expand" : "schema,names",
                       "emailAddress" : "admin@example.com",
                       "name" : "admin",
                       "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                      "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                      "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                   "updated" : "2013-02-27T18:03:49.685+0100"
                 }
@@ -1002,7 +1002,7 @@ var TimeData = { "expand" : "schema,names",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
                     "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                    "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                 },
                 "components" : [  ],
                 "customfield_10007" : "",
@@ -1017,14 +1017,14 @@ var TimeData = { "expand" : "schema,names",
                     "iconUrl" : "http://localhost:2990/jira/images/icons/bug.gif",
                     "id" : "1",
                     "name" : "Bug",
-                    "self" : "http://localhost:2990/jira/rest/api/2/issuetype/1",
+                    "self" : "http://localhost:2990/jira/rest/api/3/issuetype/1",
                     "subtask" : false
                 },
                 "labels" : [  ],
                 "priority" : { "iconUrl" : "http://localhost:2990/jira/images/icons/priority_major.gif",
                     "id" : "3",
                     "name" : "Major",
-                    "self" : "http://localhost:2990/jira/rest/api/2/priority/3"
+                    "self" : "http://localhost:2990/jira/rest/api/3/priority/3"
                 },
                 "progress" : { "percent" : 100,
                     "progress" : 36000,
@@ -1036,7 +1036,7 @@ var TimeData = { "expand" : "schema,names",
                     "id" : "10000",
                     "key" : "TIME",
                     "name" : "Timeship",
-                    "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
+                    "self" : "http://localhost:2990/jira/rest/api/3/project/TIME"
                 },
                 "reporter": {
                     "timeZone": "Europe/Kiev",
@@ -1048,7 +1048,7 @@ var TimeData = { "expand" : "schema,names",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
                     "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                    "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                 },
                 "creator": {
                     "timeZone": "America/Los_Angeles",
@@ -1060,7 +1060,7 @@ var TimeData = { "expand" : "schema,names",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
                     "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                    "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                 },
                 "resolution" : null,
                 "resolutiondate" : null,
@@ -1068,7 +1068,7 @@ var TimeData = { "expand" : "schema,names",
                     "iconUrl" : "http://localhost:2990/jira/images/icons/status_open.gif",
                     "id" : "3",
                     "name" : "In Progress",
-                    "self" : "http://localhost:2990/jira/rest/api/2/status/3"
+                    "self" : "http://localhost:2990/jira/rest/api/3/status/3"
                 },
                 "subtasks" : [  ],
                 "summary" : "Hindenbug",
@@ -1078,18 +1078,18 @@ var TimeData = { "expand" : "schema,names",
                 "updated" : "2013-02-27T18:03:49.000+0100",
                 "versions" : [  ],
                 "votes" : { "hasVoted" : false,
-                    "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-5/votes",
+                    "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-5/votes",
                     "votes" : 0
                 },
                 "watches" : { "isWatching" : false,
-                    "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-5/watchers",
+                    "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-5/watchers",
                     "watchCount" : 0
                 },
                 "workratio" : -1
             },
             "id" : "10004",
             "key" : "TIME-5",
-            "self" : "http://localhost:2990/jira/rest/api/2/issue/10002",
+            "self" : "http://localhost:2990/jira/rest/api/3/issue/10002",
             "worklog" : { "maxResults" : 2,
                 "startAt" : 0,
                 "total" : 2,
@@ -1102,12 +1102,12 @@ var TimeData = { "expand" : "schema,names",
                     "name" : "admin",
                     "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "timeZone": "Europe/Moscow",
-                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                    "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                 },
                     "comment" : "test 3",
                     "created" : "2014-10-20T18:03:48.891+0100",
                     "id" : "10002",
-                    "self" : "http://localhost:2990/jira/rest/api/2/issue/10002/worklog/10002",
+                    "self" : "http://localhost:2990/jira/rest/api/3/issue/10002/worklog/10002",
                     "started" : "2014-02-28T09:00:00.000+0100",
                     "timeSpent" : "5h",
                     "timeSpentSeconds" : 18000,
@@ -1119,7 +1119,7 @@ var TimeData = { "expand" : "schema,names",
                         "emailAddress" : "admin@example.com",
                         "name" : "admin",
                         "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                        "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                        "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                     "updated" : "2014-10-20T13:03:48.891+0100"
                 },
@@ -1132,12 +1132,12 @@ var TimeData = { "expand" : "schema,names",
                     "name" : "admin",
                     "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "timeZone": "Europe/Moscow",
-                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                    "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                 },
                     "comment" : "test 4",
                     "created" : "2014-10-20T18:03:48.891+0100",
                     "id" : "10002",
-                    "self" : "http://localhost:2990/jira/rest/api/2/issue/10002/worklog/10002",
+                    "self" : "http://localhost:2990/jira/rest/api/3/issue/10002/worklog/10002",
                     "started" : "2014-02-27T09:00:00.000+0100",
                     "timeSpent" : "5h",
                     "timeSpentSeconds" : 18000,
@@ -1149,7 +1149,7 @@ var TimeData = { "expand" : "schema,names",
                         "emailAddress" : "admin@example.com",
                         "name" : "admin",
                         "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                        "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                        "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                     "updated" : "2014-10-20T13:03:48.891+0100"
                 }
@@ -1172,7 +1172,7 @@ var TimeData = { "expand" : "schema,names",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
                     "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                    "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                 },
                 "components" : [  ],
                 "created" : "2013-02-27T18:02:37.000+0100",
@@ -1185,14 +1185,14 @@ var TimeData = { "expand" : "schema,names",
                     "iconUrl" : "http://localhost:2990/jira/images/icons/bug.gif",
                     "id" : "1",
                     "name" : "Bug",
-                    "self" : "http://localhost:2990/jira/rest/api/2/issuetype/1",
+                    "self" : "http://localhost:2990/jira/rest/api/3/issuetype/1",
                     "subtask" : true
                 },
                 "labels" : [  ],
                 "priority" : { "iconUrl" : "http://localhost:2990/jira/images/icons/priority_major.gif",
                     "id" : "3",
                     "name" : "Major",
-                    "self" : "http://localhost:2990/jira/rest/api/2/priority/3"
+                    "self" : "http://localhost:2990/jira/rest/api/3/priority/3"
                 },
                 "progress" : { "percent" : 100,
                     "progress" : 7200,
@@ -1205,7 +1205,7 @@ var TimeData = { "expand" : "schema,names",
                     "id" : "10000",
                     "key" : "TIME",
                     "name" : "Timeship",
-                    "self" : "http://localhost:2990/jira/rest/api/2/project/TIME"
+                    "self" : "http://localhost:2990/jira/rest/api/3/project/TIME"
                 },
                 "reporter": {
                     "timeZone": "Europe/Kiev",
@@ -1217,7 +1217,7 @@ var TimeData = { "expand" : "schema,names",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
                     "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                    "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                 },
                 "creator": {
                     "timeZone": "America/Los_Angeles",
@@ -1229,7 +1229,7 @@ var TimeData = { "expand" : "schema,names",
                     "emailAddress" : "admin@example.com",
                     "name" : "admin",
                     "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                    "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                 },
                 "resolution" : null,
                 "resolutiondate" : null,
@@ -1237,7 +1237,7 @@ var TimeData = { "expand" : "schema,names",
                     "iconUrl" : "http://localhost:2990/jira/images/icons/status_open.gif",
                     "id" : "1",
                     "name" : "Open",
-                    "self" : "http://localhost:2990/jira/rest/api/2/status/1"
+                    "self" : "http://localhost:2990/jira/rest/api/3/status/1"
                 },
                 "subtasks" : [  ],
                 "summary" : "Mega problem",
@@ -1247,18 +1247,18 @@ var TimeData = { "expand" : "schema,names",
                 "updated" : "2013-03-27T18:03:48.000+0100",
                 "versions" : [  ],
                 "votes" : { "hasVoted" : false,
-                    "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-6/votes",
+                    "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-6/votes",
                     "votes" : 0
                 },
                 "watches" : { "isWatching" : false,
-                    "self" : "http://localhost:2990/jira/rest/api/2/issue/TIME-6/watchers",
+                    "self" : "http://localhost:2990/jira/rest/api/3/issue/TIME-6/watchers",
                     "watchCount" : 0
                 },
                 "workratio" : -1
             },
             "id" : "10005",
             "key" : "TIME-6",
-            "self" : "http://localhost:2990/jira/rest/api/2/issue/10003",
+            "self" : "http://localhost:2990/jira/rest/api/3/issue/10003",
             "worklog" : { "maxResults" : 2,
                 "startAt" : 0,
                 "total" : 2,
@@ -1271,12 +1271,12 @@ var TimeData = { "expand" : "schema,names",
                     "name" : "admin",
                     "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "timeZone": "Europe/Moscow",
-                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                    "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                 },
                     "comment" : "test 1",
                     "created" : "2014-10-00T08:00:00.000+0100",
                     "id" : "10000",
-                    "self" : "http://localhost:2990/jira/rest/api/2/issue/10003/worklog/10000",
+                    "self" : "http://localhost:2990/jira/rest/api/3/issue/10003/worklog/10000",
                     "started" : "2014-02-28T18:03:48.589+0100",
                     "timeSpent" : "1h",
                     "timeSpentSeconds" : 3600,
@@ -1288,7 +1288,7 @@ var TimeData = { "expand" : "schema,names",
                         "emailAddress" : "admin@example.com",
                         "name" : "admin",
                         "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                        "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                        "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                     "updated" : "2014-10-20T18:03:48.589+0100"
                 },
@@ -1301,12 +1301,12 @@ var TimeData = { "expand" : "schema,names",
                     "name" : "admin",
                     "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                     "timeZone": "Europe/Moscow",
-                    "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                    "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                 },
                     "comment" : "test 2",
                     "created" : "2014-10-00T08:00:00.000+0100",
                     "id" : "10000",
-                    "self" : "http://localhost:2990/jira/rest/api/2/issue/10003/worklog/10000",
+                    "self" : "http://localhost:2990/jira/rest/api/3/issue/10003/worklog/10000",
                     "started" : "2014-02-28T18:03:48.589+0100",
                     "timeSpent" : "1h",
                     "timeSpentSeconds" : 3600,
@@ -1318,7 +1318,7 @@ var TimeData = { "expand" : "schema,names",
                         "emailAddress" : "admin@example.com",
                         "name" : "admin",
                         "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                        "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                        "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
                     },
                     "updated" : "2014-10-20T18:03:48.589+0100"
                 }
@@ -1332,7 +1332,7 @@ var TimeData = { "expand" : "schema,names",
                     {
                         "id":"10010",
                         "author":{
-                            "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
+                            "self":"https://timesheet-report-dev.jira-dev.com/rest/api/3/user?username=admin",
                             "name":"admin",
                             "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                             "emailAddress":"azhdanov@gmail.com",
@@ -1375,7 +1375,7 @@ var TimeData = { "expand" : "schema,names",
                     {
                         "id":"10011",
                         "author":{
-                            "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=admin",
+                            "self":"https://timesheet-report-dev.jira-dev.com/rest/api/3/user?username=admin",
                             "name":"admin",
                             "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                             "emailAddress":"azhdanov@gmail.com",
@@ -1428,13 +1428,13 @@ var TimeDataTIME_7 = {
             "displayName": "user",
             "emailAddress": "user@example.com",
             "name": "user",
-            "self": "http://localhost:2990/jira/rest/api/2/user?username=user"
+            "self": "http://localhost:2990/jira/rest/api/3/user?username=user"
         },
         "components": [],
         "customfield_10007": "",
         "customfield_10004": 2.0,
         "creator": {
-            "self": "https://timereports.atlassian.net/rest/api/2/user?username=user",
+            "self": "https://timereports.atlassian.net/rest/api/3/user?username=user",
             "name": "user",
             "key": "user",
             "emailAddress": "user@ukr.net",
@@ -1459,7 +1459,7 @@ var TimeDataTIME_7 = {
             "iconUrl": "http://localhost:2990/jira/images/icons/bug.gif",
             "id": "1",
             "name": "Bug",
-            "self": "http://localhost:2990/jira/rest/api/2/issuetype/1",
+            "self": "http://localhost:2990/jira/rest/api/3/issuetype/1",
             "subtask": false
         },
         "labels": [],
@@ -1467,7 +1467,7 @@ var TimeDataTIME_7 = {
             "iconUrl": "http://localhost:2990/jira/images/icons/priority_major.gif",
             "id": "3",
             "name": "Major",
-            "self": "http://localhost:2990/jira/rest/api/2/priority/3"
+            "self": "http://localhost:2990/jira/rest/api/3/priority/3"
         },
         "progress": {
             "percent": 100,
@@ -1482,7 +1482,7 @@ var TimeDataTIME_7 = {
             "id": "10000",
             "key": "TIME",
             "name": "Timeship",
-            "self": "http://localhost:2990/jira/rest/api/2/project/TIME"
+            "self": "http://localhost:2990/jira/rest/api/3/project/TIME"
         },
         "reporter": {
             "timeZone": "Europe/Kiev",
@@ -1494,7 +1494,7 @@ var TimeDataTIME_7 = {
             "displayName": "user",
             "emailAddress": "user@example.com",
             "name": "user",
-            "self": "http://localhost:2990/jira/rest/api/2/user?username=user"
+            "self": "http://localhost:2990/jira/rest/api/3/user?username=user"
         },
         "resolution": null,
         "resolutiondate": null,
@@ -1503,7 +1503,7 @@ var TimeDataTIME_7 = {
             "iconUrl": "http://localhost:2990/jira/images/icons/status_open.gif",
             "id": "3",
             "name": "In Progress",
-            "self": "http://localhost:2990/jira/rest/api/2/status/3"
+            "self": "http://localhost:2990/jira/rest/api/3/status/3"
         },
         "subtasks": [],
         "summary": "Hindenbug",
@@ -1514,19 +1514,19 @@ var TimeDataTIME_7 = {
         "versions": [],
         "votes": {
             "hasVoted": false,
-            "self": "http://localhost:2990/jira/rest/api/2/issue/TIME-7/votes",
+            "self": "http://localhost:2990/jira/rest/api/3/issue/TIME-7/votes",
             "votes": 0
         },
         "watches": {
             "isWatching": false,
-            "self": "http://localhost:2990/jira/rest/api/2/issue/TIME-7/watchers",
+            "self": "http://localhost:2990/jira/rest/api/3/issue/TIME-7/watchers",
             "watchCount": 0
         },
         "workratio": -1
     },
     "id": "10007",
     "key": "TIME-7",
-    "self": "http://localhost:2990/jira/rest/api/2/issue/10007",
+    "self": "http://localhost:2990/jira/rest/api/3/issue/10007",
     "worklog": {
         "maxResults": 1,
         "startAt": 0,
@@ -1542,12 +1542,12 @@ var TimeDataTIME_7 = {
                 "emailAddress": "user@example.com",
                 "name": "user",
                 "timeZone": "Europe/Moscow",
-                "self": "http://localhost:2990/jira/rest/api/2/user?username=user"
+                "self": "http://localhost:2990/jira/rest/api/3/user?username=user"
             },
             "comment": "test 3",
             "created": "2014-02-24T18:03:49.225+0100",
             "id": "10008",
-            "self": "http://localhost:2990/jira/rest/api/2/issue/10007/worklog/10008",
+            "self": "http://localhost:2990/jira/rest/api/3/issue/10007/worklog/10008",
             "started": "2014-02-24T18:03:49.225+0100",
             "timeSpent": "1h",
             "timeSpentSeconds": 3600,
@@ -1560,7 +1560,7 @@ var TimeDataTIME_7 = {
                 "displayName": "user",
                 "emailAddress": "user@example.com",
                 "name": "user",
-                "self": "http://localhost:2990/jira/rest/api/2/user?username=user"
+                "self": "http://localhost:2990/jira/rest/api/3/user?username=user"
             },
             "updated": "2014-02-24T18:03:49.225+0100"
         }
@@ -1574,7 +1574,7 @@ var TimeDataTIME_7 = {
             {
                 "id":"10010",
                 "author":{
-                    "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=user",
+                    "self":"https://timesheet-report-dev.jira-dev.com/rest/api/3/user?username=user",
                     "name":"user",
                     "emailAddress":"user@gmail.com",
                     "avatarUrls":{
@@ -1614,7 +1614,7 @@ var TimeDataTIME_7 = {
             {
                 "id":"10011",
                 "author":{
-                    "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=user",
+                    "self":"https://timesheet-report-dev.jira-dev.com/rest/api/3/user?username=user",
                     "name":"user",
                     "emailAddress":"user@gmail.com",
                     "avatarUrls":{
@@ -1654,7 +1654,7 @@ var TimeDataTIME_7 = {
             {
                 "id":"10012",
                 "author":{
-                    "self":"https://timesheet-report-dev.jira-dev.com/rest/api/2/user?username=user",
+                    "self":"https://timesheet-report-dev.jira-dev.com/rest/api/3/user?username=user",
                     "name":"user",
                     "emailAddress":"user@gmail.com",
                     "avatarUrls":{
@@ -1704,12 +1704,12 @@ var WorklogData = [
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "timeZone": "Europe/Moscow",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "comment" : "test 1",
             "created" : "2013-12-05T00:00:00.000+0100",
             "id" : "10000",
-            "self" : "http://localhost:2990/jira/rest/api/2/issue/10003/worklog/10000",
+            "self" : "http://localhost:2990/jira/rest/api/3/issue/10003/worklog/10000",
             "started" : "2014-02-24T18:03:48.589+0100",
             "timeSpent" : "1h",
             "timeSpentSeconds" : 3600,
@@ -1721,7 +1721,7 @@ var WorklogData = [
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "updated" : "2013-02-27T18:03:48.589+0100"
           },
@@ -1734,12 +1734,12 @@ var WorklogData = [
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "timeZone": "Europe/Moscow",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "comment" : "test 2",
             "created" : "2013-02-25T00:00:00.000+0100",
             "id" : "10001",
-            "self" : "http://localhost:2990/jira/rest/api/2/issue/10003/worklog/10001",
+            "self" : "http://localhost:2990/jira/rest/api/3/issue/10003/worklog/10001",
             "started" : "2014-02-25T18:03:48.762+0100",
             "timeSpent" : "1h",
             "timeSpentSeconds" : 3600,
@@ -1751,7 +1751,7 @@ var WorklogData = [
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "updated" : "2013-02-27T18:03:48.762+0100"
           },
@@ -1764,12 +1764,12 @@ var WorklogData = [
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
                 "timeZone": "Europe/Moscow",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "comment" : "test 2",
             "created" : "2013-02-25T00:00:00.000+0100",
             "id" : "10001",
-            "self" : "http://localhost:2990/jira/rest/api/2/issue/10003/worklog/10001",
+            "self" : "http://localhost:2990/jira/rest/api/3/issue/10003/worklog/10001",
             "started" : "2014-02-26T18:03:48.762+0100",
             "timeSpent" : "1h",
             "timeSpentSeconds" : 3600,
@@ -1781,7 +1781,7 @@ var WorklogData = [
                 "emailAddress" : "admin@example.com",
                 "name" : "admin",
                 "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
-                "self" : "http://localhost:2990/jira/rest/api/2/user?username=admin"
+                "self" : "http://localhost:2990/jira/rest/api/3/user?username=admin"
               },
             "updated" : "2013-02-27T18:03:48.762+0100"
           }
@@ -1789,9 +1789,9 @@ var WorklogData = [
     }
 ];
 // https://docs.atlassian.com/jira/REST/6.2/#d2e3764
-// http://localhost:2990/jira/rest/api/2/user?username=admin
+// http://localhost:2990/jira/rest/api/3/user?username=admin
 var UserAdminData = {
-   "self":"http://localhost:2990/jira/rest/api/2/user?username=admin",
+   "self":"http://localhost:2990/jira/rest/api/3/user?username=admin",
    "key":"admin",
    "name":"admin",
    "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
@@ -1811,27 +1811,27 @@ var UserAdminData = {
       "items":[
         {
           "name":"jira-administrators",
-          "self":"http://localhost:2990/jira/rest/api/2/group?groupname=jira-administrators"
+          "self":"http://localhost:2990/jira/rest/api/3/group?groupname=jira-administrators"
         }, {
           "name":"jira-developers",
-          "self":"http://localhost:2990/jira/rest/api/2/group?groupname=jira-developers"
+          "self":"http://localhost:2990/jira/rest/api/3/group?groupname=jira-developers"
         }, {
           "name":"jira-users",
-          "self":"http://localhost:2990/jira/rest/api/2/group?groupname=jira-users"
+          "self":"http://localhost:2990/jira/rest/api/3/group?groupname=jira-users"
         }
       ]
    },
    "expand":"groups"
 };
 // https://docs.atlassian.com/jira/REST/6.2/#d2e1283
-// http://localhost:2990/jira/rest/api/2/filter/favourite
+// http://localhost:2990/jira/rest/api/3/filter/favourite
 var FiltersData = [
    {
       "self":"http://localhost:2990/jira/rest/api/latest/filter/10000",
       "id":"10000",
       "name":"All issues",
       "owner":{
-         "self":"http://localhost:2990/jira/rest/api/2/user?username=admin",
+         "self":"http://localhost:2990/jira/rest/api/3/user?username=admin",
          "key":"admin",
          "name":"admin",
          "accountId" : "aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa",
@@ -1885,7 +1885,7 @@ var ProjectsData = {
       id: "10000",
       key: "DEMO",
       name: "Demonstration Project",
-      self: "http://localhost:2990/jira/rest/api/2/project/10000"
+      self: "http://localhost:2990/jira/rest/api/3/project/10000"
     }
   ]
 };
@@ -2577,7 +2577,7 @@ var FieldsData=[
    }
 ];
 // https://docs.atlassian.com/software/jira/docs/api/REST/6.2/#d2e3922
-// http://localhost:2990/jira/rest/api/2/userpicker?query=a
+// http://localhost:2990/jira/rest/api/3/userpicker?query=a
 var userPickerData = {
    "users":[
       {
@@ -2600,7 +2600,7 @@ var GroupsPickerData = {
 
 var StatusData = [
   {
-    self: "https://timereports.atlassian.net/rest/api/2/status/3",
+    self: "https://timereports.atlassian.net/rest/api/3/status/3",
     description:
       "This issue is being actively worked on at the moment by the assignee.",
     iconUrl:
@@ -2608,7 +2608,7 @@ var StatusData = [
     name: "In Progress",
     id: "3",
     statusCategory: {
-      self: "https://timereports.atlassian.net/rest/api/2/statuscategory/4",
+      self: "https://timereports.atlassian.net/rest/api/3/statuscategory/4",
       id: 4,
       key: "indeterminate",
       colorName: "yellow",
@@ -2616,13 +2616,13 @@ var StatusData = [
     }
   },
   {
-    self: "https://timereports.atlassian.net/rest/api/2/status/10000",
+    self: "https://timereports.atlassian.net/rest/api/3/status/10000",
     description: "",
     iconUrl: "https://timereports.atlassian.net/",
     name: "To Do",
     id: "10000",
     statusCategory: {
-      self: "https://timereports.atlassian.net/rest/api/2/statuscategory/2",
+      self: "https://timereports.atlassian.net/rest/api/3/statuscategory/2",
       id: 2,
       key: "new",
       colorName: "blue-gray",
@@ -2630,13 +2630,13 @@ var StatusData = [
     }
   },
   {
-    self: "https://timereports.atlassian.net/rest/api/2/status/10001",
+    self: "https://timereports.atlassian.net/rest/api/3/status/10001",
     description: "",
     iconUrl: "https://timereports.atlassian.net/",
     name: "Done",
     id: "10001",
     statusCategory: {
-      self: "https://timereports.atlassian.net/rest/api/2/statuscategory/3",
+      self: "https://timereports.atlassian.net/rest/api/3/statuscategory/3",
       id: 3,
       key: "done",
       colorName: "green",
@@ -2647,28 +2647,28 @@ var StatusData = [
 
 var StatusCategoryData = [
     {
-        "self": "https://timereports.atlassian.net/rest/api/2/statuscategory/1",
+        "self": "https://timereports.atlassian.net/rest/api/3/statuscategory/1",
         "id": 1,
         "key": "undefined",
         "colorName": "medium-gray",
         "name": "No Category"
     },
     {
-        "self": "https://timereports.atlassian.net/rest/api/2/statuscategory/2",
+        "self": "https://timereports.atlassian.net/rest/api/3/statuscategory/2",
         "id": 2,
         "key": "new",
         "colorName": "blue-gray",
         "name": "To Do"
     },
     {
-        "self": "https://timereports.atlassian.net/rest/api/2/statuscategory/4",
+        "self": "https://timereports.atlassian.net/rest/api/3/statuscategory/4",
         "id": 4,
         "key": "indeterminate",
         "colorName": "yellow",
         "name": "In Progress"
     },
     {
-        "self": "https://timereports.atlassian.net/rest/api/2/statuscategory/3",
+        "self": "https://timereports.atlassian.net/rest/api/3/statuscategory/3",
         "id": 3,
         "key": "done",
         "colorName": "green",
@@ -2746,7 +2746,7 @@ var processFlightData = function() {
 
 // USER MOCKS
 const ASSIGNEE_MOCK = {
-  self: 'https://fake-domain.atlassian.net/rest/api/2/user?accountId=1234abcd',
+  self: 'https://fake-domain.atlassian.net/rest/api/3/user?accountId=1234abcd',
   accountId: '1234abcd',
   avatarUrls: {
     '48x48':
@@ -2764,7 +2764,7 @@ const ASSIGNEE_MOCK = {
   accountType: 'atlassian'
 }
 const ASSIGNEE_MOCK_2 = {
-  self: 'https://fake-domain.atlassian.net/rest/api/2/user?accountId=5678efgh',
+  self: 'https://fake-domain.atlassian.net/rest/api/3/user?accountId=5678efgh',
   accountId: '5678efgh',
   avatarUrls: {
     '48x48':
@@ -2782,7 +2782,7 @@ const ASSIGNEE_MOCK_2 = {
   accountType: 'atlassian'
 }
 const ASSIGNEE_MOCK_3 = {
-  self: 'https://fake-domain.atlassian.net/rest/api/2/user?accountId=qwert0000',
+  self: 'https://fake-domain.atlassian.net/rest/api/3/user?accountId=qwert0000',
   accountId: 'qwert0000',
   avatarUrls: {
     '48x48':

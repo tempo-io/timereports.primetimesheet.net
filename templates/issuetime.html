@@ -119,7 +119,7 @@
                     &nbsp;
                     <span ng-if="data.worklog.workDate >= allowToLogFromDate && !cannotEditOwnWorklogIssue[issueKey]"
                           e-style="width: 100%"
-                          editable-text="data.worklog.comment"
+                          editable-text="data.worklog.plainComment"
                           onshow="$parent.$form=$form"
                           onhide="$parent.$form=undefined"
                           onaftersave="commentChanged(data.worklog)"

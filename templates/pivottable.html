@@ -179,7 +179,7 @@
                                     data.worklog.workDate >= allowToLogFromDate &&
                                     !cannotEditOwnWorklogIssue[data.rowKey.issue.key]"
                               e-style="width: 100%"
-                              editable-text="data.worklog.comment"
+                              editable-text="data.worklog.plainComment"
                               onshow="$parent.$form=$form"
                               onhide="$parent.$form=undefined"
                               onaftersave="commentChanged(data.worklog)"
