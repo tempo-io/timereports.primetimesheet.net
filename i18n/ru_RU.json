@@ -518,5 +518,8 @@
     "field.timetrackingvariance": "Отклонение",
     "field.timetrackingoriginalestimateremaining": "Первоначальная оставшаяся смета",
     "field.storypointsprogress": "Продвижение по сюжетным точкам",
-    "field.workedweek": "Рабочая неделя"
+    "field.workedweek": "Рабочая неделя",
+    "Starred": "Избранные",
+    "Others": "Другие",
+    "Predefined": "Предопределенные"
 }
