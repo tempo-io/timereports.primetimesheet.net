@@ -273,7 +273,12 @@
       <a
         href="https://www.tempo.io/docs/timesheet-reports-and-gadgets"
         target="_blank"
-        >Documentation</a
+        ng-if="isTimesheet" >Documentation</a
+      >
+      <a
+        href="https://help.tempo.io/timereports/"
+        target="_blank"
+        ng-if="!isTimesheet" >Documentation</a
       >
     </li>
     <li>
