@@ -108,12 +108,12 @@
         <div class="ak-field-group">
             <label >{{'Start Date' | i18n}}</label>
             <input ng-model="startDate.value" id="startDate" type="date" aui-date-picker ng-date-changed-func="startChangeDate"
-                   class="text-field input-date" ng-class="{inactive: startDate.calculated}" ng-if="configOptions && configOptions.useIsoWeek !== undefined"/>
+                   class="text-field input-date" ng-class="{inactive: startDate.calculated}"/>
         </div>
         <div class="ak-field-group" ng-if="!isDayView">
             <label>{{'End Date' | i18n}}</label>
             <input ng-model="endDate.value" id="endDate" type="date" aui-date-picker ng-date-changed-func="endChangeDate"
-                   class="text-field input-date" ng-class="{inactive: endDate.calculated}" ng-if="configOptions && configOptions.useIsoWeek !== undefined"/>
+                   class="text-field input-date" ng-class="{inactive: endDate.calculated}"/>
         </div>
         <div class="ak-field-group" ng-if="['Timesheet', 'Calendar'].indexOf(pivotTableType) >= 0">
             <input class="checkbox" type="checkbox" ng-model="showWeekends.enabled" ng-change="toggleShowWeekends()" />
