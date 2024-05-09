@@ -1128,6 +1128,12 @@ td.break-line {
     width: 5rem;
 }
 
+.pie-issue-key-column {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .pie-first-column.group-by {
     width: 9.1rem;
 }
