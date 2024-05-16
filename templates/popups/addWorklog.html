@@ -58,8 +58,8 @@
     <div class="pt-4 pb-2 text-right pr-1">
         <div>
             <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 mr-3 rounded text-text-white font-bold"
-                    ng-disabled="logWorkForm.$invalid || loading"
-                    ng-class="{disabled: logWorkForm.$invalid || loading}"
+                    ng-disabled="logWorkForm.$invalid || loading || popupData.loading"
+                    ng-class="{disabled: logWorkForm.$invalid || loading || popupData.loading}"
                     ng-click="popupData.addWorklog(closePopup)"
                     type="submit">
                 {{'Save' | i18n}}
