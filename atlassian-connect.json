@@ -1,6 +1,6 @@
 {
     "key": "timereports",
-    "name": "Time Reports for Jira Cloud",
+    "name": "Time Tracker Lite for Jira Cloud",
     "description": "Provides miscellaneous views for Jira time tracking data",
     "enableLicensing": true,
     "vendor": {
@@ -19,8 +19,8 @@
         "adminPages": [{
             "url": "/timereports.html?configuration=true&v=2",
             "name": {
-                "value": "Time Reports Configuration",
-                "i18n": "Time Reports Configuration"
+                "value": "Time Tracker Lite Configuration",
+                "i18n": "Time Tracker Lite Configuration"
             },
             "location": "admin_plugins_menu/timetracking_section",
             "key": "timereports-time-tracking-config"
@@ -28,15 +28,15 @@
         "jiraTimeTrackingProviders": [{
             "key": "timereports-time-tracking-provider",
             "name": {
-                "value": "Time Reports provided time tracking"
+                "value": "Time Tracker Lite provided time tracking"
             },
             "adminPageKey": "timereports-time-tracking-config"
         }],
         "generalPages": [{
             "location": "find_link/timesheet-menu",
             "name": {
-                "value": "Time Reports",
-                "i18n": "Time Reports"
+                "value": "Time Tracker Lite",
+                "i18n": "Time Tracker Lite"
             },
             "url": "/timereports.html?v=2",
             "cacheable": true,
@@ -46,8 +46,8 @@
             }]
         }, {
             "name": {
-                "value": "Time Reports",
-                "i18n": "Time Reports"
+                "value": "Time Tracker Lite",
+                "i18n": "Time Tracker Lite"
             },
             "icon": {
                 "width": 16,
@@ -79,8 +79,8 @@
         "jiraProjectPages": [{
             "key": "timereports-project",
             "name": {
-                "value": "Time Reports",
-                "i18n": "Time Reports"
+                "value": "Time Tracker Lite",
+                "i18n": "Time Tracker Lite"
             },
             "url": "/timereports.html?v=2",
             "cacheable": true,
@@ -113,8 +113,8 @@
         }],
         "configurePage": {
             "name": {
-                "value": "Time Reports Configuration",
-                "i18n": "Time Reports Configuration"
+                "value": "Time Tracker Lite Configuration",
+                "i18n": "Time Tracker Lite Configuration"
             },
             "url": "/timereports.html?configuration=true&v=2",
             "cacheable": true,
@@ -125,8 +125,8 @@
         },
         "postInstallPage": {
             "name": {
-                "value": "Welcome to Time Reports",
-                "i18n": "Welcome to Time Reports"
+                "value": "Welcome to Time Tracker Lite",
+                "i18n": "Welcome to Time Tracker Lite"
             },
             "url": "/timereports.html?welcome=true&v=2",
             "cacheable": true,
@@ -147,14 +147,14 @@
             "thumbnailUrl": "/images/timesheet-report-thumb.png",
             "key": "timereports-report",
             "name": {
-                "value": "Time Reports",
-                "i18n": "Time Reports"
+                "value": "Time Tracker Lite",
+                "i18n": "Time Tracker Lite"
             }
         }],
         "jiraDashboardItems": [{
             "name" : {
-                "value" : "Time Reports",
-                "i18n": "Time Reports"
+                "value" : "Time Tracker Lite",
+                "i18n": "Time Tracker Lite"
             },
             "url" : "/timereports.html?v=2",
             "cacheable": true,
@@ -280,12 +280,12 @@
           "location": "jira.navigator.pluggable.items",
           "weight": 9999,
           "name": {
-              "value": "Time Reports",
-              "i18n": "Time Reports"
+              "value": "Time Tracker Lite",
+              "i18n": "Time Tracker Lite"
           },
           "tooltip": {
-              "value": "Time Reports",
-              "i18n": "Time Reports"
+              "value": "Time Tracker Lite",
+              "i18n": "Time Tracker Lite"
           },
           "icon": {
               "width": 16,
@@ -299,8 +299,8 @@
               "type": "dialog",
               "options": {
                   "header": {
-                      "value": "Time Reports",
-                      "i18n": "Time Reports"
+                      "value": "Time Tracker Lite",
+                      "i18n": "Time Tracker Lite"
                   },
                   "width": "320px"
               }
