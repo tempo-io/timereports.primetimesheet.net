@@ -1,14 +1,16 @@
 {
-  "Time Reports": "Informes de Tiempo",
-  "Timesheet": "Lista de horas empleadas",
+  "Time Reports": "Time Tracker Lite",
+  "Timesheet": "Time Tracker",
   "Flexible view of issues time tracking data": "Visualización flexible de los datos de seguimiento del tiempo de las tareas",
-  "Time Reports Configuration": "Configuración de Informes de Tiempo",
-  "Timesheet Configuration": "Configuración de la lista de horas empleadas",
-  "Welcome to Time Reports": "Bienvenido a los Informes de Tiempo",
-  "Welcome to Timesheet": "Bienvenido a la lista de horas empleadas",
+  "Time Reports Configuration": "Configuración de Time Tracker Lite",
+  "Timesheet Configuration": "Configuración de Time Tracker",
+  "Welcome to Time Reports": "Bienvenido a Time Tracker Lite",
+  "Welcome to Timesheet": "Bienvenido a Time Tracker",
   "Log work done": "Trabajo de registro realizado",
   "Log work": "Registro de trabajo",
   "Time Entry": "Registro de Tiempo",
   "Time Balance": "Balance de Tiempo",
-  "Report Problem": "Informe del problema"
+  "Report Problem": "Informe del problema",
+  "Time Tracker": "Time Tracker",
+  "Time Tracker Lite": "Time Tracker Lite"
 }

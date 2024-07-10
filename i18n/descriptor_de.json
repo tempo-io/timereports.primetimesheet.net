@@ -1,14 +1,16 @@
 {
-  "Time Reports": "Zeitberichte",
-  "Timesheet": "Stundenzettel",
+  "Time Reports": "Time Tracker Lite",
+  "Timesheet": "Time Tracker",
   "Flexible view of issues time tracking data": "Flexible Ansicht der Vorgangzeitverfolgungsdaten",
-  "Time Reports Configuration": "Zeitberichte-Konfiguration",
-  "Timesheet Configuration": "Stundenzettel-Konfiguration",
-  "Welcome to Time Reports": "Willkommen bei Zeitberichte",
-  "Welcome to Timesheet": "Willkommen bei Stundenzettel",
+  "Time Reports Configuration": "Time Tracker Lite-Konfiguration",
+  "Timesheet Configuration": "Time Tracker-Konfiguration",
+  "Welcome to Time Reports": "Willkommen bei Time Tracker Lite",
+  "Welcome to Timesheet": "Willkommen bei Time Tracker",
   "Log work done": "Protokollierte Arbeitszeit",
   "Log work": "Arbeitszeit protokollieren",
   "Time Entry": "Zeiterfassung",
   "Time Balance": "Zeitsaldo",
-  "Report Problem": "Problem melden"
+  "Report Problem": "Problem melden",
+  "Time Tracker": "Time Tracker",
+  "Time Tracker Lite": "Time Tracker Lite"
 }

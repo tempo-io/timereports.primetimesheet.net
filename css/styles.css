@@ -1419,3 +1419,67 @@ form.bitbucket span {
     position: relative;
     left: 30%;
 }
+
+
+.banner-home {
+  display: flex;
+  padding-bottom: 1.25rem;
+  padding-top: 1.25rem;
+  border-radius: 0.275rem;
+  background-color: #0052cc;
+  width: 100%;
+}
+
+.banner-home .text {
+  width: 100%;
+  margin-right: 15%;
+  color: white;
+  font-size: 14px;
+}
+
+.banner-home .icon-image {
+  width: 0px;
+  padding: 0.75rem;
+  padding-right: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px;
+}
+.banner-home .icon-image.remove {
+  background-image: url(../images/icon-remove.png);
+}
+
+.banner-home .icon-image.info {
+  background-image: url(../images/icon-info.png);
+}
+
+.banner-home .close-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  left: -1.75rem;
+}
+
+.banner-home .close-icon:before,
+.close-icon:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 14px; /* Half the width to keep the lines centered */
+  width: 3px;
+  border-radius: 25%;
+  height: 100%;
+  background-color: white;
+}
+
+.banner-home .close-icon:before {
+  transform: rotate(45deg); /* Rotate line to form X */
+}
+
+.banner-home .close-icon:after {
+  transform: rotate(-45deg); /* Rotate line to form X */
+}

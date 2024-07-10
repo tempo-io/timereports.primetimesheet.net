@@ -1,14 +1,16 @@
 {
-  "Time Reports": "Rapports du temps",
-  "Timesheet": "Relevé du temps",
+  "Time Reports": "Time Tracker Lite",
+  "Timesheet": "Time Tracker",
   "Flexible view of issues time tracking data": "Visualisation flexible des données de suivi du temps des problème",
-  "Time Reports Configuration": "Configuration des rapports du temps",
-  "Timesheet Configuration": "Configuration du relevé du temps",
-  "Welcome to Time Reports": "Bienvenue à \"Rapports du temps\"",
-  "Welcome to Timesheet": "Bienvenue à \"Relevé du temps\"",
+  "Time Reports Configuration": "Configuration des Time Tracker Lite",
+  "Timesheet Configuration": "Configuration du Time Tracker",
+  "Welcome to Time Reports": "Bienvenue à \"Time Tracker Lite\"",
+  "Welcome to Timesheet": "Bienvenue à \"Time Tracker\"",
   "Log work done": "Travail est enregistré",
   "Log work": "Journal de travail",
   "Time Entry": "Noter le temps",
   "Time Balance": "Équilibre du temps",
-  "Report Problem": " Signaler un problème "
+  "Report Problem": " Signaler un problème ",
+  "Time Tracker": "Time Tracker",
+  "Time Tracker Lite": "Time Tracker Lite"
 }

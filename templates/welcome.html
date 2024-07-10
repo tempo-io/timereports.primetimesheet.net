@@ -5,7 +5,7 @@
 <br />
 <div class="aui margin">
   <p>
-    {{appName | i18n}} for Jira Cloud expands Jira's built-in time tracking
+    {{appName | i18n}} for Jira expands Jira's built-in time tracking
     function and includes the following Reports:
   </p>
   <ul style="list-style-type: disc">
@@ -27,7 +27,7 @@
         href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports#!pivotTableType=Timesheet"
         target="_blank"
       >
-        Timesheet
+        Time Tracker
       </a>
       - Provides the most extensive way to analyze user workloads. It displays a
       classic sheet view of hours worked per day and includes many options to
@@ -159,13 +159,13 @@
     </li>
   </ul>
   <p ng-if="isTimesheet">
-    <strong>Note:</strong> These are the same reports found in Time Reports.
-    Timesheet Report and Gadgets offers
+    <strong>Note:</strong> These are the same reports found in Time Tracker Lite.
+    Time Tracker offers
     <a href="#additionalFeatures">additional features listed here.</a>
   </p>
   <p ng-if="isTimesheet">
     To access the reports, navigate to
-    <strong>Projects > your project > Reports > Other > Timesheet</strong>. To
+    <strong>Projects > your project > Reports > Other > Time Tracker</strong>. To
     record hours worked from the issue in real-time, use the Time Entry Issue
     Panel options for groups and projects in
     <a
@@ -174,8 +174,8 @@
       target="_blank"
     >
       Configuration</a
-    >. Note: Depending on your permissions, you can select the Timesheet Reports
-    and Gadgets icon using the Apps or Project menu. The Apps menu icon is
+    >. Note: Depending on your permissions, you can select the Time Tracker 
+    icon using the Apps or Project menu. The Apps menu icon is
     available if you are in the Auditors Group or the Time Entry Issue Panel
     Group. The Project menu icon is available if you are only on Time Entry
     Issue Panel Projects. You can also add a quick link with the Jira
@@ -188,7 +188,7 @@
 
   <p ng-if="!isTimesheet">
     To access the reports, navigate to
-    <strong>Projects > your project > Reports > Other > Time Reports</strong>.
+    <strong>Projects > your project > Reports > Other > {{appName | i18n}}</strong>.
     To record hours worked from the issue in real-time, use the Time Entry Issue
     Panel options for groups and projects in
     <a
@@ -209,7 +209,7 @@
     >, which lets you set a link that is viewable only by groups you specify.
   </p>
   <p>
-    You can add Time Reports to the
+    You can add {{appName | i18n}} to the
     <a
       href="{{hostBaseUrl}}/secure/admin/EditDefaultDashboard!default.jspa"
       target="_blank"
@@ -225,8 +225,8 @@
   <div ng-if="isTimesheet">
     <h3 id="additionalFeatures">Additional features of {{appName | i18n}}</h3>
     <p>
-      Timesheet Reports and Gadgets for Jira Cloud includes the same reports as
-      Time Reports and also includes these additional features:
+      Time Tracker for Jira Cloud includes the same reports as
+      Time Tracker Lite and also includes these additional features:
     </p>
 
     <ul style="list-style-type: disc">
@@ -257,7 +257,7 @@
         >
           REST API integration:
         </a>
-        You can use REST API integrations in Timesheet Reports & Gadgets for
+        You can use REST API integrations in Time Tracker for
         Jira Cloud.
       </li>
       <li>

@@ -1,14 +1,16 @@
 {
-  "Time Reports": "Отчеты о времени",
-  "Timesheet": "Табель",
+  "Time Reports": "Time Tracker Lite",
+  "Timesheet": "Time Tracker",
   "Flexible view of issues time tracking data": "Гибкий просмотр данных учета времени по задачам",
-  "Time Reports Configuration": "Конфигурация отчетов о времени",
-  "Timesheet Configuration": "Конфигурация табеля",
-  "Welcome to Time Reports": "Добро пожаловать в \"Отчеты о времени\"",
-  "Welcome to Timesheet": "Добро пожаловать в \"Табель\"",
+  "Time Reports Configuration": "Конфигурация Time Tracker Lite",
+  "Timesheet Configuration": "Конфигурация Time Tracker",
+  "Welcome to Time Reports": "Добро пожаловать в \"Time Tracker Lite\"",
+  "Welcome to Timesheet": "Добро пожаловать в \"Time Tracker\"",
   "Log work done": "Запись о работе",
   "Log work": "Запись о работе",
   "Time Entry": "Ввод времени",
   "Time Balance": "Баланс времени",
-  "Report Problem": "Сообщить о проблеме"
+  "Report Problem": "Сообщить о проблеме",
+  "Time Tracker": "Time Tracker",
+  "Time Tracker Lite": "Time Tracker Lite"
 }

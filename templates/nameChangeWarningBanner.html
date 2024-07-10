@@ -1,0 +1,79 @@
+<div
+  class="banner-home"
+  id="banner-name-change-warning"
+  style="margin: 0px"
+  ng-if="!isGadget"
+>
+  <i class="icon-image info"></i>
+  <span
+    class="text"
+    style="
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      justify-content: space-between;
+      align-items: center;
+    "
+  >
+    <span ng-if="isTimesheet">
+      {{'plugin.timesheets.change-name-banner.message.description.1' | i18n}}
+      <strong>
+        {{'plugin.timesheets.change-name-banner.message.description.2' | i18n}}
+      </strong>
+      {{'plugin.timesheets.change-name-banner.message.description.3' | i18n}}
+      <a
+        target="_blank"
+        href="https://www.tempo.io/blog/meet-the-new-tempo-an-integrated-modular-platform-of-ppm-tools"
+        style="color: white;"
+      >
+        {{'plugin.timesheets.change-name-banner.message.description.4' | i18n}} </a
+      >.
+    </span>
+    <span ng-if="!isTimesheet">
+      {{'plugin.timereports.change-name-banner.message.description.1' | i18n}}
+      <strong>
+        {{'plugin.timereports.change-name-banner.message.description.2' | i18n}}
+      </strong>
+      {{'plugin.timereports.change-name-banner.message.description.3' | i18n}}
+      <a
+        target="_blank"
+        href="https://www.tempo.io/blog/meet-the-new-tempo-an-integrated-modular-platform-of-ppm-tools"
+        style="color: white;"
+      >
+        {{'plugin.timereports.change-name-banner.message.description.4' | i18n}} </a
+      >.
+    </span>
+  </span>
+  <strong
+    style="cursor: pointer;/*  */"
+    id="banner-name-change-warning-close"
+    ng-click="hideNameChangeBannerUI()"
+  >
+    <i class="close-icon"></i>
+  </strong>
+</div>
+
+<script>
+  const nameChangeWarningBannerStorageKey = isTimesheet
+    ? "has-seen-banner-name-change-warning-cloud-timesheet"
+    : "has-seen-banner-name-change-warning-cloud-timereport";
+  const bannerId = "banner-name-change-warning";
+  const bannerCloseButtonId = "banner-name-change-warning-close";
+
+  const hasSeenNameChangeWarningBanner = localStorage
+    ? localStorage.getItem(nameChangeWarningBannerStorageKey) === "true"
+    : false;
+
+  const banner = document.getElementById(bannerId);
+
+  if (banner) {
+    if (hasSeenNameChangeWarningBanner) {
+      banner.remove();
+    }
+
+    const pageContent = document.getElementById("content");
+    if (pageContent) {
+      banner.style.width = `${pageContent.clientWidth}px`;
+    }
+  }
+</script>
