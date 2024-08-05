@@ -512,5 +512,10 @@
     "plugin.timereports.change-name-banner.message.description.4": "ici",
     "Time Tracker Configuration": "Configuration de Time Tracker",
     "Time Tracker Lite Configuration": "Configuration de Time Tracker Lite",
-    "Import Time Tracker Lite Data" : "Importer les données de Time Tracker Lite"  
+    "Import Time Tracker Lite Data" : "Importer les données de Time Tracker Lite",
+    "Import in progress": "Importation en cours",
+    "There is already an import in progress. Please wait for it to finish.": "Une importation est déjà en cours. Veuillez attendre qu'elle se termine.",
+    "Confirm": "Confirmer",
+    "Import TTL alert message": "Cela importera toutes les données de Time Tracker Lite dans Time Tracker",
+    "OAuth message": "Si vous souhaitez continuer, cliquez sur confirmer. Un nouvel onglet s'ouvrira pour autoriser l'application. Après l'autorisation, vous pouvez le fermer."
 }

@@ -8,7 +8,7 @@
     ng-disabled="loading"
     ng-class="{disabled: loading}"
     ng-if="hasFeatureFlagImportTTLData"
-    ng-click="importTimeTrackerLiteData()"
+    ng-click="importTTLData()"
     title="{{'Import Time Tracker Lite Data' | i18n}}">
 
     <i class="p-3 m-1"></i>    
@@ -21,6 +21,7 @@
       </svg>
     </i>
     Time Tracker Lite
+    <span class="fa fa-spinner fa-spin" ng-show="loadingImport"></span>
   </a>
 
   <a 
