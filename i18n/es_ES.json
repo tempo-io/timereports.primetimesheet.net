@@ -511,5 +511,6 @@
     "plugin.timereports.change-name-banner.message.description.3": ". Aprende más sobre el cambio de marca ",
     "plugin.timereports.change-name-banner.message.description.4": "aquí",
     "Time Tracker Configuration": "Configuración de Time Tracker",
-    "Time Tracker Lite Configuration": "Configuración de Time Tracker Lite"
+    "Time Tracker Lite Configuration": "Configuración de Time Tracker Lite",
+    "Import Time Tracker Lite Data" : "Importar datos de Time Tracker Lite"
 }

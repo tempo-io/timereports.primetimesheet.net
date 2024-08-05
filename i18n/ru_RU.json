@@ -510,5 +510,6 @@
     "plugin.timereports.change-name-banner.message.description.3": ". Узнайте больше о ребрендинге ",
     "plugin.timereports.change-name-banner.message.description.4": "здесь",
     "Time Tracker Configuration": "Конфигурация Time Tracker",
-    "Time Tracker Lite Configuration": "Конфигурация Time Tracker Lite"
+    "Time Tracker Lite Configuration": "Конфигурация Time Tracker Lite",
+    "Import Time Tracker Lite Data" : "Импорт данных из Time Tracker Lite"
 }

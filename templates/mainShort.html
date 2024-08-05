@@ -1,8 +1,28 @@
-<div class="mt-6 ml-11 mb-6 w-7/12 text-xl ng-scope">
+<div class="mt-6 ml-11 mb-6 text-xl ng-scope" ng-class="{'w-4/12': hasFeatureFlagImportTTLData, 'w-7/12': !hasFeatureFlagImportTTLData}">
   <h4>{{(appNameShort+ ' Configuration'  | i18n)}} </h4>
 </div>
 
-<div class="mt-8 mb-5 w-72 text-right font-bold">
+<div class="mt-8 mb-5 text-right font-bold" ng-class="{'w-5/12': hasFeatureFlagImportTTLData, 'w-72': !hasFeatureFlagImportTTLData}">
+  <a
+    class="mr-4 text-secondary-color font-bold"
+    ng-disabled="loading"
+    ng-class="{disabled: loading}"
+    ng-if="hasFeatureFlagImportTTLData"
+    ng-click="importTimeTrackerLiteData()"
+    title="{{'Import Time Tracker Lite Data' | i18n}}">
+
+    <i class="p-3 m-1"></i>    
+      <svg 
+        class="w-4-p mr-1 fill-secondary-color"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="m12 14-.7071.7071.7071.7071.7071-.7071zm1-9c0-.55228-.4477-1-1-1s-1 .44771-1 1zm-6.70711 4.70711 5.00001 4.99999 1.4142-1.4142-4.99999-5.00001zm6.41421 4.99999 5-4.99999-1.4142-1.41422-5 5.00001zm.2929-.7071v-9h-2v9z"/>
+        <path d="m5 16v1c0 1.1046.89543 2 2 2h10c1.1046 0 2-.8954 2-2v-1"/>
+      </svg>
+    </i>
+    Time Tracker Lite
+  </a>
+
   <a 
      ng-click="!loading && refresh()"
      class="mr-4 text-secondary-color font-bold"

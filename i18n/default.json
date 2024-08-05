@@ -511,5 +511,6 @@
     "plugin.timereports.change-name-banner.message.description.3": ". Learn more about the rebrand ",
     "plugin.timereports.change-name-banner.message.description.4": "here",
     "Time Tracker Configuration": "Time Tracker Configuration",
-    "Time Tracker Lite Configuration": "Time Tracker Lite Configuration"
+    "Time Tracker Lite Configuration": "Time Tracker Lite Configuration",
+    "Import Time Tracker Lite Data" : "Import Time Tracker Lite Data"
 }

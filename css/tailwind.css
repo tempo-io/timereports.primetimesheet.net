@@ -53,6 +53,10 @@ svg, ::before, ::after {
     box-sizing: initial !important;
 }
 
+.fill-secondary-color {
+    fill: var(--secondary-color) !important;
+}
+
 .text-text-color-1-important { color: var(--text-color-1) !important; }
 .font-medium-important { font-weight: 500 !important; }
 .pl-3-important { padding-left: 0.75rem !important; }
@@ -61,6 +65,7 @@ svg, ::before, ::after {
 /* width */
 .w-3-p { width: 3%; }
 .w-4-p { width: 4%; }
+.w-5-p { width: 5%; }
 .w-9-p { width: 9%; }
 .w-10-p { width: 10%; }
 .w-12-p { width: 12%; }
@@ -128,6 +133,7 @@ svg, ::before, ::after {
 .shadow-3xl { box-shadow: 1px 1px 5px 1px #888888; }
 
 .border-red-50 { border-color: red !important }
+
 
 @layer utilities {
     @variants responsive {
