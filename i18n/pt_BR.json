@@ -517,5 +517,6 @@
     "There is already an import in progress. Please wait for it to finish.": "Já há uma importação em andamento. Por favor, espere até que termine.",
     "Confirm": "Confirmar",
     "Import TTL alert message": "Isso importará todos os dados do Time Tracker Lite para o Time Tracker",
-    "OAuth message": "Se você quiser continuar, clique em confirmar. Uma nova aba será aberta para autorizar o aplicativo. Após a autorização, você pode fechá-la."
+    "OAuth message": "Se você quiser continuar, clique em confirmar. Uma nova aba será aberta para autorizar o aplicativo. Após a autorização, você pode fechá-la.",
+    "OAuth flag message": "Se você nos deu as permissões corretas, o processo foi agora iniciado. Receberá um e-mail quando o processo estiver concluído. Obrigado por confirmar!"
 }

@@ -517,5 +517,6 @@
     "There is already an import in progress. Please wait for it to finish." : "There is already an import in progress. Please wait for it to finish.",
     "Confirm": "Confirm",
     "Import TTL alert message": "This will import all Time Tracker Lite data into Time Tracker",
-    "OAuth message": "If you want to continue it, click on confirm. A new tab will be opened to authorize the app. After authorization, you can close it."
+    "OAuth message": "If you want to continue it, click on confirm. A new tab will be opened to authorize the app. After authorization, you can close it.",
+    "OAuth flag message": "If you give us the right permissions, the process has now been initiated. You will receive an email when the process is complete. Thank you for confirming!"
 }
