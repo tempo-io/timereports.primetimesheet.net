@@ -1074,6 +1074,7 @@ svg, ::before, ::after {
 
 /* width */
 .w-3-p { width: 3%; }
+.w-3-5-p { width: 3.5%; }
 .w-4-p { width: 4%; }
 .w-5-p { width: 5%; }
 .w-9-p { width: 9%; }

@@ -7,14 +7,16 @@
         <div style="padding-top: 2rem;">
             <h3 class="text-base pb-8">
                 {{'Import TTL alert message' | i18n}} <br><br>
+                <span style="font-weight: bold;">{{'Note' | i18n}}: </span>{{'OAuth note' | i18n}} <br><br>
                 {{'OAuth message' | i18n}}
             </h3>            
             <div>
-                <input class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 rounded text-text-white font-bold mr-3"
+                <button class="bg-secondary-color pt-2 pb-2 pr-4 pl-4 rounded text-text-white font-bold mr-3"
                         type="submit"
                         ng-value="{{'Confirm' | i18n}}"
                         ng-click="popupData.request()">
-
+                    {{'Confirm' | i18n}}
+                </button>
                 <button class="pt-2 pb-2 pr-4 pl-4 rounded-md border-solid  border-b border-l border-t border-r border-text-divider-color-3"
                         ng-click="closePopup()">
                     {{'Cancel' | i18n}}

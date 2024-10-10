@@ -516,7 +516,9 @@
     "Import in progress": "Importation en cours",
     "There is already an import in progress. Please wait for it to finish.": "Une importation est déjà en cours. Veuillez attendre qu'elle se termine.",
     "Confirm": "Confirmer",
-    "Import TTL alert message": "Cela importera toutes les données de Time Tracker Lite dans Time Tracker",
-    "OAuth message": "Si vous souhaitez continuer, cliquez sur confirmer. Un nouvel onglet s'ouvrira pour autoriser l'application. Après l'autorisation, vous pouvez le fermer.",
-    "OAuth flag message": "Si vous nous accordez les autorisations nécessaires, le processus a maintenant été initié. Vous recevrez un e-mail lorsque le processus sera terminé. Merci pour votre confirmation!"
+    "Import TTL alert message": "Vous êtes sur le point d'importer les données de Time Tracker Lite, ce qui importera tous les rapports enregistrés des utilisateurs, les préférences des utilisateurs, les journaux d'audit et les paramètres de configuration.",
+    "OAuth message": "Sélectionnez \"Confirmer\" pour continuer. Une fenêtre d'autorisation s'ouvrira pour demander l'accès à votre compte Atlassian. Choisissez votre compte et sélectionnez Accepter.",
+    "OAuth flag message": "Si vous avez choisi d'accorder l'accès à l'application sur une instance avec une licence active de Time Tracker, l'importation commencera. Vous recevrez un e-mail lorsque vous aurez terminé l'importation.",
+    "Note": "Remarque",
+    "OAuth note": "Esta importación sobrescribirá todas las configuraciones existentes de Time Tracker."
 }
