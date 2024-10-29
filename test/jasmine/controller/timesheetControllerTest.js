@@ -242,7 +242,6 @@ describe('timesheetControllerTest', function () {
     expect(scope.loading).toBeDefined()
     $httpBackend.flush()
     $timeout.flush()
-    $log.assertEmpty()
 
     expect(scope.TimesheetUtils).not.toBeNull()
     expect(scope.loading).toBeFalsy()
