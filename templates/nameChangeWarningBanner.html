@@ -2,7 +2,7 @@
   class="banner-home"
   id="banner-deprecation-warning"
   style="margin: 0px; width: 100vw;"
-  ng-if="shouldSeeBanner"
+  ng-if="licenseType"
 >
   <i class="icon-image info"></i>
   <span
@@ -15,7 +15,7 @@
       align-items: center;
     "
   >
-    <span>
+    <span ng-if="licenseType == 'evaluation'">
       {{'plugin.ttl.change-name-banner.message.description.1' | i18n}}
       <a
         target="_blank"
@@ -29,6 +29,23 @@
         style="color: white; text-decoration: underline;"
       >Time Tracker</a>, 
       {{'plugin.ttl.change-name-banner.message.description.3' | i18n}}.
+    </span>
+
+    <span ng-if="licenseType == 'paid'">
+      {{'plugin.ttl.deprecation.message.description.1' | i18n}} 
+      <b>{{'plugin.ttl.deprecation.message.description.2' | i18n}}</b>. 
+
+      <a
+        target="_blank"
+        href="https://try.tempo.io/migrating-to-time-tracker/"
+        style="color: white; text-decoration: underline;"
+      >{{'plugin.ttl.deprecation.message.description.3' | i18n}}</a>
+       {{'plugin.ttl.deprecation.message.description.4' | i18n}}. 
+      <a
+        target="_blank"
+        href="https://marketplace.atlassian.com/apps/294/time-tracker-jira-time-reports-project-dashboard-tempo?tab=overview&hosting=cloud"
+        style="color: white; text-decoration: underline;"
+      >{{'plugin.ttl.deprecation.message.description.5' | i18n}}</a>.
     </span>
   </span>
   <strong

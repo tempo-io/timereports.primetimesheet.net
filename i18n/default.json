@@ -515,5 +515,10 @@
     "OAuth message": "Select \"Confirm\" to continue. An authorization window will open requesting access to your Atlassian account. Choose your account and select Accept.",
     "OAuth flag message": "If you have chosen to grant app access on an instance with an active Time Tracker license, the import will begin. You will receive an email when you complete the import.",
     "Note": "Note",
-    "OAuth note": "This import will override all existing Time Tracker configurations."
+    "OAuth note": "This import will override all existing Time Tracker configurations.",
+    "plugin.ttl.deprecation.message.description.1": "Time Tracker Lite will be deprecated on",
+    "plugin.ttl.deprecation.message.description.2": "February 1, 2025",
+    "plugin.ttl.deprecation.message.description.3": "Migrate to Time Tracker",
+    "plugin.ttl.deprecation.message.description.4": "and seamlessly import saved reports, user preferences, configurations, and audit logs",
+    "plugin.ttl.deprecation.message.description.5": "Try free for 30 days"
 }

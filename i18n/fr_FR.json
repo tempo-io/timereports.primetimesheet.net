@@ -515,5 +515,10 @@
     "OAuth message": "Sélectionnez \"Confirmer\" pour continuer. Une fenêtre d'autorisation s'ouvrira pour demander l'accès à votre compte Atlassian. Choisissez votre compte et sélectionnez Accepter.",
     "OAuth flag message": "Si vous avez choisi d'accorder l'accès à l'application sur une instance avec une licence active de Time Tracker, l'importation commencera. Vous recevrez un e-mail lorsque vous aurez terminé l'importation.",
     "Note": "Remarque",
-    "OAuth note": "Esta importación sobrescribirá todas las configuraciones existentes de Time Tracker."
+    "OAuth note": "Esta importación sobrescribirá todas las configuraciones existentes de Time Tracker.",
+    "plugin.ttl.deprecation.message.description.1": "Time Tracker Lite sera retiré le",
+    "plugin.ttl.deprecation.message.description.2": "1 février 2025",
+    "plugin.ttl.deprecation.message.description.3": "Passez à Time Tracker",
+    "plugin.ttl.deprecation.message.description.4": "et importez facilement les rapports enregistrés, les préférences utilisateur, les configurations et les journaux d'audit",
+    "plugin.ttl.deprecation.message.description.5": "Essayez gratuitement pendant 30 jours"
 }
