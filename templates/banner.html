@@ -1,0 +1,31 @@
+<div
+  class="banner-home"
+  id="banner-deprecation-warning"
+  style="margin: 0px; width: 100vw;"
+  ng-style="{'font-size': isGadget ? '12px' : '14px'}"
+  ng-if="showBanner"
+>
+  <i class="icon-image info"></i>
+  <span
+    class="text"
+  >
+    {{'plugin.ttl.deprecation.message.description.1' | i18n}}
+    <b>{{'plugin.ttl.deprecation.message.date' | i18n}}</b>.
+    <a
+      target="_blank"
+      href="https://try.tempo.io/migrating-to-time-tracker/"
+      style="color: white; text-decoration: underline;"
+    >{{'plugin.ttl.deprecation.message.link.migration' | i18n}}</a>
+    {{'plugin.ttl.deprecation.message.description.2' | i18n}}
+    <a
+      target="_blank"
+      href="https://marketplace.atlassian.com/apps/294/time-tracker-jira-time-reports-project-dashboard-tempo?tab=overview&hosting=cloud"
+      style="color: white; text-decoration: underline;"
+    >{{'plugin.ttl.deprecation.message.link.trial' | i18n}}</a>
+    {{'plugin.ttl.deprecation.message.description.3' | i18n}}
+    <a
+      target="_blank"
+      href="https://tempo-io.zoom.us/webinar/register/9817301429042/WN_M41ltt-eT0ifIMFINbxhPw#/registration"
+      style="color: white; text-decoration: underline;"
+    >{{'plugin.ttl.deprecation.message.link.webnar' | i18n}}</a>
+</div>

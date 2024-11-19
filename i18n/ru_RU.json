@@ -501,9 +501,6 @@
     "Predefined": "Предопределенные",
     "Time Tracker": "Time Tracker",
     "Time Tracker Lite": "Time Tracker Lite",
-    "plugin.ttl.change-name-banner.message.description.1": "Time Tracker Lite скоро будет прекращен. Мы рекомендуем вам попробовать другие приложения для отслеживания времени от Tempo",
-    "plugin.ttl.change-name-banner.message.description.2": "и",
-    "plugin.ttl.change-name-banner.message.description.3": "бесплатно на 30 дней",
     "Time Tracker Configuration": "Конфигурация Time Tracker",
     "Time Tracker Lite Configuration": "Конфигурация Time Tracker Lite",
     "Import Time Tracker Lite Data" : "Импорт данных из Time Tracker Lite",
@@ -515,9 +512,11 @@
     "OAuth flag message": "Если вы выбрали предоставить доступ к приложению на экземпляре с активной лицензией Time Tracker, импорт начнется. Вы получите электронное письмо, когда завершите импорт.",
     "Note": "Примечание",
     "OAuth note": "Этот импорт перезапишет все существующие настройки Time Tracker.",
-    "plugin.ttl.deprecation.message.description.1": "Time Tracker Lite будет прекращён",
-    "plugin.ttl.deprecation.message.description.2": "1 февраля 2025 г.",
-    "plugin.ttl.deprecation.message.description.3": "Перейдите на Time Tracker",
-    "plugin.ttl.deprecation.message.description.4": "и плавно импортируйте сохранённые отчёты, пользовательские настройки, конфигурации и журналы аудита",
-    "plugin.ttl.deprecation.message.description.5": "Попробуйте бесплатно в течение 30 дней"
+    "plugin.ttl.deprecation.message.description.1": "Time Tracker Lite будет прекращен ",
+    "plugin.ttl.deprecation.message.date": "1 февраля 2025 года",
+    "plugin.ttl.deprecation.message.link.migration": "Перейдите на Time Tracker",
+    "plugin.ttl.deprecation.message.description.2": " и легко импортируйте отчеты, настройки, конфигурации и журналы аудита.",
+    "plugin.ttl.deprecation.message.link.trial": "Попробуйте бесплатно в течение 30 дней",
+    "plugin.ttl.deprecation.message.description.3": " и ",
+    "plugin.ttl.deprecation.message.link.webnar": "присоединяйтесь к вебинару"
 }

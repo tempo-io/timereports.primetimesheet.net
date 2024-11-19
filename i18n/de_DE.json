@@ -500,9 +500,6 @@
     "Predefined": "Vordefinierte",
     "Time Tracker": "Time Tracker",
     "Time Tracker Lite": "Time Tracker Lite",
-    "plugin.ttl.change-name-banner.message.description.1": "Time Tracker Lite wird bald eingestellt. Wir empfehlen Ihnen, andere Zeiterfassungs-Apps von Tempo auszuprobieren",
-    "plugin.ttl.change-name-banner.message.description.2": "und",
-    "plugin.ttl.change-name-banner.message.description.3": "30 Tage kostenlos",
     "Time Tracker Configuration": "Time Tracker-Konfiguration",
     "Time Tracker Lite Configuration": "Time Tracker Lite-Konfiguration",
     "Import Time Tracker Lite Data" : "Daten von Time Tracker Lite importieren",
@@ -514,9 +511,11 @@
     "OAuth flag message": "Wenn Sie den App-Zugriff auf einer Instanz mit einer aktiven Time Tracker-Lizenz gewährt haben, wird der Import gestartet. Sie erhalten eine E-Mail, wenn Sie den Import abgeschlossen haben.",
     "Note": "Hinweis",
     "OAuth note": "Dieser Import wird alle vorhandenen Time Tracker-Konfigurationen überschreiben.",
-    "plugin.ttl.deprecation.message.description.1": "Time Tracker Lite wird am",
-    "plugin.ttl.deprecation.message.description.2": "1. Februar 2025 eingestellt",
-    "plugin.ttl.deprecation.message.description.3": "Wechseln Sie zu Time Tracker",
-    "plugin.ttl.deprecation.message.description.4": "und importieren Sie nahtlos gespeicherte Berichte, Benutzereinstellungen, Konfigurationen und Audit-Protokolle",
-    "plugin.ttl.deprecation.message.description.5": "30 Tage kostenlos testen"
+    "plugin.ttl.deprecation.message.description.1": "Time Tracker Lite wird am ",
+    "plugin.ttl.deprecation.message.date": "1. Februar 2025 eingestellt",
+    "plugin.ttl.deprecation.message.link.migration": "Wechseln Sie zu Time Tracker",
+    "plugin.ttl.deprecation.message.description.2": "und importieren Sie nahtlos Berichte, Einstellungen, Konfigurationen und Audit-Protokolle.",
+    "plugin.ttl.deprecation.message.link.trial": "Kostenlos 30 Tage testen",
+    "plugin.ttl.deprecation.message.description.3": " und ",
+    "plugin.ttl.deprecation.message.link.webnar": "am Webinar teilnehmen"
 }

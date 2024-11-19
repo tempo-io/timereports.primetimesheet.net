@@ -502,9 +502,6 @@
     "Predefined": "Predefined",
     "Time Tracker": "Time Tracker",
     "Time Tracker Lite": "Time Tracker Lite",
-    "plugin.ttl.change-name-banner.message.description.1": "Time Tracker Lite will soon be discontinued. We encourage you to try Tempo’s other time tracking apps",
-    "plugin.ttl.change-name-banner.message.description.2": "and",
-    "plugin.ttl.change-name-banner.message.description.3": "free for 30 days",
     "Time Tracker Configuration": "Time Tracker Configuration",
     "Time Tracker Lite Configuration": "Time Tracker Lite Configuration",
     "Import Time Tracker Lite Data" : "Import Time Tracker Lite Data",
@@ -516,9 +513,11 @@
     "OAuth flag message": "If you have chosen to grant app access on an instance with an active Time Tracker license, the import will begin. You will receive an email when you complete the import.",
     "Note": "Note",
     "OAuth note": "This import will override all existing Time Tracker configurations.",
-    "plugin.ttl.deprecation.message.description.1": "Time Tracker Lite will be deprecated on",
-    "plugin.ttl.deprecation.message.description.2": "February 1, 2025",
-    "plugin.ttl.deprecation.message.description.3": "Migrate to Time Tracker",
-    "plugin.ttl.deprecation.message.description.4": "and seamlessly import saved reports, user preferences, configurations, and audit logs",
-    "plugin.ttl.deprecation.message.description.5": "Try free for 30 days"
+    "plugin.ttl.deprecation.message.description.1": "Time Tracker Lite will be deprecated on ",
+    "plugin.ttl.deprecation.message.date": "February 1, 2025",
+    "plugin.ttl.deprecation.message.link.migration": "Migrate to Time Tracker",
+    "plugin.ttl.deprecation.message.description.2": "and seamlessly import reports, preferences, configurations, and audit logs.",
+    "plugin.ttl.deprecation.message.link.trial": "Try free for 30 days",
+    "plugin.ttl.deprecation.message.description.3": " and ",
+    "plugin.ttl.deprecation.message.link.webnar": "join the webinar"
 }
