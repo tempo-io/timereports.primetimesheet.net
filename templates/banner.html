@@ -22,10 +22,12 @@
       href="https://marketplace.atlassian.com/apps/294/time-tracker-jira-time-reports-project-dashboard-tempo?tab=overview&hosting=cloud"
       style="color: white; text-decoration: underline;"
     >{{'plugin.ttl.deprecation.message.link.trial' | i18n}}</a>
-    {{'plugin.ttl.deprecation.message.description.3' | i18n}}
-    <a
-      target="_blank"
-      href="https://tempo-io.zoom.us/webinar/register/9817301429042/WN_M41ltt-eT0ifIMFINbxhPw#/registration"
-      style="color: white; text-decoration: underline;"
-    >{{'plugin.ttl.deprecation.message.link.webnar' | i18n}}</a>
+    </span>
+    <span
+      style="cursor: pointer;"
+      id="banner-name-change-warning-close"
+      ng-click="hideNameChangeBannerUI()"
+    >
+      <i class="close-icon"></i>
+  </span>
 </div>

@@ -1423,6 +1423,7 @@ form.bitbucket span {
 
 .banner-home {
   display: flex;
+  align-items: center;
   padding-bottom: 1.25rem;
   padding-top: 1.25rem;
   border-radius: 0.275rem;
@@ -1455,8 +1456,8 @@ form.bitbucket span {
 }
 
 .banner-home .close-icon {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   position: relative;
   cursor: pointer;
   display: block;
