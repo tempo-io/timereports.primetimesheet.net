@@ -1447,11 +1447,18 @@ form.bitbucket span {
   background-position: center;
   background-size: 24px;
 }
-.banner-home .icon-image.remove {
+.deprecation-dialog .icon-image {
+  width: 23px;
+  height: 23px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px;
+}
+.icon-image.remove {
   background-image: url(../images/icon-remove.png);
 }
 
-.banner-home .icon-image.info {
+.icon-image.info {
   background-image: url(../images/icon-info.png);
 }
 
@@ -1482,4 +1489,40 @@ form.bitbucket span {
 
 .banner-home .close-icon:after {
   transform: rotate(-45deg); /* Rotate line to form X */
+}
+
+.deprecation-dialog {
+  background-color: #181818b5;
+  z-index: 1;
+}
+
+.deprecation-dialog-container {
+  top: 10%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 2em;
+}
+
+.deprecation-dialog-header {
+  color: #fff;
+}
+
+.deprecation-dialog-link {
+  color: black;
+  text-decoration: underline;
+}
+
+
+.deprecation-dialog-close-button:hover {
+  cursor: inherit !important;
+}
+
+.deprecation-dialog-close-button:disabled:hover {
+  color: #999 !important;
+}
+
+.deprecation-dialog-close-button:enabled:hover {
+  color: inherit !important;
 }

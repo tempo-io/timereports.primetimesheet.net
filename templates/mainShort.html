@@ -1,3 +1,5 @@
+<ng-include src="'/templates/dialogs/liteDeprecation.html'"></ng-include>
+
 <div style="display: flex; align-items: center; width: 100%;">
 <div class="mt-6 ml-11 mb-6 text-xl ng-scope">
   <h4>{{(appNameShort+ ' Configuration'  | i18n)}} </h4>
@@ -11,7 +13,7 @@
     ng-if="hasFeatureFlagImportTTLData"
     ng-click="importTTLData()"
     title="{{'Import Time Tracker Lite Data' | i18n}}">
-      <svg 
+      <svg
         class="w-3-5-p mr-1 fill-secondary-color"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +25,7 @@
     <span class="fa fa-spinner fa-spin" ng-show="loadingImport"></span>
   </a>
 
-  <a 
+  <a
      ng-click="!loading && refresh()"
      class="mr-4 text-secondary-color font-bold"
      ng-disabled="loading"
@@ -36,7 +38,7 @@
       {{ 'Refresh' | i18n }}
   </a>
   {{'Go to' | i18n}}
-  <a 
+  <a
     ng-click="navigated(null,'Report Overview')"
     class="text-secondary-color font-bold"
     href="{{hostBaseUrl}}/plugins/servlet/ac/{{appKey}}/timereports"
@@ -46,7 +48,7 @@
 </div>
 </div>
 
-<div class="main">    
+<div class="main">
     <div class="min-w-280 pr-6 pl-9 border-r border-gray-200" ng-if="templates.menu && !isWelcome">
         <ng-include src="templates.menu"></ng-include>
     </div>

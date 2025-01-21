@@ -1,0 +1,31 @@
+<div ng-controller="DeprecationDialogController">
+  <div ng-if="showDeprecationDialog" class="deprecation-dialog fixed inset-0 bg-opacity-70" ng-init="startCountdown()">
+    <div class="w-96 bg-white rounded-lg shadow-lg absolute deprecation-dialog-container">
+      <div class="bg-red-600 rounded-t-lg h-12 flex items-center justify-center gap-2 deprecation-dialog-header">
+        <i class="icon-image info"></i> {{ 'action.required' | i18n}}
+      </div>
+      <p class="p-6">
+        {{'plugin.ttl.deprecation.message.description.countdown.1' | i18n}}
+        <b>{{getDeprecationTimeRemainingInDays() || 1}} {{getDeprecationTimeRemainingInDays() <= 1 ? 'day' : 'days' | i18n}} ({{'plugin.ttl.deprecation.message.date' | i18n}})</b>.
+        <a
+          class="deprecation-dialog-link"
+          target="_blank"
+          href="https://try.tempo.io/migrating-to-time-tracker/"
+        >{{'plugin.ttl.deprecation.message.link.migration' | i18n}}</a>
+        {{'plugin.ttl.deprecation.message.description.2' | i18n}}
+        <a
+          class="deprecation-dialog-link"
+          target="_blank"
+          href="https://marketplace.atlassian.com/apps/294/time-tracker-jira-time-reports-project-dashboard-tempo?tab=overview&hosting=cloud"
+        >{{'plugin.ttl.deprecation.message.link.trial' | i18n}}</a>
+      </p>
+      <div class="flex flex-col items-center gap-4 mt-4">
+        <button class="aui-button deprecation-dialog-close-button"
+            ng-click="acknowledgeDeprecationDialog()"
+            ng-disabled="countdown > 0">
+          {{ countdown > 0 ? countdown + 's' : ('Close' | i18n) }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
