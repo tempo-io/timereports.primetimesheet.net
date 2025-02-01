@@ -515,13 +515,18 @@
     "OAuth note": "Esta importação irá sobrescrever todas as configurações existentes do Time Tracker.",
     "day": "dia",
     "days": "dias",
-    "action.required": "Ação necessária",
-    "plugin.ttl.deprecation.message.description.1": "O Time Tracker Lite será descontinuado em ",
+    "plugin.ttl.deprecation.banner.message.description.1": "Este produto está descontinuado, e os recursos de migração para o Time Tracker serão desativados em breve. Mude para",
+    "plugin.ttl.deprecation.banner.message.description.2": " hoje e ",
+    "plugin.ttl.deprecation.banner.message.description.3": "garanta seu primeiro ano sem custo adicional",
+    "plugin.ttl.deprecation.message.title": "O Time Tracker Lite foi descontinuado",
+    "plugin.ttl.deprecation.message.description.1": "Você está usando um produto descontinuado, e os recursos de migração do Time Tracker Lite para o Time Tracker serão desativados em breve.",
+    "plugin.ttl.deprecation.message.link": "Mude para o Time Tracker",
     "plugin.ttl.deprecation.message.description.countdown.1": "Time Tracker Lite será descontinuado em ",
     "plugin.ttl.deprecation.message.date": "1º de fevereiro de 2025",
     "plugin.ttl.deprecation.message.link.migration": "Migre para o Time Tracker",
-    "plugin.ttl.deprecation.message.description.2": "e importe facilmente relatórios, preferências, configurações e logs de auditoria.",
+    "plugin.ttl.deprecation.message.description.2": "hoje para ainda mais recursos sem custo adicional no primeiro ano.",
     "plugin.ttl.deprecation.message.link.trial": "Experimente grátis por 30 dias",
     "plugin.ttl.deprecation.message.description.3": " e ",
-    "plugin.ttl.deprecation.message.link.webnar": "participe do webinar"
+    "plugin.ttl.deprecation.message.link.webnar": "participe do webinar",
+    "plugin.ttl.deprecation.message.cta": "Migrar para o Time Tracker"
 }

@@ -1514,15 +1514,24 @@ form.bitbucket span {
   text-decoration: underline;
 }
 
-
-.deprecation-dialog-close-button:hover {
-  cursor: inherit !important;
-}
-
 .deprecation-dialog-close-button:disabled:hover {
   color: #999 !important;
 }
 
 .deprecation-dialog-close-button:enabled:hover {
   color: inherit !important;
+}
+
+.lite-deprecation-close {
+    position: absolute; 
+    top: 9px; 
+    right: 15px; 
+    color: white; 
+    padding: 5px;
+    cursor: pointer;
+}
+.lite-deprecation-close:hover {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
 }

@@ -516,12 +516,18 @@
     "day": "jour",
     "days": "jours",
     "action.required": "Action requise",
-    "plugin.ttl.deprecation.message.description.1": "Time Tracker Lite sera abandonné le ",
+    "plugin.ttl.deprecation.banner.message.description.1": "Ce produit est obsolète, et les fonctionnalités de migration vers Time Tracker seront bientôt supprimées. Passez à",
+    "plugin.ttl.deprecation.banner.message.description.2": " aujourd’hui et ",
+    "plugin.ttl.deprecation.banner.message.description.3": "Obtenez votre première année sans coût supplémentaire",
+    "plugin.ttl.deprecation.message.title": "Time Tracker Lite a été abandonné",
+    "plugin.ttl.deprecation.message.description.1": "Vous utilisez un produit abandonné, et les fonctionnalités de migration de Time Tracker Lite vers Time Tracker seront bientôt supprimées.",
+    "plugin.ttl.deprecation.message.link": "Passez à Time Tracker",
     "plugin.ttl.deprecation.message.description.countdown.1": "Time Tracker Lite sera obsolète dans ",
     "plugin.ttl.deprecation.message.date": "1er février 2025",
     "plugin.ttl.deprecation.message.link.migration": "Passez à Time Tracker",
-    "plugin.ttl.deprecation.message.description.2": "et importez facilement les rapports, préférences, configurations et journaux d'audit.",
+    "plugin.ttl.deprecation.message.description.2": "aujourd’hui pour encore plus de fonctionnalités sans coût supplémentaire la première année.",
     "plugin.ttl.deprecation.message.link.trial": "Essayez gratuitement pendant 30 jours",
     "plugin.ttl.deprecation.message.description.3": " et ",
-    "plugin.ttl.deprecation.message.link.webnar": "participez au webinaire"
+    "plugin.ttl.deprecation.message.link.webnar": "participez au webinaire",
+    "plugin.ttl.deprecation.message.cta": "Migrez vers Time Tracker"
 }
