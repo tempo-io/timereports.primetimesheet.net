@@ -1,0 +1,22 @@
+<!-- 
+    Banner that informs users about the deprecation of 
+    Tempo Timesheets Integrations for who have Tempo Token configured
+-->
+
+<div
+  class="banner-home"
+  id="banner-deprecation-warning"
+  style="margin: 0px; width: 100vw; font-size: 14px"
+  ng-if="showDepTempoTsIntgBanner"
+>
+  <i class="icon-image info"></i>
+  <span class="text">
+    {{'tempo.integration.deprecation.banner.message.description.1' | i18n}}    
+  </span>
+  
+  <span
+    style="cursor: pointer;"
+    ng-click="hideTempoTsIntgBanner()">
+    <i class="close-icon"></i>
+  </span>
+</div>

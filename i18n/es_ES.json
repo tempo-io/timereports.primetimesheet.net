@@ -519,7 +519,7 @@
     "plugin.ttl.deprecation.banner.message.description.2": " hoy y ",
     "plugin.ttl.deprecation.banner.message.description.3": "Obtén tu primer año sin costo adicional",
     "plugin.ttl.deprecation.message.title": "Time Tracker Lite ha sido descontinuado",
-    "plugin.ttl.deprecation.message.description.1": "Está utilizando un producto descontinuado, y las funciones de migración de Time Tracker Lite a Time Tracker serán desactivadas pronto.",
+    "plugin.ttl.deprecation.message.description.1": "Está utilizando un producto descontinuado, y las funciones de migración de Time Tracker Lite a Time Tracker serán desactivadas el 21 de noviembre de 2025.",
     "plugin.ttl.deprecation.message.link": "Cámbiate a Time Tracker",
     "plugin.ttl.deprecation.message.description.countdown.1": "Time Tracker Lite se descontinuará en ",
     "plugin.ttl.deprecation.message.date": "1 de febrero de 2025",
@@ -528,5 +528,9 @@
     "plugin.ttl.deprecation.message.link.trial": "Prueba gratis durante 30 días",
     "plugin.ttl.deprecation.message.description.3": " y ",
     "plugin.ttl.deprecation.message.link.webnar": "únete al seminario web",
-    "plugin.ttl.deprecation.message.cta": "Migra a Time Tracker"
+    "plugin.ttl.deprecation.message.cta": "Migra a Time Tracker",
+    "api.deprecation.banner.migration.guide": "guía de migración",
+    "api.deprecation.banner.migration.guide.message.description.1": "Las API REST de Time Tracker se descontinuarán el 21 de noviembre de 2025. Para garantizar una transición sin problemas, consulte nuestra",
+    "api.deprecation.banner.migration.guide.message.description.2": "para los pasos de cambio a las API de Jira.",
+    "tempo.integration.deprecation.banner.message.description.1": "La integración con Tempo Timesheets se descontinuará el 21 de noviembre de 2025."
 }

@@ -1,0 +1,24 @@
+<div
+  class="banner-home"
+  id="banner-deprecation-warning"
+  style="margin: 0px; width: 100vw; font-size: 14px"
+  ng-if="showDeprecationApiBanner"
+>
+  <i class="icon-image info"></i>
+  <span class="text">
+    {{'api.deprecation.banner.migration.guide.message.description.1' | i18n}}
+    <a
+      target="_blank"
+      href="https://help.tempo.io/timetracker/latest/jira-worklog-api-migration"
+      style="color: white; text-decoration: underline;"
+    >{{ 'api.deprecation.banner.migration.guide' | i18n }}</a>
+
+    {{'api.deprecation.banner.migration.guide.message.description.2' | i18n}}
+  </span>
+  
+  <span
+    style="cursor: pointer;"
+    ng-click="hideApiDeprecationMessage()">
+    <i class="close-icon"></i>
+  </span>
+</div>

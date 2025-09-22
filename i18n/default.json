@@ -519,7 +519,7 @@
     "plugin.ttl.deprecation.banner.message.description.2": " today and ",
     "plugin.ttl.deprecation.banner.message.description.3": "get your first year at no extra cost",
     "plugin.ttl.deprecation.message.title": "Time Tracker Lite has been deprecated",
-    "plugin.ttl.deprecation.message.description.1": "You are using a deprecated product, and migration features from Time Tracker Lite to Time Tracker will be discontinued soon.",
+    "plugin.ttl.deprecation.message.description.1": "You are using a deprecated product, and migration features from Time Tracker Lite to Time Tracker will be discontinued on November 21, 2025.",
     "plugin.ttl.deprecation.message.link": "Switch to Time Tracker",
     "plugin.ttl.deprecation.message.description.countdown.1": "Time Tracker Lite will be deprecated in ",
     "plugin.ttl.deprecation.message.date": "February 1, 2025",
@@ -528,5 +528,9 @@
     "plugin.ttl.deprecation.message.link.trial": "Try free for 30 days",
     "plugin.ttl.deprecation.message.description.3": " and ",
     "plugin.ttl.deprecation.message.link.webnar": "join the webinar",
-    "plugin.ttl.deprecation.message.cta": "Migrate to Time Tracker"
+    "plugin.ttl.deprecation.message.cta": "Migrate to Time Tracker",
+    "api.deprecation.banner.migration.guide": "migration guide",
+    "api.deprecation.banner.migration.guide.message.description.1": "Time Tracker REST APIs will be deprecated on November 21, 2025. To ensure a smooth transition, please refer to our",
+    "api.deprecation.banner.migration.guide.message.description.2": "for steps on switching to the Jira APIs.",
+    "tempo.integration.deprecation.banner.message.description.1": "The Tempo Timesheets integration will be deprecated on November 21, 2025."
 }

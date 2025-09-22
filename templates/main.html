@@ -4,6 +4,8 @@
 
 <ng-include src="'/templates/banner.html'"></ng-include>
 
+<ng-include ng-if="!isGadget" src="'/templates/timesheetsDeprecationBanner.html'"></ng-include>
+
 <ng-include ng-if="!isGadget" src="'/templates/dialogs/liteDeprecation.html'"></ng-include>
 
 <style type="text/css" ng-if="isGadget">
