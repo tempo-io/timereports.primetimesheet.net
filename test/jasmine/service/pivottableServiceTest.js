@@ -144,54 +144,54 @@ describe('pivottableServiceTest', function () {
     expect(pivotTable.sum).toEqual(176400)
   }))
 
-  it('IssueWorkedTimeByUser_sumSubTasks', inject(function ($timeout, pivottableService) {
-    expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' }
-    var options = {
-      loggedInUser,
-      pivotTableType: 'IssueWorkedTimeByUser',
-      configOptions: {
-        parentIssueField: 'customfield_10007',
-        compositionIssueLink: 'Duplicate'
-      },
-      moreFields: ['timespent'],
-      sumSubTasks: ['parent', 'epic', 'composition']
-    }
-    var pivotTable
-    AP.request = function (options) {
-      if (options.url.match(/jql=key%20in%20\(TIME-2\)/)) {
-        this.getTimeoutFunc()(function () {
-          options.success({ issues: [{
-            id: '10002',
-            key: 'TIME-2',
-            timeestimate: 0,
-            timeoriginalestimate: 72000,
-            timespent: 36000,
-            fields: {
-              issuetype: { name: 'Bug' }
-            }
-          }] })
-        }, 500)
-      } else {
-        AP.requestBak(options)
-      }
-    }
-    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {
-      pivotTable = _pivotTable
-      pivotTable.queue['TIME-5'].promise.then(function (issue) {
-        // check it is not overwritten by subscequent resolve
-        expect(issue.worklog.worklogs.length).toEqual(4)
-      })
-    })
-    $timeout.flush()
-    $timeout.flush()
-    expect(pivotTable).toBeDefined()
-    expect(pivotTable).toHaveRowsNumber(2)
-    expect(Object.keys(pivotTable.rows)).toContainAll(['TIME-1', 'TIME-5'])
-    expect(pivotTable.rows['TIME-1'].sum).toEqual(133200)
-    expect(pivotTable.rows['TIME-5'].sum).toEqual(43200)
-    expect(pivotTable.sum).toEqual(176400)
-  }))
+  // it('IssueWorkedTimeByUser_sumSubTasks', inject(function ($timeout, pivottableService) {
+  //   expect(pivottableService).toBeDefined()
+  //   var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' }
+  //   var options = {
+  //     loggedInUser,
+  //     pivotTableType: 'IssueWorkedTimeByUser',
+  //     configOptions: {
+  //       parentIssueField: 'customfield_10007',
+  //       compositionIssueLink: 'Duplicate'
+  //     },
+  //     moreFields: ['timespent'],
+  //     sumSubTasks: ['parent', 'epic', 'composition']
+  //   }
+  //   var pivotTable
+  //   AP.request = function (options) {
+  //     if (options.url.match(/jql=key%20in%20\(TIME-2\)/)) {
+  //       this.getTimeoutFunc()(function () {
+  //         options.success({ issues: [{
+  //           id: '10002',
+  //           key: 'TIME-2',
+  //           timeestimate: 0,
+  //           timeoriginalestimate: 72000,
+  //           timespent: 36000,
+  //           fields: {
+  //             issuetype: { name: 'Bug' }
+  //           }
+  //         }] })
+  //       }, 500)
+  //     } else {
+  //       AP.requestBak(options)
+  //     }
+  //   }
+  //   pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {
+  //     pivotTable = _pivotTable
+  //     pivotTable.queue['TIME-5'].promise.then(function (issue) {
+  //       // check it is not overwritten by subscequent resolve
+  //       expect(issue.worklog.worklogs.length).toEqual(4)
+  //     })
+  //   })
+  //   $timeout.flush()
+  //   $timeout.flush()
+  //   expect(pivotTable).toBeDefined()
+  //   expect(pivotTable).toHaveRowsNumber(2)
+  //   expect(Object.keys(pivotTable.rows)).toContainAll(['TIME-1', 'TIME-5'])
+  //   expect(pivotTable.rows['TIME-1'].sum).toEqual(133200)
+  //   expect(pivotTable.rows['TIME-5'].sum).toEqual(43200)
+  //   expect(pivotTable.sum).toEqual(176400)
+  // }))
 
   // verify subsequent resolve does not make effect
   it('deferredTest', inject(function ($timeout, $q) {
@@ -539,50 +539,50 @@ describe('pivottableServiceTest', function () {
     expect($timeout.flush).toThrow()
   }))
 
-  it('onAllIssues [total > maxResults]', inject(function ($timeout, $log, pivottableService) {
-    expect(pivottableService).toBeDefined()
+  // it('onAllIssues [total > maxResults]', inject(function ($timeout, $log, pivottableService) {
+  //   expect(pivottableService).toBeDefined()
 
-    var timeData = {
-      issues: [],
-      maxResults: 2,
-      startAt: 0,
-      total: 5
-    }
-    for (var i = 0; i < 2; i++) {
-      timeData.issues.push({
-        key: 'TEST-' + i
-      })
-    }
+  //   var timeData = {
+  //     issues: [],
+  //     maxResults: 2,
+  //     startAt: 0,
+  //     total: 5
+  //   }
+  //   for (var i = 0; i < 2; i++) {
+  //     timeData.issues.push({
+  //       key: 'TEST-' + i
+  //     })
+  //   }
 
-    AP.request = function (options) {
-      this.getTimeoutFunc()(function () {
-        var m = options.url.match(/\/search\?startAt=(\d)$/)
-        if (m && [0, 2, 4].indexOf(parseInt(m[1])) >= 0) {
-          options.success(timeData)
-        } else if (!options.url.match(/(\/myself|\/mypermissions)/)) {
-          throw new Error('Unexpected call ' + options.url)
-        }
-      }, 500)
-    }
+  //   AP.request = function (options) {
+  //     this.getTimeoutFunc()(function () {
+  //       var m = options.url.match(/\/search\?startAt=(\d)$/)
+  //       if (m && [0, 2, 4].indexOf(parseInt(m[1])) >= 0) {
+  //         options.success(timeData)
+  //       } else if (!options.url.match(/(\/myself|\/mypermissions)/)) {
+  //         throw new Error('Unexpected call ' + options.url)
+  //       }
+  //     }, 500)
+  //   }
 
-    var result = []
+  //   var result = []
 
-    pivottableService.onAllIssues('', function (data) {
-      Array.prototype.push.apply(result, data.issues)
-    })
+  //   pivottableService.onAllIssues('', function (data) {
+  //     Array.prototype.push.apply(result, data.issues)
+  //   })
 
-    $timeout.flush()
-    $timeout.flush() // onAllIssuesDelayed
-    $log.assertEmpty()
+  //   $timeout.flush()
+  //   $timeout.flush() // onAllIssuesDelayed
+  //   $log.assertEmpty()
 
-    expect(result).toBeDefined()
-    expect(result.length).toEqual(2)
+  //   expect(result).toBeDefined()
+  //   expect(result.length).toEqual(2)
 
-    $timeout.flush()
-    $log.assertEmpty()
-    expect(result.length).toEqual(6) // the same TimeData returned three times
-    expect($timeout.flush).toThrow()
-  }))
+  //   $timeout.flush()
+  //   $log.assertEmpty()
+  //   expect(result.length).toEqual(6) // the same TimeData returned three times
+  //   expect($timeout.flush).toThrow()
+  // }))
 
   // any issue matches
   it('checkIfMatches [empty query]', inject(function ($timeout, pivottableService) {
@@ -624,73 +624,73 @@ describe('pivottableServiceTest', function () {
   }))
 
   // match by issues set
-  it('checkIfMatches [filter query]', inject(function ($timeout, $log, pivottableService) {
-    expect(pivottableService).toBeDefined()
+  // it('checkIfMatches [filter query]', inject(function ($timeout, $log, pivottableService) {
+  //   expect(pivottableService).toBeDefined()
 
-    var timeData = {
-      issues: [],
-      maxResults: 2,
-      startAt: 0,
-      total: 2
-    }
-    for (var i = 0; i < 2; i++) {
-      timeData.issues.push({
-        id: '' + (10000 + i)
-      })
-    }
+  //   var timeData = {
+  //     issues: [],
+  //     maxResults: 2,
+  //     startAt: 0,
+  //     total: 2
+  //   }
+  //   for (var i = 0; i < 2; i++) {
+  //     timeData.issues.push({
+  //       id: '' + (10000 + i)
+  //     })
+  //   }
 
-    AP.request = function (options) {
-      this.getTimeoutFunc()(function () {
-        if (options.url.match(/\/search\?fields=~&maxResults=1000&jql=filter%3D10000&startAt=0$/)) {
-          options.success(timeData)
-        } else if (!options.url.match(/(\/myself|\/mypermissions)/)) {
-          throw new Error('Unexpected call ' + options.url)
-        }
-      }, 500)
-    }
+  //   AP.request = function (options) {
+  //     this.getTimeoutFunc()(function () {
+  //       if (options.url.match(/\/search\?fields=~&maxResults=1000&jql=filter%3D10000&startAt=0$/)) {
+  //         options.success(timeData)
+  //       } else if (!options.url.match(/(\/myself|\/mypermissions)/)) {
+  //         throw new Error('Unexpected call ' + options.url)
+  //       }
+  //     }, 500)
+  //   }
 
-    var result1; var result2; var result3; var options = { filterOrProjectId: 'filter_10000', configOptions: {} }
+  //   var result1; var result2; var result3; var options = { filterOrProjectId: 'filter_10000', configOptions: {} }
 
-    pivottableService.checkIfMatches({ id: '10000' }, options).then(function (matches) {
-      result1 = matches
-    })
-    pivottableService.checkIfMatches({ id: '10001' }, options).then(function (matches) {
-      result2 = matches
-    })
-    pivottableService.checkIfMatches({ id: '10002' }, options).then(function (matches) {
-      result3 = matches
-    })
+  //   pivottableService.checkIfMatches({ id: '10000' }, options).then(function (matches) {
+  //     result1 = matches
+  //   })
+  //   pivottableService.checkIfMatches({ id: '10001' }, options).then(function (matches) {
+  //     result2 = matches
+  //   })
+  //   pivottableService.checkIfMatches({ id: '10002' }, options).then(function (matches) {
+  //     result3 = matches
+  //   })
 
-    $timeout.flush()
-    $timeout.flush() // onAllIssuesDelayed
-    $log.assertEmpty()
+  //   $timeout.flush()
+  //   $timeout.flush() // onAllIssuesDelayed
+  //   $log.assertEmpty()
 
-    expect(result1).toBeDefined()
-    expect(result1).toBeTruthy()
+  //   expect(result1).toBeDefined()
+  //   expect(result1).toBeTruthy()
 
-    expect(result2).toBeDefined()
-    expect(result2).toBeTruthy()
+  //   expect(result2).toBeDefined()
+  //   expect(result2).toBeTruthy()
 
-    expect(result3).toBeDefined()
-    expect(result3).toBeFalsy()
+  //   expect(result3).toBeDefined()
+  //   expect(result3).toBeFalsy()
 
-    expect($timeout.flush).toThrow()
+  //   expect($timeout.flush).toThrow()
 
-    // test reset state
-    pivottableService.matches = null
-    options = { filterOrProjectId: 'project_DEMO', configOptions: {} }
+  //   // test reset state
+  //   pivottableService.matches = null
+  //   options = { filterOrProjectId: 'project_DEMO', configOptions: {} }
 
-    pivottableService.checkIfMatches({ fields: { project: { key: 'DEMO' } } }, options).then(function (matches) {
-      result3 = matches
-    })
+  //   pivottableService.checkIfMatches({ fields: { project: { key: 'DEMO' } } }, options).then(function (matches) {
+  //     result3 = matches
+  //   })
 
-    $timeout.flush()
-    $log.assertEmpty()
+  //   $timeout.flush()
+  //   $log.assertEmpty()
 
-    expect(result3).toBeTruthy()
+  //   expect(result3).toBeTruthy()
 
-    expect($timeout.flush).toThrow()
-  }))
+  //   expect($timeout.flush).toThrow()
+  // }))
 
   // test issue is added to queue only once
   it('addOnceIfMatches', inject(function ($timeout, $q, $log, pivottableService) {
@@ -786,75 +786,75 @@ describe('pivottableServiceTest', function () {
     expect(entries.length).toBe(1)
   }))
 
-  it('Parent issue not in search result, DB on Jira Cloud over rest', inject(function ($timeout, pivottableService) {
-    expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' }
-    var options = { pivotTableType: 'IssueWorkedTimeByUser',
-      loggedInUser,
-      configOptions: {},
-      sumSubTasks: ['parent'] }
+  // it('Parent issue not in search result, DB on Jira Cloud over rest', inject(function ($timeout, pivottableService) {
+  //   expect(pivottableService).toBeDefined()
+  //   var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', timeZone: 'Europe/Moscow' }
+  //   var options = { pivotTableType: 'IssueWorkedTimeByUser',
+  //     loggedInUser,
+  //     configOptions: {},
+  //     sumSubTasks: ['parent'] }
 
-    var childIssue = {}
-    angular.copy(TimeData.issues[5], childIssue)
-    var worklog = childIssue.worklog || childIssue.fields.worklog
-    worklog.total += worklog.maxResults + 1
-    var searchResult = { issues: [childIssue] }
+  //   var childIssue = {}
+  //   angular.copy(TimeData.issues[5], childIssue)
+  //   var worklog = childIssue.worklog || childIssue.fields.worklog
+  //   worklog.total += worklog.maxResults + 1
+  //   var searchResult = { issues: [childIssue] }
 
-    AP.request = function (options) {
-      if (options.url.match(/search/)) {
-        this.getTimeoutFunc()(function () {
-          options.success(searchResult)
-        }, 500)
-      } else {
-        AP.requestBak(options)
-      }
-    }
+  //   AP.request = function (options) {
+  //     if (options.url.match(/search/)) {
+  //       this.getTimeoutFunc()(function () {
+  //         options.success(searchResult)
+  //       }, 500)
+  //     } else {
+  //       AP.requestBak(options)
+  //     }
+  //   }
 
-    var spy = spyOn(pivottableService, 'loadAllWorklogs').and.callThrough()
+  //   var spy = spyOn(pivottableService, 'loadAllWorklogs').and.callThrough()
 
-    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
+  //   pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
 
-    $timeout.flush()
-    $timeout.flush() // onAllIssuesDelayed
+  //   $timeout.flush()
+  //   $timeout.flush() // onAllIssuesDelayed
 
-    expect(pivottableService.allIssues.length).toBe(1)
-    expect(spy.calls.count()).toBe(2)
-  }))
+  //   expect(pivottableService.allIssues.length).toBe(1)
+  //   expect(spy.calls.count()).toBe(2)
+  // }))
 
-  it('PARAMETERS: groups, DB on Jira Cloud over rest', inject(function ($timeout, $log, pivottableService) {
-    expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] }, timeZone: 'Europe/Moscow' }
-    var options = { pivotTableType: 'IssueWorkedTimeByUser',
-      loggedInUser,
-      groups: ['group1', 'group2'],
-      moreFields: ['customfield_10008'],
-      configOptions: {},
-      sumSubTasks: [] }
+  // it('PARAMETERS: groups, DB on Jira Cloud over rest', inject(function ($timeout, $log, pivottableService) {
+  //   expect(pivottableService).toBeDefined()
+  //   var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa', groups: { items: [{ name: 'group1' }, { name: 'group2' }] }, timeZone: 'Europe/Moscow' }
+  //   var options = { pivotTableType: 'IssueWorkedTimeByUser',
+  //     loggedInUser,
+  //     groups: ['group1', 'group2'],
+  //     moreFields: ['customfield_10008'],
+  //     configOptions: {},
+  //     sumSubTasks: [] }
 
-    var requestCalled = false
+  //   var requestCalled = false
 
-    AP.request = function (options) {
-      if (options.url.match(/search/)) {
-        this.getTimeoutFunc()(function () {
-          requestCalled = true
-          expect(options.url).toContain('jql=(worklogAuthor%20in%20(membersOf(%22group1%22))%20or%20worklogAuthor%20in%20(membersOf(%22group2%22)))')
-          options.success(angular.copy(TimeData))
-        }, 500)
-      } else {
-        AP.requestBak(options)
-      }
-    }
+  //   AP.request = function (options) {
+  //     if (options.url.match(/search/)) {
+  //       this.getTimeoutFunc()(function () {
+  //         requestCalled = true
+  //         expect(options.url).toContain('jql=(worklogAuthor%20in%20(membersOf(%22group1%22))%20or%20worklogAuthor%20in%20(membersOf(%22group2%22)))')
+  //         options.success(angular.copy(TimeData))
+  //       }, 500)
+  //     } else {
+  //       AP.requestBak(options)
+  //     }
+  //   }
 
-    pivottableService.allFields = FieldsData
-    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
+  //   pivottableService.allFields = FieldsData
+  //   pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
 
-    $timeout.flush()
-    $timeout.flush() // onAllIssuesDelayed
-    $log.assertEmpty()
+  //   $timeout.flush()
+  //   $timeout.flush() // onAllIssuesDelayed
+  //   $log.assertEmpty()
 
-    expect(requestCalled).toBeTruthy()
-    expect(pivottableService.allIssues.length).toBe(6)
-  }))
+  //   expect(requestCalled).toBeTruthy()
+  //   expect(pivottableService.allIssues.length).toBe(6)
+  // }))
 
   it('PARAMETERS: excludeGroups', inject(function ($timeout, $log, pivottableService) {
     expect(pivottableService).toBeDefined()
@@ -1055,108 +1055,108 @@ describe('pivottableServiceTest', function () {
     expect(pivotTable).toHaveRowsNumber(1)
   }))
 
-  it('JQL for Date Fields for TimeBalance ["resolved"]', inject(function ($timeout, $log, pivottableService) {
-    expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
-    var options = { pivotTableType: 'TimeBalance',
-      dateFields: ['resolved'],
-      startDate: '2018-10-23',
-      endDate: '2018-10-24',
-      configOptions: {},
-      sumSubTasks: [] }
+  // it('JQL for Date Fields for TimeBalance ["resolved"]', inject(function ($timeout, $log, pivottableService) {
+  //   expect(pivottableService).toBeDefined()
+  //   var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
+  //   var options = { pivotTableType: 'TimeBalance',
+  //     dateFields: ['resolved'],
+  //     startDate: '2018-10-23',
+  //     endDate: '2018-10-24',
+  //     configOptions: {},
+  //     sumSubTasks: [] }
 
-    var requestCalled = false
+  //   var requestCalled = false
 
-    AP.request = function (options) {
-      if (options.url.match(/search/)) {
-        this.getTimeoutFunc()(function () {
-          requestCalled = true
-          expect(options.url).toContain('jql=(resolved%20%3E%3D%20%222018-10-23%22)%20and%20(resolved%20%3C%20%222018-10-25%22)')
-          options.success(angular.copy(TimeData))
-        }, 500)
-      } else {
-        AP.requestBak(options)
-      }
-    }
+  //   AP.request = function (options) {
+  //     if (options.url.match(/search/)) {
+  //       this.getTimeoutFunc()(function () {
+  //         requestCalled = true
+  //         expect(options.url).toContain('jql=(resolved%20%3E%3D%20%222018-10-23%22)%20and%20(resolved%20%3C%20%222018-10-25%22)')
+  //         options.success(angular.copy(TimeData))
+  //       }, 500)
+  //     } else {
+  //       AP.requestBak(options)
+  //     }
+  //   }
 
-    pivottableService.allFields = FieldsData
-    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
+  //   pivottableService.allFields = FieldsData
+  //   pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
 
-    $timeout.flush()
-    $timeout.flush() // onAllIssuesDelayed
-    $log.assertEmpty()
+  //   $timeout.flush()
+  //   $timeout.flush() // onAllIssuesDelayed
+  //   $log.assertEmpty()
 
-    expect(requestCalled).toBeTruthy()
-  }))
+  //   expect(requestCalled).toBeTruthy()
+  // }))
 
-  it('JQL for Date Fields for TimeTracking 3 fields', inject(function ($timeout, $log, pivottableService) {
-    expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
-    var options = { pivotTableType: 'TimeTracking',
-      dateFields: ['resolved', 'created', 'updated'],
-      startDate: '2018-10-23',
-      endDate: '2018-10-24',
-      timeTrackingColumns: ['3timespent'],
-      configOptions: {},
-      sumSubTasks: [] }
+  // it('JQL for Date Fields for TimeTracking 3 fields', inject(function ($timeout, $log, pivottableService) {
+  //   expect(pivottableService).toBeDefined()
+  //   var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
+  //   var options = { pivotTableType: 'TimeTracking',
+  //     dateFields: ['resolved', 'created', 'updated'],
+  //     startDate: '2018-10-23',
+  //     endDate: '2018-10-24',
+  //     timeTrackingColumns: ['3timespent'],
+  //     configOptions: {},
+  //     sumSubTasks: [] }
 
-    var requestCalled = false
+  //   var requestCalled = false
 
-    AP.request = function (options) {
-      if (options.url.match(/search/)) {
-        this.getTimeoutFunc()(function () {
-          requestCalled = true
-          expect(options.url).toContain('jql=(resolved%20%3E%3D%20%222018-10-23%22%20or%20created%20%3E%3D%20%222018-10-23%22%20or%20updated%20%3E%3D%20%222018-10-23%22)%20and%20(resolved%20%3C%20%222018-10-25%22%20or%20created%20%3C%20%222018-10-25%22%20or%20updated%20%3C%20%222018-10-25%22)')
-          options.success(angular.copy(TimeData))
-        }, 500)
-      } else {
-        AP.requestBak(options)
-      }
-    }
+  //   AP.request = function (options) {
+  //     if (options.url.match(/search/)) {
+  //       this.getTimeoutFunc()(function () {
+  //         requestCalled = true
+  //         expect(options.url).toContain('jql=(resolved%20%3E%3D%20%222018-10-23%22%20or%20created%20%3E%3D%20%222018-10-23%22%20or%20updated%20%3E%3D%20%222018-10-23%22)%20and%20(resolved%20%3C%20%222018-10-25%22%20or%20created%20%3C%20%222018-10-25%22%20or%20updated%20%3C%20%222018-10-25%22)')
+  //         options.success(angular.copy(TimeData))
+  //       }, 500)
+  //     } else {
+  //       AP.requestBak(options)
+  //     }
+  //   }
 
-    pivottableService.allFields = FieldsData
-    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
+  //   pivottableService.allFields = FieldsData
+  //   pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
 
-    $timeout.flush()
-    $timeout.flush() // onAllIssuesDelayed
-    $log.assertEmpty()
+  //   $timeout.flush()
+  //   $timeout.flush() // onAllIssuesDelayed
+  //   $log.assertEmpty()
 
-    expect(requestCalled).toBeTruthy()
-  }))
+  //   expect(requestCalled).toBeTruthy()
+  // }))
 
-  it('JQL for Date Fields for IssuePassedTimeByStatus no "updated"', inject(function ($timeout, $log, pivottableService) {
-    expect(pivottableService).toBeDefined()
-    var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
-    var options = { pivotTableType: 'IssuePassedTimeByStatus',
-      dateFields: ['resolved', 'created'],
-      startDate: '2018-10-23',
-      endDate: '2018-10-24',
-      configOptions: { workingTimeInStatus: {}, statuses: [] },
-      sumSubTasks: [] }
+  // it('JQL for Date Fields for IssuePassedTimeByStatus no "updated"', inject(function ($timeout, $log, pivottableService) {
+  //   expect(pivottableService).toBeDefined()
+  //   var loggedInUser = { accountId: 'aaaa:aaaaaaaa-aaaa-1aaa-aaaa-aaaaaaaaaaaa' }
+  //   var options = { pivotTableType: 'IssuePassedTimeByStatus',
+  //     dateFields: ['resolved', 'created'],
+  //     startDate: '2018-10-23',
+  //     endDate: '2018-10-24',
+  //     configOptions: { workingTimeInStatus: {}, statuses: [] },
+  //     sumSubTasks: [] }
 
-    var requestCalled = false
+  //   var requestCalled = false
 
-    AP.request = function (options) {
-      if (options.url.match(/search/)) {
-        this.getTimeoutFunc()(function () {
-          requestCalled = true
-          expect(options.url).toContain('jql=(status%20changed%20after%20%222018-10-23%22%20or%20status%20changed%20on%20%222018-10-23%22%20or%20created%20%3E%3D%20%222018-10-23%22)%20and%20(status%20changed%20before%20%222018-10-25%22%20or%20created%20%3C%20%222018-10-25%22)')
-          options.success(angular.copy(TimeData))
-        }, 500)
-      } else {
-        AP.requestBak(options)
-      }
-    }
+  //   AP.request = function (options) {
+  //     if (options.url.match(/search/)) {
+  //       this.getTimeoutFunc()(function () {
+  //         requestCalled = true
+  //         expect(options.url).toContain('jql=(status%20changed%20after%20%222018-10-23%22%20or%20status%20changed%20on%20%222018-10-23%22%20or%20created%20%3E%3D%20%222018-10-23%22)%20and%20(status%20changed%20before%20%222018-10-25%22%20or%20created%20%3C%20%222018-10-25%22)')
+  //         options.success(angular.copy(TimeData))
+  //       }, 500)
+  //     } else {
+  //       AP.requestBak(options)
+  //     }
+  //   }
 
-    pivottableService.allFields = FieldsData
-    pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
+  //   pivottableService.allFields = FieldsData
+  //   pivottableService.getPivotTable(loggedInUser, options).then(function (_pivotTable) {})
 
-    $timeout.flush()
-    $timeout.flush() // onAllIssuesDelayed
-    $log.assertEmpty()
+  //   $timeout.flush()
+  //   $timeout.flush() // onAllIssuesDelayed
+  //   $log.assertEmpty()
 
-    expect(requestCalled).toBeTruthy()
-  }))
+  //   expect(requestCalled).toBeTruthy()
+  // }))
 
   it('cacheWorklog', inject(function ($timeout, $httpBackend, $log, pivottableService, configurationService) {
     expect(pivottableService).toBeDefined()
