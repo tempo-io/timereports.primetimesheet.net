@@ -29,3 +29,29 @@
       <i class="close-icon"></i>
   </span>
 </div>
+
+<div
+  class="banner-home blue"
+  id="banner-deprecation-warning"
+  style="margin: 0px; width: 100vw;"
+  ng-style="{'font-size': isGadget ? '12px' : '14px'}"
+  ng-if="showForgeBanner"
+>
+  <i class="icon-image info"></i>
+  <span
+    class="text"
+  >
+    {{'forge.popup.message' | i18n}}
+    <a
+      target="_blank"
+      href="https://help.tempo.io/timetracker/latest/changes-to-expect-in-time-tracker-on-forge"
+      style="color: white; text-decoration: underline;"
+    >{{'forge.popup.message.here' | i18n}}</a>    
+  </span>
+  <span
+      style="cursor: pointer;"
+      ng-click="hideNameChangeBannerUI()"
+    >
+      <i class="close-icon"></i>
+  </span>
+</div>

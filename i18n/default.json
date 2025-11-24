@@ -518,6 +518,8 @@
     "plugin.ttl.deprecation.banner.message.description.1": "This product is deprecated, and migration features to Time Tracker will soon be discontinued. Switch to ",
     "plugin.ttl.deprecation.banner.message.description.2": " today and ",
     "plugin.ttl.deprecation.banner.message.description.3": "get your first year at no extra cost",
+    "forge.popup.message": "We've started migrating Time Tracker to Forge. If you're a Jira admin, ",
+    "forge.popup.message.here": "learn about the changes here.",
     "plugin.ttl.deprecation.message.title": "Time Tracker Lite has been deprecated",
     "plugin.ttl.deprecation.message.description.1": "You are using a deprecated product, and migration features from Time Tracker Lite to Time Tracker will be discontinued on November 21, 2025.",
     "plugin.ttl.deprecation.message.link": "Switch to Time Tracker",

@@ -1431,6 +1431,10 @@ form.bitbucket span {
   width: 100%;
 }
 
+.banner-home.blue{
+  background-color: #0052cc !important;  
+}
+
 .banner-home .text {
   width: 100%;
   margin-right: 1rem;

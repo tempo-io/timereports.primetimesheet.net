@@ -516,6 +516,8 @@
     "plugin.ttl.deprecation.banner.message.description.1": "Dieses Produkt ist veraltet, und die Migrationsfunktionen zu Time Tracker werden bald eingestellt. Wechseln Sie zu",
     "plugin.ttl.deprecation.banner.message.description.2": " heute und ",
     "plugin.ttl.deprecation.banner.message.description.3": "erhalten Sie Ihr erstes Jahr ohne zusätzliche Kosten",
+    "forge.popup.message": "Wir haben begonnen, Time Tracker zu Forge zu migrieren. Wenn Sie Jira-Administrator sind, ",
+    "forge.popup.message.here": "erfahren Sie hier mehr über die Änderungen.",
     "plugin.ttl.deprecation.message.title": "Time Tracker Lite wurde eingestellt",
     "plugin.ttl.deprecation.message.description.1": "Sie verwenden ein eingestelltes Produkt, und die Migrationsfunktionen von Time Tracker Lite zu Time Tracker werden am 21. November 2025.",
     "plugin.ttl.deprecation.message.link": "Wechseln Sie zu Time Tracker",
